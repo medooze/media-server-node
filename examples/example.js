@@ -124,7 +124,7 @@ var offer = SDPInfo.process(sdp);
 const MediaServer = require("../index");
 
 //Create UDP server endpoint
-const endpoint = MediaServer.createRTPEndpoint(ip);
+const endpoint = MediaServer.createEndpoint(ip);
 
 //Create an DTLS ICE transport in that enpoint
 const transport = endpoint.createTransport({
