@@ -1,0 +1,30 @@
+{
+  "name": "medooze-media-server",
+  "version": "0.0.1",
+  "description": "WebRTC Media Server by Medooze",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medooze/media-server-node.git"
+  },
+  "keywords": [
+    "webrtc",
+    "media",
+    "server",
+    "sfu"
+  ],
+  "author": "Sergio Garcia Murillo",
+  "license": "MIT",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/medooze/media-server-node/issues"
+  },
+  "homepage": "https://github.com/medooze/media-server-node#readme",
+  "dependencies": {
+    "semantic-sdp": "medooze/semantic-sdp-js"
+  }
+}
