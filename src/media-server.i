@@ -1,28 +1,15 @@
 %module medooze
 %{
+	
 #include <string>
+#include "../media-server/include/config.h"	
 #include "../media-server/include/dtls.h"	
-#include "../media-server/include/config.h"
 #include "../media-server/include/media.h"
 #include "../media-server/include/rtp.h"
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
 #include "../media-server/include/mp4recorder.h"
 
-	
-
-/*
-class Room : public SFU::Room
-{
-public:
-	Room(const char *name) 
-		: SFU::Room(std::wstring(L"xxx"))
-	{
-
-	}
-	
-};
- */
 class StringFacade : private std::string
 {
 public:
@@ -70,7 +57,8 @@ public:
 };
 
 %}
-
+%include "stdint.i"
+%include "../media-server/include/config.h"	
 
 class StringFacade : private std::string
 {
@@ -99,18 +87,3 @@ public:
 %include "../media-server/include/DTLSICETransport.h"
 %include "../media-server/include/RTPBundleTransport.h"
 %include "../media-server/include/mp4recorder.h"
-/*
-class Room : private SFU::Room
-{
-public:
-	Room(const char *name);
-	~Room();
-	int Init();
-	//int AddParticipant(const char*name,Properties &properties);
-	//int RemoveParticipant(int partId);
-	int End();
-	//Getters
-	std::wstring GetTag();
-	DWORD GetTransportPort();
-};
- */
