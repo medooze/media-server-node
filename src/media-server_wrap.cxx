@@ -2859,7 +2859,6 @@ static SwigV8ReturnValue _wrap_MediaFrame_Alloc(const SwigV8Arguments &args) {
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
-  bool result;
   
   if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_Alloc.");
   
@@ -2879,8 +2878,8 @@ static SwigV8ReturnValue _wrap_MediaFrame_Alloc(const SwigV8Arguments &args) {
       arg2 = *((DWORD *)(argp2));
     }
   }
-  result = (bool)(arg1)->Alloc(arg2);
-  jsresult = SWIG_From_bool((bool)(result));
+  (arg1)->Alloc(arg2);
+  jsresult = SWIGV8_UNDEFINED();
   
   
   SWIGV8_RETURN(jsresult);
@@ -2904,7 +2903,6 @@ static SwigV8ReturnValue _wrap_MediaFrame_SetMedia(const SwigV8Arguments &args) 
   int res2 = 0 ;
   void *argp3 ;
   int res3 = 0 ;
-  bool result;
   
   if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_SetMedia.");
   
@@ -2929,8 +2927,8 @@ static SwigV8ReturnValue _wrap_MediaFrame_SetMedia(const SwigV8Arguments &args) 
       arg3 = *((DWORD *)(argp3));
     }
   }
-  result = (bool)(arg1)->SetMedia(arg2,arg3);
-  jsresult = SWIG_From_bool((bool)(result));
+  (arg1)->SetMedia(arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
   
   
   
@@ -5674,7 +5672,35 @@ static void _wrap_delete_RTPOutgoingSourceGroup(v8::Persistent<v8::Value> object
       }
 
 
-static SwigV8ReturnValue _wrap_new_RTPIncomingSourceGroup(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_new_RTPIncomingSourceGroup__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  MediaFrame::Type arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  RTPIncomingSourceGroup *result;
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPIncomingSourceGroup__SWIG_0.");
+  ecode1 = SWIG_AsVal_int(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RTPIncomingSourceGroup" "', argument " "1"" of type '" "MediaFrame::Type""'");
+  } 
+  arg1 = (MediaFrame::Type)(val1);
+  result = (RTPIncomingSourceGroup *)new RTPIncomingSourceGroup(arg1);
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_RTPIncomingSourceGroup, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_RTPIncomingSourceGroup__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Object> self = args.Holder();
@@ -5685,7 +5711,7 @@ static SwigV8ReturnValue _wrap_new_RTPIncomingSourceGroup(const SwigV8Arguments 
   void *argp2 = 0 ;
   int res2 = 0 ;
   RTPIncomingSourceGroup *result;
-  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPIncomingSourceGroup.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPIncomingSourceGroup__SWIG_1.");
   ecode1 = SWIG_AsVal_int(args[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RTPIncomingSourceGroup" "', argument " "1"" of type '" "MediaFrame::Type""'");
@@ -5706,6 +5732,53 @@ static SwigV8ReturnValue _wrap_new_RTPIncomingSourceGroup(const SwigV8Arguments 
   SWIGV8_RETURN(self);
   
   goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_RTPIncomingSourceGroup(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  OverloadErrorHandler errorHandler;
+  v8::Handle<v8::Value> self;
+  
+  // switch all cases by means of series of if-returns.
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    self = _wrap_new_RTPIncomingSourceGroup__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(self);
+    }
+#else
+    _wrap_new_RTPIncomingSourceGroup__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    self = _wrap_new_RTPIncomingSourceGroup__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(self);
+    }
+#else
+    _wrap_new_RTPIncomingSourceGroup__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  // default:
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for construction of _exports_RTPIncomingSourceGroup");
+  
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
 }

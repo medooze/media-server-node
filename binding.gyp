@@ -8,11 +8,16 @@
 				"-fexceptions",
 				"-std=c++11"
 			],
-			"include_dirs" : ['media-server/include', 'media-server/src','/usr/include/nodejs/'],
-			"ldflags" : ["-lpthread -lsrtp2 -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt -lssl -lcrypto"],
+			"include_dirs" : 
+			[
+				'media-server/include',
+				'media-server/src',
+				'/usr/include/nodejs/'
+			],
+			"ldflags" : ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt -lssl -lcrypto"],
 			"link_settings": 
 			{
-        			'libraries': ["-lpthread -lsrtp2 -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt -lssl -lcrypto"]
+        			'libraries': ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt -lssl -lcrypto"]
       			},
 			"sources": 
 			[ 
@@ -58,7 +63,8 @@
 			],
 			"dependencies":
 			[
-				'external/mp4v2/libmp4v2.json:mp4v2'
+				'external/mp4v2/libmp4v2.json:mp4v2',
+				'external/srtp/libsrtp.gyp:libsrtp'
 			]
 		}
 	]
