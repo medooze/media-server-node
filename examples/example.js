@@ -126,6 +126,12 @@ const MediaServer = require("../index");
 //Create UDP server endpoint
 const endpoint = MediaServer.createEndpoint(ip);
 
+//Create an mp4 recorder
+const recorder = MediaServer.createRecorder("/tmp/test.mp4");
+
+//Close it
+recorder.stop();
+
 //Create an DTLS ICE transport in that enpoint
 const transport = endpoint.createTransport({
 		dtls : offer.getMedias()[0].getDTLS(),

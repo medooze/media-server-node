@@ -7,7 +7,7 @@
 #include "../media-server/include/rtp.h"
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
-
+#include "../media-server/include/mp4recorder.h"
 
 	
 
@@ -98,7 +98,7 @@ public:
 %include "../media-server/include/rtp.h"
 %include "../media-server/include/DTLSICETransport.h"
 %include "../media-server/include/RTPBundleTransport.h"
-
+%include "../media-server/include/mp4recorder.h"
 /*
 class Room : private SFU::Room
 {

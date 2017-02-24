@@ -53,7 +53,12 @@
 				"media-server/src/rtp/RTCPNACK.cpp",
 				"media-server/src/rtp/RTCPReceiverReport.cpp",
 				"media-server/src/rtp/RTCPSDES.cpp",
-				"media-server/src/rtp/RTPPacketSched.cpp"
+				"media-server/src/rtp/RTPPacketSched.cpp",
+				"media-server/src/mp4recorder.cpp",
+			],
+			"dependencies":
+			[
+				'external/mp4v2/libmp4v2.json:mp4v2'
 			]
 		}
 	]
