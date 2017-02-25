@@ -14,10 +14,10 @@
 				'media-server/src',
 				'/usr/include/nodejs/'
 			],
-			"ldflags" : ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt -lssl -lcrypto"],
+			"ldflags" : ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt "],
 			"link_settings": 
 			{
-        			'libraries': ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt -lssl -lcrypto"]
+        			'libraries': ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt"]
       			},
 			"sources": 
 			[ 
@@ -63,8 +63,10 @@
 			],
 			"dependencies":
 			[
-				'external/mp4v2/libmp4v2.json:mp4v2',
+				'external/mp4v2/libmp4v2.gyp:mp4v2',
+				'external/openssl/openssl.gyp:openssl',
 				'external/srtp/libsrtp.gyp:libsrtp'
+				
 			]
 		}
 	]
