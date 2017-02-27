@@ -20,6 +20,11 @@ You can check the full object documentation [here](https://medooze.github.io/).
 ## Example
 
 ```javascript
+const SemanticSDP	= require("semantic-sdp");
+
+//Process the sdp
+var offer = SDPInfo.process(sdp);
+
 //Get the Medooze Media Server interface
 const MediaServer = require('medooze-media-server');
 
