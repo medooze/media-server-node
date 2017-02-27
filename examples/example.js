@@ -131,15 +131,15 @@ const recorder = MediaServer.createRecorder("/tmp/test.mp4");
 
 //Create an DTLS ICE transport in that enpoint
 const transport = endpoint.createTransport({
-		dtls : offer.getMedias()[0].getDTLS(),
-		ice  : offer.getMedias()[0].getICE() 
-	});
+	dtls : offer.getMedias()[0].getDTLS(),
+	ice  : offer.getMedias()[0].getICE() 
+});
 	
 //Set RTP remote properties
  transport.setRemoteProperties({
-		audio : offer.getAudio(),
-		video : offer.getVideo()
-	});
+	audio : offer.getAudio(),
+	video : offer.getVideo()
+});
 
 
 //Get local DTLS and ICE info
@@ -152,18 +152,11 @@ const candidate = endpoint.getLocalCandidate();
 //Create local SDP info
 let answer = new SDPInfo();
 
-//Set RTP local  properties
- transport.setLocalProperties({
-		audio : answer.getAudio(),
-		video : answer.getVideo()
-	});
-	
-
 //Get remote audio m-line info 
 let audioOffer = offer.getAudio();
 
 //If we have audio
-if (audioOffer!=null)
+if (audioOffer)
 {
 	//Create audio media
 	let audio = new MediaInfo("audio", "audio");
@@ -188,7 +181,7 @@ if (audioOffer!=null)
 let videoOffer = offer.getVideo();
 
 //If offer had video
-if (videoOffer!=null)
+if (videoOffer)
 {
 	//Create video media
 	let  video = new MediaInfo("video", "video");
@@ -214,6 +207,13 @@ if (videoOffer!=null)
 	//Add it to answer
 	answer.addMedia(video);
 }
+
+//Set RTP local  properties
+ transport.setLocalProperties({
+	audio : answer.getAudio(),
+	video : answer.getVideo()
+});
+	
 
 //For each stream offered
 for (let offered of offer.getStreams().values())

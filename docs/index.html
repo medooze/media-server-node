@@ -52,21 +52,34 @@
               
                 
                 <li><a
-                  href='#createendpoint'
-                  class="">
-                  createEndpoint
-                  
+                  href='#mediaserver'
+                  class=" toggle-sibling">
+                  MediaServer
+                  <span class='icon'>▸</span>
                 </a>
                 
-                </li>
-              
-                
-                <li><a
-                  href='#createrecorder'
-                  class="">
-                  createRecorder
+                <div class='toggle-target display-none'>
                   
-                </a>
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#MediaServercreateEndpoint'
+                        class='regular pre-open'>
+                        .createEndpoint
+                      </a></li>
+                    
+                      <li><a
+                        href='#MediaServercreateRecorder'
+                        class='regular pre-open'>
+                        .createRecorder
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                </div>
                 
                 </li>
               
@@ -600,12 +613,50 @@
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='createendpoint'>
-      createEndpoint
+    <h3 class='fl m0' id='mediaserver'>
+      MediaServer
     </h3>
     
     
   </div>
+  
+
+  
+
+  <div class='pre p1 fill-light mt0'>MediaServer</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='MediaServercreateEndpoint'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>createEndpoint(ip)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>Create a new endpoint object</p>
@@ -660,20 +711,19 @@
   
 </section>
 
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
+      </div>
+    </div>
   
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='createrecorder'>
-      createRecorder
-    </h3>
-    
-    
-  </div>
+    <div class='border-bottom' id='MediaServercreateRecorder'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>createRecorder(filename)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
   
 
   <p>Create a new MP4 recorder</p>
@@ -720,6 +770,18 @@
   
 
   
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 
