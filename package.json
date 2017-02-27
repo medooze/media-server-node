@@ -4,8 +4,7 @@
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "node-gyp rebuild"
+    "install": "git submodule pull && node-gyp rebuild -j 4"
   },
   "repository": {
     "type": "git",
