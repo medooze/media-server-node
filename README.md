@@ -12,10 +12,10 @@ SVC layer selection and simulcast support.
 
 ## Usage
 ```javascript
-    const MediaServer = require('medooze-media-server');
+const MediaServer = require('medooze-media-server');
 ```
 ## API Documention
-You can check the full object documentation (here)[/docs]
+You can check the full object documentation [here](https://medooze.github.io/).
 
 ## Example
 
