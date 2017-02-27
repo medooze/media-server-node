@@ -54,13 +54,6 @@ const candidate = endpoint.getLocalCandidate();
 //Create local SDP info
 let answer = new SDPInfo();
 
-//Set RTP local  properties
- transport.setLocalProperties({
-		audio : answer.getAudio(),
-		video : answer.getVideo()
-	});
-	
-
 //Get remote audio m-line info 
 let audioOffer = offer.getAudio();
 
@@ -117,6 +110,12 @@ if (videoOffer!=null)
 	answer.addMedia(video);
 }
 
+//Set RTP local  properties
+ transport.setLocalProperties({
+		audio : answer.getAudio(),
+		video : answer.getVideo()
+	});
+	
 //For each stream offered
 for (let offered of offer.getStreams().values())
 {
