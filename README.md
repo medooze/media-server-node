@@ -14,6 +14,9 @@ SVC layer selection and simulcast support.
 ```javascript
     const MediaServer = require('medooze-media-server');
 ```
+## API Documention
+You can check the full object documentation (here)[/docs]
+
 ## Example
 
 ```javascript
@@ -138,5 +141,5 @@ const str = answer.toString();
 
 Sergio Garcia Murillo
 
-\#License
+## License
 MIT
