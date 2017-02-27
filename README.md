@@ -23,7 +23,7 @@ You can check the full object documentation [here](https://medooze.github.io/).
 const SemanticSDP	= require("semantic-sdp");
 
 //Process the sdp
-var offer = SDPInfo.process(sdp);
+var offer = SemanticSDP.SDPInfo.process(sdp);
 
 //Get the Medooze Media Server interface
 const MediaServer = require('medooze-media-server');
