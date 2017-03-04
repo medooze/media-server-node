@@ -173,9 +173,9 @@ if (audioOffer)
 	audio.addCodec(opus);
 
 	//Add audio extensions
-	for (let extension of audioOffer.getExtensions().entries())
+	for (let [id, uri] of audioOffer.getExtensions().entries())
 		//Add it
-		audio.addExtension(extension[0], extension[1]);
+		audio.addExtension(id, uri);
 	//Add it to answer
 	answer.addMedia(audio);
 }
@@ -206,9 +206,9 @@ if (videoOffer)
 	video.setBitrate(1024);
 
 	//Add video extensions
-	for (let extension of videoOffer.getExtensions().entries())
+	for (let [id, uri] of videoOffer.getExtensions().entries())
 		//Add it
-		video.addExtension(extension[0], extension[1]);
+		video.addExtension(id, uri);
 
 	//Add it to answer
 	answer.addMedia(video);
