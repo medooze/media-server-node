@@ -48,8 +48,8 @@ const transport = endpoint.createTransport({
 const dtls = transport.getLocalDTLSInfo();
 const ice  = transport.getLocalICEInfo();
 
-//Get local candidte
-const candidate = endpoint.getLocalCandidate();
+//Get local candidates
+const candidates = endpoint.getLocalCandidates();
 
 //Create local SDP info
 let answer = new SDPInfo();
@@ -58,14 +58,17 @@ let answer = new SDPInfo();
 let audioOffer = offer.getAudio();
 
 //If we have audio
-if (audioOffer!=null)
+if (audioOffer)
 {
 	//Create audio media
 	let audio = new MediaInfo("audio", "audio");
 	//Add ice and dtls info
 	audio.setDTLS(dtls);
 	audio.setICE(ice);
-	audio.addCandidate(candidate);
+	//Add candidates
+	for (let i=0;i<candidates.length;++i)
+		//Add candidate to media info
+		audio.addCandidate(candidates[i]);
 	//Get codec type
 	let opus = audioOffer.getCodec("opus");
 	//Add opus codec
@@ -83,14 +86,17 @@ if (audioOffer!=null)
 let videoOffer = offer.getVideo();
 
 //If offer had video
-if (videoOffer!=null)
+if (videoOffer)
 {
 	//Create video media
 	let  video = new MediaInfo("video", "video");
 	//Add ice and dtls info
 	video.setDTLS(dtls);
 	video.setICE(ice);
-	video.addCandidate(candidate);
+	//For each local candidate
+	for (let i=0;i<candidates.length;++i)
+		//Add candidate to media info
+		video.addCandidate(candidates[i]);
 	//Get codec types
 	let vp9 = videoOffer.getCodec("vp9");
 	let fec = videoOffer.getCodec("flexfec-03");
