@@ -56,6 +56,54 @@ public:
 	
 };
 
+class StreamTransceiver : 
+	public RTPIncomingSourceGroup::Listener,
+	public RTPOutgoingSourceGroup::Listener
+{
+public:
+	StreamTransceiver(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport)
+	{
+		//Store streams
+		this->incomingSource = incomingSource;
+		this->outgoingSource = outgoingSource;
+		this->incomingTransport = incomingTransport;
+		this->outgoingSource = outgoingSource;
+		
+		//Add us as listeners
+		outgoingSource->AddListener(this);
+		incomingSource->AddListener(this);
+		
+		//Request update on the incoming
+		incomingTransport->SendPLI(incomingSource->media.ssrc);
+	}
+
+	virtual ~StreamTransceiver()
+	{
+		//Stop listeneing
+		outgoingSource->RemoveListener(this);
+		incomingSource->RemoveListener(this);	
+	}
+
+	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
+	{
+		//Change ssrc
+		packet->SetSSRC(outgoingSource->media.ssrc);
+		//Send it on transport
+		outgoingTransport->Send(*packet);
+	}
+	
+	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc)
+	{
+		//Request update on the incoming
+		incomingTransport->SendPLI(incomingSource->media.ssrc);
+	}
+private:
+	RTPOutgoingSourceGroup *outgoingSource;
+	RTPIncomingSourceGroup *incomingSource;
+	DTLSICETransport* incomingTransport;
+	DTLSICETransport* outgoingTransport;
+};
+
 %}
 %include "stdint.i"
 %include "../media-server/include/config.h"	
@@ -81,6 +129,22 @@ public:
 	static void Initialize();
 	static StringFacade GetFingerprint();
 };
+
+
+class StreamTransceiver : 
+	public RTPIncomingSourceGroup::Listener,
+	public RTPOutgoingSourceGroup::Listener
+{
+public:
+	StreamTransceiver(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport);
+	virtual ~StreamTransceiver();
+	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
+	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
+private:
+	RTPOutgoingSourceGroup *outgoing;
+	RTPIncomingSourceGroup *incoming;
+};
+
 
 %include "../media-server/include/media.h"
 %include "../media-server/include/rtp.h"
