@@ -17,6 +17,9 @@ const MediaServer = require('medooze-media-server');
 ## API Documention
 You can check the full object documentation [here](https://medooze.github.io/media-server-node/).
 
+## Demo application
+You can check a demo application [here](https://github.com/medooze/media-server-demo-node)
+
 ## Example
 
 ```javascript
