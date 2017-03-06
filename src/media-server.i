@@ -167,9 +167,7 @@ public:
 	virtual ~StreamTransceiver();
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
-private:
-	RTPOutgoingSourceGroup *outgoing;
-	RTPIncomingSourceGroup *incoming;
+	void SelectLayer(int spatialLayerId,int temporalLayerId);
 };
 
 

@@ -237,7 +237,10 @@ for (let offered of offer.getStreams().values())
 	const info = outgoingStream.getStreamInfo();
 	
 	//Copy incoming data from the remote stream to the local one
-	outgoingStream.attachTo(incomingStream);
+	const transceivers = outgoingStream.attachTo(incomingStream);
+	
+	//Set base layer for video
+	transceivers[0].selectLayer(0,0);
 	
 	//Add local stream info it to the answer
 	answer.addStream(info);

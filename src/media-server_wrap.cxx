@@ -4841,6 +4841,51 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_StreamTransceiver_SelectLayer(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  StreamTransceiver *arg1 = (StreamTransceiver *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTransceiver_SelectLayer.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTransceiver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTransceiver_SelectLayer" "', argument " "1"" of type '" "StreamTransceiver *""'"); 
+  }
+  arg1 = (StreamTransceiver *)(argp1);
+  ecode2 = SWIG_AsVal_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "StreamTransceiver_SelectLayer" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = (int)(val2);
+  ecode3 = SWIG_AsVal_int(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "StreamTransceiver_SelectLayer" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = (int)(val3);
+  (arg1)->SelectLayer(arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MediaFrame_Audio(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
   SWIGV8_HANDLESCOPE();
   
@@ -11433,6 +11478,7 @@ SWIGV8_AddMemberFunction(_exports_StringFacade_class, "toString", _wrap_StringFa
 SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetProperty", _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProperty);
 SWIGV8_AddMemberFunction(_exports_StreamTransceiver_class, "onRTP", _wrap_StreamTransceiver_onRTP);
 SWIGV8_AddMemberFunction(_exports_StreamTransceiver_class, "onPLIRequest", _wrap_StreamTransceiver_onPLIRequest);
+SWIGV8_AddMemberFunction(_exports_StreamTransceiver_class, "SelectLayer", _wrap_StreamTransceiver_SelectLayer);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "ClearRTPPacketizationInfo", _wrap_MediaFrame_ClearRTPPacketizationInfo);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AddRtpPacket", _wrap_MediaFrame_AddRtpPacket);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetType", _wrap_MediaFrame_GetType);
