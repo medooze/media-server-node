@@ -9,6 +9,7 @@
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
 #include "../media-server/include/mp4recorder.h"
+#include "../media-server/src/vp9/VP9LayerSelector.h"
 
 class StringFacade : private std::string
 {
@@ -86,6 +87,22 @@ public:
 
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
 	{
+		//Check if it is an VP9 packet
+		if (packet->GetCodec()==VideoCodec::VP9)
+		{
+			DWORD extSeqNum;
+			bool mark;
+			//Select layer
+			if (!selector.Select(packet,extSeqNum,mark))
+			       //Drop
+			       return;
+		       //Set them
+		       packet->SetSeqNum(extSeqNum);
+		       packet->SetSeqCycles(extSeqNum >> 16);
+		       //Set mark
+		       packet->SetMark(mark);
+		}
+		
 		//Change ssrc
 		packet->SetSSRC(outgoingSource->media.ssrc);
 		//Send it on transport
@@ -97,11 +114,21 @@ public:
 		//Request update on the incoming
 		incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
+	
+	void SelectLayer(int spatialLayerId,int temporalLayerId)
+	{
+		if (selector.GetSpatialLayer()<spatialLayerId)
+			//Request update on the incoming
+			incomingTransport->SendPLI(incomingSource->media.ssrc);
+		selector.SelectSpatialLayer(spatialLayerId);
+		selector.SelectTemporalLayer(temporalLayerId);
+	}
 private:
 	RTPOutgoingSourceGroup *outgoingSource;
 	RTPIncomingSourceGroup *incomingSource;
 	DTLSICETransport* incomingTransport;
 	DTLSICETransport* outgoingTransport;
+	VP9LayerSelector selector;
 };
 
 %}
