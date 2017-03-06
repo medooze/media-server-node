@@ -71,9 +71,9 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
-                        href='#Transceiver#seletLayer'
+                        href='#Transceiver#selectLayer'
                         class='regular pre-open'>
-                        #seletLayer
+                        #selectLayer
                       </a></li>
                       
                     </ul>
@@ -1070,6 +1070,16 @@
               
                 
                 <li><a
+                  href='#eventincomingstreamtrackstopped'
+                  class="">
+                  IncomingStreamTrack#stopped
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#transport'
                   class=" toggle-sibling">
                   Transport
@@ -1146,16 +1156,6 @@
                   
                   
                 </div>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#eventincomingstreamtrackstopped'
-                  class="">
-                  IncomingStreamTrack#stopped
-                  
-                </a>
                 
                 </li>
               
@@ -1436,11 +1436,11 @@
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='Transceiver#seletLayer'>
+    <div class='border-bottom' id='Transceiver#selectLayer'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>seletLayer(spatialLayerId, temporalLayerId)</span>
+            <span class='code strong strong truncate'>selectLayer(spatialLayerId, temporalLayerId)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -1451,7 +1451,7 @@
   <p>Select SVC temporatl and spatial layers. Only available for VP9 media.</p>
 
 
-  <div class='pre p1 fill-light mt0'>seletLayer(spatialLayerId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, temporalLayerId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+  <div class='pre p1 fill-light mt0'>selectLayer(spatialLayerId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, temporalLayerId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
   
   
 
@@ -8479,6 +8479,52 @@ This object represent the minimal information of an WebRTC SDP in a semantic hie
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='eventincomingstreamtrackstopped'>
+      IncomingStreamTrack#stopped
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>IncomingStreamTrack stopped event</p>
+
+
+  <div class='pre p1 fill-light mt0'>IncomingStreamTrack#stopped</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='transport'>
       Transport
     </h3>
@@ -9233,52 +9279,6 @@ In order to decide how to route your streams you must attach the outgoing stream
     </div>
   
 </div>
-
-  
-
-  
-</section>
-
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='eventincomingstreamtrackstopped'>
-      IncomingStreamTrack#stopped
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>IncomingStreamTrack stopped event</p>
-
-
-  <div class='pre p1 fill-light mt0'>IncomingStreamTrack#stopped</div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 
