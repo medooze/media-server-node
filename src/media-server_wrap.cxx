@@ -1625,7 +1625,7 @@ public:
 		this->incomingSource = incomingSource;
 		this->outgoingSource = outgoingSource;
 		this->incomingTransport = incomingTransport;
-		this->outgoingSource = outgoingSource;
+		this->outgoingTransport = outgoingTransport;
 		
 		//Add us as listeners
 		outgoingSource->AddListener(this);
