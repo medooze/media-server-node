@@ -57,12 +57,12 @@ public:
 	
 };
 
-class StreamTransceiver : 
+class StreamTransponder : 
 	public RTPIncomingSourceGroup::Listener,
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	StreamTransceiver(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport)
+	StreamTransponder(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport)
 	{
 		//Store streams
 		this->incomingSource = incomingSource;
@@ -78,7 +78,7 @@ public:
 		incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 
-	virtual ~StreamTransceiver()
+	virtual ~StreamTransponder()
 	{
 		//Stop listeneing
 		outgoingSource->RemoveListener(this);
@@ -158,13 +158,13 @@ public:
 };
 
 
-class StreamTransceiver : 
+class StreamTransponder : 
 	public RTPIncomingSourceGroup::Listener,
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	StreamTransceiver(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport);
-	virtual ~StreamTransceiver();
+	StreamTransponder(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport);
+	virtual ~StreamTransponder();
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);

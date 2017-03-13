@@ -1513,7 +1513,7 @@ fail: ;
 #define SWIGTYPE_p_RTPSource swig_types[29]
 #define SWIGTYPE_p_RecorderControl__Type swig_types[30]
 #define SWIGTYPE_p_RtpPacketizationInfo swig_types[31]
-#define SWIGTYPE_p_StreamTransceiver swig_types[32]
+#define SWIGTYPE_p_StreamTransponder swig_types[32]
 #define SWIGTYPE_p_StringFacade swig_types[33]
 #define SWIGTYPE_p_TextFrame swig_types[34]
 #define SWIGTYPE_p_VideoCodec__Type swig_types[35]
@@ -1614,12 +1614,12 @@ public:
 	
 };
 
-class StreamTransceiver : 
+class StreamTransponder : 
 	public RTPIncomingSourceGroup::Listener,
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	StreamTransceiver(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport)
+	StreamTransponder(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport)
 	{
 		//Store streams
 		this->incomingSource = incomingSource;
@@ -1635,7 +1635,7 @@ public:
 		incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 
-	virtual ~StreamTransceiver()
+	virtual ~StreamTransponder()
 	{
 		//Stop listeneing
 		outgoingSource->RemoveListener(this);
@@ -2033,7 +2033,7 @@ SWIGV8_ClientData _exports_ByteBuffer_clientData;
 SWIGV8_ClientData _exports_StringFacade_clientData;
 SWIGV8_ClientData _exports_PropertiesFacade_clientData;
 SWIGV8_ClientData _exports_MediaServer_clientData;
-SWIGV8_ClientData _exports_StreamTransceiver_clientData;
+SWIGV8_ClientData _exports_StreamTransponder_clientData;
 SWIGV8_ClientData _exports_MediaFrame_clientData;
 SWIGV8_ClientData _exports_RTPSource_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSource_clientData;
@@ -4662,7 +4662,7 @@ static void _wrap_delete_MediaServer(v8::Persistent<v8::Value> object, void *par
       }
 
 
-static SwigV8ReturnValue _wrap_new_StreamTransceiver(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_new_StreamTransponder(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Object> self = args.Holder();
@@ -4678,29 +4678,29 @@ static SwigV8ReturnValue _wrap_new_StreamTransceiver(const SwigV8Arguments &args
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  StreamTransceiver *result;
-  if(args.Length() != 4) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_StreamTransceiver.");
+  StreamTransponder *result;
+  if(args.Length() != 4) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_StreamTransponder.");
   res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_StreamTransceiver" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_StreamTransponder" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
   }
   arg1 = (RTPIncomingSourceGroup *)(argp1);
   res2 = SWIG_ConvertPtr(args[1], &argp2,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_StreamTransceiver" "', argument " "2"" of type '" "DTLSICETransport *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_StreamTransponder" "', argument " "2"" of type '" "DTLSICETransport *""'"); 
   }
   arg2 = (DTLSICETransport *)(argp2);
   res3 = SWIG_ConvertPtr(args[2], &argp3,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_StreamTransceiver" "', argument " "3"" of type '" "RTPOutgoingSourceGroup *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_StreamTransponder" "', argument " "3"" of type '" "RTPOutgoingSourceGroup *""'"); 
   }
   arg3 = (RTPOutgoingSourceGroup *)(argp3);
   res4 = SWIG_ConvertPtr(args[3], &argp4,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_StreamTransceiver" "', argument " "4"" of type '" "DTLSICETransport *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_StreamTransponder" "', argument " "4"" of type '" "DTLSICETransport *""'"); 
   }
   arg4 = (DTLSICETransport *)(argp4);
-  result = (StreamTransceiver *)new StreamTransceiver(arg1,arg2,arg3,arg4);
+  result = (StreamTransponder *)new StreamTransponder(arg1,arg2,arg3,arg4);
   
   
   
@@ -4708,7 +4708,7 @@ static SwigV8ReturnValue _wrap_new_StreamTransceiver(const SwigV8Arguments &args
   
   
   
-  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_StreamTransceiver, SWIG_POINTER_OWN);
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_StreamTransponder, SWIG_POINTER_OWN);
   SWIGV8_RETURN(self);
   
   goto fail;
@@ -4718,21 +4718,21 @@ fail:
 
 
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_StreamTransceiver(v8::Persistent<v8::Value> object, void *parameter) {
+static void _wrap_delete_StreamTransponder(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
 #elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_StreamTransceiver(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+  static void _wrap_delete_StreamTransponder(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
     SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
 #elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_StreamTransceiver(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+    static void _wrap_delete_StreamTransponder(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
 #else
-      static void _wrap_delete_StreamTransceiver(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+      static void _wrap_delete_StreamTransponder(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
         v8::Local<v8::Object> object = data.GetValue();
         SWIGV8_Proxy *proxy = data.GetParameter();
 #endif
         
         if(proxy->swigCMemOwn && proxy->swigCObject) {
-          StreamTransceiver * arg1 = (StreamTransceiver *)proxy->swigCObject;
+          StreamTransponder * arg1 = (StreamTransponder *)proxy->swigCObject;
           delete arg1;
         }
         delete proxy;
@@ -4751,11 +4751,11 @@ static void _wrap_delete_StreamTransceiver(v8::Persistent<v8::Value> object, voi
       }
 
 
-static SwigV8ReturnValue _wrap_StreamTransceiver_onRTP(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_StreamTransponder_onRTP(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
-  StreamTransceiver *arg1 = (StreamTransceiver *) 0 ;
+  StreamTransponder *arg1 = (StreamTransponder *) 0 ;
   RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
   RTPPacket *arg3 = (RTPPacket *) 0 ;
   void *argp1 = 0 ;
@@ -4765,21 +4765,21 @@ static SwigV8ReturnValue _wrap_StreamTransceiver_onRTP(const SwigV8Arguments &ar
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTransceiver_onRTP.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTransponder_onRTP.");
   
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTransceiver, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTransponder, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTransceiver_onRTP" "', argument " "1"" of type '" "StreamTransceiver *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTransponder_onRTP" "', argument " "1"" of type '" "StreamTransponder *""'"); 
   }
-  arg1 = (StreamTransceiver *)(argp1);
+  arg1 = (StreamTransponder *)(argp1);
   res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTransceiver_onRTP" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTransponder_onRTP" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
   }
   arg2 = (RTPIncomingSourceGroup *)(argp2);
   res3 = SWIG_ConvertPtr(args[1], &argp3,SWIGTYPE_p_RTPPacket, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "StreamTransceiver_onRTP" "', argument " "3"" of type '" "RTPPacket *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "StreamTransponder_onRTP" "', argument " "3"" of type '" "RTPPacket *""'"); 
   }
   arg3 = (RTPPacket *)(argp3);
   (arg1)->onRTP(arg2,arg3);
@@ -4796,11 +4796,11 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_StreamTransceiver_onPLIRequest(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_StreamTransponder_onPLIRequest(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
-  StreamTransceiver *arg1 = (StreamTransceiver *) 0 ;
+  StreamTransponder *arg1 = (StreamTransponder *) 0 ;
   RTPOutgoingSourceGroup *arg2 = (RTPOutgoingSourceGroup *) 0 ;
   uint32_t arg3 ;
   void *argp1 = 0 ;
@@ -4810,21 +4810,21 @@ static SwigV8ReturnValue _wrap_StreamTransceiver_onPLIRequest(const SwigV8Argume
   unsigned int val3 ;
   int ecode3 = 0 ;
   
-  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTransceiver_onPLIRequest.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTransponder_onPLIRequest.");
   
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTransceiver, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTransponder, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTransceiver_onPLIRequest" "', argument " "1"" of type '" "StreamTransceiver *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTransponder_onPLIRequest" "', argument " "1"" of type '" "StreamTransponder *""'"); 
   }
-  arg1 = (StreamTransceiver *)(argp1);
+  arg1 = (StreamTransponder *)(argp1);
   res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTransceiver_onPLIRequest" "', argument " "2"" of type '" "RTPOutgoingSourceGroup *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTransponder_onPLIRequest" "', argument " "2"" of type '" "RTPOutgoingSourceGroup *""'"); 
   }
   arg2 = (RTPOutgoingSourceGroup *)(argp2);
   ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "StreamTransceiver_onPLIRequest" "', argument " "3"" of type '" "uint32_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "StreamTransponder_onPLIRequest" "', argument " "3"" of type '" "uint32_t""'");
   } 
   arg3 = (uint32_t)(val3);
   (arg1)->onPLIRequest(arg2,arg3);
@@ -4841,11 +4841,11 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_StreamTransceiver_SelectLayer(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_StreamTransponder_SelectLayer(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
-  StreamTransceiver *arg1 = (StreamTransceiver *) 0 ;
+  StreamTransponder *arg1 = (StreamTransponder *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
@@ -4855,21 +4855,21 @@ static SwigV8ReturnValue _wrap_StreamTransceiver_SelectLayer(const SwigV8Argumen
   int val3 ;
   int ecode3 = 0 ;
   
-  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTransceiver_SelectLayer.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTransponder_SelectLayer.");
   
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTransceiver, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTransponder, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTransceiver_SelectLayer" "', argument " "1"" of type '" "StreamTransceiver *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTransponder_SelectLayer" "', argument " "1"" of type '" "StreamTransponder *""'"); 
   }
-  arg1 = (StreamTransceiver *)(argp1);
+  arg1 = (StreamTransponder *)(argp1);
   ecode2 = SWIG_AsVal_int(args[0], &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "StreamTransceiver_SelectLayer" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "StreamTransponder_SelectLayer" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   ecode3 = SWIG_AsVal_int(args[1], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "StreamTransceiver_SelectLayer" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "StreamTransponder_SelectLayer" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = (int)(val3);
   (arg1)->SelectLayer(arg2,arg3);
@@ -10775,11 +10775,11 @@ static void *_p_RTPIncomingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_RTPOutgoingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSource *)  ((RTPOutgoingSource *) x));
 }
-static void *_p_StreamTransceiverTo_p_RTPIncomingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RTPIncomingSourceGroup::Listener *)  ((StreamTransceiver *) x));
+static void *_p_StreamTransponderTo_p_RTPIncomingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((RTPIncomingSourceGroup::Listener *)  ((StreamTransponder *) x));
 }
-static void *_p_StreamTransceiverTo_p_RTPOutgoingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RTPOutgoingSourceGroup::Listener *)  ((StreamTransceiver *) x));
+static void *_p_StreamTransponderTo_p_RTPOutgoingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((RTPOutgoingSourceGroup::Listener *)  ((StreamTransponder *) x));
 }
 static swig_type_info _swigt__p_AudioCodec__Type = {"_p_AudioCodec__Type", "AudioCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioFrame = {"_p_AudioFrame", "AudioFrame *", 0, 0, (void*)0, 0};
@@ -10813,7 +10813,7 @@ static swig_type_info _swigt__p_RTPPacket = {"_p_RTPPacket", "RTPPacket *", 0, 0
 static swig_type_info _swigt__p_RTPSource = {"_p_RTPSource", "p_RTPSource|RTPSource *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RecorderControl__Type = {"_p_RecorderControl__Type", "RecorderControl::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RtpPacketizationInfo = {"_p_RtpPacketizationInfo", "RtpPacketizationInfo *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_StreamTransceiver = {"_p_StreamTransceiver", "StreamTransceiver *|p_StreamTransceiver", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_StreamTransponder = {"_p_StreamTransponder", "p_StreamTransponder|StreamTransponder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_StringFacade = {"_p_StringFacade", "StringFacade *|p_StringFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TextFrame = {"_p_TextFrame", "TextFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_VideoCodec__Type = {"_p_VideoCodec__Type", "VideoCodec::Type *", 0, 0, (void*)0, 0};
@@ -10871,7 +10871,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RTPSource,
   &_swigt__p_RecorderControl__Type,
   &_swigt__p_RtpPacketizationInfo,
-  &_swigt__p_StreamTransceiver,
+  &_swigt__p_StreamTransponder,
   &_swigt__p_StringFacade,
   &_swigt__p_TextFrame,
   &_swigt__p_VideoCodec__Type,
@@ -10919,17 +10919,17 @@ static swig_cast_info _swigc__p_RTPBuffer[] = {  {&_swigt__p_RTPBuffer, 0, 0, 0}
 static swig_cast_info _swigc__p_RTPBundleTransport[] = {  {&_swigt__p_RTPBundleTransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingSource[] = {  {&_swigt__p_RTPIncomingSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingSourceGroup[] = {  {&_swigt__p_RTPIncomingSourceGroup, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPIncomingSourceGroup__Listener[] = {  {&_swigt__p_StreamTransceiver, _p_StreamTransceiverTo_p_RTPIncomingSourceGroup__Listener, 0, 0},  {&_swigt__p_RTPIncomingSourceGroup__Listener, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RTPIncomingSourceGroup__Listener[] = {  {&_swigt__p_StreamTransponder, _p_StreamTransponderTo_p_RTPIncomingSourceGroup__Listener, 0, 0},  {&_swigt__p_RTPIncomingSourceGroup__Listener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPLostPackets[] = {  {&_swigt__p_RTPLostPackets, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOrderedPackets[] = {  {&_swigt__p_RTPOrderedPackets, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOutgoingSource[] = {  {&_swigt__p_RTPOutgoingSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOutgoingSourceGroup[] = {  {&_swigt__p_RTPOutgoingSourceGroup, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPOutgoingSourceGroup__Listener[] = {  {&_swigt__p_StreamTransceiver, _p_StreamTransceiverTo_p_RTPOutgoingSourceGroup__Listener, 0, 0},  {&_swigt__p_RTPOutgoingSourceGroup__Listener, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RTPOutgoingSourceGroup__Listener[] = {  {&_swigt__p_StreamTransponder, _p_StreamTransponderTo_p_RTPOutgoingSourceGroup__Listener, 0, 0},  {&_swigt__p_RTPOutgoingSourceGroup__Listener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPPacket[] = {  {&_swigt__p_RTPPacket, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPSource[] = {  {&_swigt__p_RTPSource, 0, 0, 0},  {&_swigt__p_RTPIncomingSource, _p_RTPIncomingSourceTo_p_RTPSource, 0, 0},  {&_swigt__p_RTPOutgoingSource, _p_RTPOutgoingSourceTo_p_RTPSource, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RecorderControl__Type[] = {  {&_swigt__p_RecorderControl__Type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RtpPacketizationInfo[] = {  {&_swigt__p_RtpPacketizationInfo, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_StreamTransceiver[] = {  {&_swigt__p_StreamTransceiver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_StreamTransponder[] = {  {&_swigt__p_StreamTransponder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_StringFacade[] = {  {&_swigt__p_StringFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TextFrame[] = {  {&_swigt__p_TextFrame, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_VideoCodec__Type[] = {  {&_swigt__p_VideoCodec__Type, 0, 0, 0},{0, 0, 0, 0}};
@@ -10987,7 +10987,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RTPSource,
   _swigc__p_RecorderControl__Type,
   _swigc__p_RtpPacketizationInfo,
-  _swigc__p_StreamTransceiver,
+  _swigc__p_StreamTransponder,
   _swigc__p_StringFacade,
   _swigc__p_TextFrame,
   _swigc__p_VideoCodec__Type,
@@ -11349,12 +11349,12 @@ _exports_MediaServer_clientData.dtor = _wrap_delete_MediaServer;
 if (SWIGTYPE_p_MediaServer->clientdata == 0) {
   SWIGTYPE_p_MediaServer->clientdata = &_exports_MediaServer_clientData;
 }
-/* Name: _exports_StreamTransceiver, Type: p_StreamTransceiver, Dtor: _wrap_delete_StreamTransceiver */
-v8::Handle<v8::FunctionTemplate> _exports_StreamTransceiver_class = SWIGV8_CreateClassTemplate("_exports_StreamTransceiver");
-SWIGV8_SET_CLASS_TEMPL(_exports_StreamTransceiver_clientData.class_templ, _exports_StreamTransceiver_class);
-_exports_StreamTransceiver_clientData.dtor = _wrap_delete_StreamTransceiver;
-if (SWIGTYPE_p_StreamTransceiver->clientdata == 0) {
-  SWIGTYPE_p_StreamTransceiver->clientdata = &_exports_StreamTransceiver_clientData;
+/* Name: _exports_StreamTransponder, Type: p_StreamTransponder, Dtor: _wrap_delete_StreamTransponder */
+v8::Handle<v8::FunctionTemplate> _exports_StreamTransponder_class = SWIGV8_CreateClassTemplate("_exports_StreamTransponder");
+SWIGV8_SET_CLASS_TEMPL(_exports_StreamTransponder_clientData.class_templ, _exports_StreamTransponder_class);
+_exports_StreamTransponder_clientData.dtor = _wrap_delete_StreamTransponder;
+if (SWIGTYPE_p_StreamTransponder->clientdata == 0) {
+  SWIGTYPE_p_StreamTransponder->clientdata = &_exports_StreamTransponder_clientData;
 }
 /* Name: _exports_MediaFrame, Type: p_MediaFrame, Dtor: _wrap_delete_MediaFrame */
 v8::Handle<v8::FunctionTemplate> _exports_MediaFrame_class = SWIGV8_CreateClassTemplate("_exports_MediaFrame");
@@ -11476,9 +11476,9 @@ SWIGV8_AddMemberFunction(_exports_ByteBuffer_class, "GetSize", _wrap_ByteBuffer_
 SWIGV8_AddMemberFunction(_exports_ByteBuffer_class, "GetLength", _wrap_ByteBuffer_GetLength);
 SWIGV8_AddMemberFunction(_exports_StringFacade_class, "toString", _wrap_StringFacade_toString);
 SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetProperty", _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProperty);
-SWIGV8_AddMemberFunction(_exports_StreamTransceiver_class, "onRTP", _wrap_StreamTransceiver_onRTP);
-SWIGV8_AddMemberFunction(_exports_StreamTransceiver_class, "onPLIRequest", _wrap_StreamTransceiver_onPLIRequest);
-SWIGV8_AddMemberFunction(_exports_StreamTransceiver_class, "SelectLayer", _wrap_StreamTransceiver_SelectLayer);
+SWIGV8_AddMemberFunction(_exports_StreamTransponder_class, "onRTP", _wrap_StreamTransponder_onRTP);
+SWIGV8_AddMemberFunction(_exports_StreamTransponder_class, "onPLIRequest", _wrap_StreamTransponder_onPLIRequest);
+SWIGV8_AddMemberFunction(_exports_StreamTransponder_class, "SelectLayer", _wrap_StreamTransponder_SelectLayer);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "ClearRTPPacketizationInfo", _wrap_MediaFrame_ClearRTPPacketizationInfo);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AddRtpPacket", _wrap_MediaFrame_AddRtpPacket);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetType", _wrap_MediaFrame_GetType);
@@ -11669,12 +11669,12 @@ _exports_MediaServer_class_0->SetCallHandler(_wrap_new_MediaServer);
 _exports_MediaServer_class_0->Inherit(_exports_MediaServer_class);
 _exports_MediaServer_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_MediaServer_obj = _exports_MediaServer_class_0->GetFunction();
-/* Class: StreamTransceiver (_exports_StreamTransceiver) */
-v8::Handle<v8::FunctionTemplate> _exports_StreamTransceiver_class_0 = SWIGV8_CreateClassTemplate("StreamTransceiver");
-_exports_StreamTransceiver_class_0->SetCallHandler(_wrap_new_StreamTransceiver);
-_exports_StreamTransceiver_class_0->Inherit(_exports_StreamTransceiver_class);
-_exports_StreamTransceiver_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_StreamTransceiver_obj = _exports_StreamTransceiver_class_0->GetFunction();
+/* Class: StreamTransponder (_exports_StreamTransponder) */
+v8::Handle<v8::FunctionTemplate> _exports_StreamTransponder_class_0 = SWIGV8_CreateClassTemplate("StreamTransponder");
+_exports_StreamTransponder_class_0->SetCallHandler(_wrap_new_StreamTransponder);
+_exports_StreamTransponder_class_0->Inherit(_exports_StreamTransponder_class);
+_exports_StreamTransponder_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_StreamTransponder_obj = _exports_StreamTransponder_class_0->GetFunction();
 /* Class: MediaFrame (_exports_MediaFrame) */
 v8::Handle<v8::FunctionTemplate> _exports_MediaFrame_class_0 = SWIGV8_CreateClassTemplate("MediaFrame");
 _exports_MediaFrame_class_0->SetCallHandler(_wrap_new_veto_MediaFrame);
@@ -11761,7 +11761,7 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("ByteBuffer"), _exports_ByteBuffer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("StringFacade"), _exports_StringFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PropertiesFacade"), _exports_PropertiesFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaServer"), _exports_MediaServer_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTransceiver"), _exports_StreamTransceiver_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTransponder"), _exports_StreamTransponder_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaFrame"), _exports_MediaFrame_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPSource"), _exports_RTPSource_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingSource"), _exports_RTPIncomingSource_obj);
