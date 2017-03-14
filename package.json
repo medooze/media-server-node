@@ -27,7 +27,7 @@
   "homepage": "https://github.com/medooze/media-server-node#readme",
   "dependencies": {
     "lfsr": "0.0.3",
-    "semantic-sdp": "^1.0.0",
+    "semantic-sdp": "^2.0.0",
     "uuid": "^3.0.1"
   }
 }

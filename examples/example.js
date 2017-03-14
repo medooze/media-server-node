@@ -131,14 +131,14 @@ const recorder = MediaServer.createRecorder("/tmp/test.mp4");
 
 //Create an DTLS ICE transport in that enpoint
 const transport = endpoint.createTransport({
-	dtls : offer.getMedias()[0].getDTLS(),
-	ice  : offer.getMedias()[0].getICE() 
+	dtls : offer.getDTLS(),
+	ice  : offer.getICE() 
 });
 	
 //Set RTP remote properties
  transport.setRemoteProperties({
-	audio : offer.getAudio(),
-	video : offer.getVideo()
+	audio : offer.getMedia("audio"),
+	video : offer.getMedia("video")
 });
 
 
@@ -152,21 +152,23 @@ const candidates = endpoint.getLocalCandidates();
 //Create local SDP info
 let answer = new SDPInfo();
 
+//Add ice and dtls info
+answer.setDTLS(dtls);
+answer.setICE(ice);
+//Add candidates
+for (let i=0;i<candidates.length;++i)
+	//Add candidate to media info
+	answer.addCandidate(candidates[i]);
+
 //Get remote audio m-line info 
-let audioOffer = offer.getAudio();
+let audioOffer = offer.getMedia("audio");
 
 //If we have audio
 if (audioOffer)
 {
 	//Create audio media
 	let audio = new MediaInfo("audio", "audio");
-	//Add ice and dtls info
-	audio.setDTLS(dtls);
-	audio.setICE(ice);
-	//Add candidates
-	for (let i=0;i<candidates.length;++i)
-		//Add candidate to media info
-		audio.addCandidate(candidates[i]);
+	
 	//Get codec type
 	let opus = audioOffer.getCodec("opus");
 	//Add opus codec
@@ -181,20 +183,13 @@ if (audioOffer)
 }
 
 //Get remote video m-line info 
-let videoOffer = offer.getVideo();
+let videoOffer = offer.getMedia("video");
 
 //If offer had video
 if (videoOffer)
 {
 	//Create video media
 	let  video = new MediaInfo("video", "video");
-	//Add ice and dtls info
-	video.setDTLS(dtls);
-	video.setICE(ice);
-	//For each local candidate
-	for (let i=0;i<candidates.length;++i)
-		//Add candidate to media info
-		video.addCandidate(candidates[i]);
 	//Get codec types
 	let vp9 = videoOffer.getCodec("vp9");
 	let fec = videoOffer.getCodec("flexfec-03");
@@ -216,8 +211,8 @@ if (videoOffer)
 
 //Set RTP local  properties
  transport.setLocalProperties({
-	audio : answer.getAudio(),
-	video : answer.getVideo()
+	audio : answer.getMedia("audio"),
+	video : answer.getMedia("video")
 });
 	
 
