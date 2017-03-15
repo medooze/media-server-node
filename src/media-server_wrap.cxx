@@ -1492,55 +1492,54 @@ fail: ;
 #define SWIGTYPE_p_MP4FileHandle swig_types[8]
 #define SWIGTYPE_p_MP4Recorder swig_types[9]
 #define SWIGTYPE_p_MediaFrame swig_types[10]
-#define SWIGTYPE_p_MediaFrame__Listener swig_types[11]
-#define SWIGTYPE_p_MediaServer swig_types[12]
-#define SWIGTYPE_p_Mutex swig_types[13]
-#define SWIGTYPE_p_Properties swig_types[14]
-#define SWIGTYPE_p_PropertiesFacade swig_types[15]
-#define SWIGTYPE_p_RTCPCompoundPacket swig_types[16]
-#define SWIGTYPE_p_RTCPReport swig_types[17]
-#define SWIGTYPE_p_RTCPSenderReport swig_types[18]
-#define SWIGTYPE_p_RTPBuffer swig_types[19]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[20]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[21]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[22]
-#define SWIGTYPE_p_RTPIncomingSourceGroup__Listener swig_types[23]
-#define SWIGTYPE_p_RTPLostPackets swig_types[24]
-#define SWIGTYPE_p_RTPOrderedPackets swig_types[25]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[26]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[27]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup__Listener swig_types[28]
-#define SWIGTYPE_p_RTPPacket swig_types[29]
-#define SWIGTYPE_p_RTPSource swig_types[30]
-#define SWIGTYPE_p_RecorderControl__Type swig_types[31]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[32]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[33]
-#define SWIGTYPE_p_StreamTransponder swig_types[34]
-#define SWIGTYPE_p_StringFacade swig_types[35]
-#define SWIGTYPE_p_TextFrame swig_types[36]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[37]
-#define SWIGTYPE_p_VideoFrame swig_types[38]
-#define SWIGTYPE_p_char swig_types[39]
-#define SWIGTYPE_p_int swig_types[40]
-#define SWIGTYPE_p_long_long swig_types[41]
-#define SWIGTYPE_p_mp4track swig_types[42]
-#define SWIGTYPE_p_short swig_types[43]
-#define SWIGTYPE_p_signed_char swig_types[44]
-#define SWIGTYPE_p_sockaddr_in swig_types[45]
-#define SWIGTYPE_p_std__listT_RTCPRTPFeedback__NACKField_p_t swig_types[46]
-#define SWIGTYPE_p_std__mapT_unsigned_int_RTPPacket_p_t swig_types[47]
-#define SWIGTYPE_p_std__setT_RTPIncomingSourceGroup__Listener_p_t swig_types[48]
-#define SWIGTYPE_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t swig_types[49]
-#define SWIGTYPE_p_std__string swig_types[50]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[51]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[52]
-#define SWIGTYPE_p_unsigned_char swig_types[53]
-#define SWIGTYPE_p_unsigned_int swig_types[54]
-#define SWIGTYPE_p_unsigned_long_long swig_types[55]
-#define SWIGTYPE_p_unsigned_short swig_types[56]
-#define SWIGTYPE_p_void swig_types[57]
-static swig_type_info *swig_types[59];
-static swig_module_info swig_module = {swig_types, 58, 0, 0, 0, 0};
+#define SWIGTYPE_p_MediaServer swig_types[11]
+#define SWIGTYPE_p_Mutex swig_types[12]
+#define SWIGTYPE_p_Properties swig_types[13]
+#define SWIGTYPE_p_PropertiesFacade swig_types[14]
+#define SWIGTYPE_p_RTCPCompoundPacket swig_types[15]
+#define SWIGTYPE_p_RTCPReport swig_types[16]
+#define SWIGTYPE_p_RTCPSenderReport swig_types[17]
+#define SWIGTYPE_p_RTPBuffer swig_types[18]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[19]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[20]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[21]
+#define SWIGTYPE_p_RTPIncomingSourceGroup__Listener swig_types[22]
+#define SWIGTYPE_p_RTPLostPackets swig_types[23]
+#define SWIGTYPE_p_RTPOrderedPackets swig_types[24]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[25]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[26]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup__Listener swig_types[27]
+#define SWIGTYPE_p_RTPPacket swig_types[28]
+#define SWIGTYPE_p_RTPSource swig_types[29]
+#define SWIGTYPE_p_RecorderControl__Type swig_types[30]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[31]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[32]
+#define SWIGTYPE_p_StreamTransponder swig_types[33]
+#define SWIGTYPE_p_StringFacade swig_types[34]
+#define SWIGTYPE_p_TextFrame swig_types[35]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[36]
+#define SWIGTYPE_p_VideoFrame swig_types[37]
+#define SWIGTYPE_p_char swig_types[38]
+#define SWIGTYPE_p_int swig_types[39]
+#define SWIGTYPE_p_long_long swig_types[40]
+#define SWIGTYPE_p_mp4track swig_types[41]
+#define SWIGTYPE_p_short swig_types[42]
+#define SWIGTYPE_p_signed_char swig_types[43]
+#define SWIGTYPE_p_sockaddr_in swig_types[44]
+#define SWIGTYPE_p_std__listT_RTCPRTPFeedback__NACKField_p_t swig_types[45]
+#define SWIGTYPE_p_std__mapT_unsigned_int_RTPPacket_p_t swig_types[46]
+#define SWIGTYPE_p_std__setT_RTPIncomingSourceGroup__Listener_p_t swig_types[47]
+#define SWIGTYPE_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t swig_types[48]
+#define SWIGTYPE_p_std__string swig_types[49]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[50]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[51]
+#define SWIGTYPE_p_unsigned_char swig_types[52]
+#define SWIGTYPE_p_unsigned_int swig_types[53]
+#define SWIGTYPE_p_unsigned_long_long swig_types[54]
+#define SWIGTYPE_p_unsigned_short swig_types[55]
+#define SWIGTYPE_p_void swig_types[56]
+static swig_type_info *swig_types[58];
+static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1746,6 +1745,7 @@ public:
 		
 			
 	}
+	
 	void AddMediaListener(MediaFrame::Listener *listener)
 	{
 		//Add to set
@@ -5031,7 +5031,7 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_AddMediaListener(const Sw
   
   v8::Handle<v8::Value> jsresult;
   StreamTrackDepacketizer *arg1 = (StreamTrackDepacketizer *) 0 ;
-  MediaFrame::Listener *arg2 = (MediaFrame::Listener *) 0 ;
+  MP4Recorder *arg2 = (MP4Recorder *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -5044,11 +5044,11 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_AddMediaListener(const Sw
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTrackDepacketizer_AddMediaListener" "', argument " "1"" of type '" "StreamTrackDepacketizer *""'"); 
   }
   arg1 = (StreamTrackDepacketizer *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MediaFrame__Listener, 0 |  0 );
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MP4Recorder, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_AddMediaListener" "', argument " "2"" of type '" "MediaFrame::Listener *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_AddMediaListener" "', argument " "2"" of type '" "MP4Recorder *""'"); 
   }
-  arg2 = (MediaFrame::Listener *)(argp2);
+  arg2 = (MP4Recorder *)(argp2);
   (arg1)->AddMediaListener(arg2);
   jsresult = SWIGV8_UNDEFINED();
   
@@ -5067,7 +5067,7 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_RemoveMediaListener(const
   
   v8::Handle<v8::Value> jsresult;
   StreamTrackDepacketizer *arg1 = (StreamTrackDepacketizer *) 0 ;
-  MediaFrame::Listener *arg2 = (MediaFrame::Listener *) 0 ;
+  MP4Recorder *arg2 = (MP4Recorder *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -5080,11 +5080,11 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_RemoveMediaListener(const
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTrackDepacketizer_RemoveMediaListener" "', argument " "1"" of type '" "StreamTrackDepacketizer *""'"); 
   }
   arg1 = (StreamTrackDepacketizer *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MediaFrame__Listener, 0 |  0 );
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MP4Recorder, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_RemoveMediaListener" "', argument " "2"" of type '" "MediaFrame::Listener *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_RemoveMediaListener" "', argument " "2"" of type '" "MP4Recorder *""'"); 
   }
-  arg2 = (MediaFrame::Listener *)(argp2);
+  arg2 = (MP4Recorder *)(argp2);
   (arg1)->RemoveMediaListener(arg2);
   jsresult = SWIGV8_UNDEFINED();
   
@@ -10996,9 +10996,6 @@ static void *_p_StreamTrackDepacketizerTo_p_RTPIncomingSourceGroup__Listener(voi
 static void *_p_StreamTransponderTo_p_RTPOutgoingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPOutgoingSourceGroup::Listener *)  ((StreamTransponder *) x));
 }
-static void *_p_MP4RecorderTo_p_MediaFrame__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((MediaFrame::Listener *)  ((MP4Recorder *) x));
-}
 static swig_type_info _swigt__p_AudioCodec__Type = {"_p_AudioCodec__Type", "AudioCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioFrame = {"_p_AudioFrame", "AudioFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ByteBuffer = {"_p_ByteBuffer", "ByteBuffer *|p_ByteBuffer", 0, 0, (void*)0, 0};
@@ -11010,7 +11007,6 @@ static swig_type_info _swigt__p_Listeners = {"_p_Listeners", "Listeners *", 0, 0
 static swig_type_info _swigt__p_MP4FileHandle = {"_p_MP4FileHandle", "MP4FileHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MP4Recorder = {"_p_MP4Recorder", "p_MP4Recorder|MP4Recorder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrame = {"_p_MediaFrame", "p_MediaFrame|MediaFrame *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_MediaFrame__Listener = {"_p_MediaFrame__Listener", "MediaFrame::Listener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaServer = {"_p_MediaServer", "p_MediaServer", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Mutex = {"_p_Mutex", "Mutex *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Properties = {"_p_Properties", "Properties *|p_Properties", 0, 0, (void*)0, 0};
@@ -11070,7 +11066,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MP4FileHandle,
   &_swigt__p_MP4Recorder,
   &_swigt__p_MediaFrame,
-  &_swigt__p_MediaFrame__Listener,
   &_swigt__p_MediaServer,
   &_swigt__p_Mutex,
   &_swigt__p_Properties,
@@ -11130,7 +11125,6 @@ static swig_cast_info _swigc__p_Listeners[] = {  {&_swigt__p_Listeners, 0, 0, 0}
 static swig_cast_info _swigc__p_MP4FileHandle[] = {  {&_swigt__p_MP4FileHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MP4Recorder[] = {  {&_swigt__p_MP4Recorder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrame[] = {  {&_swigt__p_MediaFrame, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_MediaFrame__Listener[] = {  {&_swigt__p_MP4Recorder, _p_MP4RecorderTo_p_MediaFrame__Listener, 0, 0},  {&_swigt__p_MediaFrame__Listener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Mutex[] = {  {&_swigt__p_Mutex, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Properties[] = {  {&_swigt__p_Properties, 0, 0, 0},  {&_swigt__p_PropertiesFacade, _p_PropertiesFacadeTo_p_Properties, 0, 0},{0, 0, 0, 0}};
@@ -11190,7 +11184,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MP4FileHandle,
   _swigc__p_MP4Recorder,
   _swigc__p_MediaFrame,
-  _swigc__p_MediaFrame__Listener,
   _swigc__p_MediaServer,
   _swigc__p_Mutex,
   _swigc__p_Properties,

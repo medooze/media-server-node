@@ -187,6 +187,7 @@ public:
 		
 			
 	}
+	
 	void AddMediaListener(MediaFrame::Listener *listener)
 	{
 		//Add to set
@@ -251,8 +252,9 @@ class StreamTrackDepacketizer :
 public:
 	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource);
 	virtual ~StreamTrackDepacketizer();
-	void AddMediaListener(MediaFrame::Listener *listener);
-	void RemoveMediaListener(MediaFrame::Listener *listener);
+	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
+	void AddMediaListener(MP4Recorder* listener);
+	void RemoveMediaListener(MP4Recorder* listener);
 };
 
 %include "../media-server/include/media.h"
