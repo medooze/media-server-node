@@ -131,6 +131,81 @@ private:
 	VP9LayerSelector selector;
 };
 
+class StreamTrackDepacketizer :
+	public RTPIncomingSourceGroup::Listener
+{
+public:
+	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource)
+	{
+		//Store
+		this->incomingSource = incomingSource;
+		//Add us as RTP listeners
+		this->incomingSource->AddListener(this);
+		//No depkacketixer yet
+		depacketizer = NULL;
+	}
+
+	virtual ~StreamTrackDepacketizer()
+	{
+		//Stop listeneing
+		incomingSource->RemoveListener(this);
+		//Delete depacketier
+		delete(depacketizer);
+	}
+
+	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
+	{
+		//If depacketizer is not the same codec 
+		if (depacketizer && depacketizer->GetCodec()!=packet->GetCodec())
+		{
+			//Delete it
+			delete(depacketizer);
+			//Create it next
+			depacketizer = NULL;
+		}
+		//If we don't have a depacketized
+		if (!depacketizer)
+			//Create one
+			depacketizer = RTPDepacketizer::Create(packet->GetMedia(),packet->GetCodec());
+		//Ensure we have it
+		if (!depacketizer)
+			//Do nothing
+			return;
+		//Pass the pakcet to the depacketizer
+		 MediaFrame* frame = depacketizer->AddPacket(packet);
+		 
+		 //If we have a new frame
+		 if (frame)
+		 {
+			 //Call all listeners
+			 for (Listeners::const_iterator it = listeners.begin();it!=listeners.end();++it)
+				 //Call listener
+				 (*it)->onMediaFrame(packet->GetSSRC(),*frame);
+			 //Next
+			 depacketizer->ResetFrame();
+		 }
+		
+			
+	}
+	void AddMediaListener(MediaFrame::Listener *listener)
+	{
+		//Add to set
+		listeners.insert(listener);
+	}
+	void RemoveMediaListener(MediaFrame::Listener *listener)
+	{
+		//Remove from set
+		listeners.erase(listener);
+	}
+	
+private:
+	typedef std::set<MediaFrame::Listener*> Listeners;
+private:
+	Listeners listeners;
+	RTPDepacketizer* depacketizer;
+	RTPIncomingSourceGroup* incomingSource;
+};
+
 %}
 %include "stdint.i"
 %include "../media-server/include/config.h"	
@@ -170,6 +245,15 @@ public:
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
 };
 
+class StreamTrackDepacketizer :
+	public RTPIncomingSourceGroup::Listener
+{
+public:
+	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource);
+	virtual ~StreamTrackDepacketizer();
+	void AddMediaListener(MediaFrame::Listener *listener);
+	void RemoveMediaListener(MediaFrame::Listener *listener);
+};
 
 %include "../media-server/include/media.h"
 %include "../media-server/include/rtp.h"

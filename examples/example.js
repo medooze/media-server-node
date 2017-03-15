@@ -222,6 +222,9 @@ for (let offered of offer.getStreams().values())
 	//Create the remote stream into the transport
 	const incomingStream = transport.createIncomingStream(offered);
 	
+	//Record it
+	recorder.record(incomingStream);
+	
 	//Create new local stream
 	const outgoingStream  = transport.createOutgoingStream({
 		audio: true,
