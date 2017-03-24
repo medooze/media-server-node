@@ -10,7 +10,10 @@
 			],
 			"include_dirs" : 
 			[
-				'media-server/include',
+				'external/mp4v2/lib/include',
+				'external/mp4v2/config/include',
+				'external/openssl/lib/include',
+				'external/srtp/lib/include',
 				'media-server/src',
 				'/usr/include/nodejs/'
 			],

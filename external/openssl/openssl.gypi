@@ -1027,16 +1027,6 @@
       '<@(openssl_sources_asm_ia32_win_masm)',
       '<@(openssl_sources_common_ia32)',
     ],
-    #
-    # Asm files are changed depending on the version of assembler.
-    # We provide two sets of asm files, one is asm_latest(avx2 and
-    # addx supported) and the other asm_obsolete(without avx1/2 and addx)
-    # The asm_latest follows the version as defined in
-    # https://github.com/openssl/openssl/blob/OpenSSL_1_0_2-stable/crypto/ec/asm/ecp_nistz256-avx2.pl#L45-L67
-    #
-    'conditions': [
-      ['(OS=="win" and MSVS_VERSION>="2012") or '
-       'llvm_version>="3.3" or xcode_version>="5.0" or gas_version>="2.23"', {
         'openssl_sources_x64_win_masm': [
           '<@(openssl_sources_asm_latest_x64_win_masm)',
           '<@(openssl_sources_common_x64_win_masm)',
@@ -1057,29 +1047,6 @@
           '<@(openssl_sources_asm_latest_x64_elf_gas)',
           '<@(openssl_sources_common_x64_elf_gas)',
         ],
-      }, {
-        'openssl_sources_x64_win_masm': [
-          '<@(openssl_sources_asm_obsolete_x64_win_masm)',
-          '<@(openssl_sources_common_x64_win_masm)',
-        ],
-        'openssl_sources_ia32_mac_gas': [
-          '<@(openssl_sources_asm_obsolete_ia32_mac_gas)',
-          '<@(openssl_sources_common_ia32)',
-        ],
-        'openssl_sources_x64_mac_gas': [
-          '<@(openssl_sources_asm_obsolete_x64_mac_gas)',
-          '<@(openssl_sources_common_x64_mac_gas)',
-        ],
-        'openssl_sources_ia32_elf_gas': [
-          '<@(openssl_sources_asm_obsolete_ia32_elf_gas)',
-          '<@(openssl_sources_common_ia32)',
-        ],
-        'openssl_sources_x64_elf_gas': [
-          '<@(openssl_sources_asm_obsolete_x64_elf_gas)',
-          '<@(openssl_sources_common_x64_elf_gas)',
-        ],
-      }]
-    ],
     'openssl_cli_sources': [
       'lib/apps/app_rand.c',
       'lib/apps/apps.c',
