@@ -27,6 +27,7 @@
 			"include_dirs": 
 			[
 				"./config",
+				"./config/include",
 				"./lib",
 				"./lib/include"
 			],
