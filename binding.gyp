@@ -12,15 +12,16 @@
 			[
 				'external/mp4v2/lib/include',
 				'external/mp4v2/config/include',
+				'external/srtp/include',
 				'external/openssl/lib/include',
-				'external/srtp/lib/include',
+				'media-server/include',
 				'media-server/src',
 				'/usr/include/nodejs/'
 			],
-			"ldflags" : ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt "],
+			"ldflags" : ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu "],
 			"link_settings": 
 			{
-        			'libraries': ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu -lgcrypt"]
+        			'libraries': ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu"]
       			},
 			"sources": 
 			[ 
