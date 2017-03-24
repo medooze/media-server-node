@@ -6,6 +6,7 @@
 #include "../media-server/include/dtls.h"	
 #include "../media-server/include/media.h"
 #include "../media-server/include/rtp.h"
+#include "../media-server/include/rtpsession.h"
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
 #include "../media-server/include/mp4recorder.h"
@@ -50,6 +51,12 @@ public:
 		//Start DTLS
 		DTLSConnection::Initialize();
 	}
+	static void EnableDebug(bool flag)
+	{
+		//Enable debug
+		Log("-EnableDebug [%d]\n",flag);
+		Logger::EnableDebug(flag);
+	}
 	static StringFacade GetFingerprint()
 	{
 		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
@@ -62,7 +69,7 @@ class StreamTransponder :
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	StreamTransponder(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport)
+	StreamTransponder(RTPIncomingSourceGroup* incomingSource, RTPReceiver* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,RTPSender* outgoingTransport)
 	{
 		//Store streams
 		this->incomingSource = incomingSource;
@@ -75,7 +82,7 @@ public:
 		incomingSource->AddListener(this);
 		
 		//Request update on the incoming
-		incomingTransport->SendPLI(incomingSource->media.ssrc);
+		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 
 	virtual ~StreamTransponder()
@@ -112,22 +119,22 @@ public:
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc)
 	{
 		//Request update on the incoming
-		incomingTransport->SendPLI(incomingSource->media.ssrc);
+		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 	
 	void SelectLayer(int spatialLayerId,int temporalLayerId)
 	{
 		if (selector.GetSpatialLayer()<spatialLayerId)
 			//Request update on the incoming
-			incomingTransport->SendPLI(incomingSource->media.ssrc);
+			if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
 		selector.SelectSpatialLayer(spatialLayerId);
 		selector.SelectTemporalLayer(temporalLayerId);
 	}
 private:
 	RTPOutgoingSourceGroup *outgoingSource;
 	RTPIncomingSourceGroup *incomingSource;
-	DTLSICETransport* incomingTransport;
-	DTLSICETransport* outgoingTransport;
+	RTPReceiver* incomingTransport;
+	RTPSender* outgoingTransport;
 	VP9LayerSelector selector;
 };
 
@@ -207,9 +214,93 @@ private:
 	RTPIncomingSourceGroup* incomingSource;
 };
 
+
+class RTPSessionFacade : 	
+	public RTPSender,
+	public RTPReceiver,
+	public RTPSession
+{
+public:
+	RTPSessionFacade(MediaFrame::Type media) : RTPSession(media,NULL)
+	{
+		
+	}
+	virtual ~RTPSessionFacade()
+	{
+		
+	}
+	
+	virtual int Send(RTPPacket &packet)
+	{
+		
+	}
+	virtual int SendPLI(DWORD ssrc)
+	{
+		return RequestFPU();
+	}
+	
+	int Init(const Properties &properties)
+	{
+		RTPMap rtp;
+		
+		//Get codecs
+		std::vector<Properties> codecs;
+		properties.GetChildrenArray("codecs",codecs);
+
+		//For each codec
+		for (auto it = codecs.begin(); it!=codecs.end(); ++it)
+		{
+			
+			BYTE codec;
+			//Depending on the type
+			switch (GetMediaType())
+			{
+				case MediaFrame::Audio:
+					codec = (BYTE)AudioCodec::GetCodecForName(it->GetProperty("codec"));
+					break;
+				case MediaFrame::Video:
+					codec = (BYTE)VideoCodec::GetCodecForName(it->GetProperty("codec"));
+					break;
+				case MediaFrame::Text:
+					codec = (BYTE)-1;
+					break;
+			}
+
+			//Get codec type
+			BYTE type = it->GetProperty("pt",0);
+			//ADD it
+			rtp[type] = codec;
+		}
+	
+		//Set local 
+		RTPSession::SetSendingRTPMap(rtp);
+		RTPSession::SetReceivingRTPMap(rtp);
+		
+		//Call parent
+		return RTPSession::Init();
+	}
+	
+	virtual void onRTPPacket(BYTE* buffer, DWORD size)
+	{
+		RTPSession::onRTPPacket(buffer,size);
+		RTPIncomingSourceGroup* incoming = GetIncomingSourceGroup();
+		RTPPacket* ordered;
+		//FOr each ordered packet
+		while(ordered=GetOrderPacket())
+			//Call listeners
+			incoming->onRTP(ordered);
+	}
+};
+
 %}
 %include "stdint.i"
 %include "../media-server/include/config.h"	
+%include "../media-server/include/media.h"
+%include "../media-server/include/rtp.h"
+%include "../media-server/include/DTLSICETransport.h"
+%include "../media-server/include/RTPBundleTransport.h"
+%include "../media-server/include/mp4recorder.h"
+
 
 class StringFacade : private std::string
 {
@@ -230,6 +321,7 @@ class MediaServer
 {
 public:
 	static void Initialize();
+	static void EnableDebug(bool flag);
 	static StringFacade GetFingerprint();
 };
 
@@ -239,7 +331,7 @@ class StreamTransponder :
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	StreamTransponder(RTPIncomingSourceGroup* incomingSource, DTLSICETransport* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,DTLSICETransport* outgoingTransport);
+	StreamTransponder(RTPIncomingSourceGroup* incomingSource, RTPReceiver* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,RTPSender* outgoingTransport);
 	virtual ~StreamTransponder();
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
@@ -257,8 +349,20 @@ public:
 	void RemoveMediaListener(MP4Recorder* listener);
 };
 
-%include "../media-server/include/media.h"
-%include "../media-server/include/rtp.h"
-%include "../media-server/include/DTLSICETransport.h"
-%include "../media-server/include/RTPBundleTransport.h"
-%include "../media-server/include/mp4recorder.h"
+class RTPSessionFacade :
+	public RTPSender,
+	public RTPReceiver
+{
+public:
+	RTPSessionFacade(MediaFrame::Type media);
+	int Init(const Properties &properties);
+	int SetLocalPort(int recvPort);
+	int GetLocalPort();
+	int SetRemotePort(char *ip,int sendPort);
+	RTPOutgoingSourceGroup* GetOutgoingSourceGroup();
+	RTPIncomingSourceGroup* GetIncomingSourceGroup();
+	int End();
+	virtual int Send(RTPPacket &packet);
+	virtual int SendPLI(DWORD ssrc);
+};
+

@@ -6,8 +6,8 @@
   "scripts": {
     "install": "node-gyp rebuild -j 4",
     "docs": "documentation build lib/MediaServer.js lib/*.js node_modules/semantic-sdp/lib/*.js --shallow -o docs -f html",
-    "package" : "tar cvzf build/medooze-media-server.tgz external/* media-server/* lib/* package.json index.js  binding.gyp README.md src"
-  },
+    "package" : "tar cvzf build/medooze-media-server.tgz ../media-server-node/external/* ../media-server-node/media-server/* ../media-server-node/lib/* ../media-server-node/package.json ../media-server-node/index.js  ../media-server-node/binding.gyp  ../media-server-node/README.md ../media-server-node/src"
+   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/medooze/media-server-node.git"
