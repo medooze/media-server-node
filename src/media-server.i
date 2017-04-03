@@ -57,6 +57,14 @@ public:
 		Log("-EnableDebug [%d]\n",flag);
 		Logger::EnableDebug(flag);
 	}
+	
+	static void EnableUltraDebug(bool flag)
+	{
+		//Enable debug
+		Log("-EnableUltraDebug [%d]\n",flag);
+		Logger::EnableUltraDebug(flag);
+	}
+	
 	static StringFacade GetFingerprint()
 	{
 		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
@@ -85,15 +93,32 @@ public:
 		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 
+	void Stop()
+	{
+		ScopedLock lock(mutex);
+		
+		//Stop listeneing
+		if (outgoingSource) outgoingSource->RemoveListener(this);
+		if (incomingSource) incomingSource->RemoveListener(this);
+		
+		//Remove sources
+		outgoingSource = NULL;
+		incomingSource = NULL;
+		incomingTransport = NULL;
+		outgoingTransport = NULL;
+	}
+	
 	virtual ~StreamTransponder()
 	{
+		Log("~StreamTransponder()");
 		//Stop listeneing
-		outgoingSource->RemoveListener(this);
-		incomingSource->RemoveListener(this);	
+		Stop();
 	}
 
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
 	{
+		ScopedLock lock(mutex);
+		
 		//Check if it is an VP9 packet
 		if (packet->GetCodec()==VideoCodec::VP9)
 		{
@@ -118,12 +143,16 @@ public:
 	
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc)
 	{
+		ScopedLock lock(mutex);
+		
 		//Request update on the incoming
 		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 	
 	void SelectLayer(int spatialLayerId,int temporalLayerId)
 	{
+		ScopedLock lock(mutex);
+		
 		if (selector.GetSpatialLayer()<spatialLayerId)
 			//Request update on the incoming
 			if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
@@ -136,6 +165,7 @@ private:
 	RTPReceiver* incomingTransport;
 	RTPSender* outgoingTransport;
 	VP9LayerSelector selector;
+	Mutex mutex;
 };
 
 class StreamTrackDepacketizer :
@@ -322,6 +352,7 @@ class MediaServer
 public:
 	static void Initialize();
 	static void EnableDebug(bool flag);
+	static void EnableUltraDebug(bool flag);
 	static StringFacade GetFingerprint();
 };
 

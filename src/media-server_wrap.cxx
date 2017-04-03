@@ -1618,6 +1618,14 @@ public:
 		Log("-EnableDebug [%d]\n",flag);
 		Logger::EnableDebug(flag);
 	}
+	
+	static void EnableUltraDebug(bool flag)
+	{
+		//Enable debug
+		Log("-EnableUltraDebug [%d]\n",flag);
+		Logger::EnableUltraDebug(flag);
+	}
+	
 	static StringFacade GetFingerprint()
 	{
 		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
@@ -1646,15 +1654,32 @@ public:
 		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 
+	void Stop()
+	{
+		ScopedLock lock(mutex);
+		
+		//Stop listeneing
+		if (outgoingSource) outgoingSource->RemoveListener(this);
+		if (incomingSource) incomingSource->RemoveListener(this);
+		
+		//Remove sources
+		outgoingSource = NULL;
+		incomingSource = NULL;
+		incomingTransport = NULL;
+		outgoingTransport = NULL;
+	}
+	
 	virtual ~StreamTransponder()
 	{
+		Log("~StreamTransponder()");
 		//Stop listeneing
-		outgoingSource->RemoveListener(this);
-		incomingSource->RemoveListener(this);	
+		Stop();
 	}
 
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
 	{
+		ScopedLock lock(mutex);
+		
 		//Check if it is an VP9 packet
 		if (packet->GetCodec()==VideoCodec::VP9)
 		{
@@ -1679,12 +1704,16 @@ public:
 	
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc)
 	{
+		ScopedLock lock(mutex);
+		
 		//Request update on the incoming
 		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 	
 	void SelectLayer(int spatialLayerId,int temporalLayerId)
 	{
+		ScopedLock lock(mutex);
+		
 		if (selector.GetSpatialLayer()<spatialLayerId)
 			//Request update on the incoming
 			if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
@@ -1697,6 +1726,7 @@ private:
 	RTPReceiver* incomingTransport;
 	RTPSender* outgoingTransport;
 	VP9LayerSelector selector;
+	Mutex mutex;
 };
 
 class StreamTrackDepacketizer :
@@ -10822,6 +10852,33 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MediaServer_EnableUltraDebug(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  bool arg1 ;
+  bool val1 ;
+  int ecode1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_EnableUltraDebug.");
+  
+  ecode1 = SWIG_AsVal_bool(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MediaServer_EnableUltraDebug" "', argument " "1"" of type '" "bool""'");
+  } 
+  arg1 = (bool)(val1);
+  MediaServer::EnableUltraDebug(arg1);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MediaServer_GetFingerprint(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -12758,6 +12815,7 @@ SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Text", _wrap_MediaFrame_Text,
 SWIGV8_AddStaticFunction(_exports_MediaFrame_obj, "TypeToString", _wrap_MediaFrame_TypeToString);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Initialize", _wrap_MediaServer_Initialize);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableDebug", _wrap_MediaServer_EnableDebug);
+SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_MediaServer_EnableUltraDebug);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "GetFingerprint", _wrap_MediaServer_GetFingerprint);
 
 
