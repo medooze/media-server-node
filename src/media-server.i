@@ -119,6 +119,11 @@ public:
 	{
 		ScopedLock lock(mutex);
 		
+		//Double check
+		if (!group || !packet)
+			//Error
+			return;
+		
 		//Check if it is an VP9 packet
 		if (packet->GetCodec()==VideoCodec::VP9)
 		{
@@ -135,10 +140,14 @@ public:
 		       packet->SetMark(mark);
 		}
 		
-		//Change ssrc
-		packet->SetSSRC(outgoingSource->media.ssrc);
-		//Send it on transport
-		outgoingTransport->Send(*packet);
+		//Double check
+		if (outgoingSource && outgoingTransport)
+		{
+			//Change ssrc
+			packet->SetSSRC(outgoingSource->media.ssrc);
+			//Send it on transport
+			outgoingTransport->Send(*packet);
+		}
 	}
 	
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc)
@@ -146,7 +155,7 @@ public:
 		ScopedLock lock(mutex);
 		
 		//Request update on the incoming
-		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
+		if (incomingTransport && incomingSource) incomingTransport->SendPLI(incomingSource->media.ssrc);
 	}
 	
 	void SelectLayer(int spatialLayerId,int temporalLayerId)
@@ -155,7 +164,7 @@ public:
 		
 		if (selector.GetSpatialLayer()<spatialLayerId)
 			//Request update on the incoming
-			if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
+			if (incomingTransport && incomingSource) incomingTransport->SendPLI(incomingSource->media.ssrc);
 		selector.SelectSpatialLayer(spatialLayerId);
 		selector.SelectTemporalLayer(temporalLayerId);
 	}
