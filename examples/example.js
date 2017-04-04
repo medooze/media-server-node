@@ -124,13 +124,13 @@ var offer = SDPInfo.process(sdp);
 const MediaServer = require("../index");
 
 //Create UDP server endpoint
-const endpoint = MediaServer.createEndpoint(ip);
+let endpoint = MediaServer.createEndpoint(ip);
 
 //Create an mp4 recorder
-const recorder = MediaServer.createRecorder("/tmp/test.mp4");
+let recorder = MediaServer.createRecorder("/tmp/test.mp4");
 
 //Create an DTLS ICE transport in that enpoint
-const transport = endpoint.createTransport({
+let transport = endpoint.createTransport({
 	dtls : offer.getDTLS(),
 	ice  : offer.getICE() 
 });
@@ -254,3 +254,9 @@ endpoint.stop();
 
 //Close recorder and mp4 recording file
 recorder.stop();
+
+
+//Testing GC
+transport = null;
+endpoint = null;
+recorder = null;

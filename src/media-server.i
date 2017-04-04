@@ -11,6 +11,7 @@
 #include "../media-server/include/RTPBundleTransport.h"
 #include "../media-server/include/mp4recorder.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
+	
 
 class StringFacade : private std::string
 {
@@ -72,50 +73,180 @@ public:
 	
 };
 
+class RTPSessionFacade : 	
+	public RTPSender,
+	public RTPReceiver,
+	public RTPSession
+{
+public:
+	RTPSessionFacade(MediaFrame::Type media) : RTPSession(media,NULL)
+	{
+		
+	}
+	virtual ~RTPSessionFacade()
+	{
+		
+	}
+	
+	virtual int Send(RTPPacket &packet)
+	{
+		
+	}
+	virtual int SendPLI(DWORD ssrc)
+	{
+		return RequestFPU();
+	}
+	
+	int Init(const Properties &properties)
+	{
+		RTPMap rtp;
+		
+		//Get codecs
+		std::vector<Properties> codecs;
+		properties.GetChildrenArray("codecs",codecs);
+
+		//For each codec
+		for (auto it = codecs.begin(); it!=codecs.end(); ++it)
+		{
+			
+			BYTE codec;
+			//Depending on the type
+			switch (GetMediaType())
+			{
+				case MediaFrame::Audio:
+					codec = (BYTE)AudioCodec::GetCodecForName(it->GetProperty("codec"));
+					break;
+				case MediaFrame::Video:
+					codec = (BYTE)VideoCodec::GetCodecForName(it->GetProperty("codec"));
+					break;
+				case MediaFrame::Text:
+					codec = (BYTE)-1;
+					break;
+			}
+
+			//Get codec type
+			BYTE type = it->GetProperty("pt",0);
+			//ADD it
+			rtp[type] = codec;
+		}
+	
+		//Set local 
+		RTPSession::SetSendingRTPMap(rtp);
+		RTPSession::SetReceivingRTPMap(rtp);
+		
+		//Call parent
+		return RTPSession::Init();
+	}
+	
+	virtual void onRTPPacket(BYTE* buffer, DWORD size)
+	{
+		RTPSession::onRTPPacket(buffer,size);
+		RTPIncomingSourceGroup* incoming = GetIncomingSourceGroup();
+		RTPPacket* ordered;
+		//FOr each ordered packet
+		while(ordered=GetOrderPacket())
+			//Call listeners
+			incoming->onRTP(ordered);
+	}
+};
+
+class RTPSenderFacade
+{
+public:	
+	RTPSenderFacade(DTLSICETransport* transport)
+	{
+		sender = transport;
+	}
+
+	RTPSenderFacade(RTPSessionFacade* session)
+	{
+		sender = session;
+	}
+	
+	RTPSender* get() { return sender;}
+private:
+	RTPSender* sender;
+};
+
+class RTPReceiverFacade
+{
+public:	
+	RTPReceiverFacade(DTLSICETransport* transport)
+	{
+		reeciver = transport;
+	}
+
+	RTPReceiverFacade(RTPSessionFacade* session)
+	{
+		reeciver = session;
+	}
+	
+	RTPReceiver* get() { return reeciver;}
+private:
+	RTPReceiver* reeciver;
+};
+
+
+RTPSenderFacade* TransportToSender(DTLSICETransport* transport)
+{
+	return new RTPSenderFacade(transport);
+}
+RTPReceiverFacade* TransportToReceiver(DTLSICETransport* transport)
+{
+	return new RTPReceiverFacade(transport);
+}
+RTPSenderFacade* SessionToSender(RTPSessionFacade* session)
+{
+	return new RTPSenderFacade(session);	
+}
+RTPReceiverFacade* SessionToReceiver(RTPSessionFacade* session)
+{
+	return new RTPReceiverFacade(session);
+}
+
 class StreamTransponder : 
 	public RTPIncomingSourceGroup::Listener,
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	StreamTransponder(RTPIncomingSourceGroup* incomingSource, RTPReceiver* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,RTPSender* outgoingTransport)
+	StreamTransponder(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
 	{
 		//Store streams
-		this->incomingSource = incomingSource;
-		this->outgoingSource = outgoingSource;
-		this->incomingTransport = incomingTransport;
-		this->outgoingTransport = outgoingTransport;
+		this->incoming = incoming;
+		this->outgoing = outgoing;
+		this->receiver = receiver->get();
+		this->sender = sender->get();
 		
 		//Add us as listeners
-		outgoingSource->AddListener(this);
-		incomingSource->AddListener(this);
+		incoming->AddListener(this);
+		outgoing->AddListener(this);
 		
 		//Request update on the incoming
-		if (incomingTransport) incomingTransport->SendPLI(incomingSource->media.ssrc);
+		if (this->receiver) this->receiver->SendPLI(this->incoming->media.ssrc);
 	}
 
-	void Stop()
+	void Close()
 	{
 		ScopedLock lock(mutex);
 		
 		//Stop listeneing
-		if (outgoingSource) outgoingSource->RemoveListener(this);
-		if (incomingSource) incomingSource->RemoveListener(this);
+		if (outgoing) outgoing->RemoveListener(this);
+		if (incoming) incoming->RemoveListener(this);
 		
 		//Remove sources
-		outgoingSource = NULL;
-		incomingSource = NULL;
-		incomingTransport = NULL;
-		outgoingTransport = NULL;
+		outgoing = NULL;
+		incoming = NULL;
+		receiver = NULL;
+		sender = NULL;
 	}
 	
 	virtual ~StreamTransponder()
 	{
-		Log("~StreamTransponder()");
 		//Stop listeneing
-		Stop();
+		Close();
 	}
 
-	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
+	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)  override
 	{
 		ScopedLock lock(mutex);
 		
@@ -141,21 +272,20 @@ public:
 		}
 		
 		//Double check
-		if (outgoingSource && outgoingTransport)
+		if (outgoing && sender)
 		{
 			//Change ssrc
-			packet->SetSSRC(outgoingSource->media.ssrc);
+			packet->SetSSRC(outgoing->media.ssrc);
 			//Send it on transport
-			outgoingTransport->Send(*packet);
+			sender->Send(*packet);
 		}
 	}
 	
-	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc)
+	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc) override
 	{
 		ScopedLock lock(mutex);
-		
 		//Request update on the incoming
-		if (incomingTransport && incomingSource) incomingTransport->SendPLI(incomingSource->media.ssrc);
+		if (receiver && incoming) receiver->SendPLI(incoming->media.ssrc);
 	}
 	
 	void SelectLayer(int spatialLayerId,int temporalLayerId)
@@ -164,15 +294,15 @@ public:
 		
 		if (selector.GetSpatialLayer()<spatialLayerId)
 			//Request update on the incoming
-			if (incomingTransport && incomingSource) incomingTransport->SendPLI(incomingSource->media.ssrc);
+			if (receiver && incoming) receiver->SendPLI(incoming->media.ssrc);
 		selector.SelectSpatialLayer(spatialLayerId);
 		selector.SelectTemporalLayer(temporalLayerId);
 	}
 private:
-	RTPOutgoingSourceGroup *outgoingSource;
-	RTPIncomingSourceGroup *incomingSource;
-	RTPReceiver* incomingTransport;
-	RTPSender* outgoingTransport;
+	RTPOutgoingSourceGroup *outgoing;
+	RTPIncomingSourceGroup *incoming;
+	RTPReceiver* receiver;
+	RTPSender* sender;
 	VP9LayerSelector selector;
 	Mutex mutex;
 };
@@ -254,82 +384,8 @@ private:
 };
 
 
-class RTPSessionFacade : 	
-	public RTPSender,
-	public RTPReceiver,
-	public RTPSession
-{
-public:
-	RTPSessionFacade(MediaFrame::Type media) : RTPSession(media,NULL)
-	{
-		
-	}
-	virtual ~RTPSessionFacade()
-	{
-		
-	}
-	
-	virtual int Send(RTPPacket &packet)
-	{
-		
-	}
-	virtual int SendPLI(DWORD ssrc)
-	{
-		return RequestFPU();
-	}
-	
-	int Init(const Properties &properties)
-	{
-		RTPMap rtp;
-		
-		//Get codecs
-		std::vector<Properties> codecs;
-		properties.GetChildrenArray("codecs",codecs);
 
-		//For each codec
-		for (auto it = codecs.begin(); it!=codecs.end(); ++it)
-		{
-			
-			BYTE codec;
-			//Depending on the type
-			switch (GetMediaType())
-			{
-				case MediaFrame::Audio:
-					codec = (BYTE)AudioCodec::GetCodecForName(it->GetProperty("codec"));
-					break;
-				case MediaFrame::Video:
-					codec = (BYTE)VideoCodec::GetCodecForName(it->GetProperty("codec"));
-					break;
-				case MediaFrame::Text:
-					codec = (BYTE)-1;
-					break;
-			}
 
-			//Get codec type
-			BYTE type = it->GetProperty("pt",0);
-			//ADD it
-			rtp[type] = codec;
-		}
-	
-		//Set local 
-		RTPSession::SetSendingRTPMap(rtp);
-		RTPSession::SetReceivingRTPMap(rtp);
-		
-		//Call parent
-		return RTPSession::Init();
-	}
-	
-	virtual void onRTPPacket(BYTE* buffer, DWORD size)
-	{
-		RTPSession::onRTPPacket(buffer,size);
-		RTPIncomingSourceGroup* incoming = GetIncomingSourceGroup();
-		RTPPacket* ordered;
-		//FOr each ordered packet
-		while(ordered=GetOrderPacket())
-			//Call listeners
-			incoming->onRTP(ordered);
-	}
-};
 
 %}
 %include "stdint.i"
@@ -366,29 +422,6 @@ public:
 };
 
 
-class StreamTransponder : 
-	public RTPIncomingSourceGroup::Listener,
-	public RTPOutgoingSourceGroup::Listener
-{
-public:
-	StreamTransponder(RTPIncomingSourceGroup* incomingSource, RTPReceiver* incomingTransport, RTPOutgoingSourceGroup* outgoingSource,RTPSender* outgoingTransport);
-	virtual ~StreamTransponder();
-	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
-	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
-	void SelectLayer(int spatialLayerId,int temporalLayerId);
-};
-
-class StreamTrackDepacketizer :
-	public RTPIncomingSourceGroup::Listener
-{
-public:
-	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource);
-	virtual ~StreamTrackDepacketizer();
-	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
-	void AddMediaListener(MP4Recorder* listener);
-	void RemoveMediaListener(MP4Recorder* listener);
-};
-
 class RTPSessionFacade :
 	public RTPSender,
 	public RTPReceiver
@@ -404,5 +437,52 @@ public:
 	int End();
 	virtual int Send(RTPPacket &packet);
 	virtual int SendPLI(DWORD ssrc);
+};
+
+
+class RTPSenderFacade
+{
+public:	
+	RTPSenderFacade(DTLSICETransport* transport);
+	RTPSenderFacade(RTPSessionFacade* session);
+	RTPSender* get();
+};
+
+class RTPReceiverFacade
+{
+public:	
+	RTPReceiverFacade(DTLSICETransport* transport);
+	RTPReceiverFacade(RTPSessionFacade* session);
+	RTPReceiver* get();
+};
+
+
+RTPSenderFacade*	TransportToSender(DTLSICETransport* transport);
+RTPReceiverFacade*	TransportToReceiver(DTLSICETransport* transport);
+RTPSenderFacade*	SessionToSender(RTPSessionFacade* session);
+RTPReceiverFacade*	SessionToReceiver(RTPSessionFacade* session);
+
+class StreamTransponder : 
+	public RTPIncomingSourceGroup::Listener,
+	public RTPOutgoingSourceGroup::Listener
+{
+public:
+	StreamTransponder(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
+	virtual ~StreamTransponder();
+	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
+	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
+	void SelectLayer(int spatialLayerId,int temporalLayerId);
+	void Close();
+};
+
+class StreamTrackDepacketizer :
+	public RTPIncomingSourceGroup::Listener
+{
+public:
+	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource);
+	virtual ~StreamTrackDepacketizer();
+	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
+	void AddMediaListener(MP4Recorder* listener);
+	void RemoveMediaListener(MP4Recorder* listener);
 };
 
