@@ -1653,7 +1653,7 @@ public:
 	
 	virtual int Send(RTPPacket &packet)
 	{
-		
+		return SendPacket(packet);
 	}
 	virtual int SendPLI(DWORD ssrc)
 	{
@@ -1815,8 +1815,12 @@ public:
 		
 		//Double check
 		if (!group || !packet)
+		{
 			//Error
+			Error("-StreamTransponder::onRTP [group:%p,packet:%p]\n",group,packet);
+			//Exit
 			return;
+		}
 		
 		//Check if it is an VP9 packet
 		if (packet->GetCodec()==VideoCodec::VP9)
@@ -1839,8 +1843,10 @@ public:
 		{
 			//Change ssrc
 			packet->SetSSRC(outgoing->media.ssrc);
+			Log("->Send\n");
 			//Send it on transport
 			sender->Send(*packet);
+			Log("<-Send\n");
 		}
 	}
 	
