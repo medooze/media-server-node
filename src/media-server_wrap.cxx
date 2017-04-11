@@ -1843,10 +1843,8 @@ public:
 		{
 			//Change ssrc
 			packet->SetSSRC(outgoing->media.ssrc);
-			Log("->Send\n");
 			//Send it on transport
 			sender->Send(*packet);
-			Log("<-Send\n");
 		}
 	}
 	
