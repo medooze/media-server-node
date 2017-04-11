@@ -1,12 +1,12 @@
 {
   "name": "medooze-media-server",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
     "install": "node-gyp rebuild -j 4",
     "docs": "documentation build lib/MediaServer.js lib/*.js node_modules/semantic-sdp/lib/*.js --shallow -o docs -f html",
-    "package" : "tar cvzf build/medooze-media-server.tgz ../media-server-node/external/* ../media-server-node/media-server/* ../media-server-node/lib/* ../media-server-node/package.json ../media-server-node/index.js  ../media-server-node/binding.gyp  ../media-server-node/README.md ../media-server-node/src"
+    "package" : "tar cvzf build/medooze-media-server.tgz ../media-server-node/external/* ../media-server-node/media-server/src/* ../media-server-node/media-server/include/* ../media-server-node/lib/* ../media-server-node/package.json ../media-server-node/index.js  ../media-server-node/binding.gyp  ../media-server-node/README.md ../media-server-node/src"
    },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/medooze/media-server-node#readme",
   "dependencies": {
     "lfsr": "0.0.3",
-    "semantic-sdp": "^2.0.0",
+    "semantic-sdp": "^2.1.0",
     "uuid": "^3.0.1"
   }
 }

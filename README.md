@@ -3,8 +3,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/72346e5229bc4fd8af091312be091fdd)](https://www.codacy.com/app/murillo128/media-server-node?utm_source=github.com&utm_medium=referral&utm_content=medooze/media-server-node&utm_campaign=badger)
 
 This media server will allow you to receive and send media streams from remote WebRTC peers and manage how you want to route them. 
-You will be able to record any incoming stream into an mp4 file.
-SVC layer selection and simulcast support.
 
 ## Install
 
@@ -15,10 +13,32 @@ SVC layer selection and simulcast support.
 const MediaServer = require('medooze-media-server');
 ```
 ## API Documention
-You can check the full object documentation [here](https://medooze.github.io/media-server-node/).
+You can check the full [object documentation here](https://medooze.github.io/media-server-node/).
+
+## Support
+To discuss issues related to this project or ask for help please [join the google comunity group](https://groups.google.com/forum/#!forum/medooze).
 
 ## Demo application
 You can check a demo application [here](https://github.com/medooze/media-server-demo-node)
+
+# Functionality
+We intent to implement support the following features:
+
+- [x] MP4 multitrack recording support for all WebRTC codecs: H264,VP8,VP9, OPUS and PCMU/A.
+- [x] [VP9 SVC](https://tools.ietf.org/html/draft-ietf-payload-vp9-02) layer selection
+- [ ] Simulcast
+- [x] [RTP transport wide congestion control](https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01)
+- Sender side BitRate estimation: algorithm not decided yet candidates are [GCC](https://tools.ietf.org/html/draft-ietf-rmcat-gcc-02), [NADA](https://tools.ietf.org/html/draft-ietf-rmcat-nada-03) or [SCREAM](https://tools.ietf.org/html/draft-ietf-rmcat-scream-cc-07)
+- [ ] [Flex FEC draft 3](https://tools.ietf.org/html/draft-ietf-payload-flexible-fec-scheme-03)
+- [x] NACK and RTX support
+- [x] [RTCP reduced size] (https://tools.ietf.org/html/rfc5506)
+- [x] Bundle
+- [x] ICE lite
+- [x] Frame Marking
+- [x] PERC double encryption
+- [x] Plain RTP broadcasting/streaming
+- [ ] MPEG DASH
+- [ ] Datachannels
 
 ## Example
 
@@ -150,7 +170,7 @@ const str = answer.toString();
 
 ## Author
 
-Sergio Garcia Murillo
+Sergio Garcia Murillo @ Medooze 
 
 ## License
 MIT
