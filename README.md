@@ -22,7 +22,7 @@ To discuss issues related to this project or ask for help please [join the googl
 You can check a demo application [here](https://github.com/medooze/media-server-demo-node)
 
 ## Functionality
-We intent to implement support the following features:
+We intend to implement support the following features:
 
 - [x] MP4 multitrack recording support for all WebRTC codecs: H264,VP8,VP9, OPUS and PCMU/A.
 - [x] [VP9 SVC](https://tools.ietf.org/html/draft-ietf-payload-vp9-02) layer selection
