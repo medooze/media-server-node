@@ -63,6 +63,7 @@
 				"media-server/src/rtp/RTCPReceiverReport.cpp",
 				"media-server/src/rtp/RTCPSDES.cpp",
 				"media-server/src/rtp/RTPPacketSched.cpp",
+				"media-server/src/rtp/RTPStreamTransponder.cpp",
 				"media-server/src/mp4recorder.cpp",
 				"media-server/src/rtpsession.cpp",
 				"media-server/src/RTPTransport.cpp",

@@ -21,22 +21,23 @@ To discuss issues related to this project or ask for help please [join the googl
 ## Demo application
 You can check a demo application [here](https://github.com/medooze/media-server-demo-node)
 
-# Functionality
+## Functionality
 We intent to implement support the following features:
 
 - [x] MP4 multitrack recording support for all WebRTC codecs: H264,VP8,VP9, OPUS and PCMU/A.
 - [x] [VP9 SVC](https://tools.ietf.org/html/draft-ietf-payload-vp9-02) layer selection
 - [ ] Simulcast
 - [x] [RTP transport wide congestion control](https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01)
-- Sender side BitRate estimation: algorithm not decided yet candidates are [GCC](https://tools.ietf.org/html/draft-ietf-rmcat-gcc-02), [NADA](https://tools.ietf.org/html/draft-ietf-rmcat-nada-03) or [SCREAM](https://tools.ietf.org/html/draft-ietf-rmcat-scream-cc-07)
+- [ ] Sender side BitRate estimation: algorithm not decided yet candidates are [GCC](https://tools.ietf.org/html/draft-ietf-rmcat-gcc-02), [NADA](https://tools.ietf.org/html/draft-ietf-rmcat-nada-03) or [SCREAM](https://tools.ietf.org/html/draft-ietf-rmcat-scream-cc-07)
 - [ ] [Flex FEC draft 3](https://tools.ietf.org/html/draft-ietf-payload-flexible-fec-scheme-03)
 - [x] NACK and RTX support
 - [x] [RTCP reduced size] (https://tools.ietf.org/html/rfc5506)
 - [x] Bundle
 - [x] ICE lite
-- [x] Frame Marking
-- [x] PERC double encryption
+- [x] [Frame Marking] (https://tools.ietf.org/html/draft-ietf-avtext-framemarking-04)
+- [x] [PERC double encryption] (https://tools.ietf.org/html/draft-ietf-perc-double-03)
 - [x] Plain RTP broadcasting/streaming
+- [ ] [Layer Refresh Request (LRR) RTCP Feedback Message] (https://datatracker.ietf.org/doc/html/draft-ietf-avtext-lrr-04)
 - [ ] MPEG DASH
 - [ ] Datachannels
 

@@ -11,6 +11,7 @@
 #include "../media-server/include/RTPBundleTransport.h"
 #include "../media-server/include/mp4recorder.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
+#include "../media-server/include/rtp/RTPStreamTransponder.h"
 	
 
 class StringFacade : private std::string
@@ -204,111 +205,15 @@ RTPReceiverFacade* SessionToReceiver(RTPSessionFacade* session)
 	return new RTPReceiverFacade(session);
 }
 
-class StreamTransponder : 
-	public RTPIncomingSourceGroup::Listener,
-	public RTPOutgoingSourceGroup::Listener
+class RTPStreamTransponderFacade : 
+	public RTPStreamTransponder
 {
 public:
-	StreamTransponder(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
+	RTPStreamTransponderFacade(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
+		: RTPStreamTransponder(incoming, receiver->get(), outgoing, sender->get())
 	{
-		//Store streams
-		this->incoming = incoming;
-		this->outgoing = outgoing;
-		this->receiver = receiver->get();
-		this->sender = sender->get();
-		
-		//Add us as listeners
-		incoming->AddListener(this);
-		outgoing->AddListener(this);
-		
-		//Request update on the incoming
-		if (this->receiver) this->receiver->SendPLI(this->incoming->media.ssrc);
-	}
 
-	void Close()
-	{
-		ScopedLock lock(mutex);
-		
-		//Stop listeneing
-		if (outgoing) outgoing->RemoveListener(this);
-		if (incoming) incoming->RemoveListener(this);
-		
-		//Remove sources
-		outgoing = NULL;
-		incoming = NULL;
-		receiver = NULL;
-		sender = NULL;
 	}
-	
-	virtual ~StreamTransponder()
-	{
-		//Stop listeneing
-		Close();
-	}
-
-	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)  override
-	{
-		ScopedLock lock(mutex);
-		
-		//Double check
-		if (!group || !packet)
-		{
-			//Error
-			Error("-StreamTransponder::onRTP [group:%p,packet:%p]\n",group,packet);
-			//Exit
-			return;
-		}
-		
-		//Check if it is an VP9 packet
-		if (packet->GetCodec()==VideoCodec::VP9)
-		{
-			DWORD extSeqNum;
-			bool mark;
-			//Select layer
-			if (!selector.Select(packet,extSeqNum,mark))
-			       //Drop
-			       return;
-		       //Set them
-		       packet->SetSeqNum(extSeqNum);
-		       packet->SetSeqCycles(extSeqNum >> 16);
-		       //Set mark
-		       packet->SetMark(mark);
-		}
-		
-		//Double check
-		if (outgoing && sender)
-		{
-			//Change ssrc
-			packet->SetSSRC(outgoing->media.ssrc);
-			//Send it on transport
-			sender->Send(*packet);
-		}
-	}
-	
-	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc) override
-	{
-		ScopedLock lock(mutex);
-		//Request update on the incoming
-		if (receiver && incoming) receiver->SendPLI(incoming->media.ssrc);
-	}
-	
-	void SelectLayer(int spatialLayerId,int temporalLayerId)
-	{
-		ScopedLock lock(mutex);
-		
-		if (selector.GetSpatialLayer()<spatialLayerId)
-			//Request update on the incoming
-			if (receiver && incoming) receiver->SendPLI(incoming->media.ssrc);
-		selector.SelectSpatialLayer(spatialLayerId);
-		selector.SelectTemporalLayer(temporalLayerId);
-	}
-private:
-	RTPOutgoingSourceGroup *outgoing;
-	RTPIncomingSourceGroup *incoming;
-	RTPReceiver* receiver;
-	RTPSender* sender;
-	VP9LayerSelector selector;
-	Mutex mutex;
 };
 
 class StreamTrackDepacketizer :
@@ -399,6 +304,7 @@ private:
 %include "../media-server/include/DTLSICETransport.h"
 %include "../media-server/include/RTPBundleTransport.h"
 %include "../media-server/include/mp4recorder.h"
+%include "../media-server/include/rtp/RTPStreamTransponder.h"
 
 
 class StringFacade : private std::string
@@ -466,13 +372,13 @@ RTPReceiverFacade*	TransportToReceiver(DTLSICETransport* transport);
 RTPSenderFacade*	SessionToSender(RTPSessionFacade* session);
 RTPReceiverFacade*	SessionToReceiver(RTPSessionFacade* session);
 
-class StreamTransponder : 
+class RTPStreamTransponderFacade : 
 	public RTPIncomingSourceGroup::Listener,
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	StreamTransponder(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
-	virtual ~StreamTransponder();
+	RTPStreamTransponderFacade(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
+	virtual ~RTPStreamTransponderFacade();
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
