@@ -1796,10 +1796,12 @@ public:
 
 	virtual ~StreamTrackDepacketizer()
 	{
-		//Stop listeneing
-		incomingSource->RemoveListener(this);
-		//Delete depacketier
-		delete(depacketizer);
+		//JIC
+		Stop();
+		//Check 
+		if (depacketizer)
+			//Delete depacketier
+			delete(depacketizer);
 	}
 
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
@@ -1842,10 +1844,24 @@ public:
 		//Add to set
 		listeners.insert(listener);
 	}
+	
 	void RemoveMediaListener(MediaFrame::Listener *listener)
 	{
 		//Remove from set
 		listeners.erase(listener);
+	}
+	
+	void Stop()
+	{
+		//If already stopped
+		if (!incomingSource)
+			//Done
+			return;
+		
+		//Stop listeneing
+		incomingSource->RemoveListener(this);
+		//Clean it
+		incomingSource = NULL;
 	}
 	
 private:
@@ -8945,6 +8961,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_ActivateRemoteCandidate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  ICERemoteCandidate *arg2 = (ICERemoteCandidate *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_ActivateRemoteCandidate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_ActivateRemoteCandidate" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_ICERemoteCandidate, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_ActivateRemoteCandidate" "', argument " "2"" of type '" "ICERemoteCandidate *""'"); 
+  }
+  arg2 = (ICERemoteCandidate *)(argp2);
+  (arg1)->ActivateRemoteCandidate(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_SetRemoteCryptoDTLS(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -12091,6 +12143,40 @@ fail:
 }
 
 
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_RTPStreamTransponderFacade(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_RTPStreamTransponderFacade(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_RTPStreamTransponderFacade(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#else
+      static void _wrap_delete_RTPStreamTransponderFacade(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+        
+        if(proxy->swigCMemOwn && proxy->swigCObject) {
+          RTPStreamTransponderFacade * arg1 = (RTPStreamTransponderFacade *)proxy->swigCObject;
+          delete arg1;
+        }
+        delete proxy;
+        
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+        object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+        object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+        object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+        object->Dispose();
+#else
+        object.Clear();
+#endif
+      }
+
+
 static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_onRTP(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -12377,6 +12463,33 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_RemoveMediaListener(const
   (arg1)->RemoveMediaListener(arg2);
   jsresult = SWIGV8_UNDEFINED();
   
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  StreamTrackDepacketizer *arg1 = (StreamTrackDepacketizer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StreamTrackDepacketizer_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StreamTrackDepacketizer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTrackDepacketizer_Stop" "', argument " "1"" of type '" "StreamTrackDepacketizer *""'"); 
+  }
+  arg1 = (StreamTrackDepacketizer *)(argp1);
+  (arg1)->Stop();
+  jsresult = SWIGV8_UNDEFINED();
   
   
   SWIGV8_RETURN(jsresult);
@@ -13146,10 +13259,10 @@ _exports_RTPReceiverFacade_clientData.dtor = _wrap_delete_RTPReceiverFacade;
 if (SWIGTYPE_p_RTPReceiverFacade->clientdata == 0) {
   SWIGTYPE_p_RTPReceiverFacade->clientdata = &_exports_RTPReceiverFacade_clientData;
 }
-/* Name: _exports_RTPStreamTransponderFacade, Type: p_RTPStreamTransponderFacade, Dtor: 0 */
+/* Name: _exports_RTPStreamTransponderFacade, Type: p_RTPStreamTransponderFacade, Dtor: _wrap_delete_RTPStreamTransponderFacade */
 v8::Handle<v8::FunctionTemplate> _exports_RTPStreamTransponderFacade_class = SWIGV8_CreateClassTemplate("_exports_RTPStreamTransponderFacade");
 SWIGV8_SET_CLASS_TEMPL(_exports_RTPStreamTransponderFacade_clientData.class_templ, _exports_RTPStreamTransponderFacade_class);
-_exports_RTPStreamTransponderFacade_clientData.dtor = 0;
+_exports_RTPStreamTransponderFacade_clientData.dtor = _wrap_delete_RTPStreamTransponderFacade;
 if (SWIGTYPE_p_RTPStreamTransponderFacade->clientdata == 0) {
   SWIGTYPE_p_RTPStreamTransponderFacade->clientdata = &_exports_RTPStreamTransponderFacade_clientData;
 }
@@ -13286,6 +13399,7 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSI
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Send", _wrap_DTLSICETransport_Send);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Reset", _wrap_DTLSICETransport_Reset);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "AddRemoteCandidate", _wrap_DTLSICETransport_AddRemoteCandidate);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "ActivateRemoteCandidate", _wrap_DTLSICETransport_ActivateRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteCryptoDTLS", _wrap_DTLSICETransport_SetRemoteCryptoDTLS);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalSTUNCredentials", _wrap_DTLSICETransport_SetLocalSTUNCredentials);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteSTUNCredentials", _wrap_DTLSICETransport_SetRemoteSTUNCredentials);
@@ -13341,6 +13455,7 @@ SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SelectLayer
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Close", _wrap_RTPStreamTransponderFacade_Close);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "AddMediaListener", _wrap_StreamTrackDepacketizer_AddMediaListener);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "RemoveMediaListener", _wrap_StreamTrackDepacketizer_RemoveMediaListener);
+SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "Stop", _wrap_StreamTrackDepacketizer_Stop);
 
 
   /* setup inheritances */

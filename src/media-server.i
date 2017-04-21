@@ -232,10 +232,12 @@ public:
 
 	virtual ~StreamTrackDepacketizer()
 	{
-		//Stop listeneing
-		incomingSource->RemoveListener(this);
-		//Delete depacketier
-		delete(depacketizer);
+		//JIC
+		Stop();
+		//Check 
+		if (depacketizer)
+			//Delete depacketier
+			delete(depacketizer);
 	}
 
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
@@ -278,10 +280,24 @@ public:
 		//Add to set
 		listeners.insert(listener);
 	}
+	
 	void RemoveMediaListener(MediaFrame::Listener *listener)
 	{
 		//Remove from set
 		listeners.erase(listener);
+	}
+	
+	void Stop()
+	{
+		//If already stopped
+		if (!incomingSource)
+			//Done
+			return;
+		
+		//Stop listeneing
+		incomingSource->RemoveListener(this);
+		//Clean it
+		incomingSource = NULL;
 	}
 	
 private:
@@ -394,5 +410,7 @@ public:
 	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
 	void AddMediaListener(MP4Recorder* listener);
 	void RemoveMediaListener(MP4Recorder* listener);
+	
+	void Stop();
 };
 
