@@ -1531,21 +1531,20 @@ fail: ;
 #define SWIGTYPE_p_mp4track swig_types[47]
 #define SWIGTYPE_p_short swig_types[48]
 #define SWIGTYPE_p_signed_char swig_types[49]
-#define SWIGTYPE_p_sockaddr_in swig_types[50]
-#define SWIGTYPE_p_std__listT_RTCPRTPFeedback__NACKField_p_t swig_types[51]
-#define SWIGTYPE_p_std__mapT_unsigned_int_RTPPacket_p_t swig_types[52]
-#define SWIGTYPE_p_std__setT_RTPIncomingSourceGroup__Listener_p_t swig_types[53]
-#define SWIGTYPE_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t swig_types[54]
-#define SWIGTYPE_p_std__string swig_types[55]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[56]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[57]
-#define SWIGTYPE_p_unsigned_char swig_types[58]
-#define SWIGTYPE_p_unsigned_int swig_types[59]
-#define SWIGTYPE_p_unsigned_long_long swig_types[60]
-#define SWIGTYPE_p_unsigned_short swig_types[61]
-#define SWIGTYPE_p_void swig_types[62]
-static swig_type_info *swig_types[64];
-static swig_module_info swig_module = {swig_types, 63, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__listT_RTCPRTPFeedback__NACKField_p_t swig_types[50]
+#define SWIGTYPE_p_std__mapT_unsigned_int_RTPPacket_p_t swig_types[51]
+#define SWIGTYPE_p_std__setT_RTPIncomingSourceGroup__Listener_p_t swig_types[52]
+#define SWIGTYPE_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t swig_types[53]
+#define SWIGTYPE_p_std__string swig_types[54]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[55]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[56]
+#define SWIGTYPE_p_unsigned_char swig_types[57]
+#define SWIGTYPE_p_unsigned_int swig_types[58]
+#define SWIGTYPE_p_unsigned_long_long swig_types[59]
+#define SWIGTYPE_p_unsigned_short swig_types[60]
+#define SWIGTYPE_p_void swig_types[61]
+static swig_type_info *swig_types[63];
+static swig_module_info swig_module = {swig_types, 62, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -8901,78 +8900,24 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_DTLSICETransport_AddRemoteCandidate(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
-  sockaddr_in arg2 ;
-  bool arg3 ;
-  uint32_t arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  bool val3 ;
-  int ecode3 = 0 ;
-  unsigned int val4 ;
-  int ecode4 = 0 ;
-  ICERemoteCandidate *result = 0 ;
-  
-  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_AddRemoteCandidate.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_AddRemoteCandidate" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
-  }
-  arg1 = (DTLSICETransport *)(argp1);
-  {
-    res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_sockaddr_in,  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_AddRemoteCandidate" "', argument " "2"" of type '" "sockaddr_in const""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DTLSICETransport_AddRemoteCandidate" "', argument " "2"" of type '" "sockaddr_in const""'");
-    } else {
-      arg2 = *((sockaddr_in *)(argp2));
-    }
-  }
-  ecode3 = SWIG_AsVal_bool(args[1], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_AddRemoteCandidate" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = (bool)(val3);
-  ecode4 = SWIG_AsVal_unsigned_SS_int(args[2], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DTLSICETransport_AddRemoteCandidate" "', argument " "4"" of type '" "uint32_t""'");
-  } 
-  arg4 = (uint32_t)(val4);
-  result = (ICERemoteCandidate *)(arg1)->AddRemoteCandidate(arg2,arg3,arg4);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ICERemoteCandidate, 0 |  0 );
-  
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static SwigV8ReturnValue _wrap_DTLSICETransport_ActivateRemoteCandidate(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
   DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
   ICERemoteCandidate *arg2 = (ICERemoteCandidate *) 0 ;
+  bool arg3 ;
+  uint32_t arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
   
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_ActivateRemoteCandidate.");
+  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_ActivateRemoteCandidate.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -8984,8 +8929,20 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_ActivateRemoteCandidate(const Sw
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_ActivateRemoteCandidate" "', argument " "2"" of type '" "ICERemoteCandidate *""'"); 
   }
   arg2 = (ICERemoteCandidate *)(argp2);
-  (arg1)->ActivateRemoteCandidate(arg2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_ActivateRemoteCandidate" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DTLSICETransport_ActivateRemoteCandidate" "', argument " "4"" of type '" "uint32_t""'");
+  } 
+  arg4 = (uint32_t)(val4);
+  (arg1)->ActivateRemoteCandidate(arg2,arg3,arg4);
   jsresult = SWIGV8_UNDEFINED();
+  
+  
   
   
   
@@ -12594,7 +12551,6 @@ static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|in
 static swig_type_info _swigt__p_mp4track = {"_p_mp4track", "p_mp4track|mp4track *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_sockaddr_in = {"_p_sockaddr_in", "sockaddr_in *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__listT_RTCPRTPFeedback__NACKField_p_t = {"_p_std__listT_RTCPRTPFeedback__NACKField_p_t", "std::list< RTCPRTPFeedback::NACKField * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__mapT_unsigned_int_RTPPacket_p_t = {"_p_std__mapT_unsigned_int_RTPPacket_p_t", "RTPOutgoingSourceGroup::RTPOrderedPackets *|std::map< unsigned int,RTPPacket * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__setT_RTPIncomingSourceGroup__Listener_p_t = {"_p_std__setT_RTPIncomingSourceGroup__Listener_p_t", "RTPIncomingSourceGroup::Listeners *|std::set< RTPIncomingSourceGroup::Listener * > *", 0, 0, (void*)0, 0};
@@ -12659,7 +12615,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mp4track,
   &_swigt__p_short,
   &_swigt__p_signed_char,
-  &_swigt__p_sockaddr_in,
   &_swigt__p_std__listT_RTCPRTPFeedback__NACKField_p_t,
   &_swigt__p_std__mapT_unsigned_int_RTPPacket_p_t,
   &_swigt__p_std__setT_RTPIncomingSourceGroup__Listener_p_t,
@@ -12724,7 +12679,6 @@ static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0}
 static swig_cast_info _swigc__p_mp4track[] = {  {&_swigt__p_mp4track, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_sockaddr_in[] = {  {&_swigt__p_sockaddr_in, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__listT_RTCPRTPFeedback__NACKField_p_t[] = {  {&_swigt__p_std__listT_RTCPRTPFeedback__NACKField_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__mapT_unsigned_int_RTPPacket_p_t[] = {  {&_swigt__p_std__mapT_unsigned_int_RTPPacket_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__setT_RTPIncomingSourceGroup__Listener_p_t[] = {  {&_swigt__p_std__setT_RTPIncomingSourceGroup__Listener_p_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -12789,7 +12743,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mp4track,
   _swigc__p_short,
   _swigc__p_signed_char,
-  _swigc__p_sockaddr_in,
   _swigc__p_std__listT_RTCPRTPFeedback__NACKField_p_t,
   _swigc__p_std__mapT_unsigned_int_RTPPacket_p_t,
   _swigc__p_std__setT_RTPIncomingSourceGroup__Listener_p_t,
@@ -13398,7 +13351,6 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", 
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Send", _wrap_DTLSICETransport_Send);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Reset", _wrap_DTLSICETransport_Reset);
-SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "AddRemoteCandidate", _wrap_DTLSICETransport_AddRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "ActivateRemoteCandidate", _wrap_DTLSICETransport_ActivateRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteCryptoDTLS", _wrap_DTLSICETransport_SetRemoteCryptoDTLS);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalSTUNCredentials", _wrap_DTLSICETransport_SetLocalSTUNCredentials);
