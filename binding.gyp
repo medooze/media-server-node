@@ -6,7 +6,8 @@
 			"cflags": 
 			[
 				"-fexceptions",
-				"-std=c++11"
+				"-std=c++11",
+				"-g"
 			],
 			"include_dirs" : 
 			[

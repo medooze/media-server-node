@@ -309,18 +309,76 @@ private:
 };
 
 
-
-
-
 %}
+
 %include "stdint.i"
 %include "../media-server/include/config.h"	
 %include "../media-server/include/media.h"
-%include "../media-server/include/rtp.h"
+
+struct RTPSource 
+{
+	DWORD ssrc;
+	DWORD extSeq;
+	DWORD cycles;
+	DWORD jitter;
+	DWORD numPackets;
+	DWORD numRTCPPackets;
+	DWORD totalBytes;
+	DWORD totalRTCPBytes;
+};
+
+struct RTPIncomingSource : public RTPSource
+{
+	DWORD lostPackets;
+	DWORD totalPacketsSinceLastSR;
+	DWORD totalBytesSinceLastSR;
+	DWORD minExtSeqNumSinceLastSR ;
+	DWORD lostPacketsSinceLastSR;
+	QWORD lastReceivedSenderNTPTimestamp;
+	QWORD lastReceivedSenderReport;
+	QWORD lastReport;
+};
+
+struct RTPOutgoingSource : public RTPSource
+{
+	
+	DWORD time;
+	DWORD lastTime;
+	DWORD numPackets;
+	DWORD numRTCPPackets;
+	DWORD totalBytes;
+	DWORD totalRTCPBytes;
+	QWORD lastSenderReport;
+	QWORD lastSenderReportNTP;
+};
+
+struct RTPOutgoingSourceGroup
+{
+	RTPOutgoingSourceGroup(MediaFrame::Type type);
+	RTPOutgoingSourceGroup(std::string &streamId,MediaFrame::Type type);
+	
+	MediaFrame::Type  type;
+	RTPOutgoingSource media;
+	RTPOutgoingSource fec;
+	RTPOutgoingSource rtx;
+};
+
+struct RTPIncomingSourceGroup
+{
+	RTPIncomingSourceGroup(MediaFrame::Type type);
+	
+	MediaFrame::Type  type;
+	RTPIncomingSource media;
+	RTPIncomingSource fec;
+	RTPIncomingSource rtx;
+};
+
+
 %include "../media-server/include/DTLSICETransport.h"
 %include "../media-server/include/RTPBundleTransport.h"
 %include "../media-server/include/mp4recorder.h"
 %include "../media-server/include/rtp/RTPStreamTransponder.h"
+
 
 
 class StringFacade : private std::string

@@ -1488,63 +1488,49 @@ fail: ;
 #define SWIGTYPE_p_DTLSICETransport swig_types[4]
 #define SWIGTYPE_p_DTLSICETransport__Sender swig_types[5]
 #define SWIGTYPE_p_ICERemoteCandidate swig_types[6]
-#define SWIGTYPE_p_Listeners swig_types[7]
-#define SWIGTYPE_p_MP4FileHandle swig_types[8]
-#define SWIGTYPE_p_MP4Recorder swig_types[9]
-#define SWIGTYPE_p_MediaFrame swig_types[10]
-#define SWIGTYPE_p_MediaServer swig_types[11]
-#define SWIGTYPE_p_Mutex swig_types[12]
-#define SWIGTYPE_p_Properties swig_types[13]
-#define SWIGTYPE_p_PropertiesFacade swig_types[14]
-#define SWIGTYPE_p_RTCPCompoundPacket swig_types[15]
-#define SWIGTYPE_p_RTCPReport swig_types[16]
-#define SWIGTYPE_p_RTCPSenderReport swig_types[17]
-#define SWIGTYPE_p_RTPBuffer swig_types[18]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[19]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[20]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[21]
-#define SWIGTYPE_p_RTPIncomingSourceGroup__Listener swig_types[22]
-#define SWIGTYPE_p_RTPLostPackets swig_types[23]
-#define SWIGTYPE_p_RTPOrderedPackets swig_types[24]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[25]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[26]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup__Listener swig_types[27]
-#define SWIGTYPE_p_RTPPacket swig_types[28]
-#define SWIGTYPE_p_RTPReceiver swig_types[29]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[30]
-#define SWIGTYPE_p_RTPSender swig_types[31]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[32]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[33]
-#define SWIGTYPE_p_RTPSource swig_types[34]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[35]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[36]
-#define SWIGTYPE_p_RecorderControl__Type swig_types[37]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[38]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[39]
-#define SWIGTYPE_p_StringFacade swig_types[40]
-#define SWIGTYPE_p_TextFrame swig_types[41]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[42]
-#define SWIGTYPE_p_VideoFrame swig_types[43]
-#define SWIGTYPE_p_char swig_types[44]
-#define SWIGTYPE_p_int swig_types[45]
-#define SWIGTYPE_p_long_long swig_types[46]
-#define SWIGTYPE_p_mp4track swig_types[47]
-#define SWIGTYPE_p_short swig_types[48]
-#define SWIGTYPE_p_signed_char swig_types[49]
-#define SWIGTYPE_p_std__listT_RTCPRTPFeedback__NACKField_p_t swig_types[50]
-#define SWIGTYPE_p_std__mapT_unsigned_int_RTPPacket_p_t swig_types[51]
-#define SWIGTYPE_p_std__setT_RTPIncomingSourceGroup__Listener_p_t swig_types[52]
-#define SWIGTYPE_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t swig_types[53]
-#define SWIGTYPE_p_std__string swig_types[54]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[55]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[56]
-#define SWIGTYPE_p_unsigned_char swig_types[57]
-#define SWIGTYPE_p_unsigned_int swig_types[58]
-#define SWIGTYPE_p_unsigned_long_long swig_types[59]
-#define SWIGTYPE_p_unsigned_short swig_types[60]
-#define SWIGTYPE_p_void swig_types[61]
-static swig_type_info *swig_types[63];
-static swig_module_info swig_module = {swig_types, 62, 0, 0, 0, 0};
+#define SWIGTYPE_p_MP4FileHandle swig_types[7]
+#define SWIGTYPE_p_MP4Recorder swig_types[8]
+#define SWIGTYPE_p_MediaFrame swig_types[9]
+#define SWIGTYPE_p_MediaServer swig_types[10]
+#define SWIGTYPE_p_Properties swig_types[11]
+#define SWIGTYPE_p_PropertiesFacade swig_types[12]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[13]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[14]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[15]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[16]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[17]
+#define SWIGTYPE_p_RTPPacket swig_types[18]
+#define SWIGTYPE_p_RTPReceiver swig_types[19]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[20]
+#define SWIGTYPE_p_RTPSender swig_types[21]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[22]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[23]
+#define SWIGTYPE_p_RTPSource swig_types[24]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[25]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[26]
+#define SWIGTYPE_p_RecorderControl__Type swig_types[27]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[28]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[29]
+#define SWIGTYPE_p_StringFacade swig_types[30]
+#define SWIGTYPE_p_TextFrame swig_types[31]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[32]
+#define SWIGTYPE_p_VideoFrame swig_types[33]
+#define SWIGTYPE_p_char swig_types[34]
+#define SWIGTYPE_p_int swig_types[35]
+#define SWIGTYPE_p_long_long swig_types[36]
+#define SWIGTYPE_p_mp4track swig_types[37]
+#define SWIGTYPE_p_short swig_types[38]
+#define SWIGTYPE_p_signed_char swig_types[39]
+#define SWIGTYPE_p_std__string swig_types[40]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[41]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[42]
+#define SWIGTYPE_p_unsigned_char swig_types[43]
+#define SWIGTYPE_p_unsigned_int swig_types[44]
+#define SWIGTYPE_p_unsigned_long_long swig_types[45]
+#define SWIGTYPE_p_unsigned_short swig_types[46]
+#define SWIGTYPE_p_void swig_types[47]
+static swig_type_info *swig_types[49];
+static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1874,9 +1860,6 @@ private:
 
 
 
-
-
-
 #include <stdint.h>		// Use the C99 official header
 
 
@@ -2189,29 +2172,6 @@ v8::Handle<v8::Value> SWIG_From_unsigned_SS_long_SS_long  (unsigned long long va
 #endif
 
 
-SWIGINTERN int
-SWIG_AsVal_unsigned_SS_short (v8::Handle<v8::Value> obj, unsigned short *val)
-{
-  unsigned long v;
-  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v > USHRT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = (unsigned short)(v);
-    }
-  }  
-  return res;
-}
-
-
-SWIGINTERNINLINE v8::Handle<v8::Value>
-SWIG_From_unsigned_SS_short  (unsigned short value)
-{    
-  return SWIG_From_unsigned_SS_long  (value);
-}
-
-
 #define SWIGV8_INIT medooze_initialize
 
 
@@ -2221,11 +2181,8 @@ SWIGV8_ClientData _exports_MediaFrame_clientData;
 SWIGV8_ClientData _exports_RTPSource_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSource_clientData;
 SWIGV8_ClientData _exports_RTPOutgoingSource_clientData;
-SWIGV8_ClientData _exports_RTPLostPackets_clientData;
 SWIGV8_ClientData _exports_RTPOutgoingSourceGroup_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSourceGroup_clientData;
-SWIGV8_ClientData _exports_RTPSender_clientData;
-SWIGV8_ClientData _exports_RTPReceiver_clientData;
 SWIGV8_ClientData _exports_DTLSICETransport_clientData;
 SWIGV8_ClientData _exports_RTPBundleTransport_clientData;
 SWIGV8_ClientData _exports_mp4track_clientData;
@@ -5608,61 +5565,6 @@ static void _wrap_delete_RTPSource(v8::Persistent<v8::Value> object, void *param
       }
 
 
-static SwigV8ReturnValue _wrap_RTPSource_CreateSenderReport(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPSource *arg1 = (RTPSource *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTCPCompoundPacket *result = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPSource_CreateSenderReport.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_CreateSenderReport" "', argument " "1"" of type '" "RTPSource *""'"); 
-  }
-  arg1 = (RTPSource *)(argp1);
-  result = (RTCPCompoundPacket *)(arg1)->CreateSenderReport();
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTCPCompoundPacket, 0 |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPSource_Reset(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPSource *arg1 = (RTPSource *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPSource_Reset.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_Reset" "', argument " "1"" of type '" "RTPSource *""'"); 
-  }
-  arg1 = (RTPSource *)(argp1);
-  (arg1)->Reset();
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static void _wrap_RTPIncomingSource_lostPackets_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
   const SwigV8PropertyCallbackInfoVoid &info) {
   SWIGV8_HANDLESCOPE();
@@ -6138,33 +6040,6 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_RTPIncomingSource_Reset(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSource_Reset.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_Reset" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
-  }
-  arg1 = (RTPIncomingSource *)(argp1);
-  (arg1)->Reset();
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
 static void _wrap_delete_RTPIncomingSource(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
@@ -6197,43 +6072,6 @@ static void _wrap_delete_RTPIncomingSource(v8::Persistent<v8::Value> object, voi
         object.Clear();
 #endif
       }
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSource_CreateReport(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
-  uint64_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned long long val2 ;
-  int ecode2 = 0 ;
-  RTCPReport *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSource_CreateReport.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_CreateReport" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
-  }
-  arg1 = (RTPIncomingSource *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_CreateReport" "', argument " "2"" of type '" "uint64_t""'");
-  } 
-  arg2 = (uint64_t)(val2);
-  result = (RTCPReport *)(arg1)->CreateReport(arg2);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTCPReport, 0 |  0 );
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
 
 
 static void _wrap_RTPOutgoingSource_time_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
@@ -6745,316 +6583,6 @@ static void _wrap_delete_RTPOutgoingSource(v8::Persistent<v8::Value> object, voi
       }
 
 
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_Reset(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSource_Reset.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_Reset" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-  }
-  arg1 = (RTPOutgoingSource *)(argp1);
-  (arg1)->Reset();
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_CreateSenderReport(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-  uint64_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned long long val2 ;
-  int ecode2 = 0 ;
-  RTCPSenderReport *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSource_CreateSenderReport.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_CreateSenderReport" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-  }
-  arg1 = (RTPOutgoingSource *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_CreateSenderReport" "', argument " "2"" of type '" "uint64_t""'");
-  } 
-  arg2 = (uint64_t)(val2);
-  result = (RTCPSenderReport *)(arg1)->CreateSenderReport(arg2);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTCPSenderReport, 0 |  0 );
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_IsLastSenderReportNTP(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-  uint32_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  bool result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSource_IsLastSenderReportNTP.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_IsLastSenderReportNTP" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-  }
-  arg1 = (RTPOutgoingSource *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_IsLastSenderReportNTP" "', argument " "2"" of type '" "uint32_t""'");
-  } 
-  arg2 = (uint32_t)(val2);
-  result = (bool)(arg1)->IsLastSenderReportNTP(arg2);
-  jsresult = SWIG_From_bool((bool)(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_new_RTPLostPackets(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Object> self = args.Holder();
-  uint16_t arg1 ;
-  unsigned short val1 ;
-  int ecode1 = 0 ;
-  RTPLostPackets *result;
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPLostPackets.");
-  ecode1 = SWIG_AsVal_unsigned_SS_short(args[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RTPLostPackets" "', argument " "1"" of type '" "uint16_t""'");
-  } 
-  arg1 = (uint16_t)(val1);
-  result = (RTPLostPackets *)new RTPLostPackets(arg1);
-  
-  
-  
-  
-  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_RTPLostPackets, SWIG_POINTER_OWN);
-  SWIGV8_RETURN(self);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_RTPLostPackets(v8::Persistent<v8::Value> object, void *parameter) {
-  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_RTPLostPackets(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
-    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_RTPLostPackets(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
-#else
-      static void _wrap_delete_RTPLostPackets(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
-        v8::Local<v8::Object> object = data.GetValue();
-        SWIGV8_Proxy *proxy = data.GetParameter();
-#endif
-        
-        if(proxy->swigCMemOwn && proxy->swigCObject) {
-          RTPLostPackets * arg1 = (RTPLostPackets *)proxy->swigCObject;
-          delete arg1;
-        }
-        delete proxy;
-        
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-        object.Dispose();
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-        object.Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
-        object->Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-        object->Dispose();
-#else
-        object.Clear();
-#endif
-      }
-
-
-static SwigV8ReturnValue _wrap_RTPLostPackets_Reset(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPLostPackets *arg1 = (RTPLostPackets *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPLostPackets_Reset.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPLostPackets, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPLostPackets_Reset" "', argument " "1"" of type '" "RTPLostPackets *""'"); 
-  }
-  arg1 = (RTPLostPackets *)(argp1);
-  (arg1)->Reset();
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPLostPackets_AddPacket(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPLostPackets *arg1 = (RTPLostPackets *) 0 ;
-  RTPPacket *arg2 = (RTPPacket *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  uint16_t result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPLostPackets_AddPacket.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPLostPackets, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPLostPackets_AddPacket" "', argument " "1"" of type '" "RTPLostPackets *""'"); 
-  }
-  arg1 = (RTPLostPackets *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPPacket, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPLostPackets_AddPacket" "', argument " "2"" of type '" "RTPPacket const *""'"); 
-  }
-  arg2 = (RTPPacket *)(argp2);
-  result = (uint16_t)(arg1)->AddPacket((RTPPacket const *)arg2);
-  jsresult = SWIG_From_unsigned_SS_short((unsigned short)(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPLostPackets_GetNacks(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPLostPackets *arg1 = (RTPLostPackets *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::list< RTCPRTPFeedback::NACKField * > result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPLostPackets_GetNacks.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPLostPackets, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPLostPackets_GetNacks" "', argument " "1"" of type '" "RTPLostPackets *""'"); 
-  }
-  arg1 = (RTPLostPackets *)(argp1);
-  result = (arg1)->GetNacks();
-  jsresult = SWIG_NewPointerObj((new std::list< RTCPRTPFeedback::NACKField * >((const std::list< RTCPRTPFeedback::NACKField * >&)(result))), SWIGTYPE_p_std__listT_RTCPRTPFeedback__NACKField_p_t, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPLostPackets_Dump(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPLostPackets *arg1 = (RTPLostPackets *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPLostPackets_Dump.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPLostPackets, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPLostPackets_Dump" "', argument " "1"" of type '" "RTPLostPackets *""'"); 
-  }
-  arg1 = (RTPLostPackets *)(argp1);
-  (arg1)->Dump();
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPLostPackets_GetTotal(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPLostPackets *arg1 = (RTPLostPackets *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint32_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPLostPackets_GetTotal.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPLostPackets, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPLostPackets_GetTotal" "', argument " "1"" of type '" "RTPLostPackets *""'"); 
-  }
-  arg1 = (RTPLostPackets *)(argp1);
-  result = (uint32_t)(arg1)->GetTotal();
-  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
   SWIGV8_HANDLESCOPE();
   
@@ -7167,213 +6695,6 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup(const SwigV8Arguments 
   
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_AddListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  RTPOutgoingSourceGroup::Listener *arg2 = (RTPOutgoingSourceGroup::Listener *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSourceGroup_AddListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_AddListener" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPOutgoingSourceGroup__Listener, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_AddListener" "', argument " "2"" of type '" "RTPOutgoingSourceGroup::Listener *""'"); 
-  }
-  arg2 = (RTPOutgoingSourceGroup::Listener *)(argp2);
-  (arg1)->AddListener(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_RemoveListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  RTPOutgoingSourceGroup::Listener *arg2 = (RTPOutgoingSourceGroup::Listener *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSourceGroup_RemoveListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_RemoveListener" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPOutgoingSourceGroup__Listener, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_RemoveListener" "', argument " "2"" of type '" "RTPOutgoingSourceGroup::Listener *""'"); 
-  }
-  arg2 = (RTPOutgoingSourceGroup::Listener *)(argp2);
-  (arg1)->RemoveListener(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_onPLIRequest(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  uint32_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSourceGroup_onPLIRequest.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_onPLIRequest" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSourceGroup_onPLIRequest" "', argument " "2"" of type '" "uint32_t""'");
-  } 
-  arg2 = (uint32_t)(val2);
-  (arg1)->onPLIRequest(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_GetSource(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  uint32_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  RTPOutgoingSource *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSourceGroup_GetSource.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_GetSource" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSourceGroup_GetSource" "', argument " "2"" of type '" "uint32_t""'");
-  } 
-  arg2 = (uint32_t)(val2);
-  result = (RTPOutgoingSource *)(arg1)->GetSource(arg2);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static void _wrap_RTPOutgoingSourceGroup_streamId_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  std::string arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_streamId_set" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  {
-    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__string,  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_streamId_set" "', argument " "2"" of type '" "std::string""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPOutgoingSourceGroup_streamId_set" "', argument " "2"" of type '" "std::string""'");
-    } else {
-      arg2 = *((std::string *)(argp2));
-    }
-  }
-  if (arg1) (arg1)->streamId = arg2;
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_streamId_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  std::string result;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_streamId_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  result =  ((arg1)->streamId);
-  jsresult = SWIG_NewPointerObj((new std::string((const std::string&)(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
 }
 
 
@@ -7605,187 +6926,6 @@ fail:
 }
 
 
-static void _wrap_RTPOutgoingSourceGroup_packets_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  RTPOutgoingSourceGroup::RTPOrderedPackets arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_packets_set" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  {
-    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__mapT_unsigned_int_RTPPacket_p_t,  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_packets_set" "', argument " "2"" of type '" "RTPOutgoingSourceGroup::RTPOrderedPackets""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPOutgoingSourceGroup_packets_set" "', argument " "2"" of type '" "RTPOutgoingSourceGroup::RTPOrderedPackets""'");
-    } else {
-      arg2 = *((RTPOutgoingSourceGroup::RTPOrderedPackets *)(argp2));
-    }
-  }
-  if (arg1) (arg1)->packets = arg2;
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_packets_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPOutgoingSourceGroup::RTPOrderedPackets result;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_packets_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  result =  ((arg1)->packets);
-  jsresult = SWIG_NewPointerObj((new RTPOutgoingSourceGroup::RTPOrderedPackets((const RTPOutgoingSourceGroup::RTPOrderedPackets&)(result))), SWIGTYPE_p_std__mapT_unsigned_int_RTPPacket_p_t, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
-static void _wrap_RTPOutgoingSourceGroup_mutex_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  Mutex arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_mutex_set" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  {
-    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_Mutex,  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_mutex_set" "', argument " "2"" of type '" "Mutex""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPOutgoingSourceGroup_mutex_set" "', argument " "2"" of type '" "Mutex""'");
-    } else {
-      arg2 = *((Mutex *)(argp2));
-    }
-  }
-  if (arg1) (arg1)->mutex = arg2;
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_mutex_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  Mutex result;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_mutex_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  result =  ((arg1)->mutex);
-  jsresult = SWIG_NewPointerObj((new Mutex((const Mutex&)(result))), SWIGTYPE_p_Mutex, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
-static void _wrap_RTPOutgoingSourceGroup_listeners_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  RTPOutgoingSourceGroup::Listeners *arg2 = (RTPOutgoingSourceGroup::Listeners *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_listeners_set" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(value, &argp2,SWIGTYPE_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_listeners_set" "', argument " "2"" of type '" "RTPOutgoingSourceGroup::Listeners *""'"); 
-  }
-  arg2 = (RTPOutgoingSourceGroup::Listeners *)(argp2);
-  if (arg1) (arg1)->listeners = *arg2;
-  
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_listeners_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPOutgoingSourceGroup::Listeners *result = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_listeners_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg1 = (RTPOutgoingSourceGroup *)(argp1);
-  result = (RTPOutgoingSourceGroup::Listeners *)& ((arg1)->listeners);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t, 0 |  0 );
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
 static void _wrap_delete_RTPOutgoingSourceGroup(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
@@ -7848,151 +6988,6 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_GetSource(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  uint32_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  RTPIncomingSource *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_GetSource.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_GetSource" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSourceGroup_GetSource" "', argument " "2"" of type '" "uint32_t""'");
-  } 
-  arg2 = (uint32_t)(val2);
-  result = (RTPIncomingSource *)(arg1)->GetSource(arg2);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_AddListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPIncomingSourceGroup::Listener *arg2 = (RTPIncomingSourceGroup::Listener *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_AddListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_AddListener" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup__Listener, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_AddListener" "', argument " "2"" of type '" "RTPIncomingSourceGroup::Listener *""'"); 
-  }
-  arg2 = (RTPIncomingSourceGroup::Listener *)(argp2);
-  (arg1)->AddListener(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_RemoveListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPIncomingSourceGroup::Listener *arg2 = (RTPIncomingSourceGroup::Listener *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_RemoveListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_RemoveListener" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup__Listener, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_RemoveListener" "', argument " "2"" of type '" "RTPIncomingSourceGroup::Listener *""'"); 
-  }
-  arg2 = (RTPIncomingSourceGroup::Listener *)(argp2);
-  (arg1)->RemoveListener(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_onRTP(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPPacket *arg2 = (RTPPacket *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_onRTP.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_onRTP" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPPacket, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_onRTP" "', argument " "2"" of type '" "RTPPacket *""'"); 
-  }
-  arg2 = (RTPPacket *)(argp2);
-  (arg1)->onRTP(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static void _wrap_RTPIncomingSourceGroup_type_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
   const SwigV8PropertyCallbackInfoVoid &info) {
   SWIGV8_HANDLESCOPE();
@@ -8040,125 +7035,6 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_type_get(v8::Local<v8::Str
   arg1 = (RTPIncomingSourceGroup *)(argp1);
   result = (MediaFrame::Type) ((arg1)->type);
   jsresult = SWIG_From_int((int)(result));
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
-static void _wrap_RTPIncomingSourceGroup_losts_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPLostPackets *arg2 = (RTPLostPackets *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_losts_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(value, &argp2,SWIGTYPE_p_RTPLostPackets, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_losts_set" "', argument " "2"" of type '" "RTPLostPackets *""'"); 
-  }
-  arg2 = (RTPLostPackets *)(argp2);
-  if (arg1) (arg1)->losts = *arg2;
-  
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_losts_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPLostPackets *result = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_losts_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  result = (RTPLostPackets *)& ((arg1)->losts);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPLostPackets, 0 |  0 );
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
-static void _wrap_RTPIncomingSourceGroup_packets_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPBuffer arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_packets_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  {
-    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_RTPBuffer,  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_packets_set" "', argument " "2"" of type '" "RTPBuffer""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_packets_set" "', argument " "2"" of type '" "RTPBuffer""'");
-    } else {
-      arg2 = *((RTPBuffer *)(argp2));
-    }
-  }
-  if (arg1) (arg1)->packets = arg2;
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_packets_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPBuffer result;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_packets_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  result =  ((arg1)->packets);
-  jsresult = SWIG_NewPointerObj((new RTPBuffer((const RTPBuffer&)(result))), SWIGTYPE_p_RTPBuffer, SWIG_POINTER_OWN |  0 );
   
   
   SWIGV8_RETURN_INFO(jsresult, info);
@@ -8340,125 +7216,6 @@ fail:
 }
 
 
-static void _wrap_RTPIncomingSourceGroup_mutex_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  Mutex arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_mutex_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  {
-    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_Mutex,  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_mutex_set" "', argument " "2"" of type '" "Mutex""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_mutex_set" "', argument " "2"" of type '" "Mutex""'");
-    } else {
-      arg2 = *((Mutex *)(argp2));
-    }
-  }
-  if (arg1) (arg1)->mutex = arg2;
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_mutex_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  Mutex result;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_mutex_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  result =  ((arg1)->mutex);
-  jsresult = SWIG_NewPointerObj((new Mutex((const Mutex&)(result))), SWIGTYPE_p_Mutex, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
-static void _wrap_RTPIncomingSourceGroup_listeners_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
-  const SwigV8PropertyCallbackInfoVoid &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPIncomingSourceGroup::Listeners *arg2 = (RTPIncomingSourceGroup::Listeners *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_listeners_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(value, &argp2,SWIGTYPE_p_std__setT_RTPIncomingSourceGroup__Listener_p_t, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_listeners_set" "', argument " "2"" of type '" "RTPIncomingSourceGroup::Listeners *""'"); 
-  }
-  arg2 = (RTPIncomingSourceGroup::Listeners *)(argp2);
-  if (arg1) (arg1)->listeners = *arg2;
-  
-  
-  
-  goto fail;
-fail:
-  return;
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_listeners_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPIncomingSourceGroup::Listeners *result = 0 ;
-  
-  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_listeners_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  result = (RTPIncomingSourceGroup::Listeners *)& ((arg1)->listeners);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__setT_RTPIncomingSourceGroup__Listener_p_t, 0 |  0 );
-  
-  
-  SWIGV8_RETURN_INFO(jsresult, info);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
 static void _wrap_delete_RTPIncomingSourceGroup(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
@@ -8491,169 +7248,6 @@ static void _wrap_delete_RTPIncomingSourceGroup(v8::Persistent<v8::Value> object
         object.Clear();
 #endif
       }
-
-
-static SwigV8ReturnValue _wrap_RTPSender_Send(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPSender *arg1 = (RTPSender *) 0 ;
-  RTPPacket *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  int result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPSender_Send.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPSender, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSender_Send" "', argument " "1"" of type '" "RTPSender *""'"); 
-  }
-  arg1 = (RTPSender *)(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_RTPPacket,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPSender_Send" "', argument " "2"" of type '" "RTPPacket &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPSender_Send" "', argument " "2"" of type '" "RTPPacket &""'"); 
-  }
-  arg2 = (RTPPacket *)(argp2);
-  result = (int)(arg1)->Send(*arg2);
-  jsresult = SWIG_From_int((int)(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_RTPSender(v8::Persistent<v8::Value> object, void *parameter) {
-  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_RTPSender(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
-    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_RTPSender(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
-#else
-      static void _wrap_delete_RTPSender(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
-        v8::Local<v8::Object> object = data.GetValue();
-        SWIGV8_Proxy *proxy = data.GetParameter();
-#endif
-        
-        if(proxy->swigCMemOwn && proxy->swigCObject) {
-          RTPSender * arg1 = (RTPSender *)proxy->swigCObject;
-          delete arg1;
-        }
-        delete proxy;
-        
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-        object.Dispose();
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-        object.Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
-        object->Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-        object->Dispose();
-#else
-        object.Clear();
-#endif
-      }
-
-
-static SwigV8ReturnValue _wrap_new_veto_RTPSender(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIG_exception(SWIG_ERROR, "Class RTPSender can not be instantiated");
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPReceiver_SendPLI(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  RTPReceiver *arg1 = (RTPReceiver *) 0 ;
-  uint32_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  int result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPReceiver_SendPLI.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPReceiver, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPReceiver_SendPLI" "', argument " "1"" of type '" "RTPReceiver *""'"); 
-  }
-  arg1 = (RTPReceiver *)(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPReceiver_SendPLI" "', argument " "2"" of type '" "uint32_t""'");
-  } 
-  arg2 = (uint32_t)(val2);
-  result = (int)(arg1)->SendPLI(arg2);
-  jsresult = SWIG_From_int((int)(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_RTPReceiver(v8::Persistent<v8::Value> object, void *parameter) {
-  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_RTPReceiver(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
-    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_RTPReceiver(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
-#else
-      static void _wrap_delete_RTPReceiver(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
-        v8::Local<v8::Object> object = data.GetValue();
-        SWIGV8_Proxy *proxy = data.GetParameter();
-#endif
-        
-        if(proxy->swigCMemOwn && proxy->swigCObject) {
-          RTPReceiver * arg1 = (RTPReceiver *)proxy->swigCObject;
-          delete arg1;
-        }
-        delete proxy;
-        
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-        object.Dispose();
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-        object.Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
-        object->Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-        object->Dispose();
-#else
-        object.Clear();
-#endif
-      }
-
-
-static SwigV8ReturnValue _wrap_new_veto_RTPReceiver(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIG_exception(SWIG_ERROR, "Class RTPReceiver can not be instantiated");
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
 
 
 static SwigV8ReturnValue _wrap_new_DTLSICETransport(const SwigV8Arguments &args) {
@@ -9490,6 +8084,34 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_onData(const SwigV8Arguments &ar
   
   
   
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_GetRTT(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_GetRTT.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_GetRTT" "', argument " "1"" of type '" "DTLSICETransport const *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  result = (uint32_t)((DTLSICETransport const *)arg1)->GetRTT();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
   
   
   SWIGV8_RETURN(jsresult);
@@ -12465,14 +11087,14 @@ static void *_p_PropertiesFacadeTo_p_Properties(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_StringFacadeTo_p_std__string(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::string *)  ((StringFacade *) x));
 }
-static void *_p_RTPBundleTransportTo_p_DTLSICETransport__Sender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((DTLSICETransport::Sender *)  ((RTPBundleTransport *) x));
-}
 static void *_p_DTLSICETransportTo_p_RTPSender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSender *)  ((DTLSICETransport *) x));
 }
 static void *_p_RTPSessionFacadeTo_p_RTPSender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSender *)  ((RTPSessionFacade *) x));
+}
+static void *_p_RTPBundleTransportTo_p_DTLSICETransport__Sender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((DTLSICETransport::Sender *)  ((RTPBundleTransport *) x));
 }
 static void *_p_DTLSICETransportTo_p_RTPReceiver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPReceiver *)  ((DTLSICETransport *) x));
@@ -12486,21 +11108,6 @@ static void *_p_RTPIncomingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_RTPOutgoingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSource *)  ((RTPOutgoingSource *) x));
 }
-static void *_p_RTPStreamTransponderTo_p_RTPIncomingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RTPIncomingSourceGroup::Listener *)  ((RTPStreamTransponder *) x));
-}
-static void *_p_RTPStreamTransponderFacadeTo_p_RTPIncomingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RTPIncomingSourceGroup::Listener *)  ((RTPStreamTransponderFacade *) x));
-}
-static void *_p_StreamTrackDepacketizerTo_p_RTPIncomingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RTPIncomingSourceGroup::Listener *)  ((StreamTrackDepacketizer *) x));
-}
-static void *_p_RTPStreamTransponderTo_p_RTPOutgoingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RTPOutgoingSourceGroup::Listener *)  ((RTPStreamTransponder *) x));
-}
-static void *_p_RTPStreamTransponderFacadeTo_p_RTPOutgoingSourceGroup__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RTPOutgoingSourceGroup::Listener *)  ((RTPStreamTransponderFacade *) x));
-}
 static swig_type_info _swigt__p_AudioCodec__Type = {"_p_AudioCodec__Type", "AudioCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioFrame = {"_p_AudioFrame", "AudioFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ByteBuffer = {"_p_ByteBuffer", "ByteBuffer *|p_ByteBuffer", 0, 0, (void*)0, 0};
@@ -12508,31 +11115,21 @@ static swig_type_info _swigt__p_DTLSConnection__Suite = {"_p_DTLSConnection__Sui
 static swig_type_info _swigt__p_DTLSICETransport = {"_p_DTLSICETransport", "p_DTLSICETransport|DTLSICETransport *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransport__Sender = {"_p_DTLSICETransport__Sender", "DTLSICETransport::Sender *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ICERemoteCandidate = {"_p_ICERemoteCandidate", "ICERemoteCandidate *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_Listeners = {"_p_Listeners", "Listeners *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MP4FileHandle = {"_p_MP4FileHandle", "MP4FileHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MP4Recorder = {"_p_MP4Recorder", "p_MP4Recorder|MP4Recorder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrame = {"_p_MediaFrame", "p_MediaFrame|MediaFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaServer = {"_p_MediaServer", "p_MediaServer", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_Mutex = {"_p_Mutex", "Mutex *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Properties = {"_p_Properties", "Properties *|p_Properties", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PropertiesFacade = {"_p_PropertiesFacade", "PropertiesFacade *|p_PropertiesFacade", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTCPCompoundPacket = {"_p_RTCPCompoundPacket", "RTCPCompoundPacket *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTCPReport = {"_p_RTCPReport", "RTCPReport *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTCPSenderReport = {"_p_RTCPSenderReport", "RTCPSenderReport *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPBuffer = {"_p_RTPBuffer", "RTPBuffer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPBundleTransport = {"_p_RTPBundleTransport", "p_RTPBundleTransport|RTPBundleTransport *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingSource = {"_p_RTPIncomingSource", "p_RTPIncomingSource|RTPIncomingSource *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingSourceGroup = {"_p_RTPIncomingSourceGroup", "RTPIncomingSourceGroup *|p_RTPIncomingSourceGroup", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPIncomingSourceGroup__Listener = {"_p_RTPIncomingSourceGroup__Listener", "RTPIncomingSourceGroup::Listener *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPLostPackets = {"_p_RTPLostPackets", "RTPLostPackets *|p_RTPLostPackets", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPOrderedPackets = {"_p_RTPOrderedPackets", "RTPOrderedPackets *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPOutgoingSource = {"_p_RTPOutgoingSource", "p_RTPOutgoingSource|RTPOutgoingSource *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPOutgoingSourceGroup = {"_p_RTPOutgoingSourceGroup", "RTPOutgoingSourceGroup *|p_RTPOutgoingSourceGroup", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPOutgoingSourceGroup__Listener = {"_p_RTPOutgoingSourceGroup__Listener", "RTPOutgoingSourceGroup::Listener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPPacket = {"_p_RTPPacket", "RTPPacket *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPReceiver = {"_p_RTPReceiver", "RTPReceiver *|p_RTPReceiver", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RTPReceiver = {"_p_RTPReceiver", "RTPReceiver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPReceiverFacade = {"_p_RTPReceiverFacade", "p_RTPReceiverFacade|RTPReceiverFacade *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPSender = {"_p_RTPSender", "RTPSender *|p_RTPSender", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RTPSender = {"_p_RTPSender", "RTPSender *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPSenderFacade = {"_p_RTPSenderFacade", "p_RTPSenderFacade|RTPSenderFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPSessionFacade = {"_p_RTPSessionFacade", "p_RTPSessionFacade|RTPSessionFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPSource = {"_p_RTPSource", "p_RTPSource|RTPSource *", 0, 0, (void*)0, 0};
@@ -12551,10 +11148,6 @@ static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|in
 static swig_type_info _swigt__p_mp4track = {"_p_mp4track", "p_mp4track|mp4track *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__listT_RTCPRTPFeedback__NACKField_p_t = {"_p_std__listT_RTCPRTPFeedback__NACKField_p_t", "std::list< RTCPRTPFeedback::NACKField * > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__mapT_unsigned_int_RTPPacket_p_t = {"_p_std__mapT_unsigned_int_RTPPacket_p_t", "RTPOutgoingSourceGroup::RTPOrderedPackets *|std::map< unsigned int,RTPPacket * > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__setT_RTPIncomingSourceGroup__Listener_p_t = {"_p_std__setT_RTPIncomingSourceGroup__Listener_p_t", "RTPIncomingSourceGroup::Listeners *|std::set< RTPIncomingSourceGroup::Listener * > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__setT_RTPOutgoingSourceGroup__Listener_p_t = {"_p_std__setT_RTPOutgoingSourceGroup__Listener_p_t", "RTPOutgoingSourceGroup::Listeners *|std::set< RTPOutgoingSourceGroup::Listener * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_MediaFrame__RtpPacketization_p_t = {"_p_std__vectorT_MediaFrame__RtpPacketization_p_t", "MediaFrame::RtpPacketizationInfo *|std::vector< MediaFrame::RtpPacketization * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_Properties_t = {"_p_std__vectorT_Properties_t", "std::vector< Properties > *", 0, 0, (void*)0, 0};
@@ -12572,27 +11165,17 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_DTLSICETransport,
   &_swigt__p_DTLSICETransport__Sender,
   &_swigt__p_ICERemoteCandidate,
-  &_swigt__p_Listeners,
   &_swigt__p_MP4FileHandle,
   &_swigt__p_MP4Recorder,
   &_swigt__p_MediaFrame,
   &_swigt__p_MediaServer,
-  &_swigt__p_Mutex,
   &_swigt__p_Properties,
   &_swigt__p_PropertiesFacade,
-  &_swigt__p_RTCPCompoundPacket,
-  &_swigt__p_RTCPReport,
-  &_swigt__p_RTCPSenderReport,
-  &_swigt__p_RTPBuffer,
   &_swigt__p_RTPBundleTransport,
   &_swigt__p_RTPIncomingSource,
   &_swigt__p_RTPIncomingSourceGroup,
-  &_swigt__p_RTPIncomingSourceGroup__Listener,
-  &_swigt__p_RTPLostPackets,
-  &_swigt__p_RTPOrderedPackets,
   &_swigt__p_RTPOutgoingSource,
   &_swigt__p_RTPOutgoingSourceGroup,
-  &_swigt__p_RTPOutgoingSourceGroup__Listener,
   &_swigt__p_RTPPacket,
   &_swigt__p_RTPReceiver,
   &_swigt__p_RTPReceiverFacade,
@@ -12615,10 +11198,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mp4track,
   &_swigt__p_short,
   &_swigt__p_signed_char,
-  &_swigt__p_std__listT_RTCPRTPFeedback__NACKField_p_t,
-  &_swigt__p_std__mapT_unsigned_int_RTPPacket_p_t,
-  &_swigt__p_std__setT_RTPIncomingSourceGroup__Listener_p_t,
-  &_swigt__p_std__setT_RTPOutgoingSourceGroup__Listener_p_t,
   &_swigt__p_std__string,
   &_swigt__p_std__vectorT_MediaFrame__RtpPacketization_p_t,
   &_swigt__p_std__vectorT_Properties_t,
@@ -12636,27 +11215,17 @@ static swig_cast_info _swigc__p_DTLSConnection__Suite[] = {  {&_swigt__p_DTLSCon
 static swig_cast_info _swigc__p_DTLSICETransport[] = {  {&_swigt__p_DTLSICETransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransport__Sender[] = {  {&_swigt__p_RTPBundleTransport, _p_RTPBundleTransportTo_p_DTLSICETransport__Sender, 0, 0},  {&_swigt__p_DTLSICETransport__Sender, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ICERemoteCandidate[] = {  {&_swigt__p_ICERemoteCandidate, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Listeners[] = {  {&_swigt__p_Listeners, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MP4FileHandle[] = {  {&_swigt__p_MP4FileHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MP4Recorder[] = {  {&_swigt__p_MP4Recorder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrame[] = {  {&_swigt__p_MediaFrame, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Mutex[] = {  {&_swigt__p_Mutex, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Properties[] = {  {&_swigt__p_Properties, 0, 0, 0},  {&_swigt__p_PropertiesFacade, _p_PropertiesFacadeTo_p_Properties, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PropertiesFacade[] = {  {&_swigt__p_PropertiesFacade, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTCPCompoundPacket[] = {  {&_swigt__p_RTCPCompoundPacket, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTCPReport[] = {  {&_swigt__p_RTCPReport, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTCPSenderReport[] = {  {&_swigt__p_RTCPSenderReport, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPBuffer[] = {  {&_swigt__p_RTPBuffer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPBundleTransport[] = {  {&_swigt__p_RTPBundleTransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingSource[] = {  {&_swigt__p_RTPIncomingSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingSourceGroup[] = {  {&_swigt__p_RTPIncomingSourceGroup, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPIncomingSourceGroup__Listener[] = {  {&_swigt__p_RTPStreamTransponder, _p_RTPStreamTransponderTo_p_RTPIncomingSourceGroup__Listener, 0, 0},  {&_swigt__p_RTPIncomingSourceGroup__Listener, 0, 0, 0},  {&_swigt__p_RTPStreamTransponderFacade, _p_RTPStreamTransponderFacadeTo_p_RTPIncomingSourceGroup__Listener, 0, 0},  {&_swigt__p_StreamTrackDepacketizer, _p_StreamTrackDepacketizerTo_p_RTPIncomingSourceGroup__Listener, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPLostPackets[] = {  {&_swigt__p_RTPLostPackets, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPOrderedPackets[] = {  {&_swigt__p_RTPOrderedPackets, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOutgoingSource[] = {  {&_swigt__p_RTPOutgoingSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOutgoingSourceGroup[] = {  {&_swigt__p_RTPOutgoingSourceGroup, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPOutgoingSourceGroup__Listener[] = {  {&_swigt__p_RTPStreamTransponder, _p_RTPStreamTransponderTo_p_RTPOutgoingSourceGroup__Listener, 0, 0},  {&_swigt__p_RTPOutgoingSourceGroup__Listener, 0, 0, 0},  {&_swigt__p_RTPStreamTransponderFacade, _p_RTPStreamTransponderFacadeTo_p_RTPOutgoingSourceGroup__Listener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPPacket[] = {  {&_swigt__p_RTPPacket, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPReceiver[] = {  {&_swigt__p_DTLSICETransport, _p_DTLSICETransportTo_p_RTPReceiver, 0, 0},  {&_swigt__p_RTPReceiver, 0, 0, 0},  {&_swigt__p_RTPSessionFacade, _p_RTPSessionFacadeTo_p_RTPReceiver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPReceiverFacade[] = {  {&_swigt__p_RTPReceiverFacade, 0, 0, 0},{0, 0, 0, 0}};
@@ -12679,10 +11248,6 @@ static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0}
 static swig_cast_info _swigc__p_mp4track[] = {  {&_swigt__p_mp4track, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__listT_RTCPRTPFeedback__NACKField_p_t[] = {  {&_swigt__p_std__listT_RTCPRTPFeedback__NACKField_p_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__mapT_unsigned_int_RTPPacket_p_t[] = {  {&_swigt__p_std__mapT_unsigned_int_RTPPacket_p_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__setT_RTPIncomingSourceGroup__Listener_p_t[] = {  {&_swigt__p_std__setT_RTPIncomingSourceGroup__Listener_p_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__setT_RTPOutgoingSourceGroup__Listener_p_t[] = {  {&_swigt__p_std__setT_RTPOutgoingSourceGroup__Listener_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},  {&_swigt__p_StringFacade, _p_StringFacadeTo_p_std__string, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_MediaFrame__RtpPacketization_p_t[] = {  {&_swigt__p_std__vectorT_MediaFrame__RtpPacketization_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_Properties_t[] = {  {&_swigt__p_std__vectorT_Properties_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -12700,27 +11265,17 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_DTLSICETransport,
   _swigc__p_DTLSICETransport__Sender,
   _swigc__p_ICERemoteCandidate,
-  _swigc__p_Listeners,
   _swigc__p_MP4FileHandle,
   _swigc__p_MP4Recorder,
   _swigc__p_MediaFrame,
   _swigc__p_MediaServer,
-  _swigc__p_Mutex,
   _swigc__p_Properties,
   _swigc__p_PropertiesFacade,
-  _swigc__p_RTCPCompoundPacket,
-  _swigc__p_RTCPReport,
-  _swigc__p_RTCPSenderReport,
-  _swigc__p_RTPBuffer,
   _swigc__p_RTPBundleTransport,
   _swigc__p_RTPIncomingSource,
   _swigc__p_RTPIncomingSourceGroup,
-  _swigc__p_RTPIncomingSourceGroup__Listener,
-  _swigc__p_RTPLostPackets,
-  _swigc__p_RTPOrderedPackets,
   _swigc__p_RTPOutgoingSource,
   _swigc__p_RTPOutgoingSourceGroup,
-  _swigc__p_RTPOutgoingSourceGroup__Listener,
   _swigc__p_RTPPacket,
   _swigc__p_RTPReceiver,
   _swigc__p_RTPReceiverFacade,
@@ -12743,10 +11298,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mp4track,
   _swigc__p_short,
   _swigc__p_signed_char,
-  _swigc__p_std__listT_RTCPRTPFeedback__NACKField_p_t,
-  _swigc__p_std__mapT_unsigned_int_RTPPacket_p_t,
-  _swigc__p_std__setT_RTPIncomingSourceGroup__Listener_p_t,
-  _swigc__p_std__setT_RTPOutgoingSourceGroup__Listener_p_t,
   _swigc__p_std__string,
   _swigc__p_std__vectorT_MediaFrame__RtpPacketization_p_t,
   _swigc__p_std__vectorT_Properties_t,
@@ -13100,13 +11651,6 @@ _exports_RTPOutgoingSource_clientData.dtor = _wrap_delete_RTPOutgoingSource;
 if (SWIGTYPE_p_RTPOutgoingSource->clientdata == 0) {
   SWIGTYPE_p_RTPOutgoingSource->clientdata = &_exports_RTPOutgoingSource_clientData;
 }
-/* Name: _exports_RTPLostPackets, Type: p_RTPLostPackets, Dtor: _wrap_delete_RTPLostPackets */
-v8::Handle<v8::FunctionTemplate> _exports_RTPLostPackets_class = SWIGV8_CreateClassTemplate("_exports_RTPLostPackets");
-SWIGV8_SET_CLASS_TEMPL(_exports_RTPLostPackets_clientData.class_templ, _exports_RTPLostPackets_class);
-_exports_RTPLostPackets_clientData.dtor = _wrap_delete_RTPLostPackets;
-if (SWIGTYPE_p_RTPLostPackets->clientdata == 0) {
-  SWIGTYPE_p_RTPLostPackets->clientdata = &_exports_RTPLostPackets_clientData;
-}
 /* Name: _exports_RTPOutgoingSourceGroup, Type: p_RTPOutgoingSourceGroup, Dtor: _wrap_delete_RTPOutgoingSourceGroup */
 v8::Handle<v8::FunctionTemplate> _exports_RTPOutgoingSourceGroup_class = SWIGV8_CreateClassTemplate("_exports_RTPOutgoingSourceGroup");
 SWIGV8_SET_CLASS_TEMPL(_exports_RTPOutgoingSourceGroup_clientData.class_templ, _exports_RTPOutgoingSourceGroup_class);
@@ -13120,20 +11664,6 @@ SWIGV8_SET_CLASS_TEMPL(_exports_RTPIncomingSourceGroup_clientData.class_templ, _
 _exports_RTPIncomingSourceGroup_clientData.dtor = _wrap_delete_RTPIncomingSourceGroup;
 if (SWIGTYPE_p_RTPIncomingSourceGroup->clientdata == 0) {
   SWIGTYPE_p_RTPIncomingSourceGroup->clientdata = &_exports_RTPIncomingSourceGroup_clientData;
-}
-/* Name: _exports_RTPSender, Type: p_RTPSender, Dtor: _wrap_delete_RTPSender */
-v8::Handle<v8::FunctionTemplate> _exports_RTPSender_class = SWIGV8_CreateClassTemplate("_exports_RTPSender");
-SWIGV8_SET_CLASS_TEMPL(_exports_RTPSender_clientData.class_templ, _exports_RTPSender_class);
-_exports_RTPSender_clientData.dtor = _wrap_delete_RTPSender;
-if (SWIGTYPE_p_RTPSender->clientdata == 0) {
-  SWIGTYPE_p_RTPSender->clientdata = &_exports_RTPSender_clientData;
-}
-/* Name: _exports_RTPReceiver, Type: p_RTPReceiver, Dtor: _wrap_delete_RTPReceiver */
-v8::Handle<v8::FunctionTemplate> _exports_RTPReceiver_class = SWIGV8_CreateClassTemplate("_exports_RTPReceiver");
-SWIGV8_SET_CLASS_TEMPL(_exports_RTPReceiver_clientData.class_templ, _exports_RTPReceiver_class);
-_exports_RTPReceiver_clientData.dtor = _wrap_delete_RTPReceiver;
-if (SWIGTYPE_p_RTPReceiver->clientdata == 0) {
-  SWIGTYPE_p_RTPReceiver->clientdata = &_exports_RTPReceiver_clientData;
 }
 /* Name: _exports_DTLSICETransport, Type: p_DTLSICETransport, Dtor: _wrap_delete_DTLSICETransport */
 v8::Handle<v8::FunctionTemplate> _exports_DTLSICETransport_class = SWIGV8_CreateClassTemplate("_exports_DTLSICETransport");
@@ -13292,8 +11822,6 @@ SWIGV8_AddMemberVariable(_exports_RTPSource_class, "numPackets", _wrap_RTPSource
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "numRTCPPackets", _wrap_RTPSource_numRTCPPackets_get, _wrap_RTPSource_numRTCPPackets_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "totalBytes", _wrap_RTPSource_totalBytes_get, _wrap_RTPSource_totalBytes_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "totalRTCPBytes", _wrap_RTPSource_totalRTCPBytes_get, _wrap_RTPSource_totalRTCPBytes_set);
-SWIGV8_AddMemberFunction(_exports_RTPSource_class, "CreateSenderReport", _wrap_RTPSource_CreateSenderReport);
-SWIGV8_AddMemberFunction(_exports_RTPSource_class, "Reset", _wrap_RTPSource_Reset);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lostPackets", _wrap_RTPIncomingSource_lostPackets_get, _wrap_RTPIncomingSource_lostPackets_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalPacketsSinceLastSR", _wrap_RTPIncomingSource_totalPacketsSinceLastSR_get, _wrap_RTPIncomingSource_totalPacketsSinceLastSR_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalBytesSinceLastSR", _wrap_RTPIncomingSource_totalBytesSinceLastSR_get, _wrap_RTPIncomingSource_totalBytesSinceLastSR_set);
@@ -13302,8 +11830,6 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lostPacketsSinceLast
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReceivedSenderNTPTimestamp", _wrap_RTPIncomingSource_lastReceivedSenderNTPTimestamp_get, _wrap_RTPIncomingSource_lastReceivedSenderNTPTimestamp_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReceivedSenderReport", _wrap_RTPIncomingSource_lastReceivedSenderReport_get, _wrap_RTPIncomingSource_lastReceivedSenderReport_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReport", _wrap_RTPIncomingSource_lastReport_get, _wrap_RTPIncomingSource_lastReport_set);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSource_class, "Reset", _wrap_RTPIncomingSource_Reset);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSource_class, "CreateReport", _wrap_RTPIncomingSource_CreateReport);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "time", _wrap_RTPOutgoingSource_time_get, _wrap_RTPOutgoingSource_time_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "lastTime", _wrap_RTPOutgoingSource_lastTime_get, _wrap_RTPOutgoingSource_lastTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "numPackets", _wrap_RTPOutgoingSource_numPackets_get, _wrap_RTPOutgoingSource_numPackets_set);
@@ -13312,40 +11838,14 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "totalBytes", _wrap_R
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "totalRTCPBytes", _wrap_RTPOutgoingSource_totalRTCPBytes_get, _wrap_RTPOutgoingSource_totalRTCPBytes_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "lastSenderReport", _wrap_RTPOutgoingSource_lastSenderReport_get, _wrap_RTPOutgoingSource_lastSenderReport_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "lastSenderReportNTP", _wrap_RTPOutgoingSource_lastSenderReportNTP_get, _wrap_RTPOutgoingSource_lastSenderReportNTP_set);
-SWIGV8_AddMemberFunction(_exports_RTPOutgoingSource_class, "Reset", _wrap_RTPOutgoingSource_Reset);
-SWIGV8_AddMemberFunction(_exports_RTPOutgoingSource_class, "CreateSenderReport", _wrap_RTPOutgoingSource_CreateSenderReport);
-SWIGV8_AddMemberFunction(_exports_RTPOutgoingSource_class, "IsLastSenderReportNTP", _wrap_RTPOutgoingSource_IsLastSenderReportNTP);
-SWIGV8_AddMemberFunction(_exports_RTPLostPackets_class, "Reset", _wrap_RTPLostPackets_Reset);
-SWIGV8_AddMemberFunction(_exports_RTPLostPackets_class, "AddPacket", _wrap_RTPLostPackets_AddPacket);
-SWIGV8_AddMemberFunction(_exports_RTPLostPackets_class, "GetNacks", _wrap_RTPLostPackets_GetNacks);
-SWIGV8_AddMemberFunction(_exports_RTPLostPackets_class, "Dump", _wrap_RTPLostPackets_Dump);
-SWIGV8_AddMemberFunction(_exports_RTPLostPackets_class, "GetTotal", _wrap_RTPLostPackets_GetTotal);
-SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "AddListener", _wrap_RTPOutgoingSourceGroup_AddListener);
-SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "RemoveListener", _wrap_RTPOutgoingSourceGroup_RemoveListener);
-SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "onPLIRequest", _wrap_RTPOutgoingSourceGroup_onPLIRequest);
-SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "GetSource", _wrap_RTPOutgoingSourceGroup_GetSource);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "streamId", _wrap_RTPOutgoingSourceGroup_streamId_get, _wrap_RTPOutgoingSourceGroup_streamId_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "type", _wrap_RTPOutgoingSourceGroup_type_get, _wrap_RTPOutgoingSourceGroup_type_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "media", _wrap_RTPOutgoingSourceGroup_media_get, _wrap_RTPOutgoingSourceGroup_media_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "fec", _wrap_RTPOutgoingSourceGroup_fec_get, _wrap_RTPOutgoingSourceGroup_fec_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTPOutgoingSourceGroup_rtx_get, _wrap_RTPOutgoingSourceGroup_rtx_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "packets", _wrap_RTPOutgoingSourceGroup_packets_get, _wrap_RTPOutgoingSourceGroup_packets_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "mutex", _wrap_RTPOutgoingSourceGroup_mutex_get, _wrap_RTPOutgoingSourceGroup_mutex_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "listeners", _wrap_RTPOutgoingSourceGroup_listeners_get, _wrap_RTPOutgoingSourceGroup_listeners_set);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetSource", _wrap_RTPIncomingSourceGroup_GetSource);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "AddListener", _wrap_RTPIncomingSourceGroup_AddListener);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "RemoveListener", _wrap_RTPIncomingSourceGroup_RemoveListener);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "onRTP", _wrap_RTPIncomingSourceGroup_onRTP);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "type", _wrap_RTPIncomingSourceGroup_type_get, _wrap_RTPIncomingSourceGroup_type_set);
-SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "losts", _wrap_RTPIncomingSourceGroup_losts_get, _wrap_RTPIncomingSourceGroup_losts_set);
-SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "packets", _wrap_RTPIncomingSourceGroup_packets_get, _wrap_RTPIncomingSourceGroup_packets_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "media", _wrap_RTPIncomingSourceGroup_media_get, _wrap_RTPIncomingSourceGroup_media_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "fec", _wrap_RTPIncomingSourceGroup_fec_get, _wrap_RTPIncomingSourceGroup_fec_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rtx", _wrap_RTPIncomingSourceGroup_rtx_get, _wrap_RTPIncomingSourceGroup_rtx_set);
-SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "mutex", _wrap_RTPIncomingSourceGroup_mutex_get, _wrap_RTPIncomingSourceGroup_mutex_set);
-SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "listeners", _wrap_RTPIncomingSourceGroup_listeners_get, _wrap_RTPIncomingSourceGroup_listeners_set);
-SWIGV8_AddMemberFunction(_exports_RTPSender_class, "Send", _wrap_RTPSender_Send);
-SWIGV8_AddMemberFunction(_exports_RTPReceiver_class, "SendPLI", _wrap_RTPReceiver_SendPLI);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteProperties", _wrap_DTLSICETransport_SetRemoteProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", _wrap_DTLSICETransport_SetLocalProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
@@ -13365,6 +11865,7 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetLocalUsername", _w
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetLocalPwd", _wrap_DTLSICETransport_GetLocalPwd);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "onDTLSSetup", _wrap_DTLSICETransport_onDTLSSetup);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "onData", _wrap_DTLSICETransport_onData);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRTT", _wrap_DTLSICETransport_GetRTT);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "Init", _wrap_RTPBundleTransport_Init);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddICETransport", _wrap_RTPBundleTransport_AddICETransport);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "RemoveICETransport", _wrap_RTPBundleTransport_RemoveICETransport);
@@ -13451,46 +11952,6 @@ if (SWIGTYPE_p_RTPSource->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGT
   printf("Unable to inherit baseclass, it didn't exist _exports_RTPOutgoingSource _RTPSource\n");
 #endif
 }
-if (SWIGTYPE_p_RTPSender->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSender->clientdata)->class_templ.IsEmpty()))
-{
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-  _exports_DTLSICETransport_class->Inherit(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSender->clientdata)->class_templ);
-#else
-  _exports_DTLSICETransport_class->Inherit(
-    v8::Local<v8::FunctionTemplate>::New(
-      v8::Isolate::GetCurrent(),
-      static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSender->clientdata)->class_templ)
-    );
-#endif
-  
-#ifdef SWIGRUNTIME_DEBUG
-  printf("Inheritance successful _exports_DTLSICETransport _RTPSender\n");
-#endif
-} else {
-#ifdef SWIGRUNTIME_DEBUG
-  printf("Unable to inherit baseclass, it didn't exist _exports_DTLSICETransport _RTPSender\n");
-#endif
-}
-if (SWIGTYPE_p_RTPSender->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSender->clientdata)->class_templ.IsEmpty()))
-{
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-  _exports_RTPSessionFacade_class->Inherit(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSender->clientdata)->class_templ);
-#else
-  _exports_RTPSessionFacade_class->Inherit(
-    v8::Local<v8::FunctionTemplate>::New(
-      v8::Isolate::GetCurrent(),
-      static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSender->clientdata)->class_templ)
-    );
-#endif
-  
-#ifdef SWIGRUNTIME_DEBUG
-  printf("Inheritance successful _exports_RTPSessionFacade _RTPSender\n");
-#endif
-} else {
-#ifdef SWIGRUNTIME_DEBUG
-  printf("Unable to inherit baseclass, it didn't exist _exports_RTPSessionFacade _RTPSender\n");
-#endif
-}
 
 
   /* class instances */
@@ -13530,12 +11991,6 @@ _exports_RTPOutgoingSource_class_0->SetCallHandler(_wrap_new_RTPOutgoingSource);
 _exports_RTPOutgoingSource_class_0->Inherit(_exports_RTPOutgoingSource_class);
 _exports_RTPOutgoingSource_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_RTPOutgoingSource_obj = _exports_RTPOutgoingSource_class_0->GetFunction();
-/* Class: RTPLostPackets (_exports_RTPLostPackets) */
-v8::Handle<v8::FunctionTemplate> _exports_RTPLostPackets_class_0 = SWIGV8_CreateClassTemplate("RTPLostPackets");
-_exports_RTPLostPackets_class_0->SetCallHandler(_wrap_new_RTPLostPackets);
-_exports_RTPLostPackets_class_0->Inherit(_exports_RTPLostPackets_class);
-_exports_RTPLostPackets_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_RTPLostPackets_obj = _exports_RTPLostPackets_class_0->GetFunction();
 /* Class: RTPOutgoingSourceGroup (_exports_RTPOutgoingSourceGroup) */
 v8::Handle<v8::FunctionTemplate> _exports_RTPOutgoingSourceGroup_class_0 = SWIGV8_CreateClassTemplate("RTPOutgoingSourceGroup");
 _exports_RTPOutgoingSourceGroup_class_0->SetCallHandler(_wrap_new_RTPOutgoingSourceGroup);
@@ -13548,18 +12003,6 @@ _exports_RTPIncomingSourceGroup_class_0->SetCallHandler(_wrap_new_RTPIncomingSou
 _exports_RTPIncomingSourceGroup_class_0->Inherit(_exports_RTPIncomingSourceGroup_class);
 _exports_RTPIncomingSourceGroup_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_RTPIncomingSourceGroup_obj = _exports_RTPIncomingSourceGroup_class_0->GetFunction();
-/* Class: RTPSender (_exports_RTPSender) */
-v8::Handle<v8::FunctionTemplate> _exports_RTPSender_class_0 = SWIGV8_CreateClassTemplate("RTPSender");
-_exports_RTPSender_class_0->SetCallHandler(_wrap_new_veto_RTPSender);
-_exports_RTPSender_class_0->Inherit(_exports_RTPSender_class);
-_exports_RTPSender_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_RTPSender_obj = _exports_RTPSender_class_0->GetFunction();
-/* Class: RTPReceiver (_exports_RTPReceiver) */
-v8::Handle<v8::FunctionTemplate> _exports_RTPReceiver_class_0 = SWIGV8_CreateClassTemplate("RTPReceiver");
-_exports_RTPReceiver_class_0->SetCallHandler(_wrap_new_veto_RTPReceiver);
-_exports_RTPReceiver_class_0->Inherit(_exports_RTPReceiver_class);
-_exports_RTPReceiver_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_RTPReceiver_obj = _exports_RTPReceiver_class_0->GetFunction();
 /* Class: DTLSICETransport (_exports_DTLSICETransport) */
 v8::Handle<v8::FunctionTemplate> _exports_DTLSICETransport_class_0 = SWIGV8_CreateClassTemplate("DTLSICETransport");
 _exports_DTLSICETransport_class_0->SetCallHandler(_wrap_new_DTLSICETransport);
@@ -13665,11 +12108,8 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaFrame"), _exports_MediaFrame_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPSource"), _exports_RTPSource_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingSource"), _exports_RTPIncomingSource_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPOutgoingSource"), _exports_RTPOutgoingSource_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPLostPackets"), _exports_RTPLostPackets_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPOutgoingSourceGroup"), _exports_RTPOutgoingSourceGroup_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingSourceGroup"), _exports_RTPIncomingSourceGroup_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPSender"), _exports_RTPSender_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPReceiver"), _exports_RTPReceiver_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("DTLSICETransport"), _exports_DTLSICETransport_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPBundleTransport"), _exports_RTPBundleTransport_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("mp4track"), _exports_mp4track_obj);
