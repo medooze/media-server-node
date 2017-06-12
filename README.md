@@ -2,7 +2,8 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/72346e5229bc4fd8af091312be091fdd)](https://www.codacy.com/app/murillo128/media-server-node?utm_source=github.com&utm_medium=referral&utm_content=medooze/media-server-node&utm_campaign=badger)
 
-This media server will allow you to receive and send media streams from remote WebRTC peers and manage how you want to route them. 
+This media server will allow you to receive and send media streams from remote WebRTC peers and manage how you want to route them. Verified on Ubuntu, should work on any Linux with new GCC. OSX is not supported yet.
+
 
 ## Install
 
@@ -16,7 +17,7 @@ const MediaServer = require('medooze-media-server');
 You can check the full [object documentation here](https://medooze.github.io/media-server-node/).
 
 ## Support
-To discuss issues related to this project or ask for help please [join the google comunity group](https://groups.google.com/forum/#!forum/medooze).
+To discuss issues related to this project or ask for help please [join the google community group](https://groups.google.com/forum/#!forum/medooze).
 
 ## Demo application
 You can check a demo application [here](https://github.com/medooze/media-server-demo-node)
