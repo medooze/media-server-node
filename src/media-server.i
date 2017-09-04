@@ -2,6 +2,9 @@
 %{
 	
 #include <string>
+#include <list>
+#include <functional>
+#include <nan.h>
 #include "../media-server/include/config.h"	
 #include "../media-server/include/dtls.h"	
 #include "../media-server/include/media.h"
@@ -12,7 +15,7 @@
 #include "../media-server/include/mp4recorder.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
-	
+
 
 class StringFacade : private std::string
 {
@@ -45,14 +48,95 @@ public:
 	}
 };
 
+
+
 class MediaServer
 {
 public:
+	typedef std::list<v8::Local<v8::Value>> Arguments;
+public:
+	static void RunCallback(v8::Handle<v8::Object> object) 
+	{
+		Arguments arguments;
+		
+		arguments.push_back(Nan::New<v8::Integer>(1));
+		
+		//Emit event
+		MediaServer::Emit(object,arguments);
+	}
+
+	/*
+	 * MakeCallback
+	 *  Executes an object method async on the main node loop
+	 */
+	static void MakeCallback(v8::Handle<v8::Object> object, const char* method,Arguments& arguments)
+	{
+		// Create a copiable persistent
+		Nan::Persistent<v8::Object>* persistent = new Nan::Persistent<v8::Object>(object);
+		
+		std::list<Nan::Persistent<v8::Value>*> pargs;
+		for (auto it = arguments.begin(); it!= arguments.end(); ++it)
+			pargs.push_back(new Nan::Persistent<v8::Value>(*it));
+			
+		
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[pargs.size()];
+			
+			//Create local args
+			for (auto it = pargs.begin(); it!= pargs.end(); ++it)
+				argv2[i++] = Nan::New(*(*it));
+			
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(*persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New(method).ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+			//Release object
+			delete(persistent);
+			//Release args
+			//TODO
+		});
+		
+	}
+	
+	/*
+	 * MakeCallback
+	 *  Executes object "emit" method async on the main node loop
+	 */
+	static void Emit(v8::Handle<v8::Object> object,Arguments& arguments)
+	{
+		MediaServer::MakeCallback(object,"emit",arguments);
+	}
+
+	/*
+	 * Async
+	 *  Enqueus a function to the async queue and signals main thread to execute it
+	 */
+	static void Async(std::function<void()> func) 
+	{
+		//Lock
+		mutex.Lock();
+		//Enqueue
+		queue.push_back(func);
+		//Unlock
+		mutex.Unlock();
+		//Signal main thread
+		uv_async_send(&async);
+	}
+
 	static void Initialize()
 	{
 		//Start DTLS
 		DTLSConnection::Initialize();
+		
+		//Init async handler
+		uv_async_init(uv_default_loop(), &async, async_cb_handler);
 	}
+	
 	static void EnableDebug(bool flag)
 	{
 		//Enable debug
@@ -71,8 +155,31 @@ public:
 	{
 		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
 	}
-	
+
+	static void async_cb_handler(uv_async_t *handle)
+	{
+		//Lock method
+		ScopedLock scoped(mutex);
+		//Get all
+		while(!queue.empty())
+		{
+			//Execute first
+			queue.front()();
+			//Remove from queue
+			queue.pop_front();
+		}
+	}
+private:
+	//http://stackoverflow.com/questions/31207454/v8-multithreaded-function
+	static uv_async_t  async;
+	static Mutex mutex;
+	static std::list<std::function<void()>> queue;
 };
+
+//Static initializaion
+uv_async_t MediaServer::async;
+Mutex MediaServer::mutex;
+std::list<std::function<void()>>  MediaServer::queue;
 
 class RTPSessionFacade : 	
 	public RTPSender,
@@ -101,6 +208,7 @@ public:
 	int Init(const Properties &properties)
 	{
 		RTPMap rtp;
+		RTPMap apt;
 		
 		//Get codecs
 		std::vector<Properties> codecs;
@@ -132,8 +240,8 @@ public:
 		}
 	
 		//Set local 
-		RTPSession::SetSendingRTPMap(rtp);
-		RTPSession::SetReceivingRTPMap(rtp);
+		RTPSession::SetSendingRTPMap(rtp,apt);
+		RTPSession::SetReceivingRTPMap(rtp,apt);
 		
 		//Call parent
 		return RTPSession::Init();
@@ -209,10 +317,15 @@ class RTPStreamTransponderFacade :
 	public RTPStreamTransponder
 {
 public:
-	RTPStreamTransponderFacade(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
-		: RTPStreamTransponder(incoming, receiver->get(), outgoing, sender->get())
+	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
+		: RTPStreamTransponder(outgoing, sender->get())
 	{
 
+	}
+
+	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
+	{
+		return RTPStreamTransponder::SetIncoming(incoming, receiver->get());
 	}
 };
 
@@ -366,7 +479,8 @@ struct RTPOutgoingSourceGroup
 struct RTPIncomingSourceGroup
 {
 	RTPIncomingSourceGroup(MediaFrame::Type type);
-	
+	std::string rid;
+	std::string mid;
 	MediaFrame::Type  type;
 	RTPIncomingSource media;
 	RTPIncomingSource fec;
@@ -379,7 +493,9 @@ struct RTPIncomingSourceGroup
 %include "../media-server/include/mp4recorder.h"
 %include "../media-server/include/rtp/RTPStreamTransponder.h"
 
-
+%typemap(in) v8::Handle<v8::Object> {
+	$1 = v8::Handle<v8::Object>::Cast($input);
+}
 
 class StringFacade : private std::string
 {
@@ -399,6 +515,7 @@ public:
 class MediaServer
 {
 public:
+	static void RunCallback(v8::Handle<v8::Object> object);
 	static void Initialize();
 	static void EnableDebug(bool flag);
 	static void EnableUltraDebug(bool flag);
@@ -451,10 +568,11 @@ class RTPStreamTransponderFacade :
 	public RTPOutgoingSourceGroup::Listener
 {
 public:
-	RTPStreamTransponderFacade(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
+	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
 	virtual ~RTPStreamTransponderFacade();
 	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
+	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
 	void Close();
 };

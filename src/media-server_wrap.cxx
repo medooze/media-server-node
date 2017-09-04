@@ -1528,9 +1528,10 @@ fail: ;
 #define SWIGTYPE_p_unsigned_int swig_types[44]
 #define SWIGTYPE_p_unsigned_long_long swig_types[45]
 #define SWIGTYPE_p_unsigned_short swig_types[46]
-#define SWIGTYPE_p_void swig_types[47]
-static swig_type_info *swig_types[49];
-static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[47]
+#define SWIGTYPE_p_void swig_types[48]
+static swig_type_info *swig_types[50];
+static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1551,6 +1552,9 @@ static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
 
 	
 #include <string>
+#include <list>
+#include <functional>
+#include <nan.h>
 #include "../media-server/include/config.h"	
 #include "../media-server/include/dtls.h"	
 #include "../media-server/include/media.h"
@@ -1561,7 +1565,7 @@ static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
 #include "../media-server/include/mp4recorder.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
-	
+
 
 class StringFacade : private std::string
 {
@@ -1594,14 +1598,95 @@ public:
 	}
 };
 
+
+
 class MediaServer
 {
 public:
+	typedef std::list<v8::Local<v8::Value>> Arguments;
+public:
+	static void RunCallback(v8::Handle<v8::Object> object) 
+	{
+		Arguments arguments;
+		
+		arguments.push_back(Nan::New<v8::Integer>(1));
+		
+		//Emit event
+		MediaServer::Emit(object,arguments);
+	}
+
+	/*
+	 * MakeCallback
+	 *  Executes an object method async on the main node loop
+	 */
+	static void MakeCallback(v8::Handle<v8::Object> object, const char* method,Arguments& arguments)
+	{
+		// Create a copiable persistent
+		Nan::Persistent<v8::Object>* persistent = new Nan::Persistent<v8::Object>(object);
+		
+		std::list<Nan::Persistent<v8::Value>*> pargs;
+		for (auto it = arguments.begin(); it!= arguments.end(); ++it)
+			pargs.push_back(new Nan::Persistent<v8::Value>(*it));
+			
+		
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[pargs.size()];
+			
+			//Create local args
+			for (auto it = pargs.begin(); it!= pargs.end(); ++it)
+				argv2[i++] = Nan::New(*(*it));
+			
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(*persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New(method).ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+			//Release object
+			delete(persistent);
+			//Release args
+			//TODO
+		});
+		
+	}
+	
+	/*
+	 * MakeCallback
+	 *  Executes object "emit" method async on the main node loop
+	 */
+	static void Emit(v8::Handle<v8::Object> object,Arguments& arguments)
+	{
+		MediaServer::MakeCallback(object,"emit",arguments);
+	}
+
+	/*
+	 * Async
+	 *  Enqueus a function to the async queue and signals main thread to execute it
+	 */
+	static void Async(std::function<void()> func) 
+	{
+		//Lock
+		mutex.Lock();
+		//Enqueue
+		queue.push_back(func);
+		//Unlock
+		mutex.Unlock();
+		//Signal main thread
+		uv_async_send(&async);
+	}
+
 	static void Initialize()
 	{
 		//Start DTLS
 		DTLSConnection::Initialize();
+		
+		//Init async handler
+		uv_async_init(uv_default_loop(), &async, async_cb_handler);
 	}
+	
 	static void EnableDebug(bool flag)
 	{
 		//Enable debug
@@ -1620,8 +1705,31 @@ public:
 	{
 		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
 	}
-	
+
+	static void async_cb_handler(uv_async_t *handle)
+	{
+		//Lock method
+		ScopedLock scoped(mutex);
+		//Get all
+		while(!queue.empty())
+		{
+			//Execute first
+			queue.front()();
+			//Remove from queue
+			queue.pop_front();
+		}
+	}
+private:
+	//http://stackoverflow.com/questions/31207454/v8-multithreaded-function
+	static uv_async_t  async;
+	static Mutex mutex;
+	static std::list<std::function<void()>> queue;
 };
+
+//Static initializaion
+uv_async_t MediaServer::async;
+Mutex MediaServer::mutex;
+std::list<std::function<void()>>  MediaServer::queue;
 
 class RTPSessionFacade : 	
 	public RTPSender,
@@ -1650,6 +1758,7 @@ public:
 	int Init(const Properties &properties)
 	{
 		RTPMap rtp;
+		RTPMap apt;
 		
 		//Get codecs
 		std::vector<Properties> codecs;
@@ -1681,8 +1790,8 @@ public:
 		}
 	
 		//Set local 
-		RTPSession::SetSendingRTPMap(rtp);
-		RTPSession::SetReceivingRTPMap(rtp);
+		RTPSession::SetSendingRTPMap(rtp,apt);
+		RTPSession::SetReceivingRTPMap(rtp,apt);
 		
 		//Call parent
 		return RTPSession::Init();
@@ -1758,10 +1867,15 @@ class RTPStreamTransponderFacade :
 	public RTPStreamTransponder
 {
 public:
-	RTPStreamTransponderFacade(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver, RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
-		: RTPStreamTransponder(incoming, receiver->get(), outgoing, sender->get())
+	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
+		: RTPStreamTransponder(outgoing, sender->get())
 	{
 
+	}
+
+	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
+	{
+		return RTPStreamTransponder::SetIncoming(incoming, receiver->get());
 	}
 };
 
@@ -2082,30 +2196,6 @@ SWIG_FromCharPtr(const char *cptr)
 }
 
 
-SWIGINTERN
-int SWIG_AsVal_long (v8::Handle<v8::Value> obj, long* val)
-{
-  if (!obj->IsNumber()) {
-    return SWIG_TypeError;
-  }
-  if(val) *val = (long) obj->IntegerValue();
-
-  return SWIG_OK;
-}
-
-
-SWIGINTERN
-int SWIG_AsVal_bool (v8::Handle<v8::Value> obj, bool *val)
-{
-  if(!obj->IsBoolean()) {
-    return SWIG_ERROR;
-  }
-
-  if (val) *val = obj->BooleanValue();
-  return SWIG_OK;
-}
-
-
 #if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
 #  define SWIG_LONG_LONG_AVAILABLE
 #endif
@@ -2132,6 +2222,49 @@ int SWIG_AsVal_unsigned_SS_long_SS_long (v8::Handle<v8::Value> obj, unsigned lon
 #endif
 
 
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE
+v8::Handle<v8::Value> SWIG_From_long_SS_long  (long long value)
+{
+  return SWIGV8_NUMBER_NEW(value);
+}
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE
+v8::Handle<v8::Value> SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    SWIGV8_INTEGER_NEW_UNS(value) : SWIGV8_INTEGER_NEW((long)(value));
+}
+#endif
+
+
+SWIGINTERN
+int SWIG_AsVal_long (v8::Handle<v8::Value> obj, long* val)
+{
+  if (!obj->IsNumber()) {
+    return SWIG_TypeError;
+  }
+  if(val) *val = (long) obj->IntegerValue();
+
+  return SWIG_OK;
+}
+
+
+SWIGINTERN
+int SWIG_AsVal_bool (v8::Handle<v8::Value> obj, bool *val)
+{
+  if(!obj->IsBoolean()) {
+    return SWIG_ERROR;
+  }
+
+  if (val) *val = obj->BooleanValue();
+  return SWIG_OK;
+}
+
+
 SWIGINTERNINLINE int
 SWIG_AsVal_size_t (v8::Handle<v8::Value> obj, size_t *val)
 {
@@ -2151,25 +2284,6 @@ SWIG_AsVal_size_t (v8::Handle<v8::Value> obj, size_t *val)
 #endif
   return res;
 }
-
-
-#ifdef SWIG_LONG_LONG_AVAILABLE
-SWIGINTERNINLINE
-v8::Handle<v8::Value> SWIG_From_long_SS_long  (long long value)
-{
-  return SWIGV8_NUMBER_NEW(value);
-}
-#endif
-
-
-#ifdef SWIG_LONG_LONG_AVAILABLE
-SWIGINTERNINLINE
-v8::Handle<v8::Value> SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
-{
-  return (value > LONG_MAX) ?
-    SWIGV8_INTEGER_NEW_UNS(value) : SWIGV8_INTEGER_NEW((long)(value));
-}
-#endif
 
 
 #define SWIGV8_INIT medooze_initialize
@@ -3528,6 +3642,100 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_7(const SwigV8Argume
   v8::Handle<v8::Value> jsresult;
   Properties *arg1 = (Properties *) 0 ;
   char *arg2 = (char *) 0 ;
+  uint64_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  unsigned long long val3 ;
+  int ecode3 = 0 ;
+  uint64_t result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetProperty" "', argument " "1"" of type '" "Properties const *""'"); 
+  }
+  arg1 = (Properties *)(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = (char *)(buf2);
+  ecode3 = SWIG_AsVal_unsigned_SS_long_SS_long(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "uint64_t""'");
+  } 
+  arg3 = (uint64_t)(val3);
+  result = (uint64_t)((Properties const *)arg1)->GetProperty((char const *)arg2,arg3);
+  jsresult = SWIG_From_unsigned_SS_long_SS_long((unsigned long long)(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_8(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  Properties *arg1 = (Properties *) 0 ;
+  std::string *arg2 = 0 ;
+  uint64_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  unsigned long long val3 ;
+  int ecode3 = 0 ;
+  uint64_t result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetProperty" "', argument " "1"" of type '" "Properties const *""'"); 
+  }
+  arg1 = (Properties *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  arg2 = (std::string *)(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_long_SS_long(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "uint64_t""'");
+  } 
+  arg3 = (uint64_t)(val3);
+  result = (uint64_t)((Properties const *)arg1)->GetProperty((std::string const &)*arg2,arg3);
+  jsresult = SWIG_From_unsigned_SS_long_SS_long((unsigned long long)(result));
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_9(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  Properties *arg1 = (Properties *) 0 ;
+  char *arg2 = (char *) 0 ;
   bool arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3567,7 +3775,7 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_8(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_10(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
 {
   SWIGV8_HANDLESCOPE();
   
@@ -3759,6 +3967,38 @@ static SwigV8ReturnValue _wrap_Properties__wrap_Properties_GetProperty(const Swi
     }
 #else
     _wrap_Properties_GetProperty__SWIG_8(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_Properties_GetProperty__SWIG_9(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_Properties_GetProperty__SWIG_9(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_Properties_GetProperty__SWIG_10(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_Properties_GetProperty__SWIG_10(args, errorHandler);
     if(errorHandler.err.IsEmpty()) {
       return;
     }
@@ -4640,6 +4880,134 @@ static SwigV8ReturnValue _wrap_MediaFrame_SetTimestamp(const SwigV8Arguments &ar
   } 
   arg2 = (uint32_t)(val2);
   (arg1)->SetTimestamp(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_GetTime(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_GetTime.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetTime" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = (MediaFrame *)(argp1);
+  result = (uint64_t)((MediaFrame const *)arg1)->GetTime();
+  jsresult = SWIG_From_unsigned_SS_long_SS_long((unsigned long long)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_SetTime(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  uint64_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long long val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_SetTime.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_SetTime" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = (MediaFrame *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MediaFrame_SetTime" "', argument " "2"" of type '" "uint64_t""'");
+  } 
+  arg2 = (uint64_t)(val2);
+  (arg1)->SetTime(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_GetSSRC(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_GetSSRC.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetSSRC" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = (MediaFrame *)(argp1);
+  result = (uint32_t)((MediaFrame const *)arg1)->GetSSRC();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_SetSSRC(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_SetSSRC.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_SetSSRC" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = (MediaFrame *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MediaFrame_SetSSRC" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = (uint32_t)(val2);
+  (arg1)->SetSSRC(arg2);
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -6988,6 +7356,130 @@ fail:
 }
 
 
+static void _wrap_RTPIncomingSourceGroup_rid_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
+  const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_rid_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  {
+    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__string,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string""'");
+    } else {
+      arg2 = *((std::string *)(argp2));
+    }
+  }
+  if (arg1) (arg1)->rid = arg2;
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_rid_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_rid_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  result =  ((arg1)->rid);
+  jsresult = SWIG_NewPointerObj((new std::string((const std::string&)(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_RTPIncomingSourceGroup_mid_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
+  const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_mid_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  {
+    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__string,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string""'");
+    } else {
+      arg2 = *((std::string *)(argp2));
+    }
+  }
+  if (arg1) (arg1)->mid = arg2;
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_mid_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_mid_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  result =  ((arg1)->mid);
+  jsresult = SWIG_NewPointerObj((new std::string((const std::string&)(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
 static void _wrap_RTPIncomingSourceGroup_type_set(v8::Local<v8::String> property, v8::Local<v8::Value> value,
   const SwigV8PropertyCallbackInfoVoid &info) {
   SWIGV8_HANDLESCOPE();
@@ -8851,7 +9343,8 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_MP4Recorder_Record(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_MP4Recorder_Record__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -8859,8 +9352,6 @@ static SwigV8ReturnValue _wrap_MP4Recorder_Record(const SwigV8Arguments &args) {
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4Recorder_Record.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -8872,6 +9363,89 @@ static SwigV8ReturnValue _wrap_MP4Recorder_Record(const SwigV8Arguments &args) {
   
   
   SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4Recorder_Record__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Record" "', argument " "1"" of type '" "MP4Recorder *""'"); 
+  }
+  arg1 = (MP4Recorder *)(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4Recorder_Record" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = (bool)(val2);
+  result = (bool)(arg1)->Record(arg2);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4Recorder__wrap_MP4Recorder_Record(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  OverloadErrorHandler errorHandler;
+  
+  
+  if(args.Length() == 0) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4Recorder_Record__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4Recorder_Record__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4Recorder_Record__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4Recorder_Record__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Record.");
   
   goto fail;
 fail:
@@ -8907,7 +9481,8 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_MP4Recorder_Close(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_MP4Recorder_Close__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -8915,8 +9490,6 @@ static SwigV8ReturnValue _wrap_MP4Recorder_Close(const SwigV8Arguments &args) {
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4Recorder_Close.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -8928,6 +9501,89 @@ static SwigV8ReturnValue _wrap_MP4Recorder_Close(const SwigV8Arguments &args) {
   
   
   SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4Recorder_Close__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Close" "', argument " "1"" of type '" "MP4Recorder *""'"); 
+  }
+  arg1 = (MP4Recorder *)(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4Recorder_Close" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = (bool)(val2);
+  result = (bool)(arg1)->Close(arg2);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4Recorder__wrap_MP4Recorder_Close(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  OverloadErrorHandler errorHandler;
+  
+  
+  if(args.Length() == 0) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4Recorder_Close__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4Recorder_Close__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4Recorder_Close__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4Recorder_Close__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Close.");
   
   goto fail;
 fail:
@@ -9048,6 +9704,62 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MP4Recorder_onMediaFrame__SWIG_2(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
+  uint32_t arg2 ;
+  MediaFrame *arg3 = 0 ;
+  uint64_t arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  unsigned long long val4 ;
+  int ecode4 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_onMediaFrame" "', argument " "1"" of type '" "MP4Recorder *""'"); 
+  }
+  arg1 = (MP4Recorder *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4Recorder_onMediaFrame" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = (uint32_t)(val2);
+  res3 = SWIG_ConvertPtr(args[1], &argp3, SWIGTYPE_p_MediaFrame,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MP4Recorder_onMediaFrame" "', argument " "3"" of type '" "MediaFrame &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MP4Recorder_onMediaFrame" "', argument " "3"" of type '" "MediaFrame &""'"); 
+  }
+  arg3 = (MediaFrame *)(argp3);
+  ecode4 = SWIG_AsVal_unsigned_SS_long_SS_long(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MP4Recorder_onMediaFrame" "', argument " "4"" of type '" "uint64_t""'");
+  } 
+  arg4 = (uint64_t)(val4);
+  (arg1)->onMediaFrame(arg2,*arg3,arg4);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MP4Recorder__wrap_MP4Recorder_onMediaFrame(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -9087,6 +9799,22 @@ static SwigV8ReturnValue _wrap_MP4Recorder__wrap_MP4Recorder_onMediaFrame(const 
   }
   
   
+  if(args.Length() == 3) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4Recorder_onMediaFrame__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4Recorder_onMediaFrame__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
   SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function onMediaFrame.");
   
   goto fail;
@@ -9099,43 +9827,25 @@ static SwigV8ReturnValue _wrap_new_RTPStreamTransponder(const SwigV8Arguments &a
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Object> self = args.Holder();
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPReceiver *arg2 = (RTPReceiver *) 0 ;
-  RTPOutgoingSourceGroup *arg3 = (RTPOutgoingSourceGroup *) 0 ;
-  RTPSender *arg4 = (RTPSender *) 0 ;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  RTPSender *arg2 = (RTPSender *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
   RTPStreamTransponder *result;
-  if(args.Length() != 4) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPStreamTransponder.");
-  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPStreamTransponder.");
+  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPStreamTransponder" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPStreamTransponder" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
   }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(args[1], &argp2,SWIGTYPE_p_RTPReceiver, 0 |  0 );
+  arg1 = (RTPOutgoingSourceGroup *)(argp1);
+  res2 = SWIG_ConvertPtr(args[1], &argp2,SWIGTYPE_p_RTPSender, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RTPStreamTransponder" "', argument " "2"" of type '" "RTPReceiver *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RTPStreamTransponder" "', argument " "2"" of type '" "RTPSender *""'"); 
   }
-  arg2 = (RTPReceiver *)(argp2);
-  res3 = SWIG_ConvertPtr(args[2], &argp3,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_RTPStreamTransponder" "', argument " "3"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg3 = (RTPOutgoingSourceGroup *)(argp3);
-  res4 = SWIG_ConvertPtr(args[3], &argp4,SWIGTYPE_p_RTPSender, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_RTPStreamTransponder" "', argument " "4"" of type '" "RTPSender *""'"); 
-  }
-  arg4 = (RTPSender *)(argp4);
-  result = (RTPStreamTransponder *)new RTPStreamTransponder(arg1,arg2,arg3,arg4);
-  
-  
+  arg2 = (RTPSender *)(argp2);
+  result = (RTPStreamTransponder *)new RTPStreamTransponder(arg1,arg2);
   
   
   
@@ -9143,6 +9853,52 @@ static SwigV8ReturnValue _wrap_new_RTPStreamTransponder(const SwigV8Arguments &a
   
   SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_RTPStreamTransponder, SWIG_POINTER_OWN);
   SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPStreamTransponder_SetIncoming(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPStreamTransponder *arg1 = (RTPStreamTransponder *) 0 ;
+  RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
+  RTPReceiver *arg3 = (RTPReceiver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool result;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponder_SetIncoming.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponder, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponder_SetIncoming" "', argument " "1"" of type '" "RTPStreamTransponder *""'"); 
+  }
+  arg1 = (RTPStreamTransponder *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPStreamTransponder_SetIncoming" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg2 = (RTPIncomingSourceGroup *)(argp2);
+  res3 = SWIG_ConvertPtr(args[1], &argp3,SWIGTYPE_p_RTPReceiver, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPStreamTransponder_SetIncoming" "', argument " "3"" of type '" "RTPReceiver *""'"); 
+  }
+  arg3 = (RTPReceiver *)(argp3);
+  result = (bool)(arg1)->SetIncoming(arg2,arg3);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
   
   goto fail;
 fail:
@@ -9704,6 +10460,28 @@ static void _wrap_delete_PropertiesFacade(v8::Persistent<v8::Value> object, void
         object.Clear();
 #endif
       }
+
+
+static SwigV8ReturnValue _wrap_MediaServer_RunCallback(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  v8::Handle< v8::Object > arg1 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_RunCallback.");
+  
+  {
+    arg1 = v8::Handle<v8::Object>::Cast(args[0]);
+  }
+  MediaServer::RunCallback(arg1);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
 
 
 static SwigV8ReturnValue _wrap_MediaServer_Initialize(const SwigV8Arguments &args) {
@@ -10671,43 +11449,25 @@ static SwigV8ReturnValue _wrap_new_RTPStreamTransponderFacade(const SwigV8Argume
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Object> self = args.Holder();
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPReceiverFacade *arg2 = (RTPReceiverFacade *) 0 ;
-  RTPOutgoingSourceGroup *arg3 = (RTPOutgoingSourceGroup *) 0 ;
-  RTPSenderFacade *arg4 = (RTPSenderFacade *) 0 ;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  RTPSenderFacade *arg2 = (RTPSenderFacade *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
   RTPStreamTransponderFacade *result;
-  if(args.Length() != 4) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPStreamTransponderFacade.");
-  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPStreamTransponderFacade.");
+  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPStreamTransponderFacade" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPStreamTransponderFacade" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
   }
-  arg1 = (RTPIncomingSourceGroup *)(argp1);
-  res2 = SWIG_ConvertPtr(args[1], &argp2,SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
+  arg1 = (RTPOutgoingSourceGroup *)(argp1);
+  res2 = SWIG_ConvertPtr(args[1], &argp2,SWIGTYPE_p_RTPSenderFacade, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RTPStreamTransponderFacade" "', argument " "2"" of type '" "RTPReceiverFacade *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RTPStreamTransponderFacade" "', argument " "2"" of type '" "RTPSenderFacade *""'"); 
   }
-  arg2 = (RTPReceiverFacade *)(argp2);
-  res3 = SWIG_ConvertPtr(args[2], &argp3,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_RTPStreamTransponderFacade" "', argument " "3"" of type '" "RTPOutgoingSourceGroup *""'"); 
-  }
-  arg3 = (RTPOutgoingSourceGroup *)(argp3);
-  res4 = SWIG_ConvertPtr(args[3], &argp4,SWIGTYPE_p_RTPSenderFacade, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_RTPStreamTransponderFacade" "', argument " "4"" of type '" "RTPSenderFacade *""'"); 
-  }
-  arg4 = (RTPSenderFacade *)(argp4);
-  result = (RTPStreamTransponderFacade *)new RTPStreamTransponderFacade(arg1,arg2,arg3,arg4);
-  
-  
+  arg2 = (RTPSenderFacade *)(argp2);
+  result = (RTPStreamTransponderFacade *)new RTPStreamTransponderFacade(arg1,arg2);
   
   
   
@@ -10834,6 +11594,52 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_onPLIRequest(const Swi
   arg3 = (uint32_t)(val3);
   (arg1)->onPLIRequest(arg2,arg3);
   jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPStreamTransponderFacade *arg1 = (RTPStreamTransponderFacade *) 0 ;
+  RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
+  RTPReceiverFacade *arg3 = (RTPReceiverFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool result;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponderFacade_SetIncoming.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "1"" of type '" "RTPStreamTransponderFacade *""'"); 
+  }
+  arg1 = (RTPStreamTransponderFacade *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg2 = (RTPIncomingSourceGroup *)(argp2);
+  res3 = SWIG_ConvertPtr(args[1], &argp3,SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "3"" of type '" "RTPReceiverFacade *""'"); 
+  }
+  arg3 = (RTPReceiverFacade *)(argp3);
+  result = (bool)(arg1)->SetIncoming(arg2,arg3);
+  jsresult = SWIG_From_bool((bool)(result));
   
   
   
@@ -11155,6 +11961,7 @@ static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned c
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uintptr_t *|uint_least32_t *|uint_fast32_t *|uint32_t *|unsigned int *|uint_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint_least64_t *|uint_fast64_t *|uint64_t *|unsigned long long *|uintmax_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_v8__HandleT_v8__Object_t = {"_p_v8__HandleT_v8__Object_t", "v8::Handle< v8::Object > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -11205,6 +12012,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_unsigned_int,
   &_swigt__p_unsigned_long_long,
   &_swigt__p_unsigned_short,
+  &_swigt__p_v8__HandleT_v8__Object_t,
   &_swigt__p_void,
 };
 
@@ -11255,6 +12063,7 @@ static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_v8__HandleT_v8__Object_t[] = {  {&_swigt__p_v8__HandleT_v8__Object_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -11305,6 +12114,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_unsigned_int,
   _swigc__p_unsigned_long_long,
   _swigc__p_unsigned_short,
+  _swigc__p_v8__HandleT_v8__Object_t,
   _swigc__p_void,
 };
 
@@ -11802,6 +12612,10 @@ SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AddRtpPacket", _wrap_MediaF
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetType", _wrap_MediaFrame_GetType);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetTimeStamp", _wrap_MediaFrame_GetTimeStamp);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetTimestamp", _wrap_MediaFrame_SetTimestamp);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetTime", _wrap_MediaFrame_GetTime);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetTime", _wrap_MediaFrame_SetTime);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetSSRC", _wrap_MediaFrame_GetSSRC);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetSSRC", _wrap_MediaFrame_SetSSRC);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "HasRtpPacketizationInfo", _wrap_MediaFrame_HasRtpPacketizationInfo);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetRtpPacketizationInfo", _wrap_MediaFrame_GetRtpPacketizationInfo);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "Clone", _wrap_MediaFrame_Clone);
@@ -11842,6 +12656,8 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "type", _wrap_RT
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "media", _wrap_RTPOutgoingSourceGroup_media_get, _wrap_RTPOutgoingSourceGroup_media_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "fec", _wrap_RTPOutgoingSourceGroup_fec_get, _wrap_RTPOutgoingSourceGroup_fec_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTPOutgoingSourceGroup_rtx_get, _wrap_RTPOutgoingSourceGroup_rtx_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rid", _wrap_RTPIncomingSourceGroup_rid_get, _wrap_RTPIncomingSourceGroup_rid_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "mid", _wrap_RTPIncomingSourceGroup_mid_get, _wrap_RTPIncomingSourceGroup_mid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "type", _wrap_RTPIncomingSourceGroup_type_get, _wrap_RTPIncomingSourceGroup_type_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "media", _wrap_RTPIncomingSourceGroup_media_get, _wrap_RTPIncomingSourceGroup_media_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "fec", _wrap_RTPIncomingSourceGroup_fec_get, _wrap_RTPIncomingSourceGroup_fec_set);
@@ -11880,11 +12696,12 @@ SWIGV8_AddMemberFunction(_exports_mp4track_class, "WriteVideoFrame", _wrap_mp4tr
 SWIGV8_AddMemberFunction(_exports_mp4track_class, "WriteTextFrame", _wrap_mp4track_WriteTextFrame);
 SWIGV8_AddMemberFunction(_exports_mp4track_class, "Close", _wrap_mp4track_Close);
 SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Create", _wrap_MP4Recorder_Create);
-SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Record", _wrap_MP4Recorder_Record);
+SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Record", _wrap_MP4Recorder__wrap_MP4Recorder_Record);
 SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Stop", _wrap_MP4Recorder_Stop);
-SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Close", _wrap_MP4Recorder_Close);
+SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Close", _wrap_MP4Recorder__wrap_MP4Recorder_Close);
 SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "GetType", _wrap_MP4Recorder_GetType);
 SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "onMediaFrame", _wrap_MP4Recorder__wrap_MP4Recorder_onMediaFrame);
+SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "SetIncoming", _wrap_RTPStreamTransponder_SetIncoming);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "Close", _wrap_RTPStreamTransponder_Close);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "onRTP", _wrap_RTPStreamTransponder_onRTP);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "onPLIRequest", _wrap_RTPStreamTransponder_onPLIRequest);
@@ -11904,6 +12721,7 @@ SWIGV8_AddMemberFunction(_exports_RTPSenderFacade_class, "get", _wrap_RTPSenderF
 SWIGV8_AddMemberFunction(_exports_RTPReceiverFacade_class, "get", _wrap_RTPReceiverFacade_get);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "onRTP", _wrap_RTPStreamTransponderFacade_onRTP);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "onPLIRequest", _wrap_RTPStreamTransponderFacade_onPLIRequest);
+SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SetIncoming", _wrap_RTPStreamTransponderFacade_SetIncoming);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SelectLayer", _wrap_RTPStreamTransponderFacade_SelectLayer);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Close", _wrap_RTPStreamTransponderFacade_Close);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "AddMediaListener", _wrap_StreamTrackDepacketizer_AddMediaListener);
@@ -12091,6 +12909,7 @@ SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Audio", _wrap_MediaFrame_Audi
 SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Video", _wrap_MediaFrame_Video, JS_veto_set_variable);
 SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Text", _wrap_MediaFrame_Text, JS_veto_set_variable);
 SWIGV8_AddStaticFunction(_exports_MediaFrame_obj, "TypeToString", _wrap_MediaFrame_TypeToString);
+SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "RunCallback", _wrap_MediaServer_RunCallback);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Initialize", _wrap_MediaServer_Initialize);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableDebug", _wrap_MediaServer_EnableDebug);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_MediaServer_EnableUltraDebug);
