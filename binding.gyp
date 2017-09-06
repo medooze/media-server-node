@@ -7,7 +7,10 @@
 			[
 				"-fexceptions",
 				"-std=c++11",
-				"-g"
+				"-O3",
+				#"-g",
+				#"-O0",
+				# "-fsanitize=address"
 			],
 			"include_dirs" : 
 			[
@@ -17,7 +20,8 @@
 				'external/openssl/lib/include',
 				'media-server/include',
 				'media-server/src',
-				'/usr/include/nodejs/'
+				'/usr/include/nodejs/',
+				"<!(node -e \"require('nan')\")"
 			],
 			"ldflags" : ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu "],
 			"link_settings": 
@@ -73,8 +77,7 @@
 			[
 				'external/mp4v2/libmp4v2.gyp:mp4v2',
 				'external/openssl/openssl.gyp:openssl',
-				'external/srtp/libsrtp.gyp:libsrtp'
-				
+				'external/srtp/libsrtp.gyp:libsrtp',
 			]
 		}
 	]
