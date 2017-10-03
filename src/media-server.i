@@ -510,6 +510,7 @@ class PropertiesFacade : private Properties
 public:
 	void SetProperty(const char* key,int intval);
 	void SetProperty(const char* key,const char* val);
+	void SetProperty(const char* key,bool boolval);
 };
 
 class MediaServer

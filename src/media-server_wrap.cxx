@@ -2286,6 +2286,22 @@ SWIG_AsVal_size_t (v8::Handle<v8::Value> obj, size_t *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_short (v8::Handle<v8::Value> obj, unsigned short *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > USHRT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = (unsigned short)(v);
+    }
+  }  
+  return res;
+}
+
+
 #define SWIGV8_INIT medooze_initialize
 
 
@@ -8843,6 +8859,65 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPBundleTransport_AddRemoteCandidate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPBundleTransport *arg1 = (RTPBundleTransport *) 0 ;
+  std::string *arg2 = 0 ;
+  char *arg3 = (char *) 0 ;
+  uint16_t arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  unsigned short val4 ;
+  int ecode4 = 0 ;
+  int result;
+  
+  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_AddRemoteCandidate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "1"" of type '" "RTPBundleTransport *""'"); 
+  }
+  arg1 = (RTPBundleTransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  arg2 = (std::string *)(argp2);
+  res3 = SWIG_AsCharPtrAndSize(args[1], &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = (char *)(buf3);
+  ecode4 = SWIG_AsVal_unsigned_SS_short(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "4"" of type '" "uint16_t""'");
+  } 
+  arg4 = (uint16_t)(val4);
+  result = (int)(arg1)->AddRemoteCandidate((std::string const &)*arg2,(char const *)arg3,arg4);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPBundleTransport_Send(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -9860,6 +9935,40 @@ fail:
 }
 
 
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_RTPStreamTransponder(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_RTPStreamTransponder(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_RTPStreamTransponder(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#else
+      static void _wrap_delete_RTPStreamTransponder(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+        
+        if(proxy->swigCMemOwn && proxy->swigCObject) {
+          RTPStreamTransponder * arg1 = (RTPStreamTransponder *)proxy->swigCObject;
+          delete arg1;
+        }
+        delete proxy;
+        
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+        object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+        object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+        object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+        object->Dispose();
+#else
+        object.Clear();
+#endif
+      }
+
+
 static SwigV8ReturnValue _wrap_RTPStreamTransponder_SetIncoming(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -9904,40 +10013,6 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponder_SetIncoming(const SwigV8Argu
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
 }
-
-
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_RTPStreamTransponder(v8::Persistent<v8::Value> object, void *parameter) {
-  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_RTPStreamTransponder(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
-    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_RTPStreamTransponder(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
-#else
-      static void _wrap_delete_RTPStreamTransponder(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
-        v8::Local<v8::Object> object = data.GetValue();
-        SWIGV8_Proxy *proxy = data.GetParameter();
-#endif
-        
-        if(proxy->swigCMemOwn && proxy->swigCObject) {
-          RTPStreamTransponder * arg1 = (RTPStreamTransponder *)proxy->swigCObject;
-          delete arg1;
-        }
-        delete proxy;
-        
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-        object.Dispose();
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-        object.Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
-        object->Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-        object->Dispose();
-#else
-        object.Clear();
-#endif
-      }
 
 
 static SwigV8ReturnValue _wrap_RTPStreamTransponder_Close(const SwigV8Arguments &args) {
@@ -10362,6 +10437,51 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_PropertiesFacade_SetProperty__SWIG_2(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PropertiesFacade *arg1 = (PropertiesFacade *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PropertiesFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PropertiesFacade_SetProperty" "', argument " "1"" of type '" "PropertiesFacade *""'"); 
+  }
+  arg1 = (PropertiesFacade *)(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PropertiesFacade_SetProperty" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = (char *)(buf2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PropertiesFacade_SetProperty" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  (arg1)->SetProperty((char const *)arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProperty(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -10394,6 +10514,22 @@ static SwigV8ReturnValue _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProper
     }
 #else
     _wrap_PropertiesFacade_SetProperty__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_PropertiesFacade_SetProperty__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_PropertiesFacade_SetProperty__SWIG_2(args, errorHandler);
     if(errorHandler.err.IsEmpty()) {
       return;
     }
@@ -12687,6 +12823,7 @@ SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddICETransport", _
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "RemoveICETransport", _wrap_RTPBundleTransport_RemoveICETransport);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "End", _wrap_RTPBundleTransport_End);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "GetLocalPort", _wrap_RTPBundleTransport_GetLocalPort);
+SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddRemoteCandidate", _wrap_RTPBundleTransport_AddRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "Send", _wrap_RTPBundleTransport_Send);
 SWIGV8_AddMemberFunction(_exports_mp4track_class, "CreateAudioTrack", _wrap_mp4track_CreateAudioTrack);
 SWIGV8_AddMemberFunction(_exports_mp4track_class, "CreateVideoTrack", _wrap_mp4track_CreateVideoTrack);
