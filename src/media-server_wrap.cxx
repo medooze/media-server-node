@@ -1492,46 +1492,47 @@ fail: ;
 #define SWIGTYPE_p_MP4Recorder swig_types[8]
 #define SWIGTYPE_p_MediaFrame swig_types[9]
 #define SWIGTYPE_p_MediaServer swig_types[10]
-#define SWIGTYPE_p_Properties swig_types[11]
-#define SWIGTYPE_p_PropertiesFacade swig_types[12]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[13]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[14]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[15]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[16]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[17]
-#define SWIGTYPE_p_RTPPacket swig_types[18]
-#define SWIGTYPE_p_RTPReceiver swig_types[19]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[20]
-#define SWIGTYPE_p_RTPSender swig_types[21]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[22]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[23]
-#define SWIGTYPE_p_RTPSource swig_types[24]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[25]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[26]
-#define SWIGTYPE_p_RecorderControl__Type swig_types[27]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[28]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[29]
-#define SWIGTYPE_p_StringFacade swig_types[30]
-#define SWIGTYPE_p_TextFrame swig_types[31]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[32]
-#define SWIGTYPE_p_VideoFrame swig_types[33]
-#define SWIGTYPE_p_char swig_types[34]
-#define SWIGTYPE_p_int swig_types[35]
-#define SWIGTYPE_p_long_long swig_types[36]
-#define SWIGTYPE_p_mp4track swig_types[37]
-#define SWIGTYPE_p_short swig_types[38]
-#define SWIGTYPE_p_signed_char swig_types[39]
-#define SWIGTYPE_p_std__string swig_types[40]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[41]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[42]
-#define SWIGTYPE_p_unsigned_char swig_types[43]
-#define SWIGTYPE_p_unsigned_int swig_types[44]
-#define SWIGTYPE_p_unsigned_long_long swig_types[45]
-#define SWIGTYPE_p_unsigned_short swig_types[46]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[47]
-#define SWIGTYPE_p_void swig_types[48]
-static swig_type_info *swig_types[50];
-static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
+#define SWIGTYPE_p_PlayerFacade swig_types[11]
+#define SWIGTYPE_p_Properties swig_types[12]
+#define SWIGTYPE_p_PropertiesFacade swig_types[13]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[14]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[15]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[16]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[17]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[18]
+#define SWIGTYPE_p_RTPPacket swig_types[19]
+#define SWIGTYPE_p_RTPReceiver swig_types[20]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[21]
+#define SWIGTYPE_p_RTPSender swig_types[22]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[23]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[24]
+#define SWIGTYPE_p_RTPSource swig_types[25]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[26]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[27]
+#define SWIGTYPE_p_RecorderControl__Type swig_types[28]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[29]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[30]
+#define SWIGTYPE_p_StringFacade swig_types[31]
+#define SWIGTYPE_p_TextFrame swig_types[32]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[33]
+#define SWIGTYPE_p_VideoFrame swig_types[34]
+#define SWIGTYPE_p_char swig_types[35]
+#define SWIGTYPE_p_int swig_types[36]
+#define SWIGTYPE_p_long_long swig_types[37]
+#define SWIGTYPE_p_mp4track swig_types[38]
+#define SWIGTYPE_p_short swig_types[39]
+#define SWIGTYPE_p_signed_char swig_types[40]
+#define SWIGTYPE_p_std__string swig_types[41]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[42]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[43]
+#define SWIGTYPE_p_unsigned_char swig_types[44]
+#define SWIGTYPE_p_unsigned_int swig_types[45]
+#define SWIGTYPE_p_unsigned_long_long swig_types[46]
+#define SWIGTYPE_p_unsigned_short swig_types[47]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[48]
+#define SWIGTYPE_p_void swig_types[49]
+static swig_type_info *swig_types[51];
+static swig_module_info swig_module = {swig_types, 50, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1563,6 +1564,7 @@ static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
 #include "../media-server/include/mp4recorder.h"
+#include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 
@@ -1809,6 +1811,58 @@ public:
 	}
 };
 
+
+
+class PlayerFacade :
+	public MP4Streamer,
+	public MP4Streamer::Listener
+{
+public:
+	PlayerFacade() :
+		MP4Streamer(this),
+		audio(MediaFrame::Audio),
+		video(MediaFrame::Video)
+	{
+	}
+		
+	virtual void onRTPPacket(RTPPacket &packet)
+	{
+		switch(packet.GetMedia())
+		{
+			case MediaFrame::Video:
+				//Update stats
+				video.media.Update(packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				//Set ssrc of video
+				packet.SetSSRC(video.media.ssrc);
+				//Multiplex
+				video.onRTP(packet.Clone());
+				break;
+			case MediaFrame::Audio:
+				//Update stats
+				audio.media.Update(packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				//Set ssrc of audio
+				packet.SetSSRC(audio.media.ssrc);
+				//Multiplex
+				audio.onRTP(packet.Clone());
+				break;
+		}
+	}
+
+	virtual void onTextFrame(TextFrame &frame) {}
+	virtual void onEnd() {}
+	
+	virtual void onMediaFrame(MediaFrame &frame)  {}
+	virtual void onMediaFrame(DWORD ssrc, MediaFrame &frame) {}
+
+	RTPIncomingSourceGroup* GetAudioSource() { return &audio; }
+	RTPIncomingSourceGroup* GetVideoSource() { return &video; }
+	
+private:
+	//TODO: Update to multitrack
+	RTPIncomingSourceGroup audio;
+	RTPIncomingSourceGroup video;
+};
+
 class RTPSenderFacade
 {
 public:	
@@ -1868,14 +1922,14 @@ class RTPStreamTransponderFacade :
 {
 public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
-		: RTPStreamTransponder(outgoing, sender->get())
+		: RTPStreamTransponder(outgoing, sender ? sender->get() : NULL)
 	{
 
 	}
 
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
 	{
-		return RTPStreamTransponder::SetIncoming(incoming, receiver->get());
+		return RTPStreamTransponder::SetIncoming(incoming, receiver ? receiver->get() : NULL);
 	}
 };
 
@@ -2302,6 +2356,13 @@ SWIG_AsVal_unsigned_SS_short (v8::Handle<v8::Value> obj, unsigned short *val)
 }
 
 
+SWIGINTERN
+v8::Handle<v8::Value> SWIG_From_double   (double val)
+{
+  return SWIGV8_NUMBER_NEW(val);
+}
+
+
 #define SWIGV8_INIT medooze_initialize
 
 
@@ -2326,6 +2387,7 @@ SWIGV8_ClientData _exports_RTPSenderFacade_clientData;
 SWIGV8_ClientData _exports_RTPReceiverFacade_clientData;
 SWIGV8_ClientData _exports_RTPStreamTransponderFacade_clientData;
 SWIGV8_ClientData _exports_StreamTrackDepacketizer_clientData;
+SWIGV8_ClientData _exports_PlayerFacade_clientData;
 
 
 static SwigV8ReturnValue _wrap_QCIF(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
@@ -12021,6 +12083,591 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_new_PlayerFacade(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  PlayerFacade *result;
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_PlayerFacade.");
+  result = (PlayerFacade *)new PlayerFacade();
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_PlayerFacade, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetAudioSource(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  RTPIncomingSourceGroup *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetAudioSource.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetAudioSource" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (RTPIncomingSourceGroup *)(arg1)->GetAudioSource();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoSource(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  RTPIncomingSourceGroup *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetVideoSource.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetVideoSource" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (RTPIncomingSourceGroup *)(arg1)->GetVideoSource();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_Open(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_Open.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_Open" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PlayerFacade_Open" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = (char *)(buf2);
+  result = (int)(arg1)->Open((char const *)arg2);
+  jsresult = SWIG_From_int((int)(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_HasAudioTrack(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_HasAudioTrack.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_HasAudioTrack" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (bool)(arg1)->HasAudioTrack();
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_HasVideoTrack(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_HasVideoTrack.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_HasVideoTrack" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (bool)(arg1)->HasVideoTrack();
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetAudioCodec(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetAudioCodec.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetAudioCodec" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (uint32_t)(arg1)->GetAudioCodec();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoCodec(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetVideoCodec.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetVideoCodec" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (uint32_t)(arg1)->GetVideoCodec();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetDuration(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetDuration.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetDuration" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (double)(arg1)->GetDuration();
+  jsresult = SWIG_From_double((double)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoWidth(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetVideoWidth.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetVideoWidth" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (uint32_t)(arg1)->GetVideoWidth();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoHeight(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetVideoHeight.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetVideoHeight" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (uint32_t)(arg1)->GetVideoHeight();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoBitrate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetVideoBitrate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetVideoBitrate" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (uint32_t)(arg1)->GetVideoBitrate();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoFramerate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetVideoFramerate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetVideoFramerate" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (double)(arg1)->GetVideoFramerate();
+  jsresult = SWIG_From_double((double)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_Play(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_Play.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_Play" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (int)(arg1)->Play();
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_PreSeek(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  uint64_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long long val2 ;
+  int ecode2 = 0 ;
+  uint64_t result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_PreSeek.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_PreSeek" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlayerFacade_PreSeek" "', argument " "2"" of type '" "uint64_t""'");
+  } 
+  arg2 = (uint64_t)(val2);
+  result = (uint64_t)(arg1)->PreSeek(arg2);
+  jsresult = SWIG_From_unsigned_SS_long_SS_long((unsigned long long)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_Seek(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  uint64_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long long val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_Seek.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_Seek" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PlayerFacade_Seek" "', argument " "2"" of type '" "uint64_t""'");
+  } 
+  arg2 = (uint64_t)(val2);
+  result = (int)(arg1)->Seek(arg2);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_Tell(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint64_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_Tell.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_Tell" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (uint64_t)(arg1)->Tell();
+  jsresult = SWIG_From_unsigned_SS_long_SS_long((unsigned long long)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_Stop" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (int)(arg1)->Stop();
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_Close(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_Close.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_Close" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  result = (int)(arg1)->Close();
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_PlayerFacade(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_PlayerFacade(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_PlayerFacade(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#else
+      static void _wrap_delete_PlayerFacade(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+        
+        if(proxy->swigCMemOwn && proxy->swigCObject) {
+          PlayerFacade * arg1 = (PlayerFacade *)proxy->swigCObject;
+          delete arg1;
+        }
+        delete proxy;
+        
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+        object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+        object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+        object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+        object->Dispose();
+#else
+        object.Clear();
+#endif
+      }
+
+
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static void *_p_PropertiesFacadeTo_p_Properties(void *x, int *SWIGUNUSEDPARM(newmemory)) {
@@ -12061,6 +12708,7 @@ static swig_type_info _swigt__p_MP4FileHandle = {"_p_MP4FileHandle", "MP4FileHan
 static swig_type_info _swigt__p_MP4Recorder = {"_p_MP4Recorder", "p_MP4Recorder|MP4Recorder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrame = {"_p_MediaFrame", "p_MediaFrame|MediaFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaServer = {"_p_MediaServer", "p_MediaServer", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PlayerFacade = {"_p_PlayerFacade", "p_PlayerFacade|PlayerFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Properties = {"_p_Properties", "Properties *|p_Properties", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PropertiesFacade = {"_p_PropertiesFacade", "PropertiesFacade *|p_PropertiesFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPBundleTransport = {"_p_RTPBundleTransport", "p_RTPBundleTransport|RTPBundleTransport *", 0, 0, (void*)0, 0};
@@ -12112,6 +12760,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MP4Recorder,
   &_swigt__p_MediaFrame,
   &_swigt__p_MediaServer,
+  &_swigt__p_PlayerFacade,
   &_swigt__p_Properties,
   &_swigt__p_PropertiesFacade,
   &_swigt__p_RTPBundleTransport,
@@ -12163,6 +12812,7 @@ static swig_cast_info _swigc__p_MP4FileHandle[] = {  {&_swigt__p_MP4FileHandle, 
 static swig_cast_info _swigc__p_MP4Recorder[] = {  {&_swigt__p_MP4Recorder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrame[] = {  {&_swigt__p_MediaFrame, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PlayerFacade[] = {  {&_swigt__p_PlayerFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Properties[] = {  {&_swigt__p_Properties, 0, 0, 0},  {&_swigt__p_PropertiesFacade, _p_PropertiesFacadeTo_p_Properties, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PropertiesFacade[] = {  {&_swigt__p_PropertiesFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPBundleTransport[] = {  {&_swigt__p_RTPBundleTransport, 0, 0, 0},{0, 0, 0, 0}};
@@ -12214,6 +12864,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MP4Recorder,
   _swigc__p_MediaFrame,
   _swigc__p_MediaServer,
+  _swigc__p_PlayerFacade,
   _swigc__p_Properties,
   _swigc__p_PropertiesFacade,
   _swigc__p_RTPBundleTransport,
@@ -12702,6 +13353,13 @@ _exports_StreamTrackDepacketizer_clientData.dtor = _wrap_delete_StreamTrackDepac
 if (SWIGTYPE_p_StreamTrackDepacketizer->clientdata == 0) {
   SWIGTYPE_p_StreamTrackDepacketizer->clientdata = &_exports_StreamTrackDepacketizer_clientData;
 }
+/* Name: _exports_PlayerFacade, Type: p_PlayerFacade, Dtor: _wrap_delete_PlayerFacade */
+v8::Handle<v8::FunctionTemplate> _exports_PlayerFacade_class = SWIGV8_CreateClassTemplate("_exports_PlayerFacade");
+SWIGV8_SET_CLASS_TEMPL(_exports_PlayerFacade_clientData.class_templ, _exports_PlayerFacade_class);
+_exports_PlayerFacade_clientData.dtor = _wrap_delete_PlayerFacade;
+if (SWIGTYPE_p_PlayerFacade->clientdata == 0) {
+  SWIGTYPE_p_PlayerFacade->clientdata = &_exports_PlayerFacade_clientData;
+}
 
 
   /* register wrapper functions */
@@ -12864,6 +13522,24 @@ SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Close", _wr
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "AddMediaListener", _wrap_StreamTrackDepacketizer_AddMediaListener);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "RemoveMediaListener", _wrap_StreamTrackDepacketizer_RemoveMediaListener);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "Stop", _wrap_StreamTrackDepacketizer_Stop);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetAudioSource", _wrap_PlayerFacade_GetAudioSource);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoSource", _wrap_PlayerFacade_GetVideoSource);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Open", _wrap_PlayerFacade_Open);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "HasAudioTrack", _wrap_PlayerFacade_HasAudioTrack);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "HasVideoTrack", _wrap_PlayerFacade_HasVideoTrack);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetAudioCodec", _wrap_PlayerFacade_GetAudioCodec);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoCodec", _wrap_PlayerFacade_GetVideoCodec);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetDuration", _wrap_PlayerFacade_GetDuration);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoWidth", _wrap_PlayerFacade_GetVideoWidth);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoHeight", _wrap_PlayerFacade_GetVideoHeight);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoBitrate", _wrap_PlayerFacade_GetVideoBitrate);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoFramerate", _wrap_PlayerFacade_GetVideoFramerate);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Play", _wrap_PlayerFacade_Play);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "PreSeek", _wrap_PlayerFacade_PreSeek);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Seek", _wrap_PlayerFacade_Seek);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Tell", _wrap_PlayerFacade_Tell);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Stop", _wrap_PlayerFacade_Stop);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Close", _wrap_PlayerFacade_Close);
 
 
   /* setup inheritances */
@@ -13036,6 +13712,12 @@ _exports_StreamTrackDepacketizer_class_0->SetCallHandler(_wrap_new_StreamTrackDe
 _exports_StreamTrackDepacketizer_class_0->Inherit(_exports_StreamTrackDepacketizer_class);
 _exports_StreamTrackDepacketizer_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_StreamTrackDepacketizer_obj = _exports_StreamTrackDepacketizer_class_0->GetFunction();
+/* Class: PlayerFacade (_exports_PlayerFacade) */
+v8::Handle<v8::FunctionTemplate> _exports_PlayerFacade_class_0 = SWIGV8_CreateClassTemplate("PlayerFacade");
+_exports_PlayerFacade_class_0->SetCallHandler(_wrap_new_PlayerFacade);
+_exports_PlayerFacade_class_0->Inherit(_exports_PlayerFacade_class);
+_exports_PlayerFacade_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_PlayerFacade_obj = _exports_PlayerFacade_class_0->GetFunction();
 
 
   /* add static class functions and variables */
@@ -13079,6 +13761,7 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPSenderFacade"), _exports_RTPSenderFacade_
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPReceiverFacade"), _exports_RTPReceiverFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPStreamTransponderFacade"), _exports_RTPStreamTransponderFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTrackDepacketizer"), _exports_StreamTrackDepacketizer_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("PlayerFacade"), _exports_PlayerFacade_obj);
 
 
   /* create and register namespace objects */

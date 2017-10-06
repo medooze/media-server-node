@@ -13,6 +13,7 @@
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
 #include "../media-server/include/mp4recorder.h"
+#include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 
@@ -259,6 +260,58 @@ public:
 	}
 };
 
+
+
+class PlayerFacade :
+	public MP4Streamer,
+	public MP4Streamer::Listener
+{
+public:
+	PlayerFacade() :
+		MP4Streamer(this),
+		audio(MediaFrame::Audio),
+		video(MediaFrame::Video)
+	{
+	}
+		
+	virtual void onRTPPacket(RTPPacket &packet)
+	{
+		switch(packet.GetMedia())
+		{
+			case MediaFrame::Video:
+				//Update stats
+				video.media.Update(packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				//Set ssrc of video
+				packet.SetSSRC(video.media.ssrc);
+				//Multiplex
+				video.onRTP(packet.Clone());
+				break;
+			case MediaFrame::Audio:
+				//Update stats
+				audio.media.Update(packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				//Set ssrc of audio
+				packet.SetSSRC(audio.media.ssrc);
+				//Multiplex
+				audio.onRTP(packet.Clone());
+				break;
+		}
+	}
+
+	virtual void onTextFrame(TextFrame &frame) {}
+	virtual void onEnd() {}
+	
+	virtual void onMediaFrame(MediaFrame &frame)  {}
+	virtual void onMediaFrame(DWORD ssrc, MediaFrame &frame) {}
+
+	RTPIncomingSourceGroup* GetAudioSource() { return &audio; }
+	RTPIncomingSourceGroup* GetVideoSource() { return &video; }
+	
+private:
+	//TODO: Update to multitrack
+	RTPIncomingSourceGroup audio;
+	RTPIncomingSourceGroup video;
+};
+
 class RTPSenderFacade
 {
 public:	
@@ -318,14 +371,14 @@ class RTPStreamTransponderFacade :
 {
 public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
-		: RTPStreamTransponder(outgoing, sender->get())
+		: RTPStreamTransponder(outgoing, sender ? sender->get() : NULL)
 	{
 
 	}
 
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
 	{
-		return RTPStreamTransponder::SetIncoming(incoming, receiver->get());
+		return RTPStreamTransponder::SetIncoming(incoming, receiver ? receiver->get() : NULL);
 	}
 };
 
@@ -564,9 +617,7 @@ RTPReceiverFacade*	TransportToReceiver(DTLSICETransport* transport);
 RTPSenderFacade*	SessionToSender(RTPSessionFacade* session);
 RTPReceiverFacade*	SessionToReceiver(RTPSessionFacade* session);
 
-class RTPStreamTransponderFacade : 
-	public RTPIncomingSourceGroup::Listener,
-	public RTPOutgoingSourceGroup::Listener
+class RTPStreamTransponderFacade 
 {
 public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
@@ -578,8 +629,7 @@ public:
 	void Close();
 };
 
-class StreamTrackDepacketizer :
-	public RTPIncomingSourceGroup::Listener
+class StreamTrackDepacketizer 
 {
 public:
 	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource);
@@ -591,3 +641,28 @@ public:
 	void Stop();
 };
 
+
+class PlayerFacade
+{
+public:
+	PlayerFacade();
+	RTPIncomingSourceGroup* GetAudioSource();
+	RTPIncomingSourceGroup* GetVideoSource();
+	
+	int Open(const char* filename);
+	bool HasAudioTrack();
+	bool HasVideoTrack();
+	DWORD GetAudioCodec();
+	DWORD GetVideoCodec();
+	double GetDuration();
+	DWORD GetVideoWidth();
+	DWORD GetVideoHeight();
+	DWORD GetVideoBitrate();
+	double GetVideoFramerate();
+	int Play();
+	QWORD PreSeek(QWORD time);
+	int Seek(QWORD time);
+	QWORD Tell();
+	int Stop();
+	int Close();
+};

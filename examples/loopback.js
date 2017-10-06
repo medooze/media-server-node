@@ -43,6 +43,14 @@ let transportB = endpointB.createTransport(A, B, {disableSTUNKeepAlive: true});
 transportA.addRemoteCandidates(transportB.getLocalCandidates());
 transportB.addRemoteCandidates(transportA.getLocalCandidates());
 
+
+var player = MediaServer.createPlayer("/tmp/recording.mp4");
+
+var video = player.getVideoTracks()[0];
+
+
+player.play();
+
 //Terminate in 10s
 setTimeout(()=> {
 	//Terminate transport
