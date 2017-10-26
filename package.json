@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "configure": "node-gyp configure",
-    "swig" : "swig -javascript -node -c++ src/media-server.i",
+    "swig": "swig -javascript -node -c++ src/media-server.i",
     "build": "node-gyp build",
     "install": "node-gyp configure && node-gyp rebuild",
     "docs": "documentation build lib/MediaServer.js lib/*.js node_modules/semantic-sdp/lib/*.js --shallow -o docs -f html",
