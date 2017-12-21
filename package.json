@@ -31,7 +31,7 @@
   "dependencies": {
     "lfsr": "0.0.3",
     "nan": "^2.6.2",
-    "semantic-sdp": "^2.1.0",
+    "semantic-sdp": "^2.4.0",
     "uuid": "^3.0.1"
   }
 }

@@ -39,6 +39,7 @@
 				"media-server/src/vp8/VP8LayerSelector.cpp",
 				"media-server/src/vp9/VP9PayloadDescription.cpp",
 				"media-server/src/vp9/VP9LayerSelector.cpp",
+				"media-server/src/vp9/VP9Depacketizer.cpp",
 				"media-server/src/rtp.cpp",
 				"media-server/src/dtls.cpp",
 				"media-server/src/CPUMonitor.cpp",
