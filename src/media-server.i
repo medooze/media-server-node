@@ -254,7 +254,7 @@ public:
 		RTPIncomingSourceGroup* incoming = GetIncomingSourceGroup();
 		RTPPacket* ordered;
 		//FOr each ordered packet
-		while(ordered=GetOrderPacket())
+		while ((ordered=GetOrderPacket()))
 			//Call listeners
 			incoming->onRTP(ordered);
 	}
@@ -294,6 +294,9 @@ public:
 				//Multiplex
 				audio.onRTP(packet.Clone());
 				break;
+			default:
+				///Ignore
+				return;
 		}
 	}
 

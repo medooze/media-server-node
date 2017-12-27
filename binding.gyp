@@ -76,6 +76,7 @@
 				"media-server/src/mp4streamer.cpp",
 				"media-server/src/rtpsession.cpp",
 				"media-server/src/RTPTransport.cpp",
+				"media-server/src/PCAPFile.cpp",
 			],
 			"dependencies":
 			[
