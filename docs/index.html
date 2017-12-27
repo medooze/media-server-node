@@ -194,9 +194,9 @@
                       </a></li>
                       
                       <li><a
-                        href='#CandidateInfo#getFundation'
+                        href='#CandidateInfo#getFoundation'
                         class='regular pre-open'>
-                        #getFundation
+                        #getFoundation
                       </a></li>
                       
                       <li><a
@@ -1952,6 +1952,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#SDPInfo#answer'
+                        class='regular pre-open'>
+                        #answer
+                      </a></li>
+                      
+                      <li><a
                         href='#SDPInfo#toString'
                         class='regular pre-open'>
                         #toString
@@ -2028,6 +2034,12 @@
                   
                     <ul class='list-reset py1-ul pl1'>
                       <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#Transport#dump'
+                        class='regular pre-open'>
+                        #dump
+                      </a></li>
                       
                       <li><a
                         href='#Transport#setLocalProperties'
@@ -3296,7 +3308,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>new CandidateInfo(fundation, componentId, transport, priority, address, port, type, relAddr, relPort)</span>
+            <span class='code strong strong truncate'>new CandidateInfo(foundation, componentId, transport, priority, address, port, type, relAddr, relPort)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3307,7 +3319,7 @@
   <p>CanditateInfo constructor</p>
 
 
-  <div class='pre p1 fill-light mt0'>new CandidateInfo(fundation: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, componentId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, transport: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, address: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, port: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, relAddr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, relPort: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</div>
+  <div class='pre p1 fill-light mt0'>new CandidateInfo(foundation: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, componentId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, transport: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, priority: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, address: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, port: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, relAddr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, relPort: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</div>
   
   
 
@@ -3323,7 +3335,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>fundation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+            <span class='code bold'>foundation</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
 	    
           </div>
           
@@ -3520,11 +3532,11 @@
       </div>
     </div>
   
-    <div class='border-bottom' id='CandidateInfo#getFundation'>
+    <div class='border-bottom' id='CandidateInfo#getFoundation'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getFundation()</span>
+            <span class='code strong strong truncate'>getFoundation()</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3532,10 +3544,10 @@
 
   
 
-  <p>Get the candidate fundation</p>
+  <p>Get the candidate foundation</p>
 
 
-  <div class='pre p1 fill-light mt0'>getFundation(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  <div class='pre p1 fill-light mt0'>getFoundation(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
   
   
 
@@ -16842,6 +16854,103 @@ This object represent the minimal information of an WebRTC SDP in a semantic hie
       </div>
     </div>
   
+    <div class='border-bottom' id='SDPInfo#answer'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>answer(params)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Create answer to this SDP</p>
+
+
+  <div class='pre p1 fill-light mt0'>answer(params: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#sdpinfo">SDPInfo</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>params</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Parameters to create ansser
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>params.ice</span> <code class='quiet'><a href="#iceinfo">ICEInfo</a></code>
+                  </td>
+                  <td class='break-word'><span>ICE info object
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>params.dtls</span> <code class='quiet'><a href="#dtlsinfo">DTLSInfo</a></code>
+                  </td>
+                  <td class='break-word'><span>DTLS info object
+</span></td>
+                </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#sdpinfo">SDPInfo</a></code>:
+        answer
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='SDPInfo#toString'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -17298,6 +17407,65 @@ In order to decide how to route your streams you must attach the outgoing stream
   
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
+  
+    <div class='border-bottom' id='Transport#dump'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>dump(filename)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Dump incoming and outgoint rtp and rtcp packets into a pcap file</p>
+
+
+  <div class='pre p1 fill-light mt0'>dump(filename: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>filename</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Filename of the pcap file
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
   
     <div class='border-bottom' id='Transport#setLocalProperties'>
       <div class="clearfix small pointer toggle-sibling">
