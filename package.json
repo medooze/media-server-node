@@ -6,7 +6,7 @@
   "scripts": {
     "configure": "node-gyp configure",
     "swig": "swig -javascript -node -c++ src/media-server.i",
-    "build": "node-gyp build",
+    "build": "node-gyp build --jobs=max",
     "install": "node-gyp configure && node-gyp rebuild --jobs=max",
     "docs": "documentation build lib/MediaServer.js lib/*.js node_modules/semantic-sdp/lib/*.js --shallow -o docs -f html",
     "package": "tar cvzf build/medooze-media-server.tgz ../media-server-node/external/* ../media-server-node/media-server/src/* ../media-server-node/media-server/include/* ../media-server-node/lib/* ../media-server-node/package.json ../media-server-node/index.js  ../media-server-node/binding.gyp  ../media-server-node/README.md ../media-server-node/src"
@@ -30,7 +30,8 @@
   "homepage": "https://github.com/medooze/media-server-node#readme",
   "dependencies": {
     "lfsr": "0.0.3",
-    "nan": "^2.6.2",
+    "nan": "^2.8.0",
+    "node-gyp": "^3.6.2",
     "semantic-sdp": "^2.4.0",
     "uuid": "^3.0.1"
   }
