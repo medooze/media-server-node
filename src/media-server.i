@@ -6,7 +6,8 @@
 #include <functional>
 #include <nan.h>
 #include "../media-server/include/config.h"	
-#include "../media-server/include/dtls.h"	
+#include "../media-server/include/dtls.h"
+#include "../media-server/include/OpenSSL.h"
 #include "../media-server/include/media.h"
 #include "../media-server/include/rtp.h"
 #include "../media-server/include/rtpsession.h"
@@ -131,6 +132,9 @@ public:
 
 	static void Initialize()
 	{
+		//Initialize ssl
+		OpenSSL::ClassInit();
+		
 		//Start DTLS
 		DTLSConnection::Initialize();
 		

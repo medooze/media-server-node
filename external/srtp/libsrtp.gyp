@@ -17,8 +17,6 @@
       './config',
       'lib/include',
       'lib/crypto/include',
-      'lib/test',
-      '../boringssl/src/include',
     ],
     'conditions': [
       ['use_openssl==1', {
@@ -61,6 +59,7 @@
       ['target_arch=="x64" or target_arch=="ia32"', {
         'defines': [
           'CPU_CISC',
+	  'HAVE_X86'
         ],
       }],
       ['target_arch=="arm" or target_arch=="arm64" \
@@ -112,6 +111,11 @@
             # All Windows architectures are this way.
             'SIZEOF_UNSIGNED_LONG=4',
             'SIZEOF_UNSIGNED_LONG_LONG=8',
+           ],
+        }],
+	['OS=="linux"', {
+          'defines': [
+            'HAVE_BYTESWAP_H',
            ],
         }],
         ['target_arch=="x64" or target_arch=="ia32"', {
