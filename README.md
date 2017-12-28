@@ -2,8 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/72346e5229bc4fd8af091312be091fdd)](https://www.codacy.com/app/murillo128/media-server-node?utm_source=github.com&utm_medium=referral&utm_content=medooze/media-server-node&utm_campaign=badger)
 
-This media server will allow you to receive and send media streams from remote WebRTC peers and manage how you want to route them. Verified on Ubuntu, should work on any Linux with new GCC. OSX is not supported yet.
-
+This media server will allow you to receive and send media streams from remote WebRTC peers and manage how you want to route them. Verified on Ubuntu and OSX, should work on any Linux with new GCC
 
 ## Install
 

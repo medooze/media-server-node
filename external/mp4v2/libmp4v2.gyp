@@ -20,10 +20,23 @@
 			"target_name": "mp4v2",
 			"product_prefix": "lib",
 			"type": "static_library",
-			"cflags!": [ "-fno-exceptions"],
-			"cflags_cc!": [ "-fno-exceptions"],
-			"cflags": [ "-Wno-literal-suffix" ],
-			"cflags_cc": [ "-Wno-literal-suffix" ],
+			'conditions': [
+				[ 'OS=="mac"', {
+
+					'xcode_settings': {
+						'GCC_ENABLE_CPP_EXCEPTIONS': 'YES',
+						'WARNING_CFLAGS': [ '-Wno-reserved-user-defined-literal' ]
+					},
+				},
+				{
+						       "cflags!": [ "-fno-exceptions"],
+						       "cflags_cc!": [ "-fno-exceptions"],
+						       "cflags": [ "-Wno-literal-suffix" ],
+						       "cflags_cc": [ "-Wno-literal-suffix" ]
+				}
+
+				]
+			],
 			"include_dirs": 
 			[
 				"./config",

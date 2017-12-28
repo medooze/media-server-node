@@ -23,10 +23,10 @@
 				'/usr/include/nodejs/',
 				"<!(node -e \"require('nan')\")"
 			],
-			"ldflags" : ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu "],
+			"ldflags" : ["-lpthread -lresolv"],
 			"link_settings": 
 			{
-        			'libraries': ["-lpthread -lnsl -lpthread -lresolv -L/lib/i386-linux-gnu"]
+        			'libraries': ["-lpthread -lpthread -lresolv"]
       			},
 			"sources": 
 			[ 
