@@ -118,7 +118,7 @@ const ice  = transport.getLocalICEInfo();
 const candidates = endpoint.getLocalCandidates();
 
 //Create local SDP info
-let answer = new SDPInfo();
+const answer = new SDPInfo();
 
 //Add ice and dtls info
 answer.setDTLS(dtls);
@@ -131,13 +131,13 @@ Choose your codecs and set RTP parameters to answer the offer:
  
 ```javascript
 //Get remote audio m-line info 
-let audioOffer = offer.getMedia("audio");
+const audioOffer = offer.getMedia("audio");
 
 //If we have audio
 if (audioOffer)
 {
 	//Create audio media
-	let audio = audioOffer.answer({
+	const audio = audioOffer.answer({
 		codecs		: CodecInfo.MapFromNames(["opus"]),
 		extensions	: new Set([
 			"urn:ietf:params:rtp-hdrext:ssrc-audio-level",
@@ -148,13 +148,13 @@ if (audioOffer)
 }
 
 //Get remote video m-line info 
-let videoOffer = offer.getMedia("video");
+const videoOffer = offer.getMedia("video");
 
 //If offer had video
 if (videoOffer)
 {
 	//Create video media
-	let  video = videoOffer.answer({
+	const  video = videoOffer.answer({
 		codecs		: CodecInfo.MapFromNames(["vp9","flexfec-03"],true),
 		extensions	: new Set([
 			"http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time",
@@ -182,7 +182,7 @@ You need to process the stream offered by the client, so extract the stream info
 
 ```javascript
 //Get first stream offered
-let offered of offer.getStreams()[0];
+const offered = offer.getStreams()[0];
 
 //Create the remote stream into the transport
 const incomingStream = transport.createIncomingStream(offered);
