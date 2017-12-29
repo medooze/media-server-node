@@ -19,12 +19,12 @@ If you don't want to compile the native code each time you use the media server,
    npm run-script dist
 ```
 
-It will generate the binary package in `dist\medoooze-media-server-x.y.x.tgz`.
+It will generate the binary package in `dist\medooze-media-server-x.y.x.tgz`.
 
 To use it on your project just install it instead of the npm repository dependency:
 
 ```
-    npm i --save medoooze-media-server-x.y.x.tgz
+    npm i --save medooze-media-server-x.y.x.tgz
 ```
 
 ## Usage
