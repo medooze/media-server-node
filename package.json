@@ -7,9 +7,10 @@
     "configure": "node-gyp configure",
     "swig": "swig -javascript -node -c++ src/media-server.i",
     "build": "node-gyp build --jobs=max",
-    "install": "node-gyp configure && node-gyp rebuild --jobs=max",
+    "install": "test -f build/Release/medooze-media-server.node || (node-gyp configure && node-gyp rebuild --jobs=max)",
     "docs": "documentation build lib/MediaServer.js lib/*.js node_modules/semantic-sdp/lib/*.js --shallow -o docs -f html",
-    "package": "tar cvzf build/medooze-media-server.tgz ../media-server-node/external/* ../media-server-node/media-server/src/* ../media-server-node/media-server/include/* ../media-server-node/lib/* ../media-server-node/package.json ../media-server-node/index.js  ../media-server-node/binding.gyp  ../media-server-node/README.md ../media-server-node/src"
+    "package": "tar cvzf build/medooze-media-server.tgz ../media-server-node/external/* ../media-server-node/media-server/src/* ../media-server-node/media-server/include/* ../media-server-node/lib/* ../media-server-node/package.json ../media-server-node/index.js  ../media-server-node/binding.gyp  ../media-server-node/README.md ../media-server-node/src",
+    "dist": "node-gyp build --jobs=max && mkdir -p dist && tar cvzf dist/medooze-media-server-`node -e 'console.log(require(\"./package.json\").version)'`.tgz ../media-server-node/package.json ../media-server-node/index.js   ../media-server-node/README.md ../media-server-node/lib/* ../media-server-node/build/Release/medooze-media-server.node"
   },
   "repository": {
     "type": "git",
