@@ -5,8 +5,27 @@
 This media server will allow you to receive and send media streams from remote WebRTC peers and manage how you want to route them. Verified on Ubuntu and OSX, should work on any Linux with new GCC
 
 ## Install
-
+ 
+Just add the Medooze media server as a dependency to your node proyect:
+```
     npm i --save medooze-media-server
+```
+## Distribution
+
+If you don't want to compile the native code each time you use the media server, you could precompile Medooze Media server and generate a binary package for your platform. On the Medooze media server directory just do:
+
+```
+   npm i
+   npm run-script dist
+```
+
+It will generate the binary package in `dist\medoooze-media-server-x.y.x.tgz`.
+
+To use it on your project just install it instead of the npm repository dependency:
+
+```
+    npm i --save medoooze-media-server-x.y.x.tgz
+```
 
 ## Usage
 ```javascript
