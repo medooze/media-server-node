@@ -70,14 +70,14 @@ First import both Medooze media server and Semantic SDP dependecies:
 //Get the Medooze Media Server interface
 const MediaServer = require('medooze-media-server');
 const SemanticSDP = require("semantic-sdp");
-´´´
+```
 
 Then you need to create an Endpoint, which will create an UDP socket for receiving connection. You need to pass the `ip` address in which this Enpoint will be accesible by the WebRTC clients. This is typically the public IP address of the server, ans will be used on the ICE candidates sent to the browser on the SDP.
 
 ```javascript
 //Create UDP server endpoint
 const endpoint = MediaServer.createEndpoint(ip);
-´´´
+```
 
 Now you are ready to connect to your server.
 
@@ -95,7 +95,7 @@ const transport = endpoint.createTransport({
 	dtls : offer.getDTLS(),
 	ice  : offer.getICE() 
 });
-´´´
+```
 
 Now set the RTP remote properties for both audio and video:
 
@@ -105,7 +105,7 @@ Now set the RTP remote properties for both audio and video:
 	audio : offer.getMedia("audio"),
 	video : offer.getMedia("video")
 });
-´´´
+```
 
 You can start creating the answer now. First get the ICE and DTLS info from the `Transport` and the ICE candidate into from the `Endpoint`
 
@@ -125,7 +125,7 @@ answer.setDTLS(dtls);
 answer.setICE(ice);
 //Add candidates
 answer.addCandidate(candidates);
-´´´
+```
 
 Choose your codecs and set RTP parameters to answer the offer:
  
@@ -164,7 +164,7 @@ if (videoOffer)
 	//Add it to answer
 	answer.addMedia(video);
 }
-´´´
+```
 
 Set the our negotiated RTP properties on the transport
 
@@ -174,7 +174,7 @@ transport.setLocalProperties({
 	audio : answer.getMedia("audio"),
 	video : answer.getMedia("video")
 });
-´´´
+```
 
 ### Stream management
 
@@ -186,7 +186,7 @@ let offered of offer.getStreams()[0];
 
 //Create the remote stream into the transport
 const incomingStream = transport.createIncomingStream(offered);
-´´´
+```
 
 Now, for example, create an outgoing stream, and add it to the answer so the browser is aware of it.
 
@@ -202,7 +202,7 @@ const info = outgoingStream.getStreamInfo();
 
 //Add local stream info it to the answer
 answer.addStream(info);
-´´´
+```
 
 You can attach an `OutgoingStream` to an `IncomingStream`, this will create a `Transponder` array that will forward the incoming data to the ougoing stream, it will allow you also to apply transoformations to it (like SVC layer selection).
 
@@ -211,7 +211,7 @@ In this case, as you are attaching an incoming stream to an outgoing stream from
 ```javascript
 //Copy incoming data from the remote stream to the local one
 const transponders = outgoingStream.attachTo(incomingStream);
-´´´
+```
 
 You can now send answer the SDP to the client.
 ```
