@@ -482,6 +482,39 @@ private:
 };
 
 
+class SenderSideEstimatorListener : 
+	public RemoteRateEstimator::Listener
+{
+public:
+	SenderSideEstimatorListener(v8::Handle<v8::Object> object)
+		: persistent(object)
+	{
+		
+	}
+	
+	virtual void onTargetBitrateRequested(DWORD bitrate) override 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[1];
+			
+			//Create local args
+			argv2[i++] = Nan::New<v8::Uint32>(bitrate);
+			
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ontargetbitrate").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		});
+	}
+private:		
+	Nan::Persistent<v8::Object> persistent;
+};
+
 %}
 
 %include "stdint.i"
@@ -672,4 +705,11 @@ public:
 	QWORD Tell();
 	int Stop();
 	int Close();
+};
+
+class SenderSideEstimatorListener :
+	public RemoteRateEstimator::Listener
+{
+public:
+	SenderSideEstimatorListener(v8::Handle<v8::Object> object);
 };

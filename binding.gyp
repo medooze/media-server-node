@@ -77,6 +77,8 @@
 				"media-server/src/rtpsession.cpp",
 				"media-server/src/RTPTransport.cpp",
 				"media-server/src/PCAPFile.cpp",
+				"media-server/src/remoteratecontrol.cpp",
+				"media-server/src/remoterateestimator.cpp",
 			],
 			"dependencies":
 			[

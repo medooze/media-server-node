@@ -1561,29 +1561,31 @@ fail: ;
 #define SWIGTYPE_p_RTPStreamTransponder swig_types[26]
 #define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[27]
 #define SWIGTYPE_p_RecorderControl__Type swig_types[28]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[29]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[30]
-#define SWIGTYPE_p_StringFacade swig_types[31]
-#define SWIGTYPE_p_TextFrame swig_types[32]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[33]
-#define SWIGTYPE_p_VideoFrame swig_types[34]
-#define SWIGTYPE_p_char swig_types[35]
-#define SWIGTYPE_p_int swig_types[36]
-#define SWIGTYPE_p_long_long swig_types[37]
-#define SWIGTYPE_p_mp4track swig_types[38]
-#define SWIGTYPE_p_short swig_types[39]
-#define SWIGTYPE_p_signed_char swig_types[40]
-#define SWIGTYPE_p_std__string swig_types[41]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[42]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[43]
-#define SWIGTYPE_p_unsigned_char swig_types[44]
-#define SWIGTYPE_p_unsigned_int swig_types[45]
-#define SWIGTYPE_p_unsigned_long_long swig_types[46]
-#define SWIGTYPE_p_unsigned_short swig_types[47]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[48]
-#define SWIGTYPE_p_void swig_types[49]
-static swig_type_info *swig_types[51];
-static swig_module_info swig_module = {swig_types, 50, 0, 0, 0, 0};
+#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[29]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[30]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[31]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[32]
+#define SWIGTYPE_p_StringFacade swig_types[33]
+#define SWIGTYPE_p_TextFrame swig_types[34]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[35]
+#define SWIGTYPE_p_VideoFrame swig_types[36]
+#define SWIGTYPE_p_char swig_types[37]
+#define SWIGTYPE_p_int swig_types[38]
+#define SWIGTYPE_p_long_long swig_types[39]
+#define SWIGTYPE_p_mp4track swig_types[40]
+#define SWIGTYPE_p_short swig_types[41]
+#define SWIGTYPE_p_signed_char swig_types[42]
+#define SWIGTYPE_p_std__string swig_types[43]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[44]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[45]
+#define SWIGTYPE_p_unsigned_char swig_types[46]
+#define SWIGTYPE_p_unsigned_int swig_types[47]
+#define SWIGTYPE_p_unsigned_long_long swig_types[48]
+#define SWIGTYPE_p_unsigned_short swig_types[49]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[50]
+#define SWIGTYPE_p_void swig_types[51]
+static swig_type_info *swig_types[53];
+static swig_module_info swig_module = {swig_types, 52, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2084,6 +2086,39 @@ private:
 };
 
 
+class SenderSideEstimatorListener : 
+	public RemoteRateEstimator::Listener
+{
+public:
+	SenderSideEstimatorListener(v8::Handle<v8::Object> object)
+		: persistent(object)
+	{
+		
+	}
+	
+	virtual void onTargetBitrateRequested(DWORD bitrate) override 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[1];
+			
+			//Create local args
+			argv2[i++] = Nan::New<v8::Uint32>(bitrate);
+			
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ontargetbitrate").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		});
+	}
+private:		
+	Nan::Persistent<v8::Object> persistent;
+};
+
 
 
 #include <stdint.h>		// Use the C99 official header
@@ -2446,6 +2481,7 @@ SWIGV8_ClientData _exports_RTPReceiverFacade_clientData;
 SWIGV8_ClientData _exports_RTPStreamTransponderFacade_clientData;
 SWIGV8_ClientData _exports_StreamTrackDepacketizer_clientData;
 SWIGV8_ClientData _exports_PlayerFacade_clientData;
+SWIGV8_ClientData _exports_SenderSideEstimatorListener_clientData;
 
 
 #if (V8_MAJOR_VERSION-0) < 5
@@ -8897,6 +8933,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_SetSenderSideEstimatorListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  RemoteRateEstimator::Listener *arg2 = (RemoteRateEstimator::Listener *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_SetSenderSideEstimatorListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_SetSenderSideEstimatorListener" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RemoteRateEstimator__Listener, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_SetSenderSideEstimatorListener" "', argument " "2"" of type '" "RemoteRateEstimator::Listener *""'"); 
+  }
+  arg2 = (RemoteRateEstimator::Listener *)(argp2);
+  (arg1)->SetSenderSideEstimatorListener(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_GetRemoteUsername(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -13184,6 +13256,66 @@ static void _wrap_delete_PlayerFacade(v8::Persistent<v8::Value> object, void *pa
         }
 
 
+static SwigV8ReturnValue _wrap_new_SenderSideEstimatorListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  v8::Handle< v8::Object > arg1 ;
+  SenderSideEstimatorListener *result;
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_SenderSideEstimatorListener.");
+  {
+    arg1 = v8::Handle<v8::Object>::Cast(args[0]);
+  }
+  result = (SenderSideEstimatorListener *)new SenderSideEstimatorListener(arg1);
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_SenderSideEstimatorListener, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_SenderSideEstimatorListener(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_SenderSideEstimatorListener(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_SenderSideEstimatorListener(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_SenderSideEstimatorListener(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_SenderSideEstimatorListener(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            SenderSideEstimatorListener * arg1 = (SenderSideEstimatorListener *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static void *_p_PropertiesFacadeTo_p_Properties(void *x, int *SWIGUNUSEDPARM(newmemory)) {
@@ -13212,6 +13344,9 @@ static void *_p_RTPIncomingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(new
 }
 static void *_p_RTPOutgoingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSource *)  ((RTPOutgoingSource *) x));
+}
+static void *_p_SenderSideEstimatorListenerTo_p_RemoteRateEstimator__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((RemoteRateEstimator::Listener *)  ((SenderSideEstimatorListener *) x));
 }
 static swig_type_info _swigt__p_AudioCodec__Type = {"_p_AudioCodec__Type", "AudioCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioFrame = {"_p_AudioFrame", "AudioFrame *", 0, 0, (void*)0, 0};
@@ -13242,7 +13377,9 @@ static swig_type_info _swigt__p_RTPSource = {"_p_RTPSource", "p_RTPSource|RTPSou
 static swig_type_info _swigt__p_RTPStreamTransponder = {"_p_RTPStreamTransponder", "p_RTPStreamTransponder|RTPStreamTransponder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPStreamTransponderFacade = {"_p_RTPStreamTransponderFacade", "p_RTPStreamTransponderFacade|RTPStreamTransponderFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RecorderControl__Type = {"_p_RecorderControl__Type", "RecorderControl::Type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RemoteRateEstimator__Listener = {"_p_RemoteRateEstimator__Listener", "RemoteRateEstimator::Listener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RtpPacketizationInfo = {"_p_RtpPacketizationInfo", "RtpPacketizationInfo *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_SenderSideEstimatorListener = {"_p_SenderSideEstimatorListener", "p_SenderSideEstimatorListener", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_StreamTrackDepacketizer = {"_p_StreamTrackDepacketizer", "p_StreamTrackDepacketizer|StreamTrackDepacketizer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_StringFacade = {"_p_StringFacade", "StringFacade *|p_StringFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TextFrame = {"_p_TextFrame", "TextFrame *", 0, 0, (void*)0, 0};
@@ -13294,7 +13431,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RTPStreamTransponder,
   &_swigt__p_RTPStreamTransponderFacade,
   &_swigt__p_RecorderControl__Type,
+  &_swigt__p_RemoteRateEstimator__Listener,
   &_swigt__p_RtpPacketizationInfo,
+  &_swigt__p_SenderSideEstimatorListener,
   &_swigt__p_StreamTrackDepacketizer,
   &_swigt__p_StringFacade,
   &_swigt__p_TextFrame,
@@ -13346,7 +13485,9 @@ static swig_cast_info _swigc__p_RTPSource[] = {  {&_swigt__p_RTPSource, 0, 0, 0}
 static swig_cast_info _swigc__p_RTPStreamTransponder[] = {  {&_swigt__p_RTPStreamTransponder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPStreamTransponderFacade[] = {  {&_swigt__p_RTPStreamTransponderFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RecorderControl__Type[] = {  {&_swigt__p_RecorderControl__Type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RemoteRateEstimator__Listener[] = {  {&_swigt__p_RemoteRateEstimator__Listener, 0, 0, 0},  {&_swigt__p_SenderSideEstimatorListener, _p_SenderSideEstimatorListenerTo_p_RemoteRateEstimator__Listener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RtpPacketizationInfo[] = {  {&_swigt__p_RtpPacketizationInfo, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SenderSideEstimatorListener[] = {  {&_swigt__p_SenderSideEstimatorListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_StreamTrackDepacketizer[] = {  {&_swigt__p_StreamTrackDepacketizer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_StringFacade[] = {  {&_swigt__p_StringFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TextFrame[] = {  {&_swigt__p_TextFrame, 0, 0, 0},{0, 0, 0, 0}};
@@ -13398,7 +13539,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RTPStreamTransponder,
   _swigc__p_RTPStreamTransponderFacade,
   _swigc__p_RecorderControl__Type,
+  _swigc__p_RemoteRateEstimator__Listener,
   _swigc__p_RtpPacketizationInfo,
+  _swigc__p_SenderSideEstimatorListener,
   _swigc__p_StreamTrackDepacketizer,
   _swigc__p_StringFacade,
   _swigc__p_TextFrame,
@@ -13888,6 +14031,13 @@ _exports_PlayerFacade_clientData.dtor = _wrap_delete_PlayerFacade;
 if (SWIGTYPE_p_PlayerFacade->clientdata == 0) {
   SWIGTYPE_p_PlayerFacade->clientdata = &_exports_PlayerFacade_clientData;
 }
+/* Name: _exports_SenderSideEstimatorListener, Type: p_SenderSideEstimatorListener, Dtor: _wrap_delete_SenderSideEstimatorListener */
+v8::Handle<v8::FunctionTemplate> _exports_SenderSideEstimatorListener_class = SWIGV8_CreateClassTemplate("_exports_SenderSideEstimatorListener");
+SWIGV8_SET_CLASS_TEMPL(_exports_SenderSideEstimatorListener_clientData.class_templ, _exports_SenderSideEstimatorListener_class);
+_exports_SenderSideEstimatorListener_clientData.dtor = _wrap_delete_SenderSideEstimatorListener;
+if (SWIGTYPE_p_SenderSideEstimatorListener->clientdata == 0) {
+  SWIGTYPE_p_SenderSideEstimatorListener->clientdata = &_exports_SenderSideEstimatorListener_clientData;
+}
 
 
   /* register wrapper functions */
@@ -13998,6 +14148,7 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "AddOutgoingSourceGrou
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "RemoveOutgoingSourceGroup", _wrap_DTLSICETransport_RemoveOutgoingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "AddIncomingSourceGroup", _wrap_DTLSICETransport_AddIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "RemoveIncomingSourceGroup", _wrap_DTLSICETransport_RemoveIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetSenderSideEstimatorListener", _wrap_DTLSICETransport_SetSenderSideEstimatorListener);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRemoteUsername", _wrap_DTLSICETransport_GetRemoteUsername);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRemotePwd", _wrap_DTLSICETransport_GetRemotePwd);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetLocalUsername", _wrap_DTLSICETransport_GetLocalUsername);
@@ -14247,6 +14398,12 @@ _exports_PlayerFacade_class_0->SetCallHandler(_wrap_new_PlayerFacade);
 _exports_PlayerFacade_class_0->Inherit(_exports_PlayerFacade_class);
 _exports_PlayerFacade_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_PlayerFacade_obj = _exports_PlayerFacade_class_0->GetFunction();
+/* Class: SenderSideEstimatorListener (_exports_SenderSideEstimatorListener) */
+v8::Handle<v8::FunctionTemplate> _exports_SenderSideEstimatorListener_class_0 = SWIGV8_CreateClassTemplate("SenderSideEstimatorListener");
+_exports_SenderSideEstimatorListener_class_0->SetCallHandler(_wrap_new_SenderSideEstimatorListener);
+_exports_SenderSideEstimatorListener_class_0->Inherit(_exports_SenderSideEstimatorListener_class);
+_exports_SenderSideEstimatorListener_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_SenderSideEstimatorListener_obj = _exports_SenderSideEstimatorListener_class_0->GetFunction();
 
 
   /* add static class functions and variables */
@@ -14291,6 +14448,7 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPReceiverFacade"), _exports_RTPReceiverFac
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPStreamTransponderFacade"), _exports_RTPStreamTransponderFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTrackDepacketizer"), _exports_StreamTrackDepacketizer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PlayerFacade"), _exports_PlayerFacade_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("SenderSideEstimatorListener"), _exports_SenderSideEstimatorListener_obj);
 
 
   /* create and register namespace objects */
