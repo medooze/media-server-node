@@ -47,7 +47,7 @@ We intend to implement support the following features:
 - [x] [VP9 SVC](https://tools.ietf.org/html/draft-ietf-payload-vp9-02) layer selection
 - [x] Simulcast with temporal layer selection
 - [x] [RTP transport wide congestion control](https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01)
-- [ ] Sender side BitRate estimation: algorithm not decided yet candidates are [GCC](https://tools.ietf.org/html/draft-ietf-rmcat-gcc-02), [NADA](https://tools.ietf.org/html/draft-ietf-rmcat-nada-03) or [SCREAM](https://tools.ietf.org/html/draft-ietf-rmcat-scream-cc-07)
+- [x] Sender side BitRate estimation
 - [ ] [Flex FEC draft 3](https://tools.ietf.org/html/draft-ietf-payload-flexible-fec-scheme-03)
 - [x] NACK and RTX support
 - [x] [RTCP reduced size] (https://tools.ietf.org/html/rfc5506)
