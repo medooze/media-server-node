@@ -284,7 +284,7 @@ public:
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video.media.Update(packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				video.media.Update(getTimeMS(),packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
 				//Set ssrc of video
 				packet.SetSSRC(video.media.ssrc);
 				//Multiplex
@@ -292,7 +292,7 @@ public:
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio.media.Update(packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				audio.media.Update(getTimeMS(),packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
 				//Set ssrc of audio
 				packet.SetSSRC(audio.media.ssrc);
 				//Multiplex
@@ -520,6 +520,8 @@ private:
 %include "stdint.i"
 %include "../media-server/include/config.h"	
 %include "../media-server/include/media.h"
+%include "../media-server/include/acumulator.h"
+
 
 struct RTPSource 
 {
@@ -531,6 +533,7 @@ struct RTPSource
 	DWORD numRTCPPackets;
 	DWORD totalBytes;
 	DWORD totalRTCPBytes;
+	Acumulator bitrate;
 };
 
 struct RTPIncomingSource : public RTPSource
