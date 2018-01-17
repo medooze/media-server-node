@@ -1,4 +1,8 @@
 {
+	'variables':
+	{
+	  'external_libmediaserver%': '<!(echo $LIBMEDIASERVER)',
+	},
 	"targets": 
 	[
 		{
@@ -31,60 +35,74 @@
 			"sources": 
 			[ 
 				"src/media-server_wrap.cxx",
-				"media-server/src/RTPBundleTransport.cpp",
-				"media-server/src/DTLSICETransport.cpp",
-				"media-server/src/VideoLayerSelector.cpp",
-				"media-server/src/h264/h264depacketizer.cpp",
-				"media-server/src/vp8/vp8depacketizer.cpp",
-				"media-server/src/vp8/VP8LayerSelector.cpp",
-				"media-server/src/vp9/VP9PayloadDescription.cpp",
-				"media-server/src/vp9/VP9LayerSelector.cpp",
-				"media-server/src/vp9/VP9Depacketizer.cpp",
-				"media-server/src/rtp.cpp",
-				"media-server/src/dtls.cpp",
-				"media-server/src/CPUMonitor.cpp",
-				"media-server/src/OpenSSL.cpp",
-				"media-server/src/RTPTransport.cpp",
-				"media-server/src/httpparser.cpp",
-				"media-server/src/stunmessage.cpp",
-				"media-server/src/crc32calc.cpp",
-				"media-server/src/http.cpp",
-				"media-server/src/avcdescriptor.cpp",
-				"media-server/src/utf8.cpp",
-				"media-server/src/rtp/RTCPCommonHeader.cpp",
-				"media-server/src/rtp/RTPHeader.cpp",
-				"media-server/src/rtp/RTPHeaderExtension.cpp",
-				"media-server/src/rtp/RTCPApp.cpp",
-				"media-server/src/rtp/RTCPExtendedJitterReport.cpp",
-				"media-server/src/rtp/RTCPPacket.cpp",
-				"media-server/src/rtp/RTCPReport.cpp",
-				"media-server/src/rtp/RTCPSenderReport.cpp",
-				"media-server/src/rtp/RTPMap.cpp",
-				"media-server/src/rtp/RTCPBye.cpp",
-				"media-server/src/rtp/RTCPFullIntraRequest.cpp",
-				"media-server/src/rtp/RTCPPayloadFeedback.cpp",
-				"media-server/src/rtp/RTCPRTPFeedback.cpp",
-				"media-server/src/rtp/RTPDepacketizer.cpp",
-				"media-server/src/rtp/RTPPacket.cpp",
-				"media-server/src/rtp/RTCPCompoundPacket.cpp",
-				"media-server/src/rtp/RTCPNACK.cpp",
-				"media-server/src/rtp/RTCPReceiverReport.cpp",
-				"media-server/src/rtp/RTCPSDES.cpp",
-				"media-server/src/rtp/RTPPacketSched.cpp",
-				"media-server/src/rtp/RTPStreamTransponder.cpp",
-				"media-server/src/mp4recorder.cpp",
-				"media-server/src/mp4streamer.cpp",
-				"media-server/src/rtpsession.cpp",
-				"media-server/src/RTPTransport.cpp",
-				"media-server/src/PCAPFile.cpp",
-				"media-server/src/remoteratecontrol.cpp",
-				"media-server/src/remoterateestimator.cpp",
 			],
-			"dependencies":
+			"conditions":
 			[
-				'external/mp4v2/libmp4v2.gyp:mp4v2',
-				'external/openssl/openssl.gyp:openssl',
-				'external/srtp/libsrtp.gyp:libsrtp',
+				[
+					"external_libmediaserver == ''", 
+					{
+						"sources": 
+						[
+							"media-server/src/RTPBundleTransport.cpp",
+							"media-server/src/DTLSICETransport.cpp",
+							"media-server/src/VideoLayerSelector.cpp",
+							"media-server/src/h264/h264depacketizer.cpp",
+							"media-server/src/vp8/vp8depacketizer.cpp",
+							"media-server/src/vp8/VP8LayerSelector.cpp",
+							"media-server/src/vp9/VP9PayloadDescription.cpp",
+							"media-server/src/vp9/VP9LayerSelector.cpp",
+							"media-server/src/vp9/VP9Depacketizer.cpp",
+							"media-server/src/rtp.cpp",
+							"media-server/src/dtls.cpp",
+							"media-server/src/CPUMonitor.cpp",
+							"media-server/src/OpenSSL.cpp",
+							"media-server/src/RTPTransport.cpp",
+							"media-server/src/httpparser.cpp",
+							"media-server/src/stunmessage.cpp",
+							"media-server/src/crc32calc.cpp",
+							"media-server/src/http.cpp",
+							"media-server/src/avcdescriptor.cpp",
+							"media-server/src/utf8.cpp",
+							"media-server/src/rtp/RTCPCommonHeader.cpp",
+							"media-server/src/rtp/RTPHeader.cpp",
+							"media-server/src/rtp/RTPHeaderExtension.cpp",
+							"media-server/src/rtp/RTCPApp.cpp",
+							"media-server/src/rtp/RTCPExtendedJitterReport.cpp",
+							"media-server/src/rtp/RTCPPacket.cpp",
+							"media-server/src/rtp/RTCPReport.cpp",
+							"media-server/src/rtp/RTCPSenderReport.cpp",
+							"media-server/src/rtp/RTPMap.cpp",
+							"media-server/src/rtp/RTCPBye.cpp",
+							"media-server/src/rtp/RTCPFullIntraRequest.cpp",
+							"media-server/src/rtp/RTCPPayloadFeedback.cpp",
+							"media-server/src/rtp/RTCPRTPFeedback.cpp",
+							"media-server/src/rtp/RTPDepacketizer.cpp",
+							"media-server/src/rtp/RTPPacket.cpp",
+							"media-server/src/rtp/RTCPCompoundPacket.cpp",
+							"media-server/src/rtp/RTCPNACK.cpp",
+							"media-server/src/rtp/RTCPReceiverReport.cpp",
+							"media-server/src/rtp/RTCPSDES.cpp",
+							"media-server/src/rtp/RTPPacketSched.cpp",
+							"media-server/src/rtp/RTPStreamTransponder.cpp",
+							"media-server/src/mp4recorder.cpp",
+							"media-server/src/mp4streamer.cpp",
+							"media-server/src/rtpsession.cpp",
+							"media-server/src/RTPTransport.cpp",
+							"media-server/src/PCAPFile.cpp",
+							"media-server/src/remoteratecontrol.cpp",
+							"media-server/src/remoterateestimator.cpp",
+						],
+						"dependencies":
+						[
+							"external/mp4v2/libmp4v2.gyp:mp4v2",
+							"external/openssl/openssl.gyp:openssl",
+							"external/srtp/libsrtp.gyp:libsrtp",
+						]
+					},
+					{
+						"libraries": [ "<(external_libmediaserver)" ]
+					}
+				]
 			]
 		}
 	]

@@ -127,9 +127,7 @@ const MediaServer = require("../index");
 
 //Create UDP server endpoint
 let endpoint = MediaServer.createEndpoint(ip);
-MediaServer.RunCallback((msg)=>{
-  console.log(msg);
-});
+
 //Create an mp4 recorder
 let recorder = MediaServer.createRecorder("/tmp/test.mp4");
 
