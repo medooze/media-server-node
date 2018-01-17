@@ -1,4 +1,4 @@
-# How to compile with exteranal static libs
+# How to compile with external static libs
 
 First go to `media-server` dir and modify the `config.mk` file to add the location of the external dependencies:
 
