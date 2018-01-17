@@ -1,6 +1,6 @@
 # How to compile with exteranal static libs
 
-First go to `media-server` dir and modify the `config.ml` file to add the location of the external dependencies:
+First go to `media-server` dir and modify the `config.mk` file to add the location of the external dependencies:
 
 ```
 LOG		  = yes
@@ -24,10 +24,10 @@ And create the `libmediaserver.a` static lib:
 make -j 16 libmediaserver
 ```
 
-Now export an `LIBMEDIAMIXER` enviroment variable with all the static libraries needed for creating the node native add on:
+Now export an `LIBMEDIASERVER` enviroment variable with all the static libraries needed for creating the node native add on:
 
 ``` 
-export LIBMEDIAMIXER="/usr/local/src/medooze/mcu/bin/release/libmediaserver.a /usr/local/src/openssl-1.1.0g/libssl.a /usr/local/src/openssl-1.1.0g/libcrypto.a /usr/local/src/libsrtp/libsrtp2.a /usr/local/src/mp4v2/.libs/libmp4v2.a"
+export LIBMEDIASERVER="/usr/local/src/medooze/mcu/bin/release/libmediaserver.a /usr/local/src/openssl-1.1.0g/libssl.a /usr/local/src/openssl-1.1.0g/libcrypto.a /usr/local/src/libsrtp/libsrtp2.a /usr/local/src/mp4v2/.libs/libmp4v2.a"
 ```
 
 Now just configure and build as normal:
