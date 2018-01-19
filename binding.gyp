@@ -1,7 +1,8 @@
 {
 	'variables':
 	{
-	  'external_libmediaserver%': '<!(echo $LIBMEDIASERVER)',
+		'external_libmediaserver%'		: '<!(echo $LIBMEDIASERVER)',
+		'external_libmediaserver_include_dirs%'	: '<!(echo $LIBMEDIASERVER_INCLUDE)',
 	},
 	"targets": 
 	[
@@ -18,12 +19,6 @@
 			],
 			"include_dirs" : 
 			[
-				'external/mp4v2/lib/include',
-				'external/mp4v2/config/include',
-				'external/srtp/include',
-				'external/openssl/lib/include',
-				'media-server/include',
-				'media-server/src',
 				'/usr/include/nodejs/',
 				"<!(node -e \"require('nan')\")"
 			],
@@ -41,6 +36,15 @@
 				[
 					"external_libmediaserver == ''", 
 					{
+						"include_dirs" :
+						[
+							'media-server/include',
+							'media-server/src',
+							'external/mp4v2/lib/include',
+							'external/mp4v2/config/include',
+							'external/srtp/include',
+							'external/openssl/lib/include',
+						],
 						"sources": 
 						[
 							"media-server/src/RTPBundleTransport.cpp",
@@ -100,7 +104,8 @@
 						]
 					},
 					{
-						"libraries": [ "<(external_libmediaserver)" ]
+						"libraries"	: [ "<(external_libmediaserver)" ]
+						"include_dirs"	: [ "<(external_libmediaserver_include_dirs)" ]
 					}
 				]
 			]
