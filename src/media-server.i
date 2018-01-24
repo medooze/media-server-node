@@ -669,6 +669,7 @@ public:
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
+	void Mute(bool muting);
 	void Close();
 };
 

@@ -11377,6 +11377,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPStreamTransponder_Mute(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPStreamTransponder *arg1 = (RTPStreamTransponder *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponder_Mute.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponder, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponder_Mute" "', argument " "1"" of type '" "RTPStreamTransponder *""'"); 
+  }
+  arg1 = (RTPStreamTransponder *)(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPStreamTransponder_Mute" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = (bool)(val2);
+  (arg1)->Mute(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_StringFacade__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
   SWIGV8_HANDLESCOPE();
   
@@ -13043,6 +13079,42 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SelectLayer(const Swig
   (arg1)->SelectLayer(arg2,arg3);
   jsresult = SWIGV8_UNDEFINED();
   
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_Mute(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPStreamTransponderFacade *arg1 = (RTPStreamTransponderFacade *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponderFacade_Mute.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponderFacade_Mute" "', argument " "1"" of type '" "RTPStreamTransponderFacade *""'"); 
+  }
+  arg1 = (RTPStreamTransponderFacade *)(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPStreamTransponderFacade_Mute" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = (bool)(val2);
+  (arg1)->Mute(arg2);
+  jsresult = SWIGV8_UNDEFINED();
   
   
   
@@ -14789,6 +14861,7 @@ SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "Close", _wrap_RTP
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "onRTP", _wrap_RTPStreamTransponder_onRTP);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "onPLIRequest", _wrap_RTPStreamTransponder_onPLIRequest);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "SelectLayer", _wrap_RTPStreamTransponder_SelectLayer);
+SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "Mute", _wrap_RTPStreamTransponder_Mute);
 SWIGV8_AddMemberFunction(_exports_StringFacade_class, "toString", _wrap_StringFacade_toString);
 SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetProperty", _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProperty);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Init", _wrap_RTPSessionFacade_Init);
@@ -14806,6 +14879,7 @@ SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "onRTP", _wr
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "onPLIRequest", _wrap_RTPStreamTransponderFacade_onPLIRequest);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SetIncoming", _wrap_RTPStreamTransponderFacade_SetIncoming);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SelectLayer", _wrap_RTPStreamTransponderFacade_SelectLayer);
+SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Mute", _wrap_RTPStreamTransponderFacade_Mute);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Close", _wrap_RTPStreamTransponderFacade_Close);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "AddMediaListener", _wrap_StreamTrackDepacketizer_AddMediaListener);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "RemoveMediaListener", _wrap_StreamTrackDepacketizer_RemoveMediaListener);
