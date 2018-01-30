@@ -115,7 +115,7 @@
 					},
 					{
 						"libraries"	: [ "<(external_libmediaserver)" ],
-						"include_dirs"	: [ "<(external_libmediaserver_include_dirs)" ]
+						"include_dirs"	: [ "<@(external_libmediaserver_include_dirs)" ]
 					}
 				]
 			]
