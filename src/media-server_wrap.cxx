@@ -2121,6 +2121,27 @@ private:
 	Nan::Persistent<v8::Object> persistent;
 };
 
+//Empty implementation of event source
+EvenSource::EvenSource()
+{
+}
+
+EvenSource::EvenSource(const char* str)
+{
+}
+
+EvenSource::EvenSource(const std::wstring &str)
+{
+}
+
+EvenSource::~EvenSource()
+{
+}
+
+void EvenSource::SendEvent(const char* type,const char* msg,...)
+{
+}
+
 
 
 #include <stdint.h>		// Use the C99 official header

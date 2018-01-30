@@ -515,6 +515,27 @@ private:
 	Nan::Persistent<v8::Object> persistent;
 };
 
+//Empty implementation of event source
+EvenSource::EvenSource()
+{
+}
+
+EvenSource::EvenSource(const char* str)
+{
+}
+
+EvenSource::EvenSource(const std::wstring &str)
+{
+}
+
+EvenSource::~EvenSource()
+{
+}
+
+void EvenSource::SendEvent(const char* type,const char* msg,...)
+{
+}
+
 %}
 
 %include "stdint.i"
@@ -717,24 +738,3 @@ class SenderSideEstimatorListener :
 public:
 	SenderSideEstimatorListener(v8::Handle<v8::Object> object);
 };
-
-//Empty implementation of event source
-EvenSource::EvenSource()
-{
-}
-
-EvenSource::EvenSource(const char* str)
-{
-}
-
-EvenSource::EvenSource(const std::wstring &str)
-{
-}
-
-EvenSource::~EvenSource()
-{
-}
-
-void EvenSource::SendEvent(const char* type,const char* msg,...)
-{
-}
