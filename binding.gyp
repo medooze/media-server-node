@@ -43,7 +43,7 @@
 							'external/mp4v2/lib/include',
 							'external/mp4v2/config/include',
 							'external/srtp/include',
-							'external/openssl/lib/include',
+							'<(node_root_dir)/deps/openssl/openssl/include'
 						],
 						"sources": 
 						[
@@ -99,8 +99,18 @@
 						"dependencies":
 						[
 							"external/mp4v2/libmp4v2.gyp:mp4v2",
-							"external/openssl/openssl.gyp:openssl",
 							"external/srtp/libsrtp.gyp:libsrtp",
+						],
+  					        "conditions" : [
+							    ["target_arch=='ia32'", {
+							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/piii" ]
+							    }],
+							    ["target_arch=='x64'", {
+							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ]
+							    }],
+							    ["target_arch=='arm'", {
+							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ]
+							    }]
 						]
 					},
 					{
