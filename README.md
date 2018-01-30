@@ -5,7 +5,7 @@ This media server will allow you to receive and send media streams from remote W
 Supported systems:
 
  - [x] Linux
- - [x] Mac Os
+ - [x] Mac Os X
  - [x] Raspberry Pi
 
 ## Install
