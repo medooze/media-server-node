@@ -217,6 +217,7 @@ if (videoOffer)
 	video : answer.getMedia("video")
 });
 	
+console.log(offer);
 
 //For each stream offered
 for (let offered of offer.getStreams().values())
@@ -244,6 +245,10 @@ for (let offered of offer.getStreams().values())
 	
 	//Add local stream info it to the answer
 	answer.addStream(info);
+
+	//Test stats
+	console.dir(incomingStream.getStats(),{depth: null, colors: true});
+	console.dir(outgoingStream.getStats(),{depth: null, colors: true});
 }
 		
 console.log(answer.toString());
