@@ -85,7 +85,7 @@ player.play();
 //Terminate in 10s
 setTimeout(()=> {
 	//Terminate transport
-	/*transportA.stop();
+	transportA.stop();
 	transportB.stop();
 
 	//Terminate enpoint and close sockets
@@ -94,7 +94,7 @@ setTimeout(()=> {
 	
 	endpointA = null;
 	endpointB = null;
-	*/
+	
 	global.gc && global.gc();
 	process.exit(0);
 	
