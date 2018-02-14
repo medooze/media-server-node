@@ -142,6 +142,11 @@ public:
 		uv_async_init(uv_default_loop(), &async, async_cb_handler);
 	}
 	
+	static void Terminate()
+	{
+		uv_close((uv_handle_t *)&async, NULL);
+	}
+	
 	static void EnableDebug(bool flag)
 	{
 		//Enable debug
@@ -635,6 +640,7 @@ class MediaServer
 public:
 	static void RunCallback(v8::Handle<v8::Object> object);
 	static void Initialize();
+	static void Terminate();
 	static void EnableDebug(bool flag);
 	static void EnableUltraDebug(bool flag);
 	static StringFacade GetFingerprint();
