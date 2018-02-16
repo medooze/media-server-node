@@ -1753,6 +1753,14 @@ public:
 		uv_close((uv_handle_t *)&async, NULL);
 	}
 	
+	static void EnableLog(bool flag)
+	{
+		//Enable log
+		Log("-EnableLog [%d]\n",flag);
+		Logger::EnableLog(flag);
+		Log("-EnableLog [%d]\n",flag);
+	}
+	
 	static void EnableDebug(bool flag)
 	{
 		//Enable debug
@@ -11924,6 +11932,33 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MediaServer_EnableLog(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  bool arg1 ;
+  bool val1 ;
+  int ecode1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_EnableLog.");
+  
+  ecode1 = SWIG_AsVal_bool(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MediaServer_EnableLog" "', argument " "1"" of type '" "bool""'");
+  } 
+  arg1 = (bool)(val1);
+  MediaServer::EnableLog(arg1);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MediaServer_EnableDebug(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -15149,6 +15184,7 @@ SWIGV8_AddStaticFunction(_exports_MediaFrame_obj, "TypeToString", _wrap_MediaFra
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "RunCallback", _wrap_MediaServer_RunCallback);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Initialize", _wrap_MediaServer_Initialize);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Terminate", _wrap_MediaServer_Terminate);
+SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableLog", _wrap_MediaServer_EnableLog);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableDebug", _wrap_MediaServer_EnableDebug);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_MediaServer_EnableUltraDebug);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "GetFingerprint", _wrap_MediaServer_GetFingerprint);
