@@ -1,17 +1,17 @@
 {
   "name": "medooze-media-server",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
-    "configure" : "node-gyp configure",
-    "swig"      : "swig -javascript -node -c++ src/media-server.i",
-    "build"     : "node-gyp build --jobs=max",
-    "install"   : "test -f build/Release/medooze-media-server.node || (node-gyp configure && node-gyp rebuild --jobs=max)",
-    "docs"      : "documentation build lib/MediaServer.js lib/*.js node_modules/semantic-sdp/lib/*.js --shallow -o docs -f html",
-    "package"   : "tar cvzf build/medooze-media-server.tgz  `([ \"$(uname)\" == 'Darwin' ] && echo \"-s |^|medooze-media-server/|\") || echo \" --transform=flags=r;s|^|medooze-media-server/|\"` external/* media-server/src/* media-server/include/* lib/* package.json index.js  binding.gyp  README.md src",
-    "dist"      : "node-gyp configure && node-gyp build --jobs=max && mkdir -p dist && tar cvzf dist/medooze-media-server-`node -e 'console.log(require(\"./package.json\").version)'`.tgz `([ \"$(uname)\" == 'Darwin' ] && echo \"-s |^|medooze-media-server/|\") || echo \" --transform=flags=r;s|^|medooze-media-server/|\"` package.json index.js   README.md lib/* build/Release/medooze-media-server.node",
-    "test"      : "tap tests/*.js --cov"
+    "configure": "node-gyp configure",
+    "swig": "swig -javascript -node -c++ src/media-server.i",
+    "build": "node-gyp build --jobs=max",
+    "install": "test -f build/Release/medooze-media-server.node || (node-gyp configure && node-gyp rebuild --jobs=max)",
+    "docs": "documentation build lib/MediaServer.js lib/*.js node_modules/semantic-sdp/lib/*.js --shallow -o docs -f html",
+    "package": "tar cvzf build/medooze-media-server.tgz  `([ \"$(uname)\" == 'Darwin' ] && echo \"-s |^|medooze-media-server/|\") || echo \" --transform=flags=r;s|^|medooze-media-server/|\"` external/* media-server/src/* media-server/include/* lib/* package.json index.js  binding.gyp  README.md src",
+    "dist": "node-gyp configure && node-gyp build --jobs=max && mkdir -p dist && tar cvzf dist/medooze-media-server-`node -e 'console.log(require(\"./package.json\").version)'`.tgz `([ \"$(uname)\" == 'Darwin' ] && echo \"-s |^|medooze-media-server/|\") || echo \" --transform=flags=r;s|^|medooze-media-server/|\"` package.json index.js   README.md lib/* build/Release/medooze-media-server.node",
+    "test": "tap tests/*.js --cov"
   },
   "repository": {
     "type": "git",
