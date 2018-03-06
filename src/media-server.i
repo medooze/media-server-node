@@ -214,9 +214,9 @@ public:
 		
 	}
 	
-	virtual int Send(RTPPacket &packet)
+	virtual int Send(const RTPPacket::shared& packet)
 	{
-		return SendPacket(packet);
+		return SendPacket(*packet);
 	}
 	virtual int SendPLI(DWORD ssrc)
 	{
@@ -269,7 +269,7 @@ public:
 	{
 		RTPSession::onRTPPacket(buffer,size);
 		RTPIncomingSourceGroup* incoming = GetIncomingSourceGroup();
-		RTPPacket* ordered;
+		RTPPacket::shared ordered;
 		//FOr each ordered packet
 		while ((ordered=GetOrderPacket()))
 			//Call listeners
@@ -426,7 +426,7 @@ public:
 			delete(depacketizer);
 	}
 
-	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet)
+	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet)
 	{
 		//If depacketizer is not the same codec 
 		if (depacketizer && depacketizer->GetCodec()!=packet->GetCodec())
@@ -669,7 +669,7 @@ public:
 	RTPOutgoingSourceGroup* GetOutgoingSourceGroup();
 	RTPIncomingSourceGroup* GetIncomingSourceGroup();
 	int End();
-	virtual int Send(RTPPacket &packet);
+	virtual int Send(const RTPPacket::shared& packet);
 	virtual int SendPLI(DWORD ssrc);
 };
 
@@ -701,7 +701,7 @@ class RTPStreamTransponderFacade
 public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
 	virtual ~RTPStreamTransponderFacade();
-	virtual void onRTP(RTPIncomingSourceGroup* group,RTPPacket* packet);
+	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet);
 	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
