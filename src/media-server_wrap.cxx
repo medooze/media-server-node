@@ -1813,21 +1813,14 @@ class RTPSessionFacade :
 public:
 	RTPSessionFacade(MediaFrame::Type media) : RTPSession(media,NULL)
 	{
-		
+		//Delegate to group
+		delegate = true;
+		//Start group dispatch
+		GetIncomingSourceGroup()->Start();
 	}
-	virtual ~RTPSessionFacade()
-	{
-		
-	}
-	
-	virtual int Send(const RTPPacket::shared& packet)
-	{
-		return SendPacket(*packet);
-	}
-	virtual int SendPLI(DWORD ssrc)
-	{
-		return RequestFPU();
-	}
+	virtual ~RTPSessionFacade() = default;
+	virtual int Send(const RTPPacket::shared& packet)	 { return SendPacket(*packet); }
+	virtual int SendPLI(DWORD ssrc)				 { return RequestFPU();}
 	
 	int Init(const Properties &properties)
 	{
@@ -1870,17 +1863,6 @@ public:
 		//Call parent
 		return RTPSession::Init();
 	}
-	
-	virtual void onRTPPacket(BYTE* buffer, DWORD size)
-	{
-		RTPSession::onRTPPacket(buffer,size);
-		RTPIncomingSourceGroup* incoming = GetIncomingSourceGroup();
-		RTPPacket::shared ordered;
-		//FOr each ordered packet
-		while ((ordered=GetOrderPacket()))
-			//Call listeners
-			incoming->onRTP(ordered);
-	}
 };
 
 
@@ -1907,7 +1889,7 @@ public:
 				//Set ssrc of video
 				packet.SetSSRC(video.media.ssrc);
 				//Multiplex
-				video.onRTP(packet.Clone());
+				video.AddPacket(packet.Clone());
 				break;
 			case MediaFrame::Audio:
 				//Update stats
@@ -1915,7 +1897,7 @@ public:
 				//Set ssrc of audio
 				packet.SetSSRC(audio.media.ssrc);
 				//Multiplex
-				audio.onRTP(packet.Clone());
+				audio.AddPacket(packet.Clone());
 				break;
 			default:
 				///Ignore
