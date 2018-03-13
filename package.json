@@ -32,12 +32,12 @@
   "homepage": "https://github.com/medooze/media-server-node#readme",
   "dependencies": {
     "lfsr": "0.0.3",
-    "nan": "^2.8.0",
+    "nan": "^2.9.2",
     "node-gyp": "^3.6.2",
-    "semantic-sdp": "^3.1.0",
+    "semantic-sdp": "^3.2.1",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "tap": "^11.1.0"
+    "tap": "^11.1.2"
   }
 }
