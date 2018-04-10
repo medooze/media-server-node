@@ -562,6 +562,8 @@ struct RTPIncomingSource : public RTPSource
 	QWORD lastReceivedSenderNTPTimestamp;
 	QWORD lastReceivedSenderReport;
 	QWORD lastReport;
+	DWORD   totalPLIs;
+	DWORD	totalNACKs;
 };
 
 struct RTPOutgoingSource : public RTPSource
@@ -593,6 +595,7 @@ struct RTPIncomingSourceGroup
 	RTPIncomingSourceGroup(MediaFrame::Type type);
 	std::string rid;
 	std::string mid;
+	DWORD rtt;
 	MediaFrame::Type  type;
 	RTPIncomingSource media;
 	RTPIncomingSource fec;
