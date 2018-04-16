@@ -600,6 +600,10 @@ struct RTPIncomingSourceGroup
 	RTPIncomingSource media;
 	RTPIncomingSource fec;
 	RTPIncomingSource rtx;
+	DWORD GetCurrentLost();
+	DWORD GetMinWaitedTime();
+	DWORD GetMaxWaitedTime();
+	double GetAvgWaitedTime();
 };
 
 

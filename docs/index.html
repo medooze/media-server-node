@@ -1835,9 +1835,9 @@
               
                 
                 <li><a
-                  href='#incomingstream'
+                  href='#endpoint'
                   class=" toggle-sibling">
-                  IncomingStream
+                  Endpoint
                   <span class='icon'>▸</span>
                 </a>
                 
@@ -1848,61 +1848,31 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
-                        href='#IncomingStream#getId'
+                        href='#Endpoint#createTransport'
                         class='regular pre-open'>
-                        #getId
+                        #createTransport
                       </a></li>
                       
                       <li><a
-                        href='#IncomingStream#on'
+                        href='#Endpoint#getLocalCandidates'
                         class='regular pre-open'>
-                        #on
+                        #getLocalCandidates
                       </a></li>
                       
                       <li><a
-                        href='#IncomingStream#once'
+                        href='#Endpoint#getDTLSFingerprint'
                         class='regular pre-open'>
-                        #once
+                        #getDTLSFingerprint
                       </a></li>
                       
                       <li><a
-                        href='#IncomingStream#off'
+                        href='#Endpoint#createOffer'
                         class='regular pre-open'>
-                        #off
+                        #createOffer
                       </a></li>
                       
                       <li><a
-                        href='#IncomingStream#getStats'
-                        class='regular pre-open'>
-                        #getStats
-                      </a></li>
-                      
-                      <li><a
-                        href='#IncomingStream#getTrack'
-                        class='regular pre-open'>
-                        #getTrack
-                      </a></li>
-                      
-                      <li><a
-                        href='#IncomingStream#getTracks'
-                        class='regular pre-open'>
-                        #getTracks
-                      </a></li>
-                      
-                      <li><a
-                        href='#IncomingStream#getAudioTracks'
-                        class='regular pre-open'>
-                        #getAudioTracks
-                      </a></li>
-                      
-                      <li><a
-                        href='#IncomingStream#getVideoTracks'
-                        class='regular pre-open'>
-                        #getVideoTracks
-                      </a></li>
-                      
-                      <li><a
-                        href='#IncomingStream#stop'
+                        href='#Endpoint#stop'
                         class='regular pre-open'>
                         #stop
                       </a></li>
@@ -2015,9 +1985,9 @@
               
                 
                 <li><a
-                  href='#endpoint'
+                  href='#incomingstream'
                   class=" toggle-sibling">
-                  Endpoint
+                  IncomingStream
                   <span class='icon'>▸</span>
                 </a>
                 
@@ -2028,31 +1998,61 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
-                        href='#Endpoint#createTransport'
+                        href='#IncomingStream#getId'
                         class='regular pre-open'>
-                        #createTransport
+                        #getId
                       </a></li>
                       
                       <li><a
-                        href='#Endpoint#getLocalCandidates'
+                        href='#IncomingStream#on'
                         class='regular pre-open'>
-                        #getLocalCandidates
+                        #on
                       </a></li>
                       
                       <li><a
-                        href='#Endpoint#getDTLSFingerprint'
+                        href='#IncomingStream#once'
                         class='regular pre-open'>
-                        #getDTLSFingerprint
+                        #once
                       </a></li>
                       
                       <li><a
-                        href='#Endpoint#createOffer'
+                        href='#IncomingStream#off'
                         class='regular pre-open'>
-                        #createOffer
+                        #off
                       </a></li>
                       
                       <li><a
-                        href='#Endpoint#stop'
+                        href='#IncomingStream#getStats'
+                        class='regular pre-open'>
+                        #getStats
+                      </a></li>
+                      
+                      <li><a
+                        href='#IncomingStream#getTrack'
+                        class='regular pre-open'>
+                        #getTrack
+                      </a></li>
+                      
+                      <li><a
+                        href='#IncomingStream#getTracks'
+                        class='regular pre-open'>
+                        #getTracks
+                      </a></li>
+                      
+                      <li><a
+                        href='#IncomingStream#getAudioTracks'
+                        class='regular pre-open'>
+                        #getAudioTracks
+                      </a></li>
+                      
+                      <li><a
+                        href='#IncomingStream#getVideoTracks'
+                        class='regular pre-open'>
+                        #getVideoTracks
+                      </a></li>
+                      
+                      <li><a
+                        href='#IncomingStream#stop'
                         class='regular pre-open'>
                         #stop
                       </a></li>
@@ -16424,18 +16424,20 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='incomingstream'>
-      IncomingStream
+    <h3 class='fl m0' id='endpoint'>
+      Endpoint
     </h3>
     
     
   </div>
   
 
-  <p>The incoming streams represent the recived media stream from a remote peer.</p>
+  <p>An endpoint represent an UDP server socket.
+The endpoint will process STUN requests in order to be able to associate the remote ip:port with the registered transport and forward any further data comming from that transport.
+Being a server it is ICE-lite.</p>
 
 
-  <div class='pre p1 fill-light mt0'>new IncomingStream()</div>
+  <div class='pre p1 fill-light mt0'>new Endpoint()</div>
   
   
 
@@ -16461,11 +16463,11 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='IncomingStream#getId'>
+    <div class='border-bottom' id='Endpoint#createTransport'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getId()</span>
+            <span class='code strong strong truncate'>createTransport(remote, local, options)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -16473,10 +16475,221 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
 
   
 
-  <p>The media stream id as announced on the SDP</p>
+  <p>Create a new transport object and register it with the remote ICE username and password</p>
 
 
-  <div class='pre p1 fill-light mt0'>getId(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  <div class='pre p1 fill-light mt0'>createTransport(remote: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, local: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, options: any): <a href="#transport">Transport</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>remote</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Remote ICE and DTLS properties
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>remote.ice</span> <code class='quiet'><a href="#iceinfo">ICEInfo</a></code>
+                  </td>
+                  <td class='break-word'><span>Remote ICE info, containing the username and password.
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>remote.dtls</span> <code class='quiet'><a href="#dtlsinfo">DTLSInfo</a></code>
+                  </td>
+                  <td class='break-word'><span>Remote DTLS info
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>remote.candiadtes</span> <code class='quiet'>Array.CandidateInfo</code>
+                  </td>
+                  <td class='break-word'><span>Remote DTLS candidate info not realy used
+</span></td>
+                </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>local</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Local ICE and DTLS properties (optional)
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>local.ice</span> <code class='quiet'><a href="#iceinfo">ICEInfo</a></code>
+                  </td>
+                  <td class='break-word'><span>Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>local.dtls</span> <code class='quiet'><a href="#dtlsinfo">DTLSInfo</a></code>
+                  </td>
+                  <td class='break-word'><span>Local DTLS info
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>local.candidates</span> <code class='quiet'>Array.CandidateInfo</code>
+                  </td>
+                  <td class='break-word'><span>Local candidate info
+</span></td>
+                </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#transport">Transport</a></code>:
+        New transport object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='Endpoint#getLocalCandidates'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getLocalCandidates()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get local ICE candidates for this endpoint. It will be shared by all the transport associated to this endpoint.</p>
+
+
+  <div class='pre p1 fill-light mt0'>getLocalCandidates(): Array.CandidateInfo</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>Array.CandidateInfo</code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='Endpoint#getDTLSFingerprint'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getDTLSFingerprint()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get local DTLS fingerprint for this endpoint. It will be shared by all the transport associated to this endpoint.</p>
+
+
+  <div class='pre p1 fill-light mt0'>getDTLSFingerprint(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
   
   
 
@@ -16514,11 +16727,11 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       </div>
     </div>
   
-    <div class='border-bottom' id='IncomingStream#on'>
+    <div class='border-bottom' id='Endpoint#createOffer'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>on(event, listener)</span>
+            <span class='code strong strong truncate'>createOffer(capabilities)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -16526,10 +16739,11 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
 
   
 
-  <p>Add event listener</p>
+  <p>Helper that creates an offer from capabilities
+It generates a random ICE username and password and gets endpoint fingerprint</p>
 
 
-  <div class='pre p1 fill-light mt0'>on(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
+  <div class='pre p1 fill-light mt0'>createOffer(capabilities: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#sdpinfo">SDPInfo</a></div>
   
   
 
@@ -16545,17 +16759,8 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Event name
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
-	    Event listener
+            <span class='code bold'>capabilities</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Media capabilities as required by SDPInfo.create
 
           </div>
           
@@ -16569,8 +16774,8 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstream">IncomingStream</a></code>:
-        
+      <code><a href="#sdpinfo">SDPInfo</a></code>:
+        SDP offer
 
       
     
@@ -16590,431 +16795,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       </div>
     </div>
   
-    <div class='border-bottom' id='IncomingStream#once'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>once(event, listener)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Add event listener once</p>
-
-
-  <div class='pre p1 fill-light mt0'>once(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Event name
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
-	    Event listener
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstream">IncomingStream</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='IncomingStream#off'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>off(event, listener)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Remove event listener</p>
-
-
-  <div class='pre p1 fill-light mt0'>off(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Event name
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
-	    Event listener
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstream">IncomingStream</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='IncomingStream#getStats'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getStats()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get statistics for all tracks in the stream</p>
-<p>See OutgoingStreamTrack.getStats for information about the stats returned by each track.</p>
-
-
-  <div class='pre p1 fill-light mt0'>getStats()</div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='IncomingStream#getTrack'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getTrack(trackId)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get track by id</p>
-
-
-  <div class='pre p1 fill-light mt0'>getTrack(trackId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="#incomingstreamtrack">IncomingStreamTrack</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>trackId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    The track id
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
-        requested track or null
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='IncomingStream#getTracks'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getTracks()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get all the tracks</p>
-
-
-  <div class='pre p1 fill-light mt0'>getTracks(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></code>:
-        Array of tracks
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='IncomingStream#getAudioTracks'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getAudioTracks()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get an array of the media stream audio tracks</p>
-
-
-  <div class='pre p1 fill-light mt0'>getAudioTracks(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></code>:
-        Array of tracks
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='IncomingStream#getVideoTracks'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getVideoTracks()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get an array of the media stream video tracks</p>
-
-
-  <div class='pre p1 fill-light mt0'>getVideoTracks(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></code>:
-        Array of tracks
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='IncomingStream#stop'>
+    <div class='border-bottom' id='Endpoint#stop'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -17026,7 +16807,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
 
   
 
-  <p>Removes the media strem from the transport and also detaches from any attached incoming stream</p>
+  <p>Stop the endpoint UDP server and terminate any associated transport</p>
 
 
   <div class='pre p1 fill-light mt0'>stop()</div>
@@ -17897,20 +17678,18 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='endpoint'>
-      Endpoint
+    <h3 class='fl m0' id='incomingstream'>
+      IncomingStream
     </h3>
     
     
   </div>
   
 
-  <p>An endpoint represent an UDP server socket.
-The endpoint will process STUN requests in order to be able to associate the remote ip:port with the registered transport and forward any further data comming from that transport.
-Being a server it is ICE-lite.</p>
+  <p>The incoming streams represent the recived media stream from a remote peer.</p>
 
 
-  <div class='pre p1 fill-light mt0'>new Endpoint()</div>
+  <div class='pre p1 fill-light mt0'>new IncomingStream()</div>
   
   
 
@@ -17936,11 +17715,11 @@ Being a server it is ICE-lite.</p>
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='Endpoint#createTransport'>
+    <div class='border-bottom' id='IncomingStream#getId'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>createTransport(remote, local, options)</span>
+            <span class='code strong strong truncate'>getId()</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -17948,221 +17727,10 @@ Being a server it is ICE-lite.</p>
 
   
 
-  <p>Create a new transport object and register it with the remote ICE username and password</p>
+  <p>The media stream id as announced on the SDP</p>
 
 
-  <div class='pre p1 fill-light mt0'>createTransport(remote: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, local: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, options: any): <a href="#transport">Transport</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>remote</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    Remote ICE and DTLS properties
-
-          </div>
-          
-          <table class='mt1 mb2 fixed-table h5 col-12'>
-            <colgroup>
-              <col width='30%' />
-              <col width='70%' />
-            </colgroup>
-            <thead>
-              <tr class='bold fill-light'>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody class='mt1'>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>remote.ice</span> <code class='quiet'><a href="#iceinfo">ICEInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Remote ICE info, containing the username and password.
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>remote.dtls</span> <code class='quiet'><a href="#dtlsinfo">DTLSInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Remote DTLS info
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>remote.candiadtes</span> <code class='quiet'>Array.CandidateInfo</code>
-                  </td>
-                  <td class='break-word'><span>Remote DTLS candidate info not realy used
-</span></td>
-                </tr>
-              
-            </tbody>
-          </table>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>local</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    Local ICE and DTLS properties (optional)
-
-          </div>
-          
-          <table class='mt1 mb2 fixed-table h5 col-12'>
-            <colgroup>
-              <col width='30%' />
-              <col width='70%' />
-            </colgroup>
-            <thead>
-              <tr class='bold fill-light'>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody class='mt1'>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>local.ice</span> <code class='quiet'><a href="#iceinfo">ICEInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>local.dtls</span> <code class='quiet'><a href="#dtlsinfo">DTLSInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Local DTLS info
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>local.candidates</span> <code class='quiet'>Array.CandidateInfo</code>
-                  </td>
-                  <td class='break-word'><span>Local candidate info
-</span></td>
-                </tr>
-              
-            </tbody>
-          </table>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>options</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#transport">Transport</a></code>:
-        New transport object
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='Endpoint#getLocalCandidates'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getLocalCandidates()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get local ICE candidates for this endpoint. It will be shared by all the transport associated to this endpoint.</p>
-
-
-  <div class='pre p1 fill-light mt0'>getLocalCandidates(): Array.CandidateInfo</div>
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>Array.CandidateInfo</code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='Endpoint#getDTLSFingerprint'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getDTLSFingerprint()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get local DTLS fingerprint for this endpoint. It will be shared by all the transport associated to this endpoint.</p>
-
-
-  <div class='pre p1 fill-light mt0'>getDTLSFingerprint(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  <div class='pre p1 fill-light mt0'>getId(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
   
   
 
@@ -18200,11 +17768,11 @@ Being a server it is ICE-lite.</p>
       </div>
     </div>
   
-    <div class='border-bottom' id='Endpoint#createOffer'>
+    <div class='border-bottom' id='IncomingStream#on'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>createOffer(capabilities)</span>
+            <span class='code strong strong truncate'>on(event, listener)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -18212,11 +17780,10 @@ Being a server it is ICE-lite.</p>
 
   
 
-  <p>Helper that creates an offer from capabilities
-It generates a random ICE username and password and gets endpoint fingerprint</p>
+  <p>Add event listener</p>
 
 
-  <div class='pre p1 fill-light mt0'>createOffer(capabilities: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#sdpinfo">SDPInfo</a></div>
+  <div class='pre p1 fill-light mt0'>on(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
   
   
 
@@ -18232,8 +17799,17 @@ It generates a random ICE username and password and gets endpoint fingerprint</p
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>capabilities</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    Media capabilities as required by SDPInfo.create
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Event listener
 
           </div>
           
@@ -18247,8 +17823,8 @@ It generates a random ICE username and password and gets endpoint fingerprint</p
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#sdpinfo">SDPInfo</a></code>:
-        SDP offer
+      <code><a href="#incomingstream">IncomingStream</a></code>:
+        
 
       
     
@@ -18268,7 +17844,431 @@ It generates a random ICE username and password and gets endpoint fingerprint</p
       </div>
     </div>
   
-    <div class='border-bottom' id='Endpoint#stop'>
+    <div class='border-bottom' id='IncomingStream#once'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>once(event, listener)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Add event listener once</p>
+
+
+  <div class='pre p1 fill-light mt0'>once(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Event listener
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#incomingstream">IncomingStream</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='IncomingStream#off'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>off(event, listener)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Remove event listener</p>
+
+
+  <div class='pre p1 fill-light mt0'>off(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Event listener
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#incomingstream">IncomingStream</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='IncomingStream#getStats'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStats()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get statistics for all tracks in the stream</p>
+<p>See OutgoingStreamTrack.getStats for information about the stats returned by each track.</p>
+
+
+  <div class='pre p1 fill-light mt0'>getStats()</div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='IncomingStream#getTrack'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getTrack(trackId)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get track by id</p>
+
+
+  <div class='pre p1 fill-light mt0'>getTrack(trackId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="#incomingstreamtrack">IncomingStreamTrack</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>trackId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    The track id
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
+        requested track or null
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='IncomingStream#getTracks'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getTracks()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get all the tracks</p>
+
+
+  <div class='pre p1 fill-light mt0'>getTracks(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></code>:
+        Array of tracks
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='IncomingStream#getAudioTracks'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getAudioTracks()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get an array of the media stream audio tracks</p>
+
+
+  <div class='pre p1 fill-light mt0'>getAudioTracks(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></code>:
+        Array of tracks
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='IncomingStream#getVideoTracks'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getVideoTracks()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get an array of the media stream video tracks</p>
+
+
+  <div class='pre p1 fill-light mt0'>getVideoTracks(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></code>:
+        Array of tracks
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='IncomingStream#stop'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -18280,7 +18280,7 @@ It generates a random ICE username and password and gets endpoint fingerprint</p
 
   
 
-  <p>Stop the endpoint UDP server and terminate any associated transport</p>
+  <p>Removes the media strem from the transport and also detaches from any attached incoming stream</p>
 
 
   <div class='pre p1 fill-light mt0'>stop()</div>
@@ -20870,19 +20870,24 @@ fec  : fecStats
   
 
   <p>Get stats for all encodings </p>
-<p>For each encoding you will get stats for media, rtx and fec sources (if used):
-{
-media: mediaStats,
-rtx  : rtxStats,
-fec  : fecStats
-}</p>
+<p>For each encoding you will get stats for media, rtx and fec sources (if used):</p>
+<ul>
+<li>media: mediaStats,</li>
+<li>rtx  : rtxStats,</li>
+<li>fec  : fecStats</li>
+<li>rtt  : Round Trip Tim in ms</li>
+<li>waitTime : "min","max" and "avg" packet waiting times in rtp buffer before delivering them</li>
+</ul>
 <p>The stats objects will provide the follwing info for each source</p>
 <ul>
 <li>lostPackets	: total lost packkets</li>
+<li>dropPackets       : droppted packets by media server</li>
 <li>numPackets	: number of rtp packets received</li>
 <li>numRTCPPackets	: number of rtcp packsets received</li>
 <li>totalBytes	: total rtp received bytes</li>
 <li>totalRTCPBytes	: total rtp received bytes</li>
+<li>totalPLIs		: total PLIs sent</li>
+<li>totalNACKs	: total NACk packets setn</li>
 <li>bitrate		: average bitrate received during last second</li>
 </ul>
 

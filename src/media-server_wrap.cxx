@@ -2451,6 +2451,13 @@ SWIG_AsVal_size_t (v8::Handle<v8::Value> obj, size_t *val)
 }
 
 
+SWIGINTERN
+v8::Handle<v8::Value> SWIG_From_double   (double val)
+{
+  return SWIGV8_NUMBER_NEW(val);
+}
+
+
 SWIGINTERN int
 SWIG_AsVal_unsigned_SS_short (v8::Handle<v8::Value> obj, unsigned short *val)
 {
@@ -2464,13 +2471,6 @@ SWIG_AsVal_unsigned_SS_short (v8::Handle<v8::Value> obj, unsigned short *val)
     }
   }  
   return res;
-}
-
-
-SWIGINTERN
-v8::Handle<v8::Value> SWIG_From_double   (double val)
-{
-  return SWIGV8_NUMBER_NEW(val);
 }
 
 
@@ -6295,6 +6295,62 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_Acumulator_GetMinValueInWindow(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  Acumulator *arg1 = (Acumulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMinValueInWindow.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMinValueInWindow" "', argument " "1"" of type '" "Acumulator const *""'"); 
+  }
+  arg1 = (Acumulator *)(argp1);
+  result = (uint32_t)((Acumulator const *)arg1)->GetMinValueInWindow();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_Acumulator_GetMaxValueInWindow(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  Acumulator *arg1 = (Acumulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMaxValueInWindow.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMaxValueInWindow" "', argument " "1"" of type '" "Acumulator const *""'"); 
+  }
+  arg1 = (Acumulator *)(argp1);
+  result = (uint32_t)((Acumulator const *)arg1)->GetMaxValueInWindow();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
 static void _wrap_delete_Acumulator(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
@@ -9120,6 +9176,118 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_rtx_get(v8::Local<v8::Stri
   fail:
     SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
   }
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_GetCurrentLost(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_GetCurrentLost.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_GetCurrentLost" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  result = (uint32_t)(arg1)->GetCurrentLost();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_GetMinWaitedTime(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_GetMinWaitedTime.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_GetMinWaitedTime" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  result = (uint32_t)(arg1)->GetMinWaitedTime();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_GetMaxWaitedTime(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_GetMaxWaitedTime.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_GetMaxWaitedTime" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  result = (uint32_t)(arg1)->GetMaxWaitedTime();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_GetAvgWaitedTime(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_GetAvgWaitedTime.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_GetAvgWaitedTime" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = (RTPIncomingSourceGroup *)(argp1);
+  result = (double)(arg1)->GetAvgWaitedTime();
+  jsresult = SWIG_From_double((double)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
 
 
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
@@ -15120,6 +15288,8 @@ SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMaxAvg", _wrap_Acumulato
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "ResetMinMax", _wrap_Acumulator_ResetMinMax);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "Reset", _wrap_Acumulator_Reset);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "Update", _wrap_Acumulator__wrap_Acumulator_Update);
+SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMinValueInWindow", _wrap_Acumulator_GetMinValueInWindow);
+SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMaxValueInWindow", _wrap_Acumulator_GetMaxValueInWindow);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "ssrc", _wrap_RTPSource_ssrc_get, _wrap_RTPSource_ssrc_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "extSeq", _wrap_RTPSource_extSeq_get, _wrap_RTPSource_extSeq_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "cycles", _wrap_RTPSource_cycles_get, _wrap_RTPSource_cycles_set);
@@ -15158,6 +15328,10 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "type", _wrap_RT
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "media", _wrap_RTPIncomingSourceGroup_media_get, _wrap_RTPIncomingSourceGroup_media_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "fec", _wrap_RTPIncomingSourceGroup_fec_get, _wrap_RTPIncomingSourceGroup_fec_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rtx", _wrap_RTPIncomingSourceGroup_rtx_get, _wrap_RTPIncomingSourceGroup_rtx_set);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetCurrentLost", _wrap_RTPIncomingSourceGroup_GetCurrentLost);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetMinWaitedTime", _wrap_RTPIncomingSourceGroup_GetMinWaitedTime);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetMaxWaitedTime", _wrap_RTPIncomingSourceGroup_GetMaxWaitedTime);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetAvgWaitedTime", _wrap_RTPIncomingSourceGroup_GetAvgWaitedTime);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteProperties", _wrap_DTLSICETransport_SetRemoteProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", _wrap_DTLSICETransport_SetLocalProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
