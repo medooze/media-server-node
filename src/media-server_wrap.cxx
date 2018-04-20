@@ -2049,6 +2049,12 @@ public:
 			
 	}
 	
+	virtual void onEnded(RTPIncomingSourceGroup* group) 
+	{
+		if (incomingSource==group)
+			incomingSource = nullptr;
+	}
+	
 	void AddMediaListener(MediaFrame::Listener *listener)
 	{
 		//Add to set
@@ -5992,6 +5998,34 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_Acumulator_GetInstantMedia(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  Acumulator *arg1 = (Acumulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long double result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetInstantMedia.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetInstantMedia" "', argument " "1"" of type '" "Acumulator const *""'"); 
+  }
+  arg1 = (Acumulator *)(argp1);
+  result = (long double)((Acumulator const *)arg1)->GetInstantMedia();
+  jsresult = SWIG_NewPointerObj((new long double((const long double&)(result))), SWIGTYPE_p_long_double, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_Acumulator_GetInstantAvg(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -6340,6 +6374,34 @@ static SwigV8ReturnValue _wrap_Acumulator_GetMaxValueInWindow(const SwigV8Argume
   }
   arg1 = (Acumulator *)(argp1);
   result = (uint32_t)((Acumulator const *)arg1)->GetMaxValueInWindow();
+  jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_Acumulator_GetCount(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  Acumulator *arg1 = (Acumulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetCount.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetCount" "', argument " "1"" of type '" "Acumulator const *""'"); 
+  }
+  arg1 = (Acumulator *)(argp1);
+  result = (uint32_t)((Acumulator const *)arg1)->GetCount();
   jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
   
   
@@ -15281,6 +15343,7 @@ SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMax", _wrap_Acumulator_G
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetWindow", _wrap_Acumulator_GetWindow);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "IsInWindow", _wrap_Acumulator_IsInWindow);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "IsInMinMaxWindow", _wrap_Acumulator_IsInMinMaxWindow);
+SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetInstantMedia", _wrap_Acumulator_GetInstantMedia);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetInstantAvg", _wrap_Acumulator_GetInstantAvg);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetAverage", _wrap_Acumulator_GetAverage);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMinAvg", _wrap_Acumulator_GetMinAvg);
@@ -15290,6 +15353,7 @@ SWIGV8_AddMemberFunction(_exports_Acumulator_class, "Reset", _wrap_Acumulator_Re
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "Update", _wrap_Acumulator__wrap_Acumulator_Update);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMinValueInWindow", _wrap_Acumulator_GetMinValueInWindow);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMaxValueInWindow", _wrap_Acumulator_GetMaxValueInWindow);
+SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetCount", _wrap_Acumulator_GetCount);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "ssrc", _wrap_RTPSource_ssrc_get, _wrap_RTPSource_ssrc_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "extSeq", _wrap_RTPSource_extSeq_get, _wrap_RTPSource_extSeq_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "cycles", _wrap_RTPSource_cycles_get, _wrap_RTPSource_cycles_set);

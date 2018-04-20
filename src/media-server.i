@@ -443,6 +443,12 @@ public:
 			
 	}
 	
+	virtual void onEnded(RTPIncomingSourceGroup* group) 
+	{
+		if (incomingSource==group)
+			incomingSource = nullptr;
+	}
+	
 	void AddMediaListener(MediaFrame::Listener *listener)
 	{
 		//Add to set
