@@ -1775,6 +1775,11 @@ public:
 		Logger::EnableUltraDebug(flag);
 	}
 	
+	static bool SetPortRange(int minPort, int maxPort)
+	{
+		return RTPTransport::SetPortRange(minPort,maxPort);
+	}
+	
 	static StringFacade GetFingerprint()
 	{
 		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
@@ -9454,6 +9459,45 @@ static void _wrap_delete_DTLSICETransport(v8::Persistent<v8::Value> object, void
         }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_SetSRTPProtectionProfiles(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_SetSRTPProtectionProfiles.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  arg2 = (std::string *)(argp2);
+  (arg1)->SetSRTPProtectionProfiles((std::string const &)*arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_SetRemoteProperties(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -11810,6 +11854,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPStreamTransponder_onEnded(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPStreamTransponder *arg1 = (RTPStreamTransponder *) 0 ;
+  RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponder_onEnded.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponder, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponder_onEnded" "', argument " "1"" of type '" "RTPStreamTransponder *""'"); 
+  }
+  arg1 = (RTPStreamTransponder *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPStreamTransponder_onEnded" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg2 = (RTPIncomingSourceGroup *)(argp2);
+  (arg1)->onEnded(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPStreamTransponder_onPLIRequest(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -12512,6 +12592,43 @@ static SwigV8ReturnValue _wrap_MediaServer_GetFingerprint(const SwigV8Arguments 
   
   result = MediaServer::GetFingerprint();
   jsresult = SWIG_NewPointerObj((new StringFacade((const StringFacade&)(result))), SWIGTYPE_p_StringFacade, SWIG_POINTER_OWN |  0 );
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaServer_SetPortRange(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  int arg1 ;
+  int arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_SetPortRange.");
+  
+  ecode1 = SWIG_AsVal_int(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MediaServer_SetPortRange" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = (int)(val1);
+  ecode2 = SWIG_AsVal_int(args[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MediaServer_SetPortRange" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = (int)(val2);
+  result = (bool)MediaServer::SetPortRange(arg1,arg2);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
   
   SWIGV8_RETURN(jsresult);
   
@@ -15396,6 +15513,7 @@ SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetCurrentLost"
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetMinWaitedTime", _wrap_RTPIncomingSourceGroup_GetMinWaitedTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetMaxWaitedTime", _wrap_RTPIncomingSourceGroup_GetMaxWaitedTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetAvgWaitedTime", _wrap_RTPIncomingSourceGroup_GetAvgWaitedTime);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetSRTPProtectionProfiles", _wrap_DTLSICETransport_SetSRTPProtectionProfiles);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteProperties", _wrap_DTLSICETransport_SetRemoteProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", _wrap_DTLSICETransport_SetLocalProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
@@ -15441,6 +15559,7 @@ SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "onMediaFrame", _wrap_MP4Re
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "SetIncoming", _wrap_RTPStreamTransponder_SetIncoming);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "Close", _wrap_RTPStreamTransponder_Close);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "onRTP", _wrap_RTPStreamTransponder_onRTP);
+SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "onEnded", _wrap_RTPStreamTransponder_onEnded);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "onPLIRequest", _wrap_RTPStreamTransponder_onPLIRequest);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "SelectLayer", _wrap_RTPStreamTransponder_SelectLayer);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponder_class, "Mute", _wrap_RTPStreamTransponder_Mute);
@@ -15691,6 +15810,7 @@ SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableLog", _wrap_MediaServe
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableDebug", _wrap_MediaServer_EnableDebug);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_MediaServer_EnableUltraDebug);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "GetFingerprint", _wrap_MediaServer_GetFingerprint);
+SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetPortRange", _wrap_MediaServer_SetPortRange);
 SWIGV8_AddStaticFunction(exports_obj, "TransportToSender", _wrap_TransportToSender);
 SWIGV8_AddStaticFunction(exports_obj, "TransportToReceiver", _wrap_TransportToReceiver);
 SWIGV8_AddStaticFunction(exports_obj, "SessionToSender", _wrap_SessionToSender);

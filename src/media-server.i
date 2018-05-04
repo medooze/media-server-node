@@ -169,6 +169,11 @@ public:
 		Logger::EnableUltraDebug(flag);
 	}
 	
+	static bool SetPortRange(int minPort, int maxPort)
+	{
+		return RTPTransport::SetPortRange(minPort,maxPort);
+	}
+	
 	static StringFacade GetFingerprint()
 	{
 		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
@@ -648,6 +653,7 @@ public:
 	static void EnableDebug(bool flag);
 	static void EnableUltraDebug(bool flag);
 	static StringFacade GetFingerprint();
+	static bool SetPortRange(int minPort, int maxPort);
 };
 
 
