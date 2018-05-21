@@ -11,8 +11,9 @@
 			"cflags": 
 			[
 				"-fexceptions",
-				"-std=c++11",
+				"-std=c++14",
 				"-O3",
+				"-faligned-new",
 				#"-g",
 				#"-O0",
 				#"-fsanitize=address"

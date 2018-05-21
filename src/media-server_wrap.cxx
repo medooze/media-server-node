@@ -1540,54 +1540,57 @@ fail: ;
 #define SWIGTYPE_p_DTLSICETransport swig_types[5]
 #define SWIGTYPE_p_DTLSICETransport__Sender swig_types[6]
 #define SWIGTYPE_p_ICERemoteCandidate swig_types[7]
-#define SWIGTYPE_p_MP4FileHandle swig_types[8]
-#define SWIGTYPE_p_MP4Recorder swig_types[9]
-#define SWIGTYPE_p_MediaFrame swig_types[10]
-#define SWIGTYPE_p_MediaServer swig_types[11]
-#define SWIGTYPE_p_PlayerFacade swig_types[12]
-#define SWIGTYPE_p_Properties swig_types[13]
-#define SWIGTYPE_p_PropertiesFacade swig_types[14]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[15]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[16]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[17]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[18]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[19]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[20]
-#define SWIGTYPE_p_RTPReceiver swig_types[21]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[22]
-#define SWIGTYPE_p_RTPSender swig_types[23]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[24]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[25]
-#define SWIGTYPE_p_RTPSource swig_types[26]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[27]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[28]
-#define SWIGTYPE_p_RecorderControl__Type swig_types[29]
-#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[30]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[31]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[32]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[33]
-#define SWIGTYPE_p_StringFacade swig_types[34]
-#define SWIGTYPE_p_TextFrame swig_types[35]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[36]
-#define SWIGTYPE_p_VideoFrame swig_types[37]
-#define SWIGTYPE_p_char swig_types[38]
-#define SWIGTYPE_p_int swig_types[39]
-#define SWIGTYPE_p_long_double swig_types[40]
-#define SWIGTYPE_p_long_long swig_types[41]
-#define SWIGTYPE_p_mp4track swig_types[42]
-#define SWIGTYPE_p_short swig_types[43]
-#define SWIGTYPE_p_signed_char swig_types[44]
-#define SWIGTYPE_p_std__string swig_types[45]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[46]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[47]
-#define SWIGTYPE_p_unsigned_char swig_types[48]
-#define SWIGTYPE_p_unsigned_int swig_types[49]
-#define SWIGTYPE_p_unsigned_long_long swig_types[50]
-#define SWIGTYPE_p_unsigned_short swig_types[51]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[52]
-#define SWIGTYPE_p_void swig_types[53]
-static swig_type_info *swig_types[55];
-static swig_module_info swig_module = {swig_types, 54, 0, 0, 0, 0};
+#define SWIGTYPE_p_LayerInfo swig_types[8]
+#define SWIGTYPE_p_LayerSource swig_types[9]
+#define SWIGTYPE_p_LayerSources swig_types[10]
+#define SWIGTYPE_p_MP4FileHandle swig_types[11]
+#define SWIGTYPE_p_MP4Recorder swig_types[12]
+#define SWIGTYPE_p_MediaFrame swig_types[13]
+#define SWIGTYPE_p_MediaServer swig_types[14]
+#define SWIGTYPE_p_PlayerFacade swig_types[15]
+#define SWIGTYPE_p_Properties swig_types[16]
+#define SWIGTYPE_p_PropertiesFacade swig_types[17]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[18]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[19]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[20]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[21]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[22]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[23]
+#define SWIGTYPE_p_RTPReceiver swig_types[24]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[25]
+#define SWIGTYPE_p_RTPSender swig_types[26]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[27]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[28]
+#define SWIGTYPE_p_RTPSource swig_types[29]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[30]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[31]
+#define SWIGTYPE_p_RecorderControl__Type swig_types[32]
+#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[33]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[34]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[35]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[36]
+#define SWIGTYPE_p_StringFacade swig_types[37]
+#define SWIGTYPE_p_TextFrame swig_types[38]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[39]
+#define SWIGTYPE_p_VideoFrame swig_types[40]
+#define SWIGTYPE_p_char swig_types[41]
+#define SWIGTYPE_p_int swig_types[42]
+#define SWIGTYPE_p_long_double swig_types[43]
+#define SWIGTYPE_p_long_long swig_types[44]
+#define SWIGTYPE_p_mp4track swig_types[45]
+#define SWIGTYPE_p_short swig_types[46]
+#define SWIGTYPE_p_signed_char swig_types[47]
+#define SWIGTYPE_p_std__string swig_types[48]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[49]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[50]
+#define SWIGTYPE_p_unsigned_char swig_types[51]
+#define SWIGTYPE_p_unsigned_int swig_types[52]
+#define SWIGTYPE_p_unsigned_long_long swig_types[53]
+#define SWIGTYPE_p_unsigned_short swig_types[54]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[55]
+#define SWIGTYPE_p_void swig_types[56]
+static swig_type_info *swig_types[58];
+static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2148,9 +2151,24 @@ void EvenSource::SendEvent(const char* type,const char* msg,...)
 {
 }
 
+class LayerSources : public std::vector<LayerSource*>
+{
+public:
+	size_t size() const		{ return std::vector<LayerSource*>::size(); }
+	LayerSource* get(size_t i)	{ return  std::vector<LayerSource*>::at(i); }
+};
+
 
 
 #include <stdint.h>		// Use the C99 official header
+
+
+#include <typeinfo>
+#include <stdexcept>
+
+
+#include <vector>
+#include <stdexcept>
 
 
 SWIGINTERNINLINE
@@ -2462,6 +2480,51 @@ SWIG_AsVal_size_t (v8::Handle<v8::Value> obj, size_t *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_char (v8::Handle<v8::Value> obj, unsigned char *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > UCHAR_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = (unsigned char)(v);
+    }
+  }  
+  return res;
+}
+
+
+SWIGINTERNINLINE v8::Handle<v8::Value>
+SWIG_From_unsigned_SS_char  (unsigned char value)
+{    
+  return SWIG_From_unsigned_SS_long  (value);
+}
+
+
+SWIGINTERNINLINE v8::Handle<v8::Value>
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  ((unsigned long)(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  ((unsigned long long)(value));
+  }
+#endif
+}
+
+SWIGINTERN LayerSources RTPIncomingSource_layers(RTPIncomingSource *self){
+			LayerSources layers;
+			for(auto it = self->layers.begin(); it != self->layers.end(); ++it )
+				layers.push_back(&(it->second));
+			return layers;
+		}
+
 SWIGINTERN
 v8::Handle<v8::Value> SWIG_From_double   (double val)
 {
@@ -2492,6 +2555,9 @@ SWIGV8_ClientData _exports_Properties_clientData;
 SWIGV8_ClientData _exports_ByteBuffer_clientData;
 SWIGV8_ClientData _exports_MediaFrame_clientData;
 SWIGV8_ClientData _exports_Acumulator_clientData;
+SWIGV8_ClientData _exports_LayerInfo_clientData;
+SWIGV8_ClientData _exports_LayerSource_clientData;
+SWIGV8_ClientData _exports_LayerSources_clientData;
 SWIGV8_ClientData _exports_RTPSource_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSource_clientData;
 SWIGV8_ClientData _exports_RTPOutgoingSource_clientData;
@@ -6456,6 +6522,605 @@ static void _wrap_delete_Acumulator(v8::Persistent<v8::Value> object, void *para
 
 
 #if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_LayerInfo_MaxLayerId_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_LayerInfo_MaxLayerId_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    uint8_t arg1 ;
+    unsigned char val1 ;
+    int ecode1 = 0 ;
+    
+    ecode1 = SWIG_AsVal_unsigned_SS_char(value, &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "LayerInfo_MaxLayerId_set" "', argument " "1"" of type '" "uint8_t""'");
+    } 
+    arg1 = (uint8_t)(val1);
+    LayerInfo::MaxLayerId = arg1;
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_LayerInfo_MaxLayerId_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_LayerInfo_MaxLayerId_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    uint8_t result;
+    
+    result = (uint8_t)LayerInfo::MaxLayerId;
+    jsresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_LayerInfo_temporalLayerId_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_LayerInfo_temporalLayerId_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    LayerInfo *arg1 = (LayerInfo *) 0 ;
+    uint8_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned char val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_temporalLayerId_set" "', argument " "1"" of type '" "LayerInfo *""'"); 
+    }
+    arg1 = (LayerInfo *)(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_char(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LayerInfo_temporalLayerId_set" "', argument " "2"" of type '" "uint8_t""'");
+    } 
+    arg2 = (uint8_t)(val2);
+    if (arg1) (arg1)->temporalLayerId = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_LayerInfo_temporalLayerId_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_LayerInfo_temporalLayerId_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    LayerInfo *arg1 = (LayerInfo *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint8_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_temporalLayerId_get" "', argument " "1"" of type '" "LayerInfo *""'"); 
+    }
+    arg1 = (LayerInfo *)(argp1);
+    result = (uint8_t) ((arg1)->temporalLayerId);
+    jsresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_LayerInfo_spatialLayerId_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_LayerInfo_spatialLayerId_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    LayerInfo *arg1 = (LayerInfo *) 0 ;
+    uint8_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned char val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_spatialLayerId_set" "', argument " "1"" of type '" "LayerInfo *""'"); 
+    }
+    arg1 = (LayerInfo *)(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_char(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LayerInfo_spatialLayerId_set" "', argument " "2"" of type '" "uint8_t""'");
+    } 
+    arg2 = (uint8_t)(val2);
+    if (arg1) (arg1)->spatialLayerId = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_LayerInfo_spatialLayerId_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_LayerInfo_spatialLayerId_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    LayerInfo *arg1 = (LayerInfo *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint8_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_spatialLayerId_get" "', argument " "1"" of type '" "LayerInfo *""'"); 
+    }
+    arg1 = (LayerInfo *)(argp1);
+    result = (uint8_t) ((arg1)->spatialLayerId);
+    jsresult = SWIG_From_unsigned_SS_char((unsigned char)(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+static SwigV8ReturnValue _wrap_new_LayerInfo(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  LayerInfo *result;
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_LayerInfo.");
+  result = (LayerInfo *)new LayerInfo();
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_LayerInfo, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_LayerInfo(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_LayerInfo(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_LayerInfo(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_LayerInfo(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_LayerInfo(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            LayerInfo * arg1 = (LayerInfo *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_LayerSource_numPackets_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_LayerSource_numPackets_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    LayerSource *arg1 = (LayerSource *) 0 ;
+    uint32_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned int val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_numPackets_set" "', argument " "1"" of type '" "LayerSource *""'"); 
+    }
+    arg1 = (LayerSource *)(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LayerSource_numPackets_set" "', argument " "2"" of type '" "uint32_t""'");
+    } 
+    arg2 = (uint32_t)(val2);
+    if (arg1) (arg1)->numPackets = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_LayerSource_numPackets_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_LayerSource_numPackets_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    LayerSource *arg1 = (LayerSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint32_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_numPackets_get" "', argument " "1"" of type '" "LayerSource *""'"); 
+    }
+    arg1 = (LayerSource *)(argp1);
+    result = (uint32_t) ((arg1)->numPackets);
+    jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_LayerSource_totalBytes_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_LayerSource_totalBytes_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    LayerSource *arg1 = (LayerSource *) 0 ;
+    uint32_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned int val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_totalBytes_set" "', argument " "1"" of type '" "LayerSource *""'"); 
+    }
+    arg1 = (LayerSource *)(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LayerSource_totalBytes_set" "', argument " "2"" of type '" "uint32_t""'");
+    } 
+    arg2 = (uint32_t)(val2);
+    if (arg1) (arg1)->totalBytes = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_LayerSource_totalBytes_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_LayerSource_totalBytes_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    LayerSource *arg1 = (LayerSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint32_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_totalBytes_get" "', argument " "1"" of type '" "LayerSource *""'"); 
+    }
+    arg1 = (LayerSource *)(argp1);
+    result = (uint32_t) ((arg1)->totalBytes);
+    jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_LayerSource_bitrate_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_LayerSource_bitrate_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    LayerSource *arg1 = (LayerSource *) 0 ;
+    Acumulator *arg2 = (Acumulator *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    void *argp2 = 0 ;
+    int res2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_bitrate_set" "', argument " "1"" of type '" "LayerSource *""'"); 
+    }
+    arg1 = (LayerSource *)(argp1);
+    res2 = SWIG_ConvertPtr(value, &argp2,SWIGTYPE_p_Acumulator, 0 |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LayerSource_bitrate_set" "', argument " "2"" of type '" "Acumulator *""'"); 
+    }
+    arg2 = (Acumulator *)(argp2);
+    if (arg1) (arg1)->bitrate = *arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_LayerSource_bitrate_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_LayerSource_bitrate_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    LayerSource *arg1 = (LayerSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    Acumulator *result = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_bitrate_get" "', argument " "1"" of type '" "LayerSource *""'"); 
+    }
+    arg1 = (LayerSource *)(argp1);
+    result = (Acumulator *)& ((arg1)->bitrate);
+    jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Acumulator, 0 |  0 );
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+static SwigV8ReturnValue _wrap_new_LayerSource(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  LayerSource *result;
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_LayerSource.");
+  result = (LayerSource *)new LayerSource();
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_LayerSource, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_LayerSource(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_LayerSource(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_LayerSource(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_LayerSource(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_LayerSource(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            LayerSource * arg1 = (LayerSource *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
+static SwigV8ReturnValue _wrap_LayerSources_size(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  LayerSources *arg1 = (LayerSources *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_LayerSources_size.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_LayerSources, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSources_size" "', argument " "1"" of type '" "LayerSources const *""'"); 
+  }
+  arg1 = (LayerSources *)(argp1);
+  result = ((LayerSources const *)arg1)->size();
+  jsresult = SWIG_From_size_t((size_t)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_LayerSources_get(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  LayerSources *arg1 = (LayerSources *) 0 ;
+  size_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  size_t val2 ;
+  int ecode2 = 0 ;
+  LayerSource *result = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_LayerSources_get.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_LayerSources, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSources_get" "', argument " "1"" of type '" "LayerSources *""'"); 
+  }
+  arg1 = (LayerSources *)(argp1);
+  ecode2 = SWIG_AsVal_size_t(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LayerSources_get" "', argument " "2"" of type '" "size_t""'");
+  } 
+  arg2 = (size_t)(val2);
+  result = (LayerSource *)(arg1)->get(arg2);
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_LayerSource, 0 |  0 );
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_LayerSources(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  LayerSources *result;
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_LayerSources.");
+  result = (LayerSources *)new LayerSources();
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_LayerSources, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_LayerSources(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_LayerSources(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_LayerSources(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_LayerSources(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_LayerSources(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            LayerSources * arg1 = (LayerSources *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
 static void _wrap_RTPSource_ssrc_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
 #else
   static void _wrap_RTPSource_ssrc_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
@@ -7725,6 +8390,34 @@ static SwigV8ReturnValue _wrap_RTPIncomingSource_totalNACKs_get(v8::Local<v8::St
   fail:
     SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
   }
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSource_layers(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  LayerSources result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSource_layers.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_layers" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+  }
+  arg1 = (RTPIncomingSource *)(argp1);
+  result = RTPIncomingSource_layers(arg1);
+  jsresult = SWIG_NewPointerObj((new LayerSources((const LayerSources&)(result))), SWIGTYPE_p_LayerSources, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
 
 
 static SwigV8ReturnValue _wrap_new_RTPIncomingSource(const SwigV8Arguments &args) {
@@ -14655,6 +15348,9 @@ static void _wrap_delete_SenderSideEstimatorListener(v8::Persistent<v8::Value> o
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_LayerSourceTo_p_LayerInfo(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((LayerInfo *)  ((LayerSource *) x));
+}
 static void *_p_PropertiesFacadeTo_p_Properties(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((Properties *)  ((PropertiesFacade *) x));
 }
@@ -14693,6 +15389,9 @@ static swig_type_info _swigt__p_DTLSConnection__Suite = {"_p_DTLSConnection__Sui
 static swig_type_info _swigt__p_DTLSICETransport = {"_p_DTLSICETransport", "p_DTLSICETransport|DTLSICETransport *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransport__Sender = {"_p_DTLSICETransport__Sender", "DTLSICETransport::Sender *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ICERemoteCandidate = {"_p_ICERemoteCandidate", "ICERemoteCandidate *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_LayerInfo = {"_p_LayerInfo", "LayerInfo *|p_LayerInfo", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_LayerSource = {"_p_LayerSource", "p_LayerSource|LayerSource *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_LayerSources = {"_p_LayerSources", "LayerSources *|p_LayerSources", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MP4FileHandle = {"_p_MP4FileHandle", "MP4FileHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MP4Recorder = {"_p_MP4Recorder", "p_MP4Recorder|MP4Recorder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrame = {"_p_MediaFrame", "p_MediaFrame|MediaFrame *", 0, 0, (void*)0, 0};
@@ -14749,6 +15448,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_DTLSICETransport,
   &_swigt__p_DTLSICETransport__Sender,
   &_swigt__p_ICERemoteCandidate,
+  &_swigt__p_LayerInfo,
+  &_swigt__p_LayerSource,
+  &_swigt__p_LayerSources,
   &_swigt__p_MP4FileHandle,
   &_swigt__p_MP4Recorder,
   &_swigt__p_MediaFrame,
@@ -14805,6 +15507,9 @@ static swig_cast_info _swigc__p_DTLSConnection__Suite[] = {  {&_swigt__p_DTLSCon
 static swig_cast_info _swigc__p_DTLSICETransport[] = {  {&_swigt__p_DTLSICETransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransport__Sender[] = {  {&_swigt__p_RTPBundleTransport, _p_RTPBundleTransportTo_p_DTLSICETransport__Sender, 0, 0},  {&_swigt__p_DTLSICETransport__Sender, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ICERemoteCandidate[] = {  {&_swigt__p_ICERemoteCandidate, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LayerInfo[] = {  {&_swigt__p_LayerSource, _p_LayerSourceTo_p_LayerInfo, 0, 0},  {&_swigt__p_LayerInfo, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LayerSource[] = {  {&_swigt__p_LayerSource, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_LayerSources[] = {  {&_swigt__p_LayerSources, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MP4FileHandle[] = {  {&_swigt__p_MP4FileHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MP4Recorder[] = {  {&_swigt__p_MP4Recorder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrame[] = {  {&_swigt__p_MediaFrame, 0, 0, 0},{0, 0, 0, 0}};
@@ -14861,6 +15566,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_DTLSICETransport,
   _swigc__p_DTLSICETransport__Sender,
   _swigc__p_ICERemoteCandidate,
+  _swigc__p_LayerInfo,
+  _swigc__p_LayerSource,
+  _swigc__p_LayerSources,
   _swigc__p_MP4FileHandle,
   _swigc__p_MP4Recorder,
   _swigc__p_MediaFrame,
@@ -15250,6 +15958,27 @@ _exports_Acumulator_clientData.dtor = _wrap_delete_Acumulator;
 if (SWIGTYPE_p_Acumulator->clientdata == 0) {
   SWIGTYPE_p_Acumulator->clientdata = &_exports_Acumulator_clientData;
 }
+/* Name: _exports_LayerInfo, Type: p_LayerInfo, Dtor: _wrap_delete_LayerInfo */
+v8::Handle<v8::FunctionTemplate> _exports_LayerInfo_class = SWIGV8_CreateClassTemplate("_exports_LayerInfo");
+SWIGV8_SET_CLASS_TEMPL(_exports_LayerInfo_clientData.class_templ, _exports_LayerInfo_class);
+_exports_LayerInfo_clientData.dtor = _wrap_delete_LayerInfo;
+if (SWIGTYPE_p_LayerInfo->clientdata == 0) {
+  SWIGTYPE_p_LayerInfo->clientdata = &_exports_LayerInfo_clientData;
+}
+/* Name: _exports_LayerSource, Type: p_LayerSource, Dtor: _wrap_delete_LayerSource */
+v8::Handle<v8::FunctionTemplate> _exports_LayerSource_class = SWIGV8_CreateClassTemplate("_exports_LayerSource");
+SWIGV8_SET_CLASS_TEMPL(_exports_LayerSource_clientData.class_templ, _exports_LayerSource_class);
+_exports_LayerSource_clientData.dtor = _wrap_delete_LayerSource;
+if (SWIGTYPE_p_LayerSource->clientdata == 0) {
+  SWIGTYPE_p_LayerSource->clientdata = &_exports_LayerSource_clientData;
+}
+/* Name: _exports_LayerSources, Type: p_LayerSources, Dtor: _wrap_delete_LayerSources */
+v8::Handle<v8::FunctionTemplate> _exports_LayerSources_class = SWIGV8_CreateClassTemplate("_exports_LayerSources");
+SWIGV8_SET_CLASS_TEMPL(_exports_LayerSources_clientData.class_templ, _exports_LayerSources_class);
+_exports_LayerSources_clientData.dtor = _wrap_delete_LayerSources;
+if (SWIGTYPE_p_LayerSources->clientdata == 0) {
+  SWIGTYPE_p_LayerSources->clientdata = &_exports_LayerSources_clientData;
+}
 /* Name: _exports_RTPSource, Type: p_RTPSource, Dtor: _wrap_delete_RTPSource */
 v8::Handle<v8::FunctionTemplate> _exports_RTPSource_class = SWIGV8_CreateClassTemplate("_exports_RTPSource");
 SWIGV8_SET_CLASS_TEMPL(_exports_RTPSource_clientData.class_templ, _exports_RTPSource_class);
@@ -15471,6 +16200,13 @@ SWIGV8_AddMemberFunction(_exports_Acumulator_class, "Update", _wrap_Acumulator__
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMinValueInWindow", _wrap_Acumulator_GetMinValueInWindow);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMaxValueInWindow", _wrap_Acumulator_GetMaxValueInWindow);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetCount", _wrap_Acumulator_GetCount);
+SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "temporalLayerId", _wrap_LayerInfo_temporalLayerId_get, _wrap_LayerInfo_temporalLayerId_set);
+SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "spatialLayerId", _wrap_LayerInfo_spatialLayerId_get, _wrap_LayerInfo_spatialLayerId_set);
+SWIGV8_AddMemberVariable(_exports_LayerSource_class, "numPackets", _wrap_LayerSource_numPackets_get, _wrap_LayerSource_numPackets_set);
+SWIGV8_AddMemberVariable(_exports_LayerSource_class, "totalBytes", _wrap_LayerSource_totalBytes_get, _wrap_LayerSource_totalBytes_set);
+SWIGV8_AddMemberVariable(_exports_LayerSource_class, "bitrate", _wrap_LayerSource_bitrate_get, _wrap_LayerSource_bitrate_set);
+SWIGV8_AddMemberFunction(_exports_LayerSources_class, "size", _wrap_LayerSources_size);
+SWIGV8_AddMemberFunction(_exports_LayerSources_class, "get", _wrap_LayerSources_get);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "ssrc", _wrap_RTPSource_ssrc_get, _wrap_RTPSource_ssrc_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "extSeq", _wrap_RTPSource_extSeq_get, _wrap_RTPSource_extSeq_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "cycles", _wrap_RTPSource_cycles_get, _wrap_RTPSource_cycles_set);
@@ -15490,6 +16226,7 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReceivedSenderRe
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReport", _wrap_RTPIncomingSource_lastReport_get, _wrap_RTPIncomingSource_lastReport_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalPLIs", _wrap_RTPIncomingSource_totalPLIs_get, _wrap_RTPIncomingSource_totalPLIs_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalNACKs", _wrap_RTPIncomingSource_totalNACKs_get, _wrap_RTPIncomingSource_totalNACKs_set);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSource_class, "layers", _wrap_RTPIncomingSource_layers);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "time", _wrap_RTPOutgoingSource_time_get, _wrap_RTPOutgoingSource_time_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "lastTime", _wrap_RTPOutgoingSource_lastTime_get, _wrap_RTPOutgoingSource_lastTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "numPackets", _wrap_RTPOutgoingSource_numPackets_get, _wrap_RTPOutgoingSource_numPackets_set);
@@ -15606,7 +16343,27 @@ SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Close", _wrap_PlayerFacad
 
 
   /* setup inheritances */
-  if (SWIGTYPE_p_RTPSource->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSource->clientdata)->class_templ.IsEmpty()))
+  if (SWIGTYPE_p_LayerInfo->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_LayerInfo->clientdata)->class_templ.IsEmpty()))
+{
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+  _exports_LayerSource_class->Inherit(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_LayerInfo->clientdata)->class_templ);
+#else
+  _exports_LayerSource_class->Inherit(
+    v8::Local<v8::FunctionTemplate>::New(
+      v8::Isolate::GetCurrent(),
+      static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_LayerInfo->clientdata)->class_templ)
+    );
+#endif
+  
+#ifdef SWIGRUNTIME_DEBUG
+  printf("Inheritance successful _exports_LayerSource _LayerInfo\n");
+#endif
+} else {
+#ifdef SWIGRUNTIME_DEBUG
+  printf("Unable to inherit baseclass, it didn't exist _exports_LayerSource _LayerInfo\n");
+#endif
+}
+if (SWIGTYPE_p_RTPSource->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSource->clientdata)->class_templ.IsEmpty()))
 {
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
   _exports_RTPIncomingSource_class->Inherit(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RTPSource->clientdata)->class_templ);
@@ -15673,6 +16430,24 @@ _exports_Acumulator_class_0->SetCallHandler(_wrap_new_Acumulator);
 _exports_Acumulator_class_0->Inherit(_exports_Acumulator_class);
 _exports_Acumulator_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_Acumulator_obj = _exports_Acumulator_class_0->GetFunction();
+/* Class: LayerInfo (_exports_LayerInfo) */
+v8::Handle<v8::FunctionTemplate> _exports_LayerInfo_class_0 = SWIGV8_CreateClassTemplate("LayerInfo");
+_exports_LayerInfo_class_0->SetCallHandler(_wrap_new_LayerInfo);
+_exports_LayerInfo_class_0->Inherit(_exports_LayerInfo_class);
+_exports_LayerInfo_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_LayerInfo_obj = _exports_LayerInfo_class_0->GetFunction();
+/* Class: LayerSource (_exports_LayerSource) */
+v8::Handle<v8::FunctionTemplate> _exports_LayerSource_class_0 = SWIGV8_CreateClassTemplate("LayerSource");
+_exports_LayerSource_class_0->SetCallHandler(_wrap_new_LayerSource);
+_exports_LayerSource_class_0->Inherit(_exports_LayerSource_class);
+_exports_LayerSource_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_LayerSource_obj = _exports_LayerSource_class_0->GetFunction();
+/* Class: LayerSources (_exports_LayerSources) */
+v8::Handle<v8::FunctionTemplate> _exports_LayerSources_class_0 = SWIGV8_CreateClassTemplate("LayerSources");
+_exports_LayerSources_class_0->SetCallHandler(_wrap_new_LayerSources);
+_exports_LayerSources_class_0->Inherit(_exports_LayerSources_class);
+_exports_LayerSources_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_LayerSources_obj = _exports_LayerSources_class_0->GetFunction();
 /* Class: RTPSource (_exports_RTPSource) */
 v8::Handle<v8::FunctionTemplate> _exports_RTPSource_class_0 = SWIGV8_CreateClassTemplate("RTPSource");
 _exports_RTPSource_class_0->SetCallHandler(_wrap_new_RTPSource);
@@ -15803,6 +16578,7 @@ SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Audio", _wrap_MediaFrame_Audi
 SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Video", _wrap_MediaFrame_Video, JS_veto_set_variable);
 SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Text", _wrap_MediaFrame_Text, JS_veto_set_variable);
 SWIGV8_AddStaticFunction(_exports_MediaFrame_obj, "TypeToString", _wrap_MediaFrame_TypeToString);
+SWIGV8_AddStaticVariable(_exports_LayerInfo_obj, "MaxLayerId", _wrap_LayerInfo_MaxLayerId_get, _wrap_LayerInfo_MaxLayerId_set);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "RunCallback", _wrap_MediaServer_RunCallback);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Initialize", _wrap_MediaServer_Initialize);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Terminate", _wrap_MediaServer_Terminate);
@@ -15822,6 +16598,9 @@ SWIGV8_AddStaticFunction(exports_obj, "SessionToReceiver", _wrap_SessionToReceiv
 exports_obj->Set(SWIGV8_SYMBOL_NEW("ByteBuffer"), _exports_ByteBuffer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaFrame"), _exports_MediaFrame_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("Acumulator"), _exports_Acumulator_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("LayerInfo"), _exports_LayerInfo_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("LayerSource"), _exports_LayerSource_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("LayerSources"), _exports_LayerSources_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPSource"), _exports_RTPSource_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingSource"), _exports_RTPIncomingSource_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPOutgoingSource"), _exports_RTPOutgoingSource_obj);

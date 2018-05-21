@@ -542,13 +542,41 @@ void EvenSource::SendEvent(const char* type,const char* msg,...)
 {
 }
 
+class LayerSources : public std::vector<LayerSource*>
+{
+public:
+	size_t size() const		{ return std::vector<LayerSource*>::size(); }
+	LayerSource* get(size_t i)	{ return  std::vector<LayerSource*>::at(i); }
+};
+
 %}
 
 %include "stdint.i"
+%include "std_vector.i"
 %include "../media-server/include/config.h"	
 %include "../media-server/include/media.h"
 %include "../media-server/include/acumulator.h"
 
+struct LayerInfo
+{
+	static BYTE MaxLayerId; 
+	BYTE temporalLayerId = MaxLayerId;
+	BYTE spatialLayerId  = MaxLayerId;
+};
+
+struct LayerSource : public LayerInfo
+{
+	DWORD		numPackets;
+	DWORD		totalBytes;
+	Acumulator	bitrate;
+};
+
+class LayerSources : public std::vector<LayerSource*>
+{
+public:
+	size_t size() const;
+	LayerSource* get(size_t i);
+};
 
 struct RTPSource 
 {
@@ -573,10 +601,21 @@ struct RTPIncomingSource : public RTPSource
 	QWORD lastReceivedSenderNTPTimestamp;
 	QWORD lastReceivedSenderReport;
 	QWORD lastReport;
-	DWORD   totalPLIs;
-	DWORD	totalNACKs;
+	DWORD totalPLIs;
+	DWORD totalNACKs;
+	
+	%extend 
+	{
+		LayerSources layers() 
+		{
+			LayerSources layers;
+			for(auto it = $self->layers.begin(); it != $self->layers.end(); ++it )
+				layers.push_back(&(it->second));
+			return layers;
+		}
+	}
 };
-
+	
 struct RTPOutgoingSource : public RTPSource
 {
 	
