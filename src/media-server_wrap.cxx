@@ -1532,65 +1532,66 @@ fail: ;
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_Acumulator swig_types[0]
-#define SWIGTYPE_p_AudioCodec__Type swig_types[1]
-#define SWIGTYPE_p_AudioFrame swig_types[2]
-#define SWIGTYPE_p_ByteBuffer swig_types[3]
-#define SWIGTYPE_p_DTLSConnection__Suite swig_types[4]
-#define SWIGTYPE_p_DTLSICETransport swig_types[5]
-#define SWIGTYPE_p_DTLSICETransport__Sender swig_types[6]
-#define SWIGTYPE_p_ICERemoteCandidate swig_types[7]
-#define SWIGTYPE_p_LayerInfo swig_types[8]
-#define SWIGTYPE_p_LayerSource swig_types[9]
-#define SWIGTYPE_p_LayerSources swig_types[10]
-#define SWIGTYPE_p_MP4FileHandle swig_types[11]
-#define SWIGTYPE_p_MP4Recorder swig_types[12]
-#define SWIGTYPE_p_MediaFrame swig_types[13]
-#define SWIGTYPE_p_MediaServer swig_types[14]
-#define SWIGTYPE_p_PlayerFacade swig_types[15]
-#define SWIGTYPE_p_Properties swig_types[16]
-#define SWIGTYPE_p_PropertiesFacade swig_types[17]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[18]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[19]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[20]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[21]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[22]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[23]
-#define SWIGTYPE_p_RTPReceiver swig_types[24]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[25]
-#define SWIGTYPE_p_RTPSender swig_types[26]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[27]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[28]
-#define SWIGTYPE_p_RTPSource swig_types[29]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[30]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[31]
-#define SWIGTYPE_p_RecorderControl__Type swig_types[32]
-#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[33]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[34]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[35]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[36]
-#define SWIGTYPE_p_StringFacade swig_types[37]
-#define SWIGTYPE_p_TextFrame swig_types[38]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[39]
-#define SWIGTYPE_p_VideoFrame swig_types[40]
-#define SWIGTYPE_p_char swig_types[41]
-#define SWIGTYPE_p_int swig_types[42]
-#define SWIGTYPE_p_long_double swig_types[43]
-#define SWIGTYPE_p_long_long swig_types[44]
-#define SWIGTYPE_p_mp4track swig_types[45]
-#define SWIGTYPE_p_short swig_types[46]
-#define SWIGTYPE_p_signed_char swig_types[47]
-#define SWIGTYPE_p_std__string swig_types[48]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[49]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[50]
-#define SWIGTYPE_p_unsigned_char swig_types[51]
-#define SWIGTYPE_p_unsigned_int swig_types[52]
-#define SWIGTYPE_p_unsigned_long_long swig_types[53]
-#define SWIGTYPE_p_unsigned_short swig_types[54]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[55]
-#define SWIGTYPE_p_void swig_types[56]
-static swig_type_info *swig_types[58];
-static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
+#define SWIGTYPE_p_ActiveSpeakerDetectorFacade swig_types[0]
+#define SWIGTYPE_p_Acumulator swig_types[1]
+#define SWIGTYPE_p_AudioCodec__Type swig_types[2]
+#define SWIGTYPE_p_AudioFrame swig_types[3]
+#define SWIGTYPE_p_ByteBuffer swig_types[4]
+#define SWIGTYPE_p_DTLSConnection__Suite swig_types[5]
+#define SWIGTYPE_p_DTLSICETransport swig_types[6]
+#define SWIGTYPE_p_DTLSICETransport__Sender swig_types[7]
+#define SWIGTYPE_p_ICERemoteCandidate swig_types[8]
+#define SWIGTYPE_p_LayerInfo swig_types[9]
+#define SWIGTYPE_p_LayerSource swig_types[10]
+#define SWIGTYPE_p_LayerSources swig_types[11]
+#define SWIGTYPE_p_MP4FileHandle swig_types[12]
+#define SWIGTYPE_p_MP4Recorder swig_types[13]
+#define SWIGTYPE_p_MediaFrame swig_types[14]
+#define SWIGTYPE_p_MediaServer swig_types[15]
+#define SWIGTYPE_p_PlayerFacade swig_types[16]
+#define SWIGTYPE_p_Properties swig_types[17]
+#define SWIGTYPE_p_PropertiesFacade swig_types[18]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[19]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[20]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[21]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[22]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[23]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[24]
+#define SWIGTYPE_p_RTPReceiver swig_types[25]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[26]
+#define SWIGTYPE_p_RTPSender swig_types[27]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[28]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[29]
+#define SWIGTYPE_p_RTPSource swig_types[30]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[31]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[32]
+#define SWIGTYPE_p_RecorderControl__Type swig_types[33]
+#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[34]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[35]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[36]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[37]
+#define SWIGTYPE_p_StringFacade swig_types[38]
+#define SWIGTYPE_p_TextFrame swig_types[39]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[40]
+#define SWIGTYPE_p_VideoFrame swig_types[41]
+#define SWIGTYPE_p_char swig_types[42]
+#define SWIGTYPE_p_int swig_types[43]
+#define SWIGTYPE_p_long_double swig_types[44]
+#define SWIGTYPE_p_long_long swig_types[45]
+#define SWIGTYPE_p_mp4track swig_types[46]
+#define SWIGTYPE_p_short swig_types[47]
+#define SWIGTYPE_p_signed_char swig_types[48]
+#define SWIGTYPE_p_std__string swig_types[49]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[50]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[51]
+#define SWIGTYPE_p_unsigned_char swig_types[52]
+#define SWIGTYPE_p_unsigned_int swig_types[53]
+#define SWIGTYPE_p_unsigned_long_long swig_types[54]
+#define SWIGTYPE_p_unsigned_short swig_types[55]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[56]
+#define SWIGTYPE_p_void swig_types[57]
+static swig_type_info *swig_types[59];
+static swig_module_info swig_module = {swig_types, 58, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1626,6 +1627,7 @@ static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
+#include "../media-server/include/ActiveSpeakerDetector.h"	
 
 
 class StringFacade : private std::string
@@ -2158,6 +2160,62 @@ public:
 	LayerSource* get(size_t i)	{ return  std::vector<LayerSource*>::at(i); }
 };
 
+class ActiveSpeakerDetectorFacade :
+	public ActiveSpeakerDetector,
+	public ActiveSpeakerDetector::Listener,
+	public RTPIncomingSourceGroup::Listener
+{
+public:	
+	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object) :
+		ActiveSpeakerDetector(this),
+		persistent(object) 
+	{};
+		
+	virtual void onActiveSpeakerChanded(uint32_t id) override
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[1];
+			
+			//Create local args
+			argv2[i++] = Nan::New<v8::Uint32>(id);
+			
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onactivespeakerchangeds").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		});
+	}
+	
+	void AddIncomingSourceGroup(RTPIncomingSourceGroup* incoming)
+	{
+		if (incoming) incoming->AddListener(this);
+	}
+	
+	void RemoveIncomingSourceGroup(RTPIncomingSourceGroup* incoming)
+	{
+		if (incoming) incoming->RemoveListener(this);
+	}
+	
+	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet) override
+	{
+		if (packet->HasAudioLevel())
+			ActiveSpeakerDetector::Accumulate(packet->GetSSRC(), packet->GetVAD(),packet->GetLevel(), packet->GetTime());
+	}		
+	
+	
+	virtual void onEnded(RTPIncomingSourceGroup* group) override
+	{
+		
+	}
+private:		
+	Nan::Persistent<v8::Object> persistent;	
+};
+
 
 
 #include <stdint.h>		// Use the C99 official header
@@ -2578,6 +2636,7 @@ SWIGV8_ClientData _exports_RTPStreamTransponderFacade_clientData;
 SWIGV8_ClientData _exports_StreamTrackDepacketizer_clientData;
 SWIGV8_ClientData _exports_PlayerFacade_clientData;
 SWIGV8_ClientData _exports_SenderSideEstimatorListener_clientData;
+SWIGV8_ClientData _exports_ActiveSpeakerDetectorFacade_clientData;
 
 
 #if (V8_MAJOR_VERSION-0) < 5
@@ -15346,6 +15405,174 @@ static void _wrap_delete_SenderSideEstimatorListener(v8::Persistent<v8::Value> o
         }
 
 
+static SwigV8ReturnValue _wrap_new_ActiveSpeakerDetectorFacade(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  v8::Handle< v8::Object > arg1 ;
+  ActiveSpeakerDetectorFacade *result;
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_ActiveSpeakerDetectorFacade.");
+  {
+    arg1 = v8::Handle<v8::Object>::Cast(args[0]);
+  }
+  result = (ActiveSpeakerDetectorFacade *)new ActiveSpeakerDetectorFacade(arg1);
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_ActiveSpeakerDetectorFacade, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_SetMinChangePeriod(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  ActiveSpeakerDetectorFacade *arg1 = (ActiveSpeakerDetectorFacade *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_SetMinChangePeriod.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerDetectorFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerDetectorFacade_SetMinChangePeriod" "', argument " "1"" of type '" "ActiveSpeakerDetectorFacade *""'"); 
+  }
+  arg1 = (ActiveSpeakerDetectorFacade *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ActiveSpeakerDetectorFacade_SetMinChangePeriod" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = (uint32_t)(val2);
+  (arg1)->SetMinChangePeriod(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  ActiveSpeakerDetectorFacade *arg1 = (ActiveSpeakerDetectorFacade *) 0 ;
+  RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerDetectorFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerDetectorFacade_AddIncomingSourceGroup" "', argument " "1"" of type '" "ActiveSpeakerDetectorFacade *""'"); 
+  }
+  arg1 = (ActiveSpeakerDetectorFacade *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ActiveSpeakerDetectorFacade_AddIncomingSourceGroup" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg2 = (RTPIncomingSourceGroup *)(argp2);
+  (arg1)->AddIncomingSourceGroup(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  ActiveSpeakerDetectorFacade *arg1 = (ActiveSpeakerDetectorFacade *) 0 ;
+  RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerDetectorFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup" "', argument " "1"" of type '" "ActiveSpeakerDetectorFacade *""'"); 
+  }
+  arg1 = (ActiveSpeakerDetectorFacade *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg2 = (RTPIncomingSourceGroup *)(argp2);
+  (arg1)->RemoveIncomingSourceGroup(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_ActiveSpeakerDetectorFacade(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_ActiveSpeakerDetectorFacade(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_ActiveSpeakerDetectorFacade(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_ActiveSpeakerDetectorFacade(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_ActiveSpeakerDetectorFacade(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            ActiveSpeakerDetectorFacade * arg1 = (ActiveSpeakerDetectorFacade *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static void *_p_LayerSourceTo_p_LayerInfo(void *x, int *SWIGUNUSEDPARM(newmemory)) {
@@ -15381,6 +15608,7 @@ static void *_p_RTPOutgoingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_SenderSideEstimatorListenerTo_p_RemoteRateEstimator__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RemoteRateEstimator::Listener *)  ((SenderSideEstimatorListener *) x));
 }
+static swig_type_info _swigt__p_ActiveSpeakerDetectorFacade = {"_p_ActiveSpeakerDetectorFacade", "p_ActiveSpeakerDetectorFacade|ActiveSpeakerDetectorFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Acumulator = {"_p_Acumulator", "Acumulator *|p_Acumulator", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioCodec__Type = {"_p_AudioCodec__Type", "AudioCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioFrame = {"_p_AudioFrame", "AudioFrame *", 0, 0, (void*)0, 0};
@@ -15440,6 +15668,7 @@ static swig_type_info _swigt__p_v8__HandleT_v8__Object_t = {"_p_v8__HandleT_v8__
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_ActiveSpeakerDetectorFacade,
   &_swigt__p_Acumulator,
   &_swigt__p_AudioCodec__Type,
   &_swigt__p_AudioFrame,
@@ -15499,6 +15728,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_void,
 };
 
+static swig_cast_info _swigc__p_ActiveSpeakerDetectorFacade[] = {  {&_swigt__p_ActiveSpeakerDetectorFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Acumulator[] = {  {&_swigt__p_Acumulator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_AudioCodec__Type[] = {  {&_swigt__p_AudioCodec__Type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_AudioFrame[] = {  {&_swigt__p_AudioFrame, 0, 0, 0},{0, 0, 0, 0}};
@@ -15558,6 +15788,7 @@ static swig_cast_info _swigc__p_v8__HandleT_v8__Object_t[] = {  {&_swigt__p_v8__
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_ActiveSpeakerDetectorFacade,
   _swigc__p_Acumulator,
   _swigc__p_AudioCodec__Type,
   _swigc__p_AudioFrame,
@@ -16119,6 +16350,13 @@ _exports_SenderSideEstimatorListener_clientData.dtor = _wrap_delete_SenderSideEs
 if (SWIGTYPE_p_SenderSideEstimatorListener->clientdata == 0) {
   SWIGTYPE_p_SenderSideEstimatorListener->clientdata = &_exports_SenderSideEstimatorListener_clientData;
 }
+/* Name: _exports_ActiveSpeakerDetectorFacade, Type: p_ActiveSpeakerDetectorFacade, Dtor: _wrap_delete_ActiveSpeakerDetectorFacade */
+v8::Handle<v8::FunctionTemplate> _exports_ActiveSpeakerDetectorFacade_class = SWIGV8_CreateClassTemplate("_exports_ActiveSpeakerDetectorFacade");
+SWIGV8_SET_CLASS_TEMPL(_exports_ActiveSpeakerDetectorFacade_clientData.class_templ, _exports_ActiveSpeakerDetectorFacade_class);
+_exports_ActiveSpeakerDetectorFacade_clientData.dtor = _wrap_delete_ActiveSpeakerDetectorFacade;
+if (SWIGTYPE_p_ActiveSpeakerDetectorFacade->clientdata == 0) {
+  SWIGTYPE_p_ActiveSpeakerDetectorFacade->clientdata = &_exports_ActiveSpeakerDetectorFacade_clientData;
+}
 
 
   /* register wrapper functions */
@@ -16340,6 +16578,9 @@ SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Seek", _wrap_PlayerFacade
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Tell", _wrap_PlayerFacade_Tell);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Stop", _wrap_PlayerFacade_Stop);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Close", _wrap_PlayerFacade_Close);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetMinChangePeriod", _wrap_ActiveSpeakerDetectorFacade_SetMinChangePeriod);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "AddIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "RemoveIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup);
 
 
   /* setup inheritances */
@@ -16568,6 +16809,12 @@ _exports_SenderSideEstimatorListener_class_0->SetCallHandler(_wrap_new_SenderSid
 _exports_SenderSideEstimatorListener_class_0->Inherit(_exports_SenderSideEstimatorListener_class);
 _exports_SenderSideEstimatorListener_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_SenderSideEstimatorListener_obj = _exports_SenderSideEstimatorListener_class_0->GetFunction();
+/* Class: ActiveSpeakerDetectorFacade (_exports_ActiveSpeakerDetectorFacade) */
+v8::Handle<v8::FunctionTemplate> _exports_ActiveSpeakerDetectorFacade_class_0 = SWIGV8_CreateClassTemplate("ActiveSpeakerDetectorFacade");
+_exports_ActiveSpeakerDetectorFacade_class_0->SetCallHandler(_wrap_new_ActiveSpeakerDetectorFacade);
+_exports_ActiveSpeakerDetectorFacade_class_0->Inherit(_exports_ActiveSpeakerDetectorFacade_class);
+_exports_ActiveSpeakerDetectorFacade_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_ActiveSpeakerDetectorFacade_obj = _exports_ActiveSpeakerDetectorFacade_class_0->GetFunction();
 
 
   /* add static class functions and variables */
@@ -16621,6 +16868,7 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPStreamTransponderFacade"), _exports_RTPSt
 exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTrackDepacketizer"), _exports_StreamTrackDepacketizer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PlayerFacade"), _exports_PlayerFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("SenderSideEstimatorListener"), _exports_SenderSideEstimatorListener_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("ActiveSpeakerDetectorFacade"), _exports_ActiveSpeakerDetectorFacade_obj);
 
 
   /* create and register namespace objects */

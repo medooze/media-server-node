@@ -17,6 +17,7 @@
 #include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
+#include "../media-server/include/ActiveSpeakerDetector.h"	
 
 
 class StringFacade : private std::string
@@ -549,6 +550,62 @@ public:
 	LayerSource* get(size_t i)	{ return  std::vector<LayerSource*>::at(i); }
 };
 
+class ActiveSpeakerDetectorFacade :
+	public ActiveSpeakerDetector,
+	public ActiveSpeakerDetector::Listener,
+	public RTPIncomingSourceGroup::Listener
+{
+public:	
+	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object) :
+		ActiveSpeakerDetector(this),
+		persistent(object) 
+	{};
+		
+	virtual void onActiveSpeakerChanded(uint32_t id) override
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[1];
+			
+			//Create local args
+			argv2[i++] = Nan::New<v8::Uint32>(id);
+			
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onactivespeakerchangeds").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		});
+	}
+	
+	void AddIncomingSourceGroup(RTPIncomingSourceGroup* incoming)
+	{
+		if (incoming) incoming->AddListener(this);
+	}
+	
+	void RemoveIncomingSourceGroup(RTPIncomingSourceGroup* incoming)
+	{
+		if (incoming) incoming->RemoveListener(this);
+	}
+	
+	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet) override
+	{
+		if (packet->HasAudioLevel())
+			ActiveSpeakerDetector::Accumulate(packet->GetSSRC(), packet->GetVAD(),packet->GetLevel(), packet->GetTime());
+	}		
+	
+	
+	virtual void onEnded(RTPIncomingSourceGroup* group) override
+	{
+		
+	}
+private:		
+	Nan::Persistent<v8::Object> persistent;	
+};
+
 %}
 
 %include "stdint.i"
@@ -792,4 +849,14 @@ class SenderSideEstimatorListener :
 {
 public:
 	SenderSideEstimatorListener(v8::Handle<v8::Object> object);
+};
+
+
+class ActiveSpeakerDetectorFacade
+{
+public:	
+	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object);
+	void SetMinChangePeriod(uint32_t minChangePeriod);
+	void AddIncomingSourceGroup(RTPIncomingSourceGroup* incoming);
+	void RemoveIncomingSourceGroup(RTPIncomingSourceGroup* incoming);
 };

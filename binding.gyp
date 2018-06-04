@@ -48,6 +48,7 @@
 						],
 						"sources": 
 						[
+							"media-server/src/ActiveSpeakerDetector.cpp",
 							"media-server/src/RTPBundleTransport.cpp",
 							"media-server/src/DTLSICETransport.cpp",
 							"media-server/src/VideoLayerSelector.cpp",
