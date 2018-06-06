@@ -575,7 +575,7 @@ public:
 			//Get a local reference
 			v8::Local<v8::Object> local = Nan::New(persistent);
 			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onactivespeakerchangeds").ToLocalChecked()));
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onactivespeakerchanged").ToLocalChecked()));
 			//Call object method with arguments
 			Nan::MakeCallback(local, callback, i, argv2);
 		});
