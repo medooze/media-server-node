@@ -2339,8 +2339,7 @@ v8::Handle<v8::Value> SWIG_From_long  (long value)
 SWIGINTERNINLINE
 v8::Handle<v8::Value> SWIG_From_unsigned_SS_long  (unsigned long value)
 {
-  return (value > LONG_MAX) ?
-    SWIGV8_INTEGER_NEW_UNS(value) : SWIGV8_INTEGER_NEW((long)(value));
+  return SWIGV8_INTEGER_NEW_UNS(value);
 }
 
 
@@ -2487,8 +2486,7 @@ v8::Handle<v8::Value> SWIG_From_long_SS_long  (long long value)
 SWIGINTERNINLINE
 v8::Handle<v8::Value> SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
 {
-  return (value > LONG_MAX) ?
-    SWIGV8_INTEGER_NEW_UNS(value) : SWIGV8_INTEGER_NEW((long)(value));
+    return SWIGV8_INTEGER_NEW_UNS(value);
 }
 #endif
 
