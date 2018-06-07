@@ -232,5 +232,8 @@ const str = answer.toString();
 
 Sergio Garcia Murillo @ Medooze 
 
+## Contributing
+To get started, [Sign the Contributor License Agreement](https://www.clahub.com/agreements/medooze/media-server-node").
+
 ## License
 MIT
