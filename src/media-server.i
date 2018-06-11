@@ -378,8 +378,9 @@ class RTPStreamTransponderFacade :
 	public RTPStreamTransponder
 {
 public:
-	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender)
-		: RTPStreamTransponder(outgoing, sender ? sender->get() : NULL)
+	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender, v8::Handle<v8::Object> object) :
+		RTPStreamTransponder(outgoing, sender ? sender->get() : NULL),
+		persistent(object)
 	{
 
 	}
@@ -388,6 +389,28 @@ public:
 	{
 		return RTPStreamTransponder::SetIncoming(incoming, receiver ? receiver->get() : NULL);
 	}
+	
+	virtual void onREMB(RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[1];
+			
+			//Create local args
+			argv2[i++] = Nan::New<v8::Uint32>(bitrate);
+			
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onremb").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		});
+	}
+private:
+	Nan::Persistent<v8::Object> persistent;	
 };
 
 class StreamTrackDepacketizer :
@@ -588,13 +611,21 @@ public:
 	
 	void RemoveIncomingSourceGroup(RTPIncomingSourceGroup* incoming)
 	{
-		if (incoming) incoming->RemoveListener(this);
+		if (incoming)
+		{	
+			ScopedLock lock(mutex);
+			incoming->RemoveListener(this);
+			ActiveSpeakerDetector::Release(incoming->media.ssrc);
+		}
 	}
 	
 	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet) override
 	{
 		if (packet->HasAudioLevel())
-			ActiveSpeakerDetector::Accumulate(packet->GetSSRC(), packet->GetVAD(),packet->GetLevel(), packet->GetTime());
+		{
+			ScopedLock lock(mutex);
+			ActiveSpeakerDetector::Accumulate(packet->GetSSRC(), packet->GetVAD(),packet->GetLevel(), getTimeMS());
+		}
 	}		
 	
 	
@@ -602,7 +633,8 @@ public:
 	{
 		
 	}
-private:		
+private:
+	Mutex mutex;
 	Nan::Persistent<v8::Object> persistent;	
 };
 
@@ -796,10 +828,7 @@ RTPReceiverFacade*	SessionToReceiver(RTPSessionFacade* session);
 class RTPStreamTransponderFacade 
 {
 public:
-	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender);
-	virtual ~RTPStreamTransponderFacade();
-	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet);
-	virtual void onPLIRequest(RTPOutgoingSourceGroup* group,DWORD ssrc);
+	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender,v8::Handle<v8::Object> object);
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
 	void Mute(bool muting);
@@ -810,11 +839,9 @@ class StreamTrackDepacketizer
 {
 public:
 	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource);
-	virtual ~StreamTrackDepacketizer();
 	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
 	void AddMediaListener(MP4Recorder* listener);
 	void RemoveMediaListener(MP4Recorder* listener);
-	
 	void Stop();
 };
 
