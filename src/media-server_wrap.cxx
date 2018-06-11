@@ -1992,7 +1992,7 @@ public:
 		RTPStreamTransponder(outgoing, sender ? sender->get() : NULL),
 		persistent(object)
 	{
-
+		Start();
 	}
 
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
