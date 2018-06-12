@@ -1,6 +1,6 @@
 {
   "name": "medooze-media-server",
-  "version": "0.34.0",
+  "version": "0.34.1",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
