@@ -739,6 +739,7 @@ struct RTPIncomingSourceGroup
 	RTPIncomingSource media;
 	RTPIncomingSource fec;
 	RTPIncomingSource rtx;
+	void Update();
 	DWORD GetCurrentLost();
 	DWORD GetMinWaitedTime();
 	DWORD GetMaxWaitedTime();
