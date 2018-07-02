@@ -10462,7 +10462,173 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_DTLSICETransport_Dump(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  bool arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  int result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Dump" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Dump" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = (char *)(buf2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_Dump" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  ecode4 = SWIG_AsVal_bool(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DTLSICETransport_Dump" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = (bool)(val4);
+  ecode5 = SWIG_AsVal_bool(args[3], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "DTLSICETransport_Dump" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = (bool)(val5);
+  result = (int)(arg1)->Dump((char const *)arg2,arg3,arg4,arg5);
+  jsresult = SWIG_From_int((int)(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  int result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Dump" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Dump" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = (char *)(buf2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_Dump" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  ecode4 = SWIG_AsVal_bool(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DTLSICETransport_Dump" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = (bool)(val4);
+  result = (int)(arg1)->Dump((char const *)arg2,arg3,arg4);
+  jsresult = SWIG_From_int((int)(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_2(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  int result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Dump" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Dump" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = (char *)(buf2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_Dump" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  result = (int)(arg1)->Dump((char const *)arg2,arg3);
+  jsresult = SWIG_From_int((int)(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_3(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -10474,8 +10640,6 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_Dump(const SwigV8Arguments &args
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   int result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_Dump.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -10493,6 +10657,85 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_Dump(const SwigV8Arguments &args
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   
   SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport__wrap_DTLSICETransport_Dump(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  OverloadErrorHandler errorHandler;
+  
+  
+  if(args.Length() == 4) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 3) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_3(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_3(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Dump.");
   
   goto fail;
 fail:
@@ -16516,7 +16759,7 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteProperties",
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", _wrap_DTLSICETransport_SetLocalProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Send", _wrap_DTLSICETransport_Send);
-SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Dump", _wrap_DTLSICETransport_Dump);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Dump", _wrap_DTLSICETransport__wrap_DTLSICETransport_Dump);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Reset", _wrap_DTLSICETransport_Reset);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "ActivateRemoteCandidate", _wrap_DTLSICETransport_ActivateRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteCryptoDTLS", _wrap_DTLSICETransport_SetRemoteCryptoDTLS);

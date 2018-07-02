@@ -17786,7 +17786,7 @@ Being a server it is ICE-lite.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>createTransport(remote, local, options)</span>
+            <span class='code strong strong truncate'>createTransport(remoteInfo, remote.ice, remote.dtls, remote.candidates, localInfo, local.ice, local.dtls, local.candidates, options)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -17797,7 +17797,7 @@ Being a server it is ICE-lite.</p>
   <p>Create a new transport object and register it with the remote ICE username and password</p>
 
 
-  <div class='pre p1 fill-light mt0'>createTransport(remote: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, local: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, options: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#transport">Transport</a></div>
+  <div class='pre p1 fill-light mt0'>createTransport(remoteInfo: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#sdpinfo">SDPInfo</a>), remote.ice: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#iceinfo">ICEInfo</a>), remote.dtls: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#dtlsinfo">DTLSInfo</a>), remote.candidates: (Array.CandidateInfo | Array.Object), localInfo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, local.ice: <a href="#iceinfo">ICEInfo</a>, local.dtls: <a href="#dtlsinfo">DTLSInfo</a>, local.candidates: Array.CandidateInfo, options: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#transport">Transport</a></div>
   
   
 
@@ -17813,93 +17813,73 @@ Being a server it is ICE-lite.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>remote</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+            <span class='code bold'>remoteInfo</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#sdpinfo">SDPInfo</a>))</code>
 	    Remote ICE and DTLS properties
 
           </div>
-          
-          <table class='mt1 mb2 fixed-table h5 col-12'>
-            <colgroup>
-              <col width='30%' />
-              <col width='70%' />
-            </colgroup>
-            <thead>
-              <tr class='bold fill-light'>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody class='mt1'>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>remote.ice</span> <code class='quiet'><a href="#iceinfo">ICEInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Remote ICE info, containing the username and password.
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>remote.dtls</span> <code class='quiet'><a href="#dtlsinfo">DTLSInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Remote DTLS info
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>remote.candiadtes</span> <code class='quiet'>Array.CandidateInfo</code>
-                  </td>
-                  <td class='break-word'><span>Remote DTLS candidate info not realy used
-</span></td>
-                </tr>
-              
-            </tbody>
-          </table>
           
         </div>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>local</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+            <span class='code bold'>remote.ice</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#iceinfo">ICEInfo</a>))</code>
+	    Remote ICE info, containing the username and password.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>remote.dtls</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#dtlsinfo">DTLSInfo</a>))</code>
+	    Remote DTLS info
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>remote.candidates</span> <code class='quiet'>((Array.CandidateInfo | Array.Object))</code>
+	    Remote ICE candidate info
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>localInfo</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
 	    Local ICE and DTLS properties (optional)
 
           </div>
           
-          <table class='mt1 mb2 fixed-table h5 col-12'>
-            <colgroup>
-              <col width='30%' />
-              <col width='70%' />
-            </colgroup>
-            <thead>
-              <tr class='bold fill-light'>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody class='mt1'>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>local.ice</span> <code class='quiet'><a href="#iceinfo">ICEInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>local.dtls</span> <code class='quiet'><a href="#dtlsinfo">DTLSInfo</a></code>
-                  </td>
-                  <td class='break-word'><span>Local DTLS info
-</span></td>
-                </tr>
-              
-                <tr>
-                  <td class='break-word'><span class='code bold'>local.candidates</span> <code class='quiet'>Array.CandidateInfo</code>
-                  </td>
-                  <td class='break-word'><span>Local candidate info
-</span></td>
-                </tr>
-              
-            </tbody>
-          </table>
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>local.ice</span> <code class='quiet'>(<a href="#iceinfo">ICEInfo</a>)</code>
+	    Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>local.dtls</span> <code class='quiet'>(<a href="#dtlsinfo">DTLSInfo</a>)</code>
+	    Local DTLS info
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>local.candidates</span> <code class='quiet'>(Array.CandidateInfo)</code>
+	    Local candidate info
+
+          </div>
           
         </div>
       
@@ -22370,7 +22350,7 @@ In order to decide how to route your streams you must attach the outgoing stream
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>dump(filename)</span>
+            <span class='code strong strong truncate'>dump(filename, options)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -22381,7 +22361,7 @@ In order to decide how to route your streams you must attach the outgoing stream
   <p>Dump incoming and outgoint rtp and rtcp packets into a pcap file</p>
 
 
-  <div class='pre p1 fill-light mt0'>dump(filename: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</div>
+  <div class='pre p1 fill-light mt0'>dump(filename: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, options: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
   
   
 
@@ -22401,6 +22381,52 @@ In order to decide how to route your streams you must attach the outgoing stream
 	    Filename of the pcap file
 
           </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Dump parameters (optional)
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>options.incomoning</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>
+                  </td>
+                  <td class='break-word'><span>Dump incomoning RTP data
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>options.outbound</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>
+                  </td>
+                  <td class='break-word'><span>Dump outgoing RTP data
+</span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>options.rtcp</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>
+                  </td>
+                  <td class='break-word'><span>Dump rtcp RTP data
+</span></td>
+                </tr>
+              
+            </tbody>
+          </table>
           
         </div>
       
@@ -22440,7 +22466,7 @@ In order to decide how to route your streams you must attach the outgoing stream
   <p>Set local RTP properties</p>
 
 
-  <div class='pre p1 fill-light mt0'>setLocalProperties(rtp: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  <div class='pre p1 fill-light mt0'>setLocalProperties(rtp: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#sdpinfo">SDPInfo</a>))</div>
   
   
 
@@ -22456,7 +22482,7 @@ In order to decide how to route your streams you must attach the outgoing stream
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>rtp</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+            <span class='code bold'>rtp</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#sdpinfo">SDPInfo</a>))</code>
 	    Object param containing media information for audio and video
 
           </div>
@@ -22529,7 +22555,7 @@ In order to decide how to route your streams you must attach the outgoing stream
   <p>Set remote RTP properties</p>
 
 
-  <div class='pre p1 fill-light mt0'>setRemoteProperties(rtp: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</div>
+  <div class='pre p1 fill-light mt0'>setRemoteProperties(rtp: (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#sdpinfo">SDPInfo</a>))</div>
   
   
 
@@ -22545,7 +22571,7 @@ In order to decide how to route your streams you must attach the outgoing stream
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>rtp</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+            <span class='code bold'>rtp</span> <code class='quiet'>((<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | <a href="#sdpinfo">SDPInfo</a>))</code>
 	    Object param containing media information for audio and video
 
           </div>
