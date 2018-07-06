@@ -35,7 +35,7 @@
     "nan": "^2.10.0",
     "node-gyp": "^3.7.0",
     "semantic-sdp": "^3.9.0",
-    "uuid": "^3.2.1"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "tap": "^11.1.5"

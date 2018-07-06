@@ -272,11 +272,16 @@ class PlayerFacade :
 	public MP4Streamer::Listener
 {
 public:
-	PlayerFacade() :
+	PlayerFacade(v8::Handle<v8::Object> object) :
 		MP4Streamer(this),
+		persistent(object),
 		audio(MediaFrame::Audio),
 		video(MediaFrame::Video)
 	{
+		Reset();
+		//Start dispatching
+		audio.Start();
+		video.Start();
 	}
 		
 	virtual void onRTPPacket(RTPPacket &packet)
@@ -306,7 +311,29 @@ public:
 	}
 
 	virtual void onTextFrame(TextFrame &frame) {}
-	virtual void onEnd() {}
+	virtual void onEnd() 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[0];
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onended").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		});
+	}
+	
+	void Reset() 
+	{
+		audio.media.Reset();
+		video.media.Reset();
+		audio.media.ssrc = rand();
+		video.media.ssrc = rand();
+	}
 	
 	virtual void onMediaFrame(MediaFrame &frame)  {}
 	virtual void onMediaFrame(DWORD ssrc, MediaFrame &frame) {}
@@ -315,6 +342,7 @@ public:
 	RTPIncomingSourceGroup* GetVideoSource() { return &video; }
 	
 private:
+	Nan::Persistent<v8::Object> persistent;	
 	//TODO: Update to multitrack
 	RTPIncomingSourceGroup audio;
 	RTPIncomingSourceGroup video;
@@ -343,17 +371,22 @@ class RTPReceiverFacade
 public:	
 	RTPReceiverFacade(DTLSICETransport* transport)
 	{
-		reeciver = transport;
+		receiver = transport;
 	}
 
 	RTPReceiverFacade(RTPSessionFacade* session)
 	{
-		reeciver = session;
+		receiver = session;
 	}
 	
-	RTPReceiver* get() { return reeciver;}
+	int SendPLI(DWORD ssrc)
+	{
+		return receiver ? receiver->SendPLI(ssrc) : 0;
+	}
+	
+	RTPReceiver* get() { return receiver;}
 private:
-	RTPReceiver* reeciver;
+	RTPReceiver* receiver;
 };
 
 
@@ -810,6 +843,7 @@ public:
 	RTPSenderFacade(DTLSICETransport* transport);
 	RTPSenderFacade(RTPSessionFacade* session);
 	RTPSender* get();
+
 };
 
 class RTPReceiverFacade
@@ -818,6 +852,7 @@ public:
 	RTPReceiverFacade(DTLSICETransport* transport);
 	RTPReceiverFacade(RTPSessionFacade* session);
 	RTPReceiver* get();
+	int SendPLI(DWORD ssrc);
 };
 
 
@@ -850,9 +885,10 @@ public:
 class PlayerFacade
 {
 public:
-	PlayerFacade();
+	PlayerFacade(v8::Handle<v8::Object> object);
 	RTPIncomingSourceGroup* GetAudioSource();
 	RTPIncomingSourceGroup* GetVideoSource();
+	void Reset();
 	
 	int Open(const char* filename);
 	bool HasAudioTrack();

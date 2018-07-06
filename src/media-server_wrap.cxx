@@ -1882,11 +1882,16 @@ class PlayerFacade :
 	public MP4Streamer::Listener
 {
 public:
-	PlayerFacade() :
+	PlayerFacade(v8::Handle<v8::Object> object) :
 		MP4Streamer(this),
+		persistent(object),
 		audio(MediaFrame::Audio),
 		video(MediaFrame::Video)
 	{
+		Reset();
+		//Start dispatching
+		audio.Start();
+		video.Start();
 	}
 		
 	virtual void onRTPPacket(RTPPacket &packet)
@@ -1916,7 +1921,29 @@ public:
 	}
 
 	virtual void onTextFrame(TextFrame &frame) {}
-	virtual void onEnd() {}
+	virtual void onEnd() 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[0];
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onended").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		});
+	}
+	
+	void Reset() 
+	{
+		audio.media.Reset();
+		video.media.Reset();
+		audio.media.ssrc = rand();
+		video.media.ssrc = rand();
+	}
 	
 	virtual void onMediaFrame(MediaFrame &frame)  {}
 	virtual void onMediaFrame(DWORD ssrc, MediaFrame &frame) {}
@@ -1925,6 +1952,7 @@ public:
 	RTPIncomingSourceGroup* GetVideoSource() { return &video; }
 	
 private:
+	Nan::Persistent<v8::Object> persistent;	
 	//TODO: Update to multitrack
 	RTPIncomingSourceGroup audio;
 	RTPIncomingSourceGroup video;
@@ -1953,17 +1981,22 @@ class RTPReceiverFacade
 public:	
 	RTPReceiverFacade(DTLSICETransport* transport)
 	{
-		reeciver = transport;
+		receiver = transport;
 	}
 
 	RTPReceiverFacade(RTPSessionFacade* session)
 	{
-		reeciver = session;
+		receiver = session;
 	}
 	
-	RTPReceiver* get() { return reeciver;}
+	int SendPLI(DWORD ssrc)
+	{
+		return receiver ? receiver->SendPLI(ssrc) : 0;
+	}
+	
+	RTPReceiver* get() { return receiver;}
 private:
-	RTPReceiver* reeciver;
+	RTPReceiver* receiver;
 };
 
 
@@ -14477,6 +14510,43 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPReceiverFacade_SendPLI(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPReceiverFacade *arg1 = (RTPReceiverFacade *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPReceiverFacade_SendPLI.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPReceiverFacade_SendPLI" "', argument " "1"" of type '" "RTPReceiverFacade *""'"); 
+  }
+  arg1 = (RTPReceiverFacade *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPReceiverFacade_SendPLI" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = (uint32_t)(val2);
+  result = (int)(arg1)->SendPLI(arg2);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
 static void _wrap_delete_RTPReceiverFacade(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
@@ -15026,9 +15096,13 @@ static SwigV8ReturnValue _wrap_new_PlayerFacade(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Object> self = args.Holder();
+  v8::Handle< v8::Object > arg1 ;
   PlayerFacade *result;
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_PlayerFacade.");
-  result = (PlayerFacade *)new PlayerFacade();
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_PlayerFacade.");
+  {
+    arg1 = v8::Handle<v8::Object>::Cast(args[0]);
+  }
+  result = (PlayerFacade *)new PlayerFacade(arg1);
   
   
   
@@ -15087,6 +15161,33 @@ static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoSource(const SwigV8Arguments
   arg1 = (PlayerFacade *)(argp1);
   result = (RTPIncomingSourceGroup *)(arg1)->GetVideoSource();
   jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PlayerFacade_Reset(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PlayerFacade *arg1 = (PlayerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_Reset.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PlayerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_Reset" "', argument " "1"" of type '" "PlayerFacade *""'"); 
+  }
+  arg1 = (PlayerFacade *)(argp1);
+  (arg1)->Reset();
+  jsresult = SWIGV8_UNDEFINED();
   
   
   SWIGV8_RETURN(jsresult);
@@ -16818,6 +16919,7 @@ SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Send", _wrap_RTPSessi
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "SendPLI", _wrap_RTPSessionFacade_SendPLI);
 SWIGV8_AddMemberFunction(_exports_RTPSenderFacade_class, "get", _wrap_RTPSenderFacade_get);
 SWIGV8_AddMemberFunction(_exports_RTPReceiverFacade_class, "get", _wrap_RTPReceiverFacade_get);
+SWIGV8_AddMemberFunction(_exports_RTPReceiverFacade_class, "SendPLI", _wrap_RTPReceiverFacade_SendPLI);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SetIncoming", _wrap_RTPStreamTransponderFacade_SetIncoming);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SelectLayer", _wrap_RTPStreamTransponderFacade_SelectLayer);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Mute", _wrap_RTPStreamTransponderFacade_Mute);
@@ -16827,6 +16929,7 @@ SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "RemoveMediaLis
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "Stop", _wrap_StreamTrackDepacketizer_Stop);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetAudioSource", _wrap_PlayerFacade_GetAudioSource);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoSource", _wrap_PlayerFacade_GetVideoSource);
+SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Reset", _wrap_PlayerFacade_Reset);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Open", _wrap_PlayerFacade_Open);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "HasAudioTrack", _wrap_PlayerFacade_HasAudioTrack);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "HasVideoTrack", _wrap_PlayerFacade_HasVideoTrack);
