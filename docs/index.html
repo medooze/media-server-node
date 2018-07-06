@@ -3635,7 +3635,7 @@ Only call it once!</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>createRefresher(params)</span>
+            <span class='code strong strong truncate'>createRefresher(period)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3646,7 +3646,7 @@ Only call it once!</p>
   <p>Create a new stream refresher</p>
 
 
-  <div class='pre p1 fill-light mt0'>createRefresher(params: any)</div>
+  <div class='pre p1 fill-light mt0'>createRefresher(period: type)</div>
   
   
 
@@ -3662,8 +3662,9 @@ Only call it once!</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>params</span> <code class='quiet'>(any)</code>
-	    
+            <span class='code bold'>period</span> <code class='quiet'>(type)</code>
+	    Intra refresh period
+
           </div>
           
         </div>
