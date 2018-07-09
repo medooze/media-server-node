@@ -219,7 +219,8 @@ public:
 		GetIncomingSourceGroup()->Start();
 	}
 	virtual ~RTPSessionFacade() = default;
-	virtual int Send(const RTPPacket::shared& packet)	 { return SendPacket(*packet); }
+	//TODO: Make async
+	virtual int Enqueue(const RTPPacket::shared& packet)	 { return SendPacket(*packet); }
 	virtual int SendPLI(DWORD ssrc)				 { return RequestFPU();}
 	
 	int Init(const Properties &properties)
@@ -414,9 +415,7 @@ public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender, v8::Handle<v8::Object> object) :
 		RTPStreamTransponder(outgoing, sender ? sender->get() : NULL),
 		persistent(object)
-	{
-		Start();
-	}
+	{}
 
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
 	{
@@ -832,7 +831,7 @@ public:
 	RTPOutgoingSourceGroup* GetOutgoingSourceGroup();
 	RTPIncomingSourceGroup* GetIncomingSourceGroup();
 	int End();
-	virtual int Send(const RTPPacket::shared& packet);
+	virtual int Enqueue(const RTPPacket::shared& packet);
 	virtual int SendPLI(DWORD ssrc);
 };
 

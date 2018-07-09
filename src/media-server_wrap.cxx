@@ -1829,7 +1829,8 @@ public:
 		GetIncomingSourceGroup()->Start();
 	}
 	virtual ~RTPSessionFacade() = default;
-	virtual int Send(const RTPPacket::shared& packet)	 { return SendPacket(*packet); }
+	//TODO: Make async
+	virtual int Enqueue(const RTPPacket::shared& packet)	 { return SendPacket(*packet); }
 	virtual int SendPLI(DWORD ssrc)				 { return RequestFPU();}
 	
 	int Init(const Properties &properties)
@@ -2024,9 +2025,7 @@ public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender, v8::Handle<v8::Object> object) :
 		RTPStreamTransponder(outgoing, sender ? sender->get() : NULL),
 		persistent(object)
-	{
-		Start();
-	}
+	{}
 
 	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
 	{
@@ -10301,6 +10300,60 @@ static void _wrap_delete_DTLSICETransport(v8::Persistent<v8::Value> object, void
         }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_Start(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_Start.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Start" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  (arg1)->Start();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Stop" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  (arg1)->Stop();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_SetSRTPProtectionProfiles(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -10455,7 +10508,7 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_DTLSICETransport_Send(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_DTLSICETransport_Enqueue(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -10467,22 +10520,22 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_Send(const SwigV8Arguments &args
   int res2 = 0 ;
   int result;
   
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_Send.");
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_Enqueue.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Send" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Enqueue" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
   }
   arg1 = (DTLSICETransport *)(argp1);
   res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_RTPPacket__shared,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Send" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DTLSICETransport_Send" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DTLSICETransport_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
   }
   arg2 = (RTPPacket::shared *)(argp2);
-  result = (int)(arg1)->Send((RTPPacket::shared const &)*arg2);
+  result = (int)(arg1)->Enqueue((RTPPacket::shared const &)*arg2);
   jsresult = SWIG_From_int((int)(result));
   
   
@@ -14097,7 +14150,7 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_RTPSessionFacade_Send(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_RTPSessionFacade_Enqueue(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -14109,22 +14162,22 @@ static SwigV8ReturnValue _wrap_RTPSessionFacade_Send(const SwigV8Arguments &args
   int res2 = 0 ;
   int result;
   
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPSessionFacade_Send.");
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPSessionFacade_Enqueue.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPSessionFacade, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSessionFacade_Send" "', argument " "1"" of type '" "RTPSessionFacade *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSessionFacade_Enqueue" "', argument " "1"" of type '" "RTPSessionFacade *""'"); 
   }
   arg1 = (RTPSessionFacade *)(argp1);
   res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_RTPPacket__shared,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPSessionFacade_Send" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPSessionFacade_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPSessionFacade_Send" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPSessionFacade_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
   }
   arg2 = (RTPPacket::shared *)(argp2);
-  result = (int)(arg1)->Send((RTPPacket::shared const &)*arg2);
+  result = (int)(arg1)->Enqueue((RTPPacket::shared const &)*arg2);
   jsresult = SWIG_From_int((int)(result));
   
   
@@ -16855,11 +16908,13 @@ SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetCurrentLost"
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetMinWaitedTime", _wrap_RTPIncomingSourceGroup_GetMinWaitedTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetMaxWaitedTime", _wrap_RTPIncomingSourceGroup_GetMaxWaitedTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "GetAvgWaitedTime", _wrap_RTPIncomingSourceGroup_GetAvgWaitedTime);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Start", _wrap_DTLSICETransport_Start);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Stop", _wrap_DTLSICETransport_Stop);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetSRTPProtectionProfiles", _wrap_DTLSICETransport_SetSRTPProtectionProfiles);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteProperties", _wrap_DTLSICETransport_SetRemoteProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", _wrap_DTLSICETransport_SetLocalProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
-SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Send", _wrap_DTLSICETransport_Send);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Enqueue", _wrap_DTLSICETransport_Enqueue);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Dump", _wrap_DTLSICETransport__wrap_DTLSICETransport_Dump);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Reset", _wrap_DTLSICETransport_Reset);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "ActivateRemoteCandidate", _wrap_DTLSICETransport_ActivateRemoteCandidate);
@@ -16915,7 +16970,7 @@ SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "SetRemotePort", _wrap
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "GetOutgoingSourceGroup", _wrap_RTPSessionFacade_GetOutgoingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "GetIncomingSourceGroup", _wrap_RTPSessionFacade_GetIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "End", _wrap_RTPSessionFacade_End);
-SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Send", _wrap_RTPSessionFacade_Send);
+SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Enqueue", _wrap_RTPSessionFacade_Enqueue);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "SendPLI", _wrap_RTPSessionFacade_SendPLI);
 SWIGV8_AddMemberFunction(_exports_RTPSenderFacade_class, "get", _wrap_RTPSenderFacade_get);
 SWIGV8_AddMemberFunction(_exports_RTPReceiverFacade_class, "get", _wrap_RTPReceiverFacade_get);
