@@ -13,6 +13,7 @@ const Setup		= SemanticSDP.Setup;
 const Direction		= SemanticSDP.Direction;
 const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
+const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
 
 tap.test("IncomingMediaStream::create",async function(suite){
 	
@@ -42,6 +43,49 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		//Add RTX and FEC group	
 		track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
 		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
+		//Add it
+		streamInfo.addTrack(track);
+		//Create track
+		track = new TrackInfo("audio", "track2");
+		//Add ssrc
+		track.addSSRC(ssrc++);
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		test.same(1,incomingStream.getAudioTracks().length);
+		test.same(1,incomingStream.getVideoTracks().length);
+	});
+	
+	suite.test("simulcast",async function(test){
+		let ssrc = 100;
+		//Create stream
+		const streamInfo = new StreamInfo("sream0");
+		//Create track
+		let track = new TrackInfo("video", "track1");
+		//Get ssrc, rtx and fec 
+		const mediaA = ssrc++;
+		const rtxA = ssrc++;
+		const fecA = ssrc++;
+		const mediaB = ssrc++;
+		const rtxB = ssrc++;
+		const fecB = ssrc++;
+		//Add ssrcs to track
+		track.addSSRC(mediaA);
+		track.addSSRC(rtxA);
+		track.addSSRC(fecA);
+		track.addSSRC(mediaB);
+		track.addSSRC(rtxB);
+		track.addSSRC(fecB);
+		//Add RTX and FEC group	
+		track.addSourceGroup(new SourceGroupInfo("FID",[mediaA,rtxA]));
+		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[mediaA,fecA]));
+		track.addSourceGroup(new SourceGroupInfo("FID",[mediaB,rtxB]));
+		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[mediaB,fecB]));
+		//Add encodings
+		track.addEncoding(new TrackEncodingInfo("A",false));
+		track.addEncoding(new TrackEncodingInfo("B",false));
 		//Add it
 		streamInfo.addTrack(track);
 		//Create track

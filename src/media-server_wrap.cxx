@@ -1548,50 +1548,51 @@ fail: ;
 #define SWIGTYPE_p_MP4Recorder swig_types[13]
 #define SWIGTYPE_p_MediaFrame swig_types[14]
 #define SWIGTYPE_p_MediaServer swig_types[15]
-#define SWIGTYPE_p_PlayerFacade swig_types[16]
-#define SWIGTYPE_p_Properties swig_types[17]
-#define SWIGTYPE_p_PropertiesFacade swig_types[18]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[19]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[20]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[21]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[22]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[23]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[24]
-#define SWIGTYPE_p_RTPReceiver swig_types[25]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[26]
-#define SWIGTYPE_p_RTPSender swig_types[27]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[28]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[29]
-#define SWIGTYPE_p_RTPSource swig_types[30]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[31]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[32]
-#define SWIGTYPE_p_RecorderControl__Type swig_types[33]
-#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[34]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[35]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[36]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[37]
-#define SWIGTYPE_p_StringFacade swig_types[38]
-#define SWIGTYPE_p_TextFrame swig_types[39]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[40]
-#define SWIGTYPE_p_VideoFrame swig_types[41]
-#define SWIGTYPE_p_char swig_types[42]
-#define SWIGTYPE_p_int swig_types[43]
-#define SWIGTYPE_p_long_double swig_types[44]
-#define SWIGTYPE_p_long_long swig_types[45]
-#define SWIGTYPE_p_mp4track swig_types[46]
-#define SWIGTYPE_p_short swig_types[47]
-#define SWIGTYPE_p_signed_char swig_types[48]
-#define SWIGTYPE_p_std__string swig_types[49]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[50]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[51]
-#define SWIGTYPE_p_unsigned_char swig_types[52]
-#define SWIGTYPE_p_unsigned_int swig_types[53]
-#define SWIGTYPE_p_unsigned_long_long swig_types[54]
-#define SWIGTYPE_p_unsigned_short swig_types[55]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[56]
-#define SWIGTYPE_p_void swig_types[57]
-static swig_type_info *swig_types[59];
-static swig_module_info swig_module = {swig_types, 58, 0, 0, 0, 0};
+#define SWIGTYPE_p_PCAPTransportEmulator swig_types[16]
+#define SWIGTYPE_p_PlayerFacade swig_types[17]
+#define SWIGTYPE_p_Properties swig_types[18]
+#define SWIGTYPE_p_PropertiesFacade swig_types[19]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[20]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[21]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[22]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[23]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[24]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[25]
+#define SWIGTYPE_p_RTPReceiver swig_types[26]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[27]
+#define SWIGTYPE_p_RTPSender swig_types[28]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[29]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[30]
+#define SWIGTYPE_p_RTPSource swig_types[31]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[32]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[33]
+#define SWIGTYPE_p_RecorderControl__Type swig_types[34]
+#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[35]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[36]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[37]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[38]
+#define SWIGTYPE_p_StringFacade swig_types[39]
+#define SWIGTYPE_p_TextFrame swig_types[40]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[41]
+#define SWIGTYPE_p_VideoFrame swig_types[42]
+#define SWIGTYPE_p_char swig_types[43]
+#define SWIGTYPE_p_int swig_types[44]
+#define SWIGTYPE_p_long_double swig_types[45]
+#define SWIGTYPE_p_long_long swig_types[46]
+#define SWIGTYPE_p_mp4track swig_types[47]
+#define SWIGTYPE_p_short swig_types[48]
+#define SWIGTYPE_p_signed_char swig_types[49]
+#define SWIGTYPE_p_std__string swig_types[50]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[51]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[52]
+#define SWIGTYPE_p_unsigned_char swig_types[53]
+#define SWIGTYPE_p_unsigned_int swig_types[54]
+#define SWIGTYPE_p_unsigned_long_long swig_types[55]
+#define SWIGTYPE_p_unsigned_short swig_types[56]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[57]
+#define SWIGTYPE_p_void swig_types[58]
+static swig_type_info *swig_types[60];
+static swig_module_info swig_module = {swig_types, 59, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1623,6 +1624,7 @@ static swig_module_info swig_module = {swig_types, 58, 0, 0, 0, 0};
 #include "../media-server/include/rtpsession.h"
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
+#include "../media-server/include/PCAPTransportEmulator.h"	
 #include "../media-server/include/mp4recorder.h"
 #include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
@@ -1990,6 +1992,11 @@ public:
 		receiver = session;
 	}
 	
+	RTPReceiverFacade(PCAPTransportEmulator *transport)
+	{
+		receiver = transport;
+	}
+	
 	int SendPLI(DWORD ssrc)
 	{
 		return receiver ? receiver->SendPLI(ssrc) : 0;
@@ -2009,6 +2016,12 @@ RTPReceiverFacade* TransportToReceiver(DTLSICETransport* transport)
 {
 	return new RTPReceiverFacade(transport);
 }
+
+RTPReceiverFacade* PCAPTransportEmulatorToReceiver(PCAPTransportEmulator* transport)
+{
+	return new RTPReceiverFacade(transport);
+}
+
 RTPSenderFacade* SessionToSender(RTPSessionFacade* session)
 {
 	return new RTPSenderFacade(session);	
@@ -2685,6 +2698,7 @@ SWIGV8_ClientData _exports_RTPOutgoingSourceGroup_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSourceGroup_clientData;
 SWIGV8_ClientData _exports_DTLSICETransport_clientData;
 SWIGV8_ClientData _exports_RTPBundleTransport_clientData;
+SWIGV8_ClientData _exports_PCAPTransportEmulator_clientData;
 SWIGV8_ClientData _exports_mp4track_clientData;
 SWIGV8_ClientData _exports_MP4Recorder_clientData;
 SWIGV8_ClientData _exports_RTPStreamTransponder_clientData;
@@ -5150,6 +5164,25 @@ static SwigV8ReturnValue _wrap_MediaFrame_Text(v8::Local<v8::String> property, c
     v8::Handle<v8::Value> jsresult;
     
     jsresult = SWIG_From_int((int)(MediaFrame::Text));
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_MediaFrame_Unknown(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_MediaFrame_Unknown(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    
+    jsresult = SWIG_From_int((int)(MediaFrame::Unknown));
     
     SWIGV8_RETURN_INFO(jsresult, info);
     
@@ -11866,6 +11899,371 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_new_PCAPTransportEmulator(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  PCAPTransportEmulator *result;
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_PCAPTransportEmulator.");
+  result = (PCAPTransportEmulator *)new PCAPTransportEmulator();
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_PCAPTransportEmulator, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_PCAPTransportEmulator(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_PCAPTransportEmulator(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_PCAPTransportEmulator(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_PCAPTransportEmulator(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_PCAPTransportEmulator(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            PCAPTransportEmulator * arg1 = (PCAPTransportEmulator *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_SetRemoteProperties(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  Properties *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_SetRemoteProperties.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_SetRemoteProperties" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_Properties,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PCAPTransportEmulator_SetRemoteProperties" "', argument " "2"" of type '" "Properties const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PCAPTransportEmulator_SetRemoteProperties" "', argument " "2"" of type '" "Properties const &""'"); 
+  }
+  arg2 = (Properties *)(argp2);
+  (arg1)->SetRemoteProperties((Properties const &)*arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_AddIncomingSourceGroup(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_AddIncomingSourceGroup.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_AddIncomingSourceGroup" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PCAPTransportEmulator_AddIncomingSourceGroup" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg2 = (RTPIncomingSourceGroup *)(argp2);
+  result = (bool)(arg1)->AddIncomingSourceGroup(arg2);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_RemoveIncomingSourceGroup(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  RTPIncomingSourceGroup *arg2 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_RemoveIncomingSourceGroup.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_RemoveIncomingSourceGroup" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PCAPTransportEmulator_RemoveIncomingSourceGroup" "', argument " "2"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg2 = (RTPIncomingSourceGroup *)(argp2);
+  result = (bool)(arg1)->RemoveIncomingSourceGroup(arg2);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_Open(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_Open.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_Open" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PCAPTransportEmulator_Open" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = (char *)(buf2);
+  result = (bool)(arg1)->Open((char const *)arg2);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_Play(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_Play.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_Play" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  result = (bool)(arg1)->Play();
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_Seek(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  uint64_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long long val2 ;
+  int ecode2 = 0 ;
+  uint64_t result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_Seek.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_Seek" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PCAPTransportEmulator_Seek" "', argument " "2"" of type '" "uint64_t""'");
+  } 
+  arg2 = (uint64_t)(val2);
+  result = (uint64_t)(arg1)->Seek(arg2);
+  jsresult = SWIG_From_unsigned_SS_long_SS_long((unsigned long long)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_Stop" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  result = (bool)(arg1)->Stop();
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_Close(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_Close.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_Close" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  result = (bool)(arg1)->Close();
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_SendPLI(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_SendPLI.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_SendPLI" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PCAPTransportEmulator_SendPLI" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = (uint32_t)(val2);
+  result = (int)(arg1)->SendPLI(arg2);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_mp4track(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -14488,6 +14886,34 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_new_RTPReceiverFacade__SWIG_2(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  RTPReceiverFacade *result;
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPReceiverFacade__SWIG_2.");
+  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPReceiverFacade" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  result = (RTPReceiverFacade *)new RTPReceiverFacade(arg1);
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_RTPReceiverFacade, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_RTPReceiverFacade(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -14520,6 +14946,21 @@ static SwigV8ReturnValue _wrap_new_RTPReceiverFacade(const SwigV8Arguments &args
     }
 #else
     _wrap_new_RTPReceiverFacade__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    self = _wrap_new_RTPReceiverFacade__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(self);
+    }
+#else
+    _wrap_new_RTPReceiverFacade__SWIG_2(args, errorHandler);
     if(errorHandler.err.IsEmpty()) {
       return;
     }
@@ -14682,6 +15123,34 @@ static SwigV8ReturnValue _wrap_TransportToReceiver(const SwigV8Arguments &args) 
   }
   arg1 = (DTLSICETransport *)(argp1);
   result = (RTPReceiverFacade *)TransportToReceiver(arg1);
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_PCAPTransportEmulatorToReceiver(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  RTPReceiverFacade *result = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulatorToReceiver.");
+  
+  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulatorToReceiver" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  result = (RTPReceiverFacade *)PCAPTransportEmulatorToReceiver(arg1);
   jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
   
   
@@ -16015,6 +16484,9 @@ static void *_p_RTPBundleTransportTo_p_DTLSICETransport__Sender(void *x, int *SW
 static void *_p_DTLSICETransportTo_p_RTPReceiver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPReceiver *)  ((DTLSICETransport *) x));
 }
+static void *_p_PCAPTransportEmulatorTo_p_RTPReceiver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((RTPReceiver *)  ((PCAPTransportEmulator *) x));
+}
 static void *_p_RTPSessionFacadeTo_p_RTPReceiver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPReceiver *)  ((RTPSessionFacade *) x));
 }
@@ -16043,6 +16515,7 @@ static swig_type_info _swigt__p_MP4FileHandle = {"_p_MP4FileHandle", "MP4FileHan
 static swig_type_info _swigt__p_MP4Recorder = {"_p_MP4Recorder", "p_MP4Recorder|MP4Recorder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrame = {"_p_MediaFrame", "p_MediaFrame|MediaFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaServer = {"_p_MediaServer", "p_MediaServer", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PCAPTransportEmulator = {"_p_PCAPTransportEmulator", "PCAPTransportEmulator *|p_PCAPTransportEmulator", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PlayerFacade = {"_p_PlayerFacade", "p_PlayerFacade|PlayerFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Properties = {"_p_Properties", "Properties *|p_Properties", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PropertiesFacade = {"_p_PropertiesFacade", "PropertiesFacade *|p_PropertiesFacade", 0, 0, (void*)0, 0};
@@ -16103,6 +16576,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MP4Recorder,
   &_swigt__p_MediaFrame,
   &_swigt__p_MediaServer,
+  &_swigt__p_PCAPTransportEmulator,
   &_swigt__p_PlayerFacade,
   &_swigt__p_Properties,
   &_swigt__p_PropertiesFacade,
@@ -16163,6 +16637,7 @@ static swig_cast_info _swigc__p_MP4FileHandle[] = {  {&_swigt__p_MP4FileHandle, 
 static swig_cast_info _swigc__p_MP4Recorder[] = {  {&_swigt__p_MP4Recorder, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrame[] = {  {&_swigt__p_MediaFrame, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PCAPTransportEmulator[] = {  {&_swigt__p_PCAPTransportEmulator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PlayerFacade[] = {  {&_swigt__p_PlayerFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Properties[] = {  {&_swigt__p_Properties, 0, 0, 0},  {&_swigt__p_PropertiesFacade, _p_PropertiesFacadeTo_p_Properties, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PropertiesFacade[] = {  {&_swigt__p_PropertiesFacade, 0, 0, 0},{0, 0, 0, 0}};
@@ -16172,7 +16647,7 @@ static swig_cast_info _swigc__p_RTPIncomingSourceGroup[] = {  {&_swigt__p_RTPInc
 static swig_cast_info _swigc__p_RTPOutgoingSource[] = {  {&_swigt__p_RTPOutgoingSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOutgoingSourceGroup[] = {  {&_swigt__p_RTPOutgoingSourceGroup, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPPacket__shared[] = {  {&_swigt__p_RTPPacket__shared, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPReceiver[] = {  {&_swigt__p_DTLSICETransport, _p_DTLSICETransportTo_p_RTPReceiver, 0, 0},  {&_swigt__p_RTPReceiver, 0, 0, 0},  {&_swigt__p_RTPSessionFacade, _p_RTPSessionFacadeTo_p_RTPReceiver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RTPReceiver[] = {  {&_swigt__p_DTLSICETransport, _p_DTLSICETransportTo_p_RTPReceiver, 0, 0},  {&_swigt__p_RTPReceiver, 0, 0, 0},  {&_swigt__p_PCAPTransportEmulator, _p_PCAPTransportEmulatorTo_p_RTPReceiver, 0, 0},  {&_swigt__p_RTPSessionFacade, _p_RTPSessionFacadeTo_p_RTPReceiver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPReceiverFacade[] = {  {&_swigt__p_RTPReceiverFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPSender[] = {  {&_swigt__p_DTLSICETransport, _p_DTLSICETransportTo_p_RTPSender, 0, 0},  {&_swigt__p_RTPSender, 0, 0, 0},  {&_swigt__p_RTPSessionFacade, _p_RTPSessionFacadeTo_p_RTPSender, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPSenderFacade[] = {  {&_swigt__p_RTPSenderFacade, 0, 0, 0},{0, 0, 0, 0}};
@@ -16223,6 +16698,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MP4Recorder,
   _swigc__p_MediaFrame,
   _swigc__p_MediaServer,
+  _swigc__p_PCAPTransportEmulator,
   _swigc__p_PlayerFacade,
   _swigc__p_Properties,
   _swigc__p_PropertiesFacade,
@@ -16678,6 +17154,13 @@ _exports_RTPBundleTransport_clientData.dtor = _wrap_delete_RTPBundleTransport;
 if (SWIGTYPE_p_RTPBundleTransport->clientdata == 0) {
   SWIGTYPE_p_RTPBundleTransport->clientdata = &_exports_RTPBundleTransport_clientData;
 }
+/* Name: _exports_PCAPTransportEmulator, Type: p_PCAPTransportEmulator, Dtor: _wrap_delete_PCAPTransportEmulator */
+v8::Handle<v8::FunctionTemplate> _exports_PCAPTransportEmulator_class = SWIGV8_CreateClassTemplate("_exports_PCAPTransportEmulator");
+SWIGV8_SET_CLASS_TEMPL(_exports_PCAPTransportEmulator_clientData.class_templ, _exports_PCAPTransportEmulator_class);
+_exports_PCAPTransportEmulator_clientData.dtor = _wrap_delete_PCAPTransportEmulator;
+if (SWIGTYPE_p_PCAPTransportEmulator->clientdata == 0) {
+  SWIGTYPE_p_PCAPTransportEmulator->clientdata = &_exports_PCAPTransportEmulator_clientData;
+}
 /* Name: _exports_mp4track, Type: p_mp4track, Dtor: _wrap_delete_mp4track */
 v8::Handle<v8::FunctionTemplate> _exports_mp4track_class = SWIGV8_CreateClassTemplate("_exports_mp4track");
 SWIGV8_SET_CLASS_TEMPL(_exports_mp4track_clientData.class_templ, _exports_mp4track_class);
@@ -16940,6 +17423,15 @@ SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "End", _wrap_RTPBund
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "GetLocalPort", _wrap_RTPBundleTransport_GetLocalPort);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddRemoteCandidate", _wrap_RTPBundleTransport_AddRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "Send", _wrap_RTPBundleTransport_Send);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "SetRemoteProperties", _wrap_PCAPTransportEmulator_SetRemoteProperties);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "AddIncomingSourceGroup", _wrap_PCAPTransportEmulator_AddIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "RemoveIncomingSourceGroup", _wrap_PCAPTransportEmulator_RemoveIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Open", _wrap_PCAPTransportEmulator_Open);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Play", _wrap_PCAPTransportEmulator_Play);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Seek", _wrap_PCAPTransportEmulator_Seek);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Stop", _wrap_PCAPTransportEmulator_Stop);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Close", _wrap_PCAPTransportEmulator_Close);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "SendPLI", _wrap_PCAPTransportEmulator_SendPLI);
 SWIGV8_AddMemberFunction(_exports_mp4track_class, "CreateAudioTrack", _wrap_mp4track_CreateAudioTrack);
 SWIGV8_AddMemberFunction(_exports_mp4track_class, "CreateVideoTrack", _wrap_mp4track_CreateVideoTrack);
 SWIGV8_AddMemberFunction(_exports_mp4track_class, "CreateTextTrack", _wrap_mp4track_CreateTextTrack);
@@ -17154,6 +17646,12 @@ _exports_RTPBundleTransport_class_0->SetCallHandler(_wrap_new_RTPBundleTransport
 _exports_RTPBundleTransport_class_0->Inherit(_exports_RTPBundleTransport_class);
 _exports_RTPBundleTransport_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_RTPBundleTransport_obj = _exports_RTPBundleTransport_class_0->GetFunction();
+/* Class: PCAPTransportEmulator (_exports_PCAPTransportEmulator) */
+v8::Handle<v8::FunctionTemplate> _exports_PCAPTransportEmulator_class_0 = SWIGV8_CreateClassTemplate("PCAPTransportEmulator");
+_exports_PCAPTransportEmulator_class_0->SetCallHandler(_wrap_new_PCAPTransportEmulator);
+_exports_PCAPTransportEmulator_class_0->Inherit(_exports_PCAPTransportEmulator_class);
+_exports_PCAPTransportEmulator_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_PCAPTransportEmulator_obj = _exports_PCAPTransportEmulator_class_0->GetFunction();
 /* Class: mp4track (_exports_mp4track) */
 v8::Handle<v8::FunctionTemplate> _exports_mp4track_class_0 = SWIGV8_CreateClassTemplate("mp4track");
 _exports_mp4track_class_0->SetCallHandler(_wrap_new_mp4track);
@@ -17247,6 +17745,7 @@ SWIGV8_AddStaticFunction(exports_obj, "malloc32", _wrap_malloc32);
 SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Audio", _wrap_MediaFrame_Audio, JS_veto_set_variable);
 SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Video", _wrap_MediaFrame_Video, JS_veto_set_variable);
 SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Text", _wrap_MediaFrame_Text, JS_veto_set_variable);
+SWIGV8_AddStaticVariable(_exports_MediaFrame_obj, "Unknown", _wrap_MediaFrame_Unknown, JS_veto_set_variable);
 SWIGV8_AddStaticFunction(_exports_MediaFrame_obj, "TypeToString", _wrap_MediaFrame_TypeToString);
 SWIGV8_AddStaticVariable(_exports_LayerInfo_obj, "MaxLayerId", _wrap_LayerInfo_MaxLayerId_get, _wrap_LayerInfo_MaxLayerId_set);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "RunCallback", _wrap_MediaServer_RunCallback);
@@ -17259,6 +17758,7 @@ SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "GetFingerprint", _wrap_Media
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetPortRange", _wrap_MediaServer_SetPortRange);
 SWIGV8_AddStaticFunction(exports_obj, "TransportToSender", _wrap_TransportToSender);
 SWIGV8_AddStaticFunction(exports_obj, "TransportToReceiver", _wrap_TransportToReceiver);
+SWIGV8_AddStaticFunction(exports_obj, "PCAPTransportEmulatorToReceiver", _wrap_PCAPTransportEmulatorToReceiver);
 SWIGV8_AddStaticFunction(exports_obj, "SessionToSender", _wrap_SessionToSender);
 SWIGV8_AddStaticFunction(exports_obj, "SessionToReceiver", _wrap_SessionToReceiver);
 
@@ -17278,6 +17778,7 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPOutgoingSourceGroup"), _exports_RTPOutgoi
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingSourceGroup"), _exports_RTPIncomingSourceGroup_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("DTLSICETransport"), _exports_DTLSICETransport_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPBundleTransport"), _exports_RTPBundleTransport_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("PCAPTransportEmulator"), _exports_PCAPTransportEmulator_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("mp4track"), _exports_mp4track_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MP4Recorder"), _exports_MP4Recorder_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPStreamTransponder"), _exports_RTPStreamTransponder_obj);

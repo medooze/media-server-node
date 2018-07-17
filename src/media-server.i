@@ -13,6 +13,7 @@
 #include "../media-server/include/rtpsession.h"
 #include "../media-server/include/DTLSICETransport.h"	
 #include "../media-server/include/RTPBundleTransport.h"
+#include "../media-server/include/PCAPTransportEmulator.h"	
 #include "../media-server/include/mp4recorder.h"
 #include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
@@ -380,6 +381,11 @@ public:
 		receiver = session;
 	}
 	
+	RTPReceiverFacade(PCAPTransportEmulator *transport)
+	{
+		receiver = transport;
+	}
+	
 	int SendPLI(DWORD ssrc)
 	{
 		return receiver ? receiver->SendPLI(ssrc) : 0;
@@ -399,6 +405,12 @@ RTPReceiverFacade* TransportToReceiver(DTLSICETransport* transport)
 {
 	return new RTPReceiverFacade(transport);
 }
+
+RTPReceiverFacade* PCAPTransportEmulatorToReceiver(PCAPTransportEmulator* transport)
+{
+	return new RTPReceiverFacade(transport);
+}
+
 RTPSenderFacade* SessionToSender(RTPSessionFacade* session)
 {
 	return new RTPSenderFacade(session);	
@@ -781,6 +793,7 @@ struct RTPIncomingSourceGroup
 
 %include "../media-server/include/DTLSICETransport.h"
 %include "../media-server/include/RTPBundleTransport.h"
+%include "../media-server/include/PCAPTransportEmulator.h"
 %include "../media-server/include/mp4recorder.h"
 %include "../media-server/include/rtp/RTPStreamTransponder.h"
 
@@ -850,6 +863,7 @@ class RTPReceiverFacade
 public:	
 	RTPReceiverFacade(DTLSICETransport* transport);
 	RTPReceiverFacade(RTPSessionFacade* session);
+	RTPReceiverFacade(PCAPTransportEmulator *transport);
 	RTPReceiver* get();
 	int SendPLI(DWORD ssrc);
 };
@@ -857,6 +871,7 @@ public:
 
 RTPSenderFacade*	TransportToSender(DTLSICETransport* transport);
 RTPReceiverFacade*	TransportToReceiver(DTLSICETransport* transport);
+RTPReceiverFacade*	PCAPTransportEmulatorToReceiver(PCAPTransportEmulator* transport);
 RTPSenderFacade*	SessionToSender(RTPSessionFacade* session);
 RTPReceiverFacade*	SessionToReceiver(RTPSessionFacade* session);
 
