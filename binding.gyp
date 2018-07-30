@@ -23,7 +23,7 @@
 				'/usr/include/nodejs/',
 				"<!(node -e \"require('nan')\")"
 			],
-			"ldflags" : ["-lpthread -lresolv"],
+			"ldflags" : [" -lpthread -lresolv"],
 			"link_settings": 
 			{
         			'libraries': ["-lpthread -lpthread -lresolv"]
@@ -124,7 +124,13 @@
 					},
 					{
 						"libraries"	: [ "<(external_libmediaserver)" ],
-						"include_dirs"	: [ "<@(external_libmediaserver_include_dirs)" ]
+						"include_dirs"	: [ "<@(external_libmediaserver_include_dirs)" ],
+						'conditions':
+						[
+							['OS=="linux"', {
+								"ldflags" : [" -Wl,-Bsymbolic "],
+							}],
+						]
 					}
 				]
 			]
