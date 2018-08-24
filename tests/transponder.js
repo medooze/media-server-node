@@ -84,7 +84,7 @@ tap.test("Transponder::create",async function(suite){
 			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
 			//Check it is created
 			test.ok(transponder);
-			test.same(transponder.getIncommingTrack(),incomingVideoTrack);
+			test.same(transponder.getIncomingTrack(),incomingVideoTrack);
 		} catch (error) {
 			//Test error
 			test.notOk(error,error);
@@ -201,7 +201,7 @@ tap.test("Transponder::create",async function(suite){
 			//Listen for attach on second stream
 			incomingVideoTrack2.on("attached",()=>{
 				//Check new track is attached
-				test.same(transponder.getIncommingTrack(),incomingVideoTrack2);
+				test.same(transponder.getIncomingTrack(),incomingVideoTrack2);
 				//OK
 				test.end();
 			});
