@@ -2094,6 +2094,10 @@ public:
 
 	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet)
 	{
+		//Do not do extra work if there are no listeners
+		if (listeners.empty()) 
+			return;
+		
 		//If depacketizer is not the same codec 
 		if (depacketizer && depacketizer->GetCodec()!=packet->GetCodec())
 		{
@@ -11245,6 +11249,78 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_SetBandwidthProbing(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_SetBandwidthProbing.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_SetBandwidthProbing" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DTLSICETransport_SetBandwidthProbing" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = (bool)(val2);
+  (arg1)->SetBandwidthProbing(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_SetMaxProbingBitrate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_SetMaxProbingBitrate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_SetMaxProbingBitrate" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DTLSICETransport_SetMaxProbingBitrate" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = (uint32_t)(val2);
+  (arg1)->SetMaxProbingBitrate(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_SetSenderSideEstimatorListener(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -17408,6 +17484,8 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "AddOutgoingSourceGrou
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "RemoveOutgoingSourceGroup", _wrap_DTLSICETransport_RemoveOutgoingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "AddIncomingSourceGroup", _wrap_DTLSICETransport_AddIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "RemoveIncomingSourceGroup", _wrap_DTLSICETransport_RemoveIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetBandwidthProbing", _wrap_DTLSICETransport_SetBandwidthProbing);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetMaxProbingBitrate", _wrap_DTLSICETransport_SetMaxProbingBitrate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetSenderSideEstimatorListener", _wrap_DTLSICETransport_SetSenderSideEstimatorListener);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRemoteUsername", _wrap_DTLSICETransport_GetRemoteUsername);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRemotePwd", _wrap_DTLSICETransport_GetRemotePwd);

@@ -483,6 +483,10 @@ public:
 
 	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet)
 	{
+		//Do not do extra work if there are no listeners
+		if (listeners.empty()) 
+			return;
+		
 		//If depacketizer is not the same codec 
 		if (depacketizer && depacketizer->GetCodec()!=packet->GetCodec())
 		{

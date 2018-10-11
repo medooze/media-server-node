@@ -13,8 +13,8 @@
 				"-fexceptions",
 				"-std=c++14",
 				"-O3",
+				"-g",
 				#"-faligned-new",
-				#"-g",
 				#"-O0",
 				#"-fsanitize=address"
 			],
