@@ -1,6 +1,6 @@
 {
   "name": "medooze-media-server",
-  "version": "0.45.0",
+  "version": "0.46.0",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
@@ -32,9 +32,9 @@
   "homepage": "https://github.com/medooze/media-server-node#readme",
   "dependencies": {
     "lfsr": "0.0.3",
-    "nan": "^2.10.0",
-    "node-gyp": "^3.7.0",
-    "semantic-sdp": "^3.10.1",
+    "nan": "^2.11.1",
+    "node-gyp": "^3.8.0",
+    "semantic-sdp": "^3.11.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
