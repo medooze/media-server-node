@@ -705,7 +705,7 @@ struct LayerSource : public LayerInfo
 {
 	DWORD		numPackets;
 	DWORD		totalBytes;
-	Acumulator	bitrate;
+	DWORD		bitrate;
 };
 
 class LayerSources : public std::vector<LayerSource*>
@@ -725,7 +725,7 @@ struct RTPSource
 	DWORD numRTCPPackets;
 	DWORD totalBytes;
 	DWORD totalRTCPBytes;
-	Acumulator bitrate;
+	DWORD bitrate;
 };
 
 struct RTPIncomingSource : public RTPSource
@@ -775,6 +775,8 @@ struct RTPOutgoingSourceGroup
 	RTPOutgoingSource media;
 	RTPOutgoingSource fec;
 	RTPOutgoingSource rtx;
+	
+	void Update();
 };
 
 struct RTPIncomingSourceGroup
@@ -787,11 +789,12 @@ struct RTPIncomingSourceGroup
 	RTPIncomingSource media;
 	RTPIncomingSource fec;
 	RTPIncomingSource rtx;
+	DWORD lost;
+	DWORD minWaitedTime;
+	DWORD maxWaitedTime;
+	double avgWaitedTime;
+	
 	void Update();
-	DWORD GetCurrentLost();
-	DWORD GetMinWaitedTime();
-	DWORD GetMaxWaitedTime();
-	double GetAvgWaitedTime();
 };
 
 
