@@ -34,7 +34,7 @@
     "lfsr": "0.0.3",
     "nan": "^2.11.1",
     "node-gyp": "^3.8.0",
-    "semantic-sdp": "^3.11.0",
+    "semantic-sdp": "3",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
