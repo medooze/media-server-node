@@ -183,16 +183,24 @@ public:
 
 	static void async_cb_handler(uv_async_t *handle)
 	{
-		//Lock method
-		ScopedLock scoped(mutex);
+		//Lock
+		mutex.Lock();
 		//Get all
 		while(!queue.empty())
 		{
-			//Execute first
-			queue.front()();
+			//Get from queue
+			auto func = queue.front();
 			//Remove from queue
 			queue.pop_front();
+			//Unlock
+			mutex.Unlock();
+			//Execute async function
+			func();
+			//Lock
+			mutex.Lock();
 		}
+		//Unlock
+		mutex.Unlock();
 	}
 private:
 	//http://stackoverflow.com/questions/31207454/v8-multithreaded-function
