@@ -156,7 +156,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 		const cached = videoTrack.getStats();
 		test.ok(cached);
 		//Ensure they are the same
-		test.same(stats.timestamp,cached.timestamp);
+		test.same(stats[''].timestamp,cached[''].timestamp);
 		test.done();
 		
 	});
