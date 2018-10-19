@@ -87,4 +87,39 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 	suite.end();
 });
 
+
+tap.test("OutgoingMediaStreamTrack::stats",async function(suite){
+	
+	
+	//Init test
+	const transport = endpoint.createTransport({
+		dtls : SemanticSDP.DTLSInfo.expand({
+			"hash"        : "sha-256",
+			"fingerprint" : "F2:AA:0E:C3:22:59:5E:14:95:69:92:3D:13:B4:84:24:2C:C2:A2:C0:3E:FD:34:8E:5E:EA:6F:AF:52:CE:E6:0F"
+		}),
+		ice  : SemanticSDP.ICEInfo.generate()
+	});
+	
+	suite.test("cached",function(test){
+		//Create new local stream
+		const outgoingStream  = transport.createOutgoingStream({
+			video: true
+		});
+		//Get video track
+		const videoTrack = outgoingStream.getVideoTracks()[0];
+		//Get stats
+		const stats = videoTrack.getStats();
+		test.ok(stats);
+		//Get them again
+		const cached = videoTrack.getStats();
+		test.ok(cached);
+		//Ensure they are the same
+		test.same(stats.timestamp,cached.timestamp);
+		test.done();
+	});
+	
+	
+	suite.end();
+});
+
 MediaServer.terminate ();

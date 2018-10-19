@@ -113,4 +113,106 @@ tap.test("IncomingMediaStream::create",async function(suite){
 	suite.end();
 });
 
+
+tap.test("IncomingMediaStream::stats",async function(suite){
+	
+	//Init test
+	const transport = endpoint.createTransport({
+		dtls : SemanticSDP.DTLSInfo.expand({
+			"hash"        : "sha-256",
+			"fingerprint" : "F2:AA:0E:C3:22:59:5E:14:95:69:92:3D:13:B4:84:24:2C:C2:A2:C0:3E:FD:34:8E:5E:EA:6F:AF:52:CE:E6:0F"
+		}),
+		ice  : SemanticSDP.ICEInfo.generate()
+	});
+
+	suite.test("cached",async function(test){
+		let ssrc = 100;
+		//Create stream
+		const streamInfo = new StreamInfo("sream0");
+		//Create track
+		let track = new TrackInfo("video", "track1");
+		//Get ssrc, rtx and fec 
+		const media = ssrc++;
+		const rtx = ssrc++;
+		const fec = ssrc++;
+		//Add ssrcs to track
+		track.addSSRC(media);
+		track.addSSRC(rtx);
+		track.addSSRC(fec);
+		//Add RTX and FEC group	
+		track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
+		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		//Get new track
+		const videoTrack = incomingStream.getVideoTracks()[0];
+		//Get stats
+		const stats = videoTrack.getStats();
+		test.ok(stats);
+		//Get them again
+		const cached = videoTrack.getStats();
+		test.ok(cached);
+		//Ensure they are the same
+		test.same(stats.timestamp,cached.timestamp);
+		test.done();
+		
+	});
+	
+	suite.test("track stop",async function(test){
+		let ssrc = 120;
+		//Create stream
+		const streamInfo = new StreamInfo("sream1");
+		//Create track
+		const track = new TrackInfo("audio", "track2");
+		//Add ssrc
+		track.addSSRC(ssrc++);
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		//Get audio track
+		const audioTrack = incomingStream.getAudioTracks()[0];
+		//Stop and create new one
+		audioTrack.once("stopped",()=>{
+			const retry = transport.createIncomingStream(streamInfo);
+			test.done(retry);
+		});
+		//Stop
+		audioTrack.stop();
+	});
+	
+	
+	suite.test("stream stop",async function(test){
+		let ssrc = 140;
+		//Create stream
+		const streamInfo = new StreamInfo("sream2");
+		//Create track
+		const track = new TrackInfo("audio", "track3");
+		//Add ssrc
+		track.addSSRC(ssrc++);
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		//Get audio track
+		const audioTrack = incomingStream.getAudioTracks()[0];
+		//Stop and create new one
+		audioTrack.once("stopped",()=>{
+			const retry = transport.createIncomingStream(streamInfo);
+			test.done(retry);
+		});
+		//Stop
+		incomingStream.stop();
+	});
+	
+	
+	suite.end();
+});
+
+
 MediaServer.terminate ();
