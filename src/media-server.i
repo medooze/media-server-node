@@ -580,6 +580,14 @@ public:
 	
 	virtual void onTargetBitrateRequested(DWORD bitrate) override 
 	{
+		//Check we have not send an update too recently (1s)
+		if (getTimeDiff(last)/1000<period)
+			//Do nothing
+			return;
+		
+		//Update it
+		last = getTime();
+		
 		//Run function on main node thread
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
@@ -595,9 +603,15 @@ public:
 			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ontargetbitrate").ToLocalChecked()));
 			//Call object method with arguments
 			Nan::MakeCallback(local, callback, i, argv2);
+		
 		});
 	}
-private:		
+	
+	void SetMinPeriod(DWORD period) { this->period = period; }
+	
+private:
+	DWORD period	= 1000;
+	QWORD last	= 0;
 	Nan::Persistent<v8::Object> persistent;
 };
 
