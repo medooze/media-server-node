@@ -1475,9 +1475,9 @@
                       </a></li>
                       
                       <li><a
-                        href='#Transponder#geSelectedtEncoding'
+                        href='#Transponder#getSelectedtEncoding'
                         class='regular pre-open'>
-                        #geSelectedtEncoding
+                        #getSelectedtEncoding
                       </a></li>
                       
                       <li><a
@@ -3100,9 +3100,9 @@
               
                 
                 <li><a
-                  href='#eventincomingstreamtrackstopped'
+                  href='#eventtransponderstopped'
                   class="">
-                  IncomingStreamTrack#stopped
+                  Transponder#stopped
                   
                 </a>
                 
@@ -3110,9 +3110,9 @@
               
                 
                 <li><a
-                  href='#eventtransponderstopped'
+                  href='#eventincomingstreamtrackstopped'
                   class="">
-                  Transponder#stopped
+                  IncomingStreamTrack#stopped
                   
                 </a>
                 
@@ -14058,11 +14058,11 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       </div>
     </div>
   
-    <div class='border-bottom' id='Transponder#geSelectedtEncoding'>
+    <div class='border-bottom' id='Transponder#getSelectedtEncoding'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>geSelectedtEncoding()</span>
+            <span class='code strong strong truncate'>getSelectedtEncoding()</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -14073,7 +14073,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
   <p>Return the encoding that is being forwarded</p>
 
 
-  <div class='pre p1 fill-light mt0'>geSelectedtEncoding(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  <div class='pre p1 fill-light mt0'>getSelectedtEncoding(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
   
   
 
@@ -26059,8 +26059,10 @@ Note that this will only work on browsers that supports RTX and transport wide c
 <li>fec      : Stats for the fec stream</li>
 <li>rtt      : Round Trip Time in ms</li>
 <li>waitTime : "min","max" and "avg" packet waiting times in rtp buffer before delivering them</li>
-<li>bitrate  : Accumulated bitrate for rtx, media and fec streams in bps</li>
+<li>bitrate  : Bitrate for media stream only in bps</li>
+<li>total    : Accumulated bitrate for rtx, media and fec streams in bps</li>
 <li>timestamp: When this stats was generated, in order to save workload, stats are cached for 200ms</li>
+<li>simulcastIdx : Simulcast layer index based on bitrate received (-1 if it is inactive).</li>
 </ul>
 <p>The stats objects will provide the follwing info for each source</p>
 <ul>
@@ -27456,18 +27458,18 @@ Internal use, you'd beter know what you are doing before calling this method</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='eventincomingstreamtrackstopped'>
-      IncomingStreamTrack#stopped
+    <h3 class='fl m0' id='eventtransponderstopped'>
+      Transponder#stopped
     </h3>
     
     
   </div>
   
 
-  <p>IncomingStreamTrack stopped event</p>
+  <p>Transponder stopped event</p>
 
 
-  <div class='pre p1 fill-light mt0'>IncomingStreamTrack#stopped</div>
+  <div class='pre p1 fill-light mt0'>Transponder#stopped</div>
   
   
 
@@ -27502,18 +27504,18 @@ Internal use, you'd beter know what you are doing before calling this method</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='eventtransponderstopped'>
-      Transponder#stopped
+    <h3 class='fl m0' id='eventincomingstreamtrackstopped'>
+      IncomingStreamTrack#stopped
     </h3>
     
     
   </div>
   
 
-  <p>Transponder stopped event</p>
+  <p>IncomingStreamTrack stopped event</p>
 
 
-  <div class='pre p1 fill-light mt0'>Transponder#stopped</div>
+  <div class='pre p1 fill-light mt0'>IncomingStreamTrack#stopped</div>
   
   
 
