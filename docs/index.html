@@ -26061,6 +26061,7 @@ Note that this will only work on browsers that supports RTX and transport wide c
 <li>waitTime : "min","max" and "avg" packet waiting times in rtp buffer before delivering them</li>
 <li>bitrate  : Bitrate for media stream only in bps</li>
 <li>total    : Accumulated bitrate for rtx, media and fec streams in bps</li>
+<li>remb     : Estimated avialable bitrate for receving (only avaailable if not using tranport wide cc)</li>
 <li>timestamp: When this stats was generated, in order to save workload, stats are cached for 200ms</li>
 <li>simulcastIdx : Simulcast layer index based on bitrate received (-1 if it is inactive).</li>
 </ul>

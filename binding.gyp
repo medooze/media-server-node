@@ -14,6 +14,7 @@
 				"-std=c++14",
 				"-O3",
 				"-g",
+				"-Wno-unused-function",
 				#"-faligned-new",
 				#"-O0",
 				#"-fsanitize=address"
