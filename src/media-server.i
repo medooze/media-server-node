@@ -444,6 +444,14 @@ public:
 	
 	virtual void onREMB(RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
 	{
+		//Check we have not send an update too recently (1s)
+		if (getTimeDiff(last)/1000<period)
+			//Do nothing
+			return;
+		
+		//Update it
+		last = getTime();
+		
 		//Run function on main node thread
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
@@ -461,7 +469,12 @@ public:
 			Nan::MakeCallback(local, callback, i, argv2);
 		});
 	}
+	
+	void SetMinPeriod(DWORD period) { this->period = period; }
+	
 private:
+	DWORD period	= 1000;
+	QWORD last	= 0;
 	Nan::Persistent<v8::Object> persistent;	
 };
 
@@ -740,7 +753,7 @@ public:
 struct RTPSource 
 {
 	DWORD ssrc;
-	DWORD extSeq;
+	DWORD extSeqNum;
 	DWORD cycles;
 	DWORD jitter;
 	DWORD numPackets;

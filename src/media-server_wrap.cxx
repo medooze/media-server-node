@@ -2055,6 +2055,14 @@ public:
 	
 	virtual void onREMB(RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
 	{
+		//Check we have not send an update too recently (1s)
+		if (getTimeDiff(last)/1000<period)
+			//Do nothing
+			return;
+		
+		//Update it
+		last = getTime();
+		
 		//Run function on main node thread
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
@@ -2072,7 +2080,12 @@ public:
 			Nan::MakeCallback(local, callback, i, argv2);
 		});
 	}
+	
+	void SetMinPeriod(DWORD period) { this->period = period; }
+	
 private:
+	DWORD period	= 1000;
+	QWORD last	= 0;
 	Nan::Persistent<v8::Object> persistent;	
 };
 
@@ -7365,9 +7378,9 @@ static SwigV8ReturnValue _wrap_RTPSource_ssrc_get(v8::Local<v8::String> property
 
 
 #if (V8_MAJOR_VERSION-0) < 5
-static void _wrap_RTPSource_extSeq_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+static void _wrap_RTPSource_extSeqNum_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
 #else
-  static void _wrap_RTPSource_extSeq_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  static void _wrap_RTPSource_extSeqNum_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
 #endif
     SWIGV8_HANDLESCOPE();
     
@@ -7380,15 +7393,15 @@ static void _wrap_RTPSource_extSeq_set(v8::Local<v8::String> property, v8::Local
     
     res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_extSeq_set" "', argument " "1"" of type '" "RTPSource *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_extSeqNum_set" "', argument " "1"" of type '" "RTPSource *""'"); 
     }
     arg1 = (RTPSource *)(argp1);
     ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPSource_extSeq_set" "', argument " "2"" of type '" "uint32_t""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPSource_extSeqNum_set" "', argument " "2"" of type '" "uint32_t""'");
     } 
     arg2 = (uint32_t)(val2);
-    if (arg1) (arg1)->extSeq = arg2;
+    if (arg1) (arg1)->extSeqNum = arg2;
     
     
     
@@ -7399,9 +7412,9 @@ static void _wrap_RTPSource_extSeq_set(v8::Local<v8::String> property, v8::Local
 
 
 #if (V8_MAJOR_VERSION-0) < 5
-static SwigV8ReturnValue _wrap_RTPSource_extSeq_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+static SwigV8ReturnValue _wrap_RTPSource_extSeqNum_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
 #else
-  static SwigV8ReturnValue _wrap_RTPSource_extSeq_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  static SwigV8ReturnValue _wrap_RTPSource_extSeqNum_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
 #endif
     SWIGV8_HANDLESCOPE();
     
@@ -7413,10 +7426,10 @@ static SwigV8ReturnValue _wrap_RTPSource_extSeq_get(v8::Local<v8::String> proper
     
     res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_extSeq_get" "', argument " "1"" of type '" "RTPSource *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_extSeqNum_get" "', argument " "1"" of type '" "RTPSource *""'"); 
     }
     arg1 = (RTPSource *)(argp1);
-    result = (uint32_t) ((arg1)->extSeq);
+    result = (uint32_t) ((arg1)->extSeqNum);
     jsresult = SWIG_From_unsigned_SS_int((unsigned int)(result));
     
     
@@ -17699,7 +17712,7 @@ SWIGV8_AddMemberVariable(_exports_LayerSource_class, "bitrate", _wrap_LayerSourc
 SWIGV8_AddMemberFunction(_exports_LayerSources_class, "size", _wrap_LayerSources_size);
 SWIGV8_AddMemberFunction(_exports_LayerSources_class, "get", _wrap_LayerSources_get);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "ssrc", _wrap_RTPSource_ssrc_get, _wrap_RTPSource_ssrc_set);
-SWIGV8_AddMemberVariable(_exports_RTPSource_class, "extSeq", _wrap_RTPSource_extSeq_get, _wrap_RTPSource_extSeq_set);
+SWIGV8_AddMemberVariable(_exports_RTPSource_class, "extSeqNum", _wrap_RTPSource_extSeqNum_get, _wrap_RTPSource_extSeqNum_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "cycles", _wrap_RTPSource_cycles_get, _wrap_RTPSource_cycles_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "jitter", _wrap_RTPSource_jitter_get, _wrap_RTPSource_jitter_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "numPackets", _wrap_RTPSource_numPackets_get, _wrap_RTPSource_numPackets_set);
