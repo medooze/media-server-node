@@ -67,7 +67,7 @@ We intend to implement support the following features:
 
 ## Media Server Client
 
-You can use the (Media Server Client lib)[https://github.com/medooze/media-server-client-js] for easy sync between any browser and the media server. If you do not want to depend on an external library or specifc signalig you setup everything (manually)[manual.md].
+You can use the [Media Server Client lib](https://github.com/medooze/media-server-client-js) for easy sync between any browser and the media server. If you do not want to depend on an external library or specifc signalig you setup everything [manually](manual.md).
 
 ## Author
 
