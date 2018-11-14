@@ -70,4 +70,55 @@ tap.test("Tracks::create",async function(suite){
 	suite.end();
 });
 
+tap.test("Stop",async function(suite){
+	
+
+	suite.test("Transport::stop()",async function(test){
+		test.plan(2);
+		//Init test
+		const transport = endpoint.createTransport({
+			dtls : SemanticSDP.DTLSInfo.expand({
+				"hash"        : "sha-256",
+				"fingerprint" : "F2:AA:0E:C3:22:59:5E:14:95:69:92:3D:13:B4:84:24:2C:C2:A2:C0:3E:FD:34:8E:5E:EA:6F:AF:52:CE:E6:0F"
+			}),
+			ice  : SemanticSDP.ICEInfo.generate()
+		});
+		//Listen event
+		transport.once("stopped",()=>{
+			//Create new incoming stream
+			test.pass();
+		});
+		//Stop it
+		transport.stop();
+		//OK
+		test.pass();
+		
+	});
+	
+	suite.test("Endooint::stop",async function(test){
+		const endpoint = MediaServer.createEndpoint("127.0.0.1");
+		
+		test.plan(2);
+		//Init test
+		const transport = endpoint.createTransport({
+			dtls : SemanticSDP.DTLSInfo.expand({
+				"hash"        : "sha-256",
+				"fingerprint" : "F2:AA:0E:C3:22:59:5E:14:95:69:92:3D:13:B4:84:24:2C:C2:A2:C0:3E:FD:34:8E:5E:EA:6F:AF:52:CE:E6:0F"
+			}),
+			ice  : SemanticSDP.ICEInfo.generate()
+		});
+		//Listen event
+		transport.once("stopped",()=>{
+			//Create new incoming stream
+			test.pass();
+		});
+		//Stop it
+		endpoint.stop();
+		//OK
+		test.pass();
+	});
+	
+	suite.end();
+});
+
 MediaServer.terminate ();

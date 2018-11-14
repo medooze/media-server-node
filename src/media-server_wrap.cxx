@@ -1573,26 +1573,27 @@ fail: ;
 #define SWIGTYPE_p_StreamTrackDepacketizer swig_types[38]
 #define SWIGTYPE_p_StringFacade swig_types[39]
 #define SWIGTYPE_p_TextFrame swig_types[40]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[41]
-#define SWIGTYPE_p_VideoFrame swig_types[42]
-#define SWIGTYPE_p_char swig_types[43]
-#define SWIGTYPE_p_int swig_types[44]
-#define SWIGTYPE_p_long_double swig_types[45]
-#define SWIGTYPE_p_long_long swig_types[46]
-#define SWIGTYPE_p_mp4track swig_types[47]
-#define SWIGTYPE_p_short swig_types[48]
-#define SWIGTYPE_p_signed_char swig_types[49]
-#define SWIGTYPE_p_std__string swig_types[50]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[51]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[52]
-#define SWIGTYPE_p_unsigned_char swig_types[53]
-#define SWIGTYPE_p_unsigned_int swig_types[54]
-#define SWIGTYPE_p_unsigned_long_long swig_types[55]
-#define SWIGTYPE_p_unsigned_short swig_types[56]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[57]
-#define SWIGTYPE_p_void swig_types[58]
-static swig_type_info *swig_types[60];
-static swig_module_info swig_module = {swig_types, 59, 0, 0, 0, 0};
+#define SWIGTYPE_p_UDPDumper swig_types[41]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[42]
+#define SWIGTYPE_p_VideoFrame swig_types[43]
+#define SWIGTYPE_p_char swig_types[44]
+#define SWIGTYPE_p_int swig_types[45]
+#define SWIGTYPE_p_long_double swig_types[46]
+#define SWIGTYPE_p_long_long swig_types[47]
+#define SWIGTYPE_p_mp4track swig_types[48]
+#define SWIGTYPE_p_short swig_types[49]
+#define SWIGTYPE_p_signed_char swig_types[50]
+#define SWIGTYPE_p_std__string swig_types[51]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[52]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[53]
+#define SWIGTYPE_p_unsigned_char swig_types[54]
+#define SWIGTYPE_p_unsigned_int swig_types[55]
+#define SWIGTYPE_p_unsigned_long_long swig_types[56]
+#define SWIGTYPE_p_unsigned_short swig_types[57]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[58]
+#define SWIGTYPE_p_void swig_types[59]
+static swig_type_info *swig_types[61];
+static swig_module_info swig_module = {swig_types, 60, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -10993,6 +10994,204 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_4(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  UDPDumper *arg2 = (UDPDumper *) 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  bool arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  int result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Dump" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_UDPDumper, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Dump" "', argument " "2"" of type '" "UDPDumper *""'"); 
+  }
+  arg2 = (UDPDumper *)(argp2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_Dump" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  ecode4 = SWIG_AsVal_bool(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DTLSICETransport_Dump" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = (bool)(val4);
+  ecode5 = SWIG_AsVal_bool(args[3], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "DTLSICETransport_Dump" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = (bool)(val5);
+  result = (int)(arg1)->Dump(arg2,arg3,arg4,arg5);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_5(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  UDPDumper *arg2 = (UDPDumper *) 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  int result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Dump" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_UDPDumper, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Dump" "', argument " "2"" of type '" "UDPDumper *""'"); 
+  }
+  arg2 = (UDPDumper *)(argp2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_Dump" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  ecode4 = SWIG_AsVal_bool(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DTLSICETransport_Dump" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = (bool)(val4);
+  result = (int)(arg1)->Dump(arg2,arg3,arg4);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_6(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  UDPDumper *arg2 = (UDPDumper *) 0 ;
+  bool arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  int result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Dump" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_UDPDumper, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Dump" "', argument " "2"" of type '" "UDPDumper *""'"); 
+  }
+  arg2 = (UDPDumper *)(argp2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "DTLSICETransport_Dump" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = (bool)(val3);
+  result = (int)(arg1)->Dump(arg2,arg3);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_7(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  UDPDumper *arg2 = (UDPDumper *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Dump" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = (DTLSICETransport *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_UDPDumper, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Dump" "', argument " "2"" of type '" "UDPDumper *""'"); 
+  }
+  arg2 = (UDPDumper *)(argp2);
+  result = (int)(arg1)->Dump(arg2);
+  jsresult = SWIG_From_int((int)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport__wrap_DTLSICETransport_Dump(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -11057,6 +11256,70 @@ static SwigV8ReturnValue _wrap_DTLSICETransport__wrap_DTLSICETransport_Dump(cons
     }
 #else
     _wrap_DTLSICETransport_Dump__SWIG_3(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 4) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_4(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_4(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 3) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_5(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_5(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_6(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_6(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_DTLSICETransport_Dump__SWIG_7(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_DTLSICETransport_Dump__SWIG_7(args, errorHandler);
     if(errorHandler.err.IsEmpty()) {
       return;
     }
@@ -16904,6 +17167,7 @@ static swig_type_info _swigt__p_SenderSideEstimatorListener = {"_p_SenderSideEst
 static swig_type_info _swigt__p_StreamTrackDepacketizer = {"_p_StreamTrackDepacketizer", "p_StreamTrackDepacketizer|StreamTrackDepacketizer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_StringFacade = {"_p_StringFacade", "StringFacade *|p_StringFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TextFrame = {"_p_TextFrame", "TextFrame *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_UDPDumper = {"_p_UDPDumper", "UDPDumper *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_VideoCodec__Type = {"_p_VideoCodec__Type", "VideoCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_VideoFrame = {"_p_VideoFrame", "VideoFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -16965,6 +17229,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_StreamTrackDepacketizer,
   &_swigt__p_StringFacade,
   &_swigt__p_TextFrame,
+  &_swigt__p_UDPDumper,
   &_swigt__p_VideoCodec__Type,
   &_swigt__p_VideoFrame,
   &_swigt__p_char,
@@ -17026,6 +17291,7 @@ static swig_cast_info _swigc__p_SenderSideEstimatorListener[] = {  {&_swigt__p_S
 static swig_cast_info _swigc__p_StreamTrackDepacketizer[] = {  {&_swigt__p_StreamTrackDepacketizer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_StringFacade[] = {  {&_swigt__p_StringFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TextFrame[] = {  {&_swigt__p_TextFrame, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_UDPDumper[] = {  {&_swigt__p_UDPDumper, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_VideoCodec__Type[] = {  {&_swigt__p_VideoCodec__Type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_VideoFrame[] = {  {&_swigt__p_VideoFrame, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -17087,6 +17353,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_StreamTrackDepacketizer,
   _swigc__p_StringFacade,
   _swigc__p_TextFrame,
+  _swigc__p_UDPDumper,
   _swigc__p_VideoCodec__Type,
   _swigc__p_VideoFrame,
   _swigc__p_char,
