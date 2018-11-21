@@ -1,0 +1,42 @@
+toc:
+  - name: Medooze Media Server
+    children:
+      - lib/MediaServer.js
+      - lib/Endpoint.js
+      - lib/Transport
+      - lib/PeerConnectionServer
+      - IncomingStream
+      - IncomingStreamTrack
+      - OutgoingStream
+      - OutgoingStreamTrack
+      - Transponder
+      - ActiveSpeakerDetector
+      - Refresher
+      - Recorder
+      - RecorderTrack
+      - PlayerSession
+      - EmulatedTransport
+      - Streamer
+      - StreamerSession
+  - name: Semantic SDP
+    description: |
+      Here are some helper functions for navigation.
+    children:
+      - SDPInfo
+      - DTLSInfo
+      - ICEInfo
+      - CandidateInfo
+      - MediaInfo
+      - CodecInfo
+      - Setup
+      - Direction
+      - DirectionWay
+      - StreamInfo
+      - TrackInfo
+      - TrackEncodingInfo
+      - RIDInfo
+      - RTCPFeedbackInfo
+      - SimulcastInfo
+      - SimulcastStreamInfo
+      - SourceGroupInfo
+      - SourceInfo
