@@ -37,7 +37,7 @@ To use it on your project just install it instead of the npm repository dependen
 const MediaServer = require('medooze-media-server');
 ```
 ## API Documention
-You can check the full object documentation in (markdown](api.md) or [html](https://medooze.github.io/media-server-node/).
+You can check the full object documentation in [markdown](api.md) or [html](https://medooze.github.io/media-server-node/).
 
 ## Support
 To discuss issues related to this project or ask for help please [join the google community group](https://groups.google.com/forum/#!forum/medooze).
