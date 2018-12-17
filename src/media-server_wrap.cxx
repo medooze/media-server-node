@@ -1857,7 +1857,7 @@ public:
 		for (auto it = codecs.begin(); it!=codecs.end(); ++it)
 		{
 			
-			BYTE codec;
+			BYTE codec = (BYTE)-1;
 			//Depending on the type
 			switch (GetMediaType())
 			{
@@ -1867,11 +1867,14 @@ public:
 				case MediaFrame::Video:
 					codec = (BYTE)VideoCodec::GetCodecForName(it->GetProperty("codec"));
 					break;
-				case MediaFrame::Text:
-					codec = (BYTE)-1;
-					break;
+				default:
+					//Skip
+					continue;
 			}
-
+			//If not found
+			if (codec == (BYTE)-1)
+				//Skip
+				continue;
 			//Get codec type
 			BYTE type = it->GetProperty("pt",0);
 			//ADD it
