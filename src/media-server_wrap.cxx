@@ -1574,26 +1574,27 @@ fail: ;
 #define SWIGTYPE_p_StringFacade swig_types[39]
 #define SWIGTYPE_p_TextFrame swig_types[40]
 #define SWIGTYPE_p_UDPDumper swig_types[41]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[42]
-#define SWIGTYPE_p_VideoFrame swig_types[43]
-#define SWIGTYPE_p_char swig_types[44]
-#define SWIGTYPE_p_int swig_types[45]
-#define SWIGTYPE_p_long_double swig_types[46]
-#define SWIGTYPE_p_long_long swig_types[47]
-#define SWIGTYPE_p_mp4track swig_types[48]
-#define SWIGTYPE_p_short swig_types[49]
-#define SWIGTYPE_p_signed_char swig_types[50]
-#define SWIGTYPE_p_std__string swig_types[51]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[52]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[53]
-#define SWIGTYPE_p_unsigned_char swig_types[54]
-#define SWIGTYPE_p_unsigned_int swig_types[55]
-#define SWIGTYPE_p_unsigned_long_long swig_types[56]
-#define SWIGTYPE_p_unsigned_short swig_types[57]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[58]
-#define SWIGTYPE_p_void swig_types[59]
-static swig_type_info *swig_types[61];
-static swig_module_info swig_module = {swig_types, 60, 0, 0, 0, 0};
+#define SWIGTYPE_p_UDPReader swig_types[42]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[43]
+#define SWIGTYPE_p_VideoFrame swig_types[44]
+#define SWIGTYPE_p_char swig_types[45]
+#define SWIGTYPE_p_int swig_types[46]
+#define SWIGTYPE_p_long_double swig_types[47]
+#define SWIGTYPE_p_long_long swig_types[48]
+#define SWIGTYPE_p_mp4track swig_types[49]
+#define SWIGTYPE_p_short swig_types[50]
+#define SWIGTYPE_p_signed_char swig_types[51]
+#define SWIGTYPE_p_std__string swig_types[52]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[53]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[54]
+#define SWIGTYPE_p_unsigned_char swig_types[55]
+#define SWIGTYPE_p_unsigned_int swig_types[56]
+#define SWIGTYPE_p_unsigned_long_long swig_types[57]
+#define SWIGTYPE_p_unsigned_short swig_types[58]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[59]
+#define SWIGTYPE_p_void swig_types[60]
+static swig_type_info *swig_types[62];
+static swig_module_info swig_module = {swig_types, 61, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -12736,6 +12737,43 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_PCAPTransportEmulator_SetReader(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
+  UDPReader *arg2 = (UDPReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulator_SetReader.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulator_SetReader" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
+  }
+  arg1 = (PCAPTransportEmulator *)(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_UDPReader, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PCAPTransportEmulator_SetReader" "', argument " "2"" of type '" "UDPReader *""'"); 
+  }
+  arg2 = (UDPReader *)(argp2);
+  result = (bool)(arg1)->SetReader(arg2);
+  jsresult = SWIG_From_bool((bool)(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_PCAPTransportEmulator_Play(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -17171,6 +17209,7 @@ static swig_type_info _swigt__p_StreamTrackDepacketizer = {"_p_StreamTrackDepack
 static swig_type_info _swigt__p_StringFacade = {"_p_StringFacade", "StringFacade *|p_StringFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TextFrame = {"_p_TextFrame", "TextFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_UDPDumper = {"_p_UDPDumper", "UDPDumper *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_UDPReader = {"_p_UDPReader", "UDPReader *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_VideoCodec__Type = {"_p_VideoCodec__Type", "VideoCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_VideoFrame = {"_p_VideoFrame", "VideoFrame *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -17233,6 +17272,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_StringFacade,
   &_swigt__p_TextFrame,
   &_swigt__p_UDPDumper,
+  &_swigt__p_UDPReader,
   &_swigt__p_VideoCodec__Type,
   &_swigt__p_VideoFrame,
   &_swigt__p_char,
@@ -17295,6 +17335,7 @@ static swig_cast_info _swigc__p_StreamTrackDepacketizer[] = {  {&_swigt__p_Strea
 static swig_cast_info _swigc__p_StringFacade[] = {  {&_swigt__p_StringFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TextFrame[] = {  {&_swigt__p_TextFrame, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_UDPDumper[] = {  {&_swigt__p_UDPDumper, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_UDPReader[] = {  {&_swigt__p_UDPReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_VideoCodec__Type[] = {  {&_swigt__p_VideoCodec__Type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_VideoFrame[] = {  {&_swigt__p_VideoFrame, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -17357,6 +17398,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_StringFacade,
   _swigc__p_TextFrame,
   _swigc__p_UDPDumper,
+  _swigc__p_UDPReader,
   _swigc__p_VideoCodec__Type,
   _swigc__p_VideoFrame,
   _swigc__p_char,
@@ -18064,6 +18106,7 @@ SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "SetRemotePropert
 SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "AddIncomingSourceGroup", _wrap_PCAPTransportEmulator_AddIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "RemoveIncomingSourceGroup", _wrap_PCAPTransportEmulator_RemoveIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Open", _wrap_PCAPTransportEmulator_Open);
+SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "SetReader", _wrap_PCAPTransportEmulator_SetReader);
 SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Play", _wrap_PCAPTransportEmulator_Play);
 SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Seek", _wrap_PCAPTransportEmulator_Seek);
 SWIGV8_AddMemberFunction(_exports_PCAPTransportEmulator_class, "Stop", _wrap_PCAPTransportEmulator_Stop);
