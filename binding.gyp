@@ -11,11 +11,20 @@
 			"cflags": 
 			[
 				"-fexceptions",
+				"-O3",
+				"-g",
+				"-Wno-unused-function",
+				#"-O0",
+				#"-fsanitize=address"
+			],
+			"cflags_cc": 
+			[
+				"-fexceptions",
 				"-std=c++14",
 				"-O3",
 				"-g",
 				"-Wno-unused-function",
-				#"-faligned-new",
+				"-faligned-new",
 				#"-O0",
 				#"-fsanitize=address"
 			],
@@ -50,6 +59,7 @@
 						"sources": 
 						[
 							"media-server/src/ActiveSpeakerDetector.cpp",
+							"media-server/src/EventLoop.cpp",
 							"media-server/src/RTPBundleTransport.cpp",
 							"media-server/src/DTLSICETransport.cpp",
 							"media-server/src/VideoLayerSelector.cpp",

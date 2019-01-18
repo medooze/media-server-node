@@ -1536,65 +1536,67 @@ fail: ;
 #define SWIGTYPE_p_Acumulator swig_types[1]
 #define SWIGTYPE_p_AudioCodec__Type swig_types[2]
 #define SWIGTYPE_p_AudioFrame swig_types[3]
-#define SWIGTYPE_p_ByteBuffer swig_types[4]
-#define SWIGTYPE_p_DTLSConnection__Suite swig_types[5]
-#define SWIGTYPE_p_DTLSICETransport swig_types[6]
-#define SWIGTYPE_p_DTLSICETransport__Sender swig_types[7]
-#define SWIGTYPE_p_ICERemoteCandidate swig_types[8]
-#define SWIGTYPE_p_LayerInfo swig_types[9]
-#define SWIGTYPE_p_LayerSource swig_types[10]
-#define SWIGTYPE_p_LayerSources swig_types[11]
-#define SWIGTYPE_p_MP4FileHandle swig_types[12]
-#define SWIGTYPE_p_MP4Recorder swig_types[13]
-#define SWIGTYPE_p_MediaFrame swig_types[14]
-#define SWIGTYPE_p_MediaServer swig_types[15]
-#define SWIGTYPE_p_PCAPTransportEmulator swig_types[16]
-#define SWIGTYPE_p_PlayerFacade swig_types[17]
-#define SWIGTYPE_p_Properties swig_types[18]
-#define SWIGTYPE_p_PropertiesFacade swig_types[19]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[20]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[21]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[22]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[23]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[24]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[25]
-#define SWIGTYPE_p_RTPReceiver swig_types[26]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[27]
-#define SWIGTYPE_p_RTPSender swig_types[28]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[29]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[30]
-#define SWIGTYPE_p_RTPSource swig_types[31]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[32]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[33]
-#define SWIGTYPE_p_RecorderControl__Type swig_types[34]
-#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[35]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[36]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[37]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[38]
-#define SWIGTYPE_p_StringFacade swig_types[39]
-#define SWIGTYPE_p_TextFrame swig_types[40]
-#define SWIGTYPE_p_UDPDumper swig_types[41]
-#define SWIGTYPE_p_UDPReader swig_types[42]
-#define SWIGTYPE_p_VideoCodec__Type swig_types[43]
-#define SWIGTYPE_p_VideoFrame swig_types[44]
-#define SWIGTYPE_p_char swig_types[45]
-#define SWIGTYPE_p_int swig_types[46]
-#define SWIGTYPE_p_long_double swig_types[47]
-#define SWIGTYPE_p_long_long swig_types[48]
-#define SWIGTYPE_p_mp4track swig_types[49]
-#define SWIGTYPE_p_short swig_types[50]
-#define SWIGTYPE_p_signed_char swig_types[51]
-#define SWIGTYPE_p_std__string swig_types[52]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[53]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[54]
-#define SWIGTYPE_p_unsigned_char swig_types[55]
-#define SWIGTYPE_p_unsigned_int swig_types[56]
-#define SWIGTYPE_p_unsigned_long_long swig_types[57]
-#define SWIGTYPE_p_unsigned_short swig_types[58]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[59]
-#define SWIGTYPE_p_void swig_types[60]
-static swig_type_info *swig_types[62];
-static swig_module_info swig_module = {swig_types, 61, 0, 0, 0, 0};
+#define SWIGTYPE_p_Buffer swig_types[4]
+#define SWIGTYPE_p_ByteBuffer swig_types[5]
+#define SWIGTYPE_p_DTLSConnection__Suite swig_types[6]
+#define SWIGTYPE_p_DTLSICETransport swig_types[7]
+#define SWIGTYPE_p_DTLSICETransport__Sender swig_types[8]
+#define SWIGTYPE_p_ICERemoteCandidate swig_types[9]
+#define SWIGTYPE_p_LayerInfo swig_types[10]
+#define SWIGTYPE_p_LayerSource swig_types[11]
+#define SWIGTYPE_p_LayerSources swig_types[12]
+#define SWIGTYPE_p_MP4FileHandle swig_types[13]
+#define SWIGTYPE_p_MP4Recorder swig_types[14]
+#define SWIGTYPE_p_MediaFrame swig_types[15]
+#define SWIGTYPE_p_MediaServer swig_types[16]
+#define SWIGTYPE_p_PCAPTransportEmulator swig_types[17]
+#define SWIGTYPE_p_PlayerFacade swig_types[18]
+#define SWIGTYPE_p_Properties swig_types[19]
+#define SWIGTYPE_p_PropertiesFacade swig_types[20]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[21]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[22]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[23]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[24]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[25]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[26]
+#define SWIGTYPE_p_RTPReceiver swig_types[27]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[28]
+#define SWIGTYPE_p_RTPSender swig_types[29]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[30]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[31]
+#define SWIGTYPE_p_RTPSource swig_types[32]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[33]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[34]
+#define SWIGTYPE_p_RecorderControl__Type swig_types[35]
+#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[36]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[37]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[38]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[39]
+#define SWIGTYPE_p_StringFacade swig_types[40]
+#define SWIGTYPE_p_TextFrame swig_types[41]
+#define SWIGTYPE_p_TimeService swig_types[42]
+#define SWIGTYPE_p_UDPDumper swig_types[43]
+#define SWIGTYPE_p_UDPReader swig_types[44]
+#define SWIGTYPE_p_VideoCodec__Type swig_types[45]
+#define SWIGTYPE_p_VideoFrame swig_types[46]
+#define SWIGTYPE_p_char swig_types[47]
+#define SWIGTYPE_p_int swig_types[48]
+#define SWIGTYPE_p_long_double swig_types[49]
+#define SWIGTYPE_p_long_long swig_types[50]
+#define SWIGTYPE_p_mp4track swig_types[51]
+#define SWIGTYPE_p_short swig_types[52]
+#define SWIGTYPE_p_signed_char swig_types[53]
+#define SWIGTYPE_p_std__string swig_types[54]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[55]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[56]
+#define SWIGTYPE_p_unsigned_char swig_types[57]
+#define SWIGTYPE_p_unsigned_int swig_types[58]
+#define SWIGTYPE_p_unsigned_long_long swig_types[59]
+#define SWIGTYPE_p_unsigned_short swig_types[60]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[61]
+#define SWIGTYPE_p_void swig_types[62]
+static swig_type_info *swig_types[64];
+static swig_module_info swig_module = {swig_types, 63, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -10488,16 +10490,28 @@ static SwigV8ReturnValue _wrap_new_DTLSICETransport(const SwigV8Arguments &args)
   
   v8::Handle<v8::Object> self = args.Holder();
   DTLSICETransport::Sender *arg1 = (DTLSICETransport::Sender *) 0 ;
+  TimeService *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   DTLSICETransport *result;
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_DTLSICETransport.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_DTLSICETransport.");
   res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_DTLSICETransport__Sender, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DTLSICETransport" "', argument " "1"" of type '" "DTLSICETransport::Sender *""'"); 
   }
   arg1 = (DTLSICETransport::Sender *)(argp1);
-  result = (DTLSICETransport *)new DTLSICETransport(arg1);
+  res2 = SWIG_ConvertPtr(args[1], &argp2, SWIGTYPE_p_TimeService,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_DTLSICETransport" "', argument " "2"" of type '" "TimeService &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DTLSICETransport" "', argument " "2"" of type '" "TimeService &""'"); 
+  }
+  arg2 = (TimeService *)(argp2);
+  result = (DTLSICETransport *)new DTLSICETransport(arg1,*arg2);
+  
   
   
   
@@ -12051,7 +12065,7 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_onData(const SwigV8Arguments &ar
   arg2 = (ICERemoteCandidate *)(argp2);
   res3 = SWIG_ConvertPtr(args[1], &argp3,SWIGTYPE_p_unsigned_char, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DTLSICETransport_onData" "', argument " "3"" of type '" "uint8_t *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DTLSICETransport_onData" "', argument " "3"" of type '" "uint8_t const *""'"); 
   }
   arg3 = (uint8_t *)(argp3);
   ecode4 = SWIG_AsVal_unsigned_SS_int(args[2], &val4);
@@ -12059,7 +12073,7 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_onData(const SwigV8Arguments &ar
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "DTLSICETransport_onData" "', argument " "4"" of type '" "uint32_t""'");
   } 
   arg4 = (uint32_t)(val4);
-  result = (int)(arg1)->onData((ICERemoteCandidate const *)arg2,arg3,arg4);
+  result = (int)(arg1)->onData((ICERemoteCandidate const *)arg2,(uint8_t const *)arg3,arg4);
   jsresult = SWIG_From_int((int)(result));
   
   
@@ -12481,19 +12495,16 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_Send(const SwigV8Arguments &ar
   v8::Handle<v8::Value> jsresult;
   RTPBundleTransport *arg1 = (RTPBundleTransport *) 0 ;
   ICERemoteCandidate *arg2 = (ICERemoteCandidate *) 0 ;
-  uint8_t *arg3 = (uint8_t *) 0 ;
-  uint32_t arg4 ;
+  Buffer *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  unsigned int val4 ;
-  int ecode4 = 0 ;
   int result;
   
-  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_Send.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_Send.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransport, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -12505,19 +12516,16 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_Send(const SwigV8Arguments &ar
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_Send" "', argument " "2"" of type '" "ICERemoteCandidate const *""'"); 
   }
   arg2 = (ICERemoteCandidate *)(argp2);
-  res3 = SWIG_ConvertPtr(args[1], &argp3,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  res3 = SWIG_ConvertPtr(args[1], &argp3, SWIGTYPE_p_Buffer,  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPBundleTransport_Send" "', argument " "3"" of type '" "uint8_t const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPBundleTransport_Send" "', argument " "3"" of type '" "Buffer &&""'"); 
   }
-  arg3 = (uint8_t *)(argp3);
-  ecode4 = SWIG_AsVal_unsigned_SS_int(args[2], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "RTPBundleTransport_Send" "', argument " "4"" of type '" "uint32_t""'");
-  } 
-  arg4 = (uint32_t)(val4);
-  result = (int)(arg1)->Send((ICERemoteCandidate const *)arg2,(uint8_t const *)arg3,arg4);
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_Send" "', argument " "3"" of type '" "Buffer &&""'"); 
+  }
+  arg3 = (Buffer *)(argp3);
+  result = (int)(arg1)->Send((ICERemoteCandidate const *)arg2,(Buffer &&)*arg3);
   jsresult = SWIG_From_int((int)(result));
-  
   
   
   
@@ -17140,14 +17148,14 @@ static void *_p_PropertiesFacadeTo_p_Properties(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_StringFacadeTo_p_std__string(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::string *)  ((StringFacade *) x));
 }
+static void *_p_RTPBundleTransportTo_p_DTLSICETransport__Sender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((DTLSICETransport::Sender *)  ((RTPBundleTransport *) x));
+}
 static void *_p_DTLSICETransportTo_p_RTPSender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSender *)  ((DTLSICETransport *) x));
 }
 static void *_p_RTPSessionFacadeTo_p_RTPSender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSender *)  ((RTPSessionFacade *) x));
-}
-static void *_p_RTPBundleTransportTo_p_DTLSICETransport__Sender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((DTLSICETransport::Sender *)  ((RTPBundleTransport *) x));
 }
 static void *_p_DTLSICETransportTo_p_RTPReceiver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPReceiver *)  ((DTLSICETransport *) x));
@@ -17171,6 +17179,7 @@ static swig_type_info _swigt__p_ActiveSpeakerDetectorFacade = {"_p_ActiveSpeaker
 static swig_type_info _swigt__p_Acumulator = {"_p_Acumulator", "Acumulator *|p_Acumulator", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioCodec__Type = {"_p_AudioCodec__Type", "AudioCodec::Type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_AudioFrame = {"_p_AudioFrame", "AudioFrame *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Buffer = {"_p_Buffer", "Buffer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ByteBuffer = {"_p_ByteBuffer", "ByteBuffer *|p_ByteBuffer", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSConnection__Suite = {"_p_DTLSConnection__Suite", "DTLSConnection::Suite *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransport = {"_p_DTLSICETransport", "p_DTLSICETransport|DTLSICETransport *", 0, 0, (void*)0, 0};
@@ -17208,6 +17217,7 @@ static swig_type_info _swigt__p_SenderSideEstimatorListener = {"_p_SenderSideEst
 static swig_type_info _swigt__p_StreamTrackDepacketizer = {"_p_StreamTrackDepacketizer", "p_StreamTrackDepacketizer|StreamTrackDepacketizer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_StringFacade = {"_p_StringFacade", "StringFacade *|p_StringFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TextFrame = {"_p_TextFrame", "TextFrame *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_TimeService = {"_p_TimeService", "TimeService *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_UDPDumper = {"_p_UDPDumper", "UDPDumper *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_UDPReader = {"_p_UDPReader", "UDPReader *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_VideoCodec__Type = {"_p_VideoCodec__Type", "VideoCodec::Type *", 0, 0, (void*)0, 0};
@@ -17234,6 +17244,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Acumulator,
   &_swigt__p_AudioCodec__Type,
   &_swigt__p_AudioFrame,
+  &_swigt__p_Buffer,
   &_swigt__p_ByteBuffer,
   &_swigt__p_DTLSConnection__Suite,
   &_swigt__p_DTLSICETransport,
@@ -17271,6 +17282,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_StreamTrackDepacketizer,
   &_swigt__p_StringFacade,
   &_swigt__p_TextFrame,
+  &_swigt__p_TimeService,
   &_swigt__p_UDPDumper,
   &_swigt__p_UDPReader,
   &_swigt__p_VideoCodec__Type,
@@ -17297,6 +17309,7 @@ static swig_cast_info _swigc__p_ActiveSpeakerDetectorFacade[] = {  {&_swigt__p_A
 static swig_cast_info _swigc__p_Acumulator[] = {  {&_swigt__p_Acumulator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_AudioCodec__Type[] = {  {&_swigt__p_AudioCodec__Type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_AudioFrame[] = {  {&_swigt__p_AudioFrame, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Buffer[] = {  {&_swigt__p_Buffer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ByteBuffer[] = {  {&_swigt__p_ByteBuffer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSConnection__Suite[] = {  {&_swigt__p_DTLSConnection__Suite, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransport[] = {  {&_swigt__p_DTLSICETransport, 0, 0, 0},{0, 0, 0, 0}};
@@ -17334,6 +17347,7 @@ static swig_cast_info _swigc__p_SenderSideEstimatorListener[] = {  {&_swigt__p_S
 static swig_cast_info _swigc__p_StreamTrackDepacketizer[] = {  {&_swigt__p_StreamTrackDepacketizer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_StringFacade[] = {  {&_swigt__p_StringFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TextFrame[] = {  {&_swigt__p_TextFrame, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_TimeService[] = {  {&_swigt__p_TimeService, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_UDPDumper[] = {  {&_swigt__p_UDPDumper, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_UDPReader[] = {  {&_swigt__p_UDPReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_VideoCodec__Type[] = {  {&_swigt__p_VideoCodec__Type, 0, 0, 0},{0, 0, 0, 0}};
@@ -17360,6 +17374,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Acumulator,
   _swigc__p_AudioCodec__Type,
   _swigc__p_AudioFrame,
+  _swigc__p_Buffer,
   _swigc__p_ByteBuffer,
   _swigc__p_DTLSConnection__Suite,
   _swigc__p_DTLSICETransport,
@@ -17397,6 +17412,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_StreamTrackDepacketizer,
   _swigc__p_StringFacade,
   _swigc__p_TextFrame,
+  _swigc__p_TimeService,
   _swigc__p_UDPDumper,
   _swigc__p_UDPReader,
   _swigc__p_VideoCodec__Type,
