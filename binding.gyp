@@ -122,16 +122,22 @@
 							"external/mp4v2/libmp4v2.gyp:mp4v2",
 							"external/srtp/libsrtp.gyp:libsrtp",
 						],
-  					        "conditions" : [
-							    ["target_arch=='ia32'", {
-							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/piii" ]
-							    }],
-							    ["target_arch=='x64'", {
-							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ]
-							    }],
-							    ["target_arch=='arm'", {
-							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ]
-							    }]
+  					    "conditions" : [
+							["target_arch=='ia32'", {
+								"include_dirs": [ "<(node_root_dir)/deps/openssl/config/piii" ]
+							}],
+							["target_arch=='x64'", {
+								"include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ]
+							}],
+							["target_arch=='arm'", {
+								"include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ]
+							}],
+							['OS=="mac"', {
+								'xcode_settings': {
+									'CLANG_CXX_LIBRARY': 'libc++',
+									'CLANG_CXX_LANGUAGE_STANDARD':'c++14'
+								}
+							}]
 						]
 					},
 					{
