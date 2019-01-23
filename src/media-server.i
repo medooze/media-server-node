@@ -835,11 +835,6 @@ struct RTPIncomingSourceGroup
 	void Update();
 };
 
-
-%include "../media-server/include/PCAPTransportEmulator.h"
-%include "../media-server/include/mp4recorder.h"
-%include "../media-server/include/rtp/RTPStreamTransponder.h"
-
 %typemap(in) v8::Handle<v8::Object> {
 	$1 = v8::Handle<v8::Object>::Cast($input);
 }
@@ -885,6 +880,26 @@ public:
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
 };
+
+%include "../media-server/include/UDPReader.h"
+class PCAPTransportEmulator
+{
+public:
+	PCAPTransportEmulator();
+	
+	void SetRemoteProperties(const Properties& properties);
+
+	bool AddIncomingSourceGroup(RTPIncomingSourceGroup *group);
+	bool RemoveIncomingSourceGroup(RTPIncomingSourceGroup *group);
+	
+	bool Open(const char* filename);
+	bool SetReader(UDPReader* reader);
+	bool Play();
+	uint64_t Seek(uint64_t time);
+	bool Stop();
+	bool Close();
+};
+
 
 %nodefaultctor DTLSICETransport; 
 class DTLSICETransport
