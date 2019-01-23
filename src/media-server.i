@@ -836,8 +836,6 @@ struct RTPIncomingSourceGroup
 };
 
 
-%include "../media-server/include/DTLSICETransport.h"
-%include "../media-server/include/RTPBundleTransport.h"
 %include "../media-server/include/PCAPTransportEmulator.h"
 %include "../media-server/include/mp4recorder.h"
 %include "../media-server/include/rtp/RTPStreamTransponder.h"
@@ -875,6 +873,55 @@ public:
 	static bool SetPortRange(int minPort, int maxPort);
 };
 
+class RTPBundleTransport
+{
+public:
+	RTPBundleTransport();
+	int Init();
+	int Init(int port);
+	DTLSICETransport* AddICETransport(const std::string &username,const Properties& properties);
+	int RemoveICETransport(const std::string &username);
+	int End();
+	int GetLocalPort() const { return port; }
+	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
+};
+
+%nodefaultctor DTLSICETransport; 
+class DTLSICETransport
+{
+public:
+	void Start();
+	void Stop();
+	
+	void SetSRTPProtectionProfiles(const std::string& profiles);
+	void SetRemoteProperties(const Properties& properties);
+	void SetLocalProperties(const Properties& properties);
+	virtual int SendPLI(DWORD ssrc) override;
+	virtual int Enqueue(const RTPPacket::shared& packet) override;
+	int Dump(const char* filename, bool inbound = true, bool outbound = true, bool rtcp = true);
+	int Dump(UDPDumper* dumper, bool inbound = true, bool outbound = true, bool rtcp = true);
+	void Reset();
+	
+	void ActivateRemoteCandidate(ICERemoteCandidate* candidate,bool useCandidate, DWORD priority);
+	int SetRemoteCryptoDTLS(const char *setup,const char *hash,const char *fingerprint);
+	int SetLocalSTUNCredentials(const char* username, const char* pwd);
+	int SetRemoteSTUNCredentials(const char* username, const char* pwd);
+	bool AddOutgoingSourceGroup(RTPOutgoingSourceGroup *group);
+	bool RemoveOutgoingSourceGroup(RTPOutgoingSourceGroup *group);
+	bool AddIncomingSourceGroup(RTPIncomingSourceGroup *group);
+	bool RemoveIncomingSourceGroup(RTPIncomingSourceGroup *group);
+	
+	void SetBandwidthProbing(bool probe);
+	void SetMaxProbingBitrate(DWORD bitrate);
+	void SetSenderSideEstimatorListener(RemoteRateEstimator::Listener* listener);
+	
+	const char* GetRemoteUsername() const;
+	const char* GetRemotePwd()	const;
+	const char* GetLocalUsername()	const;
+	const char* GetLocalPwd()	const;
+	
+	DWORD GetRTT() const { return rtt; }
+};
 
 class RTPSessionFacade :
 	public RTPSender,

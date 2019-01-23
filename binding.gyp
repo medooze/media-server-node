@@ -13,14 +13,14 @@
 				"-fexceptions",
 				"-O3",
 				"-g",
-				"-Wno-unused-function",
+				"-Wno-unused-function -Wno-comment",
 				#"-O0",
 				#"-fsanitize=address"
 			],
 			"cflags_cc": 
 			[
 				"-fexceptions",
-				"-std=c++14",
+				"-std=c++17",
 				"-O3",
 				"-g",
 				"-Wno-unused-function",
@@ -51,6 +51,7 @@
 						[
 							'media-server/include',
 							'media-server/src',
+							'media-server/ext/libdatachannels/src',
 							'external/mp4v2/lib/include',
 							'external/mp4v2/config/include',
 							'external/srtp/include',
@@ -58,6 +59,7 @@
 						],
 						"sources": 
 						[
+							"media-server/ext/libdatachannels/src/Datachannels.cpp",
 							"media-server/src/ActiveSpeakerDetector.cpp",
 							"media-server/src/EventLoop.cpp",
 							"media-server/src/RTPBundleTransport.cpp",
@@ -123,15 +125,21 @@
 							"external/srtp/libsrtp.gyp:libsrtp",
 						],
   					        "conditions" : [
-							    ["target_arch=='ia32'", {
-							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/piii" ]
-							    }],
-							    ["target_arch=='x64'", {
-							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ]
-							    }],
-							    ["target_arch=='arm'", {
-							      "include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ]
-							    }]
+								["target_arch=='ia32'", {
+									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/piii" ]
+								}],
+								["target_arch=='x64'", {
+									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ]
+								}],
+								["target_arch=='arm'", {
+									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ]
+								}],
+								['OS=="mac"', {
+									"xcode_settings": {
+										"CLANG_CXX_LIBRARY": "libc++",
+										"CLANG_CXX_LANGUAGE_STANDARD": "c++17"
+									}
+								}]
 						]
 					},
 					{
