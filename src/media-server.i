@@ -288,8 +288,8 @@ public:
 	PlayerFacade(v8::Handle<v8::Object> object) :
 		MP4Streamer(this),
 		persistent(object),
-		audio(MediaFrame::Audio),
-		video(MediaFrame::Video)
+		audio(MediaFrame::Audio,loop),
+		video(MediaFrame::Video,loop)
 	{
 		Reset();
 		//Start dispatching
@@ -804,6 +804,12 @@ struct RTPOutgoingSource : public RTPSource
 	QWORD lastSenderReportNTP;
 };
 
+%nodefaultctor TimeService;
+struct TimeService
+{
+	
+};
+
 struct RTPOutgoingSourceGroup
 {
 	RTPOutgoingSourceGroup(MediaFrame::Type type);
@@ -819,7 +825,7 @@ struct RTPOutgoingSourceGroup
 
 struct RTPIncomingSourceGroup
 {
-	RTPIncomingSourceGroup(MediaFrame::Type type);
+	RTPIncomingSourceGroup(MediaFrame::Type type, TimeService& TimeService);
 	std::string rid;
 	std::string mid;
 	DWORD rtt;
@@ -898,6 +904,8 @@ public:
 	uint64_t Seek(uint64_t time);
 	bool Stop();
 	bool Close();
+	
+	TimeService& GetTimeService();
 };
 
 
@@ -936,6 +944,8 @@ public:
 	const char* GetLocalPwd()	const;
 	
 	DWORD GetRTT() const { return rtt; }
+	
+	TimeService& GetTimeService();
 };
 
 class RTPSessionFacade :
@@ -1002,6 +1012,23 @@ public:
 	void Stop();
 };
 
+
+
+class MP4Recorder :
+	public MediaFrame::Listener
+{
+public:
+	MP4Recorder();
+	virtual ~MP4Recorder();
+
+	//Recorder interface
+	virtual bool Create(const char *filename);
+	virtual bool Record();
+	virtual bool Record(bool waitVideo);
+	virtual bool Stop();
+	virtual bool Close();
+	bool Close(bool async);
+};
 
 class PlayerFacade
 {
