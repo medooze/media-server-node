@@ -147,7 +147,8 @@
 										"CLANG_CXX_LIBRARY": "libc++",
 										"CLANG_CXX_LANGUAGE_STANDARD": "c++17"
 									},
-									"include_dirs": [  "media-server/ext/crc32c/config/Darwin-i386" ]
+									"include_dirs": [  "media-server/ext/crc32c/config/Darwin-i386" ],
+									"cflags_cc":  [ "-Wno-aligned-allocation-availability" ]
 								}],
 								['OS=="linux"',{
 									"conditions" : [["target_arch=='x64'",{
