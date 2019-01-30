@@ -52,6 +52,7 @@
 						[
 							'media-server/include',
 							'media-server/src',
+							'media-server/ext/crc32c/include',
 							'media-server/ext/libdatachannels/src',
 							'media-server/ext/libdatachannels/src/internal',
 							'external/mp4v2/lib/include',
