@@ -10,6 +10,7 @@
 			"target_name": "medooze-media-server",
 			"cflags": 
 			[
+				"-march=native",
 				"-fexceptions",
 				"-O3",
 				"-g",
@@ -52,6 +53,7 @@
 							'media-server/include',
 							'media-server/src',
 							'media-server/ext/libdatachannels/src',
+							'media-server/ext/libdatachannels/src/internal',
 							'external/mp4v2/lib/include',
 							'external/mp4v2/config/include',
 							'external/srtp/include',
@@ -59,6 +61,9 @@
 						],
 						"sources": 
 						[
+							"media-server/ext/crc32c/src/crc32c.cc",
+							"media-server/ext/crc32c/src/crc32c_portable.cc",
+							"media-server/ext/crc32c/src/crc32c.cc",
 							"media-server/ext/libdatachannels/src/Datachannels.cpp",
 							"media-server/src/ActiveSpeakerDetector.cpp",
 							"media-server/src/EventLoop.cpp",
@@ -129,16 +134,29 @@
 									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/piii" ]
 								}],
 								["target_arch=='x64'", {
-									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ]
+									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ],
+									"sources":	[ "media-server/ext/crc32c/src/crc32c_sse42.cc"]
 								}],
 								["target_arch=='arm'", {
-									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ]
+									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ],
+									"sources":	[ "media-server/ext/crc32c/src/crc32c_arm64.cc"]
 								}],
 								['OS=="mac"', {
 									"xcode_settings": {
 										"CLANG_CXX_LIBRARY": "libc++",
 										"CLANG_CXX_LANGUAGE_STANDARD": "c++17"
-									}
+									},
+									"include_dirs": [  "media-server/ext/crc32c/config/Darwin-i386" ]
+								}],
+								['OS=="linux"',{
+									"conditions" : [["target_arch=='x64'",{
+										"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64" ]
+									},{
+										"include_dirs": [  "media-server/ext/crc32c/config/Linux-arm64" ]
+									}]],
+									"cflags_cc":  [
+										"-DHAVE_STD_ALGIN_ALLOC",
+									]
 								}]
 						]
 					},
