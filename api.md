@@ -176,112 +176,6 @@ Remove event listener
 
 Returns **[Transport][10]** 
 
-## Refresher
-
-Periodically request an I frame on all incoming stream or tracks
-
-### add
-
-Add stream or track to request
-
-#### Parameters
-
--   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][11]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][11]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][11]** Event listener
-
-Returns **[OutgoingStream][14]** 
-
-### stop
-
-Stop refresher
-
-## RecorderTrack
-
-Track of the recorder associated to an incoming strem track
-
-### getId
-
-Get recorder track id
-
-### getTrack
-
-Get incoming stream track
-
-Returns **[IncomingStreamTrack][13]** 
-
-### getEncoding
-
-Get incoming encoding
-
-Returns **[Object][4]** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][11]** Event listener
-
-Returns **[RecorderTrack][15]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][11]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][11]** Event listener
-
-Returns **[RecorderTrack][15]** 
-
-### stop
-
-Stop recording this track
-
 ## Transponder
 
 Transponder copies data from an incoming track to an outgoing track and allows stream modifications
@@ -449,6 +343,112 @@ Returns **[IncomingStreamTrack][13]**
 ### stop
 
 Stop this transponder, will dettach the OutgoingStreamTrack
+
+## Refresher
+
+Periodically request an I frame on all incoming stream or tracks
+
+### add
+
+Add stream or track to request
+
+#### Parameters
+
+-   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][11]** Event listener
+
+Returns **[IncomingStream][12]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][11]** Event listener
+
+Returns **[IncomingStream][12]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][11]** Event listener
+
+Returns **[OutgoingStream][14]** 
+
+### stop
+
+Stop refresher
+
+## RecorderTrack
+
+Track of the recorder associated to an incoming strem track
+
+### getId
+
+Get recorder track id
+
+### getTrack
+
+Get incoming stream track
+
+Returns **[IncomingStreamTrack][13]** 
+
+### getEncoding
+
+Get incoming encoding
+
+Returns **[Object][4]** 
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][11]** Event listener
+
+Returns **[RecorderTrack][15]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][11]** Event listener
+
+Returns **[IncomingStream][12]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][11]** Event listener
+
+Returns **[RecorderTrack][15]** 
+
+### stop
+
+Stop recording this track
 
 ## Recorder
 
@@ -1124,7 +1124,7 @@ Returns **[Transponder][19]** Track transponder object
 ### detach
 
 Stop forwarding any previous attached track.
-This will stop any previous transpoder created by a previous attach.
+This will set the transponder inconming track to null
 
 ### getTransponder
 
