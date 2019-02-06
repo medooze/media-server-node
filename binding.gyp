@@ -78,6 +78,7 @@
 							"media-server/src/vp9/VP9PayloadDescription.cpp",
 							"media-server/src/vp9/VP9LayerSelector.cpp",
 							"media-server/src/vp9/VP9Depacketizer.cpp",
+							"media-server/src/SRTPSession.cpp",
 							"media-server/src/dtls.cpp",
 							"media-server/src/CPUMonitor.cpp",
 							"media-server/src/OpenSSL.cpp",
