@@ -16,7 +16,7 @@
 				"-g",
 				"-Wno-unused-function -Wno-comment",
 				#"-O0",
-				#"-fsanitize=address"
+				#"-fsanitize=address,leak"
 			],
 			"cflags_cc": 
 			[
@@ -27,7 +27,7 @@
 				"-Wno-unused-function",
 				"-faligned-new",
 				#"-O0",
-				#"-fsanitize=address"
+				#"-fsanitize=address,leak"
 			],
 			"include_dirs" : 
 			[
@@ -158,7 +158,7 @@
 										"include_dirs": [  "media-server/ext/crc32c/config/Linux-arm64" ]
 									}]],
 									"cflags_cc":  [
-										"-DHAVE_STD_ALGIN_ALLOC",
+										"-DHAVE_STD_ALIGNED_ALLOCC",
 									]
 								}]
 						]
