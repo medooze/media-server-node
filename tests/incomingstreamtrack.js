@@ -14,7 +14,7 @@ const Direction		= SemanticSDP.Direction;
 const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
 
-tap.test("IncomingMediaStream::create",async function(suite){
+var pt1 = tap.test("IncomingMediaStream::create",async function(suite){
 	
 	//Init test
 	const transport = endpoint.createTransport({
@@ -114,7 +114,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 });
 
 
-tap.test("IncomingMediaStream::stats",async function(suite){
+var pt2 = tap.test("IncomingMediaStream::stats",async function(suite){
 	
 	//Init test
 	const transport = endpoint.createTransport({
@@ -181,7 +181,11 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 			const retry = transport.createIncomingStream(streamInfo);
 			test.done(retry);
 		});
-		//Stop
+		//Stop+Promise.all([pt1, pt2]).then(function(values) {
++  //console.log("Terminating media server");
++  MediaServer.terminate ();
++});
+
 		audioTrack.stop();
 	});
 	
@@ -214,5 +218,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 	suite.end();
 });
 
-
-MediaServer.terminate ();
+Promise.all([pt1, pt2]).then(function(v) {
+	//console.log("Terminating media server");
+	MediaServer.terminate ();
+});
