@@ -181,10 +181,6 @@ var pt2 = tap.test("IncomingMediaStream::stats",async function(suite){
 			const retry = transport.createIncomingStream(streamInfo);
 			test.done(retry);
 		});
-		//Stop+Promise.all([pt1, pt2]).then(function(values) {
-+  //console.log("Terminating media server");
-+  MediaServer.terminate ();
-+});
 
 		audioTrack.stop();
 	});
