@@ -28,7 +28,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 	suite.test("create",async function(test){
 		let ssrc = 100;
 		//Create stream
-		const streamInfo = new StreamInfo("sream0");
+		const streamInfo = new StreamInfo("stream0");
 		//Create track
 		let track = new TrackInfo("video", "track1");
 		//Get ssrc, rtx and fec 
@@ -63,7 +63,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 	suite.test("track stop",async function(test){
 		let ssrc = 120;
 		//Create stream
-		const streamInfo = new StreamInfo("sream1");
+		const streamInfo = new StreamInfo("stream1");
 		//Create track
 		const track = new TrackInfo("audio", "track2");
 		//Add ssrc
@@ -77,6 +77,11 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		const audioTrack = incomingStream.getAudioTracks()[0];
 		//Stop and create new one
 		audioTrack.once("stopped",()=>{
+			//Create stream
+			const streamInfo = new StreamInfo("stream1bis");
+			//Add tracks
+			streamInfo.addTrack(track);
+			//Create another one
 			const retry = transport.createIncomingStream(streamInfo);
 			test.done(retry);
 		});
@@ -88,7 +93,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 	suite.test("stream stop",async function(test){
 		let ssrc = 140;
 		//Create stream
-		const streamInfo = new StreamInfo("sream2");
+		const streamInfo = new StreamInfo("stream2");
 		//Create track
 		const track = new TrackInfo("audio", "track3");
 		//Add ssrc
@@ -102,6 +107,11 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		const audioTrack = incomingStream.getAudioTracks()[0];
 		//Stop and create new one
 		audioTrack.once("stopped",()=>{
+			//Create stream
+			const streamInfo = new StreamInfo("stream2bis");
+			//Add tracks
+			streamInfo.addTrack(track);
+			//New one
 			const retry = transport.createIncomingStream(streamInfo);
 			test.done(retry);
 		});
@@ -128,7 +138,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 	suite.test("cached",async function(test){
 		let ssrc = 100;
 		//Create stream
-		const streamInfo = new StreamInfo("sream0");
+		const streamInfo = new StreamInfo("stream0");
 		//Create track
 		let track = new TrackInfo("video", "track1");
 		//Get ssrc, rtx and fec 
@@ -160,56 +170,6 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 		test.done();
 		
 	});
-	
-	suite.test("track stop",async function(test){
-		let ssrc = 120;
-		//Create stream
-		const streamInfo = new StreamInfo("sream1");
-		//Create track
-		const track = new TrackInfo("audio", "track2");
-		//Add ssrc
-		track.addSSRC(ssrc++);
-		//Add it
-		streamInfo.addTrack(track);
-		//Create new incoming stream
-		const incomingStream = transport.createIncomingStream(streamInfo);
-		test.ok(incomingStream);
-		//Get audio track
-		const audioTrack = incomingStream.getAudioTracks()[0];
-		//Stop and create new one
-		audioTrack.once("stopped",()=>{
-			const retry = transport.createIncomingStream(streamInfo);
-			test.done(retry);
-		});
-		//Stop
-		audioTrack.stop();
-	});
-	
-	
-	suite.test("stream stop",async function(test){
-		let ssrc = 140;
-		//Create stream
-		const streamInfo = new StreamInfo("sream2");
-		//Create track
-		const track = new TrackInfo("audio", "track3");
-		//Add ssrc
-		track.addSSRC(ssrc++);
-		//Add it
-		streamInfo.addTrack(track);
-		//Create new incoming stream
-		const incomingStream = transport.createIncomingStream(streamInfo);
-		test.ok(incomingStream);
-		//Get audio track
-		const audioTrack = incomingStream.getAudioTracks()[0];
-		//Stop and create new one
-		audioTrack.once("stopped",()=>{
-			const retry = transport.createIncomingStream(streamInfo);
-			test.done(retry);
-		});
-		//Stop
-		incomingStream.stop();
-	});
-	
 	
 	suite.end();
 });
