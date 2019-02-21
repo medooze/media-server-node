@@ -864,7 +864,6 @@ public:
 class MediaServer
 {
 public:
-	static void RunCallback(v8::Handle<v8::Object> object);
 	static void Initialize();
 	static void Terminate();
 	static void EnableLog(bool flag);
