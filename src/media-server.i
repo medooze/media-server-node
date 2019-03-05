@@ -351,8 +351,8 @@ public:
 	virtual void onMediaFrame(MediaFrame &frame)  {}
 	virtual void onMediaFrame(DWORD ssrc, MediaFrame &frame) {}
 
-	RTPIncomingSourceGroup* GetAudioSource() { return &audio; }
-	RTPIncomingSourceGroup* GetVideoSource() { return &video; }
+	RTPIncomingMediaStream* GetAudioSource() { return &audio; }
+	RTPIncomingMediaStream* GetVideoSource() { return &video; }
 	
 private:
 	Nan::Persistent<v8::Object> persistent;	
@@ -440,9 +440,14 @@ public:
 		persistent(object)
 	{}
 
-	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver)
+	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver)
 	{
 		return RTPStreamTransponder::SetIncoming(incoming, receiver ? receiver->get() : NULL);
+	}
+	
+	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiver* receiver)
+	{
+		return RTPStreamTransponder::SetIncoming(incoming, receiver);
 	}
 	
 	virtual void onREMB(RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
@@ -482,10 +487,10 @@ private:
 };
 
 class StreamTrackDepacketizer :
-	public RTPIncomingSourceGroup::Listener
+	public RTPIncomingMediaStream::Listener
 {
 public:
-	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource)
+	StreamTrackDepacketizer(RTPIncomingMediaStream* incomingSource)
 	{
 		//Store
 		this->incomingSource = incomingSource;
@@ -505,7 +510,7 @@ public:
 			delete(depacketizer);
 	}
 
-	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet)
+	virtual void onRTP(RTPIncomingMediaStream* group,const RTPPacket::shared& packet)
 	{
 		//Do not do extra work if there are no listeners
 		if (listeners.empty()) 
@@ -544,7 +549,7 @@ public:
 			
 	}
 	
-	virtual void onEnded(RTPIncomingSourceGroup* group) 
+	virtual void onEnded(RTPIncomingMediaStream* group) 
 	{
 		if (incomingSource==group)
 			incomingSource = nullptr;
@@ -580,7 +585,7 @@ private:
 private:
 	Listeners listeners;
 	RTPDepacketizer* depacketizer;
-	RTPIncomingSourceGroup* incomingSource;
+	RTPIncomingMediaStream* incomingSource;
 };
 
 
@@ -662,7 +667,7 @@ public:
 class ActiveSpeakerDetectorFacade :
 	public ActiveSpeakerDetector,
 	public ActiveSpeakerDetector::Listener,
-	public RTPIncomingSourceGroup::Listener
+	public RTPIncomingMediaStream::Listener
 {
 public:	
 	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object) :
@@ -690,22 +695,22 @@ public:
 		});
 	}
 	
-	void AddIncomingSourceGroup(RTPIncomingSourceGroup* incoming)
+	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming)
 	{
 		if (incoming) incoming->AddListener(this);
 	}
 	
-	void RemoveIncomingSourceGroup(RTPIncomingSourceGroup* incoming)
+	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming)
 	{
 		if (incoming)
 		{	
 			ScopedLock lock(mutex);
 			incoming->RemoveListener(this);
-			ActiveSpeakerDetector::Release(incoming->media.ssrc);
+			ActiveSpeakerDetector::Release(incoming->GetMediaSSRC());
 		}
 	}
 	
-	virtual void onRTP(RTPIncomingSourceGroup* group,const RTPPacket::shared& packet) override
+	virtual void onRTP(RTPIncomingMediaStream* group,const RTPPacket::shared& packet) override
 	{
 		if (packet->HasAudioLevel())
 		{
@@ -715,7 +720,7 @@ public:
 	}		
 	
 	
-	virtual void onEnded(RTPIncomingSourceGroup* group) override
+	virtual void onEnded(RTPIncomingMediaStream* group) override
 	{
 		
 	}
@@ -823,7 +828,19 @@ struct RTPOutgoingSourceGroup
 	void Update();
 };
 
-struct RTPIncomingSourceGroup
+%nodefaultctor RTPSender;
+%nodefaultdtor RTPSender; 
+struct RTPSender {};
+
+%nodefaultctor RTPReceiver;
+%nodefaultdtor RTPReceiver; 
+struct RTPReceiver {};
+
+%nodefaultctor RTPIncomingMediaStream;
+%nodefaultdtor RTPIncomingMediaStream; 
+struct RTPIncomingMediaStream {};
+
+struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 {
 	RTPIncomingSourceGroup(MediaFrame::Type type, TimeService& TimeService);
 	std::string rid;
@@ -995,7 +1012,8 @@ class RTPStreamTransponderFacade
 {
 public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender,v8::Handle<v8::Object> object);
-	bool SetIncoming(RTPIncomingSourceGroup* incoming, RTPReceiverFacade* receiver);
+	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver);
+	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiver* receiver);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
 	void Mute(bool muting);
 	void Close();
@@ -1004,17 +1022,23 @@ public:
 class StreamTrackDepacketizer 
 {
 public:
-	StreamTrackDepacketizer(RTPIncomingSourceGroup* incomingSource);
+	StreamTrackDepacketizer(RTPIncomingMediaStream* incomingSource);
 	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
 	void AddMediaListener(MP4Recorder* listener);
 	void RemoveMediaListener(MP4Recorder* listener);
 	void Stop();
 };
 
-
+%{
+using MediaFrameListener = MediaFrame::Listener;
+%}
+%nodefaultctor MediaFrameListener;
+struct MediaFrameListener
+{
+};
 
 class MP4Recorder :
-	public MediaFrame::Listener
+	public MediaFrameListener
 {
 public:
 	MP4Recorder();
@@ -1068,6 +1092,6 @@ class ActiveSpeakerDetectorFacade
 public:	
 	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object);
 	void SetMinChangePeriod(uint32_t minChangePeriod);
-	void AddIncomingSourceGroup(RTPIncomingSourceGroup* incoming);
-	void RemoveIncomingSourceGroup(RTPIncomingSourceGroup* incoming);
+	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming);
+	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming);
 };
