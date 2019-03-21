@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>medooze-media-server 0.57.1 | Documentation</title>
+  <title>medooze-media-server 0.58.7 | Documentation</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' type='text/css' rel='stylesheet' />
   <link href='assets/style.css' type='text/css' rel='stylesheet' />
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>medooze-media-server</h3>
-          <div class='mb1'><code>0.57.1</code></div>
+          <div class='mb1'><code>0.58.7</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -8199,7 +8199,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getTracks()</span>
+            <span class='code strong strong truncate'>getTracks(type)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -8211,7 +8211,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
 
  
   
-    <div class='pre p1 fill-light mt0'>getTracks(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
+    <div class='pre p1 fill-light mt0'>getTracks(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
    
   
   
@@ -8223,6 +8223,20 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
   
   
 
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    The media type (Optional)
+
+          </div>
+          
+        </div>
+      
+    </div>
   
 
   
@@ -9248,7 +9262,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getTracks()</span>
+            <span class='code strong strong truncate'>getTracks(type)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -9260,7 +9274,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
 
  
   
-    <div class='pre p1 fill-light mt0'>getTracks(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></div>
+    <div class='pre p1 fill-light mt0'>getTracks(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#outgoingstreamtrack">OutgoingStreamTrack</a>></div>
    
   
   
@@ -9273,13 +9287,27 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
   
 
   
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    The media type (Optional)
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
 
   
 
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#incomingstreamtrack">IncomingStreamTrack</a>></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#outgoingstreamtrack">OutgoingStreamTrack</a>></code>:
         Array of tracks
 
       

@@ -676,6 +676,10 @@ Returns **[IncomingStreamTrack][13]** requested track or null
 
 Get all the tracks
 
+#### Parameters
+
+-   `type` **[String][3]** The media type (Optional)
+
 Returns **[Array][16]&lt;[IncomingStreamTrack][13]>** Array of tracks
 
 ### getAudioTracks
@@ -783,7 +787,11 @@ Returns **[OutgoingStream][14]**
 
 Get all the tracks
 
-Returns **[Array][16]&lt;[IncomingStreamTrack][13]>** Array of tracks
+#### Parameters
+
+-   `type` **[String][3]** The media type (Optional)
+
+Returns **[Array][16]&lt;[OutgoingStreamTrack][18]>** Array of tracks
 
 ### getTrack
 
