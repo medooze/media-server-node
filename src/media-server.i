@@ -901,6 +901,7 @@ public:
 	int End();
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
+	bool SetAffinity(int cpu);
 };
 
 %include "../media-server/include/UDPReader.h"
