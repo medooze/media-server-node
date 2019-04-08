@@ -50,6 +50,24 @@ tap.test("ActiveSpeaker",async function(suite){
 		activeSpeakerDetector.stop();
 	});
 	
+	
+	/**
+	 * Set minimum activation score to be electible as active speaker
+	 * @param {Number} minActivationScore
+	 */
+	
+	suite.test("setters",async function(test){
+		//Create active speaker detector
+		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
+		//Set different params
+		activeSpeakerDetector.setNoiseGatingThreshold(127);
+		activeSpeakerDetector.setMaxAccumulatedScore(2500);
+		activeSpeakerDetector.setMinChangePeriod(2000);
+		activeSpeakerDetector.setMinActivationScore(100);
+		//Stop it
+		activeSpeakerDetector.stop();
+	});
+	
 	suite.test("add speaker",async function(test){
 		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
 		//Add speaker audio track

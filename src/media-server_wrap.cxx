@@ -16239,6 +16239,114 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_SetMaxAccumulatedScore(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  ActiveSpeakerDetectorFacade *arg1 = (ActiveSpeakerDetectorFacade *) 0 ;
+  uint64_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long long val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_SetMaxAccumulatedScore.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerDetectorFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerDetectorFacade_SetMaxAccumulatedScore" "', argument " "1"" of type '" "ActiveSpeakerDetectorFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerDetectorFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ActiveSpeakerDetectorFacade_SetMaxAccumulatedScore" "', argument " "2"" of type '" "uint64_t""'");
+  } 
+  arg2 = static_cast< uint64_t >(val2);
+  (arg1)->SetMaxAccumulatedScore(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_SetNoiseGatingThreshold(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  ActiveSpeakerDetectorFacade *arg1 = (ActiveSpeakerDetectorFacade *) 0 ;
+  uint8_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_SetNoiseGatingThreshold.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerDetectorFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerDetectorFacade_SetNoiseGatingThreshold" "', argument " "1"" of type '" "ActiveSpeakerDetectorFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerDetectorFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ActiveSpeakerDetectorFacade_SetNoiseGatingThreshold" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = static_cast< uint8_t >(val2);
+  (arg1)->SetNoiseGatingThreshold(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_SetMinActivationScore(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  ActiveSpeakerDetectorFacade *arg1 = (ActiveSpeakerDetectorFacade *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_SetMinActivationScore.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerDetectorFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerDetectorFacade_SetMinActivationScore" "', argument " "1"" of type '" "ActiveSpeakerDetectorFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerDetectorFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ActiveSpeakerDetectorFacade_SetMinActivationScore" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetMinActivationScore(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -17367,6 +17475,9 @@ SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Tell", _wrap_PlayerFacade
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Stop", _wrap_PlayerFacade_Stop);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Close", _wrap_PlayerFacade_Close);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetMinChangePeriod", _wrap_ActiveSpeakerDetectorFacade_SetMinChangePeriod);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetMaxAccumulatedScore", _wrap_ActiveSpeakerDetectorFacade_SetMaxAccumulatedScore);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetNoiseGatingThreshold", _wrap_ActiveSpeakerDetectorFacade_SetNoiseGatingThreshold);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetMinActivationScore", _wrap_ActiveSpeakerDetectorFacade_SetMinActivationScore);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "AddIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "RemoveIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup);
 

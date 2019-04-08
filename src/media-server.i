@@ -1093,6 +1093,9 @@ class ActiveSpeakerDetectorFacade
 public:	
 	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object);
 	void SetMinChangePeriod(uint32_t minChangePeriod);
+	void SetMaxAccumulatedScore(uint64_t maxAcummulatedScore);
+	void SetNoiseGatingThreshold(uint8_t noiseGatingThreshold);
+	void SetMinActivationScore(uint32_t minActivationScore);
 	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming);
 	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming);
 };
