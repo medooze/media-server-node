@@ -1841,7 +1841,7 @@ public:
 	}
 	virtual ~RTPSessionFacade() = default;
 	//TODO: Make async
-	virtual int Enqueue(const RTPPacket::shared& packet)	 { return SendPacket(*packet); }
+	virtual int Enqueue(const RTPPacket::shared& packet)	 { return SendPacket(packet); }
 	virtual int SendPLI(DWORD ssrc)				 { return RequestFPU();}
 	
 	int Init(const Properties &properties)
@@ -5378,7 +5378,7 @@ static SwigV8ReturnValue _wrap_MediaFrame_AddRtpPacket(const SwigV8Arguments &ar
   arg3 = static_cast< uint32_t >(val3);
   res4 = SWIG_ConvertPtr(args[2], &argp4,SWIGTYPE_p_unsigned_char, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MediaFrame_AddRtpPacket" "', argument " "4"" of type '" "uint8_t *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MediaFrame_AddRtpPacket" "', argument " "4"" of type '" "uint8_t const *""'"); 
   }
   arg4 = reinterpret_cast< uint8_t * >(argp4);
   ecode5 = SWIG_AsVal_unsigned_SS_int(args[3], &val5);
@@ -5386,7 +5386,7 @@ static SwigV8ReturnValue _wrap_MediaFrame_AddRtpPacket(const SwigV8Arguments &ar
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MediaFrame_AddRtpPacket" "', argument " "5"" of type '" "uint32_t""'");
   } 
   arg5 = static_cast< uint32_t >(val5);
-  (arg1)->AddRtpPacket(arg2,arg3,arg4,arg5);
+  (arg1)->AddRtpPacket(arg2,arg3,(uint8_t const *)arg4,arg5);
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -5885,7 +5885,7 @@ static SwigV8ReturnValue _wrap_MediaFrame_SetMedia(const SwigV8Arguments &args) 
   arg1 = reinterpret_cast< MediaFrame * >(argp1);
   res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MediaFrame_SetMedia" "', argument " "2"" of type '" "uint8_t *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MediaFrame_SetMedia" "', argument " "2"" of type '" "uint8_t const *""'"); 
   }
   arg2 = reinterpret_cast< uint8_t * >(argp2);
   ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
@@ -5893,7 +5893,7 @@ static SwigV8ReturnValue _wrap_MediaFrame_SetMedia(const SwigV8Arguments &args) 
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MediaFrame_SetMedia" "', argument " "3"" of type '" "uint32_t""'");
   } 
   arg3 = static_cast< uint32_t >(val3);
-  (arg1)->SetMedia(arg2,arg3);
+  (arg1)->SetMedia((uint8_t const *)arg2,arg3);
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -5931,7 +5931,7 @@ static SwigV8ReturnValue _wrap_MediaFrame_AppendMedia(const SwigV8Arguments &arg
   arg1 = reinterpret_cast< MediaFrame * >(argp1);
   res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MediaFrame_AppendMedia" "', argument " "2"" of type '" "uint8_t *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MediaFrame_AppendMedia" "', argument " "2"" of type '" "uint8_t const *""'"); 
   }
   arg2 = reinterpret_cast< uint8_t * >(argp2);
   ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
@@ -5939,7 +5939,7 @@ static SwigV8ReturnValue _wrap_MediaFrame_AppendMedia(const SwigV8Arguments &arg
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MediaFrame_AppendMedia" "', argument " "3"" of type '" "uint32_t""'");
   } 
   arg3 = static_cast< uint32_t >(val3);
-  result = (uint32_t)(arg1)->AppendMedia(arg2,arg3);
+  result = (uint32_t)(arg1)->AppendMedia((uint8_t const *)arg2,arg3);
   jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
   
   

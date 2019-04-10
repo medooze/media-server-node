@@ -103,6 +103,7 @@
 							"media-server/src/rtp/RTCPRTPFeedback.cpp",
 							"media-server/src/rtp/RTPDepacketizer.cpp",
 							"media-server/src/rtp/RTPPacket.cpp",
+							"media-server/src/rtp/RTPPayload.cpp",
 							"media-server/src/rtp/RTCPCompoundPacket.cpp",
 							"media-server/src/rtp/RTCPNACK.cpp",
 							"media-server/src/rtp/RTCPReceiverReport.cpp",
