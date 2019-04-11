@@ -1841,7 +1841,8 @@ public:
 	}
 	virtual ~RTPSessionFacade() = default;
 	//TODO: Make async
-	virtual int Enqueue(const RTPPacket::shared& packet)	 { return SendPacket(packet); }
+	virtual int Enqueue(const RTPPacket::shared& packet)  { return SendPacket(packet); }
+	virtual int Enqueue(const RTPPacket::shared& packet,std::function<RTPPacket::shared(const RTPPacket::shared&)> modifier) { return SendPacket(modifier(packet)); }
 	virtual int SendPLI(DWORD ssrc)				 { return RequestFPU();}
 	
 	int Init(const Properties &properties)
