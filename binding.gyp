@@ -147,7 +147,7 @@
 									"xcode_settings": {
 										"CLANG_CXX_LIBRARY": "libc++",
 										"CLANG_CXX_LANGUAGE_STANDARD": "c++17",
-										"OTHER_CFLAGS": [ "-Wno-aligned-allocation-availability","-Wno-aligned-allocation-unavailable","-march=native"]
+										"OTHER_CFLAGS": [ "-march=native"]
 									},
 									"include_dirs": [  "media-server/ext/crc32c/config/Darwin-i386" ],
 								}],
@@ -157,10 +157,7 @@
 									},{
 										"include_dirs": [  "media-server/ext/crc32c/config/Linux-arm64" ]
 									}]],
-									"cflags_cc":  [
-										"-faligned-new",
-										"-DHAVE_STD_ALIGNED_ALLOCC",
-									]
+									"cflags_cc":  []
 								}]
 						]
 					},
@@ -176,7 +173,7 @@
 									"xcode_settings": {
 										"CLANG_CXX_LIBRARY": "libc++",
 										"CLANG_CXX_LANGUAGE_STANDARD": "c++17",
-										"OTHER_CFLAGS": [ "-Wno-aligned-allocation-unavailable","-march=native"]
+										"OTHER_CFLAGS": [ "-march=native"]
 									},
 							}],
 						]
