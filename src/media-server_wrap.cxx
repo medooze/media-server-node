@@ -1920,7 +1920,7 @@ public:
 				//Set ssrc of video
 				packet.SetSSRC(video.media.ssrc);
 				//Multiplex
-				video.AddPacket(packet.Clone());
+				video.AddPacket(packet.Clone(),0);
 				break;
 			case MediaFrame::Audio:
 				//Update stats
@@ -1928,7 +1928,7 @@ public:
 				//Set ssrc of audio
 				packet.SetSSRC(audio.media.ssrc);
 				//Multiplex
-				audio.AddPacket(packet.Clone());
+				audio.AddPacket(packet.Clone(),0);
 				break;
 			default:
 				///Ignore
