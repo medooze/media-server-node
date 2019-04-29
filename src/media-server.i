@@ -837,9 +837,19 @@ struct RTPSender {};
 %nodefaultdtor RTPReceiver; 
 struct RTPReceiver {};
 
+%{
+using RTPIncomingMediaStreamListener = RTPIncomingMediaStream::Listener;
+%}
+%nodefaultctor RTPIncomingMediaStreamListener;
+struct RTPIncomingMediaStreamListener
+{
+};
+
 %nodefaultctor RTPIncomingMediaStream;
 %nodefaultdtor RTPIncomingMediaStream; 
-struct RTPIncomingMediaStream {};
+struct RTPIncomingMediaStream 
+{
+};
 
 struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 {
@@ -856,7 +866,15 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	DWORD maxWaitedTime;
 	double avgWaitedTime;
 	
+	void AddListener(RTPIncomingMediaStreamListener* listener);
+	void RemoveListener(RTPIncomingMediaStreamListener* listener);
+	
 	void Update();
+};
+
+struct RTPIncomingMediaStreamMultiplexer : public RTPIncomingMediaStream, public RTPIncomingMediaStreamListener
+{
+	RTPIncomingMediaStreamMultiplexer(DWORD ssrc, TimeService& TimeService);
 };
 
 %typemap(in) v8::Handle<v8::Object> {
@@ -903,6 +921,7 @@ public:
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
 	bool SetAffinity(int cpu);
+	TimeService& GetTimeService();
 };
 
 %include "../media-server/include/UDPReader.h"

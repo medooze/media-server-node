@@ -66,6 +66,8 @@ tap.test("ActiveSpeaker",async function(suite){
 		activeSpeakerDetector.setMinActivationScore(100);
 		//Stop it
 		activeSpeakerDetector.stop();
+		//Done
+		test.done();
 	});
 	
 	suite.test("add speaker",async function(test){
