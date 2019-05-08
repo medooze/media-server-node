@@ -176,63 +176,6 @@ Returns **[StreamerSession][12]** The new streaming session
 
 Stop all streaming sessions and frees resources
 
-## RecorderTrack
-
-Track of the recorder associated to an incoming strem track
-
-### getId
-
-Get recorder track id
-
-### getTrack
-
-Get incoming stream track
-
-Returns **[IncomingStreamTrack][13]** 
-
-### getEncoding
-
-Get incoming encoding
-
-Returns **[Object][4]** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[RecorderTrack][14]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[IncomingStream][10]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[RecorderTrack][14]** 
-
-### stop
-
-Stop recording this track
-
 ## Refresher
 
 Periodically request an I frame on all incoming stream or tracks
@@ -276,11 +219,68 @@ Remove event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[OutgoingStream][15]** 
+Returns **[OutgoingStream][14]** 
 
 ### stop
 
 Stop refresher
+
+## RecorderTrack
+
+Track of the recorder associated to an incoming strem track
+
+### getId
+
+Get recorder track id
+
+### getTrack
+
+Get incoming stream track
+
+Returns **[IncomingStreamTrack][13]** 
+
+### getEncoding
+
+Get incoming encoding
+
+Returns **[Object][4]** 
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[RecorderTrack][15]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[IncomingStream][10]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[RecorderTrack][15]** 
+
+### stop
+
+Stop recording this track
 
 ## Transponder
 
@@ -486,7 +486,7 @@ Start recording and incoming
 
 -   `incomingStreamOrTrack` **([IncomingStream][10] \| [IncomingStreamTrack][13])** Incomining stream or track to be recordeds
 
-Returns **[Array][16]&lt;[RecorderTrack][14]>** 
+Returns **[Array][16]&lt;[RecorderTrack][15]>** 
 
 ### stop
 
@@ -805,7 +805,7 @@ Remove event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[OutgoingStream][15]** 
+Returns **[OutgoingStream][14]** 
 
 ### getTracks
 
@@ -854,7 +854,7 @@ Create new track from a TrackInfo object and add it to this stream
         -   `params.ssrcs.fec` **[Number][11]?** ssrc for the fec video track
 -   `trackInfo` **TrackInfo** Track info object
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][14]** The new outgoing stream
 
 Returns **OuggoingStreamTrack** 
 
@@ -1415,6 +1415,12 @@ Remove event listener
 
 Returns **[Transport][8]** 
 
+### getDTLSSatate
+
+Get current dtls state for transport
+
+Returns **[String][3]** DTLS connection state as per the w3c spec  "new", "connecting", "connected", "closed", "failed"
+
 ### getLocalDTLSInfo
 
 Get transport local DTLS info
@@ -1476,7 +1482,7 @@ Create new outgoing stream in this transport
             -   `params.video.ssrcs.rtx` **[Number][11]?** ssrc for the rtx video track
             -   `params.video.ssrcs.fec` **[Number][11]?** ssrc for the fec video track
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][14]** The new outgoing stream
 
 ### createOutgoingStreamTrack
 
@@ -1560,7 +1566,7 @@ Create new outgoing stream and attach to the incoming stream
 
 -   `incomingStream` **[IncomingStream][10]** the incoming stream to be published in this transport
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][14]** The new outgoing stream
 
 ### stop
 
@@ -1712,9 +1718,9 @@ Removes the track from the incoming stream and also detaches any attached outgoi
 
 [13]: #incomingstreamtrack
 
-[14]: #recordertrack
+[14]: #outgoingstream
 
-[15]: #outgoingstream
+[15]: #recordertrack
 
 [16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 

@@ -550,6 +550,13 @@ public:
 			
 	}
 	
+	virtual void onBye(RTPIncomingMediaStream* group) 
+	{
+		if(depacketizer)
+			//Skip current
+			depacketizer->ResetFrame();
+	}
+	
 	virtual void onEnded(RTPIncomingMediaStream* group) 
 	{
 		if (incomingSource==group)
@@ -589,6 +596,61 @@ private:
 	RTPIncomingMediaStream* incomingSource;
 };
 
+class DTLSICETransportListener :
+	public DTLSICETransport::Listener
+{
+public:
+	DTLSICETransportListener(v8::Handle<v8::Object> object)
+		: persistent(object)
+	{
+		
+	}
+	
+	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[1];
+			
+			switch(state)
+			{
+				case DTLSICETransport::DTLSState::New:
+					//Create local args
+					argv2[i++] = Nan::New("new").ToLocalChecked();
+					break;
+				case DTLSICETransport::DTLSState::Connecting:
+					//Create local args
+					argv2[i++] = Nan::New("connecting").ToLocalChecked();
+					break;
+				case DTLSICETransport::DTLSState::Connected:
+					//Create local args
+					argv2[i++] = Nan::New("connected").ToLocalChecked();
+					break;
+				case DTLSICETransport::DTLSState::Closed:
+					//Create local args
+					argv2[i++] = Nan::New("closed").ToLocalChecked();
+					break;
+				case DTLSICETransport::DTLSState::Failed:
+					//Create local args
+					argv2[i++] = Nan::New("failed").ToLocalChecked();
+					break;
+			}
+
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ondtlsstate").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		
+		});
+	}
+
+private:
+	Nan::Persistent<v8::Object> persistent;
+};
 
 class SenderSideEstimatorListener : 
 	public RemoteRateEstimator::Listener
@@ -718,12 +780,13 @@ public:
 			ScopedLock lock(mutex);
 			ActiveSpeakerDetector::Accumulate(packet->GetSSRC(), packet->GetVAD(),packet->GetLevel(), getTimeMS());
 		}
-	}		
-	
+	}	
+	virtual void onBye(RTPIncomingMediaStream* group) 
+	{
+	}
 	
 	virtual void onEnded(RTPIncomingMediaStream* group) override
 	{
-		
 	}
 private:
 	Mutex mutex;
@@ -945,11 +1008,18 @@ public:
 	TimeService& GetTimeService();
 };
 
+class DTLSICETransportListener
+{
+public:
+	DTLSICETransportListener(v8::Handle<v8::Object> object);
+};
 
 %nodefaultctor DTLSICETransport; 
 class DTLSICETransport
 {
 public:
+	void SetListener(DTLSICETransportListener* listener);
+
 	void Start();
 	void Stop();
 	
