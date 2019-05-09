@@ -126,6 +126,7 @@
 							"media-server/src/PCAPTransportEmulator.cpp",
 							"media-server/src/remoteratecontrol.cpp",
 							"media-server/src/remoterateestimator.cpp",
+							"media-server/src/SendSideBandwidthEstimation.cpp",
 						],
 						"dependencies":
 						[
