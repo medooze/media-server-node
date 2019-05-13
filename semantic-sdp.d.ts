@@ -7,7 +7,7 @@ declare module "semantic-sdp" {
   export interface SimulcastInfo {}
   export interface SourceGroupInfo {}
   export interface TrackEncodingInfo {}
-
+  
   export type MediaType = "audio" | "video";
   export interface SDPInfoParams {
     // ICE info object
@@ -20,15 +20,20 @@ declare module "semantic-sdp" {
     capabilities?: { [k: string]: DTLSInfo };
   }
 
-  export interface SupportedCodecs {
+  export interface RTCPFeedbackInfoPlain {
+    id: string;
+    params?: string[];
+  }
+
+  export interface SupportedMedia {
     // List of strings with the supported codec names
     codecs: { [id: string]: CodecInfo } | string[];
     // List of strings with the supported codec names
     extensions: string[];
     // Simulcast is enabled
-    simulcast: boolean;
+    simulcast?: boolean;
     // Supported RTCP feedback params
-    rtcpfbs: string[];
+    rtcpfbs: RTCPFeedbackInfoPlain[];
     // If rtx is supported for codecs (only needed if passing codec names instead of CodecInfo)
     rtx?: boolean;
   }
@@ -39,7 +44,13 @@ declare module "semantic-sdp" {
     | "recvonly"
     | "inactive";
 
-  export interface CodecInfoPlain {}
+  export interface CodecInfoPlain {
+    codec: string;
+    type: string;
+    rtx?: number;
+    params?: { [k: string]: string };
+    rtcpfbs: RTCPFeedbackInfoPlain[];
+  }
   export interface StreamInfoPlain {
     id: string;
     tracks: TrackInfoPlain[];
@@ -539,7 +550,7 @@ declare module "semantic-sdp" {
      * @param {Array<String>} supported.rtcpfbs - Supported RTCP feedback params
      * @return {MediaInfo}
      */
-    answer(supported: SupportedCodecs | null): MediaInfo;
+    answer(supported: SupportedMedia | null): MediaInfo;
 
     /**
      * Get Simulcast info
@@ -563,7 +574,7 @@ declare module "semantic-sdp" {
      * @param {Array<String>} supported.extensions - List of strings with the supported codec names
      * @return {MediaInfo}
      */
-    static create(type: string, supported: SupportedCodecs | null): MediaInfo;
+    static create(type: MediaType, supported: SupportedMedia | null): MediaInfo;
 
     /**
      * Expands a plain JSON object containing an MediaInfo
@@ -776,5 +787,160 @@ declare module "semantic-sdp" {
      * @returns {Direction} Reversed direction
      */
     static reverse(direction: Direction): Direction;
+  }
+
+  export class CodecInfo {
+    /**
+     * Create a clone of this Codec info object
+     * @returns {CodecInfo}
+     */
+    clone(): CodecInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): CodecInfoPlain;
+
+    /**
+     * Set the RTX payload type number for this codec
+     * @param {Number} rtx
+     */
+    setRTX(rtx: number): void;
+
+    /**
+     * Get payload type for codec
+     * @returns {Number}
+     */
+    getType(): number;
+
+    /**
+     * Get payload type for codec
+     * @returns {Number}
+     */
+    getType(): number;
+
+    /**
+     * Set the payload type for codec
+     * @params {Number} type
+     */
+    setType(type: number): void;
+
+    /**
+     * Get codec name
+     * @returns {String}
+     */
+    getCodec(): string;
+
+    /**
+     * Get codec format parameters
+     */
+    getParams(): { [key: string]: string };
+
+    /*
+     * Add codec info params
+     * @returns {Object} params
+     */
+    addParams(params: { [key: string]: string }): void;
+
+    /**
+     * Add codec info param
+     * @param {String} key
+     * @param {String} value
+     */
+    addParam(key: string, value: string): void;
+
+    /**
+     * Check if codec has requested param
+     * @param {String} key
+     * @returns {Boolean}
+     */
+    hasParam(key: string): boolean;
+
+    /**
+     * Get param
+     * @param {String} key
+     * @param {String} defaultValue default value if param is not found
+     * @returns {Boolean}
+     */
+    getParam(key: string, defaultValue?: string): string;
+
+    /**
+     * Check if this codec has an associated RTX payload type
+     * @returns {Number}
+     */
+    hasRTX(): boolean;
+
+    /**
+     * Get the associated RTX payload type for this codec
+     * @returns {Number}
+     */
+    getRTX(): number;
+
+    /**
+     * Add an RTCP feedback parameter to this codec type
+     * @params {RTCPFeedbackInfo} rtcpfb - RTCP feedback info objetc
+     */
+    addRTCPFeedback(rtcpfb: RTCPFeedbackInfo): void;
+
+    /**
+     * Get all extensions rtcp feedback parameters in this codec info
+     * @returns {Set<RTCPFeedbackInfo>}
+     */
+    getRTCPFeedbacks(): Set<RTCPFeedbackInfo>;
+
+    /**
+     * Expands a plain JSON object containing an CodecInfo
+     * @param {Object} plain JSON object
+     * @returns {CodecInfo} Parsed Codec info
+     */
+    static expand(plain: CodecInfoPlain): CodecInfo;
+
+    /**
+     * Create a map of CodecInfo from codec names.
+     * Payload type is assigned dinamically
+     * @param {Array<String>} names
+     * @return Map<String,CodecInfo>
+     * @params {Boolean} rtx - Should we add rtx?
+     * @param {Array<String>} params - RTCP feedback params
+     */
+    static MapFromNames(
+      names: string[],
+      rtx: boolean,
+      rtcpfbs: string[]
+    ): Map<string, CodecInfo>;
+  }
+
+  export class RTCPFeedbackInfo {
+    /**
+     * Create a clone of this RTCPFeedbackParameter info object
+     * @returns {RTCPFeedbackInfo}
+     */
+    clone(): RTCPFeedbackInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): RTCPFeedbackInfoPlain;
+
+    /**
+     * Get id fo the rtcp feedback parameter
+     * @returns {String}
+     */
+    getId(): string;
+
+    /**
+     * Get codec  rtcp feedback parameters
+     * @returns {Array<String>} parameters
+     */
+    getParams(): string[];
+
+    /**
+     * Expands a plain JSON object containing an CodecInfo
+     * @param {Object} plain JSON object
+     * @returns {CodecInfo} Parsed Codec info
+     */
+    static expand(plain: RTCPFeedbackInfoPlain): RTCPFeedbackInfo;
   }
 }
