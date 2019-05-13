@@ -4,7 +4,6 @@ declare module "medooze-media-server" {
   //   Unfinished interfaces
   export interface TransactionManager {}
   export interface IncomingStreamTrackMirrored {}
-  export interface ActiveSpeakerDetector {}
 
   /** "min","max" and "avg" packet waiting times in rtp buffer before delivering them */
   export interface WaitTimeStats {
@@ -1795,6 +1794,85 @@ declare module "medooze-media-server" {
       event: "transport",
       listener: (transport: Transport) => any
     ): SDPManager;
+  }
+
+  export interface ActiveSpeakerDetector {
+    /**
+     * Set minimum period between active speaker changes
+     * @param {Number} minChangePeriod
+     */
+    setMinChangePeriod(minChangePeriod: number): void;
+
+    /**
+     * Maximux activity score accumulated by an speaker
+     * @param {Number} maxAcummulatedScore
+     */
+    setMaxAccumulatedScore(maxAcummulatedScore: number): void;
+
+    /**
+     * Minimum db level to not be considered as muted
+     * @param {Number} noiseGatingThreshold
+     */
+    setNoiseGatingThreshold(noiseGatingThreshold: number): void;
+
+    /**
+     * Set minimum activation score to be electible as active speaker
+     * @param {Number} minActivationScore
+     */
+    setMinActivationScore(minActivationScore: number): void;
+
+    /**
+     * Add incoming track for speaker detection
+     * @param {IncomingStreamTrack} track
+     */
+    addSpeaker(track: IncomingStreamTrack): void;
+
+    /**
+     * Remove track from speaker detection
+     * @param {IncomingStreamTrakc} track
+     */
+    removeSpeaker(track: IncomingStreamTrack): void;
+
+    /**
+     * Stop this transponder, will dettach the OutgoingStreamTrack
+     */
+    stop(): void;
+
+    /**
+     * Add event listener
+     * @param {String} event	- Event name
+     * @param {function} listener	- Event listener
+     * @returns {IncomingStreamTrack}
+     */
+    on(
+      event: "activespeakerchanged",
+      listener: (track: IncomingStreamTrack) => any
+    ): ActiveSpeakerDetector;
+    on(event: "stopped", listener: () => any): ActiveSpeakerDetector;
+
+    /**
+     * Add event listener once
+     * @param {String} event	- Event name
+     * @param {function} listener	- Event listener
+     * @returns {IncomingStream}
+     */
+    once(
+      event: "activespeakerchanged",
+      listener: (track: IncomingStreamTrack) => any
+    ): ActiveSpeakerDetector;
+    once(event: "stopped", listener: () => any): ActiveSpeakerDetector;
+
+    /**
+     * Remove event listener
+     * @param {String} event	- Event name
+     * @param {function} listener	- Event listener
+     * @returns {IncomingStreamTrack}
+     */
+    off(
+      event: "activespeakerchanged",
+      listener: (track: IncomingStreamTrack) => any
+    ): ActiveSpeakerDetector;
+    off(event: "stopped", listener: () => any): ActiveSpeakerDetector;
   }
 
   let MediaServer: MediaServer;
