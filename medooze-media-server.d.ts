@@ -3,7 +3,6 @@ declare module "medooze-media-server" {
 
   //   Unfinished interfaces
   export interface TransactionManager {}
-  export interface IncomingStreamTrackMirrored {}
 
   /** "min","max" and "avg" packet waiting times in rtp buffer before delivering them */
   export interface WaitTimeStats {
@@ -709,7 +708,7 @@ declare module "medooze-media-server" {
      */
     mirrorIncomingStreamTrack(
       incomingStreamTrack: IncomingStreamTrack
-    ): IncomingStreamTrackMirrored;
+    ): IncomingStreamTrack;
 
     /**
      * Create new SDP manager, this object will manage the SDP O/A for you and produce a suitable trasnport.
