@@ -3,9 +3,7 @@ declare module "medooze-media-server" {
 
   //   Unfinished interfaces
   export interface TransactionManager {}
-  export interface Capabilities {}
   export interface IncomingStreamTrackMirrored {}
-  export interface SDPManager {}
   export interface ActiveSpeakerDetector {}
 
   /** "min","max" and "avg" packet waiting times in rtp buffer before delivering them */
@@ -14,6 +12,11 @@ declare module "medooze-media-server" {
     max: number;
     avg: number;
   }
+
+  export type MediaCapabilities = {
+    audio?: SemanticSDP.SupportedMedia;
+    video?: SemanticSDP.SupportedMedia;
+  };
 
   export interface CreateStreamerSessionOptions {
     /** Local parameters */
@@ -678,7 +681,7 @@ declare module "medooze-media-server" {
      * @param {Object} capabilities - Media capabilities as required by SDPInfo.create
      * @returns {SDPInfo} - SDP offer
      */
-    createOffer(capabilities: Capabilities): SemanticSDP.SDPInfo;
+    createOffer(capabilities: MediaCapabilities): SemanticSDP.SDPInfo;
 
     /**
      * Create new peer connection server to manage remote peer connection clients
@@ -688,7 +691,7 @@ declare module "medooze-media-server" {
      */
     createPeerConnectionServer(
       tm: TransactionManager,
-      capabilities: Capabilities
+      capabilities: MediaCapabilities
     ): PeerConnectionServer;
 
     /**
@@ -717,7 +720,7 @@ declare module "medooze-media-server" {
      */
     createSDPManager(
       sdpSemantics: "unified-plan" | "plan-b",
-      capabilities: Capabilities
+      capabilities: MediaCapabilities
     ): SDPManager;
 
     /**
@@ -803,7 +806,7 @@ declare module "medooze-media-server" {
      * Return the encoding that is being forwarded
      * @returns {String} encodingId
      */
-    getSelectedtEncoding(): string;
+    getSelectedEncoding(): string;
 
     /**
      * Return the spatial layer id that is being forwarded
@@ -1619,7 +1622,7 @@ declare module "medooze-media-server" {
      * @returns {StreamerSession} The new streaming session
      */
     createSession(
-      media: SemanticSDP.MediaInfo | SemanticSDP.MediaInfoPlain,
+      media: SemanticSDP.MediaInfo,
       params: CreateStreamerSessionOptions
     ): StreamerSession;
 
@@ -1725,6 +1728,73 @@ declare module "medooze-media-server" {
      */
     off(event: "stopped", listener: (r: Refresher) => any): Refresher;
     off(event: "refreshing", listener: (r: Refresher) => any): Refresher;
+  }
+
+  export interface SDPManager {
+    /**
+     * Get current SDP offer/answer state
+     * @returns {String} one of "initial","local-offer","remote-offer","stabable".
+     */
+    getState(): "initial" | "local-offer" | "remote-offer" | "stable";
+
+    /**
+     * Returns the Transport object created by the SDP O/A
+     * @returns {Transport}
+     */
+    getTransport(): Transport;
+
+    /*
+     * Create local description
+     * @return {String}
+     */
+    createLocalDescription(): string;
+
+    /**
+     * Process remote offer
+     */
+    processRemoteDescription(sdp: string): void;
+
+    /**
+     * Add event listener
+     * @param {String} event	- Event name
+     * @param {function} listeener	- Event listener
+     * @returns {Transport}
+     */
+    on(
+      event: "renegotiationneeded",
+      listener: (transport: Transport) => any
+    ): SDPManager;
+    on(event: "transport", listener: (transport: Transport) => any): SDPManager;
+
+    /**
+     * Add event listener once
+     * @param {String} event	- Event name
+     * @param {function} listener	- Event listener
+     * @returns {IncomingStream}
+     */
+    once(
+      event: "renegotiationneeded",
+      listener: (transport: Transport) => any
+    ): SDPManager;
+    once(
+      event: "transport",
+      listener: (transport: Transport) => any
+    ): SDPManager;
+
+    /**
+     * Remove event listener
+     * @param {String} event	- Event name
+     * @param {function} listener	- Event listener
+     * @returns {Transport}
+     */
+    off(
+      event: "renegotiationneeded",
+      listener: (transport: Transport) => any
+    ): SDPManager;
+    off(
+      event: "transport",
+      listener: (transport: Transport) => any
+    ): SDPManager;
   }
 
   let MediaServer: MediaServer;
