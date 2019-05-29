@@ -61,8 +61,6 @@ We intend to implement support the following features:
 - [x] [Frame Marking] (https://tools.ietf.org/html/draft-ietf-avtext-framemarking-04)
 - [x] [PERC double encryption] (https://tools.ietf.org/html/draft-ietf-perc-double-03)
 - [x] Plain RTP broadcasting/streaming
-- [ ] [Layer Refresh Request (LRR) RTCP Feedback Message] (https://datatracker.ietf.org/doc/html/draft-ietf-avtext-lrr-04)
-- [ ] MPEG DASH
 - [ ] Datachannels
 
 ## Media Server Client
@@ -74,7 +72,7 @@ You can use the [Media Server Client lib](https://github.com/medooze/media-serve
 Sergio Garcia Murillo @ Medooze 
 
 ## Contributing
-To get started, [Sign the Contributor License Agreement](https://www.clahub.com/agreements/medooze/media-server-node").
+To get started, [Sign the Contributor License Agreement](https://www.clahub.com/agreements/medooze/media-server-node).
 
 ## License
 MIT
