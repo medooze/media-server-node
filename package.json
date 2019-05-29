@@ -3,6 +3,7 @@
   "version": "0.64.5",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
+  "types": "./medooze-media-server.d.ts",
   "scripts": {
     "configure": "node-gyp configure",
     "swig": "swig -javascript -node -c++ src/media-server.i",
