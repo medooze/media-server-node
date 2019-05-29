@@ -1,14 +1,6 @@
-declare module "semantic-sdp" {
-  //   Unfinished interfaces
-  export interface DTLSInfo {}
-  export interface ICEInfo {}
-  export interface CodecInfo {}
-  export interface RIDInfo {}
-  export interface SimulcastInfo {}
-  export interface SourceGroupInfo {}
-  export interface TrackEncodingInfo {}
-  
-  export type MediaType = "audio" | "video";
+declare module 'semantic-sdp' {
+  export type MediaType = 'audio'|'video';
+
   export interface SDPInfoParams {
     // ICE info object
     ice?: ICEInfo;
@@ -17,7 +9,7 @@ declare module "semantic-sdp" {
     // Array of Ice candidates
     candidates?: CandidateInfo[];
     // Capabilities for each media type
-    capabilities?: { [k: string]: DTLSInfo };
+    capabilities?: {[k: string]: SupportedMedia};
   }
 
   export interface RTCPFeedbackInfoPlain {
@@ -27,43 +19,48 @@ declare module "semantic-sdp" {
 
   export interface SupportedMedia {
     // List of strings with the supported codec names
-    codecs: { [id: string]: CodecInfo } | string[];
+    codecs: {[id: string]: CodecInfo}|string[];
     // List of strings with the supported codec names
     extensions: string[];
     // Simulcast is enabled
     simulcast?: boolean;
     // Supported RTCP feedback params
     rtcpfbs: RTCPFeedbackInfoPlain[];
-    // If rtx is supported for codecs (only needed if passing codec names instead of CodecInfo)
+    // If rtx is supported for codecs (only needed if passing codec names
+    // instead of CodecInfo)
     rtx?: boolean;
   }
 
-  export type DirectionPlain =
-    | "sendrecv"
-    | "sendonly"
-    | "recvonly"
-    | "inactive";
+  export type DirectionPlain =|'sendrecv'|'sendonly'|'recvonly'|'inactive';
 
   export interface CodecInfoPlain {
     codec: string;
     type: string;
     rtx?: number;
-    params?: { [k: string]: string };
+    params?: {[k: string]: string};
     rtcpfbs: RTCPFeedbackInfoPlain[];
   }
   export interface StreamInfoPlain {
     id: string;
     tracks: TrackInfoPlain[];
   }
-  export interface RIDInfoPlain {}
-  export interface SimulcastInfoPlain {}
+  export interface RIDInfoPlain {
+    id: string;
+    direction: DirectionPlain;
+    formats: number[];
+    params: {[k: string]: string};
+  }
+  export interface SimulcastInfoPlain {
+    send: SimulcastStreamInfo[][];
+    recv: SimulcastStreamInfo[][];
+  }
   export interface MediaInfoPlain {
     id: string;
     type: MediaType;
     direction: DirectionPlain;
     bitrate?: number;
     codecs: CodecInfoPlain[];
-    extensions?: { [extID: number]: string };
+    extensions?: {[extID: number]: string};
     rids?: RIDInfoPlain[];
     simulcast?: SimulcastInfoPlain;
   }
@@ -78,10 +75,27 @@ declare module "semantic-sdp" {
     relAddr?: string;
     relPort?: string;
   }
-  export interface SourceGroupInfoPlain {}
-  export interface ICEInfoPlain {}
-  export interface DTLSInfoPlain {}
-  export interface TrackEncodingInfoPlain {}
+  export interface SourceGroupInfoPlain {
+    semantics: string;
+    ssrcs: number[];
+  }
+  export interface ICEInfoPlain {
+    ufrag: string;
+    pwd: string;
+    lite?: boolean;
+    endOfCandidates?: boolean;
+  }
+  export interface DTLSInfoPlain {
+    setup: string;
+    hash: string;
+    fingerprint: string;
+  }
+  export interface TrackEncodingInfoPlain {
+    id: string;
+    paused: boolean;
+    codecs: {[id: string]: CodecInfo};
+    params: {[k: string]: string};
+  }
   export interface TrackInfoPlain {
     id: string;
     media: MediaType;
@@ -98,6 +112,18 @@ declare module "semantic-sdp" {
     ice?: ICEInfoPlain;
     dtls?: DTLSInfoPlain;
   }
+
+  export interface SimulcastStreamInfoPlain {
+    id: string;
+    paused: boolean;
+  }
+
+  /**
+   * SDP semantic info object
+   *	This object represent the minimal information of an WebRTC SDP in a
+   *semantic hierarchy
+   * @namespace
+   */
   export class SDPInfo {
     /**
      * Process an SDP string and convert it to a semantic SDP info
@@ -127,7 +153,8 @@ declare module "semantic-sdp" {
      * @param {ICEInfo|Object} params.ice		- ICE info object
      * @param {DTLSInfo|Object} params.dtls	- DTLS info object
      * @params{Array<CandidateInfo> params.candidates - Array of Ice candidates
-     * @param {Map<String,DTLSInfo} params.capabilites - Capabilities for each media type
+     * @param {Map<String,DTLSInfo} params.capabilites - Capabilities for each
+     *     media type
      * @returns {SDPInfo} answer
      */
     static create(params: SDPInfoParams): SDPInfo;
@@ -261,7 +288,7 @@ declare module "semantic-sdp" {
      * Get first announced stream
      * @returns {StreamInfo}
      */
-    getFirstStream(): StreamInfo | null;
+    getFirstStream(): StreamInfo|null;
 
     /**
      * Announce a new stream in SDP
@@ -301,7 +328,8 @@ declare module "semantic-sdp" {
      * @param {ICEInfo} params.ice		- ICE info object
      * @param {DTLSInfo} params.dtls	- DTLS info object
      * @params{Array<CandidateInfo> params.candidates - Array of Ice candidates
-     * @param {Map<String,DTLSInfo} params.capabilites - Capabilities for each media type
+     * @param {Map<String,DTLSInfo} params.capabilites - Capabilities for each
+     *     media type
      * @returns {SDPInfo} answer
      */
     answer(params: SDPInfoParams): SDPInfo;
@@ -312,6 +340,11 @@ declare module "semantic-sdp" {
      */
     toString(): string;
   }
+
+  /**
+   * ICE candidate information
+   * @namespace
+   */
   export class CandidateInfo {
     /**
      * Expands a plain JSON object containing an CandidateInfo
@@ -321,16 +354,9 @@ declare module "semantic-sdp" {
     static expand(plain: CandidateInfoPlain): CandidateInfo;
 
     constructor(
-      foundation: string,
-      componentId: number,
-      transport: string,
-      priority: number,
-      address: string,
-      port: number,
-      type: string,
-      relAddr: string,
-      relPort: number
-    );
+        foundation: string, componentId: number, transport: string,
+        priority: number, address: string, port: number, type: string,
+        relAddr: string, relPort: number);
 
     /**
      * Check if the ice candadate has same info as us
@@ -406,6 +432,10 @@ declare module "semantic-sdp" {
     getRelPort(): number;
   }
 
+  /**
+   * Media information (relates to a m-line in SDP)
+   * @namespace
+   */
   export class MediaInfo {
     /**
      * Clone MediaInfo object
@@ -460,7 +490,7 @@ declare module "semantic-sdp" {
      * Set codec map
      * @param {Map<Number,CodecInfo> codecs - Map of codec info objecs
      */
-    setCodecs(codecs: { [id: number]: CodecInfo }): void;
+    setCodecs(codecs: {[id: number]: CodecInfo}): void;
 
     /**
      * Get codec for payload type number
@@ -487,7 +517,7 @@ declare module "semantic-sdp" {
      * Get all codecs in this media
      * @returns {Map<Number,CodecInfo>}
      */
-    getCodecs(): { [id: number]: CodecInfo };
+    getCodecs(): {[id: number]: CodecInfo};
 
     /**
      * Check if any of the codecs on the media description supports rtx
@@ -499,13 +529,13 @@ declare module "semantic-sdp" {
      * Get all extensions registered in  this media info
      * @returns {Map<Number,String>}
      */
-    getExtensions(): { [id: number]: string };
+    getExtensions(): {[id: number]: string};
 
     /**
      * Get all rids registered in  this media info
      * @returns {Map<String,RIDInfo>}
      */
-    getRIDs(): { [id: string]: RIDInfo };
+    getRIDs(): {[id: string]: RIDInfo};
 
     /**
      * Get rid info for id
@@ -541,16 +571,21 @@ declare module "semantic-sdp" {
     /**
      * Helper usefull for creating media info answers.
      * - Will reverse the direction
-     * - For each supported codec, it will change the payload type to match the offer and append it to the answer
-     * - For each supported extension, it will append the ones present on the offer with the id offered
-     * @param {Object} supported - Supported codecs and extensions to be included on answer
-     * @param {Map<String,CodecInfo>} supported.codecs - List of strings with the supported codec names
-     * @param {Set<String>} supported.extensions - List of strings with the supported codec names
+     * - For each supported codec, it will change the payload type to match the
+     * offer and append it to the answer
+     * - For each supported extension, it will append the ones present on the
+     * offer with the id offered
+     * @param {Object} supported - Supported codecs and extensions to be
+     *     included on answer
+     * @param {Map<String,CodecInfo>} supported.codecs - List of strings with
+     *     the supported codec names
+     * @param {Set<String>} supported.extensions - List of strings with the
+     *     supported codec names
      * @param {Boolean] supported.simulcast - Simulcast is enabled
      * @param {Array<String>} supported.rtcpfbs - Supported RTCP feedback params
      * @return {MediaInfo}
      */
-    answer(supported: SupportedMedia | null): MediaInfo;
+    answer(supported: SupportedMedia|null): MediaInfo;
 
     /**
      * Get Simulcast info
@@ -567,14 +602,18 @@ declare module "semantic-sdp" {
     /**
      * Helper factory for creating media info objects.
      * @param {String} - Media type
-     * @param {Object} supported - Supported media capabilities to be included on media info
-     * @param {Map<String,CodecInfo> | Array<String>} supported.codecs - Map or codecInfo or list of strings with the supported codec names
-     * @param {boolean] rtx - If rtx is supported for codecs (only needed if passing codec names instead of CodecInfo)
+     * @param {Object} supported - Supported media capabilities to be included
+     *     on media info
+     * @param {Map<String,CodecInfo> | Array<String>} supported.codecs - Map or
+     *     codecInfo or list of strings with the supported codec names
+     * @param {boolean] rtx - If rtx is supported for codecs (only needed if
+     *     passing codec names instead of CodecInfo)
      * @param {Object] rtcpbfs
-     * @param {Array<String>} supported.extensions - List of strings with the supported codec names
+     * @param {Array<String>} supported.extensions - List of strings with the
+     *     supported codec names
      * @return {MediaInfo}
      */
-    static create(type: MediaType, supported: SupportedMedia | null): MediaInfo;
+    static create(type: MediaType, supported: SupportedMedia|null): MediaInfo;
 
     /**
      * Expands a plain JSON object containing an MediaInfo
@@ -584,6 +623,10 @@ declare module "semantic-sdp" {
     static expand(plain: MediaInfoPlain): MediaInfo;
   }
 
+  /**
+   * Media Stream information
+   * @namespace
+   */
   export class StreamInfo {
     /**
      * Create a clone of this stream info object
@@ -628,13 +671,13 @@ declare module "semantic-sdp" {
      * @param {String} media - Media type "audio"|"video"
      * @returns {TrackInfo}
      */
-    getFirstTrack(media: MediaType): TrackInfo | null;
+    getFirstTrack(media: MediaType): TrackInfo|null;
 
     /**
      * Get all tracks from the media stream
      * @returns {Map.TrackInfo}
      */
-    getTracks(): { [trackID: string]: TrackInfo };
+    getTracks(): {[trackID: string]: TrackInfo};
 
     /**
      * Remove all tracks from media sream
@@ -656,6 +699,10 @@ declare module "semantic-sdp" {
     static expand(plain: TrackInfoPlain): TrackInfo;
   }
 
+  /**
+   * Media Track information
+   * @namespace
+   */
   export class TrackInfo {
     /**
      * Create a clone of this track info object
@@ -676,13 +723,15 @@ declare module "semantic-sdp" {
     getMedia(): MediaType;
 
     /**
-     * Set the media line id this track belongs to. Set to null for first media line of the media type
+     * Set the media line id this track belongs to. Set to null for first media
+     * line of the media type
      * @param {String} mediaId		- MediaInfo id
      */
     setMediaId(mediaId: string): void;
 
     /**
-     * Returns the MediaInfo id this track belongs two (unified) or undefined if indiferent (plan B)
+     * Returns the MediaInfo id this track belongs two (unified) or undefined if
+     * indiferent (plan B)
      * @returns {String}
      */
     getMediaId(): string;
@@ -751,7 +800,8 @@ declare module "semantic-sdp" {
 
     /**
      * Add simulcast encoding information for this track
-     * @param {Array<Array<TrackEncodingInfo>>} encodings - Simulcast encoding info
+     * @param {Array<Array<TrackEncodingInfo>>} encodings - Simulcast encoding
+     *     info
      */
     setEncodings(encodings: TrackEncodingInfo[][]): void;
 
@@ -763,6 +813,42 @@ declare module "semantic-sdp" {
     static expand(plain: TrackInfoPlain): TrackInfo;
   }
 
+  /**
+   * Enum for Setup values.
+   * @readonly
+   * @enum {number}
+   */
+  export class Setup {
+    /**
+     * Get Setup by name
+     * @memberOf Setup
+     * @param {string} setup
+     * @returns {Setup}
+     */
+    static byValue(setup: string): Setup;
+
+    /**
+     * Get Setup name
+     * @memberOf Setup
+     * @param {Setup} setup
+     * @returns {String}
+     */
+    static toString(setup: Setup): string;
+
+    /**
+     * Get reverse Setup
+     * @memberOf Setup
+     * @param {Setup} setup
+     * @returns {Setup}
+     */
+    static reverse(setup: Setup): Setup;
+  }
+
+  /**
+   * Enum for Direction values.
+   * @readonly
+   * @enum {number}
+   */
   export class Direction {
     /**
      * Get Direction by name
@@ -789,6 +875,41 @@ declare module "semantic-sdp" {
     static reverse(direction: Direction): Direction;
   }
 
+  /**
+   * Enum for DirectionWay Way values.
+   * @readonly
+   * @enum {number}
+   */
+  export class DirectionWay {
+    /**
+     * Get Direction Way by name
+     * @memberOf DirectionWay
+     * @param {string} direction
+     * @returns {DirectionWay}
+     */
+    static byValue(direction: string): DirectionWay;
+
+    /**
+     * Get Direction Way name
+     * @memberOf DirectionWay
+     * @param {DirectionWay} direction
+     * @returns {String}
+     */
+    static toString(direction: DirectionWay): string;
+
+    /**
+     * Get reverse direction way
+     * @memberOf DirectionWay
+     * @param {DirectionWay} direction
+     * @returns {DirectionWay} Reversed direction
+     */
+    static reverse(direction: DirectionWay): DirectionWay;
+  }
+
+  /**
+   * Codec information extracted for RTP payloads
+   * @namespace
+   */
   export class CodecInfo {
     /**
      * Create a clone of this Codec info object
@@ -835,13 +956,13 @@ declare module "semantic-sdp" {
     /**
      * Get codec format parameters
      */
-    getParams(): { [key: string]: string };
+    getParams(): {[key: string]: string};
 
     /*
      * Add codec info params
      * @returns {Object} params
      */
-    addParams(params: { [key: string]: string }): void;
+    addParams(params: {[key: string]: string}): void;
 
     /**
      * Add codec info param
@@ -904,13 +1025,14 @@ declare module "semantic-sdp" {
      * @params {Boolean} rtx - Should we add rtx?
      * @param {Array<String>} params - RTCP feedback params
      */
-    static MapFromNames(
-      names: string[],
-      rtx: boolean,
-      rtcpfbs: string[]
-    ): Map<string, CodecInfo>;
+    static MapFromNames(names: string[], rtx: boolean, rtcpfbs: string[]):
+        Map<string, CodecInfo>;
   }
 
+  /**
+   * RTCP Feedback parameter
+   * @namespace
+   */
   export class RTCPFeedbackInfo {
     /**
      * Create a clone of this RTCPFeedbackParameter info object
@@ -942,5 +1064,391 @@ declare module "semantic-sdp" {
      * @returns {CodecInfo} Parsed Codec info
      */
     static expand(plain: RTCPFeedbackInfoPlain): RTCPFeedbackInfo;
+  }
+
+  /**
+   * DTLS peer info
+   * @namespace
+   */
+  export class DTLSInfo {
+    /**
+     * Create a clone of this DTLS info object
+     * @returns {DTLSInfo}
+     */
+    clone(): DTLSInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): DTLSInfoPlain;
+
+    /**
+     * Get peer fingerprint
+     * @returns {String}
+     */
+    getFingerprint(): string;
+
+    /**
+     * Get hash function name
+     * @returns {String}
+     */
+    getHash(): string;
+
+    /**
+     * Get connection setup
+     * @returns {Setup}
+     */
+    getSetup(): Setup;
+
+    /**
+     * Set connection setup
+     * @param {Setup} setup
+     */
+    setSetup(setup: Setup): void;
+
+    /**
+     * Expands a plain JSON object containing an DTLSInfo
+     * @param {Object} plain JSON object
+     * @returns {DTLSInfo} Parsed DTLS info
+     */
+    static expand(plain: DTLSInfoPlain): DTLSInfo;
+  }
+
+  /**
+   * ICE information for a peer
+   * @namespace
+   */
+  export class ICEInfo {
+    /**
+     * Create a clone of this Codec info object
+     * @returns {ICEInfo}
+     */
+    clone(): ICEInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): ICEInfoPlain;
+
+    /**
+     * Get username fragment
+     * @returns {String} ufrag
+     */
+    getUfrag(): string;
+
+    /**
+     * Get username password
+     * @returns {String}	password
+     */
+    getPwd(): string;
+
+    /**
+     * Is peer ICE lite
+     * @returns {Boolean}
+     */
+    isLite(): boolean;
+
+    /**
+     * Set peer as ICE lite
+     * @param {boolean} lite
+     */
+    setLite(lite: boolean): void;
+
+    /**
+     * Genereate a new peer ICE info with ramdom values
+     * @param {Boolean} lite - Set ICE lite flag
+     * @returns {ICEInfo}
+     */
+    static generate(lite: boolean): ICEInfo;
+
+    /**
+     * Expands a plain JSON object containing an ICEInfo
+     * @param {Object} plain JSON object
+     * @returns {ICEInfo} Parsed ICE info
+     */
+    static expand(plain: ICEInfoPlain): ICEInfo;
+  }
+
+  /**
+   * RID info
+   * @namespace
+   */
+  export class RIDInfo {
+    /**
+     * Create a clone of this RID info object
+     * @returns {RIDInfo}
+     */
+    clone(): RIDInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): RIDInfoPlain;
+
+    /**
+     * Get the rid id value
+     * @returns {String}
+     */
+    getId(): string;
+
+    /**
+     * Get rid direction
+     * @returns {DirectionWay}
+     */
+    getDirection(): DirectionWay;
+
+    /**
+     * Set direction setup
+     * @param {DirectionWay} direction
+     */
+    setDirection(direction: DirectionWay): void;
+
+    /**
+     * Get pt formats for rid
+     * @returns {Array.Number}
+     */
+    getFormats(): number[];
+
+    /**
+     * Set pt formats for rid
+     * @param {Array} formats
+     */
+    setFormats(formats: number[]): void;
+
+    /**
+     * Get the rid params
+     * @returns {Map<String,String>} The params map
+     */
+    getParams(): {[key: string]: string};
+
+    /**
+     * Set the rid params
+     * @param {Map<String,String>} params - rid params map
+     */
+    setParams(params: {[key: string]: string}): void;
+
+    /**
+     * Add an rid param
+     * @param {String} id
+     * @param {String} param
+     */
+    addParam(id: string, param: string): void;
+
+    /**
+     * Get rid direction
+     * @returns {DirectionWay}
+     */
+    getDirection(): DirectionWay;
+
+    /**
+     * Set direction setup
+     * @param {DirectionWay} direction
+     */
+    setDirection(direction: DirectionWay): void;
+
+    /**
+     * Expands a plain JSON object containing an RIDInfo
+     * @param {Object} plain JSON object
+     * @returns {RIDInfo} Parsed RID info
+     */
+    static expand(plain: RIDInfoPlain): RIDInfo;
+  }
+
+  /**
+   * Simulcast information
+   * @namespace
+   */
+  export class SimulcastInfo {
+    /**
+     * Create a clone of this track info object
+     * @returns {SimulcastInfo}
+     */
+    clone(): SimulcastInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): SimulcastInfoPlain;
+
+    /**
+     * Add a simulcast alternative streams for the specific direction
+     * @param {DirectionWay} direction - Which direction you want the streams
+     *     for
+     * @param {Array<SimulcastStreamInfo>} streams - Stream info of all the
+     *     alternatives
+     */
+    addSimulcastAlternativeStreams(
+        direction: DirectionWay, streams: SimulcastStreamInfo[]): void;
+
+    /**
+     * Add a single simulcast stream for the specific direction
+     * @param {DirectionWay} direction - Which direction you want the streams
+     *     for
+     * @param {Array<SimulcastStreamInfo>} stream - Stream info of all the
+     *     alternatives
+     */
+    addSimulcastStream(direction: DirectionWay, stream: SimulcastStreamInfo):
+        void;
+
+    /**
+     * Get all simulcast streams by direction
+     * @param {DirectionWay} direction - Which direction you want the streams
+     *     for
+     * @returns {Array<Array<SimulcastStreamInfo>>}
+     */
+    getSimulcastStreams(direction: DirectionWay): SimulcastStreamInfo[][];
+
+    /**
+     * Expands a plain JSON object containing an SimulcastInfo
+     * @param {Object} plain JSON object
+     * @returns {SimulcastInfo} Parsed Simulcast info
+     */
+    static expand(plain: SimulcastInfoPlain): SimulcastInfo;
+  }
+
+  /**
+   * Group of SSRCS info
+   * @namespace
+   */
+  export class SourceGroupInfo {
+    /**
+     * Create a clone of this source group info object
+     * @returns {SourceGroupInfo}
+     */
+    clone(): SourceGroupInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): SourceGroupInfoPlain;
+
+    /**
+     * Get group semantics
+     * @returns {String}
+     */
+    getSemantics(): string;
+
+    /**
+     * Get list of ssrcs from this group
+     * @returns {Array<Number>}
+     */
+    getSSRCs(): number[];
+
+    /**
+     * Expands a plain JSON object containing an SourceGroupInfo
+     * @param {Object} plain JSON object
+     * @returns {SourceGroupInfo} Parsed SourceGroup info
+     */
+    static expand(plain: SourceGroupInfoPlain): SourceGroupInfo;
+  }
+
+  /**
+   * Simulcast encoding layer information for track
+   * @namespace
+   */
+  export class TrackEncodingInfo {
+    /**
+     * Create a clone of this RID info object
+     * @returns {TrackEncodingInfo}
+     */
+    clone(): TrackEncodingInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): TrackEncodingInfoPlain;
+
+    /**
+     * Get the rid id value
+     * @returns {String}
+     */
+    getId(): string;
+
+    /**
+     * Get codec information for this encoding (if any)
+     * @returns {Map<String,CodecInfo>}
+     */
+    getCodecs(): {[key: string]: CodecInfo};
+
+    /**
+     * Add codec info
+     * @param {CodecInfo} codec - Codec Info
+     */
+    addCodec(codec: CodecInfo): void;
+
+    /**
+     * Get the rid params
+     * @returns {Map<String,String>} The params map
+     */
+    getParams(): {[key: string]: string};
+
+    /**
+     * Set the rid params
+     * @param {Map<String,String>} params - rid params map
+     */
+    setParams(params: {[key: string]: string}): void;
+
+    /**
+     * Add an rid param
+     * @param {String} id
+     * @param {String} param
+     */
+    addParam(id: string, param: string): void;
+
+    /**
+     * Is the stream paused
+     * @returns {Boolean}
+     */
+    isPaused(): boolean;
+
+    /**
+     * Expands a plain JSON object containing an TrackEncodingInfo
+     * @param {Object} plain JSON object
+     * @returns {TrackEncodingInfo} Parsed TrackEncoding info
+     */
+    static expand(plain: TrackEncodingInfoPlain): TrackEncodingInfo;
+  }
+
+  /**
+   * Simulcast streams info
+   * @namespace
+   */
+  export class SimulcastStreamInfo {
+    /**
+     * Create a clone of this simulcast stream info object
+     * @returns {SimulcastStreamInfo}
+     */
+    clone(): SimulcastStreamInfo;
+
+    /**
+     * Return a plain javascript object which can be converted to JSON
+     * @returns {Object} Plain javascript object
+     */
+    plain(): SimulcastStreamInfoPlain;
+
+    /**
+     * Is the stream paused
+     * @returns {Boolean}
+     */
+    isPaused(): boolean;
+
+    /**
+     * Get rid in this stream
+     * @returns {String}
+     */
+    getId(): string;
+
+    /**
+     * Expands a plain JSON object containing an SimulcastStreamInfo
+     * @param {Object} plain JSON object
+     * @returns {SimulcastStreamInfo} Parsed SimulcastStream info
+     */
+    static expand(plain: SimulcastStreamInfoPlain): SimulcastStreamInfo;
   }
 }

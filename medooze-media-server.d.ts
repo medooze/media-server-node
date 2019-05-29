@@ -1,10 +1,10 @@
-declare module "medooze-media-server" {
-  import SemanticSDP = require("semantic-sdp");
+declare module 'medooze-media-server' {
+import SemanticSDP = require('semantic-sdp');
 
-  //   Unfinished interfaces
-  export interface TransactionManager {}
-
-  /** "min","max" and "avg" packet waiting times in rtp buffer before delivering them */
+  /**
+   * "min","max" and "avg" packet waiting times in rtp buffer before delivering
+   * them
+   */
   export interface WaitTimeStats {
     min: number;
     max: number;
@@ -33,8 +33,8 @@ declare module "medooze-media-server" {
 
   export interface CreateOutgoingStreamOptions {
     id?: string;
-    audio?: boolean | CreateStreamTrackOptions | CreateStreamTrackOptions[];
-    video?: boolean | CreateStreamTrackOptions | CreateStreamTrackOptions[];
+    audio?: boolean|CreateStreamTrackOptions|CreateStreamTrackOptions[];
+    video?: boolean|CreateStreamTrackOptions|CreateStreamTrackOptions[];
   }
 
   export interface PlayerPlayOptions {
@@ -122,17 +122,28 @@ declare module "medooze-media-server" {
     fec: IncomingSourceStats;
     /** Round Trip Time in ms */
     rtt: number;
-    /** "min","max" and "avg" packet waiting times in rtp buffer before delivering them */
+    /**
+     * "min","max" and "avg" packet waiting times in rtp buffer before
+     * delivering them
+     */
     waitTime: WaitTimeStats;
     /** Bitrate for media stream only in bps */
     bitrate: number;
     /** Accumulated bitrate for rtx, media and fec streams in bps */
     total: number;
-    /** Estimated avialable bitrate for receving (only avaailable if not using tranport wide cc) */
+    /**
+     * Estimated avialable bitrate for receving (only avaailable if not using
+     * tranport wide cc)
+     */
     remb: number;
-    /** When this stats was generated, in order to save workload, stats are cached for 200ms */
+    /**
+     * When this stats was generated, in order to save workload, stats are
+     * cached for 200ms
+     */
     timestamp: number;
-    /** Simulcast layer index based on bitrate received (-1 if it is inactive). */
+    /**
+     * Simulcast layer index based on bitrate received (-1 if it is inactive).
+     */
     simulcastIdx: number;
   }
 
@@ -151,9 +162,16 @@ declare module "medooze-media-server" {
   }
 
   export interface SetTargetBitrateOptions {
-    /** Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" [Default: "default"]  */
-    traversal?: "default" | "spatial-temporal" | "zig-zag-temporal-spatial";
-    /** If there is not a layer with a bitrate lower thatn target, stop sending media [Default: false] */
+    /**
+     * Traversal algorithm "default", "spatial-temporal",
+     * "zig-zag-spatial-temporal", "temporal-spatial",
+     * "zig-zag-temporal-spatial" [Default: "default"]
+     */
+    traversal?: 'default'|'spatial-temporal'|'zig-zag-temporal-spatial';
+    /**
+     * If there is not a layer with a bitrate lower thatn target, stop sending
+     * media [Default: false]
+     */
     strict?: boolean;
   }
 
@@ -165,7 +183,9 @@ declare module "medooze-media-server" {
   }
 
   export interface CreateTransportOptions {
-    /** Disable ICE/STUN keep alives, required for server to server transports */
+    /**
+     * Disable ICE/STUN keep alives, required for server to server transports
+     */
     disableSTUNKeepAlive: boolean;
     /** Colon delimited list of SRTP protection profile names */
     srtpProtectionProfiles: boolean;
@@ -221,7 +241,8 @@ declare module "medooze-media-server" {
     /**
      * Get statistics for all tracks in the stream
      *
-     * See OutgoingStreamTrack.getStats for information about the stats returned by each track.
+     * See OutgoingStreamTrack.getStats for information about the stats returned
+     * by each track.
      *
      * @returns {Map<String>,Object} Map with stats by trackId
      */
@@ -240,8 +261,10 @@ declare module "medooze-media-server" {
     mute(muting: boolean): void;
 
     /**
-     * Listen media from the incoming stream and send it to the remote peer of the associated transport.
-     * @param {IncomingStream} incomingStream - The incoming stream to listen media for
+     * Listen media from the incoming stream and send it to the remote peer of
+     * the associated transport.
+     * @param {IncomingStream} incomingStream - The incoming stream to listen
+     *     media for
      * @returns {Array<Transponder>} Track transponders array
      */
     attachTo(incomingStream: IncomingStream): Transponder[];
@@ -252,7 +275,8 @@ declare module "medooze-media-server" {
     detach(): void;
 
     /**
-     * Get the stream info object for signaling the ssrcs and stream info on the SDP to the remote peer
+     * Get the stream info object for signaling the ssrcs and stream info on the
+     * SDP to the remote peer
      * @returns {StreamInfo} The stream info object
      */
     getStreamInfo(): SemanticSDP.StreamInfo;
@@ -269,18 +293,13 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    on(
-      event: "track",
-      listener: (track: OutgoingStreamTrack) => any
-    ): OutgoingStream;
-    on(
-      event: "stopped",
-      listener: (
-        stream: OutgoingStream,
-        stats: OutgoingStreamStatsReport
-      ) => any
-    ): OutgoingStream;
-    on(event: "muted", listener: (muted: boolean) => any): OutgoingStream;
+    on(event: 'track',
+       listener: (track: OutgoingStreamTrack) => any): OutgoingStream;
+    on(event: 'stopped',
+       listener:
+           (stream: OutgoingStream, stats: OutgoingStreamStatsReport) => any):
+        OutgoingStream;
+    on(event: 'muted', listener: (muted: boolean) => any): OutgoingStream;
 
     /**
      * Add event listener once
@@ -288,18 +307,14 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
+    once(event: 'track', listener: (track: OutgoingStreamTrack) => any):
+        OutgoingStream;
     once(
-      event: "track",
-      listener: (track: OutgoingStreamTrack) => any
-    ): OutgoingStream;
-    once(
-      event: "stopped",
-      listener: (
-        stream: OutgoingStream,
-        stats: OutgoingStreamStatsReport
-      ) => any
-    ): OutgoingStream;
-    once(event: "muted", listener: (muted: boolean) => any): OutgoingStream;
+        event: 'stopped',
+        listener:
+            (stream: OutgoingStream, stats: OutgoingStreamStatsReport) => any):
+        OutgoingStream;
+    once(event: 'muted', listener: (muted: boolean) => any): OutgoingStream;
 
     /**
      * Remove event listener
@@ -307,18 +322,13 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {OutgoingStream}
      */
-    off(
-      event: "track",
-      listener: (track: OutgoingStreamTrack) => any
-    ): OutgoingStream;
-    off(
-      event: "stopped",
-      listener: (
-        stream: OutgoingStream,
-        stats: OutgoingStreamStatsReport
-      ) => any
-    ): OutgoingStream;
-    off(event: "muted", listener: (muted: boolean) => any): OutgoingStream;
+    off(event: 'track',
+        listener: (track: OutgoingStreamTrack) => any): OutgoingStream;
+    off(event: 'stopped',
+        listener:
+            (stream: OutgoingStream, stats: OutgoingStreamStatsReport) => any):
+        OutgoingStream;
+    off(event: 'muted', listener: (muted: boolean) => any): OutgoingStream;
 
     /**
      * Get all the tracks
@@ -347,7 +357,8 @@ declare module "medooze-media-server" {
     getVideoTracks(): OutgoingStreamTrack[];
 
     /*
-     * Adds an incoming stream track created using the Transpocnder.createOutgoingStreamTrack to this stream
+     * Adds an incoming stream track created using the
+     * Transpocnder.createOutgoingStreamTrack to this stream
      *
      * @param {OuggoingStreamTrack} track
      */
@@ -355,10 +366,12 @@ declare module "medooze-media-server" {
 
     /**
      * Create new track from a TrackInfo object and add it to this stream
-     * @param {Object|TrackInfo|String} params Params plain object, StreamInfo object or media type
+     * @param {Object|TrackInfo|String} params Params plain object, StreamInfo
+     *     object or media type
      * @param {String?} params.id		- Stream track id
      * @param {String?} params.media	- Media type ("audio" or "video")
-     * @param {Object?} params.ssrcs	- Override the generated ssrcs for this track
+     * @param {Object?} params.ssrcs	- Override the generated ssrcs for this
+     *     track
      * @param {Number?} params.ssrcs.media	- ssrc for the track
      * @param {Number?} params.ssrcs.rtx 	- ssrc for the rtx video track
      * @param {Number?} params.ssrcs.fec	- ssrc for the fec video track
@@ -366,9 +379,8 @@ declare module "medooze-media-server" {
      * @param {TrackInfo} trackInfo Track info object
      * @returns {OuggoingStreamTrack}
      */
-    createTrack(
-      params: SemanticSDP.TrackInfo | SemanticSDP.TrackInfoPlain | string
-    ): OutgoingStream;
+    createTrack(params: SemanticSDP.TrackInfo|SemanticSDP.TrackInfoPlain|
+                string): OutgoingStream;
 
     stop(): void;
   }
@@ -386,9 +398,11 @@ declare module "medooze-media-server" {
 
     /**
      * Enable bitrate probing.
-     * This will send padding only RTX packets to allow bandwidth estimation algortithm to probe bitrate beyonf current sent values.
-     * The ammoung of probing bitrate would be limited by the sender bitrate estimation and the limit set on the setMaxProbing Bitrate.
-     * Note that this will only work on browsers that supports RTX and transport wide cc.
+     * This will send padding only RTX packets to allow bandwidth estimation
+     * algortithm to probe bitrate beyonf current sent values. The ammoung of
+     * probing bitrate would be limited by the sender bitrate estimation and the
+     * limit set on the setMaxProbing Bitrate. Note that this will only work on
+     * browsers that supports RTX and transport wide cc.
      * @param {Boolen} probe
      */
     setBandwidthProbing(probe: boolean): void;
@@ -401,23 +415,23 @@ declare module "medooze-media-server" {
 
     /**
      * Set local RTP properties
-     * @param {Object|SDPInfo} rtp - Object param containing media information for audio and video
+     * @param {Object|SDPInfo} rtp - Object param containing media information
+     *     for audio and video
      * @param {MediaInfo} rtp.audio	- Audio media info
      * @param {MediaInfo} rtp.video	- Video media info
      */
-    setLocalProperties(
-      rtp: SemanticSDP.SDPInfo | SetTransportPropertiesOptions
-    ): void;
+    setLocalProperties(rtp: SemanticSDP.SDPInfo|
+                       SetTransportPropertiesOptions): void;
 
     /**
      * Set remote RTP properties
-     * @param {Object|SDPInfo} rtp - Object param containing media information for audio and video
+     * @param {Object|SDPInfo} rtp - Object param containing media information
+     *     for audio and video
      * @param {MediaInfo} rtp.audio	- Audio media info
      * @param {MediaInfo} rtp.video	- Video media info
      */
-    setRemoteProperties(
-      rtp: SemanticSDP.SDPInfo | SetTransportPropertiesOptions
-    ): void;
+    setRemoteProperties(rtp: SemanticSDP.SDPInfo|
+                        SetTransportPropertiesOptions): void;
 
     /**
      * Add event listener
@@ -425,25 +439,17 @@ declare module "medooze-media-server" {
      * @param {function} listeener	- Event listener
      * @returns {Transport}
      */
-    on(
-      event: "targetbitrate",
-      listener: (bitrate: number, transport: Transport) => any
-    ): Transport;
-    on(
-      event: "outgoingtrack",
-      listener: (
-        track: OutgoingStreamTrack,
-        stream: OutgoingStream | null
-      ) => any
-    ): Transport;
-    on(
-      event: "incomingtrack",
-      listener: (
-        track: IncomingStreamTrack,
-        stream: IncomingStream | null
-      ) => any
-    ): Transport;
-    on(event: "stopped", listener: (transport: Transport) => any): Transport;
+    on(event: 'targetbitrate',
+       listener: (bitrate: number, transport: Transport) => any): Transport;
+    on(event: 'outgoingtrack',
+       listener:
+           (track: OutgoingStreamTrack, stream: OutgoingStream|null) => any):
+        Transport;
+    on(event: 'incomingtrack',
+       listener:
+           (track: IncomingStreamTrack, stream: IncomingStream|null) => any):
+        Transport;
+    on(event: 'stopped', listener: (transport: Transport) => any): Transport;
 
     /**
      * Add event listener once
@@ -452,24 +458,19 @@ declare module "medooze-media-server" {
      * @returns {IncomingStream}
      */
     once(
-      event: "targetbitrate",
-      listener: (bitrate: number, transport: Transport) => any
-    ): Transport;
+        event: 'targetbitrate',
+        listener: (bitrate: number, transport: Transport) => any): Transport;
     once(
-      event: "outgoingtrack",
-      listener: (
-        track: OutgoingStreamTrack,
-        stream: OutgoingStream | null
-      ) => any
-    ): Transport;
+        event: 'outgoingtrack',
+        listener:
+            (track: OutgoingStreamTrack, stream: OutgoingStream|null) => any):
+        Transport;
     once(
-      event: "incomingtrack",
-      listener: (
-        track: IncomingStreamTrack,
-        stream: IncomingStream | null
-      ) => any
-    ): Transport;
-    once(event: "stopped", listener: (transport: Transport) => any): Transport;
+        event: 'incomingtrack',
+        listener:
+            (track: IncomingStreamTrack, stream: IncomingStream|null) => any):
+        Transport;
+    once(event: 'stopped', listener: (transport: Transport) => any): Transport;
 
     /**
      * Remove event listener
@@ -477,25 +478,17 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Transport}
      */
-    off(
-      event: "targetbitrate",
-      listener: (bitrate: number, transport: Transport) => any
-    ): Transport;
-    off(
-      event: "outgoingtrack",
-      listener: (
-        track: OutgoingStreamTrack,
-        stream: OutgoingStream | null
-      ) => any
-    ): Transport;
-    off(
-      event: "incomingtrack",
-      listener: (
-        track: IncomingStreamTrack,
-        stream: IncomingStream | null
-      ) => any
-    ): Transport;
-    off(event: "stopped", listener: (transport: Transport) => any): Transport;
+    off(event: 'targetbitrate',
+        listener: (bitrate: number, transport: Transport) => any): Transport;
+    off(event: 'outgoingtrack',
+        listener:
+            (track: OutgoingStreamTrack, stream: OutgoingStream|null) => any):
+        Transport;
+    off(event: 'incomingtrack',
+        listener:
+            (track: IncomingStreamTrack, stream: IncomingStream|null) => any):
+        Transport;
+    off(event: 'stopped', listener: (transport: Transport) => any): Transport;
 
     /**
      * Get transport local DTLS info
@@ -522,60 +515,70 @@ declare module "medooze-media-server" {
     getRemoteCandidates(): SemanticSDP.CandidateInfo[];
 
     /**
-     * Register a remote candidate info. Only needed for ice-lite to ice-lite endpoints
+     * Register a remote candidate info. Only needed for ice-lite to ice-lite
+     * endpoints
      * @param {CandidateInfo} candidate
-     * @returns {boolean} Wheter the remote ice candidate was alrady presnet or not
+     * @returns {boolean} Wheter the remote ice candidate was alrady presnet or
+     *     not
      */
     addRemoteCandidate(candidate: SemanticSDP.CandidateInfo): boolean;
 
     /**
-     * Register an array remote candidate info. Only needed for ice-lite to ice-lite endpoints
+     * Register an array remote candidate info. Only needed for ice-lite to
+     * ice-lite endpoints
      * @param {Array.CandidateInfo} candidates
      */
     addRemoteCandidates(candidates: SemanticSDP.CandidateInfo[]): void;
 
     /**
      * Create new outgoing stream in this transport
-     * @param {Object|StreamInfo|String} params Params plain object, StreamInfo object or stream id
-     * @param {Array<Object>|Object|boolean} params.audio	- Add audio track to the new stream
-     * @param {Object?} params.id	- Stream id, an UUID will be generated if not provided
+     * @param {Object|StreamInfo|String} params Params plain object, StreamInfo
+     *     object or stream id
+     * @param {Array<Object>|Object|boolean} params.audio	- Add audio track to
+     *     the new stream
+     * @param {Object?} params.id	- Stream id, an UUID will be generated if not
+     *     provided
      * @param {Object?} params.audio.id	- Stream track id (default: "audio")
-     * @param {Number?} params.audio.ssrcs	- Override the generated ssrcs for this track
+     * @param {Number?} params.audio.ssrcs	- Override the generated ssrcs for
+     *     this track
      * @param {Number?} params.audio.ssrcs.media - ssrc for the audio track
-     * @param {Array<Object>|Object|boolean} params.video	- Add video track to the new stream
+     * @param {Array<Object>|Object|boolean} params.video	- Add video track to
+     *     the new stream
      * @param {Object?} params.video.id	- Stream track id (default: "video")
-     * @param {Object?} params.video.ssrcs	- Override the generated ssrcs for this track
-     * @param {Number?} params.video.ssrcs.media	- ssrc for the video track
+     * @param {Object?} params.video.ssrcs	- Override the generated ssrcs for
+     *     this track
+     * @param {Number?} params.video.ssrcs.media	- ssrc for the video
+     *     track
      * @param {Number?} params.video.ssrcs.rtx 	- ssrc for the rtx video track
      * @param {Number?} params.video.ssrcs.fec	- ssrc for the fec video track
      * @returns {OutgoingStream} The new outgoing stream
      */
-    createOutgoingStream(
-      params: SemanticSDP.StreamInfo | CreateOutgoingStreamOptions | string
-    ): OutgoingStream;
+    createOutgoingStream(params: SemanticSDP.StreamInfo|
+                         CreateOutgoingStreamOptions|string): OutgoingStream;
 
     /**
      * Create new outgoing stream in this transport
      * @param {String}  media		- Track media type "audio" or "video"
      * @param {Object?} params		- Track parameters
      * @param {Object?} params.id		- Stream track id
-     * @param {Number?} params.ssrcs	- Override the generated ssrcs for this track
+     * @param {Number?} params.ssrcs	- Override the generated ssrcs for this
+     *     track
      * @param {Number?} params.ssrcs.media	- ssrc for the media track
      * @param {Number?} params.ssrcs.rtx 	- ssrc for the rtx track
      * @param {Number?} params.ssrcs.fec	- ssrc for the fec track
      * @returns {OutgoingStreamTrack} The new outgoing stream track
      */
     createOutgoingStreamTrack(
-      media: SemanticSDP.MediaType,
-      params?: CreateStreamTrackOptions
-    ): OutgoingStreamTrack;
+        media: SemanticSDP.MediaType,
+        params?: CreateStreamTrackOptions): OutgoingStreamTrack;
 
     /**
      * Create an incoming stream object from the media stream info objet
-     * @param {StreamInfo|Object} info Contains the ids and ssrcs of the stream to be created
+     * @param {StreamInfo|Object} info Contains the ids and ssrcs of the stream
+     *     to be created
      * @returns {IncomingStream} The newly created incoming stream object
      */
-    createIncomingStream(info: SemanticSDP.StreamInfo | string): IncomingStream;
+    createIncomingStream(info: SemanticSDP.StreamInfo|string): IncomingStream;
 
     /**
      * Get all the incoming streams in the transport
@@ -604,24 +607,26 @@ declare module "medooze-media-server" {
     getOutgoingStream(streamId: string): OutgoingStream;
 
     /**
-     * Create new incoming stream in this transport. TODO: Simulcast is still not supported
+     * Create new incoming stream in this transport. TODO: Simulcast is still
+     * not supported
      * @param {String}  media		- Track media type "audio" or "video"
      * @param {Object?} params		- Track parameters
      * @param {Object?} params.id		- Stream track id
-     * @param {Number?} params.ssrcs	- Override the generated ssrcs for this track
+     * @param {Number?} params.ssrcs	- Override the generated ssrcs for this
+     *     track
      * @param {Number?} params.ssrcs.media	- ssrc for the media track
      * @param {Number?} params.ssrcs.rtx 	- ssrc for the rtx track
      * @param {Number?} params.ssrcs.fec	- ssrc for the fec track
      * @returns {IncomingStreamTrack} The new incoming stream track
      */
     createIncomingStreamTrack(
-      media: SemanticSDP.MediaType,
-      params?: CreateStreamTrackOptions
-    ): IncomingStreamTrack;
+        media: SemanticSDP.MediaType,
+        params?: CreateStreamTrackOptions): IncomingStreamTrack;
 
     /**
      * Create new outgoing stream and attach to the incoming stream
-     * @param {IncomingStream} incomingStream the incoming stream to be published in this transport
+     * @param {IncomingStream} incomingStream the incoming stream to be
+     *     published in this transport
      * @returns {OutgoingStream} The new outgoing stream
      */
     publish(incomingStream: IncomingStream): OutgoingStream;
@@ -641,85 +646,98 @@ declare module "medooze-media-server" {
     setAffinity(cpu: number): void;
 
     /**
-     * Create a new transport object and register it with the remote ICE username and password
+     * Create a new transport object and register it with the remote ICE
+     * username and password
      * @param {Object|SDPInfo}  remoteInfo	- Remote ICE and DTLS properties
-     * @param {Object|ICEInfo}  remote.ice	- Remote ICE info, containing the username and password.
+     * @param {Object|ICEInfo}  remote.ice	- Remote ICE info, containing the
+     *     username and password.
      * @param {Object|DTLSInfo} remote.dtls	- Remote DTLS info
-     * @param {Array.CandidateInfo|Array.Object} remote.candidates - Remote ICE candidate info
-     * @param {Object}   localInfo		- Local ICE and DTLS properties (optional)
-     * @param {ICEInfo}  local.ice		- Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
+     * @param {Array.CandidateInfo|Array.Object} remote.candidates - Remote ICE
+     *     candidate info
+     * @param {Object}   localInfo		- Local ICE and DTLS properties
+     *     (optional)
+     * @param {ICEInfo}  local.ice		- Local ICE info, containing the username
+     *     and password. Local ICE candidates list is not really used at all.
      * @param {DTLSInfo} local.dtls		- Local DTLS info
      * @param {Array.CandidateInfo} local.candidates - Local candidate info
      * @param {Object} options		- Dictionary with transport properties
-     * @param {boolean} options.disableSTUNKeepAlive - Disable ICE/STUN keep alives, required for server to server transports
-     * @param {String} options.srtpProtectionProfiles - Colon delimited list of SRTP protection profile names
+     * @param {boolean} options.disableSTUNKeepAlive - Disable ICE/STUN keep
+     *     alives, required for server to server transports
+     * @param {String} options.srtpProtectionProfiles - Colon delimited list of
+     *     SRTP protection profile names
      * @returns {Transport}	New transport object
      */
     createTransport(
-      remoteInfo: SemanticSDP.SDPInfo | SemanticSDP.SDPInfoPlain,
-      localInfo?: SemanticSDP.SDPInfo | SemanticSDP.SDPInfoPlain,
-      options?: CreateTransportOptions
-    ): Transport;
+        remoteInfo: SemanticSDP.SDPInfo|SemanticSDP.SDPInfoPlain,
+        localInfo?: SemanticSDP.SDPInfo|SemanticSDP.SDPInfoPlain,
+        options?: CreateTransportOptions): Transport;
 
     /**
-     * Get local ICE candidates for this endpoint. It will be shared by all the transport associated to this endpoint.
+     * Get local ICE candidates for this endpoint. It will be shared by all the
+     * transport associated to this endpoint.
      * @returns {Array.CandidateInfo}
      */
     getLocalCandidates(): SemanticSDP.CandidateInfo[];
 
     /**
-     * Get local DTLS fingerprint for this endpoint. It will be shared by all the transport associated to this endpoint.
+     * Get local DTLS fingerprint for this endpoint. It will be shared by all
+     * the transport associated to this endpoint.
      * @returns {String}
      */
     getDTLSFingerprint(): string;
 
     /**
      * Helper that creates an offer from capabilities
-     * It generates a random ICE username and password and gets endpoint fingerprint
-     * @param {Object} capabilities - Media capabilities as required by SDPInfo.create
+     * It generates a random ICE username and password and gets endpoint
+     * fingerprint
+     * @param {Object} capabilities - Media capabilities as required by
+     *     SDPInfo.create
      * @returns {SDPInfo} - SDP offer
      */
     createOffer(capabilities: MediaCapabilities): SemanticSDP.SDPInfo;
 
     /**
-     * Create new peer connection server to manage remote peer connection clients
+     * Create new peer connection server to manage remote peer connection
+     * clients
      * @param {TransactionManager} tm
      * @param {Object} capabilities - Same as SDPInfo.answer capabilites
      * @returns {PeerConnectionServer}
      */
-    createPeerConnectionServer(
-      tm: TransactionManager,
-      capabilities: MediaCapabilities
-    ): PeerConnectionServer;
+    createPeerConnectionServer(tm: any, capabilities: MediaCapabilities):
+        PeerConnectionServer;
 
     /**
-     * Mirror incoming stream from another endpoint. Used to avoid inter-thread synchronization when attaching multiple output streams.
-     * The endpoint will cache the cucrrent mirrored streams and return an already existing object if calling this method twice with same stream.
+     * Mirror incoming stream from another endpoint. Used to avoid inter-thread
+     * synchronization when attaching multiple output streams. The endpoint will
+     * cache the cucrrent mirrored streams and return an already existing object
+     * if calling this method twice with same stream.
      * @param {IncomingStream} incomingStream - stream to mirror
      * @returns {IncomingStream} mirrored stream.
      */
     mirrorIncomingStream(incomingStream: IncomingStream): IncomingStream;
 
     /**
-     * Mirror incoming stream track from another endpoint. Used to avoid inter-thread synchronization when attaching multiple output tracks.
-     * The endpoint will cache the cucrrent mirrored tracks and return an already existing object if calling this method twice with same track.
+     * Mirror incoming stream track from another endpoint. Used to avoid
+     * inter-thread synchronization when attaching multiple output tracks. The
+     * endpoint will cache the cucrrent mirrored tracks and return an already
+     * existing object if calling this method twice with same track.
      * @param {IncomingStreamTrack} incomingStreamTrack - track to mirror
      * @returns {IncomingStreamTrackMirrored} mirrored track.
      */
-    mirrorIncomingStreamTrack(
-      incomingStreamTrack: IncomingStreamTrack
-    ): IncomingStreamTrack;
+    mirrorIncomingStreamTrack(incomingStreamTrack: IncomingStreamTrack):
+        IncomingStreamTrack;
 
     /**
-     * Create new SDP manager, this object will manage the SDP O/A for you and produce a suitable trasnport.
-     * @param {String} sdpSemantics - Type of sdp plan "unified-plan" or "plan-b"
+     * Create new SDP manager, this object will manage the SDP O/A for you and
+     * produce a suitable trasnport.
+     * @param {String} sdpSemantics - Type of sdp plan "unified-plan" or
+     *     "plan-b"
      * @param {Object} capabilities - Capabilities objects
      * @returns {SDPManager}
      */
     createSDPManager(
-      sdpSemantics: "unified-plan" | "plan-b",
-      capabilities: MediaCapabilities
-    ): SDPManager;
+        sdpSemantics: 'unified-plan'|'plan-b',
+        capabilities: MediaCapabilities): SDPManager;
 
     /**
      * Add event listener
@@ -727,7 +745,7 @@ declare module "medooze-media-server" {
      * @param {function} listeener	- Event listener
      * @returns {Endpoint}
      */
-    on(event: "stopped", listener: (endpoint: Endpoint) => any): Endpoint;
+    on(event: 'stopped', listener: (endpoint: Endpoint) => any): Endpoint;
 
     /**
      * Add event listener once
@@ -735,7 +753,7 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Endpoint}
      */
-    once(event: "stopped", listener: (endpoint: Endpoint) => any): Endpoint;
+    once(event: 'stopped', listener: (endpoint: Endpoint) => any): Endpoint;
 
     /**
      * Remove event listener
@@ -743,7 +761,7 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Endpoint}
      */
-    off(event: "stopped", listener: (endpoint: Endpoint) => any): Endpoint;
+    off(event: 'stopped', listener: (endpoint: Endpoint) => any): Endpoint;
 
     /**
      * Stop the endpoint UDP server and terminate any associated transport
@@ -768,7 +786,7 @@ declare module "medooze-media-server" {
      * Get available encodings and layers
      * @returns {Object}
      */
-    getAvailableLayers(): ActiveLayers | null;
+    getAvailableLayers(): ActiveLayers|null;
 
     /**
      * Check if the track is muted or not
@@ -778,25 +796,34 @@ declare module "medooze-media-server" {
 
     /*
      * Mute/Unmute track
-     * This operation will not change the muted state of the stream this track belongs too.
+     * This operation will not change the muted state of the stream this track
+     * belongs too.
      * @param {boolean} muting - if we want to mute or unmute
      */
     mute(muting: boolean): void;
 
     /*
-     * Select encoding and temporal and spatial layers based on the desired bitrate. This operation will unmute the transponder if it was mutted and it is possible to select an encoding and layer based on the target bitrate and options.
+     * Select encoding and temporal and spatial layers based on the desired
+     * bitrate. This operation will unmute the transponder if it was mutted and
+     * it is possible to select an encoding and layer based on the target
+     * bitrate and options.
      *
      * @param {Number} bitrate
-     * @param {Object} options - Options for configuring algorithm to select best encoding/layers [Optional]
-     * @param {Object} options.traversal - Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" [Default: "default"]
-     * @param {Object} options.strict    - If there is not a layer with a bitrate lower thatn target, stop sending media [Default: false]
+     * @param {Object} options - Options for configuring algorithm to select
+     *     best encoding/layers [Optional]
+     * @param {Object} options.traversal - Traversal algorithm "default",
+     *     "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial",
+     *     "zig-zag-temporal-spatial" [Default: "default"]
+     * @param {Object} options.strict    - If there is not a layer with a
+     *     bitrate lower thatn target, stop sending media [Default: false]
      * @returns {Number} Current bitrate of the selected encoding and layers
      */
     setTargetBitrate(target: number, options?: SetTargetBitrateOptions): number;
 
     /*
      * Select the simulcast encoding layer
-     * @param {String} encoding Id - rid value of the simulcast encoding of the track
+     * @param {String} encoding Id - rid value of the simulcast encoding of the
+     *     track
      */
     selectEncoding(encodingId: string): void;
 
@@ -820,20 +847,21 @@ declare module "medooze-media-server" {
 
     /**
      * Select SVC temporatl and spatial layers. Only available for VP9 media.
-     * @param {Number} spatialLayerId The spatial layer id to send to the outgoing stream
-     * @param {Number} temporalLayerId The temporaral layer id to send to the outgoing stream
+     * @param {Number} spatialLayerId The spatial layer id to send to the
+     *     outgoing stream
+     * @param {Number} temporalLayerId The temporaral layer id to send to the
+     *     outgoing stream
      */
     selectLayer(spatialLayerId: number, temporalLayerId: number): void;
 
     /**
-     * Set maximum statial and temporal layers to be forwrarded. Base layer is always enabled.
+     * Set maximum statial and temporal layers to be forwrarded. Base layer is
+     * always enabled.
      * @param {Number} maxSpatialLayerId  - Max spatial layer id
      * @param {Number} maxTemporalLayerId - Max temporal layer id
      */
-    setMaximumLayers(
-      maxSpatialLayerId: number,
-      maxTemporalLayerId: number
-    ): void;
+    setMaximumLayers(maxSpatialLayerId: number, maxTemporalLayerId: number):
+        void;
 
     /**
      * Add event listener
@@ -841,11 +869,9 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Transponder}
      */
-    on(
-      event: "stopped",
-      listener: (transponder: Transponder) => any
-    ): Transponder;
-    on(event: "muted", listener: (muted: boolean) => any): Transponder;
+    on(event: 'stopped',
+       listener: (transponder: Transponder) => any): Transponder;
+    on(event: 'muted', listener: (muted: boolean) => any): Transponder;
 
     /**
      * Add event listener once
@@ -853,11 +879,9 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Transponder}
      */
-    once(
-      event: "stopped",
-      listener: (transponder: Transponder) => any
-    ): Transponder;
-    once(event: "muted", listener: (muted: boolean) => any): Transponder;
+    once(event: 'stopped', listener: (transponder: Transponder) => any):
+        Transponder;
+    once(event: 'muted', listener: (muted: boolean) => any): Transponder;
 
     /**
      * Remove event listener
@@ -865,11 +889,9 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Transponder}
      */
-    off(
-      event: "stopped",
-      listener: (transponder: Transponder) => any
-    ): Transponder;
-    off(event: "muted", listener: (muted: boolean) => any): Transponder;
+    off(event: 'stopped',
+        listener: (transponder: Transponder) => any): Transponder;
+    off(event: 'muted', listener: (muted: boolean) => any): Transponder;
 
     /**
      * Stop this transponder, will dettach the OutgoingStreamTrack
@@ -918,7 +940,8 @@ declare module "medooze-media-server" {
     /**
      * Create a new endpoint object
      * @memberof MediaServer
-     * @param {String} ip	- External IP address of server, to be used when announcing the local ICE candidate
+     * @param {String} ip	- External IP address of server, to be used when
+     *     announcing the local ICE candidate
      * @returns {Endpoint} The new created endpoing
      */
     createEndpoint(ip: string): Endpoint;
@@ -928,8 +951,10 @@ declare module "medooze-media-server" {
      * @memberof MediaServer
      * @param {String} filename - Path and filename of the recorded mp4 file
      * @param {Object} params - Recording parameters (Optional)
-     * @param {Object} params.refresh - Periodically refresh an intra on all video tracks (in ms)
-     * @param {Object} params.waitForIntra - Wait until first video iframe is received to start recording media
+     * @param {Object} params.refresh - Periodically refresh an intra on all
+     *     video tracks (in ms)
+     * @param {Object} params.waitForIntra - Wait until first video iframe is
+     *     received to start recording media
      * @returns {Recorder}
      */
     createRecorder(filename: string, params?: CreateRecorderOptions): Recorder;
@@ -975,7 +1000,8 @@ declare module "medooze-media-server" {
     getId(): string;
 
     /**
-     * Get the stream info object for signaling the ssrcs and stream info on the SDP from the remote peer
+     * Get the stream info object for signaling the ssrcs and stream info on the
+     * SDP from the remote peer
      * @returns {StreamInfo} The stream info object
      */
     getStreamInfo(): SemanticSDP.StreamInfo;
@@ -986,17 +1012,12 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    on(
-      event: "track",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    on(
-      event: "stopped",
-      listener: (
-        stream: IncomingStream,
-        stats: IncomingStreamStatsReport
-      ) => any
-    ): IncomingStream;
+    on(event: 'track',
+       listener: (track: IncomingStreamTrack) => any): IncomingStream;
+    on(event: 'stopped',
+       listener:
+           (stream: IncomingStream, stats: IncomingStreamStatsReport) => any):
+        IncomingStream;
 
     /**
      * Add event listener once
@@ -1004,17 +1025,13 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
+    once(event: 'track', listener: (track: IncomingStreamTrack) => any):
+        IncomingStream;
     once(
-      event: "track",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    once(
-      event: "stopped",
-      listener: (
-        stream: IncomingStream,
-        stats: IncomingStreamStatsReport
-      ) => any
-    ): IncomingStream;
+        event: 'stopped',
+        listener:
+            (stream: IncomingStream, stats: IncomingStreamStatsReport) => any):
+        IncomingStream;
 
     /**
      * Remove event listener
@@ -1022,22 +1039,18 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    off(
-      event: "track",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    off(
-      event: "stopped",
-      listener: (
-        stream: IncomingStream,
-        stats: IncomingStreamStatsReport
-      ) => any
-    ): IncomingStream;
+    off(event: 'track',
+        listener: (track: IncomingStreamTrack) => any): IncomingStream;
+    off(event: 'stopped',
+        listener:
+            (stream: IncomingStream, stats: IncomingStreamStatsReport) => any):
+        IncomingStream;
 
     /**
      * Get statistics for all tracks in the stream
      *
-     * See OutgoingStreamTrack.getStats for information about the stats returned by each track.
+     * See OutgoingStreamTrack.getStats for information about the stats returned
+     * by each track.
      *
      * @returns {Map<String>,Object} Map with stats by trackId
      */
@@ -1070,7 +1083,8 @@ declare module "medooze-media-server" {
     getVideoTracks(): IncomingStreamTrack[];
 
     /*
-     * Adds an incoming stream track created using the Transpocnder.createIncomingStreamTrack to this stream
+     * Adds an incoming stream track created using the
+     * Transpocnder.createIncomingStreamTrack to this stream
      *
      * @param {IncomingStreamTrack} track
      */
@@ -1085,7 +1099,8 @@ declare module "medooze-media-server" {
     createTrack(trackInfo: SemanticSDP.TrackInfo): IncomingStreamTrack;
 
     /**
-     * Removes the media strem from the transport and also detaches from any attached incoming stream
+     * Removes the media strem from the transport and also detaches from any
+     * attached incoming stream
      */
     stop(): void;
   }
@@ -1099,7 +1114,8 @@ declare module "medooze-media-server" {
 
     /**
      * Get active encodings and layers ordered by bitrate
-     * @returns {Object} Active layers object containing an array of active and inactive encodings and an array of all available layer info
+     * @returns {Object} Active layers object containing an array of active and
+     *     inactive encodings and an array of all available layer info
      */
     getActiveLayers(): ActiveLayers;
 
@@ -1118,7 +1134,7 @@ declare module "medooze-media-server" {
      * Return ssrcs associated to this track
      * @returns {Object}
      */
-    getSSRCs(): { [encodingID: string]: SSRCs };
+    getSSRCs(): {[encodingID: string]: SSRCs};
 
     /**
      * Get track media type
@@ -1132,18 +1148,12 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStreamTrack}
      */
-    on(
-      event: "attached",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    on(
-      event: "detached",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    on(
-      event: "stopped",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
+    on(event: 'attached',
+       listener: (track: IncomingStreamTrack) => any): IncomingStream;
+    on(event: 'detached',
+       listener: (track: IncomingStreamTrack) => any): IncomingStream;
+    on(event: 'stopped',
+       listener: (track: IncomingStreamTrack) => any): IncomingStream;
 
     /**
      * Add event listener once
@@ -1151,18 +1161,12 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    once(
-      event: "attached",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    once(
-      event: "detached",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    once(
-      event: "stopped",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
+    once(event: 'attached', listener: (track: IncomingStreamTrack) => any):
+        IncomingStream;
+    once(event: 'detached', listener: (track: IncomingStreamTrack) => any):
+        IncomingStream;
+    once(event: 'stopped', listener: (track: IncomingStreamTrack) => any):
+        IncomingStream;
 
     /**
      * Remove event listener
@@ -1170,22 +1174,17 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStreamTrack}
      */
-    off(
-      event: "attached",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    off(
-      event: "detached",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
-    off(
-      event: "stopped",
-      listener: (track: IncomingStreamTrack) => any
-    ): IncomingStream;
+    off(event: 'attached',
+        listener: (track: IncomingStreamTrack) => any): IncomingStream;
+    off(event: 'detached',
+        listener: (track: IncomingStreamTrack) => any): IncomingStream;
+    off(event: 'stopped',
+        listener: (track: IncomingStreamTrack) => any): IncomingStream;
 
     /**
      * Signal that this track has been attached.
-     * Internal use, you'd beter know what you are doing before calling this method
+     * Internal use, you'd beter know what you are doing before calling this
+     * method
      */
     attached(): void;
 
@@ -1196,12 +1195,14 @@ declare module "medooze-media-server" {
 
     /**
      * Signal that this track has been detached.
-     * Internal use, you'd beter know what you are doing before calling this method
+     * Internal use, you'd beter know what you are doing before calling this
+     * method
      */
     detached(): void;
 
     /**
-     * Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
+     * Removes the track from the incoming stream and also detaches any attached
+     * outgoing track or recorder
      */
     stop(): void;
   }
@@ -1213,14 +1214,10 @@ declare module "medooze-media-server" {
      * @param {function} listeener	- Event listener
      * @returns {PeerConnectionServer}
      */
-    on(
-      event: "stopped",
-      listener: (server: PeerConnectionServer) => any
-    ): PeerConnectionServer;
-    on(
-      event: "transport",
-      listener: (transport: Transport) => any
-    ): PeerConnectionServer;
+    on(event: 'stopped',
+       listener: (server: PeerConnectionServer) => any): PeerConnectionServer;
+    on(event: 'transport',
+       listener: (transport: Transport) => any): PeerConnectionServer;
 
     /**
      * Add event listener once
@@ -1228,14 +1225,10 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {PeerConnectionServer}
      */
-    once(
-      event: "stopped",
-      listener: (server: PeerConnectionServer) => any
-    ): PeerConnectionServer;
-    once(
-      event: "transport",
-      listener: (transport: Transport) => any
-    ): PeerConnectionServer;
+    once(event: 'stopped', listener: (server: PeerConnectionServer) => any):
+        PeerConnectionServer;
+    once(event: 'transport', listener: (transport: Transport) => any):
+        PeerConnectionServer;
 
     /**
      * Remove event listener
@@ -1243,14 +1236,10 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {PeerConnectionServer}
      */
-    off(
-      event: "stopped",
-      listener: (server: PeerConnectionServer) => any
-    ): PeerConnectionServer;
-    off(
-      event: "transport",
-      listener: (transport: Transport) => any
-    ): PeerConnectionServer;
+    off(event: 'stopped',
+        listener: (server: PeerConnectionServer) => any): PeerConnectionServer;
+    off(event: 'transport',
+        listener: (transport: Transport) => any): PeerConnectionServer;
 
     /**
      * Stop the peerconnection server, will not stop the transport created by it
@@ -1296,15 +1285,18 @@ declare module "medooze-media-server" {
 
     /*
      * Mute/Unmute track
-     * This operation will not change the muted state of the stream this track belongs too.
+     * This operation will not change the muted state of the stream this track
+     * belongs too.
      * @param {boolean} muting - if we want to mute or unmute
      */
     mute(muting: boolean): void;
 
     /**
-     * Listen media from the incoming stream track and send it to the remote peer of the associated transport.
-     * This will stop any previous transpoder created by a previous attach.
-     * @param {IncomingStreamTrack} incomingStreamTrack - The incoming stream to listen media for
+     * Listen media from the incoming stream track and send it to the remote
+     * peer of the associated transport. This will stop any previous transpoder
+     * created by a previous attach.
+     * @param {IncomingStreamTrack} incomingStreamTrack - The incoming stream to
+     *     listen media for
      * @returns {Transponder} Track transponder object
      */
     attachTo(incomingStreamTrack: IncomingStreamTrack): Transponder;
@@ -1321,15 +1313,12 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStreamTrack}
      */
-    on(
-      event: "stopped",
-      listener: (track: OutgoingStreamTrack) => any
-    ): OutgoingStreamTrack;
-    on(
-      event: "remb",
-      listener: (bitrate: number, track: OutgoingStreamTrack) => any
-    ): OutgoingStreamTrack;
-    on(event: "muted", listener: (muted: boolean) => any): OutgoingStreamTrack;
+    on(event: 'stopped',
+       listener: (track: OutgoingStreamTrack) => any): OutgoingStreamTrack;
+    on(event: 'remb',
+       listener: (bitrate: number, track: OutgoingStreamTrack) => any):
+        OutgoingStreamTrack;
+    on(event: 'muted', listener: (muted: boolean) => any): OutgoingStreamTrack;
 
     /**
      * Add event listener once
@@ -1337,18 +1326,14 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
+    once(event: 'stopped', listener: (track: OutgoingStreamTrack) => any):
+        OutgoingStreamTrack;
     once(
-      event: "stopped",
-      listener: (track: OutgoingStreamTrack) => any
-    ): OutgoingStreamTrack;
-    once(
-      event: "remb",
-      listener: (bitrate: number, track: OutgoingStreamTrack) => any
-    ): OutgoingStreamTrack;
-    once(
-      event: "muted",
-      listener: (muted: boolean) => any
-    ): OutgoingStreamTrack;
+        event: 'remb',
+        listener: (bitrate: number, track: OutgoingStreamTrack) => any):
+        OutgoingStreamTrack;
+    once(event: 'muted', listener: (muted: boolean) => any):
+        OutgoingStreamTrack;
 
     /**
      * Remove event listener
@@ -1356,18 +1341,16 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStreamTrack}
      */
-    off(
-      event: "stopped",
-      listener: (track: OutgoingStreamTrack) => any
-    ): OutgoingStreamTrack;
-    off(
-      event: "remb",
-      listener: (bitrate: number, track: OutgoingStreamTrack) => any
-    ): OutgoingStreamTrack;
-    off(event: "muted", listener: (muted: boolean) => any): OutgoingStreamTrack;
+    off(event: 'stopped',
+        listener: (track: OutgoingStreamTrack) => any): OutgoingStreamTrack;
+    off(event: 'remb',
+        listener: (bitrate: number, track: OutgoingStreamTrack) => any):
+        OutgoingStreamTrack;
+    off(event: 'muted', listener: (muted: boolean) => any): OutgoingStreamTrack;
 
     /**
-     * Removes the track from the outgoing stream and also detaches from any attached incoming track
+     * Removes the track from the outgoing stream and also detaches from any
+     * attached incoming track
      */
     stop(): void;
   }
@@ -1375,12 +1358,12 @@ declare module "medooze-media-server" {
   export interface Recorder {
     /**
      * Start recording and incoming
-     * @param {IncomingStream|IncomingStreamTrack} incomingStreamOrTrack - Incomining stream or track to be recordeds
+     * @param {IncomingStream|IncomingStreamTrack} incomingStreamOrTrack -
+     *     Incomining stream or track to be recordeds
      * @returns {Array<RecorderTrack>}
      */
-    record(
-      incomingStreamOrTrack: IncomingStream | IncomingStreamTrack
-    ): RecorderTrack[];
+    record(incomingStreamOrTrack: IncomingStream|
+           IncomingStreamTrack): RecorderTrack[];
 
     /**
      * Stop recording and close file. NOTE: File will be flsuh async,
@@ -1413,10 +1396,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {RecorderTrack}
      */
-    on(
-      event: "stopped",
-      listener: (track: RecorderTrack) => any
-    ): RecorderTrack;
+    on(event: 'stopped',
+       listener: (track: RecorderTrack) => any): RecorderTrack;
 
     /**
      * Add event listener once
@@ -1424,10 +1405,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    once(
-      event: "stopped",
-      listener: (track: RecorderTrack) => any
-    ): RecorderTrack;
+    once(event: 'stopped', listener: (track: RecorderTrack) => any):
+        RecorderTrack;
 
     /**
      * Remove event listener
@@ -1435,10 +1414,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {RecorderTrack}
      */
-    off(
-      event: "stopped",
-      listener: (track: RecorderTrack) => any
-    ): RecorderTrack;
+    off(event: 'stopped',
+        listener: (track: RecorderTrack) => any): RecorderTrack;
 
     /**
      * Stop recording this track
@@ -1499,8 +1476,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    on(event: "stopped", listener: (track: Player) => any): Player;
-    on(event: "ended", listener: (track: Player) => any): Player;
+    on(event: 'stopped', listener: (track: Player) => any): Player;
+    on(event: 'ended', listener: (track: Player) => any): Player;
 
     /**
      * Add event listener once
@@ -1508,8 +1485,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    once(event: "stopped", listener: (track: Player) => any): Player;
-    once(event: "ended", listener: (track: Player) => any): Player;
+    once(event: 'stopped', listener: (track: Player) => any): Player;
+    once(event: 'ended', listener: (track: Player) => any): Player;
 
     /**
      * Remove event listener
@@ -1517,29 +1494,29 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    off(event: "stopped", listener: (track: Player) => any): Player;
-    off(event: "ended", listener: (track: Player) => any): Player;
+    off(event: 'stopped', listener: (track: Player) => any): Player;
+    off(event: 'ended', listener: (track: Player) => any): Player;
   }
 
   export interface EmulatedTransport {
     /**
      * Set remote RTP properties
-     * @param {Object|SDPInfo} rtp - Object param containing media information for audio and video
+     * @param {Object|SDPInfo} rtp - Object param containing media information
+     *     for audio and video
      * @param {MediaInfo} rtp.audio	- Audio media info
      * @param {MediaInfo} rtp.video	- Video media info
      */
-    setRemoteProperties(
-      rtp: SemanticSDP.SDPInfo | SetTransportPropertiesOptions
-    ): void;
+    setRemoteProperties(rtp: SemanticSDP.SDPInfo|
+                        SetTransportPropertiesOptions): void;
 
     /**
      * Create an incoming stream object from the media stream info objet
-     * @param {StreamInfo} info Contains the ids and ssrcs of the stream to be created
+     * @param {StreamInfo} info Contains the ids and ssrcs of the stream to be
+     *     created
      * @returns {IncomingStream} The newly created incoming stream object
      */
-    createIncomingStream(
-      info: SemanticSDP.StreamInfo | SemanticSDP.StreamInfoPlain
-    ): IncomingStream;
+    createIncomingStream(info: SemanticSDP.StreamInfo|
+                         SemanticSDP.StreamInfoPlain): IncomingStream;
 
     /**
      * Starts playback
@@ -1575,10 +1552,8 @@ declare module "medooze-media-server" {
      * @param {function} listeener	- Event listener
      * @returns {Transport}
      */
-    on(
-      event: "stopped",
-      listener: (track: EmulatedTransport) => any
-    ): EmulatedTransport;
+    on(event: 'stopped',
+       listener: (track: EmulatedTransport) => any): EmulatedTransport;
 
     /**
      * Add event listener once
@@ -1586,10 +1561,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    once(
-      event: "stopped",
-      listener: (track: EmulatedTransport) => any
-    ): EmulatedTransport;
+    once(event: 'stopped', listener: (track: EmulatedTransport) => any):
+        EmulatedTransport;
 
     /**
      * Remove event listener
@@ -1597,15 +1570,14 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Transport}
      */
-    off(
-      event: "stopped",
-      listener: (track: EmulatedTransport) => any
-    ): EmulatedTransport;
+    off(event: 'stopped',
+        listener: (track: EmulatedTransport) => any): EmulatedTransport;
   }
 
   /**
    * An streamer allows to send and receive plain RTP over udp sockets.
-   * This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
+   * This allows both to bridge legacy enpoints or integrate
+   * streaming/broadcasting services.
    */
   export interface Streamer {
     /**
@@ -1620,9 +1592,8 @@ declare module "medooze-media-server" {
      * @returns {StreamerSession} The new streaming session
      */
     createSession(
-      media: SemanticSDP.MediaInfo,
-      params: CreateStreamerSessionOptions
-    ): StreamerSession;
+        media: SemanticSDP.MediaInfo,
+        params: CreateStreamerSessionOptions): StreamerSession;
 
     /**
      * Stop all streaming sessions and frees resources
@@ -1631,7 +1602,8 @@ declare module "medooze-media-server" {
   }
 
   /**
-   * Represent the connection between a local udp port and a remote one. It sends and/or receive plain RTP data.
+   * Represent the connection between a local udp port and a remote one. It
+   * sends and/or receive plain RTP data.
    */
   export interface StreamerSession {
     /**
@@ -1657,10 +1629,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {StreamerSession}
      */
-    on(
-      event: "stopped",
-      listener: (s: StreamerSession) => any
-    ): StreamerSession;
+    on(event: 'stopped',
+       listener: (s: StreamerSession) => any): StreamerSession;
 
     /**
      * Add event listener once
@@ -1668,10 +1638,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    once(
-      event: "stopped",
-      listener: (s: StreamerSession) => any
-    ): StreamerSession;
+    once(event: 'stopped', listener: (s: StreamerSession) => any):
+        StreamerSession;
 
     /**
      * Remove event listener
@@ -1679,10 +1647,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {StreamerSession}
      */
-    off(
-      event: "stopped",
-      listener: (s: StreamerSession) => any
-    ): StreamerSession;
+    off(event: 'stopped',
+        listener: (s: StreamerSession) => any): StreamerSession;
   }
 
   /**
@@ -1693,7 +1659,7 @@ declare module "medooze-media-server" {
      * Add stream or track to request
      * @param {IncomintgStream|IncomingStreamTrack} streamOrTrack
      */
-    add(streamOrTrack: IncomingStream | IncomingStreamTrack): void;
+    add(streamOrTrack: IncomingStream|IncomingStreamTrack): void;
 
     /**
      * Stop refresher
@@ -1706,8 +1672,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    on(event: "stopped", listener: (r: Refresher) => any): Refresher;
-    on(event: "refreshing", listener: (r: Refresher) => any): Refresher;
+    on(event: 'stopped', listener: (r: Refresher) => any): Refresher;
+    on(event: 'refreshing', listener: (r: Refresher) => any): Refresher;
 
     /**
      * Add event listener once
@@ -1715,8 +1681,8 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    once(event: "stopped", listener: (r: Refresher) => any): Refresher;
-    once(event: "refreshing", listener: (r: Refresher) => any): Refresher;
+    once(event: 'stopped', listener: (r: Refresher) => any): Refresher;
+    once(event: 'refreshing', listener: (r: Refresher) => any): Refresher;
 
     /**
      * Remove event listener
@@ -1724,16 +1690,17 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {OutgoingStream}
      */
-    off(event: "stopped", listener: (r: Refresher) => any): Refresher;
-    off(event: "refreshing", listener: (r: Refresher) => any): Refresher;
+    off(event: 'stopped', listener: (r: Refresher) => any): Refresher;
+    off(event: 'refreshing', listener: (r: Refresher) => any): Refresher;
   }
 
   export interface SDPManager {
     /**
      * Get current SDP offer/answer state
-     * @returns {String} one of "initial","local-offer","remote-offer","stabable".
+     * @returns {String} one of
+     *     "initial","local-offer","remote-offer","stabable".
      */
-    getState(): "initial" | "local-offer" | "remote-offer" | "stable";
+    getState(): 'initial'|'local-offer'|'remote-offer'|'stable';
 
     /**
      * Returns the Transport object created by the SDP O/A
@@ -1758,11 +1725,9 @@ declare module "medooze-media-server" {
      * @param {function} listeener	- Event listener
      * @returns {Transport}
      */
-    on(
-      event: "renegotiationneeded",
-      listener: (transport: Transport) => any
-    ): SDPManager;
-    on(event: "transport", listener: (transport: Transport) => any): SDPManager;
+    on(event: 'renegotiationneeded',
+       listener: (transport: Transport) => any): SDPManager;
+    on(event: 'transport', listener: (transport: Transport) => any): SDPManager;
 
     /**
      * Add event listener once
@@ -1770,14 +1735,10 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStream}
      */
-    once(
-      event: "renegotiationneeded",
-      listener: (transport: Transport) => any
-    ): SDPManager;
-    once(
-      event: "transport",
-      listener: (transport: Transport) => any
-    ): SDPManager;
+    once(event: 'renegotiationneeded', listener: (transport: Transport) => any):
+        SDPManager;
+    once(event: 'transport', listener: (transport: Transport) => any):
+        SDPManager;
 
     /**
      * Remove event listener
@@ -1785,14 +1746,10 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {Transport}
      */
-    off(
-      event: "renegotiationneeded",
-      listener: (transport: Transport) => any
-    ): SDPManager;
-    off(
-      event: "transport",
-      listener: (transport: Transport) => any
-    ): SDPManager;
+    off(event: 'renegotiationneeded',
+        listener: (transport: Transport) => any): SDPManager;
+    off(event: 'transport',
+        listener: (transport: Transport) => any): SDPManager;
   }
 
   export interface ActiveSpeakerDetector {
@@ -1843,11 +1800,9 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStreamTrack}
      */
-    on(
-      event: "activespeakerchanged",
-      listener: (track: IncomingStreamTrack) => any
-    ): ActiveSpeakerDetector;
-    on(event: "stopped", listener: () => any): ActiveSpeakerDetector;
+    on(event: 'activespeakerchanged',
+       listener: (track: IncomingStreamTrack) => any): ActiveSpeakerDetector;
+    on(event: 'stopped', listener: () => any): ActiveSpeakerDetector;
 
     /**
      * Add event listener once
@@ -1856,10 +1811,9 @@ declare module "medooze-media-server" {
      * @returns {IncomingStream}
      */
     once(
-      event: "activespeakerchanged",
-      listener: (track: IncomingStreamTrack) => any
-    ): ActiveSpeakerDetector;
-    once(event: "stopped", listener: () => any): ActiveSpeakerDetector;
+        event: 'activespeakerchanged',
+        listener: (track: IncomingStreamTrack) => any): ActiveSpeakerDetector;
+    once(event: 'stopped', listener: () => any): ActiveSpeakerDetector;
 
     /**
      * Remove event listener
@@ -1867,11 +1821,9 @@ declare module "medooze-media-server" {
      * @param {function} listener	- Event listener
      * @returns {IncomingStreamTrack}
      */
-    off(
-      event: "activespeakerchanged",
-      listener: (track: IncomingStreamTrack) => any
-    ): ActiveSpeakerDetector;
-    off(event: "stopped", listener: () => any): ActiveSpeakerDetector;
+    off(event: 'activespeakerchanged',
+        listener: (track: IncomingStreamTrack) => any): ActiveSpeakerDetector;
+    off(event: 'stopped', listener: () => any): ActiveSpeakerDetector;
   }
 
   let MediaServer: MediaServer;
