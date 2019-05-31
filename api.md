@@ -1343,6 +1343,21 @@ Dump incoming and outgoint rtp and rtcp packets into a pcap file
     -   `options.outbound` **[Boolean][1]** Dump outgoing RTP data
     -   `options.rtcp` **[Boolean][1]** Dump rtcp RTP data
 
+### getStats
+
+Get transport stats
+
+-   senderSideEstimationBitrate    : Sneder side estimation bitrate (if available)
+-   ice      : ICE related stats
+
+
+-   requestsSent		: Number of ice requests sent
+-   requestsReceived	: Number of ice requests received
+-   responsesSent		: Number of ice responses sent
+-   responsesReceived	: Number of ice responses received
+
+Returns **[Object][4]** stats
+
 ### setBandwidthProbing
 
 Enable bitrate probing.

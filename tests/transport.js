@@ -26,6 +26,13 @@ tap.test("Probing",async function(suite){
 		ice  : SemanticSDP.ICEInfo.generate()
 	});
 
+	suite.test("getStats",async function(test){
+		//Create new incoming stream
+		const stats = transport.getStats();
+		test.ok(stats);
+		test.done();
+	});
+	
 	suite.test("setBandwidthProbing",async function(test){
 		//Create new incoming stream
 		transport.setBandwidthProbing(true);

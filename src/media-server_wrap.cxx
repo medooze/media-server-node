@@ -1554,46 +1554,47 @@ fail: ;
 #define SWIGTYPE_p_Properties swig_types[15]
 #define SWIGTYPE_p_PropertiesFacade swig_types[16]
 #define SWIGTYPE_p_RTPBundleTransport swig_types[17]
-#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[18]
-#define SWIGTYPE_p_RTPIncomingMediaStreamListener swig_types[19]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[20]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[21]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[22]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[23]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[24]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[25]
-#define SWIGTYPE_p_RTPReceiver swig_types[26]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[27]
-#define SWIGTYPE_p_RTPSender swig_types[28]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[29]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[30]
-#define SWIGTYPE_p_RTPSource swig_types[31]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[32]
-#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[33]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[34]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[35]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[36]
-#define SWIGTYPE_p_StringFacade swig_types[37]
-#define SWIGTYPE_p_TimeService swig_types[38]
-#define SWIGTYPE_p_UDPDumper swig_types[39]
-#define SWIGTYPE_p_UDPReader swig_types[40]
-#define SWIGTYPE_p_char swig_types[41]
-#define SWIGTYPE_p_int swig_types[42]
-#define SWIGTYPE_p_long_double swig_types[43]
-#define SWIGTYPE_p_long_long swig_types[44]
-#define SWIGTYPE_p_short swig_types[45]
-#define SWIGTYPE_p_signed_char swig_types[46]
-#define SWIGTYPE_p_std__string swig_types[47]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[48]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[49]
-#define SWIGTYPE_p_unsigned_char swig_types[50]
-#define SWIGTYPE_p_unsigned_int swig_types[51]
-#define SWIGTYPE_p_unsigned_long_long swig_types[52]
-#define SWIGTYPE_p_unsigned_short swig_types[53]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[54]
-#define SWIGTYPE_p_void swig_types[55]
-static swig_type_info *swig_types[57];
-static swig_module_info swig_module = {swig_types, 56, 0, 0, 0, 0};
+#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[18]
+#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[19]
+#define SWIGTYPE_p_RTPIncomingMediaStreamListener swig_types[20]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[21]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[22]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[23]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[24]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[25]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[26]
+#define SWIGTYPE_p_RTPReceiver swig_types[27]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[28]
+#define SWIGTYPE_p_RTPSender swig_types[29]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[30]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[31]
+#define SWIGTYPE_p_RTPSource swig_types[32]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[33]
+#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[34]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[35]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[36]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[37]
+#define SWIGTYPE_p_StringFacade swig_types[38]
+#define SWIGTYPE_p_TimeService swig_types[39]
+#define SWIGTYPE_p_UDPDumper swig_types[40]
+#define SWIGTYPE_p_UDPReader swig_types[41]
+#define SWIGTYPE_p_char swig_types[42]
+#define SWIGTYPE_p_int swig_types[43]
+#define SWIGTYPE_p_long_double swig_types[44]
+#define SWIGTYPE_p_long_long swig_types[45]
+#define SWIGTYPE_p_short swig_types[46]
+#define SWIGTYPE_p_signed_char swig_types[47]
+#define SWIGTYPE_p_std__string swig_types[48]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[49]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[50]
+#define SWIGTYPE_p_unsigned_char swig_types[51]
+#define SWIGTYPE_p_unsigned_int swig_types[52]
+#define SWIGTYPE_p_unsigned_long_long swig_types[53]
+#define SWIGTYPE_p_unsigned_short swig_types[54]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[55]
+#define SWIGTYPE_p_void swig_types[56]
+static swig_type_info *swig_types[58];
+static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1635,6 +1636,7 @@ static swig_module_info swig_module = {swig_types, 56, 0, 0, 0, 0};
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 #include "../media-server/include/ActiveSpeakerDetector.h"	
 
+using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 
 class StringFacade : private std::string
 {
@@ -2826,6 +2828,7 @@ SWIGV8_ClientData _exports_RTPIncomingMediaStreamMultiplexer_clientData;
 SWIGV8_ClientData _exports_StringFacade_clientData;
 SWIGV8_ClientData _exports_PropertiesFacade_clientData;
 SWIGV8_ClientData _exports_MediaServer_clientData;
+SWIGV8_ClientData _exports_RTPBundleTransportConnection_clientData;
 SWIGV8_ClientData _exports_RTPBundleTransport_clientData;
 SWIGV8_ClientData _exports_UDPReader_clientData;
 SWIGV8_ClientData _exports_PCAPTransportEmulator_clientData;
@@ -11439,6 +11442,399 @@ static void _wrap_delete_MediaServer(v8::Persistent<v8::Value> object, void *par
         }
 
 
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPBundleTransportConnection_transport_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPBundleTransportConnection_transport_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    DTLSICETransport *arg2 = (DTLSICETransport *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    void *argp2 = 0 ;
+    int res2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_transport_set" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    res2 = SWIG_ConvertPtr(value, &argp2,SWIGTYPE_p_DTLSICETransport, SWIG_POINTER_DISOWN |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransportConnection_transport_set" "', argument " "2"" of type '" "DTLSICETransport *""'"); 
+    }
+    arg2 = reinterpret_cast< DTLSICETransport * >(argp2);
+    if (arg1) (arg1)->transport = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_transport_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_transport_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    DTLSICETransport *result = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_transport_get" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    result = (DTLSICETransport *) ((arg1)->transport);
+    jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    bool arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    bool val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_disableSTUNKeepAlive_set" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    ecode2 = SWIG_AsVal_bool(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPBundleTransportConnection_disableSTUNKeepAlive_set" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+    if (arg1) (arg1)->disableSTUNKeepAlive = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    bool result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_disableSTUNKeepAlive_get" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    result = (bool) ((arg1)->disableSTUNKeepAlive);
+    jsresult = SWIG_From_bool(static_cast< bool >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPBundleTransportConnection_iceRequestsSent_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPBundleTransportConnection_iceRequestsSent_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    size_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceRequestsSent_set" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    ecode2 = SWIG_AsVal_size_t(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPBundleTransportConnection_iceRequestsSent_set" "', argument " "2"" of type '" "size_t""'");
+    } 
+    arg2 = static_cast< size_t >(val2);
+    if (arg1) (arg1)->iceRequestsSent = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceRequestsSent_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceRequestsSent_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceRequestsSent_get" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    result =  ((arg1)->iceRequestsSent);
+    jsresult = SWIG_From_size_t(static_cast< size_t >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPBundleTransportConnection_iceRequestsReceived_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPBundleTransportConnection_iceRequestsReceived_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    size_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceRequestsReceived_set" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    ecode2 = SWIG_AsVal_size_t(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPBundleTransportConnection_iceRequestsReceived_set" "', argument " "2"" of type '" "size_t""'");
+    } 
+    arg2 = static_cast< size_t >(val2);
+    if (arg1) (arg1)->iceRequestsReceived = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceRequestsReceived_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceRequestsReceived_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceRequestsReceived_get" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    result =  ((arg1)->iceRequestsReceived);
+    jsresult = SWIG_From_size_t(static_cast< size_t >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPBundleTransportConnection_iceResponsesSent_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPBundleTransportConnection_iceResponsesSent_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    size_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceResponsesSent_set" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    ecode2 = SWIG_AsVal_size_t(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPBundleTransportConnection_iceResponsesSent_set" "', argument " "2"" of type '" "size_t""'");
+    } 
+    arg2 = static_cast< size_t >(val2);
+    if (arg1) (arg1)->iceResponsesSent = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceResponsesSent_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceResponsesSent_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceResponsesSent_get" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    result =  ((arg1)->iceResponsesSent);
+    jsresult = SWIG_From_size_t(static_cast< size_t >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPBundleTransportConnection_iceResponsesReceived_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPBundleTransportConnection_iceResponsesReceived_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    size_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceResponsesReceived_set" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    ecode2 = SWIG_AsVal_size_t(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPBundleTransportConnection_iceResponsesReceived_set" "', argument " "2"" of type '" "size_t""'");
+    } 
+    arg2 = static_cast< size_t >(val2);
+    if (arg1) (arg1)->iceResponsesReceived = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceResponsesReceived_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPBundleTransportConnection_iceResponsesReceived_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPBundleTransportConnection *arg1 = (RTPBundleTransportConnection *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    size_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransportConnection_iceResponsesReceived_get" "', argument " "1"" of type '" "RTPBundleTransportConnection *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPBundleTransportConnection * >(argp1);
+    result =  ((arg1)->iceResponsesReceived);
+    jsresult = SWIG_From_size_t(static_cast< size_t >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+static SwigV8ReturnValue _wrap_new_veto_RTPBundleTransportConnection(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIG_exception(SWIG_ERROR, "Class RTPBundleTransportConnection can not be instantiated");
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_RTPBundleTransport(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -11581,7 +11977,7 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddICETransport(const SwigV8Ar
   int res2 = 0 ;
   void *argp3 ;
   int res3 = 0 ;
-  DTLSICETransport *result = 0 ;
+  RTPBundleTransportConnection *result = 0 ;
   
   if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_AddICETransport.");
   
@@ -11606,8 +12002,8 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddICETransport(const SwigV8Ar
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddICETransport" "', argument " "3"" of type '" "Properties const &""'"); 
   }
   arg3 = reinterpret_cast< Properties * >(argp3);
-  result = (DTLSICETransport *)(arg1)->AddICETransport((std::string const &)*arg2,(Properties const &)*arg3);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  result = (RTPBundleTransportConnection *)(arg1)->AddICETransport((std::string const &)*arg2,(Properties const &)*arg3);
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
   
   
   
@@ -16904,6 +17300,7 @@ static swig_type_info _swigt__p_PlayerFacade = {"_p_PlayerFacade", "p_PlayerFaca
 static swig_type_info _swigt__p_Properties = {"_p_Properties", "Properties *|p_Properties", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PropertiesFacade = {"_p_PropertiesFacade", "PropertiesFacade *|p_PropertiesFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPBundleTransport = {"_p_RTPBundleTransport", "p_RTPBundleTransport|RTPBundleTransport *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RTPBundleTransportConnection = {"_p_RTPBundleTransportConnection", "RTPBundleTransportConnection *|p_RTPBundleTransportConnection", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStream = {"_p_RTPIncomingMediaStream", "p_RTPIncomingMediaStream|RTPIncomingMediaStream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStreamListener = {"_p_RTPIncomingMediaStreamListener", "p_RTPIncomingMediaStreamListener|RTPIncomingMediaStreamListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStreamMultiplexer = {"_p_RTPIncomingMediaStreamMultiplexer", "p_RTPIncomingMediaStreamMultiplexer", 0, 0, (void*)0, 0};
@@ -16962,6 +17359,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_Properties,
   &_swigt__p_PropertiesFacade,
   &_swigt__p_RTPBundleTransport,
+  &_swigt__p_RTPBundleTransportConnection,
   &_swigt__p_RTPIncomingMediaStream,
   &_swigt__p_RTPIncomingMediaStreamListener,
   &_swigt__p_RTPIncomingMediaStreamMultiplexer,
@@ -17020,6 +17418,7 @@ static swig_cast_info _swigc__p_PlayerFacade[] = {  {&_swigt__p_PlayerFacade, 0,
 static swig_cast_info _swigc__p_Properties[] = {  {&_swigt__p_Properties, 0, 0, 0},  {&_swigt__p_PropertiesFacade, _p_PropertiesFacadeTo_p_Properties, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PropertiesFacade[] = {  {&_swigt__p_PropertiesFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPBundleTransport[] = {  {&_swigt__p_RTPBundleTransport, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RTPBundleTransportConnection[] = {  {&_swigt__p_RTPBundleTransportConnection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStream[] = {  {&_swigt__p_RTPIncomingMediaStream, 0, 0, 0},  {&_swigt__p_RTPIncomingMediaStreamMultiplexer, _p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStream, 0, 0},  {&_swigt__p_RTPIncomingSourceGroup, _p_RTPIncomingSourceGroupTo_p_RTPIncomingMediaStream, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStreamListener[] = {  {&_swigt__p_RTPIncomingMediaStreamMultiplexer, _p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStreamListener, 0, 0},  {&_swigt__p_RTPIncomingMediaStreamListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStreamMultiplexer[] = {  {&_swigt__p_RTPIncomingMediaStreamMultiplexer, 0, 0, 0},{0, 0, 0, 0}};
@@ -17078,6 +17477,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_Properties,
   _swigc__p_PropertiesFacade,
   _swigc__p_RTPBundleTransport,
+  _swigc__p_RTPBundleTransportConnection,
   _swigc__p_RTPIncomingMediaStream,
   _swigc__p_RTPIncomingMediaStreamListener,
   _swigc__p_RTPIncomingMediaStreamMultiplexer,
@@ -17576,6 +17976,13 @@ _exports_MediaServer_clientData.dtor = _wrap_delete_MediaServer;
 if (SWIGTYPE_p_MediaServer->clientdata == 0) {
   SWIGTYPE_p_MediaServer->clientdata = &_exports_MediaServer_clientData;
 }
+/* Name: _exports_RTPBundleTransportConnection, Type: p_RTPBundleTransportConnection, Dtor: 0 */
+v8::Handle<v8::FunctionTemplate> _exports_RTPBundleTransportConnection_class = SWIGV8_CreateClassTemplate("_exports_RTPBundleTransportConnection");
+SWIGV8_SET_CLASS_TEMPL(_exports_RTPBundleTransportConnection_clientData.class_templ, _exports_RTPBundleTransportConnection_class);
+_exports_RTPBundleTransportConnection_clientData.dtor = 0;
+if (SWIGTYPE_p_RTPBundleTransportConnection->clientdata == 0) {
+  SWIGTYPE_p_RTPBundleTransportConnection->clientdata = &_exports_RTPBundleTransportConnection_clientData;
+}
 /* Name: _exports_RTPBundleTransport, Type: p_RTPBundleTransport, Dtor: _wrap_delete_RTPBundleTransport */
 v8::Handle<v8::FunctionTemplate> _exports_RTPBundleTransport_class = SWIGV8_CreateClassTemplate("_exports_RTPBundleTransport");
 SWIGV8_SET_CLASS_TEMPL(_exports_RTPBundleTransport_clientData.class_templ, _exports_RTPBundleTransport_class);
@@ -17816,6 +18223,12 @@ SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "RemoveListener"
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
 SWIGV8_AddMemberFunction(_exports_StringFacade_class, "toString", _wrap_StringFacade_toString);
 SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetProperty", _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProperty);
+SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "transport", _wrap_RTPBundleTransportConnection_transport_get, _wrap_RTPBundleTransportConnection_transport_set);
+SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "disableSTUNKeepAlive", _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_get, _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_set);
+SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "iceRequestsSent", _wrap_RTPBundleTransportConnection_iceRequestsSent_get, _wrap_RTPBundleTransportConnection_iceRequestsSent_set);
+SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "iceRequestsReceived", _wrap_RTPBundleTransportConnection_iceRequestsReceived_get, _wrap_RTPBundleTransportConnection_iceRequestsReceived_set);
+SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "iceResponsesSent", _wrap_RTPBundleTransportConnection_iceResponsesSent_get, _wrap_RTPBundleTransportConnection_iceResponsesSent_set);
+SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "iceResponsesReceived", _wrap_RTPBundleTransportConnection_iceResponsesReceived_get, _wrap_RTPBundleTransportConnection_iceResponsesReceived_set);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "Init", _wrap_RTPBundleTransport__wrap_RTPBundleTransport_Init);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddICETransport", _wrap_RTPBundleTransport_AddICETransport);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "RemoveICETransport", _wrap_RTPBundleTransport_RemoveICETransport);
@@ -18187,6 +18600,12 @@ _exports_MediaServer_class_0->SetCallHandler(_wrap_new_MediaServer);
 _exports_MediaServer_class_0->Inherit(_exports_MediaServer_class);
 _exports_MediaServer_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_MediaServer_obj = _exports_MediaServer_class_0->GetFunction();
+/* Class: RTPBundleTransportConnection (_exports_RTPBundleTransportConnection) */
+v8::Handle<v8::FunctionTemplate> _exports_RTPBundleTransportConnection_class_0 = SWIGV8_CreateClassTemplate("RTPBundleTransportConnection");
+_exports_RTPBundleTransportConnection_class_0->SetCallHandler(_wrap_new_veto_RTPBundleTransportConnection);
+_exports_RTPBundleTransportConnection_class_0->Inherit(_exports_RTPBundleTransportConnection_class);
+_exports_RTPBundleTransportConnection_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_RTPBundleTransportConnection_obj = _exports_RTPBundleTransportConnection_class_0->GetFunction();
 /* Class: RTPBundleTransport (_exports_RTPBundleTransport) */
 v8::Handle<v8::FunctionTemplate> _exports_RTPBundleTransport_class_0 = SWIGV8_CreateClassTemplate("RTPBundleTransport");
 _exports_RTPBundleTransport_class_0->SetCallHandler(_wrap_new_RTPBundleTransport);
@@ -18325,6 +18744,7 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingMediaStreamMultiplexer"), _export
 exports_obj->Set(SWIGV8_SYMBOL_NEW("StringFacade"), _exports_StringFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PropertiesFacade"), _exports_PropertiesFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaServer"), _exports_MediaServer_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPBundleTransportConnection"), _exports_RTPBundleTransportConnection_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPBundleTransport"), _exports_RTPBundleTransport_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("UDPReader"), _exports_UDPReader_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PCAPTransportEmulator"), _exports_PCAPTransportEmulator_obj);

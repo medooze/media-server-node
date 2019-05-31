@@ -20,6 +20,7 @@
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 #include "../media-server/include/ActiveSpeakerDetector.h"	
 
+using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 
 class StringFacade : private std::string
 {
@@ -972,13 +973,27 @@ public:
 	static bool SetPortRange(int minPort, int maxPort);
 };
 
+
+%nodefaultctor RTPBundleTransportConnection;
+%nodefaultdtor RTPBundleTransportConnection;
+struct RTPBundleTransportConnection
+{
+	DTLSICETransport* transport;
+	bool disableSTUNKeepAlive;
+	size_t iceRequestsSent		= 0;
+	size_t iceRequestsReceived	= 0;
+	size_t iceResponsesSent		= 0;
+	size_t iceResponsesReceived	= 0;
+};
+	
+	
 class RTPBundleTransport
 {
 public:
 	RTPBundleTransport();
 	int Init();
 	int Init(int port);
-	DTLSICETransport* AddICETransport(const std::string &username,const Properties& properties);
+	RTPBundleTransportConnection* AddICETransport(const std::string &username,const Properties& properties);
 	int RemoveICETransport(const std::string &username);
 	int End();
 	int GetLocalPort() const { return port; }
