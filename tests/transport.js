@@ -2,7 +2,7 @@ const tap		= require("tap");
 const MediaServer	= require("../index");
 const SemanticSDP	= require("semantic-sdp");
 
-MediaServer.enableLog(true);
+MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
 MediaServer.enableUltraDebug(false);
 const endpoint = MediaServer.createEndpoint("127.0.0.1");

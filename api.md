@@ -172,21 +172,94 @@ Creates a new streaming session from a media description
 
 Returns **[StreamerSession][12]** The new streaming session
 
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listeener` **[function][9]** Event listener
+
+Returns **[Endpoint][2]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][2]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][2]** 
+
 ### stop
 
 Stop all streaming sessions and frees resources
 
-## Refresher
+## ActiveSpeakerDetector
 
-Periodically request an I frame on all incoming stream or tracks
+ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes
 
-### add
+### setMinChangePeriod
 
-Add stream or track to request
+Set minimum period between active speaker changes
 
 #### Parameters
 
--   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
+-   `minChangePeriod` **[Number][11]** 
+
+### setMaxAccumulatedScore
+
+Maximux activity score accumulated by an speaker
+
+#### Parameters
+
+-   `maxAcummulatedScore` **[Number][11]** 
+
+### setNoiseGatingThreshold
+
+Minimum db level to not be considered as muted
+
+#### Parameters
+
+-   `noiseGatingThreshold` **[Number][11]** 
+
+### setMinActivationScore
+
+Set minimum activation score to be electible as active speaker
+
+#### Parameters
+
+-   `minActivationScore` **[Number][11]** 
+
+### addSpeaker
+
+Add incoming track for speaker detection
+
+#### Parameters
+
+-   `track` **[IncomingStreamTrack][13]** 
+
+### removeSpeaker
+
+Remove track from speaker detection
+
+#### Parameters
+
+-   `track` **IncomingStreamTrakc** 
 
 ### on
 
@@ -197,7 +270,7 @@ Add event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[IncomingStream][10]** 
+Returns **[IncomingStreamTrack][13]** 
 
 ### once
 
@@ -219,11 +292,11 @@ Remove event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[OutgoingStream][14]** 
+Returns **[IncomingStreamTrack][13]** 
 
 ### stop
 
-Stop refresher
+Stop this transponder, will dettach the OutgoingStreamTrack
 
 ## RecorderTrack
 
@@ -254,7 +327,7 @@ Add event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[RecorderTrack][15]** 
+Returns **[RecorderTrack][14]** 
 
 ### once
 
@@ -276,7 +349,7 @@ Remove event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[RecorderTrack][15]** 
+Returns **[RecorderTrack][14]** 
 
 ### stop
 
@@ -385,57 +458,17 @@ Returns **[IncomingStreamTrack][13]**
 
 Stop this transponder, will dettach the OutgoingStreamTrack
 
-## ActiveSpeakerDetector
+## Refresher
 
-ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes
+Periodically request an I frame on all incoming stream or tracks
 
-### setMinChangePeriod
+### add
 
-Set minimum period between active speaker changes
-
-#### Parameters
-
--   `minChangePeriod` **[Number][11]** 
-
-### setMaxAccumulatedScore
-
-Maximux activity score accumulated by an speaker
+Add stream or track to request
 
 #### Parameters
 
--   `maxAcummulatedScore` **[Number][11]** 
-
-### setNoiseGatingThreshold
-
-Minimum db level to not be considered as muted
-
-#### Parameters
-
--   `noiseGatingThreshold` **[Number][11]** 
-
-### setMinActivationScore
-
-Set minimum activation score to be electible as active speaker
-
-#### Parameters
-
--   `minActivationScore` **[Number][11]** 
-
-### addSpeaker
-
-Add incoming track for speaker detection
-
-#### Parameters
-
--   `track` **[IncomingStreamTrack][13]** 
-
-### removeSpeaker
-
-Remove track from speaker detection
-
-#### Parameters
-
--   `track` **IncomingStreamTrakc** 
+-   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
 
 ### on
 
@@ -446,7 +479,7 @@ Add event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStream][10]** 
 
 ### once
 
@@ -468,11 +501,11 @@ Remove event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[OutgoingStream][15]** 
 
 ### stop
 
-Stop this transponder, will dettach the OutgoingStreamTrack
+Stop refresher
 
 ## Recorder
 
@@ -486,7 +519,7 @@ Start recording and incoming
 
 -   `incomingStreamOrTrack` **([IncomingStream][10] \| [IncomingStreamTrack][13])** Incomining stream or track to be recordeds
 
-Returns **[Array][16]&lt;[RecorderTrack][15]>** 
+Returns **[Array][16]&lt;[RecorderTrack][14]>** 
 
 ### stop
 
@@ -805,7 +838,7 @@ Remove event listener
 -   `event` **[String][3]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[OutgoingStream][14]** 
+Returns **[OutgoingStream][15]** 
 
 ### getTracks
 
@@ -854,7 +887,7 @@ Create new track from a TrackInfo object and add it to this stream
         -   `params.ssrcs.fec` **[Number][11]?** ssrc for the fec video track
 -   `trackInfo` **TrackInfo** Track info object
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream][15]** The new outgoing stream
 
 Returns **OuggoingStreamTrack** 
 
@@ -987,6 +1020,93 @@ Returns **[PeerConnectionServer][21]**
 ### stop
 
 Stop the peerconnection server, will not stop the transport created by it
+
+## EmulatedTransport
+
+An emulated transport reads data from a unencrypted pcap file (typically from a transport dump), and acts like if it was a live transport from a remote peer.
+You must create the incoming streams as signaled on the remote SDP as any incoming RTP with an unknown ssrc will be ignored. The emulated transport does not allow creating outgoing streams.
+
+### setRemoteProperties
+
+Set remote RTP properties
+
+#### Parameters
+
+-   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
+    -   `rtp.audio` **MediaInfo** Audio media info
+    -   `rtp.video` **MediaInfo** Video media info
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listeener` **[function][9]** Event listener
+
+Returns **[Transport][8]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[IncomingStream][10]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Transport][8]** 
+
+### createIncomingStream
+
+Create an incoming stream object from the media stream info objet
+
+#### Parameters
+
+-   `info` **StreamInfo** Contains the ids and ssrcs of the stream to be created
+
+Returns **[IncomingStream][10]** The newly created incoming stream object
+
+### play
+
+Starts playback
+
+#### Parameters
+
+-   `params` **[Object][4]** 
+    -   `params.start` **[Object][4]** Set start time
+
+### resume
+
+Resume playback
+
+### pause
+
+Pause playback
+
+### seek
+
+Start playback from given time
+
+#### Parameters
+
+-   `time` **[Number][11]** in miliseconds
+
+### stop
+
+Stop transport and all the associated incoming and outgoing streams
 
 ## Endpoint
 
@@ -1121,93 +1241,6 @@ Returns **[Endpoint][2]**
 ### stop
 
 Stop the endpoint UDP server and terminate any associated transport
-
-## EmulatedTransport
-
-An emulated transport reads data from a unencrypted pcap file (typically from a transport dump), and acts like if it was a live transport from a remote peer.
-You must create the incoming streams as signaled on the remote SDP as any incoming RTP with an unknown ssrc will be ignored. The emulated transport does not allow creating outgoing streams.
-
-### setRemoteProperties
-
-Set remote RTP properties
-
-#### Parameters
-
--   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
-    -   `rtp.audio` **MediaInfo** Audio media info
-    -   `rtp.video` **MediaInfo** Video media info
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listeener` **[function][9]** Event listener
-
-Returns **[Transport][8]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[IncomingStream][10]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[Transport][8]** 
-
-### createIncomingStream
-
-Create an incoming stream object from the media stream info objet
-
-#### Parameters
-
--   `info` **StreamInfo** Contains the ids and ssrcs of the stream to be created
-
-Returns **[IncomingStream][10]** The newly created incoming stream object
-
-### play
-
-Starts playback
-
-#### Parameters
-
--   `params` **[Object][4]** 
-    -   `params.start` **[Object][4]** Set start time
-
-### resume
-
-Resume playback
-
-### pause
-
-Pause playback
-
-### seek
-
-Start playback from given time
-
-#### Parameters
-
--   `time` **[Number][11]** in miliseconds
-
-### stop
-
-Stop transport and all the associated incoming and outgoing streams
 
 ## OutgoingStreamTrack
 
@@ -1497,7 +1530,7 @@ Create new outgoing stream in this transport
             -   `params.video.ssrcs.rtx` **[Number][11]?** ssrc for the rtx video track
             -   `params.video.ssrcs.fec` **[Number][11]?** ssrc for the fec video track
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream][15]** The new outgoing stream
 
 ### createOutgoingStreamTrack
 
@@ -1581,7 +1614,7 @@ Create new outgoing stream and attach to the incoming stream
 
 -   `incomingStream` **[IncomingStream][10]** the incoming stream to be published in this transport
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream][15]** The new outgoing stream
 
 ### stop
 
@@ -1733,9 +1766,9 @@ Removes the track from the incoming stream and also detaches any attached outgoi
 
 [13]: #incomingstreamtrack
 
-[14]: #outgoingstream
+[14]: #recordertrack
 
-[15]: #recordertrack
+[15]: #outgoingstream
 
 [16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
