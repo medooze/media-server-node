@@ -13775,6 +13775,44 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_DumpBWEStats(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_DumpBWEStats.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_DumpBWEStats" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_DumpBWEStats" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)(arg1)->DumpBWEStats((char const *)arg2);
+  jsresult = SWIG_From_int(static_cast< int >(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_Reset(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -18262,6 +18300,7 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", 
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Enqueue", _wrap_DTLSICETransport_Enqueue);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Dump", _wrap_DTLSICETransport__wrap_DTLSICETransport_Dump);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "DumpBWEStats", _wrap_DTLSICETransport_DumpBWEStats);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Reset", _wrap_DTLSICETransport_Reset);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "ActivateRemoteCandidate", _wrap_DTLSICETransport_ActivateRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteCryptoDTLS", _wrap_DTLSICETransport_SetRemoteCryptoDTLS);
