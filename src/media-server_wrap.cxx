@@ -1636,6 +1636,10 @@ static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 #include "../media-server/include/ActiveSpeakerDetector.h"	
 
+// https://github.com/medooze/media-server-node/issues/77 - Nan::NonCopyablePersistentTraits
+template<typename T>
+using Persistent = Nan::Persistent<T,Nan::CopyablePersistentTraits<T>>;
+
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 
 class StringFacade : private std::string
@@ -1693,11 +1697,11 @@ public:
 	static void MakeCallback(v8::Handle<v8::Object> object, const char* method,Arguments& arguments)
 	{
 		// Create a copiable persistent
-		Nan::Persistent<v8::Object>* persistent = new Nan::Persistent<v8::Object>(object);
+		Persistent<v8::Object>* persistent = new Persistent<v8::Object>(object);
 		
-		std::list<Nan::Persistent<v8::Value>*> pargs;
+		std::list<Persistent<v8::Value>*> pargs;
 		for (auto it = arguments.begin(); it!= arguments.end(); ++it)
-			pargs.push_back(new Nan::Persistent<v8::Value>(*it));
+			pargs.push_back(new Persistent<v8::Value>(*it));
 			
 		
 		//Run function on main node thread
@@ -1973,7 +1977,7 @@ public:
 	RTPIncomingMediaStream* GetVideoSource() { return &video; }
 	
 private:
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 	//TODO: Update to multitrack
 	RTPIncomingSourceGroup audio;
 	RTPIncomingSourceGroup video;
@@ -2101,7 +2105,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 };
 
 class StreamTrackDepacketizer :
@@ -2223,10 +2227,6 @@ public:
 		
 	}
 	
-    ~DTLSICETransportListener() {
-        persistent.Reset();
-    }
-	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
@@ -2268,7 +2268,7 @@ public:
 		});
 	}
 private:
-	Nan::Persistent<v8::Object> persistent;
+	Persistent<v8::Object> persistent;
 };
 
 class SenderSideEstimatorListener : 
@@ -2280,10 +2280,6 @@ public:
 	{
 		
 	}
-	
-    ~SenderSideEstimatorListener() {
-        persistent.Reset();
-    }
 	
 	virtual void onTargetBitrateRequested(DWORD bitrate) override 
 	{
@@ -2319,7 +2315,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Nan::Persistent<v8::Object> persistent;
+	Persistent<v8::Object> persistent;
 };
 
 //Empty implementation of event source
@@ -2413,7 +2409,7 @@ public:
 	}
 private:
 	Mutex mutex;
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 };
 
 
