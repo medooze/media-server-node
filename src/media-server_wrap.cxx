@@ -2223,6 +2223,10 @@ public:
 		
 	}
 	
+    ~DTLSICETransportListener() {
+        persistent.Reset();
+    }
+	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
@@ -2261,10 +2265,8 @@ public:
 			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ondtlsstate").ToLocalChecked()));
 			//Call object method with arguments
 			Nan::MakeCallback(local, callback, i, argv2);
-		
 		});
 	}
-
 private:
 	Nan::Persistent<v8::Object> persistent;
 };
@@ -2278,6 +2280,10 @@ public:
 	{
 		
 	}
+	
+    ~SenderSideEstimatorListener() {
+        persistent.Reset();
+    }
 	
 	virtual void onTargetBitrateRequested(DWORD bitrate) override 
 	{
