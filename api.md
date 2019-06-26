@@ -1379,7 +1379,7 @@ Dump incoming and outgoint rtp and rtcp packets into a pcap file
 -   `filename` **[String][3]** Filename of the pcap file
 -   `options` **[Object][4]** Dump parameters (optional)
     -   `options.incomoning` **[Boolean][1]** Dump incomoning RTP data
-    -   `options.outbound` **[Boolean][1]** Dump outgoing RTP data
+    -   `options.outgoing` **[Boolean][1]** Dump outgoing RTP data
     -   `options.rtcp` **[Boolean][1]** Dump rtcp RTP data
     -   `options.bwe` **[Boolean][1]**  Dump bwe stats to a different file (.pcap->.csv)
 
