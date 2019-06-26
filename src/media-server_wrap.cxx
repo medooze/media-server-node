@@ -1634,9 +1634,13 @@ static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
-#include "../media-server/include/ActiveSpeakerDetector.h"	
-
+#include "../media-server/include/ActiveSpeakerDetector.h"
+	
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
+using MediaFrameListener = MediaFrame::Listener;
+
+template<typename T >
+using Persistent = Nan::Persistent<T,Nan::CopyablePersistentTraits<T>>;
 
 class StringFacade : private std::string
 {
@@ -1693,11 +1697,11 @@ public:
 	static void MakeCallback(v8::Handle<v8::Object> object, const char* method,Arguments& arguments)
 	{
 		// Create a copiable persistent
-		Nan::Persistent<v8::Object>* persistent = new Nan::Persistent<v8::Object>(object);
+		Persistent<v8::Object>* persistent = new Persistent<v8::Object>(object);
 		
-		std::list<Nan::Persistent<v8::Value>*> pargs;
+		std::list<Persistent<v8::Value>*> pargs;
 		for (auto it = arguments.begin(); it!= arguments.end(); ++it)
-			pargs.push_back(new Nan::Persistent<v8::Value>(*it));
+			pargs.push_back(new Persistent<v8::Value>(*it));
 			
 		
 		//Run function on main node thread
@@ -1966,14 +1970,14 @@ public:
 		video.media.ssrc = rand();
 	}
 	
-	virtual void onMediaFrame(MediaFrame &frame)  {}
-	virtual void onMediaFrame(DWORD ssrc, MediaFrame &frame) {}
+	virtual void onMediaFrame(const MediaFrame &frame)  {}
+	virtual void onMediaFrame(DWORD ssrc, const MediaFrame &frame) {}
 
 	RTPIncomingMediaStream* GetAudioSource() { return &audio; }
 	RTPIncomingMediaStream* GetVideoSource() { return &video; }
 	
 private:
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 	//TODO: Update to multitrack
 	RTPIncomingSourceGroup audio;
 	RTPIncomingSourceGroup video;
@@ -2101,7 +2105,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 };
 
 class StreamTrackDepacketizer :
@@ -2266,7 +2270,7 @@ public:
 	}
 
 private:
-	Nan::Persistent<v8::Object> persistent;
+	Persistent<v8::Object> persistent;
 };
 
 class SenderSideEstimatorListener : 
@@ -2313,7 +2317,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Nan::Persistent<v8::Object> persistent;
+	Persistent<v8::Object> persistent;
 };
 
 //Empty implementation of event source
@@ -2407,7 +2411,7 @@ public:
 	}
 private:
 	Mutex mutex;
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 };
 
 
@@ -2801,9 +2805,6 @@ SWIG_AsVal_unsigned_SS_short (v8::Handle<v8::Value> obj, unsigned short *val)
 }
 
 
-using MediaFrameListener = MediaFrame::Listener;
-
-
 #define SWIGV8_INIT medooze_initialize
 
 
@@ -2838,8 +2839,8 @@ SWIGV8_ClientData _exports_RTPSessionFacade_clientData;
 SWIGV8_ClientData _exports_RTPSenderFacade_clientData;
 SWIGV8_ClientData _exports_RTPReceiverFacade_clientData;
 SWIGV8_ClientData _exports_RTPStreamTransponderFacade_clientData;
-SWIGV8_ClientData _exports_StreamTrackDepacketizer_clientData;
 SWIGV8_ClientData _exports_MediaFrameListener_clientData;
+SWIGV8_ClientData _exports_StreamTrackDepacketizer_clientData;
 SWIGV8_ClientData _exports_MP4Recorder_clientData;
 SWIGV8_ClientData _exports_PlayerFacade_clientData;
 SWIGV8_ClientData _exports_SenderSideEstimatorListener_clientData;
@@ -5703,10 +5704,10 @@ static SwigV8ReturnValue _wrap_MediaFrame_Clone(const SwigV8Arguments &args) {
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_Clone" "', argument " "1"" of type '" "MediaFrame *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_Clone" "', argument " "1"" of type '" "MediaFrame const *""'"); 
   }
   arg1 = reinterpret_cast< MediaFrame * >(argp1);
-  result = (MediaFrame *)(arg1)->Clone();
+  result = (MediaFrame *)((MediaFrame const *)arg1)->Clone();
   jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_MediaFrame, 0 |  0 );
   
   
@@ -5782,34 +5783,6 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_MediaFrame_GetData(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MediaFrame *arg1 = (MediaFrame *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint8_t *result = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_GetData.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetData" "', argument " "1"" of type '" "MediaFrame const *""'"); 
-  }
-  arg1 = reinterpret_cast< MediaFrame * >(argp1);
-  result = (uint8_t *)((MediaFrame const *)arg1)->GetData();
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static SwigV8ReturnValue _wrap_MediaFrame_GetLength(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -5859,6 +5832,107 @@ static SwigV8ReturnValue _wrap_MediaFrame_GetMaxMediaLength(const SwigV8Argument
   
   
   SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_GetData__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint8_t *result = 0 ;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetData" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  result = (uint8_t *)((MediaFrame const *)arg1)->GetData();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_GetData__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint8_t *result = 0 ;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetData" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  result = (uint8_t *)(arg1)->GetData();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame__wrap_MediaFrame_GetData(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  OverloadErrorHandler errorHandler;
+  
+  
+  if(args.Length() == 0) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MediaFrame_GetData__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MediaFrame_GetData__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 0) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MediaFrame_GetData__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MediaFrame_GetData__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function GetData.");
   
   goto fail;
 fail:
@@ -6018,6 +6092,226 @@ static SwigV8ReturnValue _wrap_MediaFrame_AppendMedia(const SwigV8Arguments &arg
   result = (uint32_t)(arg1)->AppendMedia((uint8_t const *)arg2,arg3);
   jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
   
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_SetCodecConfig(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  uint32_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_SetCodecConfig.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_SetCodecConfig" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MediaFrame_SetCodecConfig" "', argument " "2"" of type '" "uint8_t const *""'"); 
+  }
+  arg2 = reinterpret_cast< uint8_t * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MediaFrame_SetCodecConfig" "', argument " "3"" of type '" "uint32_t""'");
+  } 
+  arg3 = static_cast< uint32_t >(val3);
+  (arg1)->SetCodecConfig((uint8_t const *)arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_ClearCodecConfig(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_ClearCodecConfig.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_ClearCodecConfig" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  (arg1)->ClearCodecConfig();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_HasCodecConfig(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_HasCodecConfig.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_HasCodecConfig" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  result = (bool)((MediaFrame const *)arg1)->HasCodecConfig();
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_GetCodecConfigData(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint8_t *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_GetCodecConfigData.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetCodecConfigData" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  result = (uint8_t *)((MediaFrame const *)arg1)->GetCodecConfigData();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_GetCodecConfigSize(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_GetCodecConfigSize.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetCodecConfigSize" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  result = (uint32_t)((MediaFrame const *)arg1)->GetCodecConfigSize();
+  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_GetClockRate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_GetClockRate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_GetClockRate" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  result = (uint32_t)((MediaFrame const *)arg1)->GetClockRate();
+  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_SetClockRate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_SetClockRate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_SetClockRate" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MediaFrame_SetClockRate" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetClockRate(arg2);
+  jsresult = SWIGV8_UNDEFINED();
   
   
   
@@ -15775,6 +16069,15 @@ static void _wrap_delete_RTPStreamTransponderFacade(v8::Persistent<v8::Value> ob
         }
 
 
+static SwigV8ReturnValue _wrap_new_veto_MediaFrameListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIG_exception(SWIG_ERROR, "Class MediaFrameListener can not be instantiated");
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_StreamTrackDepacketizer(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -15808,7 +16111,7 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_AddMediaListener(const Sw
   
   v8::Handle<v8::Value> jsresult;
   StreamTrackDepacketizer *arg1 = (StreamTrackDepacketizer *) 0 ;
-  MP4Recorder *arg2 = (MP4Recorder *) 0 ;
+  MediaFrameListener *arg2 = (MediaFrameListener *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -15821,11 +16124,11 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_AddMediaListener(const Sw
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTrackDepacketizer_AddMediaListener" "', argument " "1"" of type '" "StreamTrackDepacketizer *""'"); 
   }
   arg1 = reinterpret_cast< StreamTrackDepacketizer * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MP4Recorder, 0 |  0 );
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MediaFrameListener, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_AddMediaListener" "', argument " "2"" of type '" "MP4Recorder *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_AddMediaListener" "', argument " "2"" of type '" "MediaFrameListener *""'"); 
   }
-  arg2 = reinterpret_cast< MP4Recorder * >(argp2);
+  arg2 = reinterpret_cast< MediaFrameListener * >(argp2);
   (arg1)->AddMediaListener(arg2);
   jsresult = SWIGV8_UNDEFINED();
   
@@ -15844,7 +16147,7 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_RemoveMediaListener(const
   
   v8::Handle<v8::Value> jsresult;
   StreamTrackDepacketizer *arg1 = (StreamTrackDepacketizer *) 0 ;
-  MP4Recorder *arg2 = (MP4Recorder *) 0 ;
+  MediaFrameListener *arg2 = (MediaFrameListener *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -15857,11 +16160,11 @@ static SwigV8ReturnValue _wrap_StreamTrackDepacketizer_RemoveMediaListener(const
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StreamTrackDepacketizer_RemoveMediaListener" "', argument " "1"" of type '" "StreamTrackDepacketizer *""'"); 
   }
   arg1 = reinterpret_cast< StreamTrackDepacketizer * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MP4Recorder, 0 |  0 );
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MediaFrameListener, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_RemoveMediaListener" "', argument " "2"" of type '" "MP4Recorder *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "StreamTrackDepacketizer_RemoveMediaListener" "', argument " "2"" of type '" "MediaFrameListener *""'"); 
   }
-  arg2 = reinterpret_cast< MP4Recorder * >(argp2);
+  arg2 = reinterpret_cast< MediaFrameListener * >(argp2);
   (arg1)->RemoveMediaListener(arg2);
   jsresult = SWIGV8_UNDEFINED();
   
@@ -15937,52 +16240,6 @@ static void _wrap_delete_StreamTrackDepacketizer(v8::Persistent<v8::Value> objec
           object.Clear();
 #endif
         }
-
-
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_MediaFrameListener(v8::Persistent<v8::Value> object, void *parameter) {
-  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_MediaFrameListener(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
-    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_MediaFrameListener(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
-#elif (V8_MAJOR_VERSION-0) < 5
-      static void _wrap_delete_MediaFrameListener(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
-        v8::Local<v8::Object> object = data.GetValue();
-        SWIGV8_Proxy *proxy = data.GetParameter();
-#else
-        static void _wrap_delete_MediaFrameListener(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
-          SWIGV8_Proxy *proxy = data.GetParameter();
-#endif
-          
-          if(proxy->swigCMemOwn && proxy->swigCObject) {
-            MediaFrameListener * arg1 = (MediaFrameListener *)proxy->swigCObject;
-            delete arg1;
-          }
-          delete proxy;
-          
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-          object.Dispose();
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-          object.Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
-          object->Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-          object->Dispose();
-#elif (V8_MAJOR_VERSION-0) < 5
-          object.Clear();
-#endif
-        }
-
-
-static SwigV8ReturnValue _wrap_new_veto_MediaFrameListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIG_exception(SWIG_ERROR, "Class MediaFrameListener can not be instantiated");
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
 
 
 static SwigV8ReturnValue _wrap_new_MP4Recorder(const SwigV8Arguments &args) {
@@ -18084,19 +18341,19 @@ _exports_RTPStreamTransponderFacade_clientData.dtor = _wrap_delete_RTPStreamTran
 if (SWIGTYPE_p_RTPStreamTransponderFacade->clientdata == 0) {
   SWIGTYPE_p_RTPStreamTransponderFacade->clientdata = &_exports_RTPStreamTransponderFacade_clientData;
 }
+/* Name: _exports_MediaFrameListener, Type: p_MediaFrameListener, Dtor: 0 */
+v8::Handle<v8::FunctionTemplate> _exports_MediaFrameListener_class = SWIGV8_CreateClassTemplate("_exports_MediaFrameListener");
+SWIGV8_SET_CLASS_TEMPL(_exports_MediaFrameListener_clientData.class_templ, _exports_MediaFrameListener_class);
+_exports_MediaFrameListener_clientData.dtor = 0;
+if (SWIGTYPE_p_MediaFrameListener->clientdata == 0) {
+  SWIGTYPE_p_MediaFrameListener->clientdata = &_exports_MediaFrameListener_clientData;
+}
 /* Name: _exports_StreamTrackDepacketizer, Type: p_StreamTrackDepacketizer, Dtor: _wrap_delete_StreamTrackDepacketizer */
 v8::Handle<v8::FunctionTemplate> _exports_StreamTrackDepacketizer_class = SWIGV8_CreateClassTemplate("_exports_StreamTrackDepacketizer");
 SWIGV8_SET_CLASS_TEMPL(_exports_StreamTrackDepacketizer_clientData.class_templ, _exports_StreamTrackDepacketizer_class);
 _exports_StreamTrackDepacketizer_clientData.dtor = _wrap_delete_StreamTrackDepacketizer;
 if (SWIGTYPE_p_StreamTrackDepacketizer->clientdata == 0) {
   SWIGTYPE_p_StreamTrackDepacketizer->clientdata = &_exports_StreamTrackDepacketizer_clientData;
-}
-/* Name: _exports_MediaFrameListener, Type: p_MediaFrameListener, Dtor: _wrap_delete_MediaFrameListener */
-v8::Handle<v8::FunctionTemplate> _exports_MediaFrameListener_class = SWIGV8_CreateClassTemplate("_exports_MediaFrameListener");
-SWIGV8_SET_CLASS_TEMPL(_exports_MediaFrameListener_clientData.class_templ, _exports_MediaFrameListener_class);
-_exports_MediaFrameListener_clientData.dtor = _wrap_delete_MediaFrameListener;
-if (SWIGTYPE_p_MediaFrameListener->clientdata == 0) {
-  SWIGTYPE_p_MediaFrameListener->clientdata = &_exports_MediaFrameListener_clientData;
 }
 /* Name: _exports_MP4Recorder, Type: p_MP4Recorder, Dtor: _wrap_delete_MP4Recorder */
 v8::Handle<v8::FunctionTemplate> _exports_MP4Recorder_class = SWIGV8_CreateClassTemplate("_exports_MP4Recorder");
@@ -18179,13 +18436,20 @@ SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetRtpPacketizationInfo", _
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "Clone", _wrap_MediaFrame_Clone);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetDuration", _wrap_MediaFrame_GetDuration);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetDuration", _wrap_MediaFrame_SetDuration);
-SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetData", _wrap_MediaFrame_GetData);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetLength", _wrap_MediaFrame_GetLength);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetMaxMediaLength", _wrap_MediaFrame_GetMaxMediaLength);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetData", _wrap_MediaFrame__wrap_MediaFrame_GetData);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetLength", _wrap_MediaFrame_SetLength);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "Alloc", _wrap_MediaFrame_Alloc);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetMedia", _wrap_MediaFrame_SetMedia);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AppendMedia", _wrap_MediaFrame_AppendMedia);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetCodecConfig", _wrap_MediaFrame_SetCodecConfig);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "ClearCodecConfig", _wrap_MediaFrame_ClearCodecConfig);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "HasCodecConfig", _wrap_MediaFrame_HasCodecConfig);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetCodecConfigData", _wrap_MediaFrame_GetCodecConfigData);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetCodecConfigSize", _wrap_MediaFrame_GetCodecConfigSize);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetClockRate", _wrap_MediaFrame_GetClockRate);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetClockRate", _wrap_MediaFrame_SetClockRate);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetAcumulated", _wrap_Acumulator_GetAcumulated);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetDiff", _wrap_Acumulator_GetDiff);
 SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetInstant", _wrap_Acumulator_GetInstant);
@@ -18699,18 +18963,18 @@ _exports_RTPStreamTransponderFacade_class_0->SetCallHandler(_wrap_new_RTPStreamT
 _exports_RTPStreamTransponderFacade_class_0->Inherit(_exports_RTPStreamTransponderFacade_class);
 _exports_RTPStreamTransponderFacade_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_RTPStreamTransponderFacade_obj = _exports_RTPStreamTransponderFacade_class_0->GetFunction();
-/* Class: StreamTrackDepacketizer (_exports_StreamTrackDepacketizer) */
-v8::Handle<v8::FunctionTemplate> _exports_StreamTrackDepacketizer_class_0 = SWIGV8_CreateClassTemplate("StreamTrackDepacketizer");
-_exports_StreamTrackDepacketizer_class_0->SetCallHandler(_wrap_new_StreamTrackDepacketizer);
-_exports_StreamTrackDepacketizer_class_0->Inherit(_exports_StreamTrackDepacketizer_class);
-_exports_StreamTrackDepacketizer_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_StreamTrackDepacketizer_obj = _exports_StreamTrackDepacketizer_class_0->GetFunction();
 /* Class: MediaFrameListener (_exports_MediaFrameListener) */
 v8::Handle<v8::FunctionTemplate> _exports_MediaFrameListener_class_0 = SWIGV8_CreateClassTemplate("MediaFrameListener");
 _exports_MediaFrameListener_class_0->SetCallHandler(_wrap_new_veto_MediaFrameListener);
 _exports_MediaFrameListener_class_0->Inherit(_exports_MediaFrameListener_class);
 _exports_MediaFrameListener_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_MediaFrameListener_obj = _exports_MediaFrameListener_class_0->GetFunction();
+/* Class: StreamTrackDepacketizer (_exports_StreamTrackDepacketizer) */
+v8::Handle<v8::FunctionTemplate> _exports_StreamTrackDepacketizer_class_0 = SWIGV8_CreateClassTemplate("StreamTrackDepacketizer");
+_exports_StreamTrackDepacketizer_class_0->SetCallHandler(_wrap_new_StreamTrackDepacketizer);
+_exports_StreamTrackDepacketizer_class_0->Inherit(_exports_StreamTrackDepacketizer_class);
+_exports_StreamTrackDepacketizer_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_StreamTrackDepacketizer_obj = _exports_StreamTrackDepacketizer_class_0->GetFunction();
 /* Class: MP4Recorder (_exports_MP4Recorder) */
 v8::Handle<v8::FunctionTemplate> _exports_MP4Recorder_class_0 = SWIGV8_CreateClassTemplate("MP4Recorder");
 _exports_MP4Recorder_class_0->SetCallHandler(_wrap_new_MP4Recorder);
@@ -18793,8 +19057,8 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPSessionFacade"), _exports_RTPSessionFacad
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPSenderFacade"), _exports_RTPSenderFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPReceiverFacade"), _exports_RTPReceiverFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPStreamTransponderFacade"), _exports_RTPStreamTransponderFacade_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTrackDepacketizer"), _exports_StreamTrackDepacketizer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaFrameListener"), _exports_MediaFrameListener_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTrackDepacketizer"), _exports_StreamTrackDepacketizer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MP4Recorder"), _exports_MP4Recorder_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PlayerFacade"), _exports_PlayerFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("SenderSideEstimatorListener"), _exports_SenderSideEstimatorListener_obj);

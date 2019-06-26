@@ -18,9 +18,13 @@
 #include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
-#include "../media-server/include/ActiveSpeakerDetector.h"	
-
+#include "../media-server/include/ActiveSpeakerDetector.h"
+	
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
+using MediaFrameListener = MediaFrame::Listener;
+
+template<typename T >
+using Persistent = Nan::Persistent<T,Nan::CopyablePersistentTraits<T>>;
 
 class StringFacade : private std::string
 {
@@ -77,11 +81,11 @@ public:
 	static void MakeCallback(v8::Handle<v8::Object> object, const char* method,Arguments& arguments)
 	{
 		// Create a copiable persistent
-		Nan::Persistent<v8::Object>* persistent = new Nan::Persistent<v8::Object>(object);
+		Persistent<v8::Object>* persistent = new Persistent<v8::Object>(object);
 		
-		std::list<Nan::Persistent<v8::Value>*> pargs;
+		std::list<Persistent<v8::Value>*> pargs;
 		for (auto it = arguments.begin(); it!= arguments.end(); ++it)
-			pargs.push_back(new Nan::Persistent<v8::Value>(*it));
+			pargs.push_back(new Persistent<v8::Value>(*it));
 			
 		
 		//Run function on main node thread
@@ -350,14 +354,14 @@ public:
 		video.media.ssrc = rand();
 	}
 	
-	virtual void onMediaFrame(MediaFrame &frame)  {}
-	virtual void onMediaFrame(DWORD ssrc, MediaFrame &frame) {}
+	virtual void onMediaFrame(const MediaFrame &frame)  {}
+	virtual void onMediaFrame(DWORD ssrc, const MediaFrame &frame) {}
 
 	RTPIncomingMediaStream* GetAudioSource() { return &audio; }
 	RTPIncomingMediaStream* GetVideoSource() { return &video; }
 	
 private:
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 	//TODO: Update to multitrack
 	RTPIncomingSourceGroup audio;
 	RTPIncomingSourceGroup video;
@@ -485,7 +489,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 };
 
 class StreamTrackDepacketizer :
@@ -650,7 +654,7 @@ public:
 	}
 
 private:
-	Nan::Persistent<v8::Object> persistent;
+	Persistent<v8::Object> persistent;
 };
 
 class SenderSideEstimatorListener : 
@@ -697,7 +701,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Nan::Persistent<v8::Object> persistent;
+	Persistent<v8::Object> persistent;
 };
 
 //Empty implementation of event source
@@ -791,7 +795,7 @@ public:
 	}
 private:
 	Mutex mutex;
-	Nan::Persistent<v8::Object> persistent;	
+	Persistent<v8::Object> persistent;	
 };
 
 %}
@@ -1126,22 +1130,20 @@ public:
 	void Close();
 };
 
+%nodefaultctor MediaFrameListener;
+%nodefaultdtor MediaFrameListener;
+struct MediaFrameListener
+{
+};
+
 class StreamTrackDepacketizer 
 {
 public:
 	StreamTrackDepacketizer(RTPIncomingMediaStream* incomingSource);
 	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
-	void AddMediaListener(MP4Recorder* listener);
-	void RemoveMediaListener(MP4Recorder* listener);
+	void AddMediaListener(MediaFrameListener* listener);
+	void RemoveMediaListener(MediaFrameListener* listener);
 	void Stop();
-};
-
-%{
-using MediaFrameListener = MediaFrame::Listener;
-%}
-%nodefaultctor MediaFrameListener;
-struct MediaFrameListener
-{
 };
 
 class MP4Recorder :

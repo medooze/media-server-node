@@ -70,6 +70,7 @@
 							"media-server/src/RTPBundleTransport.cpp",
 							"media-server/src/DTLSICETransport.cpp",
 							"media-server/src/VideoLayerSelector.cpp",
+							"media-server/src/opus/opusdepacketizer.cpp",
 							"media-server/src/h264/h264depacketizer.cpp",
 							"media-server/src/vp8/vp8depacketizer.cpp",
 							"media-server/src/h264/H264LayerSelector.cpp",
