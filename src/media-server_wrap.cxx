@@ -1639,8 +1639,19 @@ static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 using MediaFrameListener = MediaFrame::Listener;
 
+
+template<typename T>
+struct CopyablePersistentTraits {
+	typedef Nan::Persistent<T, CopyablePersistentTraits<T> > CopyablePersistent;
+	static const bool kResetInDestructor = true;
+	template<typename S, typename M>
+	static inline void Copy(const Nan::Persistent<S, M> &source, CopyablePersistent *dest) {}
+	template<typename S, typename M>
+	static inline void Copy(const v8::Persistent<S, M>&, v8::Persistent<S, CopyablePersistentTraits<S> >*){}
+};
+
 template<typename T >
-using Persistent = Nan::Persistent<T,Nan::CopyablePersistentTraits<T>>;
+using Persistent = Nan::Persistent<T,CopyablePersistentTraits<T>>;
 
 class StringFacade : private std::string
 {
@@ -1705,7 +1716,7 @@ public:
 			
 		
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[pargs.size()];
@@ -1949,7 +1960,7 @@ public:
 	virtual void onEnd() 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[0];
@@ -2083,7 +2094,7 @@ public:
 		last = getTime();
 		
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -2230,7 +2241,7 @@ public:
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([state,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -2294,7 +2305,7 @@ public:
 		last = getTime();
 		
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -2362,7 +2373,7 @@ public:
 	virtual void onActiveSpeakerChanded(uint32_t id) override
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -6092,6 +6103,43 @@ static SwigV8ReturnValue _wrap_MediaFrame_AppendMedia(const SwigV8Arguments &arg
   result = (uint32_t)(arg1)->AppendMedia((uint8_t const *)arg2,arg3);
   jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
   
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_AllocateCodecConfig(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  uint8_t *result = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_AllocateCodecConfig.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_AllocateCodecConfig" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MediaFrame_AllocateCodecConfig" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  result = (uint8_t *)(arg1)->AllocateCodecConfig(arg2);
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
   
   
   
@@ -18443,6 +18491,7 @@ SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetLength", _wrap_MediaFram
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "Alloc", _wrap_MediaFrame_Alloc);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetMedia", _wrap_MediaFrame_SetMedia);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AppendMedia", _wrap_MediaFrame_AppendMedia);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AllocateCodecConfig", _wrap_MediaFrame_AllocateCodecConfig);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetCodecConfig", _wrap_MediaFrame_SetCodecConfig);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "ClearCodecConfig", _wrap_MediaFrame_ClearCodecConfig);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "HasCodecConfig", _wrap_MediaFrame_HasCodecConfig);

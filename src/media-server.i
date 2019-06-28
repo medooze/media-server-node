@@ -23,8 +23,19 @@
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 using MediaFrameListener = MediaFrame::Listener;
 
+
+template<typename T>
+struct CopyablePersistentTraits {
+	typedef Nan::Persistent<T, CopyablePersistentTraits<T> > CopyablePersistent;
+	static const bool kResetInDestructor = true;
+	template<typename S, typename M>
+	static inline void Copy(const Nan::Persistent<S, M> &source, CopyablePersistent *dest) {}
+	template<typename S, typename M>
+	static inline void Copy(const v8::Persistent<S, M>&, v8::Persistent<S, CopyablePersistentTraits<S> >*){}
+};
+
 template<typename T >
-using Persistent = Nan::Persistent<T,Nan::CopyablePersistentTraits<T>>;
+using Persistent = Nan::Persistent<T,CopyablePersistentTraits<T>>;
 
 class StringFacade : private std::string
 {
@@ -89,7 +100,7 @@ public:
 			
 		
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[pargs.size()];
@@ -333,7 +344,7 @@ public:
 	virtual void onEnd() 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[0];
@@ -467,7 +478,7 @@ public:
 		last = getTime();
 		
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -614,7 +625,7 @@ public:
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([state,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -678,7 +689,7 @@ public:
 		last = getTime();
 		
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -746,7 +757,7 @@ public:
 	virtual void onActiveSpeakerChanded(uint32_t id) override
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,persistent = persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
