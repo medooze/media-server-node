@@ -15,6 +15,9 @@ const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
 const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
 
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 const Capabilities = {
 	audio : {
@@ -42,8 +45,9 @@ const Capabilities = {
 		simulcast	: true
 	}
 };
+const tests = [];
 
-tap.test("unified",async function(suite){
+tests.push(tap.test("unified",async function(suite){
 	
 	await suite.test("create",async function(test){
 		const endpoint = MediaServer.createEndpoint("127.0.0.1");
@@ -189,7 +193,13 @@ tap.test("unified",async function(suite){
 			sdpManagerA.processRemoteDescription(sdpManagerB.createLocalDescription());
 			//Set answer
 			sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
-			test.done();
+			//Stop endpoint
+			sdpManagerA.stop();
+			sdpManagerB.stop();
+			endpointA.stop();
+			endpointB.stop();
+			//OK
+			test.end();
 		});
 		
 		//Set offer
@@ -198,13 +208,15 @@ tap.test("unified",async function(suite){
 		sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
 		//Stop stream
 		stream.stop();
+		
+		await sleep(1000);
 	});
 	
 	suite.end();
-});
+}));
 
 
-tap.test("planb",async function(suite){
+tests.push(tap.test("planb",async function(suite){
 	
 	await suite.test("create",async function(test){
 		const endpoint = MediaServer.createEndpoint("127.0.0.1");
@@ -301,6 +313,7 @@ tap.test("planb",async function(suite){
 	});
 	
 	await suite.test("negotitionneeded removed",async function(test){
+		
 		const endpointA = MediaServer.createEndpoint("127.0.0.1");
 		const endpointB = MediaServer.createEndpoint("127.0.0.1");
 		//Create two managers
@@ -324,7 +337,13 @@ tap.test("planb",async function(suite){
 			sdpManagerA.processRemoteDescription(sdpManagerB.createLocalDescription());
 			//Set answer
 			sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
-			test.done();
+			//Stop endpoint
+			sdpManagerA.stop();
+			sdpManagerB.stop();
+			endpointA.stop();
+			endpointB.stop();
+			//OK
+			test.end();
 		});
 		
 		//Set offer
@@ -333,9 +352,14 @@ tap.test("planb",async function(suite){
 		sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
 		//Stop stream
 		stream.stop();
+		
+		await sleep(1000);
 	});
 	
 	suite.end();
-});
+}));
 
-MediaServer.terminate ();
+Promise.all(tests)
+	.then(()=>{
+		MediaServer.terminate ();
+	});
