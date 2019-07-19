@@ -75,63 +75,12 @@ class MediaServer
 public:
 	typedef std::list<v8::Local<v8::Value>> Arguments;
 public:
-	static void RunCallback(v8::Handle<v8::Object> object) 
+		
+	~MediaServer()
 	{
-		Arguments arguments;
-		
-		arguments.push_back(Nan::New<v8::Integer>(1));
-		
-		//Emit event
-		MediaServer::Emit(object,arguments);
-	}
-
-	/*
-	 * MakeCallback
-	 *  Executes an object method async on the main node loop
-	 */
-	static void MakeCallback(v8::Handle<v8::Object> object, const char* method,Arguments& arguments)
-	{
-		// Create a copiable persistent
-		Persistent<v8::Object>* persistent = new Persistent<v8::Object>(object);
-		
-		std::list<Persistent<v8::Value>*> pargs;
-		for (auto it = arguments.begin(); it!= arguments.end(); ++it)
-			pargs.push_back(new Persistent<v8::Value>(*it));
-			
-		
-		//Run function on main node thread
-		MediaServer::Async([=,persistent = persistent](){
-			Nan::HandleScope scope;
-			int i = 0;
-			v8::Local<v8::Value> argv2[pargs.size()];
-			
-			//Create local args
-			for (auto it = pargs.begin(); it!= pargs.end(); ++it)
-				argv2[i++] = Nan::New(*(*it));
-			
-			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(*persistent);
-			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New(method).ToLocalChecked()));
-			//Call object method with arguments
-			Nan::MakeCallback(local, callback, i, argv2);
-			//Release object
-			delete(persistent);
-			//Release args
-			//TODO
-		});
-		
+		Terminate();
 	}
 	
-	/*
-	 * MakeCallback
-	 *  Executes object "emit" method async on the main node loop
-	 */
-	static void Emit(v8::Handle<v8::Object> object,Arguments& arguments)
-	{
-		MediaServer::MakeCallback(object,"emit",arguments);
-	}
-
 	/*
 	 * Async
 	 *  Enqueus a function to the async queue and signals main thread to execute it
@@ -140,16 +89,21 @@ public:
 	{
 		//Lock
 		mutex.Lock();
-		//Enqueue
-		queue.push_back(func);
+		//Check if not terminatd
+		if (uv_is_active((uv_handle_t *)&async))
+		{
+			//Enqueue
+			queue.push_back(func);
+			//Signal main thread
+			uv_async_send(&async);
+		}
 		//Unlock
 		mutex.Unlock();
-		//Signal main thread
-		uv_async_send(&async);
 	}
 
 	static void Initialize()
 	{
+		Log("-MediaServer::Initialize\n");
 		//Initialize ssl
 		OpenSSL::ClassInit();
 		
@@ -162,7 +116,13 @@ public:
 	
 	static void Terminate()
 	{
+		Log("-MediaServer::Terminate\n");
+		//Lock
+		mutex.Lock();
+		//Close handle
 		uv_close((uv_handle_t *)&async, NULL);
+		//Unlock
+		mutex.Unlock();
 	}
 	
 	static void EnableLog(bool flag)
@@ -170,7 +130,6 @@ public:
 		//Enable log
 		Log("-EnableLog [%d]\n",flag);
 		Logger::EnableLog(flag);
-		Log("-EnableLog [%d]\n",flag);
 	}
 	
 	static void EnableDebug(bool flag)
@@ -304,10 +263,10 @@ class PlayerFacade :
 public:
 	PlayerFacade(v8::Handle<v8::Object> object) :
 		MP4Streamer(this),
-		persistent(object),
 		audio(MediaFrame::Audio,loop),
 		video(MediaFrame::Video,loop)
 	{
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
 		Reset();
 		//Start dispatching
 		audio.Start();
@@ -344,12 +303,12 @@ public:
 	virtual void onEnd() 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=,persistent = persistent](){
+		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[0];
 			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(persistent);
+			v8::Local<v8::Object> local = Nan::New(*persistent);
 			//Create callback function from object
 			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onended").ToLocalChecked()));
 			//Call object method with arguments
@@ -372,7 +331,7 @@ public:
 	RTPIncomingMediaStream* GetVideoSource() { return &video; }
 	
 private:
-	Persistent<v8::Object> persistent;	
+	std::shared_ptr<Persistent<v8::Object>> persistent;	
 	//TODO: Update to multitrack
 	RTPIncomingSourceGroup audio;
 	RTPIncomingSourceGroup video;
@@ -453,9 +412,12 @@ class RTPStreamTransponderFacade :
 {
 public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender, v8::Handle<v8::Object> object) :
-		RTPStreamTransponder(outgoing, sender ? sender->get() : NULL),
-		persistent(object)
-	{}
+		RTPStreamTransponder(outgoing, sender ? sender->get() : NULL)
+	{
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
+	}
+
+	virtual ~RTPStreamTransponderFacade() = default;
 
 	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver)
 	{
@@ -478,7 +440,7 @@ public:
 		last = getTime();
 		
 		//Run function on main node thread
-		MediaServer::Async([=,persistent = persistent](){
+		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -487,7 +449,7 @@ public:
 			argv2[i++] = Nan::New<v8::Uint32>(bitrate);
 			
 			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(persistent);
+			v8::Local<v8::Object> local = Nan::New(*persistent);
 			//Create callback function from object
 			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onremb").ToLocalChecked()));
 			//Call object method with arguments
@@ -500,7 +462,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Persistent<v8::Object> persistent;	
+	std::shared_ptr<Persistent<v8::Object>> persistent;	
 };
 
 class StreamTrackDepacketizer :
@@ -617,15 +579,16 @@ class DTLSICETransportListener :
 {
 public:
 	DTLSICETransportListener(v8::Handle<v8::Object> object)
-		: persistent(object)
 	{
-		
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
 	}
+		
+	virtual ~DTLSICETransportListener() = default;
 	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
-		MediaServer::Async([state,persistent = persistent](){
+		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -655,7 +618,7 @@ public:
 			}
 
 			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(persistent);
+			v8::Local<v8::Object> local = Nan::New(*persistent);
 			//Create callback function from object
 			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ondtlsstate").ToLocalChecked()));
 			//Call object method with arguments
@@ -665,7 +628,7 @@ public:
 	}
 
 private:
-	Persistent<v8::Object> persistent;
+	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 
 class SenderSideEstimatorListener : 
@@ -673,9 +636,8 @@ class SenderSideEstimatorListener :
 {
 public:
 	SenderSideEstimatorListener(v8::Handle<v8::Object> object)
-		: persistent(object)
 	{
-		
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
 	}
 	
 	virtual void onTargetBitrateRequested(DWORD bitrate) override 
@@ -689,7 +651,7 @@ public:
 		last = getTime();
 		
 		//Run function on main node thread
-		MediaServer::Async([=,persistent = persistent](){
+		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -698,7 +660,7 @@ public:
 			argv2[i++] = Nan::New<v8::Uint32>(bitrate);
 			
 			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(persistent);
+			v8::Local<v8::Object> local = Nan::New(*persistent);
 			//Create callback function from object
 			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ontargetbitrate").ToLocalChecked()));
 			//Call object method with arguments
@@ -712,7 +674,7 @@ public:
 private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
-	Persistent<v8::Object> persistent;
+	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 
 //Empty implementation of event source
@@ -750,14 +712,15 @@ class ActiveSpeakerDetectorFacade :
 {
 public:	
 	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object) :
-		ActiveSpeakerDetector(this),
-		persistent(object) 
-	{};
+		ActiveSpeakerDetector(this)
+	{
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
+	};
 		
 	virtual void onActiveSpeakerChanded(uint32_t id) override
 	{
 		//Run function on main node thread
-		MediaServer::Async([=,persistent = persistent](){
+		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv2[1];
@@ -766,7 +729,7 @@ public:
 			argv2[i++] = Nan::New<v8::Uint32>(id);
 			
 			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(persistent);
+			v8::Local<v8::Object> local = Nan::New(*persistent);
 			//Create callback function from object
 			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onactivespeakerchanged").ToLocalChecked()));
 			//Call object method with arguments
@@ -806,7 +769,7 @@ public:
 	}
 private:
 	Mutex mutex;
-	Persistent<v8::Object> persistent;	
+	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 
 %}
