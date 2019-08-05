@@ -5390,6 +5390,33 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MediaFrame_DumpRTPPacketizationInfo(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_DumpRTPPacketizationInfo.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_DumpRTPPacketizationInfo" "', argument " "1"" of type '" "MediaFrame const *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  ((MediaFrame const *)arg1)->DumpRTPPacketizationInfo();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MediaFrame_AddRtpPacket(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -5950,6 +5977,114 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MediaFrame_ResetData__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_ResetData" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MediaFrame_ResetData" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->ResetData(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_ResetData__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_ResetData" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  (arg1)->ResetData();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame__wrap_MediaFrame_ResetData(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  OverloadErrorHandler errorHandler;
+  
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MediaFrame_ResetData__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MediaFrame_ResetData__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 0) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MediaFrame_ResetData__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MediaFrame_ResetData__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function ResetData.");
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MediaFrame_Alloc(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -6175,6 +6310,33 @@ static SwigV8ReturnValue _wrap_MediaFrame_ClearCodecConfig(const SwigV8Arguments
   }
   arg1 = reinterpret_cast< MediaFrame * >(argp1);
   (arg1)->ClearCodecConfig();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrame_Reset(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MediaFrame *arg1 = (MediaFrame *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrame_Reset.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrame, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrame_Reset" "', argument " "1"" of type '" "MediaFrame *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrame * >(argp1);
+  (arg1)->Reset();
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -18436,6 +18598,7 @@ SWIGV8_AddMemberFunction(_exports_ByteBuffer_class, "GetData", _wrap_ByteBuffer_
 SWIGV8_AddMemberFunction(_exports_ByteBuffer_class, "GetSize", _wrap_ByteBuffer_GetSize);
 SWIGV8_AddMemberFunction(_exports_ByteBuffer_class, "GetLength", _wrap_ByteBuffer_GetLength);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "ClearRTPPacketizationInfo", _wrap_MediaFrame_ClearRTPPacketizationInfo);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "DumpRTPPacketizationInfo", _wrap_MediaFrame_DumpRTPPacketizationInfo);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AddRtpPacket", _wrap_MediaFrame_AddRtpPacket);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetType", _wrap_MediaFrame_GetType);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetTimeStamp", _wrap_MediaFrame_GetTimeStamp);
@@ -18451,12 +18614,14 @@ SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetLength", _wrap_MediaFram
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetMaxMediaLength", _wrap_MediaFrame_GetMaxMediaLength);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetData", _wrap_MediaFrame__wrap_MediaFrame_GetData);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetLength", _wrap_MediaFrame_SetLength);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "ResetData", _wrap_MediaFrame__wrap_MediaFrame_ResetData);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "Alloc", _wrap_MediaFrame_Alloc);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetMedia", _wrap_MediaFrame_SetMedia);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AppendMedia", _wrap_MediaFrame_AppendMedia);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "AllocateCodecConfig", _wrap_MediaFrame_AllocateCodecConfig);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetCodecConfig", _wrap_MediaFrame_SetCodecConfig);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "ClearCodecConfig", _wrap_MediaFrame_ClearCodecConfig);
+SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "Reset", _wrap_MediaFrame_Reset);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "HasCodecConfig", _wrap_MediaFrame_HasCodecConfig);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetCodecConfigData", _wrap_MediaFrame_GetCodecConfigData);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetCodecConfigSize", _wrap_MediaFrame_GetCodecConfigSize);
