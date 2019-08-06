@@ -7,15 +7,56 @@ MediaServer.enableDebug(false);
 MediaServer.enableUltraDebug(false);
 const endpoint = MediaServer.createEndpoint("127.0.0.1");
 
-const StreamInfo	= SemanticSDP.StreamInfo;
-const TrackInfo		= SemanticSDP.TrackInfo;
+const DTLSInfo		= SemanticSDP.DTLSInfo;
+const ICEInfo		= SemanticSDP.ICEInfo;
 const Setup		= SemanticSDP.Setup;
 const Direction		= SemanticSDP.Direction;
-const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
-const CodecInfo		= SemanticSDP.CodecInfo;
-const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
+
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 Promise.all([
+	tap.test("Transport",async function(suite){
+
+
+		const localEndpoint = MediaServer.createEndpoint ("127.0.0.1");
+		const remoteEndpoint = MediaServer.createEndpoint ("127.0.0.1");
+		
+		const localInfo = {
+			dtls		: new DTLSInfo(Setup.ACTIVE,"sha-256",localEndpoint.getDTLSFingerprint()),
+			ice		: ICEInfo.generate(true),
+		};
+		const remoteInfo = {
+			dtls		: new DTLSInfo(Setup.PASSIVE,"sha-256",remoteEndpoint.getDTLSFingerprint()),
+			ice		: ICEInfo.generate(true),
+		};
+
+		suite.test("dtls",async function(test){
+			test.plan(2);
+			//Create transports
+			const sender = localEndpoint.createTransport (localInfo,remoteInfo,{disableSTUNKeepAlive: true});
+			const receiver = remoteEndpoint.createTransport (remoteInfo,localInfo,{disableSTUNKeepAlive: true});
+			//wait for dtls events
+			sender.once("dtlsstate",(state)=>{
+				test.same(state,"connected");
+			});
+			receiver.once("dtlsstate",(state)=>{
+				test.same(state,"connected");
+			});
+			//Add candidates
+			sender.addRemoteCandidate(remoteEndpoint.getLocalCandidates()[0]);
+			receiver.addRemoteCandidate(localEndpoint.getLocalCandidates()[0]);
+			
+			await sleep(1000);
+			
+			sender.stop();
+			receiver.stop();
+		});
+		
+		suite.end();
+	}),
 	tap.test("Probing",async function(suite){
 
 		//Init test
