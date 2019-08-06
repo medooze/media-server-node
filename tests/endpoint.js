@@ -16,6 +16,31 @@ tap.test("Endpoint::create",async function(suite){
 		test.end();
 	});
 	
+	await suite.test("candidate",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint("127.0.0.1");
+		//get local candidates
+		const candidates = endpoint.getLocalCandidates();
+		//Cehck them
+		test.same(candidates.length,1);
+		test.same(candidates[0].getAddress(),"127.0.0.1");
+		//Ok
+		test.end();
+	});
+	await suite.test("candidates",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint(["127.0.0.1","10.0.0.1"]);
+		//get local candidates
+		const candidates = endpoint.getLocalCandidates();
+		//Cehck them
+		test.same(candidates.length,2);
+		test.same(candidates[0].getAddress(),"127.0.0.1");
+		test.same(candidates[1].getAddress(),"10.0.0.1");
+		test.ok(candidates[0].getPriority()>candidates[1].getPriority());
+		//Ok
+		test.end();
+	});
+	
 	await suite.test("setAffinity",async function(test){
 		//Create UDP server endpoint
 		const endpoint = MediaServer.createEndpoint("127.0.0.1");
