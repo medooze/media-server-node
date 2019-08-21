@@ -2076,7 +2076,7 @@ public:
 	void SetMinPeriod(DWORD period) { this->period = period; }
 	
 private:
-	DWORD period	= 1000;
+	DWORD period	= 900;
 	QWORD last	= 0;
 	std::shared_ptr<Persistent<v8::Object>> persistent;	
 };
