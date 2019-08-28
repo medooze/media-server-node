@@ -642,7 +642,7 @@ public:
 	
 	virtual void onTargetBitrateRequested(DWORD bitrate) override 
 	{
-		//Check we have not send an update too recently (1s)
+		//Check we have not send an update too recently (500ms)
 		if (getTimeDiff(last)/1000<period)
 			//Do nothing
 			return;
@@ -672,7 +672,7 @@ public:
 	void SetMinPeriod(DWORD period) { this->period = period; }
 	
 private:
-	DWORD period	= 9000;
+	DWORD period	= 500;
 	QWORD last	= 0;
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
@@ -1037,6 +1037,7 @@ public:
 	
 	void SetBandwidthProbing(bool probe);
 	void SetMaxProbingBitrate(DWORD bitrate);
+	void SetProbingBitrateLimit(DWORD bitrate);
 	void SetSenderSideEstimatorListener(RemoteRateEstimator::Listener* listener);
 	
 	const char* GetRemoteUsername() const;
