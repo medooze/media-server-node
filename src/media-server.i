@@ -642,14 +642,6 @@ public:
 	
 	virtual void onTargetBitrateRequested(DWORD bitrate) override 
 	{
-		//Check we have not send an update too recently (500ms)
-		if (getTimeDiff(last)/1000<period)
-			//Do nothing
-			return;
-		
-		//Update it
-		last = getTime();
-		
 		//Run function on main node thread
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
@@ -668,12 +660,7 @@ public:
 		
 		});
 	}
-	
-	void SetMinPeriod(DWORD period) { this->period = period; }
-	
 private:
-	DWORD period	= 500;
-	QWORD last	= 0;
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 
