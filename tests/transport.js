@@ -49,7 +49,7 @@ Promise.all([
 			sender.addRemoteCandidate(remoteEndpoint.getLocalCandidates()[0]);
 			receiver.addRemoteCandidate(localEndpoint.getLocalCandidates()[0]);
 			
-			await sleep(1000);
+			await sleep(4000);
 			
 			sender.stop();
 			receiver.stop();
