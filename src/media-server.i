@@ -37,34 +37,20 @@ struct CopyablePersistentTraits {
 template<typename T >
 using Persistent = Nan::Persistent<T,CopyablePersistentTraits<T>>;
 
-class StringFacade : private std::string
-{
-public:
-	StringFacade(const char* str) 
-	{
-		std::string::assign(str);
-	}
-	StringFacade(std::string &str) : std::string(str)
-	{
-		
-	}
-	const char* toString() 
-	{
-		return std::string::c_str();
-	}
-};
-
 class PropertiesFacade : private Properties
 {
 public:
-	void SetProperty(const char* key,int intval)
+	void SetPropertyInt(const char* key,int intval)
 	{
 		Properties::SetProperty(key,intval);
 	}
-
-	void SetProperty(const char* key,const char* val)
+	void SetPropertyStr(const char* key,const char* val)
 	{
 		Properties::SetProperty(key,val);
+	}
+	void SetPropertyBool(const char* key,bool boolval)
+	{
+		Properties::SetProperty(key,boolval);
 	}
 };
 
@@ -151,9 +137,9 @@ public:
 		return RTPTransport::SetPortRange(minPort,maxPort);
 	}
 	
-	static StringFacade GetFingerprint()
+	static std::string GetFingerprint()
 	{
-		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
+		return DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256);
 	}
 
 	static void async_cb_handler(uv_async_t *handle)
@@ -762,6 +748,7 @@ private:
 %}
 
 %include "stdint.i"
+%include "std_string.i"
 %include "std_vector.i"
 %include "../media-server/include/config.h"	
 %include "../media-server/include/media.h"
@@ -910,20 +897,12 @@ struct RTPIncomingMediaStreamMultiplexer : public RTPIncomingMediaStream, public
 	$1 = v8::Handle<v8::Object>::Cast($input);
 }
 
-class StringFacade : private std::string
-{
-public:
-	StringFacade(const char* str);
-	StringFacade(std::string &str);
-	const char* toString();
-};
-
 class PropertiesFacade : private Properties
 {
 public:
-	void SetProperty(const char* key,int intval);
-	void SetProperty(const char* key,const char* val);
-	void SetProperty(const char* key,bool boolval);
+	void SetPropertyInt(const char* key,int intval);
+	void SetPropertyStr(const char* key,const char* val);
+	void SetPropertyBool(const char* key,bool boolval);
 };
 
 class MediaServer
@@ -934,7 +913,7 @@ public:
 	static void EnableLog(bool flag);
 	static void EnableDebug(bool flag);
 	static void EnableUltraDebug(bool flag);
-	static StringFacade GetFingerprint();
+	static std::string GetFingerprint();
 	static bool SetPortRange(int minPort, int maxPort);
 };
 

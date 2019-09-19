@@ -1574,27 +1574,26 @@ fail: ;
 #define SWIGTYPE_p_RtpPacketizationInfo swig_types[35]
 #define SWIGTYPE_p_SenderSideEstimatorListener swig_types[36]
 #define SWIGTYPE_p_StreamTrackDepacketizer swig_types[37]
-#define SWIGTYPE_p_StringFacade swig_types[38]
-#define SWIGTYPE_p_TimeService swig_types[39]
-#define SWIGTYPE_p_UDPDumper swig_types[40]
-#define SWIGTYPE_p_UDPReader swig_types[41]
-#define SWIGTYPE_p_char swig_types[42]
-#define SWIGTYPE_p_int swig_types[43]
-#define SWIGTYPE_p_long_double swig_types[44]
-#define SWIGTYPE_p_long_long swig_types[45]
-#define SWIGTYPE_p_short swig_types[46]
-#define SWIGTYPE_p_signed_char swig_types[47]
-#define SWIGTYPE_p_std__string swig_types[48]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[49]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[50]
-#define SWIGTYPE_p_unsigned_char swig_types[51]
-#define SWIGTYPE_p_unsigned_int swig_types[52]
-#define SWIGTYPE_p_unsigned_long_long swig_types[53]
-#define SWIGTYPE_p_unsigned_short swig_types[54]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[55]
-#define SWIGTYPE_p_void swig_types[56]
-static swig_type_info *swig_types[58];
-static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
+#define SWIGTYPE_p_TimeService swig_types[38]
+#define SWIGTYPE_p_UDPDumper swig_types[39]
+#define SWIGTYPE_p_UDPReader swig_types[40]
+#define SWIGTYPE_p_char swig_types[41]
+#define SWIGTYPE_p_int swig_types[42]
+#define SWIGTYPE_p_long_double swig_types[43]
+#define SWIGTYPE_p_long_long swig_types[44]
+#define SWIGTYPE_p_short swig_types[45]
+#define SWIGTYPE_p_signed_char swig_types[46]
+#define SWIGTYPE_p_std__string swig_types[47]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[48]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[49]
+#define SWIGTYPE_p_unsigned_char swig_types[50]
+#define SWIGTYPE_p_unsigned_int swig_types[51]
+#define SWIGTYPE_p_unsigned_long_long swig_types[52]
+#define SWIGTYPE_p_unsigned_short swig_types[53]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[54]
+#define SWIGTYPE_p_void swig_types[55]
+static swig_type_info *swig_types[57];
+static swig_module_info swig_module = {swig_types, 56, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1653,34 +1652,20 @@ struct CopyablePersistentTraits {
 template<typename T >
 using Persistent = Nan::Persistent<T,CopyablePersistentTraits<T>>;
 
-class StringFacade : private std::string
-{
-public:
-	StringFacade(const char* str) 
-	{
-		std::string::assign(str);
-	}
-	StringFacade(std::string &str) : std::string(str)
-	{
-		
-	}
-	const char* toString() 
-	{
-		return std::string::c_str();
-	}
-};
-
 class PropertiesFacade : private Properties
 {
 public:
-	void SetProperty(const char* key,int intval)
+	void SetPropertyInt(const char* key,int intval)
 	{
 		Properties::SetProperty(key,intval);
 	}
-
-	void SetProperty(const char* key,const char* val)
+	void SetPropertyStr(const char* key,const char* val)
 	{
 		Properties::SetProperty(key,val);
+	}
+	void SetPropertyBool(const char* key,bool boolval)
+	{
+		Properties::SetProperty(key,boolval);
 	}
 };
 
@@ -1767,9 +1752,9 @@ public:
 		return RTPTransport::SetPortRange(minPort,maxPort);
 	}
 	
-	static StringFacade GetFingerprint()
+	static std::string GetFingerprint()
 	{
-		return StringFacade(DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256).c_str());
+		return DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256);
 	}
 
 	static void async_cb_handler(uv_async_t *handle)
@@ -2380,6 +2365,9 @@ private:
 #include <stdint.h>		// Use the C99 official header
 
 
+#include <string>
+
+
 #include <typeinfo>
 #include <stdexcept>
 
@@ -2509,14 +2497,6 @@ SWIG_AsVal_unsigned_SS_int (v8::Handle<v8::Value> obj, unsigned int *val)
 }
 
 
-SWIGINTERNINLINE
-v8::Handle<v8::Value>
-SWIG_From_bool  (bool value)
-{
-  return SWIGV8_BOOLEAN_NEW(value);
-}
-
-
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
 {
@@ -2567,6 +2547,45 @@ SWIG_AsCharPtrAndSize(v8::Handle<v8::Value> valRef, char** cptr, size_t* psize, 
 }
 
 
+SWIGINTERN int
+SWIG_AsPtr_std_string (v8::Handle<v8::Value> obj, std::string **val) 
+{
+  char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;
+  if (SWIG_IsOK((SWIG_AsCharPtrAndSize(obj, &buf, &size, &alloc)))) {
+    if (buf) {
+      if (val) *val = new std::string(buf, size - 1);
+      if (alloc == SWIG_NEWOBJ) delete[] buf;
+      return SWIG_NEWOBJ;
+    } else {
+      if (val) *val = 0;
+      return SWIG_OLDOBJ;
+    }
+  } else {
+    static int init = 0;
+    static swig_type_info* descriptor = 0;
+    if (!init) {
+      descriptor = SWIG_TypeQuery("std::string" " *");
+      init = 1;
+    }
+    if (descriptor) {
+      std::string *vptr;
+      int res = SWIG_ConvertPtr(obj, (void**)&vptr, descriptor, 0);
+      if (SWIG_IsOK(res) && val) *val = vptr;
+      return res;
+    }
+  }
+  return SWIG_ERROR;
+}
+
+
+SWIGINTERNINLINE
+v8::Handle<v8::Value>
+SWIG_From_bool  (bool value)
+{
+  return SWIGV8_BOOLEAN_NEW(value);
+}
+
+
 
 
 
@@ -2603,6 +2622,13 @@ SWIGINTERNINLINE v8::Handle<v8::Value>
 SWIG_FromCharPtr(const char *cptr)
 { 
   return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
+
+SWIGINTERNINLINE v8::Handle<v8::Value>
+SWIG_From_std_string  (const std::string& s)
+{
+  return SWIG_FromCharPtrAndSize(s.data(), s.size());
 }
 
 
@@ -2787,7 +2813,6 @@ SWIGV8_ClientData _exports_RTPIncomingMediaStreamListener_clientData;
 SWIGV8_ClientData _exports_RTPIncomingMediaStream_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSourceGroup_clientData;
 SWIGV8_ClientData _exports_RTPIncomingMediaStreamMultiplexer_clientData;
-SWIGV8_ClientData _exports_StringFacade_clientData;
 SWIGV8_ClientData _exports_PropertiesFacade_clientData;
 SWIGV8_ClientData _exports_MediaServer_clientData;
 SWIGV8_ClientData _exports_RTPBundleTransportConnection_clientData;
@@ -3366,8 +3391,7 @@ static SwigV8ReturnValue _wrap_Properties_HasProperty(const SwigV8Arguments &arg
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   bool result;
   
   if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Properties_HasProperty.");
@@ -3377,18 +3401,21 @@ static SwigV8ReturnValue _wrap_Properties_HasProperty(const SwigV8Arguments &arg
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_HasProperty" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_HasProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_HasProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_HasProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_HasProperty" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   result = (bool)((Properties const *)arg1)->HasProperty((std::string const &)*arg2);
   jsresult = SWIG_From_bool(static_cast< bool >(result));
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   SWIGV8_RETURN(jsresult);
   
@@ -3499,37 +3526,41 @@ static SwigV8ReturnValue _wrap_Properties_SetProperty__SWIG_2(const SwigV8Argume
   std::string *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_SetProperty" "', argument " "1"" of type '" "Properties *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_SetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_SetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_SetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_SetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(args[1], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Properties_SetProperty" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_SetProperty" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
   }
-  arg2 = reinterpret_cast< std::string * >(argp2);
-  res3 = SWIG_ConvertPtr(args[1], &argp3, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Properties_SetProperty" "', argument " "3"" of type '" "std::string const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_SetProperty" "', argument " "3"" of type '" "std::string const &""'"); 
-  }
-  arg3 = reinterpret_cast< std::string * >(argp3);
   (arg1)->SetProperty((std::string const &)*arg2,(std::string const &)*arg3);
   jsresult = SWIGV8_UNDEFINED();
   
-  
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
   
   SWIGV8_RETURN(jsresult);
   
@@ -3612,8 +3643,7 @@ static SwigV8ReturnValue _wrap_Properties_GetChildren__SWIG_0(const SwigV8Argume
   Properties *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   
@@ -3622,14 +3652,17 @@ static SwigV8ReturnValue _wrap_Properties_GetChildren__SWIG_0(const SwigV8Argume
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetChildren" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_ConvertPtr(args[1], &argp3, SWIGTYPE_p_Properties,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Properties_GetChildren" "', argument " "3"" of type '" "Properties &""'"); 
@@ -3641,7 +3674,7 @@ static SwigV8ReturnValue _wrap_Properties_GetChildren__SWIG_0(const SwigV8Argume
   ((Properties const *)arg1)->GetChildren((std::string const &)*arg2,*arg3);
   jsresult = SWIGV8_UNDEFINED();
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   
   SWIGV8_RETURN(jsresult);
@@ -3709,8 +3742,7 @@ static SwigV8ReturnValue _wrap_Properties_GetChildren__SWIG_2(const SwigV8Argume
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   Properties result;
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
@@ -3718,18 +3750,21 @@ static SwigV8ReturnValue _wrap_Properties_GetChildren__SWIG_2(const SwigV8Argume
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetChildren" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetChildren" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   result = ((Properties const *)arg1)->GetChildren((std::string const &)*arg2);
   jsresult = SWIG_NewPointerObj((new Properties(static_cast< const Properties& >(result))), SWIGTYPE_p_Properties, SWIG_POINTER_OWN |  0 );
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   SWIGV8_RETURN(jsresult);
   
@@ -3954,8 +3989,6 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_1(const SwigV8Argume
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
   std::string result;
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
@@ -3969,20 +4002,19 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_1(const SwigV8Argume
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    res3 = SWIG_ConvertPtr(args[1], &argp3, SWIGTYPE_p_std__string,  0 );
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "std::string const""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "std::string const""'");
-    } else {
-      arg3 = *(reinterpret_cast< std::string * >(argp3));
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(args[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "std::string const""'"); 
     }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   result = ((Properties const *)arg1)->GetProperty((char const *)arg2,arg3);
-  jsresult = SWIG_NewPointerObj((new std::string(static_cast< const std::string& >(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
+  jsresult = SWIG_From_std_string(static_cast< std::string >(result));
   
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
   
   SWIGV8_RETURN(jsresult);
   
@@ -4002,10 +4034,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_2(const SwigV8Argume
   std::string arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   std::string result;
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
@@ -4013,28 +4042,30 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_2(const SwigV8Argume
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetProperty" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
-    res3 = SWIG_ConvertPtr(args[1], &argp3, SWIGTYPE_p_std__string,  0 );
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "std::string const""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "std::string const""'");
-    } else {
-      arg3 = *(reinterpret_cast< std::string * >(argp3));
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
     }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(args[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "std::string const""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   result = ((Properties const *)arg1)->GetProperty((std::string const &)*arg2,arg3);
-  jsresult = SWIG_NewPointerObj((new std::string(static_cast< const std::string& >(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
+  jsresult = SWIG_From_std_string(static_cast< std::string >(result));
   
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   
   SWIGV8_RETURN(jsresult);
@@ -4102,8 +4133,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_4(const SwigV8Argume
   char *arg3 = (char *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -4114,14 +4144,17 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_4(const SwigV8Argume
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetProperty" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_AsCharPtrAndSize(args[1], &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "char *""'");
@@ -4130,7 +4163,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_4(const SwigV8Argume
   result = (char *)((Properties const *)arg1)->GetProperty((std::string const &)*arg2,arg3);
   jsresult = SWIG_FromCharPtr((const char *)result);
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   
   SWIGV8_RETURN(jsresult);
@@ -4197,8 +4230,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_6(const SwigV8Argume
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   int val3 ;
   int ecode3 = 0 ;
   int result;
@@ -4208,14 +4240,17 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_6(const SwigV8Argume
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetProperty" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   ecode3 = SWIG_AsVal_int(args[1], &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "int""'");
@@ -4224,7 +4259,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_6(const SwigV8Argume
   result = (int)((Properties const *)arg1)->GetProperty((std::string const &)*arg2,arg3);
   jsresult = SWIG_From_int(static_cast< int >(result));
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   
   SWIGV8_RETURN(jsresult);
@@ -4291,8 +4326,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_8(const SwigV8Argume
   uint64_t arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   unsigned long long val3 ;
   int ecode3 = 0 ;
   uint64_t result;
@@ -4302,14 +4336,17 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_8(const SwigV8Argume
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetProperty" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   ecode3 = SWIG_AsVal_unsigned_SS_long_SS_long(args[1], &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "uint64_t""'");
@@ -4318,7 +4355,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_8(const SwigV8Argume
   result = (uint64_t)((Properties const *)arg1)->GetProperty((std::string const &)*arg2,arg3);
   jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   
   SWIGV8_RETURN(jsresult);
@@ -4385,8 +4422,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_10(const SwigV8Argum
   bool arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   bool val3 ;
   int ecode3 = 0 ;
   bool result;
@@ -4396,14 +4432,17 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_10(const SwigV8Argum
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_GetProperty" "', argument " "1"" of type '" "Properties const *""'"); 
   }
   arg1 = reinterpret_cast< Properties * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Properties_GetProperty" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   ecode3 = SWIG_AsVal_bool(args[1], &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Properties_GetProperty" "', argument " "3"" of type '" "bool""'");
@@ -4412,7 +4451,7 @@ static SwigV8ReturnValue _wrap_Properties_GetProperty__SWIG_10(const SwigV8Argum
   result = (bool)((Properties const *)arg1)->GetProperty((std::string const &)*arg2,arg3);
   jsresult = SWIG_From_bool(static_cast< bool >(result));
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   
   SWIGV8_RETURN(jsresult);
@@ -6492,7 +6531,44 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_new_Acumulator(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_new_Acumulator__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Object> self = args.Holder();
+  uint32_t arg1 ;
+  uint32_t arg2 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  Acumulator *result;
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_Acumulator__SWIG_0.");
+  ecode1 = SWIG_AsVal_unsigned_SS_int(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Acumulator" "', argument " "1"" of type '" "uint32_t""'");
+  } 
+  arg1 = static_cast< uint32_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Acumulator" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  result = (Acumulator *)new Acumulator(arg1,arg2);
+  
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_Acumulator, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_Acumulator__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Object> self = args.Holder();
@@ -6500,7 +6576,7 @@ static SwigV8ReturnValue _wrap_new_Acumulator(const SwigV8Arguments &args) {
   unsigned int val1 ;
   int ecode1 = 0 ;
   Acumulator *result;
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_Acumulator.");
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_Acumulator__SWIG_1.");
   ecode1 = SWIG_AsVal_unsigned_SS_int(args[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Acumulator" "', argument " "1"" of type '" "uint32_t""'");
@@ -6515,6 +6591,53 @@ static SwigV8ReturnValue _wrap_new_Acumulator(const SwigV8Arguments &args) {
   SWIGV8_RETURN(self);
   
   goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_Acumulator(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  OverloadErrorHandler errorHandler;
+  v8::Handle<v8::Value> self;
+  
+  // switch all cases by means of series of if-returns.
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    self = _wrap_new_Acumulator__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(self);
+    }
+#else
+    _wrap_new_Acumulator__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    self = _wrap_new_Acumulator__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(self);
+    }
+#else
+    _wrap_new_Acumulator__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  // default:
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for construction of _exports_Acumulator");
+  
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
 }
@@ -10321,11 +10444,10 @@ static void _wrap_RTPIncomingSourceGroup_rid_set(v8::Local<v8::String> property,
     SWIGV8_HANDLESCOPE();
     
     RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-    std::string arg2 ;
+    std::string *arg2 = 0 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
-    void *argp2 ;
-    int res2 = 0 ;
+    int res2 = SWIG_OLDOBJ ;
     
     res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
     if (!SWIG_IsOK(res1)) {
@@ -10333,18 +10455,19 @@ static void _wrap_RTPIncomingSourceGroup_rid_set(v8::Local<v8::String> property,
     }
     arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
     {
-      res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__string,  0 );
+      std::string *ptr = (std::string *)0;
+      res2 = SWIG_AsPtr_std_string(value, &ptr);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string""'"); 
-      }  
-      if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string""'");
-      } else {
-        arg2 = *(reinterpret_cast< std::string * >(argp2));
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string const &""'"); 
       }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      }
+      arg2 = ptr;
     }
-    if (arg1) (arg1)->rid = arg2;
+    if (arg1) (arg1)->rid = *arg2;
     
+    if (SWIG_IsNewObj(res2)) delete arg2;
     
     goto fail;
   fail:
@@ -10363,15 +10486,15 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_rid_get(v8::Local<v8::Stri
     RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
-    std::string result;
+    std::string *result = 0 ;
     
     res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
     if (!SWIG_IsOK(res1)) {
       SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_rid_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
     }
     arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
-    result =  ((arg1)->rid);
-    jsresult = SWIG_NewPointerObj((new std::string(static_cast< const std::string& >(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
+    result = (std::string *) & ((arg1)->rid);
+    jsresult = SWIG_From_std_string(static_cast< std::string >(*result));
     
     
     SWIGV8_RETURN_INFO(jsresult, info);
@@ -10390,11 +10513,10 @@ static void _wrap_RTPIncomingSourceGroup_mid_set(v8::Local<v8::String> property,
     SWIGV8_HANDLESCOPE();
     
     RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-    std::string arg2 ;
+    std::string *arg2 = 0 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
-    void *argp2 ;
-    int res2 = 0 ;
+    int res2 = SWIG_OLDOBJ ;
     
     res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
     if (!SWIG_IsOK(res1)) {
@@ -10402,18 +10524,19 @@ static void _wrap_RTPIncomingSourceGroup_mid_set(v8::Local<v8::String> property,
     }
     arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
     {
-      res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__string,  0 );
+      std::string *ptr = (std::string *)0;
+      res2 = SWIG_AsPtr_std_string(value, &ptr);
       if (!SWIG_IsOK(res2)) {
-        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string""'"); 
-      }  
-      if (!argp2) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string""'");
-      } else {
-        arg2 = *(reinterpret_cast< std::string * >(argp2));
+        SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string const &""'"); 
       }
+      if (!ptr) {
+        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPIncomingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string const &""'"); 
+      }
+      arg2 = ptr;
     }
-    if (arg1) (arg1)->mid = arg2;
+    if (arg1) (arg1)->mid = *arg2;
     
+    if (SWIG_IsNewObj(res2)) delete arg2;
     
     goto fail;
   fail:
@@ -10432,15 +10555,15 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_mid_get(v8::Local<v8::Stri
     RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
     void *argp1 = 0 ;
     int res1 = 0 ;
-    std::string result;
+    std::string *result = 0 ;
     
     res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
     if (!SWIG_IsOK(res1)) {
       SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_mid_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
     }
     arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
-    result =  ((arg1)->mid);
-    jsresult = SWIG_NewPointerObj((new std::string(static_cast< const std::string& >(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
+    result = (std::string *) & ((arg1)->mid);
+    jsresult = SWIG_From_std_string(static_cast< std::string >(*result));
     
     
     SWIGV8_RETURN_INFO(jsresult, info);
@@ -11240,180 +11363,7 @@ static void _wrap_delete_RTPIncomingMediaStreamMultiplexer(v8::Persistent<v8::Va
         }
 
 
-static SwigV8ReturnValue _wrap_new_StringFacade__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Object> self = args.Holder();
-  char *arg1 = (char *) 0 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  StringFacade *result;
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_StringFacade__SWIG_0.");
-  res1 = SWIG_AsCharPtrAndSize(args[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_StringFacade" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  result = (StringFacade *)new StringFacade((char const *)arg1);
-  
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  
-  
-  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_StringFacade, SWIG_POINTER_OWN);
-  SWIGV8_RETURN(self);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_new_StringFacade__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Object> self = args.Holder();
-  std::string *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  StringFacade *result;
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_StringFacade__SWIG_1.");
-  res1 = SWIG_ConvertPtr(args[0], &argp1, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_StringFacade" "', argument " "1"" of type '" "std::string &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_StringFacade" "', argument " "1"" of type '" "std::string &""'"); 
-  }
-  arg1 = reinterpret_cast< std::string * >(argp1);
-  result = (StringFacade *)new StringFacade(*arg1);
-  
-  
-  
-  
-  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_StringFacade, SWIG_POINTER_OWN);
-  SWIGV8_RETURN(self);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_new_StringFacade(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  OverloadErrorHandler errorHandler;
-  v8::Handle<v8::Value> self;
-  
-  // switch all cases by means of series of if-returns.
-  
-  if(args.Length() == 1) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    self = _wrap_new_StringFacade__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(self);
-    }
-#else
-    _wrap_new_StringFacade__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  if(args.Length() == 1) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    self = _wrap_new_StringFacade__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(self);
-    }
-#else
-    _wrap_new_StringFacade__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  // default:
-  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for construction of _exports_StringFacade");
-  
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_StringFacade_toString(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  StringFacade *arg1 = (StringFacade *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  char *result = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_StringFacade_toString.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_StringFacade, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "StringFacade_toString" "', argument " "1"" of type '" "StringFacade *""'"); 
-  }
-  arg1 = reinterpret_cast< StringFacade * >(argp1);
-  result = (char *)(arg1)->toString();
-  jsresult = SWIG_FromCharPtr((const char *)result);
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_StringFacade(v8::Persistent<v8::Value> object, void *parameter) {
-  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_StringFacade(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
-    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_StringFacade(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
-#elif (V8_MAJOR_VERSION-0) < 5
-      static void _wrap_delete_StringFacade(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
-        v8::Local<v8::Object> object = data.GetValue();
-        SWIGV8_Proxy *proxy = data.GetParameter();
-#else
-        static void _wrap_delete_StringFacade(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
-          SWIGV8_Proxy *proxy = data.GetParameter();
-#endif
-          
-          if(proxy->swigCMemOwn && proxy->swigCObject) {
-            StringFacade * arg1 = (StringFacade *)proxy->swigCObject;
-            delete arg1;
-          }
-          delete proxy;
-          
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-          object.Dispose();
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-          object.Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
-          object->Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-          object->Dispose();
-#elif (V8_MAJOR_VERSION-0) < 5
-          object.Clear();
-#endif
-        }
-
-
-static SwigV8ReturnValue _wrap_PropertiesFacade_SetProperty__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
+static SwigV8ReturnValue _wrap_PropertiesFacade_SetPropertyInt(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -11428,22 +11378,24 @@ static SwigV8ReturnValue _wrap_PropertiesFacade_SetProperty__SWIG_0(const SwigV8
   int val3 ;
   int ecode3 = 0 ;
   
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PropertiesFacade_SetPropertyInt.");
+  
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PropertiesFacade, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PropertiesFacade_SetProperty" "', argument " "1"" of type '" "PropertiesFacade *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PropertiesFacade_SetPropertyInt" "', argument " "1"" of type '" "PropertiesFacade *""'"); 
   }
   arg1 = reinterpret_cast< PropertiesFacade * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PropertiesFacade_SetProperty" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PropertiesFacade_SetPropertyInt" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   ecode3 = SWIG_AsVal_int(args[1], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PropertiesFacade_SetProperty" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PropertiesFacade_SetPropertyInt" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  (arg1)->SetProperty((char const *)arg2,arg3);
+  (arg1)->SetPropertyInt((char const *)arg2,arg3);
   jsresult = SWIGV8_UNDEFINED();
   
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -11457,8 +11409,7 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_PropertiesFacade_SetProperty__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
+static SwigV8ReturnValue _wrap_PropertiesFacade_SetPropertyStr(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -11474,22 +11425,24 @@ static SwigV8ReturnValue _wrap_PropertiesFacade_SetProperty__SWIG_1(const SwigV8
   char *buf3 = 0 ;
   int alloc3 = 0 ;
   
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PropertiesFacade_SetPropertyStr.");
+  
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PropertiesFacade, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PropertiesFacade_SetProperty" "', argument " "1"" of type '" "PropertiesFacade *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PropertiesFacade_SetPropertyStr" "', argument " "1"" of type '" "PropertiesFacade *""'"); 
   }
   arg1 = reinterpret_cast< PropertiesFacade * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PropertiesFacade_SetProperty" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PropertiesFacade_SetPropertyStr" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   res3 = SWIG_AsCharPtrAndSize(args[1], &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PropertiesFacade_SetProperty" "', argument " "3"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PropertiesFacade_SetPropertyStr" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  (arg1)->SetProperty((char const *)arg2,(char const *)arg3);
+  (arg1)->SetPropertyStr((char const *)arg2,(char const *)arg3);
   jsresult = SWIGV8_UNDEFINED();
   
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -11503,8 +11456,7 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_PropertiesFacade_SetProperty__SWIG_2(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
+static SwigV8ReturnValue _wrap_PropertiesFacade_SetPropertyBool(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
@@ -11519,91 +11471,30 @@ static SwigV8ReturnValue _wrap_PropertiesFacade_SetProperty__SWIG_2(const SwigV8
   bool val3 ;
   int ecode3 = 0 ;
   
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PropertiesFacade_SetPropertyBool.");
+  
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_PropertiesFacade, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PropertiesFacade_SetProperty" "', argument " "1"" of type '" "PropertiesFacade *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PropertiesFacade_SetPropertyBool" "', argument " "1"" of type '" "PropertiesFacade *""'"); 
   }
   arg1 = reinterpret_cast< PropertiesFacade * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PropertiesFacade_SetProperty" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PropertiesFacade_SetPropertyBool" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   ecode3 = SWIG_AsVal_bool(args[1], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PropertiesFacade_SetProperty" "', argument " "3"" of type '" "bool""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PropertiesFacade_SetPropertyBool" "', argument " "3"" of type '" "bool""'");
   } 
   arg3 = static_cast< bool >(val3);
-  (arg1)->SetProperty((char const *)arg2,arg3);
+  (arg1)->SetPropertyBool((char const *)arg2,arg3);
   jsresult = SWIGV8_UNDEFINED();
   
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   
   
   SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProperty(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  OverloadErrorHandler errorHandler;
-  
-  
-  if(args.Length() == 2) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_PropertiesFacade_SetProperty__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_PropertiesFacade_SetProperty__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  if(args.Length() == 2) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_PropertiesFacade_SetProperty__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_PropertiesFacade_SetProperty__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  if(args.Length() == 2) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_PropertiesFacade_SetProperty__SWIG_2(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_PropertiesFacade_SetProperty__SWIG_2(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function SetProperty.");
   
   goto fail;
 fail:
@@ -11788,12 +11679,12 @@ static SwigV8ReturnValue _wrap_MediaServer_GetFingerprint(const SwigV8Arguments 
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
-  SwigValueWrapper< StringFacade > result;
+  std::string result;
   
   if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_GetFingerprint.");
   
   result = MediaServer::GetFingerprint();
-  jsresult = SWIG_NewPointerObj((new StringFacade(static_cast< const StringFacade& >(result))), SWIGTYPE_p_StringFacade, SWIG_POINTER_OWN |  0 );
+  jsresult = SWIG_From_std_string(static_cast< std::string >(result));
   
   SWIGV8_RETURN(jsresult);
   
@@ -12427,8 +12318,7 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddICETransport(const SwigV8Ar
   Properties *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 ;
   int res3 = 0 ;
   RTPBundleTransportConnection *result = 0 ;
@@ -12440,14 +12330,17 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddICETransport(const SwigV8Ar
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransport_AddICETransport" "', argument " "1"" of type '" "RTPBundleTransport *""'"); 
   }
   arg1 = reinterpret_cast< RTPBundleTransport * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_AddICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_AddICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_ConvertPtr(args[1], &argp3, SWIGTYPE_p_Properties,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPBundleTransport_AddICETransport" "', argument " "3"" of type '" "Properties const &""'"); 
@@ -12459,7 +12352,7 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddICETransport(const SwigV8Ar
   result = (RTPBundleTransportConnection *)(arg1)->AddICETransport((std::string const &)*arg2,(Properties const &)*arg3);
   jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPBundleTransportConnection, 0 |  0 );
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   
   SWIGV8_RETURN(jsresult);
@@ -12478,8 +12371,7 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_RemoveICETransport(const SwigV
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   int result;
   
   if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_RemoveICETransport.");
@@ -12489,18 +12381,21 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_RemoveICETransport(const SwigV
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransport_RemoveICETransport" "', argument " "1"" of type '" "RTPBundleTransport *""'"); 
   }
   arg1 = reinterpret_cast< RTPBundleTransport * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_RemoveICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_RemoveICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_RemoveICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_RemoveICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   result = (int)(arg1)->RemoveICETransport((std::string const &)*arg2);
   jsresult = SWIG_From_int(static_cast< int >(result));
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   SWIGV8_RETURN(jsresult);
   
@@ -12576,8 +12471,7 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddRemoteCandidate(const SwigV
   uint16_t arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -12592,14 +12486,17 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddRemoteCandidate(const SwigV
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "1"" of type '" "RTPBundleTransport *""'"); 
   }
   arg1 = reinterpret_cast< RTPBundleTransport * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_AsCharPtrAndSize(args[1], &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPBundleTransport_AddRemoteCandidate" "', argument " "3"" of type '" "char const *""'");
@@ -12613,7 +12510,7 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddRemoteCandidate(const SwigV
   result = (int)(arg1)->AddRemoteCandidate((std::string const &)*arg2,(char const *)arg3,arg4);
   jsresult = SWIG_From_int(static_cast< int >(result));
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   
   
@@ -13500,8 +13397,7 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_SetSRTPProtectionProfiles(const 
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   
   if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_SetSRTPProtectionProfiles.");
   
@@ -13510,18 +13406,21 @@ static SwigV8ReturnValue _wrap_DTLSICETransport_SetSRTPProtectionProfiles(const 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
   }
   arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DTLSICETransport_SetSRTPProtectionProfiles" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   (arg1)->SetSRTPProtectionProfiles((std::string const &)*arg2);
   jsresult = SWIGV8_UNDEFINED();
   
-  
+  if (SWIG_IsNewObj(res2)) delete arg2;
   
   SWIGV8_RETURN(jsresult);
   
@@ -17749,9 +17648,6 @@ static void *_p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStream(voi
 static void *_p_RTPIncomingSourceGroupTo_p_RTPIncomingMediaStream(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPIncomingMediaStream *)  ((RTPIncomingSourceGroup *) x));
 }
-static void *_p_StringFacadeTo_p_std__string(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::string *)  ((StringFacade *) x));
-}
 static void *_p_RTPSessionFacadeTo_p_RTPSender(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSender *)  ((RTPSessionFacade *) x));
 }
@@ -17811,7 +17707,6 @@ static swig_type_info _swigt__p_RemoteRateEstimator__Listener = {"_p_RemoteRateE
 static swig_type_info _swigt__p_RtpPacketizationInfo = {"_p_RtpPacketizationInfo", "RtpPacketizationInfo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SenderSideEstimatorListener = {"_p_SenderSideEstimatorListener", "p_SenderSideEstimatorListener", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_StreamTrackDepacketizer = {"_p_StreamTrackDepacketizer", "p_StreamTrackDepacketizer|StreamTrackDepacketizer *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_StringFacade = {"_p_StringFacade", "StringFacade *|p_StringFacade", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TimeService = {"_p_TimeService", "p_TimeService|TimeService *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_UDPDumper = {"_p_UDPDumper", "UDPDumper *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_UDPReader = {"_p_UDPReader", "p_UDPReader|UDPReader *", 0, 0, (void*)0, 0};
@@ -17870,7 +17765,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RtpPacketizationInfo,
   &_swigt__p_SenderSideEstimatorListener,
   &_swigt__p_StreamTrackDepacketizer,
-  &_swigt__p_StringFacade,
   &_swigt__p_TimeService,
   &_swigt__p_UDPDumper,
   &_swigt__p_UDPReader,
@@ -17929,7 +17823,6 @@ static swig_cast_info _swigc__p_RemoteRateEstimator__Listener[] = {  {&_swigt__p
 static swig_cast_info _swigc__p_RtpPacketizationInfo[] = {  {&_swigt__p_RtpPacketizationInfo, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SenderSideEstimatorListener[] = {  {&_swigt__p_SenderSideEstimatorListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_StreamTrackDepacketizer[] = {  {&_swigt__p_StreamTrackDepacketizer, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_StringFacade[] = {  {&_swigt__p_StringFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TimeService[] = {  {&_swigt__p_TimeService, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_UDPDumper[] = {  {&_swigt__p_UDPDumper, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_UDPReader[] = {  {&_swigt__p_UDPReader, 0, 0, 0},{0, 0, 0, 0}};
@@ -17939,7 +17832,7 @@ static swig_cast_info _swigc__p_long_double[] = {  {&_swigt__p_long_double, 0, 0
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},  {&_swigt__p_StringFacade, _p_StringFacadeTo_p_std__string, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_MediaFrame__RtpPacketization_p_t[] = {  {&_swigt__p_std__vectorT_MediaFrame__RtpPacketization_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_Properties_t[] = {  {&_swigt__p_std__vectorT_Properties_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -17988,7 +17881,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RtpPacketizationInfo,
   _swigc__p_SenderSideEstimatorListener,
   _swigc__p_StreamTrackDepacketizer,
-  _swigc__p_StringFacade,
   _swigc__p_TimeService,
   _swigc__p_UDPDumper,
   _swigc__p_UDPReader,
@@ -18446,13 +18338,6 @@ _exports_RTPIncomingMediaStreamMultiplexer_clientData.dtor = _wrap_delete_RTPInc
 if (SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer->clientdata == 0) {
   SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer->clientdata = &_exports_RTPIncomingMediaStreamMultiplexer_clientData;
 }
-/* Name: _exports_StringFacade, Type: p_StringFacade, Dtor: _wrap_delete_StringFacade */
-v8::Handle<v8::FunctionTemplate> _exports_StringFacade_class = SWIGV8_CreateClassTemplate("_exports_StringFacade");
-SWIGV8_SET_CLASS_TEMPL(_exports_StringFacade_clientData.class_templ, _exports_StringFacade_class);
-_exports_StringFacade_clientData.dtor = _wrap_delete_StringFacade;
-if (SWIGTYPE_p_StringFacade->clientdata == 0) {
-  SWIGTYPE_p_StringFacade->clientdata = &_exports_StringFacade_clientData;
-}
 /* Name: _exports_PropertiesFacade, Type: p_PropertiesFacade, Dtor: _wrap_delete_PropertiesFacade */
 v8::Handle<v8::FunctionTemplate> _exports_PropertiesFacade_class = SWIGV8_CreateClassTemplate("_exports_PropertiesFacade");
 SWIGV8_SET_CLASS_TEMPL(_exports_PropertiesFacade_clientData.class_templ, _exports_PropertiesFacade_class);
@@ -18723,8 +18608,9 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "avgWaitedTime",
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "AddListener", _wrap_RTPIncomingSourceGroup_AddListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "RemoveListener", _wrap_RTPIncomingSourceGroup_RemoveListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
-SWIGV8_AddMemberFunction(_exports_StringFacade_class, "toString", _wrap_StringFacade_toString);
-SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetProperty", _wrap_PropertiesFacade__wrap_PropertiesFacade_SetProperty);
+SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetPropertyInt", _wrap_PropertiesFacade_SetPropertyInt);
+SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetPropertyStr", _wrap_PropertiesFacade_SetPropertyStr);
+SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetPropertyBool", _wrap_PropertiesFacade_SetPropertyBool);
 SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "transport", _wrap_RTPBundleTransportConnection_transport_get, _wrap_RTPBundleTransportConnection_transport_set);
 SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "disableSTUNKeepAlive", _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_get, _wrap_RTPBundleTransportConnection_disableSTUNKeepAlive_set);
 SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "iceRequestsSent", _wrap_RTPBundleTransportConnection_iceRequestsSent_get, _wrap_RTPBundleTransportConnection_iceRequestsSent_set);
@@ -19086,12 +18972,6 @@ _exports_RTPIncomingMediaStreamMultiplexer_class_0->SetCallHandler(_wrap_new_RTP
 _exports_RTPIncomingMediaStreamMultiplexer_class_0->Inherit(_exports_RTPIncomingMediaStreamMultiplexer_class);
 _exports_RTPIncomingMediaStreamMultiplexer_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_RTPIncomingMediaStreamMultiplexer_obj = _exports_RTPIncomingMediaStreamMultiplexer_class_0->GetFunction();
-/* Class: StringFacade (_exports_StringFacade) */
-v8::Handle<v8::FunctionTemplate> _exports_StringFacade_class_0 = SWIGV8_CreateClassTemplate("StringFacade");
-_exports_StringFacade_class_0->SetCallHandler(_wrap_new_StringFacade);
-_exports_StringFacade_class_0->Inherit(_exports_StringFacade_class);
-_exports_StringFacade_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_StringFacade_obj = _exports_StringFacade_class_0->GetFunction();
 /* Class: PropertiesFacade (_exports_PropertiesFacade) */
 v8::Handle<v8::FunctionTemplate> _exports_PropertiesFacade_class_0 = SWIGV8_CreateClassTemplate("PropertiesFacade");
 _exports_PropertiesFacade_class_0->SetCallHandler(_wrap_new_PropertiesFacade);
@@ -19245,7 +19125,6 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingMediaStreamListener"), _exports_R
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingMediaStream"), _exports_RTPIncomingMediaStream_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingSourceGroup"), _exports_RTPIncomingSourceGroup_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPIncomingMediaStreamMultiplexer"), _exports_RTPIncomingMediaStreamMultiplexer_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("StringFacade"), _exports_StringFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PropertiesFacade"), _exports_PropertiesFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaServer"), _exports_MediaServer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPBundleTransportConnection"), _exports_RTPBundleTransportConnection_obj);
