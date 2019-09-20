@@ -21,23 +21,32 @@ Promise.all([
 	tap.test("Transport",async function(suite){
 
 
-		const localEndpoint = MediaServer.createEndpoint ("127.0.0.1");
-		const remoteEndpoint = MediaServer.createEndpoint ("127.0.0.1");
-		
-		const localInfo = {
-			dtls		: new DTLSInfo(Setup.ACTIVE,"sha-256",localEndpoint.getDTLSFingerprint()),
-			ice		: ICEInfo.generate(true),
-		};
-		const remoteInfo = {
-			dtls		: new DTLSInfo(Setup.PASSIVE,"sha-256",remoteEndpoint.getDTLSFingerprint()),
-			ice		: ICEInfo.generate(true),
-		};
+		suite.test("ice+dtls",async function(test){
+			test.plan(4);
+			//create endpoints
+			const localEndpoint	= MediaServer.createEndpoint ("127.0.0.1");
+			const remoteEndpoint	= MediaServer.createEndpoint ("127.0.0.1");
+			
+			//Genereate info
+			const localInfo = {
+				dtls		: new DTLSInfo(Setup.ACTIVE,"sha-256",localEndpoint.getDTLSFingerprint()),
+				ice		: ICEInfo.generate(true),
+			};
+			const remoteInfo = {
+				dtls		: new DTLSInfo(Setup.PASSIVE,"sha-256",remoteEndpoint.getDTLSFingerprint()),
+				ice		: ICEInfo.generate(true),
+			};
 
-		suite.test("dtls",async function(test){
-			test.plan(2);
 			//Create transports
-			const sender = localEndpoint.createTransport (localInfo,remoteInfo,{disableSTUNKeepAlive: true});
-			const receiver = remoteEndpoint.createTransport (remoteInfo,localInfo,{disableSTUNKeepAlive: true});
+			const sender		= localEndpoint.createTransport (localInfo,remoteInfo,{disableSTUNKeepAlive: true});
+			const receiver		= remoteEndpoint.createTransport (remoteInfo,localInfo,{disableSTUNKeepAlive: true});
+			//wait for ice events
+			sender.once("remoteicecandidate",(candidate)=>{
+				test.ok(candidate);
+			});
+			receiver.once("remoteicecandidate",(candidate)=>{
+				test.ok(candidate);
+			});
 			//wait for dtls events
 			sender.once("dtlsstate",(state)=>{
 				test.same(state,"connected");
@@ -53,6 +62,51 @@ Promise.all([
 			
 			sender.stop();
 			receiver.stop();
+			localEndpoint.stop();
+			remoteEndpoint.stop();
+		});
+		
+		suite.test("ice timeout",async function(test){
+			test.plan(1);
+			//create endpoints
+			const localEndpoint	= MediaServer.createEndpoint ("127.0.0.1");
+			const remoteEndpoint	= MediaServer.createEndpoint ("127.0.0.1");
+			
+			//Genereate info
+			const localInfo = {
+				dtls		: new DTLSInfo(Setup.ACTIVE,"sha-256",localEndpoint.getDTLSFingerprint()),
+				ice		: ICEInfo.generate(true),
+			};
+			const remoteInfo = {
+				dtls		: new DTLSInfo(Setup.PASSIVE,"sha-256",remoteEndpoint.getDTLSFingerprint()),
+				ice		: ICEInfo.generate(true),
+			};
+
+			//Retry fast
+			localEndpoint.setIceTimeout(100);
+			
+			//Create sender transports
+			const sender		= localEndpoint.createTransport (localInfo,remoteInfo,{disableSTUNKeepAlive: true});
+			
+			//This should trigger
+			sender.once("remoteicecandidate",(candidate)=>{
+				test.ok(candidate);
+			});
+			
+			//Add candidate for receiver before creating it, this should make first check fail
+			sender.addRemoteCandidate(remoteEndpoint.getLocalCandidates()[0]);
+			
+			await sleep(1000);
+			
+			//Create now the receiver
+			const receiver		= remoteEndpoint.createTransport (remoteInfo,localInfo,{disableSTUNKeepAlive: true});
+			
+			await sleep(4000);
+			
+			sender.stop();
+			receiver.stop();
+			localEndpoint.stop();
+			remoteEndpoint.stop();
 		});
 		
 		suite.end();

@@ -106,7 +106,7 @@ Create a new emulated transport from pcap file
 
 Get the default media server capabilities for each supported media type
 
-Returns **[Object][4]** Object containing the capabilities by media
+Returns **[Object][4]** Object containing the capabilities by media ("audio","video")
 
 ## SDPManager
 
@@ -376,64 +376,6 @@ Returns **[OutgoingStream][14]**
 
 Stop refresher
 
-## Streamer
-
-An streamer allows to send and receive plain RTP over udp sockets.
-This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
-
-### createSession
-
-Creates a new streaming session from a media description
-
-#### Parameters
-
--   `media` **MediaInfo** Media codec description info
--   `params` **[Object][4]** Network parameters
-    -   `params.local` **[Object][4]** Local parameters
-        -   `params.local.port` **[Number][13]** receiving port
-    -   `params.remote` **[Object][4]** Remote parameters
-        -   `params.remote.ip` **[String][3]** Sending ip address
-        -   `params.remote.port` **[Number][13]** Sending port
-
-Returns **[StreamerSession][15]** The new streaming session
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listeener` **[function][9]** Event listener
-
-Returns **[Endpoint][2]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[Endpoint][2]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[Endpoint][2]** 
-
-### stop
-
-Stop all streaming sessions and frees resources
-
 ## ActiveSpeakerDetector
 
 ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes
@@ -522,6 +464,64 @@ Returns **[IncomingStreamTrack][11]**
 ### stop
 
 Stop this transponder, will dettach the OutgoingStreamTrack
+
+## Streamer
+
+An streamer allows to send and receive plain RTP over udp sockets.
+This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
+
+### createSession
+
+Creates a new streaming session from a media description
+
+#### Parameters
+
+-   `media` **MediaInfo** Media codec description info
+-   `params` **[Object][4]** Network parameters
+    -   `params.local` **[Object][4]** Local parameters
+        -   `params.local.port` **[Number][13]** receiving port
+    -   `params.remote` **[Object][4]** Remote parameters
+        -   `params.remote.ip` **[String][3]** Sending ip address
+        -   `params.remote.port` **[Number][13]** Sending port
+
+Returns **[StreamerSession][15]** The new streaming session
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listeener` **[function][9]** Event listener
+
+Returns **[Endpoint][2]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][2]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][3]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][2]** 
+
+### stop
+
+Stop all streaming sessions and frees resources
 
 ## Recorder
 
@@ -1058,6 +1058,14 @@ Set cpu affinity for udp send/recv thread.
 -   `cpu` **[Number][13]** CPU core or -1 to reset affinity.
 
 Returns **[boolean][1]** 
+
+### setIceTimeout
+
+Set ICE timeout for outgoing ICE binding requests
+
+#### Parameters
+
+-   `timeout` **[Number][13]** Ammount of time in milliseconds between ICE binding requests
 
 ### createTransport
 

@@ -1537,63 +1537,61 @@ fail: ;
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_ActiveSpeakerDetectorFacade swig_types[0]
-#define SWIGTYPE_p_Acumulator swig_types[1]
-#define SWIGTYPE_p_ByteBuffer swig_types[2]
-#define SWIGTYPE_p_DTLSICETransport swig_types[3]
-#define SWIGTYPE_p_DTLSICETransportListener swig_types[4]
-#define SWIGTYPE_p_ICERemoteCandidate swig_types[5]
-#define SWIGTYPE_p_LayerInfo swig_types[6]
-#define SWIGTYPE_p_LayerSource swig_types[7]
-#define SWIGTYPE_p_LayerSources swig_types[8]
-#define SWIGTYPE_p_MP4Recorder swig_types[9]
-#define SWIGTYPE_p_MediaFrame swig_types[10]
-#define SWIGTYPE_p_MediaFrameListener swig_types[11]
-#define SWIGTYPE_p_MediaServer swig_types[12]
-#define SWIGTYPE_p_PCAPTransportEmulator swig_types[13]
-#define SWIGTYPE_p_PlayerFacade swig_types[14]
-#define SWIGTYPE_p_Properties swig_types[15]
-#define SWIGTYPE_p_PropertiesFacade swig_types[16]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[17]
-#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[18]
-#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[19]
-#define SWIGTYPE_p_RTPIncomingMediaStreamListener swig_types[20]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[21]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[22]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[23]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[24]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[25]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[26]
-#define SWIGTYPE_p_RTPReceiver swig_types[27]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[28]
-#define SWIGTYPE_p_RTPSender swig_types[29]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[30]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[31]
-#define SWIGTYPE_p_RTPSource swig_types[32]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[33]
-#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[34]
-#define SWIGTYPE_p_RtpPacketizationInfo swig_types[35]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[36]
-#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[37]
-#define SWIGTYPE_p_TimeService swig_types[38]
-#define SWIGTYPE_p_UDPDumper swig_types[39]
-#define SWIGTYPE_p_UDPReader swig_types[40]
-#define SWIGTYPE_p_char swig_types[41]
-#define SWIGTYPE_p_int swig_types[42]
-#define SWIGTYPE_p_long_double swig_types[43]
-#define SWIGTYPE_p_long_long swig_types[44]
-#define SWIGTYPE_p_short swig_types[45]
-#define SWIGTYPE_p_signed_char swig_types[46]
-#define SWIGTYPE_p_std__string swig_types[47]
-#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[48]
-#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[49]
-#define SWIGTYPE_p_unsigned_char swig_types[50]
-#define SWIGTYPE_p_unsigned_int swig_types[51]
-#define SWIGTYPE_p_unsigned_long_long swig_types[52]
-#define SWIGTYPE_p_unsigned_short swig_types[53]
-#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[54]
-#define SWIGTYPE_p_void swig_types[55]
-static swig_type_info *swig_types[57];
-static swig_module_info swig_module = {swig_types, 56, 0, 0, 0, 0};
+#define SWIGTYPE_p_ByteBuffer swig_types[1]
+#define SWIGTYPE_p_DTLSICETransport swig_types[2]
+#define SWIGTYPE_p_DTLSICETransportListener swig_types[3]
+#define SWIGTYPE_p_ICERemoteCandidate swig_types[4]
+#define SWIGTYPE_p_LayerInfo swig_types[5]
+#define SWIGTYPE_p_LayerSource swig_types[6]
+#define SWIGTYPE_p_LayerSources swig_types[7]
+#define SWIGTYPE_p_MP4Recorder swig_types[8]
+#define SWIGTYPE_p_MediaFrame swig_types[9]
+#define SWIGTYPE_p_MediaFrameListener swig_types[10]
+#define SWIGTYPE_p_MediaServer swig_types[11]
+#define SWIGTYPE_p_PCAPTransportEmulator swig_types[12]
+#define SWIGTYPE_p_PlayerFacade swig_types[13]
+#define SWIGTYPE_p_Properties swig_types[14]
+#define SWIGTYPE_p_PropertiesFacade swig_types[15]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[16]
+#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[17]
+#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[18]
+#define SWIGTYPE_p_RTPIncomingMediaStreamListener swig_types[19]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[20]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[21]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[22]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[23]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[24]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[25]
+#define SWIGTYPE_p_RTPReceiver swig_types[26]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[27]
+#define SWIGTYPE_p_RTPSender swig_types[28]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[29]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[30]
+#define SWIGTYPE_p_RTPSource swig_types[31]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[32]
+#define SWIGTYPE_p_RemoteRateEstimator__Listener swig_types[33]
+#define SWIGTYPE_p_RtpPacketizationInfo swig_types[34]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[35]
+#define SWIGTYPE_p_StreamTrackDepacketizer swig_types[36]
+#define SWIGTYPE_p_TimeService swig_types[37]
+#define SWIGTYPE_p_UDPDumper swig_types[38]
+#define SWIGTYPE_p_UDPReader swig_types[39]
+#define SWIGTYPE_p_char swig_types[40]
+#define SWIGTYPE_p_int swig_types[41]
+#define SWIGTYPE_p_long_long swig_types[42]
+#define SWIGTYPE_p_short swig_types[43]
+#define SWIGTYPE_p_signed_char swig_types[44]
+#define SWIGTYPE_p_std__string swig_types[45]
+#define SWIGTYPE_p_std__vectorT_MediaFrame__RtpPacketization_p_t swig_types[46]
+#define SWIGTYPE_p_std__vectorT_Properties_t swig_types[47]
+#define SWIGTYPE_p_unsigned_char swig_types[48]
+#define SWIGTYPE_p_unsigned_int swig_types[49]
+#define SWIGTYPE_p_unsigned_long_long swig_types[50]
+#define SWIGTYPE_p_unsigned_short swig_types[51]
+#define SWIGTYPE_p_v8__HandleT_v8__Object_t swig_types[52]
+#define SWIGTYPE_p_void swig_types[53]
+static swig_type_info *swig_types[55];
+static swig_module_info swig_module = {swig_types, 54, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2185,6 +2183,27 @@ public:
 	}
 		
 	virtual ~DTLSICETransportListener() = default;
+	
+	virtual void onRemoteICECandidateActivated(const std::string& ip, uint16_t port, uint32_t priority) override
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[3];
+			//Create local args
+			argv2[i++] = Nan::New(ip).ToLocalChecked();
+			argv2[i++] = Nan::New<v8::Uint32>(port);
+			argv2[i++] = Nan::New<v8::Uint32>(priority);
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(*persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onremoteicecandidate").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		
+		});
+	}
 	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
@@ -2798,7 +2817,6 @@ SWIG_AsVal_unsigned_SS_short (v8::Handle<v8::Value> obj, unsigned short *val)
 SWIGV8_ClientData _exports_Properties_clientData;
 SWIGV8_ClientData _exports_ByteBuffer_clientData;
 SWIGV8_ClientData _exports_MediaFrame_clientData;
-SWIGV8_ClientData _exports_Acumulator_clientData;
 SWIGV8_ClientData _exports_LayerInfo_clientData;
 SWIGV8_ClientData _exports_LayerSource_clientData;
 SWIGV8_ClientData _exports_LayerSources_clientData;
@@ -6529,794 +6547,6 @@ static SwigV8ReturnValue _wrap_new_veto_MediaFrame(const SwigV8Arguments &args) 
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
 }
-
-
-static SwigV8ReturnValue _wrap_new_Acumulator__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Object> self = args.Holder();
-  uint32_t arg1 ;
-  uint32_t arg2 ;
-  unsigned int val1 ;
-  int ecode1 = 0 ;
-  unsigned int val2 ;
-  int ecode2 = 0 ;
-  Acumulator *result;
-  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_Acumulator__SWIG_0.");
-  ecode1 = SWIG_AsVal_unsigned_SS_int(args[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Acumulator" "', argument " "1"" of type '" "uint32_t""'");
-  } 
-  arg1 = static_cast< uint32_t >(val1);
-  ecode2 = SWIG_AsVal_unsigned_SS_int(args[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Acumulator" "', argument " "2"" of type '" "uint32_t""'");
-  } 
-  arg2 = static_cast< uint32_t >(val2);
-  result = (Acumulator *)new Acumulator(arg1,arg2);
-  
-  
-  
-  
-  
-  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_Acumulator, SWIG_POINTER_OWN);
-  SWIGV8_RETURN(self);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_new_Acumulator__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Object> self = args.Holder();
-  uint32_t arg1 ;
-  unsigned int val1 ;
-  int ecode1 = 0 ;
-  Acumulator *result;
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_Acumulator__SWIG_1.");
-  ecode1 = SWIG_AsVal_unsigned_SS_int(args[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Acumulator" "', argument " "1"" of type '" "uint32_t""'");
-  } 
-  arg1 = static_cast< uint32_t >(val1);
-  result = (Acumulator *)new Acumulator(arg1);
-  
-  
-  
-  
-  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_Acumulator, SWIG_POINTER_OWN);
-  SWIGV8_RETURN(self);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_new_Acumulator(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  OverloadErrorHandler errorHandler;
-  v8::Handle<v8::Value> self;
-  
-  // switch all cases by means of series of if-returns.
-  
-  if(args.Length() == 2) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    self = _wrap_new_Acumulator__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(self);
-    }
-#else
-    _wrap_new_Acumulator__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  if(args.Length() == 1) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    self = _wrap_new_Acumulator__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(self);
-    }
-#else
-    _wrap_new_Acumulator__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  // default:
-  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for construction of _exports_Acumulator");
-  
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetAcumulated(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetAcumulated.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetAcumulated" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint64_t)((Acumulator const *)arg1)->GetAcumulated();
-  jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetDiff(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetDiff.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetDiff" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint64_t)((Acumulator const *)arg1)->GetDiff();
-  jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetInstant(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetInstant.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetInstant" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint64_t)((Acumulator const *)arg1)->GetInstant();
-  jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetMin(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMin.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMin" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint64_t)((Acumulator const *)arg1)->GetMin();
-  jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetMax(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint64_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMax.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMax" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint64_t)((Acumulator const *)arg1)->GetMax();
-  jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetWindow(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint32_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetWindow.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetWindow" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint32_t)((Acumulator const *)arg1)->GetWindow();
-  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_IsInWindow(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_IsInWindow.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_IsInWindow" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (bool)((Acumulator const *)arg1)->IsInWindow();
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_IsInMinMaxWindow(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_IsInMinMaxWindow.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_IsInMinMaxWindow" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (bool)((Acumulator const *)arg1)->IsInMinMaxWindow();
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetInstantMedia(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long double result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetInstantMedia.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetInstantMedia" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (long double)((Acumulator const *)arg1)->GetInstantMedia();
-  jsresult = SWIG_NewPointerObj((new long double(static_cast< const long double& >(result))), SWIGTYPE_p_long_double, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetInstantAvg(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long double result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetInstantAvg.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetInstantAvg" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (long double)((Acumulator const *)arg1)->GetInstantAvg();
-  jsresult = SWIG_NewPointerObj((new long double(static_cast< const long double& >(result))), SWIGTYPE_p_long_double, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetAverage(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long double result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetAverage.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetAverage" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (long double)((Acumulator const *)arg1)->GetAverage();
-  jsresult = SWIG_NewPointerObj((new long double(static_cast< const long double& >(result))), SWIGTYPE_p_long_double, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetMinAvg(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long double result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMinAvg.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMinAvg" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (long double)((Acumulator const *)arg1)->GetMinAvg();
-  jsresult = SWIG_NewPointerObj((new long double(static_cast< const long double& >(result))), SWIGTYPE_p_long_double, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetMaxAvg(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long double result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMaxAvg.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMaxAvg" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (long double)((Acumulator const *)arg1)->GetMaxAvg();
-  jsresult = SWIG_NewPointerObj((new long double(static_cast< const long double& >(result))), SWIGTYPE_p_long_double, SWIG_POINTER_OWN |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_ResetMinMax(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_ResetMinMax.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_ResetMinMax" "', argument " "1"" of type '" "Acumulator *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  (arg1)->ResetMinMax();
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_Reset(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  uint64_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned long long val2 ;
-  int ecode2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_Reset.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_Reset" "', argument " "1"" of type '" "Acumulator *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Acumulator_Reset" "', argument " "2"" of type '" "uint64_t""'");
-  } 
-  arg2 = static_cast< uint64_t >(val2);
-  (arg1)->Reset(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_Update__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  uint64_t arg2 ;
-  uint32_t arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned long long val2 ;
-  int ecode2 = 0 ;
-  unsigned int val3 ;
-  int ecode3 = 0 ;
-  uint64_t result;
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_Update" "', argument " "1"" of type '" "Acumulator *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Acumulator_Update" "', argument " "2"" of type '" "uint64_t""'");
-  } 
-  arg2 = static_cast< uint64_t >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Acumulator_Update" "', argument " "3"" of type '" "uint32_t""'");
-  } 
-  arg3 = static_cast< uint32_t >(val3);
-  result = (uint64_t)(arg1)->Update(arg2,arg3);
-  jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
-  
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_Update__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  uint64_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned long long val2 ;
-  int ecode2 = 0 ;
-  uint64_t result;
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_Update" "', argument " "1"" of type '" "Acumulator *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Acumulator_Update" "', argument " "2"" of type '" "uint64_t""'");
-  } 
-  arg2 = static_cast< uint64_t >(val2);
-  result = (uint64_t)(arg1)->Update(arg2);
-  jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator__wrap_Acumulator_Update(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  OverloadErrorHandler errorHandler;
-  
-  
-  if(args.Length() == 2) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_Acumulator_Update__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_Acumulator_Update__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  if(args.Length() == 1) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_Acumulator_Update__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_Acumulator_Update__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Update.");
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetMinValueInWindow(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint32_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMinValueInWindow.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMinValueInWindow" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint32_t)((Acumulator const *)arg1)->GetMinValueInWindow();
-  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetMaxValueInWindow(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint32_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetMaxValueInWindow.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetMaxValueInWindow" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint32_t)((Acumulator const *)arg1)->GetMaxValueInWindow();
-  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_Acumulator_GetCount(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  Acumulator *arg1 = (Acumulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  uint32_t result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Acumulator_GetCount.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Acumulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Acumulator_GetCount" "', argument " "1"" of type '" "Acumulator const *""'"); 
-  }
-  arg1 = reinterpret_cast< Acumulator * >(argp1);
-  result = (uint32_t)((Acumulator const *)arg1)->GetCount();
-  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_Acumulator(v8::Persistent<v8::Value> object, void *parameter) {
-  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_Acumulator(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
-    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_Acumulator(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
-#elif (V8_MAJOR_VERSION-0) < 5
-      static void _wrap_delete_Acumulator(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
-        v8::Local<v8::Object> object = data.GetValue();
-        SWIGV8_Proxy *proxy = data.GetParameter();
-#else
-        static void _wrap_delete_Acumulator(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
-          SWIGV8_Proxy *proxy = data.GetParameter();
-#endif
-          
-          if(proxy->swigCMemOwn && proxy->swigCObject) {
-            Acumulator * arg1 = (Acumulator *)proxy->swigCObject;
-            delete arg1;
-          }
-          delete proxy;
-          
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-          object.Dispose();
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-          object.Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
-          object->Dispose(isolate);
-#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-          object->Dispose();
-#elif (V8_MAJOR_VERSION-0) < 5
-          object.Clear();
-#endif
-        }
 
 
 #if (V8_MAJOR_VERSION-0) < 5
@@ -12559,6 +11789,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPBundleTransport_SetIceTimeout(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  RTPBundleTransport *arg1 = (RTPBundleTransport *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_SetIceTimeout.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransport_SetIceTimeout" "', argument " "1"" of type '" "RTPBundleTransport *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPBundleTransport * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPBundleTransport_SetIceTimeout" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetIceTimeout(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPBundleTransport_GetTimeService(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -17660,17 +16926,16 @@ static void *_p_RTPIncomingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_RTPOutgoingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPSource *)  ((RTPOutgoingSource *) x));
 }
+static void *_p_SenderSideEstimatorListenerTo_p_RemoteRateEstimator__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((RemoteRateEstimator::Listener *)  ((SenderSideEstimatorListener *) x));
+}
 static void *_p_MP4RecorderTo_p_MediaFrameListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((MediaFrameListener *)  ((MP4Recorder *) x));
 }
 static void *_p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStreamListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPIncomingMediaStreamListener *)  ((RTPIncomingMediaStreamMultiplexer *) x));
 }
-static void *_p_SenderSideEstimatorListenerTo_p_RemoteRateEstimator__Listener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((RemoteRateEstimator::Listener *)  ((SenderSideEstimatorListener *) x));
-}
 static swig_type_info _swigt__p_ActiveSpeakerDetectorFacade = {"_p_ActiveSpeakerDetectorFacade", "p_ActiveSpeakerDetectorFacade|ActiveSpeakerDetectorFacade *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_Acumulator = {"_p_Acumulator", "Acumulator *|p_Acumulator", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ByteBuffer = {"_p_ByteBuffer", "ByteBuffer *|p_ByteBuffer", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransport = {"_p_DTLSICETransport", "p_DTLSICETransport|DTLSICETransport *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransportListener = {"_p_DTLSICETransportListener", "p_DTLSICETransportListener|DTLSICETransportListener *", 0, 0, (void*)0, 0};
@@ -17712,7 +16977,6 @@ static swig_type_info _swigt__p_UDPDumper = {"_p_UDPDumper", "UDPDumper *", 0, 0
 static swig_type_info _swigt__p_UDPReader = {"_p_UDPReader", "p_UDPReader|UDPReader *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t *|int_fast32_t *|int32_t *|int_fast16_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_long_double = {"_p_long_double", "long double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
@@ -17728,7 +16992,6 @@ static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ActiveSpeakerDetectorFacade,
-  &_swigt__p_Acumulator,
   &_swigt__p_ByteBuffer,
   &_swigt__p_DTLSICETransport,
   &_swigt__p_DTLSICETransportListener,
@@ -17770,7 +17033,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_UDPReader,
   &_swigt__p_char,
   &_swigt__p_int,
-  &_swigt__p_long_double,
   &_swigt__p_long_long,
   &_swigt__p_short,
   &_swigt__p_signed_char,
@@ -17786,7 +17048,6 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_ActiveSpeakerDetectorFacade[] = {  {&_swigt__p_ActiveSpeakerDetectorFacade, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Acumulator[] = {  {&_swigt__p_Acumulator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ByteBuffer[] = {  {&_swigt__p_ByteBuffer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransport[] = {  {&_swigt__p_DTLSICETransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransportListener[] = {  {&_swigt__p_DTLSICETransportListener, 0, 0, 0},{0, 0, 0, 0}};
@@ -17828,7 +17089,6 @@ static swig_cast_info _swigc__p_UDPDumper[] = {  {&_swigt__p_UDPDumper, 0, 0, 0}
 static swig_cast_info _swigc__p_UDPReader[] = {  {&_swigt__p_UDPReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_long_double[] = {  {&_swigt__p_long_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -17844,7 +17104,6 @@ static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0,
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ActiveSpeakerDetectorFacade,
-  _swigc__p_Acumulator,
   _swigc__p_ByteBuffer,
   _swigc__p_DTLSICETransport,
   _swigc__p_DTLSICETransportListener,
@@ -17886,7 +17145,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_UDPReader,
   _swigc__p_char,
   _swigc__p_int,
-  _swigc__p_long_double,
   _swigc__p_long_long,
   _swigc__p_short,
   _swigc__p_signed_char,
@@ -18233,13 +17491,6 @@ _exports_MediaFrame_clientData.dtor = _wrap_delete_MediaFrame;
 if (SWIGTYPE_p_MediaFrame->clientdata == 0) {
   SWIGTYPE_p_MediaFrame->clientdata = &_exports_MediaFrame_clientData;
 }
-/* Name: _exports_Acumulator, Type: p_Acumulator, Dtor: _wrap_delete_Acumulator */
-v8::Handle<v8::FunctionTemplate> _exports_Acumulator_class = SWIGV8_CreateClassTemplate("_exports_Acumulator");
-SWIGV8_SET_CLASS_TEMPL(_exports_Acumulator_clientData.class_templ, _exports_Acumulator_class);
-_exports_Acumulator_clientData.dtor = _wrap_delete_Acumulator;
-if (SWIGTYPE_p_Acumulator->clientdata == 0) {
-  SWIGTYPE_p_Acumulator->clientdata = &_exports_Acumulator_clientData;
-}
 /* Name: _exports_LayerInfo, Type: p_LayerInfo, Dtor: _wrap_delete_LayerInfo */
 v8::Handle<v8::FunctionTemplate> _exports_LayerInfo_class = SWIGV8_CreateClassTemplate("_exports_LayerInfo");
 SWIGV8_SET_CLASS_TEMPL(_exports_LayerInfo_clientData.class_templ, _exports_LayerInfo_class);
@@ -18535,25 +17786,6 @@ SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetCodecConfigData", _wrap_
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetCodecConfigSize", _wrap_MediaFrame_GetCodecConfigSize);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "GetClockRate", _wrap_MediaFrame_GetClockRate);
 SWIGV8_AddMemberFunction(_exports_MediaFrame_class, "SetClockRate", _wrap_MediaFrame_SetClockRate);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetAcumulated", _wrap_Acumulator_GetAcumulated);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetDiff", _wrap_Acumulator_GetDiff);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetInstant", _wrap_Acumulator_GetInstant);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMin", _wrap_Acumulator_GetMin);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMax", _wrap_Acumulator_GetMax);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetWindow", _wrap_Acumulator_GetWindow);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "IsInWindow", _wrap_Acumulator_IsInWindow);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "IsInMinMaxWindow", _wrap_Acumulator_IsInMinMaxWindow);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetInstantMedia", _wrap_Acumulator_GetInstantMedia);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetInstantAvg", _wrap_Acumulator_GetInstantAvg);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetAverage", _wrap_Acumulator_GetAverage);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMinAvg", _wrap_Acumulator_GetMinAvg);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMaxAvg", _wrap_Acumulator_GetMaxAvg);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "ResetMinMax", _wrap_Acumulator_ResetMinMax);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "Reset", _wrap_Acumulator_Reset);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "Update", _wrap_Acumulator__wrap_Acumulator_Update);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMinValueInWindow", _wrap_Acumulator_GetMinValueInWindow);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetMaxValueInWindow", _wrap_Acumulator_GetMaxValueInWindow);
-SWIGV8_AddMemberFunction(_exports_Acumulator_class, "GetCount", _wrap_Acumulator_GetCount);
 SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "temporalLayerId", _wrap_LayerInfo_temporalLayerId_get, _wrap_LayerInfo_temporalLayerId_set);
 SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "spatialLayerId", _wrap_LayerInfo_spatialLayerId_get, _wrap_LayerInfo_spatialLayerId_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "numPackets", _wrap_LayerSource_numPackets_get, _wrap_LayerSource_numPackets_set);
@@ -18624,6 +17856,7 @@ SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "End", _wrap_RTPBund
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "GetLocalPort", _wrap_RTPBundleTransport_GetLocalPort);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddRemoteCandidate", _wrap_RTPBundleTransport_AddRemoteCandidate);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetAffinity", _wrap_RTPBundleTransport_SetAffinity);
+SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetIceTimeout", _wrap_RTPBundleTransport_SetIceTimeout);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "GetTimeService", _wrap_RTPBundleTransport_GetTimeService);
 SWIGV8_AddMemberFunction(_exports_UDPReader_class, "Next", _wrap_UDPReader_Next);
 SWIGV8_AddMemberFunction(_exports_UDPReader_class, "GetUDPData", _wrap_UDPReader_GetUDPData);
@@ -18882,12 +18115,6 @@ _exports_MediaFrame_class_0->SetCallHandler(_wrap_new_veto_MediaFrame);
 _exports_MediaFrame_class_0->Inherit(_exports_MediaFrame_class);
 _exports_MediaFrame_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_MediaFrame_obj = _exports_MediaFrame_class_0->GetFunction();
-/* Class: Acumulator (_exports_Acumulator) */
-v8::Handle<v8::FunctionTemplate> _exports_Acumulator_class_0 = SWIGV8_CreateClassTemplate("Acumulator");
-_exports_Acumulator_class_0->SetCallHandler(_wrap_new_Acumulator);
-_exports_Acumulator_class_0->Inherit(_exports_Acumulator_class);
-_exports_Acumulator_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_Acumulator_obj = _exports_Acumulator_class_0->GetFunction();
 /* Class: LayerInfo (_exports_LayerInfo) */
 v8::Handle<v8::FunctionTemplate> _exports_LayerInfo_class_0 = SWIGV8_CreateClassTemplate("LayerInfo");
 _exports_LayerInfo_class_0->SetCallHandler(_wrap_new_LayerInfo);
@@ -19110,7 +18337,6 @@ SWIGV8_AddStaticFunction(exports_obj, "SessionToReceiver", _wrap_SessionToReceiv
   exports_obj->Set(SWIGV8_SYMBOL_NEW("Properties"), _exports_Properties_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("ByteBuffer"), _exports_ByteBuffer_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaFrame"), _exports_MediaFrame_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("Acumulator"), _exports_Acumulator_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("LayerInfo"), _exports_LayerInfo_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("LayerSource"), _exports_LayerSource_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("LayerSources"), _exports_LayerSources_obj);

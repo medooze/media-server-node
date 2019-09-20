@@ -571,6 +571,27 @@ public:
 		
 	virtual ~DTLSICETransportListener() = default;
 	
+	virtual void onRemoteICECandidateActivated(const std::string& ip, uint16_t port, uint32_t priority) override
+	{
+		//Run function on main node thread
+		MediaServer::Async([=](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv2[3];
+			//Create local args
+			argv2[i++] = Nan::New(ip).ToLocalChecked();
+			argv2[i++] = Nan::New<v8::Uint32>(port);
+			argv2[i++] = Nan::New<v8::Uint32>(priority);
+			//Get a local reference
+			v8::Local<v8::Object> local = Nan::New(*persistent);
+			//Create callback function from object
+			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onremoteicecandidate").ToLocalChecked()));
+			//Call object method with arguments
+			Nan::MakeCallback(local, callback, i, argv2);
+		
+		});
+	}
+	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
@@ -752,7 +773,6 @@ private:
 %include "std_vector.i"
 %include "../media-server/include/config.h"	
 %include "../media-server/include/media.h"
-%include "../media-server/include/acumulator.h"
 
 struct LayerInfo
 {
@@ -768,7 +788,7 @@ struct LayerSource : public LayerInfo
 	DWORD		bitrate;
 };
 
-class LayerSources : public std::vector<LayerSource*>
+class LayerSources
 {
 public:
 	size_t size() const;
@@ -943,6 +963,7 @@ public:
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
 	bool SetAffinity(int cpu);
+	void SetIceTimeout(uint32_t timeout);
 	TimeService& GetTimeService();
 };
 
