@@ -1405,6 +1405,7 @@ Dump incoming and outgoint rtp and rtcp packets into a pcap file
     -   `options.incomoning` **[Boolean][1]** Dump incomoning RTP data
     -   `options.outgoing` **[Boolean][1]** Dump outgoing RTP data
     -   `options.rtcp` **[Boolean][1]** Dump rtcp RTP data
+    -   `options.rtpHeadersOnly` **[Boolean][1]** Dump only rtp headers and first 16 bytes of payload for rtp packets
     -   `options.bwe` **[Boolean][1]**  Dump bwe stats to a different file (.pcap->.csv)
 
 ### getStats

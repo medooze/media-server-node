@@ -323,7 +323,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target);
 			//Check it is created
-			test.same(bitrate,target);
+			test.ok(bitrate==target);
 		} catch (error) {
 			//Test error
 			test.notOk(error,error);
