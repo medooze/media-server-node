@@ -37,6 +37,35 @@ struct CopyablePersistentTraits {
 template<typename T >
 using Persistent = Nan::Persistent<T,CopyablePersistentTraits<T>>;
 
+
+bool MakeCallback(std::shared_ptr<Persistent<v8::Object>>& persistent, const char* name, int argc = 0, v8::Local<v8::Value>* argv = nullptr)
+{
+	//Ensure we have an object
+	if (!persistent)
+		return false;
+	//Get a local reference
+	v8::Local<v8::Object> local = Nan::New(*persistent);
+	//Check it is not empty
+	if (local.IsEmpty())
+		return false;
+	//Get event name
+	auto method = Nan::New(name).ToLocalChecked();
+	//Check it has it
+	if (!local->Has(method))
+		return false;
+	//Create callback function from object
+	v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(method));
+	//If it is callable
+	if (!callback->IsCallable())
+		return false;
+	//Call object method with arguments
+	Nan::MakeCallback(local, callback, argc, argv);
+	
+	//Done 
+	return true;
+}
+		
+			
 class PropertiesFacade : private Properties
 {
 public:
@@ -290,15 +319,8 @@ public:
 	{
 		//Run function on main node thread
 		MediaServer::Async([=](){
-			Nan::HandleScope scope;
-			int i = 0;
-			v8::Local<v8::Value> argv2[0];
-			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(*persistent);
-			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onended").ToLocalChecked()));
 			//Call object method with arguments
-			Nan::MakeCallback(local, callback, i, argv2);
+			MakeCallback(persistent, "onended");
 		});
 	}
 	
@@ -429,17 +451,11 @@ public:
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
-			v8::Local<v8::Value> argv2[1];
-			
+			v8::Local<v8::Value> argv[1];
 			//Create local args
-			argv2[i++] = Nan::New<v8::Uint32>(bitrate);
-			
-			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(*persistent);
-			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onremb").ToLocalChecked()));
+			argv[i++] = Nan::New<v8::Uint32>(bitrate);
 			//Call object method with arguments
-			Nan::MakeCallback(local, callback, i, argv2);
+			MakeCallback(persistent, "onremb", i, argv);
 		});
 	}
 	
@@ -577,17 +593,13 @@ public:
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
-			v8::Local<v8::Value> argv2[3];
+			v8::Local<v8::Value> argv[3];
 			//Create local args
-			argv2[i++] = Nan::New(ip).ToLocalChecked();
-			argv2[i++] = Nan::New<v8::Uint32>(port);
-			argv2[i++] = Nan::New<v8::Uint32>(priority);
-			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(*persistent);
-			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onremoteicecandidate").ToLocalChecked()));
+			argv[i++] = Nan::New(ip).ToLocalChecked();
+			argv[i++] = Nan::New<v8::Uint32>(port);
+			argv[i++] = Nan::New<v8::Uint32>(priority);
 			//Call object method with arguments
-			Nan::MakeCallback(local, callback, i, argv2);
+			MakeCallback(persistent, "onremoteicecandidate", i, argv);
 		
 		});
 	}
@@ -598,39 +610,33 @@ public:
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
-			v8::Local<v8::Value> argv2[1];
+			v8::Local<v8::Value> argv[1];
 			
 			switch(state)
 			{
 				case DTLSICETransport::DTLSState::New:
 					//Create local args
-					argv2[i++] = Nan::New("new").ToLocalChecked();
+					argv[i++] = Nan::New("new").ToLocalChecked();
 					break;
 				case DTLSICETransport::DTLSState::Connecting:
 					//Create local args
-					argv2[i++] = Nan::New("connecting").ToLocalChecked();
+					argv[i++] = Nan::New("connecting").ToLocalChecked();
 					break;
 				case DTLSICETransport::DTLSState::Connected:
 					//Create local args
-					argv2[i++] = Nan::New("connected").ToLocalChecked();
+					argv[i++] = Nan::New("connected").ToLocalChecked();
 					break;
 				case DTLSICETransport::DTLSState::Closed:
 					//Create local args
-					argv2[i++] = Nan::New("closed").ToLocalChecked();
+					argv[i++] = Nan::New("closed").ToLocalChecked();
 					break;
 				case DTLSICETransport::DTLSState::Failed:
 					//Create local args
-					argv2[i++] = Nan::New("failed").ToLocalChecked();
+					argv[i++] = Nan::New("failed").ToLocalChecked();
 					break;
 			}
-
-			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(*persistent);
-			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ondtlsstate").ToLocalChecked()));
-			//Call object method with arguments
-			Nan::MakeCallback(local, callback, i, argv2);
-		
+			//Call method
+			MakeCallback(persistent,"ondtlsstate",i,argv);
 		});
 	}
 
@@ -653,17 +659,11 @@ public:
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
-			v8::Local<v8::Value> argv2[1];
-			
+			v8::Local<v8::Value> argv[1];
 			//Create local args
-			argv2[i++] = Nan::New<v8::Uint32>(bitrate);
-			
-			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(*persistent);
-			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("ontargetbitrate").ToLocalChecked()));
+			argv[i++] = Nan::New<v8::Uint32>(bitrate);
 			//Call object method with arguments
-			Nan::MakeCallback(local, callback, i, argv2);
+			MakeCallback(persistent, "ontargetbitrate", i, argv);
 		
 		});
 	}
@@ -717,17 +717,11 @@ public:
 		MediaServer::Async([=](){
 			Nan::HandleScope scope;
 			int i = 0;
-			v8::Local<v8::Value> argv2[1];
-			
+			v8::Local<v8::Value> argv[1];
 			//Create local args
-			argv2[i++] = Nan::New<v8::Uint32>(id);
-			
-			//Get a local reference
-			v8::Local<v8::Object> local = Nan::New(*persistent);
-			//Create callback function from object
-			v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(Nan::New("onactivespeakerchanged").ToLocalChecked()));
+			argv[i++] = Nan::New<v8::Uint32>(id);
 			//Call object method with arguments
-			Nan::MakeCallback(local, callback, i, argv2);
+			MakeCallback(persistent, "onactivespeakerchanged", i, argv);
 		});
 	}
 	
