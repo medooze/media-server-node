@@ -118,7 +118,7 @@ public:
 
 	static void Initialize()
 	{
-		Log("-MediaServer::Initialize\n");
+		Debug("-MediaServer::Initialize\n");
 		//Initialize ssl
 		OpenSSL::ClassInit();
 		
@@ -131,7 +131,7 @@ public:
 	
 	static void Terminate()
 	{
-		Log("-MediaServer::Terminate\n");
+		Debug("-MediaServer::Terminate\n");
 		//Lock
 		mutex.Lock();
 		//Close handle
@@ -143,21 +143,18 @@ public:
 	static void EnableLog(bool flag)
 	{
 		//Enable log
-		Log("-EnableLog [%d]\n",flag);
 		Logger::EnableLog(flag);
 	}
 	
 	static void EnableDebug(bool flag)
 	{
 		//Enable debug
-		Log("-EnableDebug [%d]\n",flag);
 		Logger::EnableDebug(flag);
 	}
 	
 	static void EnableUltraDebug(bool flag)
 	{
 		//Enable debug
-		Log("-EnableUltraDebug [%d]\n",flag);
 		Logger::EnableUltraDebug(flag);
 	}
 	
@@ -765,8 +762,16 @@ private:
 %include "stdint.i"
 %include "std_string.i"
 %include "std_vector.i"
-%include "../media-server/include/config.h"	
-%include "../media-server/include/media.h"
+#define QWORD		uint64_t
+#define DWORD		uint32_t
+#define WORD		uint16_t
+#define SWORD		int16_t
+#define BYTE		uint8_t
+#define SBYTE		char
+%{
+using MediaFrameType = MediaFrame::Type;
+%}
+enum MediaFrameType;
 
 struct LayerInfo
 {
@@ -848,10 +853,10 @@ struct TimeService
 
 struct RTPOutgoingSourceGroup
 {
-	RTPOutgoingSourceGroup(MediaFrame::Type type);
-	RTPOutgoingSourceGroup(std::string &streamId,MediaFrame::Type type);
+	RTPOutgoingSourceGroup(MediaFrameType type);
+	RTPOutgoingSourceGroup(std::string &streamId,MediaFrameType type);
 	
-	MediaFrame::Type  type;
+	MediaFrameType  type;
 	RTPOutgoingSource media;
 	RTPOutgoingSource fec;
 	RTPOutgoingSource rtx;
@@ -883,11 +888,11 @@ struct RTPIncomingMediaStream
 
 struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 {
-	RTPIncomingSourceGroup(MediaFrame::Type type, TimeService& TimeService);
+	RTPIncomingSourceGroup(MediaFrameType type, TimeService& TimeService);
 	std::string rid;
 	std::string mid;
 	DWORD rtt;
-	MediaFrame::Type  type;
+	MediaFrameType  type;
 	RTPIncomingSource media;
 	RTPIncomingSource fec;
 	RTPIncomingSource rtx;
@@ -905,6 +910,7 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 struct RTPIncomingMediaStreamMultiplexer : public RTPIncomingMediaStream, public RTPIncomingMediaStreamListener
 {
 	RTPIncomingMediaStreamMultiplexer(DWORD ssrc, TimeService& TimeService);
+	void Stop();
 };
 
 %typemap(in) v8::Handle<v8::Object> {
@@ -988,6 +994,14 @@ public:
 	DTLSICETransportListener(v8::Handle<v8::Object> object);
 };
 
+%{
+using RemoteRateEstimatorListener = RemoteRateEstimator::Listener;
+%}
+%nodefaultctor RemoteRateEstimatorListener;
+struct RemoteRateEstimatorListener
+{
+};
+
 %nodefaultctor DTLSICETransport; 
 class DTLSICETransport
 {
@@ -1019,7 +1033,7 @@ public:
 	void SetBandwidthProbing(bool probe);
 	void SetMaxProbingBitrate(DWORD bitrate);
 	void SetProbingBitrateLimit(DWORD bitrate);
-	void SetSenderSideEstimatorListener(RemoteRateEstimator::Listener* listener);
+	void SetSenderSideEstimatorListener(RemoteRateEstimatorListener* listener);
 	
 	const char* GetRemoteUsername() const;
 	const char* GetRemotePwd()	const;
@@ -1036,7 +1050,7 @@ class RTPSessionFacade :
 	public RTPReceiver
 {
 public:
-	RTPSessionFacade(MediaFrame::Type media);
+	RTPSessionFacade(MediaFrameType media);
 	int Init(const Properties &properties);
 	int SetLocalPort(int recvPort);
 	int GetLocalPort();
@@ -1145,7 +1159,7 @@ public:
 };
 
 class SenderSideEstimatorListener :
-	public RemoteRateEstimator::Listener
+	public RemoteRateEstimatorListener
 {
 public:
 	SenderSideEstimatorListener(v8::Handle<v8::Object> object);
