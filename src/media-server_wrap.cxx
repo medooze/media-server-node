@@ -1770,6 +1770,16 @@ public:
 		return RTPTransport::SetPortRange(minPort,maxPort);
 	}
 	
+	static bool SetCertificate(const char* cert,const char* key)
+	{
+		//Stop TLS
+		DTLSConnection::Terminate();
+		//Set new certificates
+		DTLSConnection::SetCertificate(cert,key);
+		//Start DTLS
+		return DTLSConnection::Initialize();
+	}
+	
 	static std::string GetFingerprint()
 	{
 		return DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256);
@@ -7214,6 +7224,45 @@ static SwigV8ReturnValue _wrap_MediaServer_EnableUltraDebug(const SwigV8Argument
   MediaServer::EnableUltraDebug(arg1);
   jsresult = SWIGV8_UNDEFINED();
   
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaServer_SetCertificate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool result;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_SetCertificate.");
+  
+  res1 = SWIG_AsCharPtrAndSize(args[0], &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaServer_SetCertificate" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(args[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MediaServer_SetCertificate" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (bool)MediaServer::SetCertificate((char const *)arg1,(char const *)arg2);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   
   SWIGV8_RETURN(jsresult);
   
@@ -14760,6 +14809,7 @@ SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Terminate", _wrap_MediaServe
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableLog", _wrap_MediaServer_EnableLog);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableDebug", _wrap_MediaServer_EnableDebug);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_MediaServer_EnableUltraDebug);
+SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetCertificate", _wrap_MediaServer_SetCertificate);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "GetFingerprint", _wrap_MediaServer_GetFingerprint);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetPortRange", _wrap_MediaServer_SetPortRange);
 SWIGV8_AddStaticFunction(exports_obj, "TransportToSender", _wrap_TransportToSender);

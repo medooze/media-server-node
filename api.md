@@ -2,6 +2,15 @@
 
 ## MediaServer
 
+### setCertificate
+
+Set new DTLS certificates. Should be called before any Endpoint is established.
+
+#### Parameters
+
+-   `cert` **[String][1]** path of the certificate file
+-   `key` **[String][1]** path of the key file
+
 ### terminate
 
 Close async handlers so nodejs can exit nicely
@@ -13,7 +22,7 @@ Enable or disable log level traces
 
 #### Parameters
 
--   `flag` **[Boolean][1]** 
+-   `flag` **[Boolean][2]** 
 
 ### enableDebug
 
@@ -21,7 +30,7 @@ Enable or disable debug level traces
 
 #### Parameters
 
--   `flag` **[Boolean][1]** 
+-   `flag` **[Boolean][2]** 
 
 ### setPortRange
 
@@ -30,9 +39,9 @@ Set UDP port range for encpoints
 #### Parameters
 
 -   `minPort` **Integer** Min UDP port
--   `maxPort` **Integer** Max UDP port
+-   `maxPort` **Integer** Max UDP port [Optional]
 
-Returns **[Endpoint][2]** The new created endpoing
+Returns **[Endpoint][3]** The new created endpoing
 
 ### enableUltraDebug
 
@@ -40,7 +49,7 @@ Enable or disable ultra debug level traces
 
 #### Parameters
 
--   `flag` **[Boolean][1]** 
+-   `flag` **[Boolean][2]** 
 
 ### createEndpoint
 
@@ -48,9 +57,9 @@ Create a new endpoint object
 
 #### Parameters
 
--   `ip` **[String][3]** External IP address of server, to be used when announcing the local ICE candidate
+-   `ip` **[String][1]** External IP address of server, to be used when announcing the local ICE candidate
 
-Returns **[Endpoint][2]** The new created endpoing
+Returns **[Endpoint][3]** The new created endpoing
 
 ### createRecorder
 
@@ -58,7 +67,7 @@ Create a new MP4 recorder
 
 #### Parameters
 
--   `filename` **[String][3]** Path and filename of the recorded mp4 file
+-   `filename` **[String][1]** Path and filename of the recorded mp4 file
 -   `params` **[Object][4]** Recording parameters (Optional)
     -   `params.refresh` **[Object][4]** Periodically refresh an intra on all video tracks (in ms)
     -   `params.waitForIntra` **[Object][4]** Wait until first video iframe is received to start recording media
@@ -71,7 +80,7 @@ Create a new MP4 player
 
 #### Parameters
 
--   `filename` **[String][3]** Path and filename of the mp4 file
+-   `filename` **[String][1]** Path and filename of the mp4 file
 
 Returns **[Player][6]** 
 
@@ -100,7 +109,7 @@ Create a new emulated transport from pcap file
 #### Parameters
 
 -   `pcap`  
--   `filename` **[String][3]** PCAP filename and path
+-   `filename` **[String][1]** PCAP filename and path
 
 ### getDefaultCapabilities
 
@@ -116,7 +125,7 @@ SDPManager
 
 Get current SDP offer/answer state
 
-Returns **[String][3]** one of "initial","local-offer","remote-offer","stabable".
+Returns **[String][1]** one of "initial","local-offer","remote-offer","stabable".
 
 ### getTransport
 
@@ -130,7 +139,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listeener` **[function][9]** Event listener
 
 Returns **[Transport][8]** 
@@ -141,7 +150,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -152,7 +161,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[Transport][8]** 
@@ -185,7 +194,7 @@ Returns **[Object][4]**
 
 Check if the track is muted or not
 
-Returns **[boolean][1]** muted
+Returns **[boolean][2]** muted
 
 ### on
 
@@ -193,7 +202,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[RecorderTrack][12]** 
@@ -204,7 +213,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -215,7 +224,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[RecorderTrack][12]** 
@@ -223,6 +232,113 @@ Returns **[RecorderTrack][12]**
 ### stop
 
 Stop recording this track
+
+## Refresher
+
+Periodically request an I frame on all incoming stream or tracks
+
+### add
+
+Add stream or track to request
+
+#### Parameters
+
+-   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][11])** 
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[IncomingStream][10]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[IncomingStream][10]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[OutgoingStream][13]** 
+
+### stop
+
+Stop refresher
+
+## Streamer
+
+An streamer allows to send and receive plain RTP over udp sockets.
+This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
+
+### createSession
+
+Creates a new streaming session from a media description
+
+#### Parameters
+
+-   `media` **MediaInfo** Media codec description info
+-   `params` **[Object][4]** Network parameters
+    -   `params.local` **[Object][4]** Local parameters
+        -   `params.local.port` **[Number][14]** receiving port
+    -   `params.remote` **[Object][4]** Remote parameters
+        -   `params.remote.ip` **[String][1]** Sending ip address
+        -   `params.remote.port` **[Number][14]** Sending port
+
+Returns **[StreamerSession][15]** The new streaming session
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listeener` **[function][9]** Event listener
+
+Returns **[Endpoint][3]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][3]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][3]** 
+
+### stop
+
+Stop all streaming sessions and frees resources
 
 ## Transponder
 
@@ -252,25 +368,25 @@ Returns **[Object][4]**
 
 Check if the track is muted or not
 
-Returns **[boolean][1]** muted
+Returns **[boolean][2]** muted
 
 ### getSelectedtEncoding
 
 Return the encoding that is being forwarded
 
-Returns **[String][3]** encodingId
+Returns **[String][1]** encodingId
 
 ### getSelectedSpatialLayerId
 
 Return the spatial layer id that is being forwarded
 
-Returns **[Number][13]** spatial layer id
+Returns **[Number][14]** spatial layer id
 
 ### getSelectedTemporalLayerId
 
 Return the temporal layer id that is being forwarded
 
-Returns **[Number][13]** temporal layer id
+Returns **[Number][14]** temporal layer id
 
 ### selectLayer
 
@@ -278,8 +394,8 @@ Select SVC temporatl and spatial layers. Only available for VP9 media.
 
 #### Parameters
 
--   `spatialLayerId` **[Number][13]** The spatial layer id to send to the outgoing stream
--   `temporalLayerId` **[Number][13]** The temporaral layer id to send to the outgoing stream
+-   `spatialLayerId` **[Number][14]** The spatial layer id to send to the outgoing stream
+-   `temporalLayerId` **[Number][14]** The temporaral layer id to send to the outgoing stream
 
 ### setMaximumLayers
 
@@ -287,8 +403,8 @@ Set maximum statial and temporal layers to be forwrarded. Base layer is always e
 
 #### Parameters
 
--   `maxSpatialLayerId` **[Number][13]** Max spatial layer id
--   `maxTemporalLayerId` **[Number][13]** Max temporal layer id
+-   `maxSpatialLayerId` **[Number][14]** Max spatial layer id
+-   `maxTemporalLayerId` **[Number][14]** Max temporal layer id
 
 ### on
 
@@ -296,7 +412,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -307,7 +423,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -318,7 +434,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -326,55 +442,6 @@ Returns **[IncomingStreamTrack][11]**
 ### stop
 
 Stop this transponder, will dettach the OutgoingStreamTrack
-
-## Refresher
-
-Periodically request an I frame on all incoming stream or tracks
-
-### add
-
-Add stream or track to request
-
-#### Parameters
-
--   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][11])** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[IncomingStream][10]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[IncomingStream][10]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[OutgoingStream][14]** 
-
-### stop
-
-Stop refresher
 
 ## ActiveSpeakerDetector
 
@@ -386,7 +453,7 @@ Set minimum period between active speaker changes
 
 #### Parameters
 
--   `minChangePeriod` **[Number][13]** 
+-   `minChangePeriod` **[Number][14]** 
 
 ### setMaxAccumulatedScore
 
@@ -394,7 +461,7 @@ Maximux activity score accumulated by an speaker
 
 #### Parameters
 
--   `maxAcummulatedScore` **[Number][13]** 
+-   `maxAcummulatedScore` **[Number][14]** 
 
 ### setNoiseGatingThreshold
 
@@ -402,7 +469,7 @@ Minimum db level to not be considered as muted
 
 #### Parameters
 
--   `noiseGatingThreshold` **[Number][13]** 
+-   `noiseGatingThreshold` **[Number][14]** 
 
 ### setMinActivationScore
 
@@ -410,7 +477,7 @@ Set minimum activation score to be electible as active speaker
 
 #### Parameters
 
--   `minActivationScore` **[Number][13]** 
+-   `minActivationScore` **[Number][14]** 
 
 ### addSpeaker
 
@@ -434,7 +501,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -445,7 +512,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -456,7 +523,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -464,64 +531,6 @@ Returns **[IncomingStreamTrack][11]**
 ### stop
 
 Stop this transponder, will dettach the OutgoingStreamTrack
-
-## Streamer
-
-An streamer allows to send and receive plain RTP over udp sockets.
-This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
-
-### createSession
-
-Creates a new streaming session from a media description
-
-#### Parameters
-
--   `media` **MediaInfo** Media codec description info
--   `params` **[Object][4]** Network parameters
-    -   `params.local` **[Object][4]** Local parameters
-        -   `params.local.port` **[Number][13]** receiving port
-    -   `params.remote` **[Object][4]** Remote parameters
-        -   `params.remote.ip` **[String][3]** Sending ip address
-        -   `params.remote.port` **[Number][13]** Sending port
-
-Returns **[StreamerSession][15]** The new streaming session
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listeener` **[function][9]** Event listener
-
-Returns **[Endpoint][2]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[Endpoint][2]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][3]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[Endpoint][2]** 
-
-### stop
-
-Stop all streaming sessions and frees resources
 
 ## Recorder
 
@@ -553,7 +562,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -564,7 +573,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -575,7 +584,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -621,7 +630,7 @@ Start playback from given time
 
 #### Parameters
 
--   `time` **[Number][13]** in miliseconds
+-   `time` **[Number][14]** in miliseconds
 
 ### stop
 
@@ -635,7 +644,7 @@ Represent the connection between a local udp port and a remote one. It sends and
 
 Get the local rtp/udp port
 
-Returns **[Number][13]** port number
+Returns **[Number][14]** port number
 
 ### getIncomingStreamTrack
 
@@ -655,7 +664,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[StreamerSession][15]** 
@@ -666,7 +675,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -677,7 +686,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[StreamerSession][15]** 
@@ -694,7 +703,7 @@ The incoming streams represent the recived media stream from a remote peer.
 
 The media stream id as announced on the SDP
 
-Returns **[String][3]** 
+Returns **[String][1]** 
 
 ### getStreamInfo
 
@@ -708,7 +717,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -719,7 +728,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -730,7 +739,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -747,7 +756,7 @@ Get track by id
 
 #### Parameters
 
--   `trackId` **[String][3]** The track id
+-   `trackId` **[String][1]** The track id
 
 Returns **[IncomingStreamTrack][11]** requested track or null
 
@@ -757,7 +766,7 @@ Get all the tracks
 
 #### Parameters
 
--   `type` **[String][3]** The media type (Optional)
+-   `type` **[String][1]** The media type (Optional)
 
 Returns **[Array][16]&lt;[IncomingStreamTrack][11]>** Array of tracks
 
@@ -801,7 +810,7 @@ See OutgoingStreamTrack.getStats for information about the stats returned by eac
 
 Check if the stream is muted or not
 
-Returns **[boolean][1]** muted
+Returns **[boolean][2]** muted
 
 ### attachTo
 
@@ -827,7 +836,7 @@ Returns **StreamInfo** The stream info object
 
 The media stream id as announced on the SDP
 
-Returns **[String][3]** 
+Returns **[String][1]** 
 
 ### on
 
@@ -835,7 +844,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -846,7 +855,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -857,10 +866,10 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[OutgoingStream][14]** 
+Returns **[OutgoingStream][13]** 
 
 ### getTracks
 
@@ -868,7 +877,7 @@ Get all the tracks
 
 #### Parameters
 
--   `type` **[String][3]** The media type (Optional)
+-   `type` **[String][1]** The media type (Optional)
 
 Returns **[Array][16]&lt;[OutgoingStreamTrack][18]>** Array of tracks
 
@@ -878,7 +887,7 @@ Get track by id
 
 #### Parameters
 
--   `trackId` **[String][3]** The track id
+-   `trackId` **[String][1]** The track id
 
 Returns **[IncomingStreamTrack][11]** requested track or null
 
@@ -900,16 +909,16 @@ Create new track from a TrackInfo object and add it to this stream
 
 #### Parameters
 
--   `params` **([Object][4] | TrackInfo | [String][3])** Params plain object, StreamInfo object or media type
-    -   `params.id` **[String][3]?** Stream track id
-    -   `params.media` **[String][3]?** Media type ("audio" or "video")
+-   `params` **([Object][4] | TrackInfo | [String][1])** Params plain object, StreamInfo object or media type
+    -   `params.id` **[String][1]?** Stream track id
+    -   `params.media` **[String][1]?** Media type ("audio" or "video")
     -   `params.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][13]?** ssrc for the track
-        -   `params.ssrcs.rtx` **[Number][13]?** ssrc for the rtx video track
-        -   `params.ssrcs.fec` **[Number][13]?** ssrc for the fec video track
+        -   `params.ssrcs.media` **[Number][14]?** ssrc for the track
+        -   `params.ssrcs.rtx` **[Number][14]?** ssrc for the rtx video track
+        -   `params.ssrcs.fec` **[Number][14]?** ssrc for the fec video track
 -   `trackInfo` **TrackInfo** Track info object
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream][13]** The new outgoing stream
 
 Returns **OuggoingStreamTrack** 
 
@@ -921,7 +930,7 @@ Mirror incoming stream from another endpoint. Used to avoid inter-thread synchro
 
 Get stats for all encodings from the original track
 
-Returns **[Map][20]&lt;[String][3], [Object][4]>** Map with stats by encodingId
+Returns **[Map][20]&lt;[String][1], [Object][4]>** Map with stats by encodingId
 
 ### getActiveLayers
 
@@ -949,7 +958,7 @@ Returns **[Object][4]**
 
 Get track media type
 
-Returns **[String][3]** "audio"|"video"
+Returns **[String][1]** "audio"|"video"
 
 ### on
 
@@ -957,7 +966,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -968,7 +977,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -979,7 +988,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -1012,7 +1021,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listeener` **[function][9]** Event listener
 
 Returns **[PeerConnectionServer][21]** 
@@ -1023,7 +1032,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[PeerConnectionServer][21]** 
@@ -1034,7 +1043,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[PeerConnectionServer][21]** 
@@ -1055,9 +1064,9 @@ Set cpu affinity for udp send/recv thread.
 
 #### Parameters
 
--   `cpu` **[Number][13]** CPU core or -1 to reset affinity.
+-   `cpu` **[Number][14]** CPU core or -1 to reset affinity.
 
-Returns **[boolean][1]** 
+Returns **[boolean][2]** 
 
 ### setIceTimeout
 
@@ -1065,7 +1074,7 @@ Set ICE timeout for outgoing ICE binding requests
 
 #### Parameters
 
--   `timeout` **[Number][13]** Ammount of time in milliseconds between ICE binding requests
+-   `timeout` **[Number][14]** Ammount of time in milliseconds between ICE binding requests
 
 ### createTransport
 
@@ -1076,8 +1085,8 @@ Create a new transport object and register it with the remote ICE username and p
 -   `remoteInfo` **([Object][4] | SDPInfo)** Remote ICE and DTLS properties
 -   `localInfo` **[Object][4]** Local ICE and DTLS properties (optional)
 -   `options` **[Object][4]** Dictionary with transport properties
-    -   `options.disableSTUNKeepAlive` **[boolean][1]** Disable ICE/STUN keep alives, required for server to server transports
-    -   `options.srtpProtectionProfiles` **[String][3]** Colon delimited list of SRTP protection profile names
+    -   `options.disableSTUNKeepAlive` **[boolean][2]** Disable ICE/STUN keep alives, required for server to server transports
+    -   `options.srtpProtectionProfiles` **[String][1]** Colon delimited list of SRTP protection profile names
 
 Returns **[Transport][8]** New transport object
 
@@ -1091,7 +1100,7 @@ Returns **Array.CandidateInfo**
 
 Get local DTLS fingerprint for this endpoint. It will be shared by all the transport associated to this endpoint.
 
-Returns **[String][3]** 
+Returns **[String][1]** 
 
 ### createOffer
 
@@ -1143,7 +1152,7 @@ Create new SDP manager, this object will manage the SDP O/A for you and produce 
 
 #### Parameters
 
--   `sdpSemantics` **[String][3]** Type of sdp plan "unified-plan" or "plan-b"
+-   `sdpSemantics` **[String][1]** Type of sdp plan "unified-plan" or "plan-b"
 -   `capabilities` **[Object][4]** Capabilities objects
 
 Returns **[SDPManager][23]** 
@@ -1154,10 +1163,10 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listeener` **[function][9]** Event listener
 
-Returns **[Endpoint][2]** 
+Returns **[Endpoint][3]** 
 
 ### once
 
@@ -1165,10 +1174,10 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[Endpoint][2]** 
+Returns **[Endpoint][3]** 
 
 ### off
 
@@ -1176,10 +1185,10 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[Endpoint][2]** 
+Returns **[Endpoint][3]** 
 
 ### stop
 
@@ -1206,7 +1215,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listeener` **[function][9]** Event listener
 
 Returns **[Transport][8]** 
@@ -1217,7 +1226,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -1228,7 +1237,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[Transport][8]** 
@@ -1266,7 +1275,7 @@ Start playback from given time
 
 #### Parameters
 
--   `time` **[Number][13]** in miliseconds
+-   `time` **[Number][14]** in miliseconds
 
 ### stop
 
@@ -1284,7 +1293,7 @@ Get track id as signaled on the SDP
 
 Get track media type
 
-Returns **[String][3]** "audio"|"video"
+Returns **[String][1]** "audio"|"video"
 
 ### getTrackInfo
 
@@ -1312,7 +1321,7 @@ The stats objects will privide the follwing info for each source
 -   totalRTCPBytes	: total rtp sent bytes
 -   bitrate		: average bitrate sent during last second in bps
 
-Returns **[Map][20]&lt;[String][3], [Object][4]>** Map with stats by encodingId
+Returns **[Map][20]&lt;[String][1], [Object][4]>** Map with stats by encodingId
 
 ### getSSRCs
 
@@ -1324,7 +1333,7 @@ Returns **[Object][4]**
 
 Check if the track is muted or not
 
-Returns **[boolean][1]** muted
+Returns **[boolean][2]** muted
 
 ### attachTo
 
@@ -1354,7 +1363,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -1365,7 +1374,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -1376,7 +1385,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -1400,13 +1409,13 @@ Dump incoming and outgoint rtp and rtcp packets into a pcap file
 
 #### Parameters
 
--   `filename` **[String][3]** Filename of the pcap file
+-   `filename` **[String][1]** Filename of the pcap file
 -   `options` **[Object][4]** Dump parameters (optional)
-    -   `options.incomoning` **[Boolean][1]** Dump incomoning RTP data
-    -   `options.outgoing` **[Boolean][1]** Dump outgoing RTP data
-    -   `options.rtcp` **[Boolean][1]** Dump rtcp RTP data
-    -   `options.rtpHeadersOnly` **[Boolean][1]** Dump only rtp headers and first 16 bytes of payload for rtp packets
-    -   `options.bwe` **[Boolean][1]**  Dump bwe stats to a different file (.pcap->.csv)
+    -   `options.incomoning` **[Boolean][2]** Dump incomoning RTP data
+    -   `options.outgoing` **[Boolean][2]** Dump outgoing RTP data
+    -   `options.rtcp` **[Boolean][2]** Dump rtcp RTP data
+    -   `options.rtpHeadersOnly` **[Boolean][2]** Dump only rtp headers and first 16 bytes of payload for rtp packets
+    -   `options.bwe` **[Boolean][2]**  Dump bwe stats to a different file (.pcap->.csv)
 
 ### getStats
 
@@ -1440,7 +1449,7 @@ Set the maximum bitrate to be used if probing is enabled.
 
 #### Parameters
 
--   `bitrate` **[Number][13]** 
+-   `bitrate` **[Number][14]** 
 
 ### setProbingBitrateLimit
 
@@ -1448,7 +1457,7 @@ Do not allow probing to increase sent bitrate above certain limit
 
 #### Parameters
 
--   `bitrate` **[Number][13]** limit
+-   `bitrate` **[Number][14]** limit
 
 ### setLocalProperties
 
@@ -1476,7 +1485,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listeener` **[function][9]** Event listener
 
 Returns **[Transport][8]** 
@@ -1487,7 +1496,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -1498,7 +1507,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[Transport][8]** 
@@ -1507,7 +1516,7 @@ Returns **[Transport][8]**
 
 Get current dtls state for transport
 
-Returns **[String][3]** DTLS connection state as per the w3c spec  "new", "connecting", "connected", "closed", "failed"
+Returns **[String][1]** DTLS connection state as per the w3c spec  "new", "connecting", "connected", "closed", "failed"
 
 ### getLocalDTLSInfo
 
@@ -1541,7 +1550,7 @@ Register a remote candidate info. Only needed for ice-lite to ice-lite endpoints
 
 -   `candidate` **CandidateInfo** 
 
-Returns **[boolean][1]** Wheter the remote ice candidate was alrady presnet or not
+Returns **[boolean][2]** Wheter the remote ice candidate was alrady presnet or not
 
 ### addRemoteCandidates
 
@@ -1557,20 +1566,20 @@ Create new outgoing stream in this transport
 
 #### Parameters
 
--   `params` **([Object][4] | StreamInfo | [String][3])** Params plain object, StreamInfo object or stream id
-    -   `params.audio` **([Array][16]&lt;[Object][4]> | [Object][4] \| [boolean][1])** Add audio track to the new stream
+-   `params` **([Object][4] | StreamInfo | [String][1])** Params plain object, StreamInfo object or stream id
+    -   `params.audio` **([Array][16]&lt;[Object][4]> | [Object][4] \| [boolean][2])** Add audio track to the new stream
         -   `params.audio.id` **[Object][4]?** Stream track id (default: "audio")
-        -   `params.audio.ssrcs` **[Number][13]?** Override the generated ssrcs for this track
-            -   `params.audio.ssrcs.media` **[Number][13]?** ssrc for the audio track
+        -   `params.audio.ssrcs` **[Number][14]?** Override the generated ssrcs for this track
+            -   `params.audio.ssrcs.media` **[Number][14]?** ssrc for the audio track
     -   `params.id` **[Object][4]?** Stream id, an UUID will be generated if not provided
-    -   `params.video` **([Array][16]&lt;[Object][4]> | [Object][4] \| [boolean][1])** Add video track to the new stream
+    -   `params.video` **([Array][16]&lt;[Object][4]> | [Object][4] \| [boolean][2])** Add video track to the new stream
         -   `params.video.id` **[Object][4]?** Stream track id (default: "video")
         -   `params.video.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
-            -   `params.video.ssrcs.media` **[Number][13]?** ssrc for the video track
-            -   `params.video.ssrcs.rtx` **[Number][13]?** ssrc for the rtx video track
-            -   `params.video.ssrcs.fec` **[Number][13]?** ssrc for the fec video track
+            -   `params.video.ssrcs.media` **[Number][14]?** ssrc for the video track
+            -   `params.video.ssrcs.rtx` **[Number][14]?** ssrc for the rtx video track
+            -   `params.video.ssrcs.fec` **[Number][14]?** ssrc for the fec video track
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream][13]** The new outgoing stream
 
 ### createOutgoingStreamTrack
 
@@ -1578,13 +1587,13 @@ Create new outgoing stream in this transport
 
 #### Parameters
 
--   `media` **[String][3]** Track media type "audio" or "video"
+-   `media` **[String][1]** Track media type "audio" or "video"
 -   `params` **[Object][4]?** Track parameters
     -   `params.id` **[Object][4]?** Stream track id
-    -   `params.ssrcs` **[Number][13]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][13]?** ssrc for the media track
-        -   `params.ssrcs.rtx` **[Number][13]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][13]?** ssrc for the fec track
+    -   `params.ssrcs` **[Number][14]?** Override the generated ssrcs for this track
+        -   `params.ssrcs.media` **[Number][14]?** ssrc for the media track
+        -   `params.ssrcs.rtx` **[Number][14]?** ssrc for the rtx track
+        -   `params.ssrcs.fec` **[Number][14]?** ssrc for the fec track
 
 Returns **[OutgoingStreamTrack][18]** The new outgoing stream track
 
@@ -1610,7 +1619,7 @@ Get incoming stream
 
 #### Parameters
 
--   `streamId` **[String][3]** the stream ID
+-   `streamId` **[String][1]** the stream ID
 
 Returns **[IncomingStream][10]** 
 
@@ -1626,7 +1635,7 @@ Get incoming stream
 
 #### Parameters
 
--   `streamId` **[String][3]** the stream ID
+-   `streamId` **[String][1]** the stream ID
 
 Returns **[IncomingStream][10]** 
 
@@ -1636,13 +1645,13 @@ Create new incoming stream in this transport. TODO: Simulcast is still not suppo
 
 #### Parameters
 
--   `media` **[String][3]** Track media type "audio" or "video"
+-   `media` **[String][1]** Track media type "audio" or "video"
 -   `params` **[Object][4]?** Track parameters
     -   `params.id` **[Object][4]?** Stream track id
-    -   `params.ssrcs` **[Number][13]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][13]?** ssrc for the media track
-        -   `params.ssrcs.rtx` **[Number][13]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][13]?** ssrc for the fec track
+    -   `params.ssrcs` **[Number][14]?** Override the generated ssrcs for this track
+        -   `params.ssrcs.media` **[Number][14]?** ssrc for the media track
+        -   `params.ssrcs.rtx` **[Number][14]?** ssrc for the rtx track
+        -   `params.ssrcs.fec` **[Number][14]?** ssrc for the fec track
 
 Returns **[IncomingStreamTrack][11]** The new incoming stream track
 
@@ -1654,7 +1663,7 @@ Create new outgoing stream and attach to the incoming stream
 
 -   `incomingStream` **[IncomingStream][10]** the incoming stream to be published in this transport
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream][13]** The new outgoing stream
 
 ### stop
 
@@ -1699,7 +1708,7 @@ The stats objects will provide the follwing info for each source
     -   numPackets	: number of rtp packets received for this layer
     -   bitrate		: average bitrate received during last second for this layer
 
-Returns **[Map][20]&lt;[String][3], [Object][4]>** Map with stats by encodingId
+Returns **[Map][20]&lt;[String][1], [Object][4]>** Map with stats by encodingId
 
 ### getActiveLayers
 
@@ -1727,7 +1736,7 @@ Returns **[Object][4]**
 
 Get track media type
 
-Returns **[String][3]** "audio"|"video"
+Returns **[String][1]** "audio"|"video"
 
 ### on
 
@@ -1735,7 +1744,7 @@ Add event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -1746,7 +1755,7 @@ Add event listener once
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStream][10]** 
@@ -1757,7 +1766,7 @@ Remove event listener
 
 #### Parameters
 
--   `event` **[String][3]** Event name
+-   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
 Returns **[IncomingStreamTrack][11]** 
@@ -1780,11 +1789,11 @@ Internal use, you'd beter know what you are doing before calling this method
 
 Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
 
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[2]: #endpoint
+[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[3]: #endpoint
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
@@ -1804,9 +1813,9 @@ Removes the track from the incoming stream and also detaches any attached outgoi
 
 [12]: #recordertrack
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[13]: #outgoingstream
 
-[14]: #outgoingstream
+[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
 [15]: #streamersession
 

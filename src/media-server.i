@@ -163,6 +163,16 @@ public:
 		return RTPTransport::SetPortRange(minPort,maxPort);
 	}
 	
+	static bool SetCertificate(const char* cert,const char* key)
+	{
+		//Stop TLS
+		DTLSConnection::Terminate();
+		//Set new certificates
+		DTLSConnection::SetCertificate(cert,key);
+		//Start DTLS
+		return DTLSConnection::Initialize();
+	}
+	
 	static std::string GetFingerprint()
 	{
 		return DTLSConnection::GetCertificateFingerPrint(DTLSConnection::Hash::SHA256);
@@ -933,6 +943,7 @@ public:
 	static void EnableLog(bool flag);
 	static void EnableDebug(bool flag);
 	static void EnableUltraDebug(bool flag);
+	static bool SetCertificate(const char* cert,const char* key);
 	static std::string GetFingerprint();
 	static bool SetPortRange(int minPort, int maxPort);
 };
