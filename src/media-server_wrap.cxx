@@ -1633,6 +1633,7 @@ using MediaFrameListener = MediaFrame::Listener;
 
 template<typename T>
 struct CopyablePersistentTraits {
+public:
 	typedef Nan::Persistent<T, CopyablePersistentTraits<T> > CopyablePersistent;
 	static const bool kResetInDestructor = true;
 	template<typename S, typename M>
@@ -1641,11 +1642,23 @@ struct CopyablePersistentTraits {
 	static inline void Copy(const v8::Persistent<S, M>&, v8::Persistent<S, CopyablePersistentTraits<S> >*){}
 };
 
+template<typename T>
+class NonCopyablePersistentTraits { 
+public:
+  typedef Nan::Persistent<T, NonCopyablePersistentTraits<T> > NonCopyablePersistent;
+  static const bool kResetInDestructor = true;
+
+  template<typename S, typename M>
+  static void Copy(const Nan::Persistent<S, M> &source, NonCopyablePersistent *dest);
+
+  template<typename O> static void Uncompilable();
+};
+
 template<typename T >
-using Persistent = Nan::Persistent<T,CopyablePersistentTraits<T>>;
+using Persistent = Nan::Persistent<T,NonCopyablePersistentTraits<T>>;
 
 
-bool MakeCallback(std::shared_ptr<Persistent<v8::Object>>& persistent, const char* name, int argc = 0, v8::Local<v8::Value>* argv = nullptr)
+bool MakeCallback(const std::shared_ptr<Persistent<v8::Object>>& persistent, const char* name, int argc = 0, v8::Local<v8::Value>* argv = nullptr)
 {
 	//Ensure we have an object
 	if (!persistent)
@@ -1741,6 +1754,8 @@ public:
 		Debug("-MediaServer::Terminate\n");
 		//Lock
 		mutex.Lock();
+		//empty queue
+		queue.clear();
 		//Close handle
 		uv_close((uv_handle_t *)&async, NULL);
 		//Unlock
@@ -1932,9 +1947,9 @@ public:
 	virtual void onEnd() 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,cloned=persistent](){
 			//Call object method with arguments
-			MakeCallback(persistent, "onended");
+			MakeCallback(cloned, "onended");
 		});
 	}
 	
@@ -2062,14 +2077,14 @@ public:
 		last = getTime();
 		
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
 			//Create local args
 			argv[i++] = Nan::New<v8::Uint32>(bitrate);
 			//Call object method with arguments
-			MakeCallback(persistent, "onremb", i, argv);
+			MakeCallback(cloned, "onremb", i, argv);
 		});
 	}
 	
@@ -2204,7 +2219,7 @@ public:
 	virtual void onRemoteICECandidateActivated(const std::string& ip, uint16_t port, uint32_t priority) override
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[3];
@@ -2213,15 +2228,14 @@ public:
 			argv[i++] = Nan::New<v8::Uint32>(port);
 			argv[i++] = Nan::New<v8::Uint32>(priority);
 			//Call object method with arguments
-			MakeCallback(persistent, "onremoteicecandidate", i, argv);
-		
+			MakeCallback(cloned, "onremoteicecandidate", i, argv);
 		});
 	}
 	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
@@ -2250,7 +2264,7 @@ public:
 					break;
 			}
 			//Call method
-			MakeCallback(persistent,"ondtlsstate",i,argv);
+			MakeCallback(cloned,"ondtlsstate",i,argv);
 		});
 	}
 
@@ -2270,14 +2284,14 @@ public:
 	virtual void onTargetBitrateRequested(DWORD bitrate) override 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
 			//Create local args
 			argv[i++] = Nan::New<v8::Uint32>(bitrate);
 			//Call object method with arguments
-			MakeCallback(persistent, "ontargetbitrate", i, argv);
+			MakeCallback(cloned, "ontargetbitrate", i, argv);
 		
 		});
 	}
@@ -2328,14 +2342,14 @@ public:
 	virtual void onActiveSpeakerChanded(uint32_t id) override
 	{
 		//Run function on main node thread
-		MediaServer::Async([=](){
+		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
 			//Create local args
 			argv[i++] = Nan::New<v8::Uint32>(id);
 			//Call object method with arguments
-			MakeCallback(persistent, "onactivespeakerchanged", i, argv);
+			MakeCallback(cloned, "onactivespeakerchanged", i, argv);
 		});
 	}
 	
