@@ -1660,6 +1660,7 @@ using Persistent = Nan::Persistent<T,NonCopyablePersistentTraits<T>>;
 
 bool MakeCallback(const std::shared_ptr<Persistent<v8::Object>>& persistent, const char* name, int argc = 0, v8::Local<v8::Value>* argv = nullptr)
 {
+	Nan::HandleScope scope;
 	//Ensure we have an object
 	if (!persistent)
 		return false;
