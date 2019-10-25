@@ -995,7 +995,7 @@ import SemanticSDP = require('semantic-sdp');
      * Get the default media server capabilities for each supported media type
      * @returns {Object} Object containing the capabilities by media ("audio","video")
      */
-    getDefaultCapabilities(): MediaCapabilities
+    getDefaultCapabilities(): MediaCapabilities;
   }
 
   export interface IncomingStream {
