@@ -76,12 +76,7 @@ const audioOffer = offer.getMedia("audio");
 if (audioOffer)
 {
 	//Create audio media
-	const audio = audioOffer.answer({
-		codecs		: CodecInfo.MapFromNames(["opus"]),
-		extensions	: new Set([
-			"urn:ietf:params:rtp-hdrext:ssrc-audio-level",
-			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
-	]);
+	const audio = audioOffer.answer(MediaServer.getDefaultCapabilities().audio);
 	//Add it to answer
 	answer.addMedia(audio);
 }
@@ -93,13 +88,7 @@ const videoOffer = offer.getMedia("video");
 if (videoOffer)
 {
 	//Create video media
-	const  video = videoOffer.answer({
-		codecs		: CodecInfo.MapFromNames(["vp9","flexfec-03"],true),
-		extensions	: new Set([
-			"http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time",
-			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
-		])
-	});
+	const  video = videoOffer.answer(MediaServer.getDefaultCapabilities().video);
 	//Add it to answer
 	answer.addMedia(video);
 }
