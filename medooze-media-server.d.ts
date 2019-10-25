@@ -990,6 +990,12 @@ import SemanticSDP = require('semantic-sdp');
      * @param {String} filename - PCAP filename and path
      */
     createEmulatedTransport(filename: string): EmulatedTransport;
+
+    /**
+     * Get the default media server capabilities for each supported media type
+     * @returns {Object} Object containing the capabilities by media ("audio","video")
+     */
+    getDefaultCapabilities(): MediaCapabilities
   }
 
   export interface IncomingStream {
