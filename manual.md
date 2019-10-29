@@ -55,54 +55,57 @@ const ice  = transport.getLocalICEInfo();
 
 //Get local candidates
 const candidates = endpoint.getLocalCandidates();
-
-//Create local SDP info
-const answer = new SDPInfo();
-
-//Add ice and dtls info
-answer.setDTLS(dtls);
-answer.setICE(ice);
-//Add candidates
-answer.addCandidate(candidates);
 ```
 
-Choose your codecs and set RTP parameters to answer the offer:
- 
+Then get the default capabilities (set of supported codecs and RTP parameters) from `MediaServer`:
+
 ```javascript
-//Get remote audio m-line info 
-const audioOffer = offer.getMedia("audio");
+//Get default capabilities
+const capabilities = MediaServer.getDefaultCapabilities();
+```
 
-//If we have audio
-if (audioOffer)
-{
-	//Create audio media
-	const audio = audioOffer.answer({
-		codecs		: CodecInfo.MapFromNames(["opus"]),
-		extensions	: new Set([
-			"urn:ietf:params:rtp-hdrext:ssrc-audio-level",
-			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
-	]);
-	//Add it to answer
-	answer.addMedia(audio);
-}
+Or, if you want to restrict connection to a specific set of capabilities, you can provide a plain JavaScript object. For example, this object restricts codecs to `Opus` and `VP9` and uses a limited set of extensions:
 
-//Get remote video m-line info 
-const videoOffer = offer.getMedia("video");
+```javascript
+//Set supported capabilities
+const capabilities = {
+  audio : {
+		codecs		: ["opus"],
+		extensions	: [ "urn:ietf:params:rtp-hdrext:ssrc-audio-level" ]
+	},
+	video : {
+		codecs		: ["vp9"],
+		rtx			: true,
+		simulcast	: true
+		rtcpfbs		: [
+			{ "id": "goog-remb"},
+			//{ "id": "transport-cc"},
+			{ "id": "ccm", "params": ["fir"]},
+			{ "id": "nack"},
+			{ "id": "nack", "params": ["pli"]}
+		],
+		extensions	: [ 
+			"urn:3gpp:video-orientation",
+			//"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01",
+			"urn:ietf:params:rtp-hdrext:sdes:mid",
+			"urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id",
+			"urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id",
+			"http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time"
+		],
+	}
+};
+```
 
-//If offer had video
-if (videoOffer)
-{
-	//Create video media
-	const  video = videoOffer.answer({
-		codecs		: CodecInfo.MapFromNames(["vp9","flexfec-03"],true),
-		extensions	: new Set([
-			"http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time",
-			"http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01"
-		])
-	});
-	//Add it to answer
-	answer.addMedia(video);
-}
+Now you can create the answer:
+
+```javascript
+//Create local SDP info
+const answer = offer.answer({
+	dtls,
+	ice,
+	candidates,
+	capabilities 
+});
 ```
 
 Set the our negotiated RTP properties on the transport
