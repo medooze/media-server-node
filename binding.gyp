@@ -63,7 +63,8 @@
 						[
 							"media-server/ext/crc32c/src/crc32c.cc",
 							"media-server/ext/crc32c/src/crc32c_portable.cc",
-							"media-server/ext/crc32c/src/crc32c.cc",
+							"media-server/ext/crc32c/src/crc32c_sse42.cc",
+							"media-server/ext/crc32c/src/crc32c_arm64.cc",
 							"media-server/ext/libdatachannels/src/Datachannels.cpp",
 							"media-server/src/ActiveSpeakerDetector.cpp",
 							"media-server/src/EventLoop.cpp",
@@ -140,12 +141,10 @@
 									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/piii" ]
 								}],
 								["target_arch=='x64'", {
-									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ],
-									"sources":	[ "media-server/ext/crc32c/src/crc32c_sse42.cc"]
+									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/k8" ]
 								}],
 								["target_arch=='arm'", {
-									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ],
-									"sources":	[ "media-server/ext/crc32c/src/crc32c_arm64.cc"]
+									"include_dirs": [ "<(node_root_dir)/deps/openssl/config/arm" ]
 								}],
 								['OS=="mac"', {
 									"xcode_settings": {
@@ -156,9 +155,15 @@
 									"include_dirs": [  "media-server/ext/crc32c/config/Darwin-i386" ],
 								}],
 								['OS=="linux"',{
+									"variables": {
+										"sse42_support": "<!(cat /proc/cpuinfo | grep -c sse4_2 || true)"
+									},
 									"conditions" : [["target_arch=='x64'",{
-										"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64" ]
-									},{
+										"conditions"  : [["sse42_support==0",{
+											"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64_nosse42" ]
+										},{
+											"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64" ]
+										}]],
 										"include_dirs": [  "media-server/ext/crc32c/config/Linux-arm64" ]
 									}]],
 									"cflags_cc":  [
