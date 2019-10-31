@@ -77,6 +77,27 @@ tap.test("ActiveSpeaker",async function(suite){
 		activeSpeakerDetector.stop();
 	});
 	
+	suite.test("add speaker twice",async function(test){
+		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
+		//Add speaker audio track
+		activeSpeakerDetector.addSpeaker(audioTrack);
+		
+		try {
+			//This should fail
+			activeSpeakerDetector.addSpeaker(audioTrack);
+			test.fail();
+		} catch (e) {
+			test.pass();
+		}
+		
+		//Stop
+		activeSpeakerDetector.once("stopped",()=>{
+			test.done();
+		});
+		//Stop it
+		activeSpeakerDetector.stop();
+	});
+	
 	
 	suite.test("remove speaker",async function(test){
 		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
@@ -91,6 +112,45 @@ tap.test("ActiveSpeaker",async function(suite){
 		//Stop it
 		activeSpeakerDetector.stop();
 	});
+	
+	suite.test("remove speaker twice",async function(test){
+		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
+		//Add speaker audio track
+		activeSpeakerDetector.addSpeaker(audioTrack);
+		//Add speaker audio track
+		activeSpeakerDetector.removeSpeaker(audioTrack);
+		try {
+			//This should fail
+			activeSpeakerDetector.removeSpeaker(audioTrack);
+			test.fail();
+		} catch (e) {
+			test.pass();
+		}
+		//Stop
+		activeSpeakerDetector.once("stopped",()=>{
+			test.done();
+		});
+		//Stop it
+		activeSpeakerDetector.stop();
+	});
+	
+	suite.test("remove without add",async function(test){
+		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
+		try {
+			//This should fail
+			activeSpeakerDetector.removeSpeaker(audioTrack);
+			test.fail();
+		} catch (e) {
+			test.pass();
+		}
+		//Stop
+		activeSpeakerDetector.once("stopped",()=>{
+			test.done();
+		});
+		//Stop it
+		activeSpeakerDetector.stop();
+	});
+	
 	
 	suite.test("remove and add speaker",async function(test){
 		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
