@@ -51,11 +51,6 @@ tap.test("ActiveSpeaker",async function(suite){
 	});
 	
 	
-	/**
-	 * Set minimum activation score to be electible as active speaker
-	 * @param {Number} minActivationScore
-	 */
-	
 	suite.test("setters",async function(test){
 		//Create active speaker detector
 		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
@@ -89,6 +84,22 @@ tap.test("ActiveSpeaker",async function(suite){
 		activeSpeakerDetector.addSpeaker(audioTrack);
 		//Add speaker audio track
 		activeSpeakerDetector.removeSpeaker(audioTrack);
+		//Stop
+		activeSpeakerDetector.once("stopped",()=>{
+			test.done();
+		});
+		//Stop it
+		activeSpeakerDetector.stop();
+	});
+	
+	suite.test("remove and add speaker",async function(test){
+		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
+		//Add speaker audio track
+		activeSpeakerDetector.addSpeaker(audioTrack);
+		//Add speaker audio track
+		activeSpeakerDetector.removeSpeaker(audioTrack);
+		//Add speaker audio track
+		activeSpeakerDetector.addSpeaker(audioTrack);
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
 			test.done();
