@@ -747,9 +747,22 @@ public:
 		});
 	}
 	
-	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming)
+	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming, uint32_t id)
 	{
-		if (incoming) incoming->AddListener(this);
+		if (incoming)
+		{
+			ScopedLock lock(mutex);
+			//Insert new 
+			auto [it,inserted] = sources.try_emplace(incoming,id);
+			//If already present
+			if (!inserted)
+				//do nothing
+				return;
+			//Add us as rtp listeners
+			incoming->AddListener(this);
+			//initialize to silence
+			ActiveSpeakerDetector::Accumulate(id, false, 127, getTimeMS());
+		}
 	}
 	
 	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming)
@@ -757,28 +770,60 @@ public:
 		if (incoming)
 		{	
 			ScopedLock lock(mutex);
+			//Get map
+			auto it = sources.find(incoming);
+			//check it was present
+			if (it==sources.end())
+				//Do nothing
+				return;
+			//Remove listener
 			incoming->RemoveListener(this);
-			ActiveSpeakerDetector::Release(incoming->GetMediaSSRC());
+			//RElease id
+			ActiveSpeakerDetector::Release(it->second);
+			//Erase
+			sources.erase(it);
 		}
 	}
 	
-	virtual void onRTP(RTPIncomingMediaStream* group,const RTPPacket::shared& packet) override
+	virtual void onRTP(RTPIncomingMediaStream* incoming,const RTPPacket::shared& packet) override
 	{
 		if (packet->HasAudioLevel())
 		{
 			ScopedLock lock(mutex);
-			ActiveSpeakerDetector::Accumulate(packet->GetSSRC(), packet->GetVAD(),packet->GetLevel(), getTimeMS());
+			//Get map
+			auto it = sources.find(incoming);
+			//check it was present
+			if (it==sources.end())
+				//Do nothing
+				return;
+			//Accumulate on id
+			ActiveSpeakerDetector::Accumulate(it->second, packet->GetVAD(),packet->GetLevel(), getTimeMS());
 		}
-	}	
+	}
+	
 	virtual void onBye(RTPIncomingMediaStream* group) 
 	{
 	}
 	
-	virtual void onEnded(RTPIncomingMediaStream* group) override
+	virtual void onEnded(RTPIncomingMediaStream* incoming) override
 	{
+		if (incoming)
+		{	
+			ScopedLock lock(mutex);
+			//Get map
+			auto it = sources.find(incoming);
+			//check it was present
+			if (it==sources.end())
+				//Do nothing
+			//Release id
+			ActiveSpeakerDetector::Release(it->second);
+			//Erase
+			sources.erase(it);
+		}
 	}
 private:
 	Mutex mutex;
+	std::map<RTPIncomingMediaStream*,uint32_t> sources;
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 
@@ -1200,6 +1245,6 @@ public:
 	void SetMaxAccumulatedScore(uint64_t maxAcummulatedScore);
 	void SetNoiseGatingThreshold(uint8_t noiseGatingThreshold);
 	void SetMinActivationScore(uint32_t minActivationScore);
-	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming);
+	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming, uint32_t id);
 	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming);
 };
