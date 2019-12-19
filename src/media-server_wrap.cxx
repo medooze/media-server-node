@@ -2342,6 +2342,7 @@ public:
 		
 	virtual void onActiveSpeakerChanded(uint32_t id) override
 	{
+		UltraDebug("-ActiveSpeakerDetectorFacade::onActiveSpeakerChanded() [id:%d]\n",id);
 		//Run function on main node thread
 		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
@@ -2356,6 +2357,8 @@ public:
 	
 	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming, uint32_t id)
 	{
+		Debug("-ActiveSpeakerDetectorFacade::AddIncomingSourceGroup() [incoming:%p,id:%d]\n",incoming,id);
+		
 		if (incoming)
 		{
 			ScopedLock lock(mutex);
@@ -2374,6 +2377,8 @@ public:
 	
 	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming)
 	{
+		Debug("-ActiveSpeakerDetectorFacade::RemoveIncomingSourceGroup() [incoming:%p]\n",incoming);
+		
 		if (incoming)
 		{	
 			ScopedLock lock(mutex);
@@ -2381,7 +2386,7 @@ public:
 			auto it = sources.find(incoming);
 			//check it was present
 			if (it==sources.end())
-				//Do nothing
+				//Do nothing, probably called onEnded before
 				return;
 			//Remove listener
 			incoming->RemoveListener(this);
@@ -2414,6 +2419,8 @@ public:
 	
 	virtual void onEnded(RTPIncomingMediaStream* incoming) override
 	{
+		Debug("-ActiveSpeakerDetectorFacade::onEnded() [incoming:%p]\n",incoming);
+		
 		if (incoming)
 		{	
 			ScopedLock lock(mutex);
@@ -2422,6 +2429,7 @@ public:
 			//check it was present
 			if (it==sources.end())
 				//Do nothing
+				return;
 			//Release id
 			ActiveSpeakerDetector::Release(it->second);
 			//Erase
