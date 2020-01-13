@@ -453,15 +453,32 @@ tap.test("Transponder::targetbitrate",async function(suite){
 	
 	await suite.test("limit",async function(test){
 		try {
+			const maxSpatialLayerId = 0;
+			const maxTemporalLayerId = 1;
 			//Target bitrate
 			const target = 700000;
+			//Set bitrate
+			const bitrate = transponder.setTargetBitrate(target,{traversal:"spatial-temporal"});
+			//Check layers returned and selected layers
+			test.same(bitrate.layers.length,9);
+			test.notOk(bitrate.layers
+				.map(layer=>maxSpatialLayerId>=layer.spatialLayerId && maxTemporalLayerId>=layer.temporalLayerId)
+				.reduce(( acu, cur ) => acu && cur )
+			);
+			test.same(transponder.getSelectedSpatialLayerId() ,2);
+			test.same(transponder.getSelectedTemporalLayerId(),0);
 			//Limit max layers
 			transponder.setMaximumLayers(0,1);
 			//Set bitrate
-			const bitrate = transponder.setTargetBitrate(target,{traversal:"spatial-temporal"});
-			//Check it is created
-			test.same(transponder.getSelectedSpatialLayerId() ,0);
-			test.same(transponder.getSelectedTemporalLayerId(),1);
+			const filtered = transponder.setTargetBitrate(target,{traversal:"spatial-temporal"});
+			//Check layers returned and selected layers
+			test.same(filtered.layers.length,2);
+			test.ok(filtered.layers
+				.map(layer=>maxSpatialLayerId>=layer.spatialLayerId && maxTemporalLayerId>=layer.temporalLayerId)
+				.reduce(( acu, cur ) => acu && cur )
+			);
+			test.same(transponder.getSelectedSpatialLayerId() ,maxSpatialLayerId);
+			test.same(transponder.getSelectedTemporalLayerId(),maxTemporalLayerId);
 		} catch (error) {
 			//Test error
 			test.notOk(error,error);

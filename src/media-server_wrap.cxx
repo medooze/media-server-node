@@ -2342,6 +2342,7 @@ public:
 		
 	virtual void onActiveSpeakerChanded(uint32_t id) override
 	{
+		UltraDebug("-ActiveSpeakerDetectorFacade::onActiveSpeakerChanded() [id:%d]\n",id);
 		//Run function on main node thread
 		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
@@ -2354,38 +2355,90 @@ public:
 		});
 	}
 	
-	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming)
+	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming, uint32_t id)
 	{
-		if (incoming) incoming->AddListener(this);
+		Debug("-ActiveSpeakerDetectorFacade::AddIncomingSourceGroup() [incoming:%p,id:%d]\n",incoming,id);
+		
+		if (incoming)
+		{
+			ScopedLock lock(mutex);
+			//Insert new 
+			auto [it,inserted] = sources.try_emplace(incoming,id);
+			//If already present
+			if (!inserted)
+				//do nothing
+				return;
+			//Add us as rtp listeners
+			incoming->AddListener(this);
+			//initialize to silence
+			ActiveSpeakerDetector::Accumulate(id, false, 127, getTimeMS());
+		}
 	}
 	
 	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming)
 	{
+		Debug("-ActiveSpeakerDetectorFacade::RemoveIncomingSourceGroup() [incoming:%p]\n",incoming);
+		
 		if (incoming)
 		{	
 			ScopedLock lock(mutex);
+			//Get map
+			auto it = sources.find(incoming);
+			//check it was present
+			if (it==sources.end())
+				//Do nothing, probably called onEnded before
+				return;
+			//Remove listener
 			incoming->RemoveListener(this);
-			ActiveSpeakerDetector::Release(incoming->GetMediaSSRC());
+			//RElease id
+			ActiveSpeakerDetector::Release(it->second);
+			//Erase
+			sources.erase(it);
 		}
 	}
 	
-	virtual void onRTP(RTPIncomingMediaStream* group,const RTPPacket::shared& packet) override
+	virtual void onRTP(RTPIncomingMediaStream* incoming,const RTPPacket::shared& packet) override
 	{
 		if (packet->HasAudioLevel())
 		{
 			ScopedLock lock(mutex);
-			ActiveSpeakerDetector::Accumulate(packet->GetSSRC(), packet->GetVAD(),packet->GetLevel(), getTimeMS());
+			//Get map
+			auto it = sources.find(incoming);
+			//check it was present
+			if (it==sources.end())
+				//Do nothing
+				return;
+			//Accumulate on id
+			ActiveSpeakerDetector::Accumulate(it->second, packet->GetVAD(),packet->GetLevel(), getTimeMS());
 		}
-	}	
+	}
+	
 	virtual void onBye(RTPIncomingMediaStream* group) 
 	{
 	}
 	
-	virtual void onEnded(RTPIncomingMediaStream* group) override
+	virtual void onEnded(RTPIncomingMediaStream* incoming) override
 	{
+		Debug("-ActiveSpeakerDetectorFacade::onEnded() [incoming:%p]\n",incoming);
+		
+		if (incoming)
+		{	
+			ScopedLock lock(mutex);
+			//Get map
+			auto it = sources.find(incoming);
+			//check it was present
+			if (it==sources.end())
+				//Do nothing
+				return;
+			//Release id
+			ActiveSpeakerDetector::Release(it->second);
+			//Erase
+			sources.erase(it);
+		}
 	}
 private:
 	Mutex mutex;
+	std::map<RTPIncomingMediaStream*,uint32_t> sources;
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 
@@ -13402,12 +13455,15 @@ static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGrou
   v8::Handle<v8::Value> jsresult;
   ActiveSpeakerDetectorFacade *arg1 = (ActiveSpeakerDetectorFacade *) 0 ;
   RTPIncomingMediaStream *arg2 = (RTPIncomingMediaStream *) 0 ;
+  uint32_t arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
   
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerDetectorFacade, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -13419,8 +13475,14 @@ static SwigV8ReturnValue _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGrou
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ActiveSpeakerDetectorFacade_AddIncomingSourceGroup" "', argument " "2"" of type '" "RTPIncomingMediaStream *""'"); 
   }
   arg2 = reinterpret_cast< RTPIncomingMediaStream * >(argp2);
-  (arg1)->AddIncomingSourceGroup(arg2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ActiveSpeakerDetectorFacade_AddIncomingSourceGroup" "', argument " "3"" of type '" "uint32_t""'");
+  } 
+  arg3 = static_cast< uint32_t >(val3);
+  (arg1)->AddIncomingSourceGroup(arg2,arg3);
   jsresult = SWIGV8_UNDEFINED();
+  
   
   
   
