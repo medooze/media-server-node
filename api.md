@@ -1386,6 +1386,12 @@ Check if the track is muted or not
 
 Returns **[boolean][2]** muted
 
+### isAttached
+
+Check if this outgoing stream track is alredy attached to an incoming stream track.
+
+Returns **[Boolean][2]** true if attached, false otherwise
+
 ### attachTo
 
 Listen media from the incoming stream track and send it to the remote peer of the associated transport.
