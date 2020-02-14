@@ -1174,6 +1174,7 @@ public:
 	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender,v8::Handle<v8::Object> object);
 	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver);
 	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiver* receiver);
+	bool AppendH264ParameterSets(const std::string& sprops);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
 	void Mute(bool muting);
 	void Close();
