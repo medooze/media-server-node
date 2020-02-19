@@ -5,6 +5,13 @@ const SemanticSDP	= require("semantic-sdp");
 MediaServer.enableLog(false);
 const endpoint = MediaServer.createEndpoint("127.0.0.1");
 
+const StreamInfo	= SemanticSDP.StreamInfo;
+const TrackInfo		= SemanticSDP.TrackInfo;
+const Setup		= SemanticSDP.Setup;
+const Direction		= SemanticSDP.Direction;
+const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
+const CodecInfo		= SemanticSDP.CodecInfo;
+
 tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 	
 	
@@ -16,6 +23,28 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 		}),
 		ice  : SemanticSDP.ICEInfo.generate()
 	});
+	
+	//Create incoming stream
+	let ssrc = 100;
+	//Create stream
+	const streamInfo = new StreamInfo("stream0");
+	//Create track
+	let track = new TrackInfo("video", "track1");
+	//Get ssrc, rtx and fec 
+	const media = ssrc++;
+	const rtx = ssrc++;
+	const fec = ssrc++;
+	//Add ssrcs to track
+	track.addSSRC(media);
+	track.addSSRC(rtx);
+	track.addSSRC(fec);
+	//Add RTX and FEC group	
+	track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
+	track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
+	//Add it
+	streamInfo.addTrack(track);
+	//Create new incoming stream
+	const incomingStream = transport.createIncomingStream(streamInfo);
 	
 	suite.test("mute",function(test){
 		try {
@@ -77,6 +106,31 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 			test.ok(!videoTrack.isMuted());
 			//Should still be muted
 			test.ok(outgoingStream.isMuted());
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+		test.end();
+	});
+	
+	suite.test("isAttached",function(test){
+		try {
+			test.plan(2);
+			//Create new local stream
+			const outgoingStream  = transport.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//Mute
+			outgoingStream.mute(true);
+			//Get video track
+			const videoTrack = outgoingStream.getVideoTracks()[0];
+			//Should not be attached
+			test.ok(!videoTrack.isAttached());
+			//Attach stream
+			outgoingStream.attachTo(incomingStream);
+			//Should be attached
+			test.ok(videoTrack.isAttached());
 		} catch (error) {
 			//Test error
 			test.notOk(error,error);
