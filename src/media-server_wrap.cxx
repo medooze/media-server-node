@@ -1543,7 +1543,7 @@ fail: ;
 #define SWIGTYPE_p_LayerInfo swig_types[4]
 #define SWIGTYPE_p_LayerSource swig_types[5]
 #define SWIGTYPE_p_LayerSources swig_types[6]
-#define SWIGTYPE_p_MP4Recorder swig_types[7]
+#define SWIGTYPE_p_MP4RecorderFacade swig_types[7]
 #define SWIGTYPE_p_MediaFrameListener swig_types[8]
 #define SWIGTYPE_p_MediaServer swig_types[9]
 #define SWIGTYPE_p_PCAPTransportEmulator swig_types[10]
@@ -1899,7 +1899,33 @@ public:
 	}
 };
 
+class MP4RecorderFacade :
+	public MP4Recorder,
+	public MP4Recorder::Listener
+{
+public:
+	MP4RecorderFacade(v8::Handle<v8::Object> object) :
+		MP4Recorder(this)
+	{
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
+	}
 
+	void onFirstFrame(QWORD time) override
+	{
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[1];
+			//Create local args
+			argv[i++] = Nan::New<v8::Uint32>((uint32_t)time);
+			//Call object method with arguments
+			MakeCallback(cloned, "onstarted", i, argv);
+		});
+	}
+private:
+	std::shared_ptr<Persistent<v8::Object>> persistent;
+};
 
 class PlayerFacade :
 	public MP4Streamer,
@@ -2912,7 +2938,7 @@ SWIGV8_ClientData _exports_RTPReceiverFacade_clientData;
 SWIGV8_ClientData _exports_RTPStreamTransponderFacade_clientData;
 SWIGV8_ClientData _exports_MediaFrameListener_clientData;
 SWIGV8_ClientData _exports_StreamTrackDepacketizer_clientData;
-SWIGV8_ClientData _exports_MP4Recorder_clientData;
+SWIGV8_ClientData _exports_MP4RecorderFacade_clientData;
 SWIGV8_ClientData _exports_PlayerFacade_clientData;
 SWIGV8_ClientData _exports_SenderSideEstimatorListener_clientData;
 SWIGV8_ClientData _exports_ActiveSpeakerDetectorFacade_clientData;
@@ -12303,17 +12329,21 @@ static void _wrap_delete_StreamTrackDepacketizer(v8::Persistent<v8::Value> objec
         }
 
 
-static SwigV8ReturnValue _wrap_new_MP4Recorder(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_new_MP4RecorderFacade(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Object> self = args.Holder();
-  MP4Recorder *result;
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_MP4Recorder.");
-  result = (MP4Recorder *)new MP4Recorder();
+  v8::Handle< v8::Object > arg1 ;
+  MP4RecorderFacade *result;
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_MP4RecorderFacade.");
+  {
+    arg1 = v8::Handle<v8::Object>::Cast(args[0]);
+  }
+  result = (MP4RecorderFacade *)new MP4RecorderFacade(arg1);
   
   
   
-  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_MP4Recorder, SWIG_POINTER_OWN);
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_MP4RecorderFacade, SWIG_POINTER_OWN);
   SWIGV8_RETURN(self);
   
   goto fail;
@@ -12322,25 +12352,311 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_Create(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4RecorderFacade_Create.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_Create" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MP4RecorderFacade_Create" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (bool)(arg1)->Create((char const *)arg2);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_Record__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_Record" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  result = (bool)(arg1)->Record();
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_Record__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_Record" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4RecorderFacade_Record" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  result = (bool)(arg1)->Record(arg2);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Record(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  OverloadErrorHandler errorHandler;
+  
+  
+  if(args.Length() == 0) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4RecorderFacade_Record__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4RecorderFacade_Record__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4RecorderFacade_Record__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4RecorderFacade_Record__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Record.");
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4RecorderFacade_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_Stop" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  result = (bool)(arg1)->Stop();
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_Close__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_Close" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  result = (bool)(arg1)->Close();
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_Close__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_Close" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4RecorderFacade_Close" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  result = (bool)(arg1)->Close(arg2);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Close(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  OverloadErrorHandler errorHandler;
+  
+  
+  if(args.Length() == 0) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4RecorderFacade_Close__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4RecorderFacade_Close__SWIG_0(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 1) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_MP4RecorderFacade_Close__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_MP4RecorderFacade_Close__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Close.");
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
-static void _wrap_delete_MP4Recorder(v8::Persistent<v8::Value> object, void *parameter) {
+static void _wrap_delete_MP4RecorderFacade(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
 #elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
-  static void _wrap_delete_MP4Recorder(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+  static void _wrap_delete_MP4RecorderFacade(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
     SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
 #elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
-    static void _wrap_delete_MP4Recorder(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+    static void _wrap_delete_MP4RecorderFacade(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
 #elif (V8_MAJOR_VERSION-0) < 5
-      static void _wrap_delete_MP4Recorder(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+      static void _wrap_delete_MP4RecorderFacade(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
         v8::Local<v8::Object> object = data.GetValue();
         SWIGV8_Proxy *proxy = data.GetParameter();
 #else
-        static void _wrap_delete_MP4Recorder(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+        static void _wrap_delete_MP4RecorderFacade(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
           SWIGV8_Proxy *proxy = data.GetParameter();
 #endif
           
           if(proxy->swigCMemOwn && proxy->swigCObject) {
-            MP4Recorder * arg1 = (MP4Recorder *)proxy->swigCObject;
+            MP4RecorderFacade * arg1 = (MP4RecorderFacade *)proxy->swigCObject;
             delete arg1;
           }
           delete proxy;
@@ -12357,292 +12673,6 @@ static void _wrap_delete_MP4Recorder(v8::Persistent<v8::Value> object, void *par
           object.Clear();
 #endif
         }
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder_Create(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  bool result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4Recorder_Create.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Create" "', argument " "1"" of type '" "MP4Recorder *""'"); 
-  }
-  arg1 = reinterpret_cast< MP4Recorder * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MP4Recorder_Create" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  result = (bool)(arg1)->Create((char const *)arg2);
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder_Record__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Record" "', argument " "1"" of type '" "MP4Recorder *""'"); 
-  }
-  arg1 = reinterpret_cast< MP4Recorder * >(argp1);
-  result = (bool)(arg1)->Record();
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder_Record__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
-  bool arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
-  bool result;
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Record" "', argument " "1"" of type '" "MP4Recorder *""'"); 
-  }
-  arg1 = reinterpret_cast< MP4Recorder * >(argp1);
-  ecode2 = SWIG_AsVal_bool(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4Recorder_Record" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
-  result = (bool)(arg1)->Record(arg2);
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder__wrap_MP4Recorder_Record(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  OverloadErrorHandler errorHandler;
-  
-  
-  if(args.Length() == 0) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_MP4Recorder_Record__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_MP4Recorder_Record__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  if(args.Length() == 1) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_MP4Recorder_Record__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_MP4Recorder_Record__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Record.");
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder_Stop(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4Recorder_Stop.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Stop" "', argument " "1"" of type '" "MP4Recorder *""'"); 
-  }
-  arg1 = reinterpret_cast< MP4Recorder * >(argp1);
-  result = (bool)(arg1)->Stop();
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder_Close__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Close" "', argument " "1"" of type '" "MP4Recorder *""'"); 
-  }
-  arg1 = reinterpret_cast< MP4Recorder * >(argp1);
-  result = (bool)(arg1)->Close();
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder_Close__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MP4Recorder *arg1 = (MP4Recorder *) 0 ;
-  bool arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool val2 ;
-  int ecode2 = 0 ;
-  bool result;
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4Recorder, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4Recorder_Close" "', argument " "1"" of type '" "MP4Recorder *""'"); 
-  }
-  arg1 = reinterpret_cast< MP4Recorder * >(argp1);
-  ecode2 = SWIG_AsVal_bool(args[0], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4Recorder_Close" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
-  result = (bool)(arg1)->Close(arg2);
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4Recorder__wrap_MP4Recorder_Close(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  OverloadErrorHandler errorHandler;
-  
-  
-  if(args.Length() == 0) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_MP4Recorder_Close__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_MP4Recorder_Close__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  if(args.Length() == 1) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_MP4Recorder_Close__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_MP4Recorder_Close__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Close.");
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
 
 
 static SwigV8ReturnValue _wrap_new_PlayerFacade(const SwigV8Arguments &args) {
@@ -13638,8 +13668,8 @@ static void *_p_RTPOutgoingSourceTo_p_RTPSource(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_SenderSideEstimatorListenerTo_p_RemoteRateEstimatorListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RemoteRateEstimatorListener *)  ((SenderSideEstimatorListener *) x));
 }
-static void *_p_MP4RecorderTo_p_MediaFrameListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((MediaFrameListener *)  ((MP4Recorder *) x));
+static void *_p_MP4RecorderFacadeTo_p_MediaFrameListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((MediaFrameListener *)  ((MP4RecorderFacade *) x));
 }
 static void *_p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStreamListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPIncomingMediaStreamListener *)  ((RTPIncomingMediaStreamMultiplexer *) x));
@@ -13651,7 +13681,7 @@ static swig_type_info _swigt__p_ICERemoteCandidate = {"_p_ICERemoteCandidate", "
 static swig_type_info _swigt__p_LayerInfo = {"_p_LayerInfo", "LayerInfo *|p_LayerInfo", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_LayerSource = {"_p_LayerSource", "p_LayerSource|LayerSource *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_LayerSources = {"_p_LayerSources", "LayerSources *|p_LayerSources", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_MP4Recorder = {"_p_MP4Recorder", "p_MP4Recorder|MP4Recorder *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MP4RecorderFacade = {"_p_MP4RecorderFacade", "p_MP4RecorderFacade|MP4RecorderFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrameListener = {"_p_MediaFrameListener", "p_MediaFrameListener|MediaFrameListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaServer = {"_p_MediaServer", "p_MediaServer", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PCAPTransportEmulator = {"_p_PCAPTransportEmulator", "PCAPTransportEmulator *|p_PCAPTransportEmulator", 0, 0, (void*)0, 0};
@@ -13701,7 +13731,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_LayerInfo,
   &_swigt__p_LayerSource,
   &_swigt__p_LayerSources,
-  &_swigt__p_MP4Recorder,
+  &_swigt__p_MP4RecorderFacade,
   &_swigt__p_MediaFrameListener,
   &_swigt__p_MediaServer,
   &_swigt__p_PCAPTransportEmulator,
@@ -13751,8 +13781,8 @@ static swig_cast_info _swigc__p_ICERemoteCandidate[] = {  {&_swigt__p_ICERemoteC
 static swig_cast_info _swigc__p_LayerInfo[] = {  {&_swigt__p_LayerSource, _p_LayerSourceTo_p_LayerInfo, 0, 0},  {&_swigt__p_LayerInfo, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LayerSource[] = {  {&_swigt__p_LayerSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LayerSources[] = {  {&_swigt__p_LayerSources, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_MP4Recorder[] = {  {&_swigt__p_MP4Recorder, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_MediaFrameListener[] = {  {&_swigt__p_MP4Recorder, _p_MP4RecorderTo_p_MediaFrameListener, 0, 0},  {&_swigt__p_MediaFrameListener, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MP4RecorderFacade[] = {  {&_swigt__p_MP4RecorderFacade, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MediaFrameListener[] = {  {&_swigt__p_MediaFrameListener, 0, 0, 0},  {&_swigt__p_MP4RecorderFacade, _p_MP4RecorderFacadeTo_p_MediaFrameListener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PCAPTransportEmulator[] = {  {&_swigt__p_PCAPTransportEmulator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PlayerFacade[] = {  {&_swigt__p_PlayerFacade, 0, 0, 0},{0, 0, 0, 0}};
@@ -13801,7 +13831,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_LayerInfo,
   _swigc__p_LayerSource,
   _swigc__p_LayerSources,
-  _swigc__p_MP4Recorder,
+  _swigc__p_MP4RecorderFacade,
   _swigc__p_MediaFrameListener,
   _swigc__p_MediaServer,
   _swigc__p_PCAPTransportEmulator,
@@ -14358,12 +14388,12 @@ _exports_StreamTrackDepacketizer_clientData.dtor = _wrap_delete_StreamTrackDepac
 if (SWIGTYPE_p_StreamTrackDepacketizer->clientdata == 0) {
   SWIGTYPE_p_StreamTrackDepacketizer->clientdata = &_exports_StreamTrackDepacketizer_clientData;
 }
-/* Name: _exports_MP4Recorder, Type: p_MP4Recorder, Dtor: _wrap_delete_MP4Recorder */
-v8::Handle<v8::FunctionTemplate> _exports_MP4Recorder_class = SWIGV8_CreateClassTemplate("_exports_MP4Recorder");
-SWIGV8_SET_CLASS_TEMPL(_exports_MP4Recorder_clientData.class_templ, _exports_MP4Recorder_class);
-_exports_MP4Recorder_clientData.dtor = _wrap_delete_MP4Recorder;
-if (SWIGTYPE_p_MP4Recorder->clientdata == 0) {
-  SWIGTYPE_p_MP4Recorder->clientdata = &_exports_MP4Recorder_clientData;
+/* Name: _exports_MP4RecorderFacade, Type: p_MP4RecorderFacade, Dtor: _wrap_delete_MP4RecorderFacade */
+v8::Handle<v8::FunctionTemplate> _exports_MP4RecorderFacade_class = SWIGV8_CreateClassTemplate("_exports_MP4RecorderFacade");
+SWIGV8_SET_CLASS_TEMPL(_exports_MP4RecorderFacade_clientData.class_templ, _exports_MP4RecorderFacade_class);
+_exports_MP4RecorderFacade_clientData.dtor = _wrap_delete_MP4RecorderFacade;
+if (SWIGTYPE_p_MP4RecorderFacade->clientdata == 0) {
+  SWIGTYPE_p_MP4RecorderFacade->clientdata = &_exports_MP4RecorderFacade_clientData;
 }
 /* Name: _exports_PlayerFacade, Type: p_PlayerFacade, Dtor: _wrap_delete_PlayerFacade */
 v8::Handle<v8::FunctionTemplate> _exports_PlayerFacade_class = SWIGV8_CreateClassTemplate("_exports_PlayerFacade");
@@ -14527,10 +14557,10 @@ SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Close", _wr
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "AddMediaListener", _wrap_StreamTrackDepacketizer_AddMediaListener);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "RemoveMediaListener", _wrap_StreamTrackDepacketizer_RemoveMediaListener);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "Stop", _wrap_StreamTrackDepacketizer_Stop);
-SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Create", _wrap_MP4Recorder_Create);
-SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Record", _wrap_MP4Recorder__wrap_MP4Recorder_Record);
-SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Stop", _wrap_MP4Recorder_Stop);
-SWIGV8_AddMemberFunction(_exports_MP4Recorder_class, "Close", _wrap_MP4Recorder__wrap_MP4Recorder_Close);
+SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Create", _wrap_MP4RecorderFacade_Create);
+SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Record", _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Record);
+SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Stop", _wrap_MP4RecorderFacade_Stop);
+SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Close", _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Close);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetAudioSource", _wrap_PlayerFacade_GetAudioSource);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoSource", _wrap_PlayerFacade_GetVideoSource);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Reset", _wrap_PlayerFacade_Reset);
@@ -14682,9 +14712,9 @@ if (SWIGTYPE_p_RTPSender->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGT
 if (SWIGTYPE_p_MediaFrameListener->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ.IsEmpty()))
 {
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-  _exports_MP4Recorder_class->Inherit(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ);
+  _exports_MP4RecorderFacade_class->Inherit(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ);
 #else
-  _exports_MP4Recorder_class->Inherit(
+  _exports_MP4RecorderFacade_class->Inherit(
     v8::Local<v8::FunctionTemplate>::New(
       v8::Isolate::GetCurrent(),
       static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ)
@@ -14692,11 +14722,11 @@ if (SWIGTYPE_p_MediaFrameListener->clientdata && !(static_cast<SWIGV8_ClientData
 #endif
   
 #ifdef SWIGRUNTIME_DEBUG
-  printf("Inheritance successful _exports_MP4Recorder _MediaFrameListener\n");
+  printf("Inheritance successful _exports_MP4RecorderFacade _MediaFrameListener\n");
 #endif
 } else {
 #ifdef SWIGRUNTIME_DEBUG
-  printf("Unable to inherit baseclass, it didn't exist _exports_MP4Recorder _MediaFrameListener\n");
+  printf("Unable to inherit baseclass, it didn't exist _exports_MP4RecorderFacade _MediaFrameListener\n");
 #endif
 }
 if (SWIGTYPE_p_RemoteRateEstimatorListener->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RemoteRateEstimatorListener->clientdata)->class_templ.IsEmpty()))
@@ -14896,12 +14926,12 @@ _exports_StreamTrackDepacketizer_class_0->SetCallHandler(_wrap_new_StreamTrackDe
 _exports_StreamTrackDepacketizer_class_0->Inherit(_exports_StreamTrackDepacketizer_class);
 _exports_StreamTrackDepacketizer_class_0->SetHiddenPrototype(true);
 v8::Handle<v8::Object> _exports_StreamTrackDepacketizer_obj = _exports_StreamTrackDepacketizer_class_0->GetFunction();
-/* Class: MP4Recorder (_exports_MP4Recorder) */
-v8::Handle<v8::FunctionTemplate> _exports_MP4Recorder_class_0 = SWIGV8_CreateClassTemplate("MP4Recorder");
-_exports_MP4Recorder_class_0->SetCallHandler(_wrap_new_MP4Recorder);
-_exports_MP4Recorder_class_0->Inherit(_exports_MP4Recorder_class);
-_exports_MP4Recorder_class_0->SetHiddenPrototype(true);
-v8::Handle<v8::Object> _exports_MP4Recorder_obj = _exports_MP4Recorder_class_0->GetFunction();
+/* Class: MP4RecorderFacade (_exports_MP4RecorderFacade) */
+v8::Handle<v8::FunctionTemplate> _exports_MP4RecorderFacade_class_0 = SWIGV8_CreateClassTemplate("MP4RecorderFacade");
+_exports_MP4RecorderFacade_class_0->SetCallHandler(_wrap_new_MP4RecorderFacade);
+_exports_MP4RecorderFacade_class_0->Inherit(_exports_MP4RecorderFacade_class);
+_exports_MP4RecorderFacade_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_MP4RecorderFacade_obj = _exports_MP4RecorderFacade_class_0->GetFunction();
 /* Class: PlayerFacade (_exports_PlayerFacade) */
 v8::Handle<v8::FunctionTemplate> _exports_PlayerFacade_class_0 = SWIGV8_CreateClassTemplate("PlayerFacade");
 _exports_PlayerFacade_class_0->SetCallHandler(_wrap_new_PlayerFacade);
@@ -14969,7 +14999,7 @@ exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPReceiverFacade"), _exports_RTPReceiverFac
 exports_obj->Set(SWIGV8_SYMBOL_NEW("RTPStreamTransponderFacade"), _exports_RTPStreamTransponderFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("MediaFrameListener"), _exports_MediaFrameListener_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("StreamTrackDepacketizer"), _exports_StreamTrackDepacketizer_obj);
-exports_obj->Set(SWIGV8_SYMBOL_NEW("MP4Recorder"), _exports_MP4Recorder_obj);
+exports_obj->Set(SWIGV8_SYMBOL_NEW("MP4RecorderFacade"), _exports_MP4RecorderFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("PlayerFacade"), _exports_PlayerFacade_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("SenderSideEstimatorListener"), _exports_SenderSideEstimatorListener_obj);
 exports_obj->Set(SWIGV8_SYMBOL_NEW("ActiveSpeakerDetectorFacade"), _exports_ActiveSpeakerDetectorFacade_obj);
