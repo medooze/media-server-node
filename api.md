@@ -170,6 +170,55 @@ Returns **[Transport][8]**
 
 Stop manager and associated tranports
 
+## Refresher
+
+Periodically request an I frame on all incoming stream or tracks
+
+### add
+
+Add stream or track to request
+
+#### Parameters
+
+-   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][11])** 
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[IncomingStream][10]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[IncomingStream][10]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[OutgoingStream][12]** 
+
+### stop
+
+Stop refresher
+
 ## RecorderTrack
 
 Track of the recorder associated to an incoming strem track
@@ -214,7 +263,7 @@ Add event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[RecorderTrack][12]** 
+Returns **[RecorderTrack][13]** 
 
 ### once
 
@@ -225,7 +274,7 @@ Add event listener once
 -   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[RecorderTrack][12]** 
+Returns **[RecorderTrack][13]** 
 
 ### off
 
@@ -236,11 +285,69 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[RecorderTrack][12]** 
+Returns **[RecorderTrack][13]** 
 
 ### stop
 
 Stop recording this track
+
+## Streamer
+
+An streamer allows to send and receive plain RTP over udp sockets.
+This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
+
+### createSession
+
+Creates a new streaming session from a media description
+
+#### Parameters
+
+-   `media` **MediaInfo** Media codec description info
+-   `params` **[Object][4]** Network parameters
+    -   `params.local` **[Object][4]** Local parameters
+        -   `params.local.port` **[Number][14]** receiving port
+    -   `params.remote` **[Object][4]** Remote parameters
+        -   `params.remote.ip` **[String][1]** Sending ip address
+        -   `params.remote.port` **[Number][14]** Sending port
+
+Returns **[StreamerSession][15]** The new streaming session
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listeener` **[function][9]** Event listener
+
+Returns **[Endpoint][3]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][3]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][9]** Event listener
+
+Returns **[Endpoint][3]** 
+
+### stop
+
+Stop all streaming sessions and frees resources
 
 ## Transponder
 
@@ -282,13 +389,13 @@ Returns **[String][1]** encodingId
 
 Return the spatial layer id that is being forwarded
 
-Returns **[Number][13]** spatial layer id
+Returns **[Number][14]** spatial layer id
 
 ### getSelectedTemporalLayerId
 
 Return the temporal layer id that is being forwarded
 
-Returns **[Number][13]** temporal layer id
+Returns **[Number][14]** temporal layer id
 
 ### selectLayer
 
@@ -296,8 +403,8 @@ Select SVC temporatl and spatial layers. Only available for VP9 media.
 
 #### Parameters
 
--   `spatialLayerId` **[Number][13]** The spatial layer id to send to the outgoing stream
--   `temporalLayerId` **[Number][13]** The temporaral layer id to send to the outgoing stream
+-   `spatialLayerId` **[Number][14]** The spatial layer id to send to the outgoing stream
+-   `temporalLayerId` **[Number][14]** The temporaral layer id to send to the outgoing stream
 
 ### setMaximumLayers
 
@@ -305,8 +412,8 @@ Set maximum statial and temporal layers to be forwrarded. Base layer is always e
 
 #### Parameters
 
--   `maxSpatialLayerId` **[Number][13]** Max spatial layer id
--   `maxTemporalLayerId` **[Number][13]** Max temporal layer id
+-   `maxSpatialLayerId` **[Number][14]** Max spatial layer id
+-   `maxTemporalLayerId` **[Number][14]** Max temporal layer id
 
 ### on
 
@@ -355,7 +462,7 @@ Set minimum period between active speaker changes
 
 #### Parameters
 
--   `minChangePeriod` **[Number][13]** 
+-   `minChangePeriod` **[Number][14]** 
 
 ### setMaxAccumulatedScore
 
@@ -363,7 +470,7 @@ Maximux activity score accumulated by an speaker
 
 #### Parameters
 
--   `maxAcummulatedScore` **[Number][13]** 
+-   `maxAcummulatedScore` **[Number][14]** 
 
 ### setNoiseGatingThreshold
 
@@ -371,7 +478,7 @@ Minimum db level to not be considered as muted
 
 #### Parameters
 
--   `noiseGatingThreshold` **[Number][13]** 
+-   `noiseGatingThreshold` **[Number][14]** 
 
 ### setMinActivationScore
 
@@ -379,7 +486,7 @@ Set minimum activation score to be electible as active speaker
 
 #### Parameters
 
--   `minActivationScore` **[Number][13]** 
+-   `minActivationScore` **[Number][14]** 
 
 ### addSpeaker
 
@@ -434,113 +541,6 @@ Returns **[IncomingStreamTrack][11]**
 
 Stop this transponder, will dettach the OutgoingStreamTrack
 
-## Streamer
-
-An streamer allows to send and receive plain RTP over udp sockets.
-This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
-
-### createSession
-
-Creates a new streaming session from a media description
-
-#### Parameters
-
--   `media` **MediaInfo** Media codec description info
--   `params` **[Object][4]** Network parameters
-    -   `params.local` **[Object][4]** Local parameters
-        -   `params.local.port` **[Number][13]** receiving port
-    -   `params.remote` **[Object][4]** Remote parameters
-        -   `params.remote.ip` **[String][1]** Sending ip address
-        -   `params.remote.port` **[Number][13]** Sending port
-
-Returns **[StreamerSession][14]** The new streaming session
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listeener` **[function][9]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### stop
-
-Stop all streaming sessions and frees resources
-
-## Refresher
-
-Periodically request an I frame on all incoming stream or tracks
-
-### add
-
-Add stream or track to request
-
-#### Parameters
-
--   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][11])** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[IncomingStream][10]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[IncomingStream][10]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][9]** Event listener
-
-Returns **[OutgoingStream][15]** 
-
-### stop
-
-Stop refresher
-
 ## Recorder
 
 MP4 recorder that allows to record several streams/tracks on a single mp4 file
@@ -553,7 +553,7 @@ Start recording and incoming
 
 -   `incomingStreamOrTrack` **([IncomingStream][10] \| [IncomingStreamTrack][11])** Incomining stream or track to be recordeds
 
-Returns **[Array][16]&lt;[RecorderTrack][12]>** 
+Returns **[Array][16]&lt;[RecorderTrack][13]>** 
 
 ### mute
 
@@ -681,7 +681,7 @@ Start playback from given time
 
 #### Parameters
 
--   `time` **[Number][13]** in miliseconds
+-   `time` **[Number][14]** in miliseconds
 
 ### stop
 
@@ -695,7 +695,7 @@ Represent the connection between a local udp port and a remote one. It sends and
 
 Get the local rtp/udp port
 
-Returns **[Number][13]** port number
+Returns **[Number][14]** port number
 
 ### setRemote
 
@@ -727,7 +727,7 @@ Add event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[StreamerSession][14]** 
+Returns **[StreamerSession][15]** 
 
 ### once
 
@@ -749,7 +749,7 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[StreamerSession][14]** 
+Returns **[StreamerSession][15]** 
 
 ### stop
 
@@ -929,7 +929,7 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][9]** Event listener
 
-Returns **[OutgoingStream][15]** 
+Returns **[OutgoingStream][12]** 
 
 ### getTracks
 
@@ -973,12 +973,12 @@ Create new track from a TrackInfo object and add it to this stream
     -   `params.id` **[String][1]?** Stream track id
     -   `params.media` **[String][1]?** Media type ("audio" or "video")
     -   `params.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][13]?** ssrc for the track
-        -   `params.ssrcs.rtx` **[Number][13]?** ssrc for the rtx video track
-        -   `params.ssrcs.fec` **[Number][13]?** ssrc for the fec video track
+        -   `params.ssrcs.media` **[Number][14]?** ssrc for the track
+        -   `params.ssrcs.rtx` **[Number][14]?** ssrc for the rtx video track
+        -   `params.ssrcs.fec` **[Number][14]?** ssrc for the fec video track
 -   `trackInfo` **TrackInfo** Track info object
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][12]** The new outgoing stream
 
 Returns **OuggoingStreamTrack** 
 
@@ -1124,7 +1124,7 @@ Set cpu affinity for udp send/recv thread.
 
 #### Parameters
 
--   `cpu` **[Number][13]** CPU core or -1 to reset affinity.
+-   `cpu` **[Number][14]** CPU core or -1 to reset affinity.
 
 Returns **[boolean][2]** 
 
@@ -1134,7 +1134,7 @@ Set ICE timeout for outgoing ICE binding requests
 
 #### Parameters
 
--   `timeout` **[Number][13]** Ammount of time in milliseconds between ICE binding requests
+-   `timeout` **[Number][14]** Ammount of time in milliseconds between ICE binding requests
 
 ### createTransport
 
@@ -1335,7 +1335,7 @@ Start playback from given time
 
 #### Parameters
 
--   `time` **[Number][13]** in miliseconds
+-   `time` **[Number][14]** in miliseconds
 
 ### stop
 
@@ -1515,7 +1515,7 @@ Set the maximum bitrate to be used if probing is enabled.
 
 #### Parameters
 
--   `bitrate` **[Number][13]** 
+-   `bitrate` **[Number][14]** 
 
 ### setProbingBitrateLimit
 
@@ -1523,7 +1523,7 @@ Do not allow probing to increase sent bitrate above certain limit
 
 #### Parameters
 
--   `bitrate` **[Number][13]** limit
+-   `bitrate` **[Number][14]** limit
 
 ### setLocalProperties
 
@@ -1635,17 +1635,17 @@ Create new outgoing stream in this transport
 -   `params` **([Object][4] | StreamInfo | [String][1])** Params plain object, StreamInfo object or stream id
     -   `params.audio` **([Array][16]&lt;[Object][4]> | [Object][4] \| [boolean][2])** Add audio track to the new stream
         -   `params.audio.id` **[Object][4]?** Stream track id (default: "audio")
-        -   `params.audio.ssrcs` **[Number][13]?** Override the generated ssrcs for this track
-            -   `params.audio.ssrcs.media` **[Number][13]?** ssrc for the audio track
+        -   `params.audio.ssrcs` **[Number][14]?** Override the generated ssrcs for this track
+            -   `params.audio.ssrcs.media` **[Number][14]?** ssrc for the audio track
     -   `params.id` **[Object][4]?** Stream id, an UUID will be generated if not provided
     -   `params.video` **([Array][16]&lt;[Object][4]> | [Object][4] \| [boolean][2])** Add video track to the new stream
         -   `params.video.id` **[Object][4]?** Stream track id (default: "video")
         -   `params.video.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
-            -   `params.video.ssrcs.media` **[Number][13]?** ssrc for the video track
-            -   `params.video.ssrcs.rtx` **[Number][13]?** ssrc for the rtx video track
-            -   `params.video.ssrcs.fec` **[Number][13]?** ssrc for the fec video track
+            -   `params.video.ssrcs.media` **[Number][14]?** ssrc for the video track
+            -   `params.video.ssrcs.rtx` **[Number][14]?** ssrc for the rtx video track
+            -   `params.video.ssrcs.fec` **[Number][14]?** ssrc for the fec video track
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][12]** The new outgoing stream
 
 ### createOutgoingStreamTrack
 
@@ -1656,10 +1656,10 @@ Create new outgoing stream in this transport
 -   `media` **[String][1]** Track media type "audio" or "video"
 -   `params` **[Object][4]?** Track parameters
     -   `params.id` **[Object][4]?** Stream track id
-    -   `params.ssrcs` **[Number][13]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][13]?** ssrc for the media track
-        -   `params.ssrcs.rtx` **[Number][13]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][13]?** ssrc for the fec track
+    -   `params.ssrcs` **[Number][14]?** Override the generated ssrcs for this track
+        -   `params.ssrcs.media` **[Number][14]?** ssrc for the media track
+        -   `params.ssrcs.rtx` **[Number][14]?** ssrc for the rtx track
+        -   `params.ssrcs.fec` **[Number][14]?** ssrc for the fec track
 
 Returns **[OutgoingStreamTrack][18]** The new outgoing stream track
 
@@ -1714,10 +1714,10 @@ Create new incoming stream in this transport. TODO: Simulcast is still not suppo
 -   `media` **[String][1]** Track media type "audio" or "video"
 -   `params` **[Object][4]?** Track parameters
     -   `params.id` **[Object][4]?** Stream track id
-    -   `params.ssrcs` **[Number][13]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][13]?** ssrc for the media track
-        -   `params.ssrcs.rtx` **[Number][13]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][13]?** ssrc for the fec track
+    -   `params.ssrcs` **[Number][14]?** Override the generated ssrcs for this track
+        -   `params.ssrcs.media` **[Number][14]?** ssrc for the media track
+        -   `params.ssrcs.rtx` **[Number][14]?** ssrc for the rtx track
+        -   `params.ssrcs.fec` **[Number][14]?** ssrc for the fec track
 
 Returns **[IncomingStreamTrack][11]** The new incoming stream track
 
@@ -1729,7 +1729,7 @@ Create new outgoing stream and attach to the incoming stream
 
 -   `incomingStream` **[IncomingStream][10]** the incoming stream to be published in this transport
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][12]** The new outgoing stream
 
 ### stop
 
@@ -1877,13 +1877,13 @@ Removes the track from the incoming stream and also detaches any attached outgoi
 
 [11]: #incomingstreamtrack
 
-[12]: #recordertrack
+[12]: #outgoingstream
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[13]: #recordertrack
 
-[14]: #streamersession
+[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[15]: #outgoingstream
+[15]: #streamersession
 
 [16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
