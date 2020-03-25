@@ -316,6 +316,17 @@ public:
 			MakeCallback(cloned, "onstarted", i, argv);
 		});
 	}
+	void onClosed() override 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[0];
+			//Call object method with arguments
+			MakeCallback(cloned, "onclosed", i, argv);
+		});
+	}
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
@@ -539,7 +550,7 @@ public:
 			//Delete depacketier
 			delete(depacketizer);
 	}
-
+	
 	virtual void onRTP(RTPIncomingMediaStream* group,const RTPPacket::shared& packet)
 	{
 		//Do not do extra work if there are no listeners
@@ -569,14 +580,12 @@ public:
 		 if (frame)
 		 {
 			 //Call all listeners
-			 for (Listeners::const_iterator it = listeners.begin();it!=listeners.end();++it)
+			 for (const auto& listener : listeners)
 				 //Call listener
-				 (*it)->onMediaFrame(packet->GetSSRC(),*frame);
+				 listener->onMediaFrame(packet->GetSSRC(),*frame);
 			 //Next
 			 depacketizer->ResetFrame();
 		 }
-		
-			
 	}
 	
 	virtual void onBye(RTPIncomingMediaStream* group) 
@@ -594,14 +603,29 @@ public:
 	
 	void AddMediaListener(MediaFrame::Listener *listener)
 	{
-		//Add to set
-		listeners.insert(listener);
+		//If already stopped
+		if (!incomingSource || !listener)
+			//Done
+			return;
+		//Add listener async
+		incomingSource->GetTimeService().Async([=](...){
+			//Add to set
+			listeners.insert(listener);
+		});
 	}
 	
 	void RemoveMediaListener(MediaFrame::Listener *listener)
 	{
-		//Remove from set
-		listeners.erase(listener);
+		//If already stopped
+		if (!incomingSource)
+			//Done
+			return;
+		
+		//Add listener sync so it can be deleted after this call
+		incomingSource->GetTimeService().Sync([=](...){
+			//Remove from set
+			listeners.erase(listener);
+		});
 	}
 	
 	void Stop()
@@ -618,9 +642,7 @@ public:
 	}
 	
 private:
-	typedef std::set<MediaFrame::Listener*> Listeners;
-private:
-	Listeners listeners;
+	std::set<MediaFrame::Listener*> listeners;
 	RTPDepacketizer* depacketizer;
 	RTPIncomingMediaStream* incomingSource;
 };
@@ -1216,7 +1238,7 @@ class StreamTrackDepacketizer
 {
 public:
 	StreamTrackDepacketizer(RTPIncomingMediaStream* incomingSource);
-	//SWIG doesn't support inner classes, so specializing it here, it will be casted internally later
+
 	void AddMediaListener(MediaFrameListener* listener);
 	void RemoveMediaListener(MediaFrameListener* listener);
 	void Stop();
@@ -1234,6 +1256,7 @@ public:
 	virtual bool Record(bool waitVideo);
 	virtual bool Stop();
 	virtual bool Close();
+	void SetTimeShiftDuration(DWORD duration);
 	bool Close(bool async);
 };
 

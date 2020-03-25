@@ -1923,6 +1923,17 @@ public:
 			MakeCallback(cloned, "onstarted", i, argv);
 		});
 	}
+	void onClosed() override 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[0];
+			//Call object method with arguments
+			MakeCallback(cloned, "onclosed", i, argv);
+		});
+	}
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
@@ -2146,7 +2157,7 @@ public:
 			//Delete depacketier
 			delete(depacketizer);
 	}
-
+	
 	virtual void onRTP(RTPIncomingMediaStream* group,const RTPPacket::shared& packet)
 	{
 		//Do not do extra work if there are no listeners
@@ -2176,14 +2187,12 @@ public:
 		 if (frame)
 		 {
 			 //Call all listeners
-			 for (Listeners::const_iterator it = listeners.begin();it!=listeners.end();++it)
+			 for (const auto& listener : listeners)
 				 //Call listener
-				 (*it)->onMediaFrame(packet->GetSSRC(),*frame);
+				 listener->onMediaFrame(packet->GetSSRC(),*frame);
 			 //Next
 			 depacketizer->ResetFrame();
 		 }
-		
-			
 	}
 	
 	virtual void onBye(RTPIncomingMediaStream* group) 
@@ -2201,14 +2210,29 @@ public:
 	
 	void AddMediaListener(MediaFrame::Listener *listener)
 	{
-		//Add to set
-		listeners.insert(listener);
+		//If already stopped
+		if (!incomingSource || !listener)
+			//Done
+			return;
+		//Add listener async
+		incomingSource->GetTimeService().Async([=](...){
+			//Add to set
+			listeners.insert(listener);
+		});
 	}
 	
 	void RemoveMediaListener(MediaFrame::Listener *listener)
 	{
-		//Remove from set
-		listeners.erase(listener);
+		//If already stopped
+		if (!incomingSource)
+			//Done
+			return;
+		
+		//Add listener sync so it can be deleted after this call
+		incomingSource->GetTimeService().Sync([=](...){
+			//Remove from set
+			listeners.erase(listener);
+		});
 	}
 	
 	void Stop()
@@ -2225,9 +2249,7 @@ public:
 	}
 	
 private:
-	typedef std::set<MediaFrame::Listener*> Listeners;
-private:
-	Listeners listeners;
+	std::set<MediaFrame::Listener*> listeners;
 	RTPDepacketizer* depacketizer;
 	RTPIncomingMediaStream* incomingSource;
 };
@@ -12555,6 +12577,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_SetTimeShiftDuration(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4RecorderFacade_SetTimeShiftDuration.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_SetTimeShiftDuration" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4RecorderFacade_SetTimeShiftDuration" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetTimeShiftDuration(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MP4RecorderFacade_Close__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
 {
   SWIGV8_HANDLESCOPE();
@@ -14560,6 +14618,7 @@ SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "Stop", _wrap_S
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Create", _wrap_MP4RecorderFacade_Create);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Record", _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Record);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Stop", _wrap_MP4RecorderFacade_Stop);
+SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "SetTimeShiftDuration", _wrap_MP4RecorderFacade_SetTimeShiftDuration);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Close", _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Close);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetAudioSource", _wrap_PlayerFacade_GetAudioSource);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoSource", _wrap_PlayerFacade_GetVideoSource);
