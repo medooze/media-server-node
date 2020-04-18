@@ -1257,6 +1257,7 @@ public:
 	virtual bool Stop();
 	virtual bool Close();
 	void SetTimeShiftDuration(DWORD duration);
+	bool SetH264ParameterSets(const std::string& sprops);
 	bool Close(bool async);
 };
 

@@ -169,101 +169,69 @@ Returns **[SDPManager][11]**
 
 Stop manager and associated tranports
 
-## RecorderTrack
+## ActiveSpeakerDetector
 
-Track of the recorder associated to an incoming strem track
+ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes
 
-### getId
+### setMinChangePeriod
 
-Get recorder track id
+Set minimum period between active speaker changes
 
-### getTrack
+#### Parameters
 
-Get incoming stream track
+-   `minChangePeriod` **[Number][5]** 
+
+### setMaxAccumulatedScore
+
+Maximux activity score accumulated by an speaker
+
+#### Parameters
+
+-   `maxAcummulatedScore` **[Number][5]** 
+
+### setNoiseGatingThreshold
+
+Minimum db level to not be considered as muted
+
+#### Parameters
+
+-   `noiseGatingThreshold` **[Number][5]** 
+
+### setMinActivationScore
+
+Set minimum activation score to be electible as active speaker
+
+#### Parameters
+
+-   `minActivationScore` **[Number][5]** 
+
+### addSpeaker
+
+Add incoming track for speaker detection
+
+#### Parameters
+
+-   `track` **[IncomingStreamTrack][13]** 
+
+### removeSpeaker
+
+Remove track from speaker detection
+
+#### Parameters
+
+-   `track` **IncomingStreamTrakc** 
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][10]** Event listener
 
 Returns **[IncomingStreamTrack][13]** 
 
-### getEncoding
-
-Get incoming encoding
-
-Returns **[Object][4]** 
-
-### isMuted
-
-Check if the track is muted or not
-
-Returns **[boolean][2]** muted
-
-### mute
-
-Mute/Unmute track
-This operation will not change the muted state of the stream this track belongs too.
-
-#### Parameters
-
--   `muting` **[boolean][2]** if we want to mute or unmute
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[RecorderTrack][14]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[RecorderTrack][14]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[RecorderTrack][14]** 
-
-### stop
-
-Stop recording this track
-
-## Refresher
-
-Periodically request an I frame on all incoming stream or tracks
-
-### add
-
-Add stream or track to request
-
-#### Parameters
-
--   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
 ### once
 
 Add event listener once
@@ -284,11 +252,11 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][10]** Event listener
 
-Returns **[OutgoingStream][15]** 
+Returns **[IncomingStreamTrack][13]** 
 
 ### stop
 
-Stop refresher
+Stop this transponder, will dettach the OutgoingStreamTrack
 
 ## Streamer
 
@@ -309,7 +277,7 @@ Creates a new streaming session from a media description
         -   `params.remote.ip` **[String][1]** Sending ip address
         -   `params.remote.port` **[Number][5]** Sending port
 
-Returns **[StreamerSession][16]** The new streaming session
+Returns **[StreamerSession][14]** The new streaming session
 
 ### on
 
@@ -369,7 +337,7 @@ Add event listener
 -   `event` **[String][1]** Event name
 -   `listeener` **[function][10]** Event listener
 
-Returns **[FrameBuffer][17]** 
+Returns **[FrameBuffer][15]** 
 
 ### once
 
@@ -391,7 +359,7 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][10]** Event listener
 
-Returns **[FrameBuffer][17]** 
+Returns **[FrameBuffer][15]** 
 
 ### stop
 
@@ -500,57 +468,40 @@ Returns **[IncomingStreamTrack][13]**
 
 Stop this transponder, will dettach the OutgoingStreamTrack
 
-## ActiveSpeakerDetector
+## RecorderTrack
 
-ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes
+Track of the recorder associated to an incoming strem track
 
-### setMinChangePeriod
+### getId
 
-Set minimum period between active speaker changes
+Get recorder track id
 
-#### Parameters
+### getTrack
 
--   `minChangePeriod` **[Number][5]** 
+Get incoming stream track
 
-### setMaxAccumulatedScore
+Returns **[IncomingStreamTrack][13]** 
 
-Maximux activity score accumulated by an speaker
+### getEncoding
 
-#### Parameters
+Get incoming encoding
 
--   `maxAcummulatedScore` **[Number][5]** 
+Returns **[Object][4]** 
 
-### setNoiseGatingThreshold
+### isMuted
 
-Minimum db level to not be considered as muted
+Check if the track is muted or not
 
-#### Parameters
+Returns **[boolean][2]** muted
 
--   `noiseGatingThreshold` **[Number][5]** 
+### mute
 
-### setMinActivationScore
-
-Set minimum activation score to be electible as active speaker
-
-#### Parameters
-
--   `minActivationScore` **[Number][5]** 
-
-### addSpeaker
-
-Add incoming track for speaker detection
+Mute/Unmute track
+This operation will not change the muted state of the stream this track belongs too.
 
 #### Parameters
 
--   `track` **[IncomingStreamTrack][13]** 
-
-### removeSpeaker
-
-Remove track from speaker detection
-
-#### Parameters
-
--   `track` **IncomingStreamTrakc** 
+-   `muting` **[boolean][2]** if we want to mute or unmute
 
 ### on
 
@@ -561,7 +512,56 @@ Add event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][10]** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[RecorderTrack][16]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][10]** Event listener
+
+Returns **[RecorderTrack][16]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][10]** Event listener
+
+Returns **[RecorderTrack][16]** 
+
+### stop
+
+Stop recording this track
+
+## Refresher
+
+Periodically request an I frame on all incoming stream or tracks
+
+### add
+
+Add stream or track to request
+
+#### Parameters
+
+-   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][10]** Event listener
+
+Returns **[IncomingStream][12]** 
 
 ### once
 
@@ -583,11 +583,11 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][10]** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[OutgoingStream][17]** 
 
 ### stop
 
-Stop this transponder, will dettach the OutgoingStreamTrack
+Stop refresher
 
 ## Recorder
 
@@ -627,7 +627,7 @@ Start recording and incoming
 
 -   `incomingStreamOrTrack` **([IncomingStream][12] \| [IncomingStreamTrack][13])** Incomining stream or track to be recordeds
 
-Returns **[Array][19]&lt;[RecorderTrack][14]>** 
+Returns **[Array][19]&lt;[RecorderTrack][16]>** 
 
 ### mute
 
@@ -801,7 +801,7 @@ Add event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][10]** Event listener
 
-Returns **[StreamerSession][16]** 
+Returns **[StreamerSession][14]** 
 
 ### once
 
@@ -823,7 +823,7 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][10]** Event listener
 
-Returns **[StreamerSession][16]** 
+Returns **[StreamerSession][14]** 
 
 ### stop
 
@@ -1003,7 +1003,7 @@ Remove event listener
 -   `event` **[String][1]** Event name
 -   `listener` **[function][10]** Event listener
 
-Returns **[OutgoingStream][15]** 
+Returns **[OutgoingStream][17]** 
 
 ### getTracks
 
@@ -1052,7 +1052,7 @@ Create new track from a TrackInfo object and add it to this stream
         -   `params.ssrcs.fec` **[Number][5]?** ssrc for the fec video track
 -   `trackInfo` **TrackInfo** Track info object
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][17]** The new outgoing stream
 
 Returns **OuggoingStreamTrack** 
 
@@ -1719,7 +1719,7 @@ Create new outgoing stream in this transport
             -   `params.video.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
             -   `params.video.ssrcs.fec` **[Number][5]?** ssrc for the fec video track
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][17]** The new outgoing stream
 
 ### createOutgoingStreamTrack
 
@@ -1803,7 +1803,7 @@ Create new outgoing stream and attach to the incoming stream
 
 -   `incomingStream` **[IncomingStream][12]** the incoming stream to be published in this transport
 
-Returns **[OutgoingStream][15]** The new outgoing stream
+Returns **[OutgoingStream][17]** The new outgoing stream
 
 ### stop
 
@@ -1925,6 +1925,26 @@ Request an intra refres on all sources
 Signal that this track has been detached.
 Internal use, you'd beter know what you are doing before calling this method
 
+### setH264ParameterSets
+
+Store out of band h264 properties for this track
+
+#### Parameters
+
+-   `sprop` **[String][1]** Base64 encoded parameters from SDP
+
+### hasH264ParameterSets
+
+Check if track has out of band h264 properties
+
+Returns **[Boolean][2]** 
+
+### getH264ParameterSets
+
+Get out of band h264 parameters from this track
+
+Returns **[Boolean][2]** 
+
 ### stop
 
 Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
@@ -1963,13 +1983,13 @@ FrameBuffer stopped event
 
 [13]: #incomingstreamtrack
 
-[14]: #recordertrack
+[14]: #streamersession
 
-[15]: #outgoingstream
+[15]: #framebuffer
 
-[16]: #streamersession
+[16]: #recordertrack
 
-[17]: #framebuffer
+[17]: #outgoingstream
 
 [18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 

@@ -12613,6 +12613,48 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_SetH264ParameterSets(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  v8::Handle<v8::Value> jsresult;
+  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  bool result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4RecorderFacade_SetH264ParameterSets.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_SetH264ParameterSets" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MP4RecorderFacade_SetH264ParameterSets" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MP4RecorderFacade_SetH264ParameterSets" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->SetH264ParameterSets((std::string const &)*arg2);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_MP4RecorderFacade_Close__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
 {
   SWIGV8_HANDLESCOPE();
@@ -14619,6 +14661,7 @@ SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Create", _wrap_MP4Re
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Record", _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Record);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Stop", _wrap_MP4RecorderFacade_Stop);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "SetTimeShiftDuration", _wrap_MP4RecorderFacade_SetTimeShiftDuration);
+SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "SetH264ParameterSets", _wrap_MP4RecorderFacade_SetH264ParameterSets);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Close", _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Close);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetAudioSource", _wrap_PlayerFacade_GetAudioSource);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "GetVideoSource", _wrap_PlayerFacade_GetVideoSource);
