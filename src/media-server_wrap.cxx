@@ -1894,6 +1894,9 @@ public:
 		RTPSession::SetSendingRTPMap(rtp,apt);
 		RTPSession::SetReceivingRTPMap(rtp,apt);
 		
+		//Set properties
+		RTPSession::SetProperties(properties.GetChildren("properties"));
+		
 		//Call parent
 		return RTPSession::Init();
 	}
