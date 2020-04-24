@@ -270,12 +270,13 @@ Creates a new streaming session from a media description
 #### Parameters
 
 -   `media` **MediaInfo** Media codec description info
--   `params` **[Object][4]** Network parameters
+-   `params` **[Object][4]** Network parameters [Optional]
     -   `params.local` **[Object][4]** Local parameters
         -   `params.local.port` **[Number][5]** receiving port
     -   `params.remote` **[Object][4]** Remote parameters
         -   `params.remote.ip` **[String][1]** Sending ip address
         -   `params.remote.port` **[Number][5]** Sending port
+    -   `params.noRTCP` **[Number][5]** Disable sending rtcp
 
 Returns **[StreamerSession][14]** The new streaming session
 
