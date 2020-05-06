@@ -19,12 +19,12 @@ Just add the Medooze media server as a dependency to your node proyect:
 If you don't want to compile the native code each time you use the media server, you could precompile Medooze Media server and generate a binary package for your platform. On the Medooze media server directory just do:
 
 ```
-   git submodule update
+   git submodule update --init --recursive
    npm i
    npm run-script dist
 ```
 
-It will generate the binary package in `dist\medooze-media-server-x.y.x.tgz`.
+It will generate the binary package in `dist/medooze-media-server-x.y.x.tgz`.
 
 To use it on your project just install it instead of the npm repository dependency:
 
