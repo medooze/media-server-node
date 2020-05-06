@@ -353,23 +353,28 @@ public:
 		
 	virtual void onRTPPacket(RTPPacket &packet)
 	{
-		switch(packet.GetMedia())
+		//Clone packet
+		auto cloned = packet.Clone();
+		//Copy payload
+		cloned->AdquireMediaData();
+		//Check media type
+		switch(cloned->GetMediaType())
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video.media.Update(getTimeMS(),packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				video.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of video
-				packet.SetSSRC(video.media.ssrc);
+				cloned->SetSSRC(video.media.ssrc);
 				//Multiplex
-				video.AddPacket(packet.Clone(),0);
+				video.AddPacket(cloned,0);
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio.media.Update(getTimeMS(),packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				audio.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of audio
-				packet.SetSSRC(audio.media.ssrc);
+				cloned->SetSSRC(audio.media.ssrc);
 				//Multiplex
-				audio.AddPacket(packet.Clone(),0);
+				audio.AddPacket(cloned,0);
 				break;
 			default:
 				///Ignore
@@ -1255,8 +1260,7 @@ public:
 
 	//Recorder interface
 	virtual bool Create(const char *filename);
-	virtual bool Record();
-	virtual bool Record(bool waitVideo);
+		bool Record(bool waitVideo, bool disableHints);
 	virtual bool Stop();
 	virtual bool Close();
 	void SetTimeShiftDuration(DWORD duration);

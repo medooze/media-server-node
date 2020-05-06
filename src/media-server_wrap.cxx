@@ -1960,23 +1960,28 @@ public:
 		
 	virtual void onRTPPacket(RTPPacket &packet)
 	{
-		switch(packet.GetMedia())
+		//Clone packet
+		auto cloned = packet.Clone();
+		//Copy payload
+		cloned->AdquireMediaData();
+		//Check media type
+		switch(cloned->GetMediaType())
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video.media.Update(getTimeMS(),packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				video.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of video
-				packet.SetSSRC(video.media.ssrc);
+				cloned->SetSSRC(video.media.ssrc);
 				//Multiplex
-				video.AddPacket(packet.Clone(),0);
+				video.AddPacket(cloned,0);
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio.media.Update(getTimeMS(),packet.GetSeqNum(),packet.GetRTPHeader().GetSize()+packet.GetMediaLength());
+				audio.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of audio
-				packet.SetSSRC(audio.media.ssrc);
+				cloned->SetSSRC(audio.media.ssrc);
 				//Multiplex
-				audio.AddPacket(packet.Clone(),0);
+				audio.AddPacket(cloned,0);
 				break;
 			default:
 				///Ignore
@@ -12415,45 +12420,22 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_MP4RecorderFacade_Record__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  bool result;
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MP4RecorderFacade_Record" "', argument " "1"" of type '" "MP4RecorderFacade *""'"); 
-  }
-  arg1 = reinterpret_cast< MP4RecorderFacade * >(argp1);
-  result = (bool)(arg1)->Record();
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4RecorderFacade_Record__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
-{
+static SwigV8ReturnValue _wrap_MP4RecorderFacade_Record(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   v8::Handle<v8::Value> jsresult;
   MP4RecorderFacade *arg1 = (MP4RecorderFacade *) 0 ;
   bool arg2 ;
+  bool arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
   bool result;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MP4RecorderFacade_Record.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MP4RecorderFacade, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -12465,59 +12447,18 @@ static SwigV8ReturnValue _wrap_MP4RecorderFacade_Record__SWIG_1(const SwigV8Argu
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MP4RecorderFacade_Record" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  result = (bool)(arg1)->Record(arg2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MP4RecorderFacade_Record" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  result = (bool)(arg1)->Record(arg2,arg3);
   jsresult = SWIG_From_bool(static_cast< bool >(result));
   
   
   
+  
   SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Record(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  v8::Handle<v8::Value> jsresult;
-  OverloadErrorHandler errorHandler;
-  
-  
-  if(args.Length() == 0) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_MP4RecorderFacade_Record__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_MP4RecorderFacade_Record__SWIG_0(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  if(args.Length() == 1) {
-    errorHandler.err.Clear();
-#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
-    jsresult = _wrap_MP4RecorderFacade_Record__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      SWIGV8_ESCAPE(jsresult);
-    }
-#else
-    _wrap_MP4RecorderFacade_Record__SWIG_1(args, errorHandler);
-    if(errorHandler.err.IsEmpty()) {
-      return;
-    }
-#endif
-  }
-  
-  
-  SWIG_exception_fail(SWIG_ERROR, "Illegal arguments for function Record.");
   
   goto fail;
 fail:
@@ -14661,7 +14602,7 @@ SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "AddMediaListen
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "RemoveMediaListener", _wrap_StreamTrackDepacketizer_RemoveMediaListener);
 SWIGV8_AddMemberFunction(_exports_StreamTrackDepacketizer_class, "Stop", _wrap_StreamTrackDepacketizer_Stop);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Create", _wrap_MP4RecorderFacade_Create);
-SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Record", _wrap_MP4RecorderFacade__wrap_MP4RecorderFacade_Record);
+SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Record", _wrap_MP4RecorderFacade_Record);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Stop", _wrap_MP4RecorderFacade_Stop);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "SetTimeShiftDuration", _wrap_MP4RecorderFacade_SetTimeShiftDuration);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "SetH264ParameterSets", _wrap_MP4RecorderFacade_SetH264ParameterSets);
