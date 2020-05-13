@@ -1527,7 +1527,7 @@ Dump incoming and outgoint rtp and rtcp packets into a pcap file
 
 -   `filename` **[String][1]** Filename of the pcap file
 -   `options` **[Object][4]** Dump parameters (optional)
-    -   `options.incomoning` **[Boolean][2]** Dump incomoning RTP data
+    -   `options.incoming` **[Boolean][2]** Dump incomoning RTP data
     -   `options.outgoing` **[Boolean][2]** Dump outgoing RTP data
     -   `options.rtcp` **[Boolean][2]** Dump rtcp RTP data
     -   `options.rtpHeadersOnly` **[Boolean][2]** Dump only rtp headers and first 16 bytes of payload for rtp packets
@@ -1815,8 +1815,10 @@ The stats objects will provide the follwing info for each source
 -   totalBytes	: total rtp received bytes
 -   totalRTCPBytes	: total rtp received bytes
 -   totalPLIs		: total PLIs sent
--   totalNACKs	: total NACk packets setn
+-   totalNACKs	: total NACk packets sent
 -   bitrate		: average bitrate received during last second in bps
+-   skew		: difference between NTP timestamp and RTP timestamps at sender (from RTCP SR)
+-   clockRate		: RTP clockrate
 -   layers		: Information about each spatial/temporal layer (if present)
     -   spatialLayerId  : Spatial layer id
     -   temporalLayerId : Temporatl layer id
