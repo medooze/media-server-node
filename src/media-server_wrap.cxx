@@ -2734,6 +2734,39 @@ SWIG_AsVal_size_t (v8::Handle<v8::Value> obj, size_t *val)
   return res;
 }
 
+
+SWIGINTERN
+int SWIG_AsVal_long (v8::Handle<v8::Value> obj, long* val)
+{
+  if (!obj->IsNumber()) {
+    return SWIG_TypeError;
+  }
+  if(val) *val = (long) obj->IntegerValue();
+
+  return SWIG_OK;
+}
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERN
+int SWIG_AsVal_long_SS_long (v8::Handle<v8::Value> obj, long long* val)
+{
+  if (!obj->IsNumber()) {
+    return SWIG_TypeError;
+  }
+  if(val) *val = (long long) obj->IntegerValue();
+
+  return SWIG_OK;
+}
+#endif
+
+
+SWIGINTERN
+v8::Handle<v8::Value> SWIG_From_double   (double val)
+{
+  return SWIGV8_NUMBER_NEW(val);
+}
+
 SWIGINTERN LayerSources RTPIncomingSource_layers(RTPIncomingSource *self){
 			LayerSources layers;
 			for(auto it = self->layers.begin(); it != self->layers.end(); ++it )
@@ -2868,26 +2901,7 @@ SWIG_From_std_string  (const std::string& s)
 }
 
 
-SWIGINTERN
-v8::Handle<v8::Value> SWIG_From_double   (double val)
-{
-  return SWIGV8_NUMBER_NEW(val);
-}
 
-
-
-
-
-SWIGINTERN
-int SWIG_AsVal_long (v8::Handle<v8::Value> obj, long* val)
-{
-  if (!obj->IsNumber()) {
-    return SWIG_TypeError;
-  }
-  if(val) *val = (long) obj->IntegerValue();
-
-  return SWIG_OK;
-}
 
 
 SWIGINTERN
@@ -4149,6 +4163,70 @@ static SwigV8ReturnValue _wrap_RTPSource_bitrate_get(v8::Local<v8::String> prope
   }
 
 
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPSource_clockrate_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPSource_clockrate_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPSource *arg1 = (RTPSource *) 0 ;
+    uint32_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned int val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_clockrate_set" "', argument " "1"" of type '" "RTPSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPSource * >(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPSource_clockrate_set" "', argument " "2"" of type '" "uint32_t""'");
+    } 
+    arg2 = static_cast< uint32_t >(val2);
+    if (arg1) (arg1)->clockrate = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPSource_clockrate_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPSource_clockrate_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPSource *arg1 = (RTPSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint32_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_clockrate_get" "', argument " "1"" of type '" "RTPSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPSource * >(argp1);
+    result = (uint32_t) ((arg1)->clockrate);
+    jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
 static SwigV8ReturnValue _wrap_new_RTPSource(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -4835,6 +4913,134 @@ static SwigV8ReturnValue _wrap_RTPIncomingSource_totalNACKs_get(v8::Local<v8::St
     arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
     result = (uint32_t) ((arg1)->totalNACKs);
     jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_skew_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_skew_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    int64_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    long long val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_skew_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_long_SS_long(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_skew_set" "', argument " "2"" of type '" "int64_t""'");
+    } 
+    arg2 = static_cast< int64_t >(val2);
+    if (arg1) (arg1)->skew = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_skew_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_skew_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int64_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_skew_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (int64_t) ((arg1)->skew);
+    jsresult = SWIG_From_long_SS_long(static_cast< long long >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_drift_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_drift_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    double arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    double val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_drift_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_double(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_drift_set" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+    if (arg1) (arg1)->drift = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_drift_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_drift_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    v8::Handle<v8::Value> jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    double result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_drift_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (double) ((arg1)->drift);
+    jsresult = SWIG_From_double(static_cast< double >(result));
     
     
     SWIGV8_RETURN_INFO(jsresult, info);
@@ -14479,6 +14685,7 @@ SWIGV8_AddMemberVariable(_exports_RTPSource_class, "numRTCPPackets", _wrap_RTPSo
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "totalBytes", _wrap_RTPSource_totalBytes_get, _wrap_RTPSource_totalBytes_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "totalRTCPBytes", _wrap_RTPSource_totalRTCPBytes_get, _wrap_RTPSource_totalRTCPBytes_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "bitrate", _wrap_RTPSource_bitrate_get, _wrap_RTPSource_bitrate_set);
+SWIGV8_AddMemberVariable(_exports_RTPSource_class, "clockrate", _wrap_RTPSource_clockrate_get, _wrap_RTPSource_clockrate_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lostPackets", _wrap_RTPIncomingSource_lostPackets_get, _wrap_RTPIncomingSource_lostPackets_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalPacketsSinceLastSR", _wrap_RTPIncomingSource_totalPacketsSinceLastSR_get, _wrap_RTPIncomingSource_totalPacketsSinceLastSR_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalBytesSinceLastSR", _wrap_RTPIncomingSource_totalBytesSinceLastSR_get, _wrap_RTPIncomingSource_totalBytesSinceLastSR_set);
@@ -14489,6 +14696,8 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReceivedSenderRe
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReport", _wrap_RTPIncomingSource_lastReport_get, _wrap_RTPIncomingSource_lastReport_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalPLIs", _wrap_RTPIncomingSource_totalPLIs_get, _wrap_RTPIncomingSource_totalPLIs_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalNACKs", _wrap_RTPIncomingSource_totalNACKs_get, _wrap_RTPIncomingSource_totalNACKs_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "skew", _wrap_RTPIncomingSource_skew_get, _wrap_RTPIncomingSource_skew_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "drift", _wrap_RTPIncomingSource_drift_get, _wrap_RTPIncomingSource_drift_set);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSource_class, "layers", _wrap_RTPIncomingSource_layers);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "time", _wrap_RTPOutgoingSource_time_get, _wrap_RTPOutgoingSource_time_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "lastTime", _wrap_RTPOutgoingSource_lastTime_get, _wrap_RTPOutgoingSource_lastTime_set);

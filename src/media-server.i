@@ -939,6 +939,7 @@ struct RTPSource
 	DWORD totalBytes;
 	DWORD totalRTCPBytes;
 	DWORD bitrate;
+	DWORD clockrate;
 };
 
 struct RTPIncomingSource : public RTPSource
@@ -953,6 +954,8 @@ struct RTPIncomingSource : public RTPSource
 	QWORD lastReport;
 	DWORD totalPLIs;
 	DWORD totalNACKs;
+	int64_t skew;
+	double  drift;
 	
 	%extend 
 	{
