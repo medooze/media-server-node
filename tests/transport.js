@@ -1,6 +1,9 @@
 const tap		= require("tap");
 const MediaServer	= require("../index");
 const SemanticSDP	= require("semantic-sdp");
+const FileSystem	= require("fs");
+const Path		= require("path");
+const OS		= require("os");
 
 MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
@@ -12,6 +15,7 @@ const ICEInfo		= SemanticSDP.ICEInfo;
 const Setup		= SemanticSDP.Setup;
 const Direction		= SemanticSDP.Direction;
 
+const tmp = FileSystem.mkdtempSync(Path.join(OS.tmpdir(), 'tap-'));
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
@@ -220,7 +224,42 @@ Promise.all([
 		});
 
 		suite.end();
-	})
+	}),
+	tap.test("Dump",async function(suite){
+		
+		//Init test
+		const transport = endpoint.createTransport({
+			dtls : SemanticSDP.DTLSInfo.expand({
+				"hash"        : "sha-256",
+				"fingerprint" : "F2:AA:0E:C3:22:59:5E:14:95:69:92:3D:13:B4:84:24:2C:C2:A2:C0:3E:FD:34:8E:5E:EA:6F:AF:52:CE:E6:0F"
+			}),
+			ice  : SemanticSDP.ICEInfo.generate()
+		});
+
+		suite.test("start + stop",async function(test){
+			//Get temp file
+			const pcap = Path.join(tmp,"dump.pcap");
+			const csv = Path.join(tmp,"dump.csv");
+			
+			//Dump
+			transport.dump(pcap);
+			
+			//Check file exist
+			test.ok(pcap);
+			test.ok(csv);
+			
+			//Stop it
+			transport.stopDump();
+			
+			//Delete it
+			FileSystem.unlinkSync(pcap);
+			FileSystem.unlinkSync(csv);
+
+		});
+
+		
+		suite.end();
+	}),
 ])
 .then(()=>{
 	MediaServer.terminate ();

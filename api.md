@@ -1533,6 +1533,10 @@ Dump incoming and outgoint rtp and rtcp packets into a pcap file
     -   `options.rtpHeadersOnly` **[Boolean][2]** Dump only rtp headers and first 16 bytes of payload for rtp packets
     -   `options.bwe` **[Boolean][2]**  Dump bwe stats to a different file (.pcap->.csv)
 
+### stopDump
+
+Stop dumping transport rtp and rtcp packets
+
 ### getStats
 
 Get transport stats
