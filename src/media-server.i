@@ -18,6 +18,7 @@
 #include "../media-server/include/mp4streamer.h"
 #include "../media-server/src/vp9/VP9LayerSelector.h"
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
+#include "../media-server/include/rtp/RTPIncomingMediaStreamDepacketizer.h"
 #include "../media-server/include/ActiveSpeakerDetector.h"
 	
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
@@ -533,126 +534,6 @@ private:
 	DWORD period	= 1000;
 	QWORD last	= 0;
 	std::shared_ptr<Persistent<v8::Object>> persistent;	
-};
-
-class StreamTrackDepacketizer :
-	public RTPIncomingMediaStream::Listener
-{
-public:
-	StreamTrackDepacketizer(RTPIncomingMediaStream* incomingSource)
-	{
-		//Store
-		this->incomingSource = incomingSource;
-		//Add us as RTP listeners
-		this->incomingSource->AddListener(this);
-		//No depkacketixer yet
-		depacketizer = NULL;
-	}
-
-	virtual ~StreamTrackDepacketizer()
-	{
-		//JIC
-		Stop();
-		//Check 
-		if (depacketizer)
-			//Delete depacketier
-			delete(depacketizer);
-	}
-	
-	virtual void onRTP(RTPIncomingMediaStream* group,const RTPPacket::shared& packet)
-	{
-		//Do not do extra work if there are no listeners
-		if (listeners.empty()) 
-			return;
-		
-		//If depacketizer is not the same codec 
-		if (depacketizer && depacketizer->GetCodec()!=packet->GetCodec())
-		{
-			//Delete it
-			delete(depacketizer);
-			//Create it next
-			depacketizer = NULL;
-		}
-		//If we don't have a depacketized
-		if (!depacketizer)
-			//Create one
-			depacketizer = RTPDepacketizer::Create(packet->GetMedia(),packet->GetCodec());
-		//Ensure we have it
-		if (!depacketizer)
-			//Do nothing
-			return;
-		//Pass the pakcet to the depacketizer
-		 MediaFrame* frame = depacketizer->AddPacket(packet);
-		 
-		 //If we have a new frame
-		 if (frame)
-		 {
-			 //Call all listeners
-			 for (const auto& listener : listeners)
-				 //Call listener
-				 listener->onMediaFrame(packet->GetSSRC(),*frame);
-			 //Next
-			 depacketizer->ResetFrame();
-		 }
-	}
-	
-	virtual void onBye(RTPIncomingMediaStream* group) 
-	{
-		if(depacketizer)
-			//Skip current
-			depacketizer->ResetFrame();
-	}
-	
-	virtual void onEnded(RTPIncomingMediaStream* group) 
-	{
-		if (incomingSource==group)
-			incomingSource = nullptr;
-	}
-	
-	void AddMediaListener(MediaFrame::Listener *listener)
-	{
-		//If already stopped
-		if (!incomingSource || !listener)
-			//Done
-			return;
-		//Add listener async
-		incomingSource->GetTimeService().Async([=](...){
-			//Add to set
-			listeners.insert(listener);
-		});
-	}
-	
-	void RemoveMediaListener(MediaFrame::Listener *listener)
-	{
-		//If already stopped
-		if (!incomingSource)
-			//Done
-			return;
-		
-		//Add listener sync so it can be deleted after this call
-		incomingSource->GetTimeService().Sync([=](...){
-			//Remove from set
-			listeners.erase(listener);
-		});
-	}
-	
-	void Stop()
-	{
-		//If already stopped
-		if (!incomingSource)
-			//Done
-			return;
-		
-		//Stop listeneing
-		incomingSource->RemoveListener(this);
-		//Clean it
-		incomingSource = NULL;
-	}
-	
-private:
-	std::set<MediaFrame::Listener*> listeners;
-	RTPDepacketizer* depacketizer;
-	RTPIncomingMediaStream* incomingSource;
 };
 
 class DTLSICETransportListener :
@@ -1247,11 +1128,10 @@ struct MediaFrameListener
 {
 };
 
-class StreamTrackDepacketizer 
+class RTPIncomingMediaStreamDepacketizer 
 {
 public:
-	StreamTrackDepacketizer(RTPIncomingMediaStream* incomingSource);
-
+	RTPIncomingMediaStreamDepacketizer(RTPIncomingMediaStream* incomingSource);
 	void AddMediaListener(MediaFrameListener* listener);
 	void RemoveMediaListener(MediaFrameListener* listener);
 	void Stop();

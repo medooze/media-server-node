@@ -116,6 +116,7 @@
 							"media-server/src/rtp/RTPLostPackets.cpp",
 							"media-server/src/rtp/RTPSource.cpp",
 							"media-server/src/rtp/RTPIncomingMediaStreamMultiplexer.cpp",
+							"media-server/src/rtp/RTPIncomingMediaStreamDepacketizer.cpp",
 							"media-server/src/rtp/RTPIncomingSource.cpp",
 							"media-server/src/rtp/RTPIncomingSourceGroup.cpp",
 							"media-server/src/rtp/RTPOutgoingSource.cpp",
