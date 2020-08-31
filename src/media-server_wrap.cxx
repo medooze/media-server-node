@@ -2205,6 +2205,16 @@ public:
 			MakeCallback(cloned,"ondtlsstate",i,argv);
 		});
 	}
+	
+	virtual void onICETimeout() override 
+	{
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			//Call object method with arguments
+			MakeCallback(cloned, "onicetimeout");
+		});
+	}
 
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;
