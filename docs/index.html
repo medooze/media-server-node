@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>medooze-media-server 0.94.8 | Documentation</title>
+  <title>medooze-media-server 0.96.0 | Documentation</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' type='text/css' rel='stylesheet' />
   <link href='assets/style.css' type='text/css' rel='stylesheet' />
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>medooze-media-server</h3>
-          <div class='mb1'><code>0.94.8</code></div>
+          <div class='mb1'><code>0.96.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -190,6 +190,75 @@
               
                 
                 <li><a
+                  href='#refresher'
+                  class=" toggle-sibling">
+                  Refresher
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#refresheradd'
+                        class='regular pre-open'>
+                        #add
+                      </a></li>
+                      
+                      <li><a
+                        href='#refresheron'
+                        class='regular pre-open'>
+                        #on
+                      </a></li>
+                      
+                      <li><a
+                        href='#refresheronce'
+                        class='regular pre-open'>
+                        #once
+                      </a></li>
+                      
+                      <li><a
+                        href='#refresheroff'
+                        class='regular pre-open'>
+                        #off
+                      </a></li>
+                      
+                      <li><a
+                        href='#refresherstop'
+                        class='regular pre-open'>
+                        #stop
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'>Events</li>
+                      
+                        <li><a
+                          href='#refreshereventrefreshing'
+                          class='regular pre-open'>
+                          ⓔ refreshing
+                        </a></li>
+                      
+                        <li><a
+                          href='#refreshereventstopped'
+                          class='regular pre-open'>
+                          ⓔ stopped
+                        </a></li>
+                      
+                    </ul>
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
                   href='#recordertrack'
                   class=" toggle-sibling">
                   RecorderTrack
@@ -265,105 +334,6 @@
                       
                         <li><a
                           href='#recordertrackeventstopped'
-                          class='regular pre-open'>
-                          ⓔ stopped
-                        </a></li>
-                      
-                    </ul>
-                  
-                </div>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#activespeakerdetector'
-                  class=" toggle-sibling">
-                  ActiveSpeakerDetector
-                  <span class='icon'>▸</span>
-                </a>
-                
-                <div class='toggle-target display-none'>
-                  
-                  
-                    <ul class='list-reset py1-ul pl1'>
-                      <li class='h5'><span>Instance members</span></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectorsetminchangeperiod'
-                        class='regular pre-open'>
-                        #setMinChangePeriod
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectorsetmaxaccumulatedscore'
-                        class='regular pre-open'>
-                        #setMaxAccumulatedScore
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectorsetnoisegatingthreshold'
-                        class='regular pre-open'>
-                        #setNoiseGatingThreshold
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectorsetminactivationscore'
-                        class='regular pre-open'>
-                        #setMinActivationScore
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectoraddspeaker'
-                        class='regular pre-open'>
-                        #addSpeaker
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectorremovespeaker'
-                        class='regular pre-open'>
-                        #removeSpeaker
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectoron'
-                        class='regular pre-open'>
-                        #on
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectoronce'
-                        class='regular pre-open'>
-                        #once
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectoroff'
-                        class='regular pre-open'>
-                        #off
-                      </a></li>
-                      
-                      <li><a
-                        href='#activespeakerdetectorstop'
-                        class='regular pre-open'>
-                        #stop
-                      </a></li>
-                      
-                    </ul>
-                  
-                  
-                  
-                    <ul class='list-reset py1-ul pl1'>
-                      <li class='h5'>Events</li>
-                      
-                        <li><a
-                          href='#activespeakerdetectoreventactivespeakerchanged'
-                          class='regular pre-open'>
-                          ⓔ activespeakerchanged
-                        </a></li>
-                      
-                        <li><a
-                          href='#activespeakerdetectoreventstopped'
                           class='regular pre-open'>
                           ⓔ stopped
                         </a></li>
@@ -511,9 +481,9 @@
               
                 
                 <li><a
-                  href='#refresher'
+                  href='#activespeakerdetector'
                   class=" toggle-sibling">
-                  Refresher
+                  ActiveSpeakerDetector
                   <span class='icon'>▸</span>
                 </a>
                 
@@ -524,31 +494,61 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
-                        href='#refresheradd'
+                        href='#activespeakerdetectorsetminchangeperiod'
                         class='regular pre-open'>
-                        #add
+                        #setMinChangePeriod
                       </a></li>
                       
                       <li><a
-                        href='#refresheron'
+                        href='#activespeakerdetectorsetmaxaccumulatedscore'
+                        class='regular pre-open'>
+                        #setMaxAccumulatedScore
+                      </a></li>
+                      
+                      <li><a
+                        href='#activespeakerdetectorsetnoisegatingthreshold'
+                        class='regular pre-open'>
+                        #setNoiseGatingThreshold
+                      </a></li>
+                      
+                      <li><a
+                        href='#activespeakerdetectorsetminactivationscore'
+                        class='regular pre-open'>
+                        #setMinActivationScore
+                      </a></li>
+                      
+                      <li><a
+                        href='#activespeakerdetectoraddspeaker'
+                        class='regular pre-open'>
+                        #addSpeaker
+                      </a></li>
+                      
+                      <li><a
+                        href='#activespeakerdetectorremovespeaker'
+                        class='regular pre-open'>
+                        #removeSpeaker
+                      </a></li>
+                      
+                      <li><a
+                        href='#activespeakerdetectoron'
                         class='regular pre-open'>
                         #on
                       </a></li>
                       
                       <li><a
-                        href='#refresheronce'
+                        href='#activespeakerdetectoronce'
                         class='regular pre-open'>
                         #once
                       </a></li>
                       
                       <li><a
-                        href='#refresheroff'
+                        href='#activespeakerdetectoroff'
                         class='regular pre-open'>
                         #off
                       </a></li>
                       
                       <li><a
-                        href='#refresherstop'
+                        href='#activespeakerdetectorstop'
                         class='regular pre-open'>
                         #stop
                       </a></li>
@@ -561,13 +561,13 @@
                       <li class='h5'>Events</li>
                       
                         <li><a
-                          href='#refreshereventrefreshing'
+                          href='#activespeakerdetectoreventactivespeakerchanged'
                           class='regular pre-open'>
-                          ⓔ refreshing
+                          ⓔ activespeakerchanged
                         </a></li>
                       
                         <li><a
-                          href='#refreshereventstopped'
+                          href='#activespeakerdetectoreventstopped'
                           class='regular pre-open'>
                           ⓔ stopped
                         </a></li>
@@ -1879,6 +1879,12 @@
                   
                     <ul class='list-reset py1-ul pl1'>
                       <li class='h5'>Events</li>
+                      
+                        <li><a
+                          href='#transporteventicetimeout'
+                          class='regular pre-open'>
+                          ⓔ icetimeout
+                        </a></li>
                       
                         <li><a
                           href='#transporteventdtlsstate'
@@ -3520,6 +3526,534 @@ Only call it once!</p>
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='refresher'>
+      Refresher
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Periodically request an I frame on all incoming stream or tracks</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>new Refresher()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='refresheradd'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>add(streamOrTrack)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Add stream or track to request</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>add(streamOrTrack: (IncomintgStream | <a href="#incomingstreamtrack">IncomingStreamTrack</a>))</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>streamOrTrack</span> <code class='quiet'>((IncomintgStream | <a href="#incomingstreamtrack">IncomingStreamTrack</a>))</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='refresheron'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>on(event, listener)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Add event listener</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>on(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Event listener
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#incomingstream">IncomingStream</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='refresheronce'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>once(event, listener)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Add event listener once</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>once(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Event listener
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#incomingstream">IncomingStream</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='refresheroff'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>off(event, listener)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Remove event listener</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>off(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#outgoingstream">OutgoingStream</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Event name
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
+	    Event listener
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#outgoingstream">OutgoingStream</a></code>:
+        
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='refresherstop'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>stop()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Stop refresher</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>stop()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Events</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='refreshereventrefreshing'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>refreshing</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Refresher event to indicate that refesh is taking place</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>refreshing</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>refreser</span> <code class='quiet'>(<a href="#refresher">Refresher</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='refreshereventstopped'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>stopped</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Refresher stopped event</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>stopped</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>refresher</span> <code class='quiet'>(<a href="#refresher">Refresher</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='recordertrack'>
       RecorderTrack
     </h3>
@@ -4167,840 +4701,6 @@ This operation will not change the muted state of the stream this track belongs 
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>recorderTrack</span> <code class='quiet'>(<a href="#recordertrack">RecorderTrack</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-</div>
-
-  
-</section>
-
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='activespeakerdetector'>
-      ActiveSpeakerDetector
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>new ActiveSpeakerDetector()</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='activespeakerdetectorsetminchangeperiod'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>setMinChangePeriod(minChangePeriod)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Set minimum period between active speaker changes</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>setMinChangePeriod(minChangePeriod: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>minChangePeriod</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectorsetmaxaccumulatedscore'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>setMaxAccumulatedScore(maxAcummulatedScore)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Maximux activity score accumulated by an speaker</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>setMaxAccumulatedScore(maxAcummulatedScore: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>maxAcummulatedScore</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectorsetnoisegatingthreshold'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>setNoiseGatingThreshold(noiseGatingThreshold)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Minimum db level to not be considered as muted</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>setNoiseGatingThreshold(noiseGatingThreshold: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>noiseGatingThreshold</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectorsetminactivationscore'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>setMinActivationScore(minActivationScore)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Set minimum activation score to be electible as active speaker</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>setMinActivationScore(minActivationScore: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>minActivationScore</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectoraddspeaker'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>addSpeaker(track)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Add incoming track for speaker detection</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>addSpeaker(track: <a href="#incomingstreamtrack">IncomingStreamTrack</a>)</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>track</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectorremovespeaker'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>removeSpeaker(track)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Remove track from speaker detection</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>removeSpeaker(track: IncomingStreamTrakc)</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>track</span> <code class='quiet'>(IncomingStreamTrakc)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectoron'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>on(event, listener)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Add event listener</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>on(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstreamtrack">IncomingStreamTrack</a></div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Event name
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
-	    Event listener
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectoronce'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>once(event, listener)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Add event listener once</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>once(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Event name
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
-	    Event listener
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstream">IncomingStream</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectoroff'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>off(event, listener)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Remove event listener</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>off(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstreamtrack">IncomingStreamTrack</a></div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>event</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Event name
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>)</code>
-	    Event listener
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectorstop'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>stop()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Stop this transponder, will dettach the OutgoingStreamTrack</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>stop()</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-</div>
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Events</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='activespeakerdetectoreventactivespeakerchanged'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>activespeakerchanged</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>ActiveSpeakerDetector new active speaker detected event</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>activespeakerchanged</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>track</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
-	    Track that has been activated
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='activespeakerdetectoreventstopped'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>stopped</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>ActiveSpeakerDetector stopped event</p>
-
- 
-  
-    <div class='pre p1 fill-light mt0'>stopped</div>
-   
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>activeSpeakerDetector</span> <code class='quiet'>(<a href="#activespeakerdetector">ActiveSpeakerDetector</a>)</code>
 	    
           </div>
           
@@ -6292,19 +5992,19 @@ This operation will not change the muted state of the stream this track belongs 
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='refresher'>
-      Refresher
+    <h3 class='fl m0' id='activespeakerdetector'>
+      ActiveSpeakerDetector
     </h3>
     
     
   </div>
   
 
-  <p>Periodically request an I frame on all incoming stream or tracks</p>
+  <p>ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes</p>
 
  
   
-    <div class='pre p1 fill-light mt0'>new Refresher()</div>
+    <div class='pre p1 fill-light mt0'>new ActiveSpeakerDetector()</div>
    
   
   
@@ -6332,11 +6032,11 @@ This operation will not change the muted state of the stream this track belongs 
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='refresheradd'>
+    <div class='border-bottom' id='activespeakerdetectorsetminchangeperiod'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>add(streamOrTrack)</span>
+            <span class='code strong strong truncate'>setMinChangePeriod(minChangePeriod)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -6344,11 +6044,11 @@ This operation will not change the muted state of the stream this track belongs 
 
   
 
-  <p>Add stream or track to request</p>
+  <p>Set minimum period between active speaker changes</p>
 
  
   
-    <div class='pre p1 fill-light mt0'>add(streamOrTrack: (IncomintgStream | <a href="#incomingstreamtrack">IncomingStreamTrack</a>))</div>
+    <div class='pre p1 fill-light mt0'>setMinChangePeriod(minChangePeriod: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
    
   
   
@@ -6366,7 +6066,7 @@ This operation will not change the muted state of the stream this track belongs 
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>streamOrTrack</span> <code class='quiet'>((IncomintgStream | <a href="#incomingstreamtrack">IncomingStreamTrack</a>))</code>
+            <span class='code bold'>minChangePeriod</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
 	    
           </div>
           
@@ -6393,7 +6093,312 @@ This operation will not change the muted state of the stream this track belongs 
       </div>
     </div>
   
-    <div class='border-bottom' id='refresheron'>
+    <div class='border-bottom' id='activespeakerdetectorsetmaxaccumulatedscore'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setMaxAccumulatedScore(maxAcummulatedScore)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Maximux activity score accumulated by an speaker</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setMaxAccumulatedScore(maxAcummulatedScore: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>maxAcummulatedScore</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='activespeakerdetectorsetnoisegatingthreshold'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setNoiseGatingThreshold(noiseGatingThreshold)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Minimum db level to not be considered as muted</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setNoiseGatingThreshold(noiseGatingThreshold: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>noiseGatingThreshold</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='activespeakerdetectorsetminactivationscore'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setMinActivationScore(minActivationScore)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Set minimum activation score to be electible as active speaker</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>setMinActivationScore(minActivationScore: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>minActivationScore</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='activespeakerdetectoraddspeaker'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>addSpeaker(track)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Add incoming track for speaker detection</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addSpeaker(track: <a href="#incomingstreamtrack">IncomingStreamTrack</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>track</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='activespeakerdetectorremovespeaker'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>removeSpeaker(track)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Remove track from speaker detection</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>removeSpeaker(track: IncomingStreamTrakc)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>track</span> <code class='quiet'>(IncomingStreamTrakc)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='activespeakerdetectoron'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -6409,7 +6414,7 @@ This operation will not change the muted state of the stream this track belongs 
 
  
   
-    <div class='pre p1 fill-light mt0'>on(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstream">IncomingStream</a></div>
+    <div class='pre p1 fill-light mt0'>on(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstreamtrack">IncomingStreamTrack</a></div>
    
   
   
@@ -6451,7 +6456,7 @@ This operation will not change the muted state of the stream this track belongs 
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#incomingstream">IncomingStream</a></code>:
+      <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
 
       
@@ -6472,7 +6477,7 @@ This operation will not change the muted state of the stream this track belongs 
       </div>
     </div>
   
-    <div class='border-bottom' id='refresheronce'>
+    <div class='border-bottom' id='activespeakerdetectoronce'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -6551,7 +6556,7 @@ This operation will not change the muted state of the stream this track belongs 
       </div>
     </div>
   
-    <div class='border-bottom' id='refresheroff'>
+    <div class='border-bottom' id='activespeakerdetectoroff'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -6567,7 +6572,7 @@ This operation will not change the muted state of the stream this track belongs 
 
  
   
-    <div class='pre p1 fill-light mt0'>off(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#outgoingstream">OutgoingStream</a></div>
+    <div class='pre p1 fill-light mt0'>off(event: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, listener: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): <a href="#incomingstreamtrack">IncomingStreamTrack</a></div>
    
   
   
@@ -6609,7 +6614,7 @@ This operation will not change the muted state of the stream this track belongs 
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#outgoingstream">OutgoingStream</a></code>:
+      <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
 
       
@@ -6630,7 +6635,7 @@ This operation will not change the muted state of the stream this track belongs 
       </div>
     </div>
   
-    <div class='border-bottom' id='refresherstop'>
+    <div class='border-bottom' id='activespeakerdetectorstop'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -6642,7 +6647,7 @@ This operation will not change the muted state of the stream this track belongs 
 
   
 
-  <p>Stop refresher</p>
+  <p>Stop this transponder, will dettach the OutgoingStreamTrack</p>
 
  
   
@@ -6686,11 +6691,11 @@ This operation will not change the muted state of the stream this track belongs 
     <div class='py1 quiet mt1 prose-big'>Events</div>
     <div class="clearfix">
   
-    <div class='border-bottom' id='refreshereventrefreshing'>
+    <div class='border-bottom' id='activespeakerdetectoreventactivespeakerchanged'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>refreshing</span>
+            <span class='code strong strong truncate'>activespeakerchanged</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -6698,11 +6703,11 @@ This operation will not change the muted state of the stream this track belongs 
 
   
 
-  <p>Refresher event to indicate that refesh is taking place</p>
+  <p>ActiveSpeakerDetector new active speaker detected event</p>
 
  
   
-    <div class='pre p1 fill-light mt0'>refreshing</div>
+    <div class='pre p1 fill-light mt0'>activespeakerchanged</div>
    
   
   
@@ -6720,8 +6725,9 @@ This operation will not change the muted state of the stream this track belongs 
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>refreser</span> <code class='quiet'>(<a href="#refresher">Refresher</a>)</code>
-	    
+            <span class='code bold'>track</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
+	    Track that has been activated
+
           </div>
           
         </div>
@@ -6747,7 +6753,7 @@ This operation will not change the muted state of the stream this track belongs 
       </div>
     </div>
   
-    <div class='border-bottom' id='refreshereventstopped'>
+    <div class='border-bottom' id='activespeakerdetectoreventstopped'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
@@ -6759,7 +6765,7 @@ This operation will not change the muted state of the stream this track belongs 
 
   
 
-  <p>Refresher stopped event</p>
+  <p>ActiveSpeakerDetector stopped event</p>
 
  
   
@@ -6781,7 +6787,7 @@ This operation will not change the muted state of the stream this track belongs 
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>refresher</span> <code class='quiet'>(<a href="#refresher">Refresher</a>)</code>
+            <span class='code bold'>activeSpeakerDetector</span> <code class='quiet'>(<a href="#activespeakerdetector">ActiveSpeakerDetector</a>)</code>
 	    
           </div>
           
@@ -18727,6 +18733,67 @@ Note that this will only work on browsers that supports RTX and transport wide c
   
     <div class='py1 quiet mt1 prose-big'>Events</div>
     <div class="clearfix">
+  
+    <div class='border-bottom' id='transporteventicetimeout'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>icetimeout</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>ICE timoute event. Fired when no ICE request ar received for 30 seconds.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>icetimeout</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>transport</span> <code class='quiet'>(<a href="#transport">Transport</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
   
     <div class='border-bottom' id='transporteventdtlsstate'>
       <div class="clearfix small pointer toggle-sibling">
