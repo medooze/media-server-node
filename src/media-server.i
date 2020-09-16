@@ -826,6 +826,7 @@ struct RTPSource
 	DWORD cycles;
 	DWORD jitter;
 	DWORD numPackets;
+	DWORD numPacketsDelta;
 	DWORD numRTCPPackets;
 	DWORD totalBytes;
 	DWORD totalRTCPBytes;
@@ -835,7 +836,11 @@ struct RTPSource
 
 struct RTPIncomingSource : public RTPSource
 {
+	DWORD numFrames;
+	DWORD numFramesDelta;
 	DWORD lostPackets;
+	DWORD lostPacketsDelta;
+	DWORD dropPackets;
 	DWORD totalPacketsSinceLastSR;
 	DWORD totalBytesSinceLastSR;
 	DWORD minExtSeqNumSinceLastSR ;

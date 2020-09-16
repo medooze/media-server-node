@@ -90,6 +90,7 @@
 							"media-server/src/http.cpp",
 							"media-server/src/avcdescriptor.cpp",
 							"media-server/src/utf8.cpp",
+							"media-server/src/rtp/DependencyDescriptor.cpp",
 							"media-server/src/rtp/LayerInfo.cpp",
 							"media-server/src/rtp/RTCPCommonHeader.cpp",
 							"media-server/src/rtp/RTPHeader.cpp",
