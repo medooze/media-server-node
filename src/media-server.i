@@ -867,7 +867,6 @@ struct RTPIncomingSource : public RTPSource
 	
 struct RTPOutgoingSource : public RTPSource
 {
-	
 	DWORD time;
 	DWORD lastTime;
 	DWORD numPackets;
@@ -876,6 +875,14 @@ struct RTPOutgoingSource : public RTPSource
 	DWORD totalRTCPBytes;
 	QWORD lastSenderReport;
 	QWORD lastSenderReportNTP;
+	DWORD remb;
+	DWORD reportCount;
+	DWORD reportCountDelta;
+	DWORD reportedLostCount;
+	DWORD reportedLostCountDelta;
+	BYTE  reportedFractionLost;
+	DWORD reportedJitter;
+	DWORD rtt;
 };
 
 %nodefaultctor TimeService;
