@@ -6,10 +6,10 @@
 
 Set new DTLS certificates. Should be called before any Endpoint is established.
 
-#### Parameters
+**Parameters**
 
--   `cert` **[String][1]** path of the certificate file
--   `key` **[String][1]** path of the key file
+-   `cert` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** path of the certificate file
+-   `key` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** path of the key file
 
 ### terminate
 
@@ -20,23 +20,23 @@ Only call it once!
 
 Enable or disable log level traces
 
-#### Parameters
+**Parameters**
 
--   `flag` **[Boolean][2]** 
+-   `flag` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### enableDebug
 
 Enable or disable debug level traces
 
-#### Parameters
+**Parameters**
 
--   `flag` **[Boolean][2]** 
+-   `flag` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### setPortRange
 
 Set UDP port range for encpoints
 
-#### Parameters
+**Parameters**
 
 -   `minPort` **Integer** Min UDP port
 -   `maxPort` **Integer** Max UDP port [Optional]
@@ -45,50 +45,50 @@ Set UDP port range for encpoints
 
 Enable or disable ultra debug level traces
 
-#### Parameters
+**Parameters**
 
--   `flag` **[Boolean][2]** 
+-   `flag` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### createEndpoint
 
 Create a new endpoint object
 
-#### Parameters
+**Parameters**
 
--   `ip` **[String][1]** External IP address of server, to be used when announcing the local ICE candidate
+-   `ip` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** External IP address of server, to be used when announcing the local ICE candidate
 
-Returns **[Endpoint][3]** The new created endpoing
+Returns **[Endpoint](#endpoint)** The new created endpoing
 
 ### createRecorder
 
 Create a new MP4 recorder
 
-#### Parameters
+**Parameters**
 
--   `filename` **[String][1]** Path and filename of the recorded mp4 file
--   `params` **[Object][4]** Recording parameters (Optional)
-    -   `params.refresh` **[Number][5]** Periodically refresh an intra on all video tracks (in ms)
-    -   `params.waitForIntra` **[Boolean][2]** Wait until first video iframe is received to start recording media
-    -   `params.timeShift` **[Number][5]** Buffer time in ms. Recording must be splicity started with flush() call
-    -   `params.disableHints` **[Boolean][2]** Disable recording hint tracks. Note that this file won't be playable with the Player object;
+-   `filename` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path and filename of the recorded mp4 file
+-   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Recording parameters (Optional)
+    -   `params.refresh` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Periodically refresh an intra on all video tracks (in ms)
+    -   `params.waitForIntra` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Wait until first video iframe is received to start recording media
+    -   `params.timeShift` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Buffer time in ms. Recording must be splicity started with flush() call
+    -   `params.disableHints` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Disable recording hint tracks. Note that this file won't be playable with the Player object;
 
-Returns **[Recorder][6]** 
+Returns **[Recorder](#recorder)** 
 
 ### createPlayer
 
 Create a new MP4 player
 
-#### Parameters
+**Parameters**
 
--   `filename` **[String][1]** Path and filename of the mp4 file
+-   `filename` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Path and filename of the mp4 file
 
-Returns **[Player][7]** 
+Returns **[Player](#player)** 
 
 ### createStreamer
 
 Create a new RTP streamer
 
-Returns **[Streamer][8]** 
+Returns **[Streamer](#streamer)** 
 
 ### createActiveSpeakerDetector
 
@@ -98,7 +98,7 @@ Create a new Active Speaker Detecrtor
 
 Create a new stream refresher
 
-#### Parameters
+**Parameters**
 
 -   `period` **type** Intra refresh period
 
@@ -106,16 +106,16 @@ Create a new stream refresher
 
 Create a new emulated transport from pcap file
 
-#### Parameters
+**Parameters**
 
+-   `filename` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** PCAP filename and path
 -   `pcap`  
--   `filename` **[String][1]** PCAP filename and path
 
 ### getDefaultCapabilities
 
 Get the default media server capabilities for each supported media type
 
-Returns **[Object][4]** Object containing the capabilities by media ("audio","video")
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object containing the capabilities by media ("audio","video")
 
 ## SDPManager
 
@@ -125,46 +125,46 @@ SDPManager
 
 Get current SDP offer/answer state
 
-Returns **[String][1]** one of "initial","local-offer","remote-offer","stabable".
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** one of "initial","local-offer","remote-offer","stabable".
 
 ### getTransport
 
 Returns the Transport object created by the SDP O/A
 
-Returns **[Transport][9]** 
+Returns **[Transport](#transport)** 
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listeener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[SDPManager][11]** 
+Returns **[SDPManager](#sdpmanager)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[SDPManager][11]** 
+Returns **[SDPManager](#sdpmanager)** 
 
 ### stop
 
@@ -178,42 +178,42 @@ Periodically request an I frame on all incoming stream or tracks
 
 Add stream or track to request
 
-#### Parameters
+**Parameters**
 
--   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
+-   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack](#incomingstreamtrack))** 
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[OutgoingStream][14]** 
+Returns **[OutgoingStream](#outgoingstream)** 
 
 ### stop
 
@@ -231,191 +231,65 @@ Get recorder track id
 
 Get incoming stream track
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### getEncoding
 
 Get incoming encoding
 
-Returns **[Object][4]** 
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ### isMuted
 
 Check if the track is muted or not
 
-Returns **[boolean][2]** muted
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** muted
 
 ### mute
 
 Mute/Unmute track
 This operation will not change the muted state of the stream this track belongs too.
 
-#### Parameters
+**Parameters**
 
--   `muting` **[boolean][2]** if we want to mute or unmute
+-   `muting` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** if we want to mute or unmute
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[RecorderTrack][15]** 
+Returns **[RecorderTrack](#recordertrack)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[RecorderTrack][15]** 
+Returns **[RecorderTrack](#recordertrack)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[RecorderTrack][15]** 
+Returns **[RecorderTrack](#recordertrack)** 
 
 ### stop
 
 Stop recording this track
-
-## Transponder
-
-Transponder copies data from an incoming track to an outgoing track and allows stream modifications
-
-### setIncomingTrack
-
-Set incoming track
-
-#### Parameters
-
--   `track` **[IncomingStreamTrack][13]** 
-
-### getIncomingTrack
-
-Get attached track
-
-Returns **[IncomingStreamTrack][13]** track
-
-### getAvailableLayers
-
-Get available encodings and layers
-
-Returns **[Object][4]** 
-
-### isMuted
-
-Check if the track is muted or not
-
-Returns **[boolean][2]** muted
-
-### mute
-
-Mute/Unmute track
-This operation will not change the muted state of the stream this track belongs too.
-
-#### Parameters
-
--   `muting` **[boolean][2]** if we want to mute or unmute
-
-### setTargetBitrate
-
-Select encoding and temporal and spatial layers based on the desired bitrate. This operation will unmute the transponder if it was mutted and it is possible to select an encoding and layer based on the target bitrate and options.
-
-#### Parameters
-
--   `target`  
--   `options` **[Object][4]** Options for configuring algorithm to select best encoding/layers [Optional]
-    -   `options.traversal` **[Object][4]** Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" [Default: "default"]
-    -   `options.strict` **[Object][4]** If there is not a layer with a bitrate lower thatn target, stop sending media [Default: false]
--   `bitrate` **[Number][5]** 
-
-Returns **[Number][5]** Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
-
-### getSelectedtEncoding
-
-Return the encoding that is being forwarded
-
-Returns **[String][1]** encodingId
-
-### getSelectedSpatialLayerId
-
-Return the spatial layer id that is being forwarded
-
-Returns **[Number][5]** spatial layer id
-
-### getSelectedTemporalLayerId
-
-Return the temporal layer id that is being forwarded
-
-Returns **[Number][5]** temporal layer id
-
-### selectLayer
-
-Select SVC temporatl and spatial layers. Only available for VP9 media.
-
-#### Parameters
-
--   `spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream
--   `temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream
-
-### setMaximumLayers
-
-Set maximum statial and temporal layers to be forwrarded. Base layer is always enabled.
-
-#### Parameters
-
--   `maxSpatialLayerId` **[Number][5]** Max spatial layer id
--   `maxTemporalLayerId` **[Number][5]** Max temporal layer id
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### stop
-
-Stop this transponder, will dettach the OutgoingStreamTrack
 
 ## ActiveSpeakerDetector
 
@@ -425,47 +299,47 @@ ActiveSpeakerDetector accumulate received voice activity and fires an event when
 
 Set minimum period between active speaker changes
 
-#### Parameters
+**Parameters**
 
--   `minChangePeriod` **[Number][5]** 
+-   `minChangePeriod` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ### setMaxAccumulatedScore
 
 Maximux activity score accumulated by an speaker
 
-#### Parameters
+**Parameters**
 
--   `maxAcummulatedScore` **[Number][5]** 
+-   `maxAcummulatedScore` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ### setNoiseGatingThreshold
 
 Minimum db level to not be considered as muted
 
-#### Parameters
+**Parameters**
 
--   `noiseGatingThreshold` **[Number][5]** 
+-   `noiseGatingThreshold` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ### setMinActivationScore
 
 Set minimum activation score to be electible as active speaker
 
-#### Parameters
+**Parameters**
 
--   `minActivationScore` **[Number][5]** 
+-   `minActivationScore` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ### addSpeaker
 
 Add incoming track for speaker detection
 
-#### Parameters
+**Parameters**
 
--   `track` **[IncomingStreamTrack][13]** 
+-   `track` **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### removeSpeaker
 
 Remove track from speaker detection
 
-#### Parameters
+**Parameters**
 
 -   `track` **IncomingStreamTrakc** 
 
@@ -473,34 +347,34 @@ Remove track from speaker detection
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### stop
 
@@ -515,55 +389,181 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
 
 Creates a new streaming session from a media description
 
-#### Parameters
+**Parameters**
 
 -   `media` **MediaInfo** Media codec description info
--   `params` **[Object][4]** Network parameters [Optional]
-    -   `params.local` **[Object][4]** Local parameters
-        -   `params.local.port` **[Number][5]** receiving port
-    -   `params.remote` **[Object][4]** Remote parameters
-        -   `params.remote.ip` **[String][1]** Sending ip address
-        -   `params.remote.port` **[Number][5]** Sending port
-    -   `params.noRTCP` **[Number][5]** Disable sending rtcp
+-   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Network parameters [Optional]
+    -   `params.local` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Local parameters
+        -   `params.local.port` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** receiving port
+    -   `params.remote` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Remote parameters
+        -   `params.remote.ip` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Sending ip address
+        -   `params.remote.port` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Sending port
+    -   `params.noRTCP` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Disable sending rtcp
 
-Returns **[StreamerSession][16]** The new streaming session
+Returns **[StreamerSession](#streamersession)** The new streaming session
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listeener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Endpoint][3]** 
+Returns **[Endpoint](#endpoint)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Endpoint][3]** 
+Returns **[Endpoint](#endpoint)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Endpoint][3]** 
+Returns **[Endpoint](#endpoint)** 
 
 ### stop
 
 Stop all streaming sessions and frees resources
+
+## Transponder
+
+Transponder copies data from an incoming track to an outgoing track and allows stream modifications
+
+### setIncomingTrack
+
+Set incoming track
+
+**Parameters**
+
+-   `track` **[IncomingStreamTrack](#incomingstreamtrack)** 
+
+### getIncomingTrack
+
+Get attached track
+
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** track
+
+### getAvailableLayers
+
+Get available encodings and layers
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+### isMuted
+
+Check if the track is muted or not
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** muted
+
+### mute
+
+Mute/Unmute track
+This operation will not change the muted state of the stream this track belongs too.
+
+**Parameters**
+
+-   `muting` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** if we want to mute or unmute
+
+### setTargetBitrate
+
+Select encoding and temporal and spatial layers based on the desired bitrate. This operation will unmute the transponder if it was mutted and it is possible to select an encoding and layer based on the target bitrate and options.
+
+**Parameters**
+
+-   `bitrate` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Options for configuring algorithm to select best encoding/layers [Optional]
+    -   `options.traversal` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" [Default: "default"]
+    -   `options.strict` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** If there is not a layer with a bitrate lower thatn target, stop sending media [Default: false]
+-   `target`  
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
+
+### getSelectedtEncoding
+
+Return the encoding that is being forwarded
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** encodingId
+
+### getSelectedSpatialLayerId
+
+Return the spatial layer id that is being forwarded
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** spatial layer id
+
+### getSelectedTemporalLayerId
+
+Return the temporal layer id that is being forwarded
+
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** temporal layer id
+
+### selectLayer
+
+Select SVC temporatl and spatial layers. Only available for VP9 media.
+
+**Parameters**
+
+-   `spatialLayerId` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The spatial layer id to send to the outgoing stream
+-   `temporalLayerId` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The temporaral layer id to send to the outgoing stream
+
+### setMaximumLayers
+
+Set maximum statial and temporal layers to be forwrarded. Base layer is always enabled.
+
+**Parameters**
+
+-   `maxSpatialLayerId` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Max spatial layer id
+-   `maxTemporalLayerId` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Max temporal layer id
+
+### on
+
+Add event listener
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
+
+### once
+
+Add event listener once
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[IncomingStream](#incomingstream)** 
+
+### off
+
+Remove event listener
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
+
+### stop
+
+Stop this transponder, will dettach the OutgoingStreamTrack
 
 ## Recorder
 
@@ -573,85 +573,85 @@ MP4 recorder that allows to record several streams/tracks on a single mp4 file
 
 Get recording filename
 
-Returns **[String][1]** 
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ### getStartTime
 
 Get recording filename
 
-Returns **[Date][17]** 
+Returns **[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)** 
 
 ### isTimeShifted
 
 Is the recording time shifted?
 
-Returns **[Boolean][2]** 
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### flush
 
 Start recording time shiftt buffer.
 
-#### Parameters
+**Parameters**
 
--   `filename` **[String][1]** Override filename [Optional]
+-   `filename` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Override filename [Optional]
 
 ### record
 
 Start recording and incoming
 
-#### Parameters
+**Parameters**
 
--   `incomingStreamOrTrack` **([IncomingStream][12] \| [IncomingStreamTrack][13])** Incomining stream or track to be recordeds
+-   `incomingStreamOrTrack` **([IncomingStream](#incomingstream) \| [IncomingStreamTrack](#incomingstreamtrack))** Incomining stream or track to be recordeds
 
-Returns **[Array][18]&lt;[RecorderTrack][15]>** 
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[RecorderTrack](#recordertrack)>** 
 
 ### mute
 
 Mute/Unmute all tracks
 This operation will not change the muted state of the stream this track belongs too.
 
-#### Parameters
+**Parameters**
 
--   `muting` **[boolean][2]** if we want to mute or unmute
+-   `muting` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** if we want to mute or unmute
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Recorder][6]** 
+Returns **[Recorder](#recorder)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Recorder][6]** 
+Returns **[Recorder](#recorder)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Recorder][6]** 
+Returns **[Recorder](#recorder)** 
 
 ### stop
 
 Stop recording and close file. NOTE: File will be flsuh async,
 
-Returns **[undefined][19]**  TODO: return promise when flush is ended
+Returns **[undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined)**  TODO: return promise when flush is ended
 
 ## Player
 
@@ -661,61 +661,61 @@ MP4 recorder that allows to record several streams/tracks on a single mp4 file
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### getTracks
 
 Get all the tracks
 
-Returns **[Array][18]&lt;[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[IncomingStreamTrack](#incomingstreamtrack)>** Array of tracks
 
 ### getAudioTracks
 
 Get an array of the media stream audio tracks
 
-Returns **[Array][18]&lt;[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[IncomingStreamTrack](#incomingstreamtrack)>** Array of tracks
 
 ### getVideoTracks
 
 Get an array of the media stream video tracks
 
-Returns **[Array][18]&lt;[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[IncomingStreamTrack](#incomingstreamtrack)>** Array of tracks
 
 ### play
 
 Starts playback
 
-#### Parameters
+**Parameters**
 
--   `params` **[Object][4]** 
-    -   `params.repeat` **[Object][4]** Repeat playback when file is ended
+-   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+    -   `params.repeat` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Repeat playback when file is ended
 
 ### resume
 
@@ -729,9 +729,9 @@ Pause playback
 
 Start playback from given time
 
-#### Parameters
+**Parameters**
 
--   `time` **[Number][5]** in miliseconds
+-   `time` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** in miliseconds
 
 ### stop
 
@@ -745,13 +745,13 @@ Represent the connection between a local udp port and a remote one. It sends and
 
 Get the local rtp/udp port
 
-Returns **[Number][5]** port number
+Returns **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** port number
 
 ### setRemote
 
 Set the rempte rtp/udp ip and port
 
-#### Parameters
+**Parameters**
 
 -   `ip`  
 -   `port`  
@@ -760,46 +760,46 @@ Set the rempte rtp/udp ip and port
 
 Returns the incoming stream track associated with this streaming session
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### getOutgoingStreamTrack
 
 Returns the outgoing stream track associated with this streaming session
 
-Returns **[OutgoingStreamTrack][20]** 
+Returns **[OutgoingStreamTrack](#outgoingstreamtrack)** 
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[StreamerSession][16]** 
+Returns **[StreamerSession](#streamersession)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[StreamerSession][16]** 
+Returns **[StreamerSession](#streamersession)** 
 
 ### stop
 
@@ -813,7 +813,7 @@ The incoming streams represent the recived media stream from a remote peer.
 
 The media stream id as announced on the SDP
 
-Returns **[String][1]** 
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ### getStreamInfo
 
@@ -825,34 +825,34 @@ Returns **StreamInfo** The stream info object
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### getStats
 
@@ -864,43 +864,43 @@ See OutgoingStreamTrack.getStats for information about the stats returned by eac
 
 Get track by id
 
-#### Parameters
+**Parameters**
 
--   `trackId` **[String][1]** The track id
+-   `trackId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The track id
 
-Returns **[IncomingStreamTrack][13]** requested track or null
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** requested track or null
 
 ### getTracks
 
 Get all the tracks
 
-#### Parameters
+**Parameters**
 
--   `type` **[String][1]** The media type (Optional)
+-   `type` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The media type (Optional)
 
-Returns **[Array][18]&lt;[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[IncomingStreamTrack](#incomingstreamtrack)>** Array of tracks
 
 ### getAudioTracks
 
 Get an array of the media stream audio tracks
 
-Returns **[Array][18]&lt;[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[IncomingStreamTrack](#incomingstreamtrack)>** Array of tracks
 
 ### getVideoTracks
 
 Get an array of the media stream video tracks
 
-Returns **[Array][18]&lt;[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[IncomingStreamTrack](#incomingstreamtrack)>** Array of tracks
 
 ### createTrack
 
 Create new track from a TrackInfo object and add it to this stream
 
-#### Parameters
+**Parameters**
 
 -   `trackInfo` **TrackInfo** Track info object
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### stop
 
@@ -920,17 +920,17 @@ See OutgoingStreamTrack.getStats for information about the stats returned by eac
 
 Check if the stream is muted or not
 
-Returns **[boolean][2]** muted
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** muted
 
 ### attachTo
 
 Listen media from the incoming stream and send it to the remote peer of the associated transport.
 
-#### Parameters
+**Parameters**
 
--   `incomingStream` **[IncomingStream][12]** The incoming stream to listen media for
+-   `incomingStream` **[IncomingStream](#incomingstream)** The incoming stream to listen media for
 
-Returns **[Array][18]&lt;[Transponder][21]>** Track transponders array
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Transponder](#transponder)>** Track transponders array
 
 ### detach
 
@@ -946,89 +946,89 @@ Returns **StreamInfo** The stream info object
 
 The media stream id as announced on the SDP
 
-Returns **[String][1]** 
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[OutgoingStream][14]** 
+Returns **[OutgoingStream](#outgoingstream)** 
 
 ### getTracks
 
 Get all the tracks
 
-#### Parameters
+**Parameters**
 
--   `type` **[String][1]** The media type (Optional)
+-   `type` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The media type (Optional)
 
-Returns **[Array][18]&lt;[OutgoingStreamTrack][20]>** Array of tracks
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[OutgoingStreamTrack](#outgoingstreamtrack)>** Array of tracks
 
 ### getTrack
 
 Get track by id
 
-#### Parameters
+**Parameters**
 
--   `trackId` **[String][1]** The track id
+-   `trackId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The track id
 
-Returns **[IncomingStreamTrack][13]** requested track or null
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** requested track or null
 
 ### getAudioTracks
 
 Get an array of the media stream audio tracks
 
-Returns **([Array][18] | OutgoingStreamTracks)** Array of tracks
+Returns **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) | OutgoingStreamTracks)** Array of tracks
 
 ### getVideoTracks
 
 Get an array of the media stream video tracks
 
-Returns **([Array][18] \| [OutgoingStreamTrack][20])** Array of tracks
+Returns **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [OutgoingStreamTrack](#outgoingstreamtrack))** Array of tracks
 
 ### createTrack
 
 Create new track from a TrackInfo object and add it to this stream
 
-#### Parameters
+**Parameters**
 
--   `params` **([Object][4] | TrackInfo | [String][1])** Params plain object, StreamInfo object or media type
-    -   `params.id` **[String][1]?** Stream track id
-    -   `params.media` **[String][1]?** Media type ("audio" or "video")
-    -   `params.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][5]?** ssrc for the track
-        -   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
-        -   `params.ssrcs.fec` **[Number][5]?** ssrc for the fec video track
+-   `params` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | TrackInfo | [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Params plain object, StreamInfo object or media type
+    -   `params.id` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** Stream track id
+    -   `params.media` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** Media type ("audio" or "video")
+    -   `params.ssrcs` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Override the generated ssrcs for this track
+        -   `params.ssrcs.media` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the track
+        -   `params.ssrcs.rtx` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the rtx video track
+        -   `params.ssrcs.fec` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the fec video track
 -   `trackInfo` **TrackInfo** Track info object
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream](#outgoingstream)** The new outgoing stream
 
 Returns **OuggoingStreamTrack** 
 
@@ -1040,13 +1040,13 @@ Mirror incoming stream from another endpoint. Used to avoid inter-thread synchro
 
 Get stats for all encodings from the original track
 
-Returns **[Map][22]&lt;[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Map with stats by encodingId
 
 ### getActiveLayers
 
 Get active encodings and layers ordered by bitrate of the original track
 
-Returns **[Object][4]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Active layers object containing an array of active and inactive encodings and an array of all available layer info
 
 ### getId
 
@@ -1062,46 +1062,46 @@ Returns **TrackInfo** Track info
 
 Return ssrcs associated to this track
 
-Returns **[Object][4]** 
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ### getMedia
 
 Get track media type
 
-Returns **[String][1]** "audio"|"video"
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** "audio"|"video"
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### attached
 
@@ -1129,180 +1129,38 @@ Manager of remoe peer connecion clients
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listeener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[PeerConnectionServer][23]** 
+Returns **[PeerConnectionServer](#peerconnectionserver)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[PeerConnectionServer][23]** 
+Returns **[PeerConnectionServer](#peerconnectionserver)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[PeerConnectionServer][23]** 
+Returns **[PeerConnectionServer](#peerconnectionserver)** 
 
 ### stop
 
 Stop the peerconnection server, will not stop the transport created by it
-
-## Endpoint
-
-An endpoint represent an UDP server socket.
-The endpoint will process STUN requests in order to be able to associate the remote ip:port with the registered transport and forward any further data comming from that transport.
-Being a server it is ICE-lite.
-
-### setAffinity
-
-Set cpu affinity for udp send/recv thread.
-
-#### Parameters
-
--   `cpu` **[Number][5]** CPU core or -1 to reset affinity.
-
-Returns **[boolean][2]** 
-
-### setIceTimeout
-
-Set ICE timeout for outgoing ICE binding requests
-
-#### Parameters
-
--   `timeout` **[Number][5]** Ammount of time in milliseconds between ICE binding requests
-
-### createTransport
-
-Create a new transport object and register it with the remote ICE username and password
-
-#### Parameters
-
--   `remoteInfo` **([Object][4] | SDPInfo)** Remote ICE and DTLS properties
--   `localInfo` **[Object][4]** Local ICE and DTLS properties (optional)
--   `options` **[Object][4]** Dictionary with transport properties
-    -   `options.disableSTUNKeepAlive` **[boolean][2]** Disable ICE/STUN keep alives, required for server to server transports
-    -   `options.srtpProtectionProfiles` **[String][1]** Colon delimited list of SRTP protection profile names
-
-Returns **[Transport][9]** New transport object
-
-### getLocalCandidates
-
-Get local ICE candidates for this endpoint. It will be shared by all the transport associated to this endpoint.
-
-Returns **Array.CandidateInfo** 
-
-### getDTLSFingerprint
-
-Get local DTLS fingerprint for this endpoint. It will be shared by all the transport associated to this endpoint.
-
-Returns **[String][1]** 
-
-### createOffer
-
-Helper that creates an offer from capabilities
-It generates a random ICE username and password and gets endpoint fingerprint
-
-#### Parameters
-
--   `capabilities` **[Object][4]** Media capabilities as required by SDPInfo.create
-
-Returns **SDPInfo** SDP offer
-
-### createPeerConnectionServer
-
-Create new peer connection server to manage remote peer connection clients
-
-#### Parameters
-
--   `tm` **TransactionManager** 
--   `capabilities` **[Object][4]** Same as SDPInfo.answer capabilites
-
-Returns **[PeerConnectionServer][23]** 
-
-### mirrorIncomingStream
-
-Mirror incoming stream from another endpoint. Used to avoid inter-thread synchronization when attaching multiple output streams.
-The endpoint will cache the cucrrent mirrored streams and return an already existing object if calling this method twice with same stream.
-
-#### Parameters
-
--   `incomingStream` **[IncomingStream][12]** stream to mirror
-
-Returns **[IncomingStream][12]** mirrored stream.
-
-### mirrorIncomingStreamTrack
-
-Mirror incoming stream track from another endpoint. Used to avoid inter-thread synchronization when attaching multiple output tracks.
-The endpoint will cache the cucrrent mirrored tracks and return an already existing object if calling this method twice with same track.
-
-#### Parameters
-
--   `incomingStreamTrack` **[IncomingStreamTrack][13]** track to mirror
-
-Returns **[IncomingStreamTrackMirrored][24]** mirrored track.
-
-### createSDPManager
-
-Create new SDP manager, this object will manage the SDP O/A for you and produce a suitable trasnport.
-
-#### Parameters
-
--   `sdpSemantics` **[String][1]** Type of sdp plan "unified-plan" or "plan-b"
--   `capabilities` **[Object][4]** Capabilities objects
-
-Returns **[SDPManager][11]** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listeener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### stop
-
-Stop the endpoint UDP server and terminate any associated transport
 
 ## EmulatedTransport
 
@@ -1313,9 +1171,9 @@ You must create the incoming streams as signaled on the remote SDP as any incomi
 
 Set remote RTP properties
 
-#### Parameters
+**Parameters**
 
--   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
+-   `rtp` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | SDPInfo)** Object param containing media information for audio and video
     -   `rtp.audio` **MediaInfo** Audio media info
     -   `rtp.video` **MediaInfo** Video media info
 
@@ -1323,53 +1181,53 @@ Set remote RTP properties
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listeener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Transport][9]** 
+Returns **[Transport](#transport)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Transport][9]** 
+Returns **[Transport](#transport)** 
 
 ### createIncomingStream
 
 Create an incoming stream object from the media stream info objet
 
-#### Parameters
+**Parameters**
 
 -   `info` **StreamInfo** Contains the ids and ssrcs of the stream to be created
 
-Returns **[IncomingStream][12]** The newly created incoming stream object
+Returns **[IncomingStream](#incomingstream)** The newly created incoming stream object
 
 ### play
 
 Starts playback
 
-#### Parameters
+**Parameters**
 
--   `params` **[Object][4]** 
-    -   `params.start` **[Object][4]** Set start time
+-   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+    -   `params.start` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Set start time
 
 ### resume
 
@@ -1383,132 +1241,161 @@ Pause playback
 
 Start playback from given time
 
-#### Parameters
+**Parameters**
 
--   `time` **[Number][5]** in miliseconds
+-   `time` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** in miliseconds
 
 ### stop
 
 Stop transport and all the associated incoming and outgoing streams
 
-## OutgoingStreamTrack
+## Endpoint
 
-Audio or Video track of a media stream sent to a remote peer
+An endpoint represent an UDP server socket.
+The endpoint will process STUN requests in order to be able to associate the remote ip:port with the registered transport and forward any further data comming from that transport.
+Being a server it is ICE-lite.
 
-### getId
+### setAffinity
 
-Get track id as signaled on the SDP
+Set cpu affinity for udp send/recv thread.
 
-### getMedia
+**Parameters**
 
-Get track media type
+-   `cpu` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** CPU core or -1 to reset affinity.
 
-Returns **[String][1]** "audio"|"video"
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-### getTrackInfo
+### setIceTimeout
 
-Get track info object
+Set ICE timeout for outgoing ICE binding requests
 
-Returns **TrackInfo** Track info
+**Parameters**
 
-### getStats
+-   `timeout` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Ammount of time in milliseconds between ICE binding requests
 
-Get stats for all encodings 
+### createTransport
 
-You will get stats for media, rtx and fec sources (if used):
-{
-  media: mediaStats,
-  rtx  : rtxStats,
-  fec  : fecStats
-  timestmap : timestamp
-}
+Create a new transport object and register it with the remote ICE username and password
 
-The stats objects will privide the follwing info for each source
+**Parameters**
 
--   numPackets	: number of rtp packets sent
--   numRTCPPackets	: number of rtcp packsets sent
--   totalBytes	: total rtp sent bytes
--   totalRTCPBytes	: total rtp sent bytes
--   bitrate		: average bitrate sent during last second in bps
+-   `remoteInfo` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | SDPInfo)** Remote ICE and DTLS properties
+-   `remote.ice` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | ICEInfo)** Remote ICE info, containing the username and password.
+-   `remote.dtls` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | DTLSInfo)** Remote DTLS info
+-   `remote.candidates` **(Array.CandidateInfo | Array.Object)** Remote ICE candidate info
+-   `localInfo` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Local ICE and DTLS properties (optional)
+-   `local.ice` **ICEInfo** Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
+-   `local.dtls` **DTLSInfo** Local DTLS info
+-   `local.candidates` **Array.CandidateInfo** Local candidate info
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Dictionary with transport properties
+    -   `options.disableSTUNKeepAlive` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Disable ICE/STUN keep alives, required for server to server transports
+    -   `options.srtpProtectionProfiles` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Colon delimited list of SRTP protection profile names
 
-Returns **[Map][22]&lt;[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Transport](#transport)** New transport object
 
-### getSSRCs
+### getLocalCandidates
 
-Return ssrcs associated to this track
+Get local ICE candidates for this endpoint. It will be shared by all the transport associated to this endpoint.
 
-Returns **[Object][4]** 
+Returns **Array.CandidateInfo** 
 
-### isMuted
+### getDTLSFingerprint
 
-Check if the track is muted or not
+Get local DTLS fingerprint for this endpoint. It will be shared by all the transport associated to this endpoint.
 
-Returns **[boolean][2]** muted
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
-### isAttached
+### createOffer
 
-Check if this outgoing stream track is alredy attached to an incoming stream track.
+Helper that creates an offer from capabilities
+It generates a random ICE username and password and gets endpoint fingerprint
 
-Returns **[Boolean][2]** true if attached, false otherwise
+**Parameters**
 
-### attachTo
+-   `capabilities` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Media capabilities as required by SDPInfo.create
 
-Listen media from the incoming stream track and send it to the remote peer of the associated transport.
-This will stop any previous transpoder created by a previous attach.
+Returns **SDPInfo** SDP offer
 
-#### Parameters
+### createPeerConnectionServer
 
--   `incomingStreamTrack` **[IncomingStreamTrack][13]** The incoming stream to listen media for
+Create new peer connection server to manage remote peer connection clients
 
-Returns **[Transponder][21]** Track transponder object
+**Parameters**
 
-### detach
+-   `tm` **TransactionManager** 
+-   `capabilities` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Same as SDPInfo.answer capabilites
 
-Stop forwarding any previous attached track.
-This will set the transponder inconming track to null
+Returns **[PeerConnectionServer](#peerconnectionserver)** 
 
-### getTransponder
+### mirrorIncomingStream
 
-Get attached transpoder for this track
+Mirror incoming stream from another endpoint. Used to avoid inter-thread synchronization when attaching multiple output streams.
+The endpoint will cache the cucrrent mirrored streams and return an already existing object if calling this method twice with same stream.
 
-Returns **[Transponder][21]** Attached transpoder or null if not attached
+**Parameters**
+
+-   `incomingStream` **[IncomingStream](#incomingstream)** stream to mirror
+
+Returns **[IncomingStream](#incomingstream)** mirrored stream.
+
+### mirrorIncomingStreamTrack
+
+Mirror incoming stream track from another endpoint. Used to avoid inter-thread synchronization when attaching multiple output tracks.
+The endpoint will cache the cucrrent mirrored tracks and return an already existing object if calling this method twice with same track.
+
+**Parameters**
+
+-   `incomingStreamTrack` **[IncomingStreamTrack](#incomingstreamtrack)** track to mirror
+
+Returns **[IncomingStreamTrackMirrored](#incomingstreamtrackmirrored)** mirrored track.
+
+### createSDPManager
+
+Create new SDP manager, this object will manage the SDP O/A for you and produce a suitable trasnport.
+
+**Parameters**
+
+-   `sdpSemantics` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Type of sdp plan "unified-plan" or "plan-b"
+-   `capabilities` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Capabilities objects
+
+Returns **[SDPManager](#sdpmanager)** 
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[Endpoint](#endpoint)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[Endpoint](#endpoint)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[Endpoint](#endpoint)** 
 
 ### stop
 
-Removes the track from the outgoing stream and also detaches from any attached incoming track
+Stop the endpoint UDP server and terminate any associated transport
 
 ## Transport
 
@@ -1523,15 +1410,15 @@ In order to decide how to route your streams you must attach the outgoing stream
 
 Dump incoming and outgoint rtp and rtcp packets into a pcap file
 
-#### Parameters
+**Parameters**
 
--   `filename` **[String][1]** Filename of the pcap file
--   `options` **[Object][4]** Dump parameters (optional)
-    -   `options.incoming` **[Boolean][2]** Dump incomoning RTP data
-    -   `options.outgoing` **[Boolean][2]** Dump outgoing RTP data
-    -   `options.rtcp` **[Boolean][2]** Dump rtcp RTP data
-    -   `options.rtpHeadersOnly` **[Boolean][2]** Dump only rtp headers and first 16 bytes of payload for rtp packets
-    -   `options.bwe` **[Boolean][2]**  Dump bwe stats to a different file (.pcap->.csv)
+-   `filename` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Filename of the pcap file
+-   `options` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Dump parameters (optional)
+    -   `options.incoming` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Dump incomoning RTP data
+    -   `options.outgoing` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Dump outgoing RTP data
+    -   `options.rtcp` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Dump rtcp RTP data
+    -   `options.rtpHeadersOnly` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Dump only rtp headers and first 16 bytes of payload for rtp packets
+    -   `options.bwe` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)**  Dump bwe stats to a different file (.pcap->.csv)
 
 ### stopDump
 
@@ -1550,7 +1437,7 @@ Get transport stats
 -   responsesSent		: Number of ice responses sent
 -   responsesReceived	: Number of ice responses received
 
-Returns **[Object][4]** stats
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** stats
 
 ### setBandwidthProbing
 
@@ -1559,7 +1446,7 @@ This will send padding only RTX packets to allow bandwidth estimation algortithm
 The ammoung of probing bitrate would be limited by the sender bitrate estimation and the limit set on the setMaxProbing Bitrate.
 Note that this will only work on browsers that supports RTX and transport wide cc.
 
-#### Parameters
+**Parameters**
 
 -   `probe` **Boolen** 
 
@@ -1567,25 +1454,25 @@ Note that this will only work on browsers that supports RTX and transport wide c
 
 Set the maximum bitrate to be used if probing is enabled.
 
-#### Parameters
+**Parameters**
 
--   `bitrate` **[Number][5]** 
+-   `bitrate` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 ### setProbingBitrateLimit
 
 Do not allow probing to increase sent bitrate above certain limit
 
-#### Parameters
+**Parameters**
 
--   `bitrate` **[Number][5]** limit
+-   `bitrate` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** limit
 
 ### setLocalProperties
 
 Set local RTP properties
 
-#### Parameters
+**Parameters**
 
--   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
+-   `rtp` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | SDPInfo)** Object param containing media information for audio and video
     -   `rtp.audio` **MediaInfo** Audio media info
     -   `rtp.video` **MediaInfo** Video media info
 
@@ -1593,9 +1480,9 @@ Set local RTP properties
 
 Set remote RTP properties
 
-#### Parameters
+**Parameters**
 
--   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
+-   `rtp` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | SDPInfo)** Object param containing media information for audio and video
     -   `rtp.audio` **MediaInfo** Audio media info
     -   `rtp.video` **MediaInfo** Video media info
 
@@ -1603,40 +1490,40 @@ Set remote RTP properties
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listeener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Transport][9]** 
+Returns **[Transport](#transport)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[Transport][9]** 
+Returns **[Transport](#transport)** 
 
 ### getDTLSSatate
 
 Get current dtls state for transport
 
-Returns **[String][1]** DTLS connection state as per the w3c spec  "new", "connecting", "connected", "closed", "failed"
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** DTLS connection state as per the w3c spec  "new", "connecting", "connected", "closed", "failed"
 
 ### getLocalDTLSInfo
 
@@ -1666,17 +1553,17 @@ Returns **Array.CandidateInfo**
 
 Register a remote candidate info. Only needed for ice-lite to ice-lite endpoints
 
-#### Parameters
+**Parameters**
 
 -   `candidate` **CandidateInfo** 
 
-Returns **[boolean][2]** Wheter the remote ice candidate was alrady presnet or not
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Wheter the remote ice candidate was alrady presnet or not
 
 ### addRemoteCandidates
 
 Register an array remote candidate info. Only needed for ice-lite to ice-lite endpoints
 
-#### Parameters
+**Parameters**
 
 -   `candidates` **Array.CandidateInfo** 
 
@@ -1684,110 +1571,240 @@ Register an array remote candidate info. Only needed for ice-lite to ice-lite en
 
 Create new outgoing stream in this transport
 
-#### Parameters
+**Parameters**
 
--   `params` **([Object][4] | StreamInfo | [String][1])** Params plain object, StreamInfo object or stream id
-    -   `params.audio` **([Array][18]&lt;[Object][4]> | [Object][4] \| [boolean][2])** Add audio track to the new stream
-        -   `params.audio.id` **[Object][4]?** Stream track id (default: "audio")
-        -   `params.audio.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
-            -   `params.audio.ssrcs.media` **[Number][5]?** ssrc for the audio track
-    -   `params.id` **[Object][4]?** Stream id, an UUID will be generated if not provided
-    -   `params.video` **([Array][18]&lt;[Object][4]> | [Object][4] \| [boolean][2])** Add video track to the new stream
-        -   `params.video.id` **[Object][4]?** Stream track id (default: "video")
-        -   `params.video.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
-            -   `params.video.ssrcs.media` **[Number][5]?** ssrc for the video track
-            -   `params.video.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
-            -   `params.video.ssrcs.fec` **[Number][5]?** ssrc for the fec video track
+-   `params` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | StreamInfo | [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Params plain object, StreamInfo object or stream id
+    -   `params.audio` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> | [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean))** Add audio track to the new stream
+        -   `params.audio.id` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Stream track id (default: "audio")
+        -   `params.audio.ssrcs` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** Override the generated ssrcs for this track
+            -   `params.audio.ssrcs.media` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the audio track
+    -   `params.id` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Stream id, an UUID will be generated if not provided
+    -   `params.video` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)> | [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) \| [boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean))** Add video track to the new stream
+        -   `params.video.id` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Stream track id (default: "video")
+        -   `params.video.ssrcs` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Override the generated ssrcs for this track
+            -   `params.video.ssrcs.media` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the video track
+            -   `params.video.ssrcs.rtx` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the rtx video track
+            -   `params.video.ssrcs.fec` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the fec video track
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream](#outgoingstream)** The new outgoing stream
 
 ### createOutgoingStreamTrack
 
 Create new outgoing stream in this transport
 
-#### Parameters
+**Parameters**
 
--   `media` **[String][1]** Track media type "audio" or "video"
--   `params` **[Object][4]?** Track parameters
-    -   `params.id` **[Object][4]?** Stream track id
-    -   `params.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
-        -   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][5]?** ssrc for the fec track
+-   `media` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Track media type "audio" or "video"
+-   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Track parameters
+    -   `params.id` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Stream track id
+    -   `params.ssrcs` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** Override the generated ssrcs for this track
+        -   `params.ssrcs.media` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the media track
+        -   `params.ssrcs.rtx` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the rtx track
+        -   `params.ssrcs.fec` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the fec track
 
-Returns **[OutgoingStreamTrack][20]** The new outgoing stream track
+Returns **[OutgoingStreamTrack](#outgoingstreamtrack)** The new outgoing stream track
 
 ### createIncomingStream
 
 Create an incoming stream object from the media stream info objet
 
-#### Parameters
+**Parameters**
 
--   `info` **(StreamInfo | [Object][4])** Contains the ids and ssrcs of the stream to be created
+-   `info` **(StreamInfo | [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object))** Contains the ids and ssrcs of the stream to be created
 
-Returns **[IncomingStream][12]** The newly created incoming stream object
+Returns **[IncomingStream](#incomingstream)** The newly created incoming stream object
 
 ### getIncomingStreams
 
 Get all the incoming streams in the transport
 
-Returns **[Array][18]&lt;IncomingStreams>** 
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;IncomingStreams>** 
 
 ### getIncomingStream
 
 Get incoming stream
 
-#### Parameters
+**Parameters**
 
--   `streamId` **[String][1]** the stream ID
+-   `streamId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the stream ID
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### getOutgoingStreams
 
 Get all the outgoing streams in the transport
 
-Returns **[Array][18]&lt;OutgoingStreams>** 
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;OutgoingStreams>** 
 
 ### getOutgoingStream
 
 Get incoming stream
 
-#### Parameters
+**Parameters**
 
--   `streamId` **[String][1]** the stream ID
+-   `streamId` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** the stream ID
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### createIncomingStreamTrack
 
 Create new incoming stream in this transport. TODO: Simulcast is still not supported
 
-#### Parameters
+**Parameters**
 
--   `media` **[String][1]** Track media type "audio" or "video"
--   `params` **[Object][4]?** Track parameters
-    -   `params.id` **[Object][4]?** Stream track id
-    -   `params.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
-        -   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
-        -   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][5]?** ssrc for the fec track
+-   `media` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Track media type "audio" or "video"
+-   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Track parameters
+    -   `params.id` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Stream track id
+    -   `params.ssrcs` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** Override the generated ssrcs for this track
+        -   `params.ssrcs.media` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the media track
+        -   `params.ssrcs.rtx` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the rtx track
+        -   `params.ssrcs.fec` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** ssrc for the fec track
 
-Returns **[IncomingStreamTrack][13]** The new incoming stream track
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** The new incoming stream track
 
 ### publish
 
 Create new outgoing stream and attach to the incoming stream
 
-#### Parameters
+**Parameters**
 
--   `incomingStream` **[IncomingStream][12]** the incoming stream to be published in this transport
+-   `incomingStream` **[IncomingStream](#incomingstream)** the incoming stream to be published in this transport
 
-Returns **[OutgoingStream][14]** The new outgoing stream
+Returns **[OutgoingStream](#outgoingstream)** The new outgoing stream
 
 ### stop
 
 Stop transport and all the associated incoming and outgoing streams
+
+## OutgoingStreamTrack
+
+Audio or Video track of a media stream sent to a remote peer
+
+### getId
+
+Get track id as signaled on the SDP
+
+### getMedia
+
+Get track media type
+
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** "audio"|"video"
+
+### getTrackInfo
+
+Get track info object
+
+Returns **TrackInfo** Track info
+
+### getStats
+
+Get stats for all encodings 
+
+You will get stats for media, rtx and fec sources (if used):
+
+-   timestmap		: timestamp on when this stats where created
+-   media		: mediaStats,
+-   rtx		: rtxStats,
+-   fec		: fecStats
+-   remb		: remote estimated bitate (if remb is in use)
+-   numPackets	: number of rtp packets sent
+-   numPacketsDelta	: number of rtp packets sent during last second 
+-   bitrate		: Bitrate for media stream only in bps
+-   total		: Accumulated bitrate for rtx, media and fec streams in bps
+
+The stats objects will privide the follwing info for each source
+
+-   numPackets		: number of rtp packets sent
+-   numPacketsDelta		: number of rtp packets sent during last second
+-   numRTCPPackets		: number of rtcp packsets sent
+-   totalBytes		: total rtp sent bytes
+-   totalRTCPBytes		: total rtp sent bytes
+-   bitrate			: average bitrate sent during last second in bps
+-   reportCount		: number of RTCP receiver reports received
+-   reportCountDelta		: number of RTCP receiver reports received during last second
+-   reportedLostCount		: total packet loses reported
+-   reportedLostCountDelta	: packet losses reported in last second
+-   reportedFractionLost	: fraction loss media reported during last second
+-   reportedJitter		: last reported jitter buffer value
+
+Returns **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Map with stats by encodingId
+
+### getSSRCs
+
+Return ssrcs associated to this track
+
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+### isMuted
+
+Check if the track is muted or not
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** muted
+
+### isAttached
+
+Check if this outgoing stream track is alredy attached to an incoming stream track.
+
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** true if attached, false otherwise
+
+### attachTo
+
+Listen media from the incoming stream track and send it to the remote peer of the associated transport.
+This will stop any previous transpoder created by a previous attach.
+
+**Parameters**
+
+-   `incomingStreamTrack` **[IncomingStreamTrack](#incomingstreamtrack)** The incoming stream to listen media for
+
+Returns **[Transponder](#transponder)** Track transponder object
+
+### detach
+
+Stop forwarding any previous attached track.
+This will set the transponder inconming track to null
+
+### getTransponder
+
+Get attached transpoder for this track
+
+Returns **[Transponder](#transponder)** Attached transpoder or null if not attached
+
+### on
+
+Add event listener
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
+
+### once
+
+Add event listener once
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[IncomingStream](#incomingstream)** 
+
+### off
+
+Remove event listener
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
+
+### stop
+
+Removes the track from the outgoing stream and also detaches from any attached incoming track
 
 ## IncomingStreamTrack
 
@@ -1808,13 +1825,18 @@ For each encoding you will get stats for media, rtx and fec sources (if used):
 -   total    : Accumulated bitrate for rtx, media and fec streams in bps
 -   remb     : Estimated avialable bitrate for receving (only avaailable if not using tranport wide cc)
 -   timestamp: When this stats was generated, in order to save workload, stats are cached for 200ms
--   simulcastIdx : Simulcast layer index based on bitrate received (-1 if it is inactive).
+-   simulcastIdx	: Simulcast layer index based on bitrate received (-1 if it is inactive).
+-   lostPackets	: Accumulated lost packets for rtx, media and fec strems
+-   numPackets	: Accumulated packets for rtx, media and fec strems
+-   lostPacketsRatio	: Lost packets ratio
 
-The stats objects will provide the follwing info for each source
+The stats objects will provide the following info for each source
 
 -   lostPackets	: total lost packkets
+-   lostPacketsDelta	: total lost/out of order packets during last second
 -   dropPackets       : droppted packets by media server
 -   numPackets	: number of rtp packets received
+-   numPacketsDelta	: number of rtp packets received during last seconds
 -   numRTCPPackets	: number of rtcp packsets received
 -   totalBytes	: total rtp received bytes
 -   totalRTCPBytes	: total rtp received bytes
@@ -1831,13 +1853,13 @@ The stats objects will provide the follwing info for each source
     -   numPackets	: number of rtp packets received for this layer
     -   bitrate		: average bitrate received during last second for this layer
 
-Returns **[Map][22]&lt;[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)&lt;[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)>** Map with stats by encodingId
 
 ### getActiveLayers
 
 Get active encodings and layers ordered by bitrate
 
-Returns **[Object][4]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Active layers object containing an array of active and inactive encodings and an array of all available layer info
 
 ### getId
 
@@ -1853,46 +1875,46 @@ Returns **TrackInfo** Track info
 
 Return ssrcs associated to this track
 
-Returns **[Object][4]** 
+Returns **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
 
 ### getMedia
 
 Get track media type
 
-Returns **[String][1]** "audio"|"video"
+Returns **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** "audio"|"video"
 
 ### on
 
 Add event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### once
 
 Add event listener once
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream](#incomingstream)** 
 
 ### off
 
 Remove event listener
 
-#### Parameters
+**Parameters**
 
--   `event` **[String][1]** Event name
--   `listener` **[function][10]** Event listener
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack](#incomingstreamtrack)** 
 
 ### attached
 
@@ -1912,70 +1934,22 @@ Internal use, you'd beter know what you are doing before calling this method
 
 Store out of band h264 properties for this track
 
-#### Parameters
+**Parameters**
 
--   `sprop` **[String][1]** Base64 encoded parameters from SDP
+-   `sprop` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Base64 encoded parameters from SDP
 
 ### hasH264ParameterSets
 
 Check if track has out of band h264 properties
 
-Returns **[Boolean][2]** 
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### getH264ParameterSets
 
 Get out of band h264 parameters from this track
 
-Returns **[Boolean][2]** 
+Returns **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ### stop
 
 Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
-
-[1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
-
-[2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
-
-[3]: #endpoint
-
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
-
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
-
-[6]: #recorder
-
-[7]: #player
-
-[8]: #streamer
-
-[9]: #transport
-
-[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
-
-[11]: #sdpmanager
-
-[12]: #incomingstream
-
-[13]: #incomingstreamtrack
-
-[14]: #outgoingstream
-
-[15]: #recordertrack
-
-[16]: #streamersession
-
-[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
-
-[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
-
-[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
-
-[20]: #outgoingstreamtrack
-
-[21]: #transponder
-
-[22]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
-
-[23]: #peerconnectionserver
-
-[24]: #incomingstreamtrackmirrored
