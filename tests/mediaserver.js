@@ -8,6 +8,7 @@ MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
 MediaServer.enableUltraDebug(false);
 
+Promise.all([
 tap.test("MediaServer",async function(suite){
 	
 	suite.test("capabilities",function(test){
@@ -27,8 +28,7 @@ tap.test("MediaServer",async function(suite){
 		test.done();
 	});
 	
-});
-
+}),
 tap.test("setCertificate",async function(suite){
 
 	//Create temp dir
@@ -125,10 +125,6 @@ tap.test("setCertificate",async function(suite){
 	FS.unlinkSync(crt);
 	FS.unlinkSync(key);
 	FS.rmdir(tmp,()=>{});
-});
-
-
-
-MediaServer.terminate ();
-
+})
+]).then(()=>MediaServer.terminate ());
 

@@ -40,6 +40,7 @@ track.addSSRC(ssrc++);
 //Add it
 streamInfo.addTrack(track);
 
+Promise.all([
 tap.test("Refresher",async function(suite){
 	
 	
@@ -109,7 +110,6 @@ tap.test("Refresher",async function(suite){
 	});
 	
 	suite.end();
-});
-
-MediaServer.terminate ();
+})
+]).then(()=>MediaServer.terminate ());
 

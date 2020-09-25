@@ -14,6 +14,7 @@ const Direction		= SemanticSDP.Direction;
 const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
 
+Promise.all([
 tap.test("IncomingMediaStream::create",async function(suite){
 	
 	//Init test
@@ -119,9 +120,33 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		incomingStream.stop();
 	});
 	
+	suite.test("duplicate ssrc",async function(test){
+		let ssrc = 150;
+		//Create stream
+		const streamInfo = new StreamInfo("stream3");
+		//Create track
+		const track = new TrackInfo("audio", "track4");
+		//Create track
+		const track2 = new TrackInfo("audio", "track5");
+		//Add same ssrc
+		track.addSSRC(ssrc);
+		track2.addSSRC(ssrc);
+		//Add it
+		streamInfo.addTrack(track);
+		streamInfo.addTrack(track2);
+		try {
+			//Create new incoming stream
+			const incomingStream = transport.createIncomingStream(streamInfo);
+			test.notOk();
+		} catch(e) {
+			test.ok(e);
+		}
+		test.done();
+	});
+	
 	
 	suite.end();
-});
+}),
 
 
 tap.test("IncomingMediaStream::stats",async function(suite){
@@ -172,7 +197,5 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 	});
 	
 	suite.end();
-});
-
-
-MediaServer.terminate ();
+})
+]).then(()=>MediaServer.terminate ());

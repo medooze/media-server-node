@@ -3,6 +3,8 @@ const MediaServer	= require("../index");
 const SemanticSDP	= require("semantic-sdp");
 
 MediaServer.enableLog(false);
+MediaServer.enableDebug(false);
+MediaServer.enableUltraDebug(false);
 const endpoint = MediaServer.createEndpoint("127.0.0.1");
 
 const StreamInfo	= SemanticSDP.StreamInfo;
@@ -12,6 +14,7 @@ const Direction		= SemanticSDP.Direction;
 const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
 
+Promise.all([
 tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 	
 	
@@ -139,7 +142,7 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 	});
 	
 	suite.end();
-});
+}),
 
 
 tap.test("OutgoingMediaStreamTrack::stats",async function(suite){
@@ -174,6 +177,6 @@ tap.test("OutgoingMediaStreamTrack::stats",async function(suite){
 	
 	
 	suite.end();
-});
+})
+]).then(()=>MediaServer.terminate ());
 
-MediaServer.terminate ();

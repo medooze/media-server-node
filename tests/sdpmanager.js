@@ -45,9 +45,8 @@ const Capabilities = {
 		simulcast	: true
 	}
 };
-const tests = [];
-
-tests.push(tap.test("unified",async function(suite){
+Promise.all([
+tap.test("unified",async function(suite){
 	
 	await suite.test("create",async function(test){
 		const endpoint = MediaServer.createEndpoint("127.0.0.1");
@@ -213,10 +212,9 @@ tests.push(tap.test("unified",async function(suite){
 	});
 	
 	suite.end();
-}));
+}),
 
-
-tests.push(tap.test("planb",async function(suite){
+tap.test("planb",async function(suite){
 	
 	await suite.test("create",async function(test){
 		const endpoint = MediaServer.createEndpoint("127.0.0.1");
@@ -357,9 +355,6 @@ tests.push(tap.test("planb",async function(suite){
 	});
 	
 	suite.end();
-}));
+})
+]).then(()=>MediaServer.terminate ());
 
-Promise.all(tests)
-	.then(()=>{
-		MediaServer.terminate ();
-	});

@@ -4,9 +4,10 @@ const SemanticSDP	= require("semantic-sdp");
 
 MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
+MediaServer.enableUltraDebug(false);
 const endpoint = MediaServer.createEndpoint("127.0.0.1");
 
-
+Promise.all([
 tap.test("OutgoingMediaStream::create",async function(suite){
 	
 	//Init test
@@ -144,7 +145,7 @@ tap.test("OutgoingMediaStream::create",async function(suite){
 	});
 	
 	suite.end();
-});
+}),
 
 tap.test("OutgoingMediaStream::mute",async function(suite){
 	
@@ -215,6 +216,5 @@ tap.test("OutgoingMediaStream::mute",async function(suite){
 	});
 	
 	suite.end();
-});
-
-MediaServer.terminate ();
+})
+]).then(()=>MediaServer.terminate ());

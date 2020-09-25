@@ -13,6 +13,8 @@ const Setup		= SemanticSDP.Setup;
 const CodecInfo		= SemanticSDP.CodecInfo;
 
 MediaServer.enableLog(false);
+MediaServer.enableDebug(false);
+MediaServer.enableUltraDebug(false);
 
 //Create RTP properties
 const rtp = {
@@ -28,6 +30,7 @@ vp8.setRTX(98);
 rtp.audio.addCodec(opus);	
 rtp.video.addCodec(vp8);
 
+Promise.all([
 tap.test("Transponder::create",async function(suite){
 	
 	//Create UDP server endpoint
@@ -248,7 +251,7 @@ tap.test("Transponder::create",async function(suite){
 	});
 	
 	suite.end();
-});
+}),
 
 
 
@@ -486,6 +489,6 @@ tap.test("Transponder::targetbitrate",async function(suite){
 	});
 	
 	suite.end();
-});
+})
+]).then(()=>MediaServer.terminate ());
 
-MediaServer.terminate ();

@@ -15,6 +15,7 @@ const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
 const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
 
+Promise.all([
 tap.test("Sreamer::create",async function(suite){
 	
 	
@@ -36,6 +37,5 @@ tap.test("Sreamer::create",async function(suite){
 	});
 	
 	suite.end();
-});
-
-MediaServer.terminate ();
+})
+]).then(()=>MediaServer.terminate ());

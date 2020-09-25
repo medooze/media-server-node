@@ -37,6 +37,7 @@ const incomingStream  = transport.createIncomingStream(streamInfo);
 //Get audio track
 const audioTrack = incomingStream.getAudioTracks()[0];
 
+Promise.all([
 tap.test("ActiveSpeaker",async function(suite){
 	
 	suite.test("create+stop",async function(test){
@@ -183,6 +184,5 @@ tap.test("ActiveSpeaker",async function(suite){
 	});
 	
 	suite.end();
-});
-
-MediaServer.terminate ();
+})
+]).then(()=>MediaServer.terminate ());

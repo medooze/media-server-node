@@ -3,8 +3,10 @@ const MediaServer	= require("../index");
 const SemanticSDP	= require("semantic-sdp");
 
 MediaServer.enableLog(false);
+MediaServer.enableDebug(false);
+MediaServer.enableUltraDebug(false);
 
-
+Promise.all([
 tap.test("Endpoint::create",async function(suite){
 	
 	await suite.test("start+stop",async function(test){
@@ -67,6 +69,5 @@ tap.test("Endpoint::create",async function(suite){
 	});
 	
 	suite.end();
-});
-
-MediaServer.terminate ();
+})
+]).then(()=>MediaServer.terminate ());

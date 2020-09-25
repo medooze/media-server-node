@@ -15,6 +15,8 @@ const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
 const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
 
+Promise.all([
+	
 tap.test("IncomingMediaStream::create",async function(suite){
 	
 	//Init test
@@ -188,6 +190,5 @@ tap.test("IncomingMediaStream::create",async function(suite){
 	
 	
 	suite.end();
-});
-
-MediaServer.terminate ();
+})
+]).then(()=>MediaServer.terminate ());

@@ -10,12 +10,16 @@ const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
 const CodecInfo		= SemanticSDP.CodecInfo;
 const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
 
+
 MediaServer.enableLog(false);
+MediaServer.enableDebug(false);
+MediaServer.enableUltraDebug(false);
 
 
 
 let ssrc = 1;
-		
+	
+Promise.all([	
 tap.test("IncomingStream",function(suite){
 	//Create UDP server endpoints
 	const endpoint = MediaServer.createEndpoint("127.0.0.1");
@@ -140,7 +144,7 @@ tap.test("IncomingStream",function(suite){
 	});
 	
 	suite.end();
-});
+}),
 
 		
 tap.test("Endpoint",function(suite){
@@ -215,6 +219,6 @@ tap.test("Endpoint",function(suite){
 	});
 	
 	suite.end();
-});
+})
 
-MediaServer.terminate ();
+]).then(()=>MediaServer.terminate ());
