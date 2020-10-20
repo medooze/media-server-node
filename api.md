@@ -1162,93 +1162,6 @@ Returns **[PeerConnectionServer](#peerconnectionserver)**
 
 Stop the peerconnection server, will not stop the transport created by it
 
-## EmulatedTransport
-
-An emulated transport reads data from a unencrypted pcap file (typically from a transport dump), and acts like if it was a live transport from a remote peer.
-You must create the incoming streams as signaled on the remote SDP as any incoming RTP with an unknown ssrc will be ignored. The emulated transport does not allow creating outgoing streams.
-
-### setRemoteProperties
-
-Set remote RTP properties
-
-**Parameters**
-
--   `rtp` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | SDPInfo)** Object param containing media information for audio and video
-    -   `rtp.audio` **MediaInfo** Audio media info
-    -   `rtp.video` **MediaInfo** Video media info
-
-### on
-
-Add event listener
-
-**Parameters**
-
--   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
--   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
-
-Returns **[Transport](#transport)** 
-
-### once
-
-Add event listener once
-
-**Parameters**
-
--   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
--   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
-
-Returns **[IncomingStream](#incomingstream)** 
-
-### off
-
-Remove event listener
-
-**Parameters**
-
--   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
--   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
-
-Returns **[Transport](#transport)** 
-
-### createIncomingStream
-
-Create an incoming stream object from the media stream info objet
-
-**Parameters**
-
--   `info` **StreamInfo** Contains the ids and ssrcs of the stream to be created
-
-Returns **[IncomingStream](#incomingstream)** The newly created incoming stream object
-
-### play
-
-Starts playback
-
-**Parameters**
-
--   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
-    -   `params.start` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Set start time
-
-### resume
-
-Resume playback
-
-### pause
-
-Pause playback
-
-### seek
-
-Start playback from given time
-
-**Parameters**
-
--   `time` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** in miliseconds
-
-### stop
-
-Stop transport and all the associated incoming and outgoing streams
-
 ## Endpoint
 
 An endpoint represent an UDP server socket.
@@ -1396,6 +1309,93 @@ Returns **[Endpoint](#endpoint)**
 ### stop
 
 Stop the endpoint UDP server and terminate any associated transport
+
+## EmulatedTransport
+
+An emulated transport reads data from a unencrypted pcap file (typically from a transport dump), and acts like if it was a live transport from a remote peer.
+You must create the incoming streams as signaled on the remote SDP as any incoming RTP with an unknown ssrc will be ignored. The emulated transport does not allow creating outgoing streams.
+
+### setRemoteProperties
+
+Set remote RTP properties
+
+**Parameters**
+
+-   `rtp` **([Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) | SDPInfo)** Object param containing media information for audio and video
+    -   `rtp.audio` **MediaInfo** Audio media info
+    -   `rtp.video` **MediaInfo** Video media info
+
+### on
+
+Add event listener
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listeener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[Transport](#transport)** 
+
+### once
+
+Add event listener once
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[IncomingStream](#incomingstream)** 
+
+### off
+
+Remove event listener
+
+**Parameters**
+
+-   `event` **[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Event name
+-   `listener` **[function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Event listener
+
+Returns **[Transport](#transport)** 
+
+### createIncomingStream
+
+Create an incoming stream object from the media stream info objet
+
+**Parameters**
+
+-   `info` **StreamInfo** Contains the ids and ssrcs of the stream to be created
+
+Returns **[IncomingStream](#incomingstream)** The newly created incoming stream object
+
+### play
+
+Starts playback
+
+**Parameters**
+
+-   `params` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+    -   `params.start` **[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)** Set start time
+
+### resume
+
+Resume playback
+
+### pause
+
+Pause playback
+
+### seek
+
+Start playback from given time
+
+**Parameters**
+
+-   `time` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** in miliseconds
+
+### stop
+
+Stop transport and all the associated incoming and outgoing streams
 
 ## Transport
 
