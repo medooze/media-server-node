@@ -840,6 +840,8 @@ struct RTPIncomingSource : public RTPSource
 	DWORD numFramesDelta;
 	DWORD lostPackets;
 	DWORD lostPacketsDelta;
+	DWORD lostPacketsMaxGap;
+	DWORD lostPacketsGapCount;
 	DWORD dropPackets;
 	DWORD totalPacketsSinceLastSR;
 	DWORD totalBytesSinceLastSR;
