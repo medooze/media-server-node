@@ -1834,6 +1834,8 @@ The stats objects will provide the following info for each source
 
 -   lostPackets	: total lost packkets
 -   lostPacketsDelta	: total lost/out of order packets during last second
+-   lostPacketsMaxGap	: max total consecutieve packets lossed during last second
+-   lostPacketsGapCount : number of packet looses bursts during last second
 -   dropPackets       : droppted packets by media server
 -   numPackets	: number of rtp packets received
 -   numPacketsDelta	: number of rtp packets received during last seconds
