@@ -335,7 +335,7 @@ import SemanticSDP = require('semantic-sdp');
      * @param {String} type	- The media type (Optional)
      * @returns {Array<OutgoingStreamTrack>}	- Array of tracks
      */
-    getTracks(type: string): OutgoingStreamTrack[];
+    getTracks(type?: string): OutgoingStreamTrack[];
 
     /**
      * Get track by id
@@ -380,7 +380,7 @@ import SemanticSDP = require('semantic-sdp');
      * @returns {OuggoingStreamTrack}
      */
     createTrack(params: SemanticSDP.TrackInfo|SemanticSDP.TrackInfoPlain|
-                string): OutgoingStream;
+                string): OutgoingStreamTrack;
 
     stop(): void;
   }
@@ -1074,7 +1074,7 @@ import SemanticSDP = require('semantic-sdp');
      * @param {String} type	- The media type (Optional)
      * @returns {Array<IncomingStreamTrack>}	- Array of tracks
      */
-    getTracks(type: string): IncomingStreamTrack[];
+    getTracks(type?: string): IncomingStreamTrack[];
 
     /**
      * Get an array of the media stream audio tracks
@@ -1714,16 +1714,22 @@ import SemanticSDP = require('semantic-sdp');
      */
     getTransport(): Transport;
 
-    /*
+    /**
      * Create local description
-     * @return {String}
+     * @returns {String}
      */
     createLocalDescription(): string;
 
     /**
-     * Process remote offer
-     */
+    * Process remote offer
+    * @param {String} sdp	- Remote session description
+    */
     processRemoteDescription(sdp: string): void;
+
+    /**
+	   * Stop manager and associated tranports
+	   */
+    stop(): void;
 
     /**
      * Add event listener
