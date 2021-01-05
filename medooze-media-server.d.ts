@@ -1721,14 +1721,14 @@ import SemanticSDP = require('semantic-sdp');
     createLocalDescription(): string;
 
     /**
-    * Process remote offer
-    * @param {String} sdp	- Remote session description
-    */
+     * Process remote offer
+     * @param {String} sdp	- Remote session description
+     */
     processRemoteDescription(sdp: string): void;
 
     /**
-	   * Stop manager and associated tranports
-	   */
+     * Stop manager and associated tranports
+     */
     stop(): void;
 
     /**
