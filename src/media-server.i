@@ -808,7 +808,7 @@ struct LayerInfo
 struct LayerSource : public LayerInfo
 {
 	DWORD		numPackets;
-	DWORD		totalBytes;
+	QWORD		totalBytes;
 	DWORD		bitrate;
 };
 
@@ -828,8 +828,8 @@ struct RTPSource
 	DWORD numPackets;
 	DWORD numPacketsDelta;
 	DWORD numRTCPPackets;
-	DWORD totalBytes;
-	DWORD totalRTCPBytes;
+	QWORD totalBytes;
+	QWORD totalRTCPBytes;
 	DWORD bitrate;
 	DWORD clockrate;
 };
@@ -871,10 +871,6 @@ struct RTPOutgoingSource : public RTPSource
 {
 	DWORD time;
 	DWORD lastTime;
-	DWORD numPackets;
-	DWORD numRTCPPackets;
-	DWORD totalBytes;
-	DWORD totalRTCPBytes;
 	QWORD lastSenderReport;
 	QWORD lastSenderReportNTP;
 	DWORD remb;
