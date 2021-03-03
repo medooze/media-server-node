@@ -65,16 +65,18 @@ bool MakeCallback(const std::shared_ptr<Persistent<v8::Object>>& persistent, con
 		return false;
 	//Get event name
 	auto method = Nan::New(name).ToLocalChecked();
-	//Check it has it
-	if (!local->Has(method))
+	//Get attribute 
+	auto attr = Nan::Get(local,method);
+	//Check 
+	if (attr.IsEmpty())
 		return false;
-	//Create callback function from object
-	v8::Local<v8::Function> callback = v8::Local<v8::Function>::Cast(local->Get(method));
-	//If it is callable
-	if (!callback->IsCallable())
+	//Create callback function
+	auto callback = Nan::To<v8::Function>(attr.ToLocalChecked());
+	//Check 
+	if (callback.IsEmpty())
 		return false;
 	//Call object method with arguments
-	Nan::MakeCallback(local, callback, argc, argv);
+	Nan::MakeCallback(local, callback.ToLocalChecked(), argc, argv);
 	
 	//Done 
 	return true;
@@ -301,7 +303,7 @@ class MP4RecorderFacade :
 	public MP4Recorder::Listener
 {
 public:
-	MP4RecorderFacade(v8::Handle<v8::Object> object) :
+	MP4RecorderFacade(v8::Local<v8::Object> object) :
 		MP4Recorder(this)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
@@ -340,7 +342,7 @@ class PlayerFacade :
 	public MP4Streamer::Listener
 {
 public:
-	PlayerFacade(v8::Handle<v8::Object> object) :
+	PlayerFacade(v8::Local<v8::Object> object) :
 		MP4Streamer(this),
 		audio(MediaFrame::Audio,loop),
 		video(MediaFrame::Video,loop)
@@ -488,7 +490,7 @@ class RTPStreamTransponderFacade :
 	public RTPStreamTransponder
 {
 public:
-	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender, v8::Handle<v8::Object> object) :
+	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender, v8::Local<v8::Object> object) :
 		RTPStreamTransponder(outgoing, sender ? sender->get() : NULL)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
@@ -540,7 +542,7 @@ class DTLSICETransportListener :
 	public DTLSICETransport::Listener
 {
 public:
-	DTLSICETransportListener(v8::Handle<v8::Object> object)
+	DTLSICETransportListener(v8::Local<v8::Object> object)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 	}
@@ -617,7 +619,7 @@ class SenderSideEstimatorListener :
 	public RemoteRateEstimator::Listener
 {
 public:
-	SenderSideEstimatorListener(v8::Handle<v8::Object> object)
+	SenderSideEstimatorListener(v8::Local<v8::Object> object)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 	}
@@ -674,7 +676,7 @@ class ActiveSpeakerDetectorFacade :
 	public RTPIncomingMediaStream::Listener
 {
 public:	
-	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object) :
+	ActiveSpeakerDetectorFacade(v8::Local<v8::Object> object) :
 		ActiveSpeakerDetector(this)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
@@ -951,8 +953,8 @@ struct RTPIncomingMediaStreamMultiplexer : public RTPIncomingMediaStream, public
 	void Stop();
 };
 
-%typemap(in) v8::Handle<v8::Object> {
-	$1 = v8::Handle<v8::Object>::Cast($input);
+%typemap(in) v8::Local<v8::Object> {
+	$1 = v8::Local<v8::Object>::Cast($input);
 }
 
 class PropertiesFacade : private Properties
@@ -1030,7 +1032,7 @@ public:
 class DTLSICETransportListener
 {
 public:
-	DTLSICETransportListener(v8::Handle<v8::Object> object);
+	DTLSICETransportListener(v8::Local<v8::Object> object);
 };
 
 %{
@@ -1133,7 +1135,7 @@ RTPReceiverFacade*	SessionToReceiver(RTPSessionFacade* session);
 class RTPStreamTransponderFacade 
 {
 public:
-	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender,v8::Handle<v8::Object> object);
+	RTPStreamTransponderFacade(RTPOutgoingSourceGroup* outgoing,RTPSenderFacade* sender,v8::Local<v8::Object> object);
 	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver);
 	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiver* receiver);
 	bool AppendH264ParameterSets(const std::string& sprops);
@@ -1161,7 +1163,7 @@ class MP4RecorderFacade :
 	public MediaFrameListener
 {
 public:
-	MP4RecorderFacade(v8::Handle<v8::Object> object);
+	MP4RecorderFacade(v8::Local<v8::Object> object);
 
 	//Recorder interface
 	virtual bool Create(const char *filename);
@@ -1176,7 +1178,7 @@ public:
 class PlayerFacade
 {
 public:
-	PlayerFacade(v8::Handle<v8::Object> object);
+	PlayerFacade(v8::Local<v8::Object> object);
 	RTPIncomingSourceGroup* GetAudioSource();
 	RTPIncomingSourceGroup* GetVideoSource();
 	void Reset();
@@ -1203,14 +1205,14 @@ class SenderSideEstimatorListener :
 	public RemoteRateEstimatorListener
 {
 public:
-	SenderSideEstimatorListener(v8::Handle<v8::Object> object);
+	SenderSideEstimatorListener(v8::Local<v8::Object> object);
 };
 
 
 class ActiveSpeakerDetectorFacade
 {
 public:	
-	ActiveSpeakerDetectorFacade(v8::Handle<v8::Object> object);
+	ActiveSpeakerDetectorFacade(v8::Local<v8::Object> object);
 	void SetMinChangePeriod(uint32_t minChangePeriod);
 	void SetMaxAccumulatedScore(uint64_t maxAcummulatedScore);
 	void SetNoiseGatingThreshold(uint8_t noiseGatingThreshold);
