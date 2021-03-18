@@ -1649,22 +1649,23 @@ fail: ;
 #define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[31]
 #define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[32]
 #define SWIGTYPE_p_SenderSideEstimatorListener swig_types[33]
-#define SWIGTYPE_p_TimeService swig_types[34]
-#define SWIGTYPE_p_UDPDumper swig_types[35]
-#define SWIGTYPE_p_UDPReader swig_types[36]
-#define SWIGTYPE_p_char swig_types[37]
-#define SWIGTYPE_p_int swig_types[38]
-#define SWIGTYPE_p_long_long swig_types[39]
-#define SWIGTYPE_p_short swig_types[40]
-#define SWIGTYPE_p_signed_char swig_types[41]
-#define SWIGTYPE_p_std__string swig_types[42]
-#define SWIGTYPE_p_unsigned_char swig_types[43]
-#define SWIGTYPE_p_unsigned_int swig_types[44]
-#define SWIGTYPE_p_unsigned_long_long swig_types[45]
-#define SWIGTYPE_p_unsigned_short swig_types[46]
-#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[47]
-static swig_type_info *swig_types[49];
-static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
+#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[34]
+#define SWIGTYPE_p_TimeService swig_types[35]
+#define SWIGTYPE_p_UDPDumper swig_types[36]
+#define SWIGTYPE_p_UDPReader swig_types[37]
+#define SWIGTYPE_p_char swig_types[38]
+#define SWIGTYPE_p_int swig_types[39]
+#define SWIGTYPE_p_long_long swig_types[40]
+#define SWIGTYPE_p_short swig_types[41]
+#define SWIGTYPE_p_signed_char swig_types[42]
+#define SWIGTYPE_p_std__string swig_types[43]
+#define SWIGTYPE_p_unsigned_char swig_types[44]
+#define SWIGTYPE_p_unsigned_int swig_types[45]
+#define SWIGTYPE_p_unsigned_long_long swig_types[46]
+#define SWIGTYPE_p_unsigned_short swig_types[47]
+#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[48]
+static swig_type_info *swig_types[50];
+static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1706,6 +1707,7 @@ static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 #include "../media-server/include/rtp/RTPIncomingMediaStreamDepacketizer.h"
 #include "../media-server/include/ActiveSpeakerDetector.h"
+#include "../media-server/include/SimulcastMediaFrameListener.h"
 	
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 using MediaFrameListener = MediaFrame::Listener;
@@ -2966,6 +2968,7 @@ SWIGV8_ClientData _exports_MP4RecorderFacade_clientData;
 SWIGV8_ClientData _exports_PlayerFacade_clientData;
 SWIGV8_ClientData _exports_SenderSideEstimatorListener_clientData;
 SWIGV8_ClientData _exports_ActiveSpeakerDetectorFacade_clientData;
+SWIGV8_ClientData _exports_SimulcastMediaFrameListener_clientData;
 
 
 #if (V8_MAJOR_VERSION-0) < 5
@@ -14656,6 +14659,180 @@ static void _wrap_delete_ActiveSpeakerDetectorFacade(v8::Persistent<v8::Value> o
         }
 
 
+static SwigV8ReturnValue _wrap_new_SimulcastMediaFrameListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_OBJECT self = args.Holder();
+  uint32_t arg1 ;
+  uint32_t arg2 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  SimulcastMediaFrameListener *result;
+  if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_SimulcastMediaFrameListener.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_SimulcastMediaFrameListener.");
+  ecode1 = SWIG_AsVal_unsigned_SS_int(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_SimulcastMediaFrameListener" "', argument " "1"" of type '" "uint32_t""'");
+  } 
+  arg1 = static_cast< uint32_t >(val1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SimulcastMediaFrameListener" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  result = (SimulcastMediaFrameListener *)new SimulcastMediaFrameListener(arg1,arg2);
+  
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_SimulcastMediaFrameListener, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_AddMediaListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
+  MediaFrameListener *arg2 = (MediaFrameListener *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_AddMediaListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_AddMediaListener" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+  }
+  arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SimulcastMediaFrameListener_AddMediaListener" "', argument " "2"" of type '" "MediaFrameListener *""'"); 
+  }
+  arg2 = reinterpret_cast< MediaFrameListener * >(argp2);
+  (arg1)->AddMediaListener(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_RemoveMediaListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
+  MediaFrameListener *arg2 = (MediaFrameListener *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_RemoveMediaListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_RemoveMediaListener" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+  }
+  arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_MediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SimulcastMediaFrameListener_RemoveMediaListener" "', argument " "2"" of type '" "MediaFrameListener *""'"); 
+  }
+  arg2 = reinterpret_cast< MediaFrameListener * >(argp2);
+  (arg1)->RemoveMediaListener(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_Stop" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+  }
+  arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
+  (arg1)->Stop();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_SimulcastMediaFrameListener(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_SimulcastMediaFrameListener(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_SimulcastMediaFrameListener(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_SimulcastMediaFrameListener(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_SimulcastMediaFrameListener(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            SimulcastMediaFrameListener * arg1 = (SimulcastMediaFrameListener *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static void *_p_LayerSourceTo_p_LayerInfo(void *x, int *SWIGUNUSEDPARM(newmemory)) {
@@ -14687,6 +14864,9 @@ static void *_p_SenderSideEstimatorListenerTo_p_RemoteRateEstimatorListener(void
 }
 static void *_p_MP4RecorderFacadeTo_p_MediaFrameListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((MediaFrameListener *)  ((MP4RecorderFacade *) x));
+}
+static void *_p_SimulcastMediaFrameListenerTo_p_MediaFrameListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((MediaFrameListener *)  ((SimulcastMediaFrameListener *) x));
 }
 static void *_p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStreamListener(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((RTPIncomingMediaStreamListener *)  ((RTPIncomingMediaStreamMultiplexer *) x));
@@ -14725,6 +14905,7 @@ static swig_type_info _swigt__p_RTPSource = {"_p_RTPSource", "p_RTPSource|RTPSou
 static swig_type_info _swigt__p_RTPStreamTransponderFacade = {"_p_RTPStreamTransponderFacade", "p_RTPStreamTransponderFacade|RTPStreamTransponderFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RemoteRateEstimatorListener = {"_p_RemoteRateEstimatorListener", "p_RemoteRateEstimatorListener|RemoteRateEstimatorListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SenderSideEstimatorListener = {"_p_SenderSideEstimatorListener", "p_SenderSideEstimatorListener", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_SimulcastMediaFrameListener = {"_p_SimulcastMediaFrameListener", "p_SimulcastMediaFrameListener|SimulcastMediaFrameListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_TimeService = {"_p_TimeService", "p_TimeService|TimeService *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_UDPDumper = {"_p_UDPDumper", "UDPDumper *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_UDPReader = {"_p_UDPReader", "p_UDPReader|UDPReader *", 0, 0, (void*)0, 0};
@@ -14775,6 +14956,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RTPStreamTransponderFacade,
   &_swigt__p_RemoteRateEstimatorListener,
   &_swigt__p_SenderSideEstimatorListener,
+  &_swigt__p_SimulcastMediaFrameListener,
   &_swigt__p_TimeService,
   &_swigt__p_UDPDumper,
   &_swigt__p_UDPReader,
@@ -14799,7 +14981,7 @@ static swig_cast_info _swigc__p_LayerInfo[] = {  {&_swigt__p_LayerSource, _p_Lay
 static swig_cast_info _swigc__p_LayerSource[] = {  {&_swigt__p_LayerSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_LayerSources[] = {  {&_swigt__p_LayerSources, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MP4RecorderFacade[] = {  {&_swigt__p_MP4RecorderFacade, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_MediaFrameListener[] = {  {&_swigt__p_MediaFrameListener, 0, 0, 0},  {&_swigt__p_MP4RecorderFacade, _p_MP4RecorderFacadeTo_p_MediaFrameListener, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MediaFrameListener[] = {  {&_swigt__p_MediaFrameListener, 0, 0, 0},  {&_swigt__p_MP4RecorderFacade, _p_MP4RecorderFacadeTo_p_MediaFrameListener, 0, 0},  {&_swigt__p_SimulcastMediaFrameListener, _p_SimulcastMediaFrameListenerTo_p_MediaFrameListener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PCAPTransportEmulator[] = {  {&_swigt__p_PCAPTransportEmulator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PlayerFacade[] = {  {&_swigt__p_PlayerFacade, 0, 0, 0},{0, 0, 0, 0}};
@@ -14825,6 +15007,7 @@ static swig_cast_info _swigc__p_RTPSource[] = {  {&_swigt__p_RTPSource, 0, 0, 0}
 static swig_cast_info _swigc__p_RTPStreamTransponderFacade[] = {  {&_swigt__p_RTPStreamTransponderFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RemoteRateEstimatorListener[] = {  {&_swigt__p_RemoteRateEstimatorListener, 0, 0, 0},  {&_swigt__p_SenderSideEstimatorListener, _p_SenderSideEstimatorListenerTo_p_RemoteRateEstimatorListener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SenderSideEstimatorListener[] = {  {&_swigt__p_SenderSideEstimatorListener, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SimulcastMediaFrameListener[] = {  {&_swigt__p_SimulcastMediaFrameListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_TimeService[] = {  {&_swigt__p_TimeService, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_UDPDumper[] = {  {&_swigt__p_UDPDumper, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_UDPReader[] = {  {&_swigt__p_UDPReader, 0, 0, 0},{0, 0, 0, 0}};
@@ -14875,6 +15058,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RTPStreamTransponderFacade,
   _swigc__p_RemoteRateEstimatorListener,
   _swigc__p_SenderSideEstimatorListener,
+  _swigc__p_SimulcastMediaFrameListener,
   _swigc__p_TimeService,
   _swigc__p_UDPDumper,
   _swigc__p_UDPReader,
@@ -15433,6 +15617,13 @@ _exports_ActiveSpeakerDetectorFacade_clientData.dtor = _wrap_delete_ActiveSpeake
 if (SWIGTYPE_p_ActiveSpeakerDetectorFacade->clientdata == 0) {
   SWIGTYPE_p_ActiveSpeakerDetectorFacade->clientdata = &_exports_ActiveSpeakerDetectorFacade_clientData;
 }
+/* Name: _exports_SimulcastMediaFrameListener, Type: p_SimulcastMediaFrameListener, Dtor: _wrap_delete_SimulcastMediaFrameListener */
+SWIGV8_FUNCTION_TEMPLATE _exports_SimulcastMediaFrameListener_class = SWIGV8_CreateClassTemplate("_exports_SimulcastMediaFrameListener");
+SWIGV8_SET_CLASS_TEMPL(_exports_SimulcastMediaFrameListener_clientData.class_templ, _exports_SimulcastMediaFrameListener_class);
+_exports_SimulcastMediaFrameListener_clientData.dtor = _wrap_delete_SimulcastMediaFrameListener;
+if (SWIGTYPE_p_SimulcastMediaFrameListener->clientdata == 0) {
+  SWIGTYPE_p_SimulcastMediaFrameListener->clientdata = &_exports_SimulcastMediaFrameListener_clientData;
+}
 
 
   /* register wrapper functions */
@@ -15621,6 +15812,9 @@ SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetNoiseGa
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetMinActivationScore", _wrap_ActiveSpeakerDetectorFacade_SetMinActivationScore);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "AddIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "RemoveIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "AddMediaListener", _wrap_SimulcastMediaFrameListener_AddMediaListener);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "RemoveMediaListener", _wrap_SimulcastMediaFrameListener_RemoveMediaListener);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "Stop", _wrap_SimulcastMediaFrameListener_Stop);
 
 
   /* setup inheritances */
@@ -15782,6 +15976,26 @@ if (SWIGTYPE_p_RemoteRateEstimatorListener->clientdata && !(static_cast<SWIGV8_C
 } else {
 #ifdef SWIGRUNTIME_DEBUG
   printf("Unable to inherit baseclass, it didn't exist _exports_SenderSideEstimatorListener _RemoteRateEstimatorListener\n");
+#endif
+}
+if (SWIGTYPE_p_MediaFrameListener->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ.IsEmpty()))
+{
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+  _exports_SimulcastMediaFrameListener_class->Inherit(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ);
+#else
+  _exports_SimulcastMediaFrameListener_class->Inherit(
+    v8::Local<v8::FunctionTemplate>::New(
+      v8::Isolate::GetCurrent(),
+      static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ)
+    );
+#endif
+  
+#ifdef SWIGRUNTIME_DEBUG
+  printf("Inheritance successful _exports_SimulcastMediaFrameListener _MediaFrameListener\n");
+#endif
+} else {
+#ifdef SWIGRUNTIME_DEBUG
+  printf("Unable to inherit baseclass, it didn't exist _exports_SimulcastMediaFrameListener _MediaFrameListener\n");
 #endif
 }
 
@@ -16216,6 +16430,19 @@ v8::Local<v8::Object> _exports_ActiveSpeakerDetectorFacade_obj = _exports_Active
 #else
 v8::Local<v8::Object> _exports_ActiveSpeakerDetectorFacade_obj = _exports_ActiveSpeakerDetectorFacade_class_0->GetFunction(SWIGV8_CURRENT_CONTEXT()).ToLocalChecked();
 #endif
+/* Class: SimulcastMediaFrameListener (_exports_SimulcastMediaFrameListener) */
+SWIGV8_FUNCTION_TEMPLATE _exports_SimulcastMediaFrameListener_class_0 = SWIGV8_CreateClassTemplate("SimulcastMediaFrameListener");
+_exports_SimulcastMediaFrameListener_class_0->SetCallHandler(_wrap_new_SimulcastMediaFrameListener);
+_exports_SimulcastMediaFrameListener_class_0->Inherit(_exports_SimulcastMediaFrameListener_class);
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+_exports_SimulcastMediaFrameListener_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_SimulcastMediaFrameListener_obj = _exports_SimulcastMediaFrameListener_class_0->GetFunction();
+#elif (SWIG_V8_VERSION < 0x0704)
+_exports_SimulcastMediaFrameListener_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_SimulcastMediaFrameListener_obj = _exports_SimulcastMediaFrameListener_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_SimulcastMediaFrameListener_obj = _exports_SimulcastMediaFrameListener_class_0->GetFunction(SWIGV8_CURRENT_CONTEXT()).ToLocalChecked();
+#endif
 
 
   /* add static class functions and variables */
@@ -16400,6 +16627,11 @@ SWIGV8_MAYBE_CHECK(exports_obj->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW(
 exports_obj->Set(SWIGV8_SYMBOL_NEW("ActiveSpeakerDetectorFacade"), _exports_ActiveSpeakerDetectorFacade_obj);
 #else
 SWIGV8_MAYBE_CHECK(exports_obj->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("ActiveSpeakerDetectorFacade"), _exports_ActiveSpeakerDetectorFacade_obj));
+#endif
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+exports_obj->Set(SWIGV8_SYMBOL_NEW("SimulcastMediaFrameListener"), _exports_SimulcastMediaFrameListener_obj);
+#else
+SWIGV8_MAYBE_CHECK(exports_obj->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("SimulcastMediaFrameListener"), _exports_SimulcastMediaFrameListener_obj));
 #endif
 
 

@@ -20,6 +20,7 @@
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 #include "../media-server/include/rtp/RTPIncomingMediaStreamDepacketizer.h"
 #include "../media-server/include/ActiveSpeakerDetector.h"
+#include "../media-server/include/SimulcastMediaFrameListener.h"
 	
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 using MediaFrameListener = MediaFrame::Listener;
@@ -1219,4 +1220,14 @@ public:
 	void SetMinActivationScore(uint32_t minActivationScore);
 	void AddIncomingSourceGroup(RTPIncomingMediaStream* incoming, uint32_t id);
 	void RemoveIncomingSourceGroup(RTPIncomingMediaStream* incoming);
+};
+
+class SimulcastMediaFrameListener :
+	public MediaFrameListener
+{
+public:
+	SimulcastMediaFrameListener(DWORD ssrc, DWORD numLayers);
+	void AddMediaListener(MediaFrameListener* listener);
+	void RemoveMediaListener(MediaFrameListener* listener);
+	void Stop();
 };

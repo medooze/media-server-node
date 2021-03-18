@@ -79,6 +79,7 @@
 							"media-server/src/vp9/VP9PayloadDescription.cpp",
 							"media-server/src/vp9/VP9LayerSelector.cpp",
 							"media-server/src/vp9/VP9Depacketizer.cpp",
+							"media-server/src/av1/AV1Depacketizer.cpp",
 							"media-server/src/SRTPSession.cpp",
 							"media-server/src/dtls.cpp",
 							"media-server/src/CPUMonitor.cpp",
@@ -133,6 +134,7 @@
 							"media-server/src/remoteratecontrol.cpp",
 							"media-server/src/remoterateestimator.cpp",
 							"media-server/src/SendSideBandwidthEstimation.cpp",
+							"media-server/src/SimulcastMediaFrameListener.cpp"
 						],
 						"dependencies":
 						[
