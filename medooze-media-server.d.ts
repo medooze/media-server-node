@@ -940,11 +940,11 @@ import SemanticSDP = require('semantic-sdp');
     /**
      * Create a new endpoint object
      * @memberof MediaServer
-     * @param {String} ip	- External IP address of server, to be used when
-     *     announcing the local ICE candidate
+     * @param {String | String[]} ip	- External IP address(es) of server, to be
+     * used when announcing the local ICE candidate
      * @returns {Endpoint} The new created endpoing
      */
-    createEndpoint(ip: string): Endpoint;
+    createEndpoint(ip: string | string[]): Endpoint;
 
     /**
      * Create a new MP4 recorder
