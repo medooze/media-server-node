@@ -31,8 +31,8 @@
 				{
 						       "cflags!": [ "-fno-exceptions"],
 						       "cflags_cc!": [ "-fno-exceptions"],
-						       "cflags": [ "-Wno-literal-suffix" ],
-						       "cflags_cc": [ "-Wno-literal-suffix" ]
+						       "cflags": [ "-Wno-unknown-warning-option -Wno-literal-suffix -Wno-reserved-user-defined-literal" ],
+						       "cflags_cc": [ "-Wno-unknown-warning-option -Wno-literal-suffix -Wno-reserved-user-defined-literal" ]
 				}
 
 				]
