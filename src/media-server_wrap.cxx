@@ -2443,7 +2443,7 @@ public:
 		}
 	}
 	
-	virtual void onBye(RTPIncomingMediaStream* group) 
+	virtual void onBye(RTPIncomingMediaStream* group) override
 	{
 	}
 	
