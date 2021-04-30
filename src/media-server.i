@@ -857,6 +857,7 @@ struct RTPIncomingSource : public RTPSource
 	DWORD totalNACKs;
 	int64_t skew;
 	double  drift;
+	bool	aggregatedLayers;
 	
 	%extend 
 	{
@@ -894,8 +895,8 @@ struct TimeService
 
 struct RTPOutgoingSourceGroup
 {
-	RTPOutgoingSourceGroup(MediaFrameType type);
-	RTPOutgoingSourceGroup(std::string &streamId,MediaFrameType type);
+	RTPOutgoingSourceGroup(MediaFrameType type, TimeService& TimeService);
+	RTPOutgoingSourceGroup(std::string &streamId,MediaFrameType type, TimeService& TimeService);
 	
 	MediaFrameType  type;
 	RTPOutgoingSource media;

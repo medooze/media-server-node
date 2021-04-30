@@ -2741,6 +2741,26 @@ SWIGV8_VALUE SWIG_From_double   (double val)
   return SWIGV8_NUMBER_NEW(val);
 }
 
+
+SWIGINTERN
+int SWIG_AsVal_bool (SWIGV8_VALUE obj, bool *val)
+{
+  if(!obj->IsBoolean()) {
+    return SWIG_ERROR;
+  }
+
+  if (val) *val = SWIGV8_BOOLEAN_VALUE(obj);
+  return SWIG_OK;
+}
+
+
+SWIGINTERNINLINE
+SWIGV8_VALUE
+SWIG_From_bool  (bool value)
+{
+  return SWIGV8_BOOLEAN_NEW(value);
+}
+
 SWIGINTERN LayerSources RTPIncomingSource_layers(RTPIncomingSource *self){
 			LayerSources layers;
 			for(auto it = self->layers.begin(); it != self->layers.end(); ++it )
@@ -2884,26 +2904,6 @@ SWIG_From_std_string  (const std::string& s)
 
 
 
-
-
-SWIGINTERN
-int SWIG_AsVal_bool (SWIGV8_VALUE obj, bool *val)
-{
-  if(!obj->IsBoolean()) {
-    return SWIG_ERROR;
-  }
-
-  if (val) *val = SWIGV8_BOOLEAN_VALUE(obj);
-  return SWIG_OK;
-}
-
-
-SWIGINTERNINLINE
-SWIGV8_VALUE
-SWIG_From_bool  (bool value)
-{
-  return SWIGV8_BOOLEAN_NEW(value);
-}
 
 
 SWIGINTERN int
@@ -5486,6 +5486,70 @@ static SwigV8ReturnValue _wrap_RTPIncomingSource_drift_get(v8::Local<v8::String>
   }
 
 
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_aggregatedLayers_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_aggregatedLayers_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    bool arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    bool val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_aggregatedLayers_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_bool(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_aggregatedLayers_set" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+    if (arg1) (arg1)->aggregatedLayers = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_aggregatedLayers_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_aggregatedLayers_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    bool result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_aggregatedLayers_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (bool) ((arg1)->aggregatedLayers);
+    jsresult = SWIG_From_bool(static_cast< bool >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
 static SwigV8ReturnValue _wrap_RTPIncomingSource_layers(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -6447,17 +6511,29 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup__SWIG_0(const SwigV8Ar
   
   SWIGV8_OBJECT self = args.Holder();
   MediaFrameType arg1 ;
+  TimeService *arg2 = 0 ;
   int val1 ;
   int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   RTPOutgoingSourceGroup *result;
   if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_RTPOutgoingSourceGroup__SWIG_0.");
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPOutgoingSourceGroup__SWIG_0.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPOutgoingSourceGroup__SWIG_0.");
   ecode1 = SWIG_AsVal_int(args[0], &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "1"" of type '" "MediaFrameType""'");
   } 
   arg1 = static_cast< MediaFrameType >(val1);
-  result = (RTPOutgoingSourceGroup *)new RTPOutgoingSourceGroup(arg1);
+  res2 = SWIG_ConvertPtr(args[1], &argp2, SWIGTYPE_p_TimeService,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "2"" of type '" "TimeService &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RTPOutgoingSourceGroup" "', argument " "2"" of type '" "TimeService &""'"); 
+  }
+  arg2 = reinterpret_cast< TimeService * >(argp2);
+  result = (RTPOutgoingSourceGroup *)new RTPOutgoingSourceGroup(arg1,*arg2);
+  
   
   
   
@@ -6477,13 +6553,16 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup__SWIG_1(const SwigV8Ar
   SWIGV8_OBJECT self = args.Holder();
   std::string *arg1 = 0 ;
   MediaFrameType arg2 ;
+  TimeService *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
   RTPOutgoingSourceGroup *result;
   if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_RTPOutgoingSourceGroup__SWIG_1.");
-  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPOutgoingSourceGroup__SWIG_1.");
+  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPOutgoingSourceGroup__SWIG_1.");
   res1 = SWIG_ConvertPtr(args[0], &argp1, SWIGTYPE_p_std__string,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "1"" of type '" "std::string &""'"); 
@@ -6497,7 +6576,16 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup__SWIG_1(const SwigV8Ar
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "2"" of type '" "MediaFrameType""'");
   } 
   arg2 = static_cast< MediaFrameType >(val2);
-  result = (RTPOutgoingSourceGroup *)new RTPOutgoingSourceGroup(*arg1,arg2);
+  res3 = SWIG_ConvertPtr(args[2], &argp3, SWIGTYPE_p_TimeService,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "3"" of type '" "TimeService &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RTPOutgoingSourceGroup" "', argument " "3"" of type '" "TimeService &""'"); 
+  }
+  arg3 = reinterpret_cast< TimeService * >(argp3);
+  result = (RTPOutgoingSourceGroup *)new RTPOutgoingSourceGroup(*arg1,arg2,*arg3);
+  
   
   
   
@@ -6520,7 +6608,7 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup(const SwigV8Arguments 
   
   // switch all cases by means of series of if-returns.
   
-  if(args.Length() == 1) {
+  if(args.Length() == 2) {
     errorHandler.err.Clear();
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
     self = _wrap_new_RTPOutgoingSourceGroup__SWIG_0(args, errorHandler);
@@ -6535,7 +6623,7 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup(const SwigV8Arguments 
 #endif
   }
   
-  if(args.Length() == 2) {
+  if(args.Length() == 3) {
     errorHandler.err.Clear();
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
     self = _wrap_new_RTPOutgoingSourceGroup__SWIG_1(args, errorHandler);
@@ -15663,6 +15751,7 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalPLIs", _wrap_RT
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalNACKs", _wrap_RTPIncomingSource_totalNACKs_get, _wrap_RTPIncomingSource_totalNACKs_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "skew", _wrap_RTPIncomingSource_skew_get, _wrap_RTPIncomingSource_skew_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "drift", _wrap_RTPIncomingSource_drift_get, _wrap_RTPIncomingSource_drift_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "aggregatedLayers", _wrap_RTPIncomingSource_aggregatedLayers_get, _wrap_RTPIncomingSource_aggregatedLayers_set);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSource_class, "layers", _wrap_RTPIncomingSource_layers);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "time", _wrap_RTPOutgoingSource_time_get, _wrap_RTPOutgoingSource_time_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "lastTime", _wrap_RTPOutgoingSource_lastTime_get, _wrap_RTPOutgoingSource_lastTime_set);
