@@ -68,7 +68,7 @@ tap.test("OutgoingMediaStream::create",async function(suite){
 			},
 			video: {
 				id: "testvideo",
-				ssrcs : { media: 2, rtx: 3, fec: 4}
+				ssrcs : { media: 2, rtx: 3}
 			}
 			
 		});
@@ -98,7 +98,7 @@ tap.test("OutgoingMediaStream::create",async function(suite){
 				},
 				video: {
 					id: "testvideo",
-					ssrcs : { media: 1, rtx: 3, fec: 4}
+					ssrcs : { media: 1, rtx: 3}
 				}
 
 			});
@@ -127,11 +127,11 @@ tap.test("OutgoingMediaStream::create",async function(suite){
 			video: [
 				{
 					id: "testvideo",
-					ssrcs : { media: 2, rtx: 3, fec: 4}
+					ssrcs : { media: 2, rtx: 3}
 				},
 				{
 					id: "thumb",
-					ssrcs : { media: 5, rtx: 6, fec: 7}
+					ssrcs : { media: 5, rtx: 6}
 				},
 			]
 			

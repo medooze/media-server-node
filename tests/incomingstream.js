@@ -35,17 +35,14 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		const streamInfo = new StreamInfo("stream0");
 		//Create track
 		let track = new TrackInfo("video", "track1");
-		//Get ssrc, rtx and fec 
+		//Get ssrc and rtx
 		const media = ssrc++;
 		const rtx = ssrc++;
-		const fec = ssrc++;
 		//Add ssrcs to track
 		track.addSSRC(media);
 		track.addSSRC(rtx);
-		track.addSSRC(fec);
-		//Add RTX and FEC group	
+		//Add RTX group	
 		track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 		//Add it
 		streamInfo.addTrack(track);
 		//Create track
@@ -66,25 +63,19 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		const streamInfo = new StreamInfo("stream1");
 		//Create track
 		let track = new TrackInfo("video", "track1");
-		//Get ssrc, rtx and fec 
+		//Get ssrc and rtx
 		const mediaA = ssrc++;
 		const rtxA = ssrc++;
-		const fecA = ssrc++;
 		const mediaB = ssrc++;
 		const rtxB = ssrc++;
-		const fecB = ssrc++;
 		//Add ssrcs to track
 		track.addSSRC(mediaA);
 		track.addSSRC(rtxA);
-		track.addSSRC(fecA);
 		track.addSSRC(mediaB);
 		track.addSSRC(rtxB);
-		track.addSSRC(fecB);
-		//Add RTX and FEC group	
+		//Add RTX group	
 		track.addSourceGroup(new SourceGroupInfo("FID",[mediaA,rtxA]));
-		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[mediaA,fecA]));
 		track.addSourceGroup(new SourceGroupInfo("FID",[mediaB,rtxB]));
-		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[mediaB,fecB]));
 		//Add encodings
 		track.addEncoding(new TrackEncodingInfo("A",false));
 		track.addEncoding(new TrackEncodingInfo("B",false));
@@ -151,17 +142,14 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		const streamInfo = new StreamInfo("stream4");
 		//Create track
 		let videoTrack = new TrackInfo("video", "track1");
-		//Get ssrc, rtx and fec 
+		//Get ssrc and rtx
 		const media = ssrc++;
 		const rtx = ssrc++;
-		const fec = ssrc++;
 		//Add ssrcs to track
 		videoTrack.addSSRC(media);
 		videoTrack.addSSRC(rtx);
-		videoTrack.addSSRC(fec);
-		//Add RTX and FEC group	
+		//Add RTX group	
 		videoTrack.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-		videoTrack.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 		//Add it
 		streamInfo.addTrack(videoTrack);
 		//Create track

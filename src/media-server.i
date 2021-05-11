@@ -900,7 +900,6 @@ struct RTPOutgoingSourceGroup
 	
 	MediaFrameType  type;
 	RTPOutgoingSource media;
-	RTPOutgoingSource fec;
 	RTPOutgoingSource rtx;
 	
 	void Update();
@@ -936,7 +935,6 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	DWORD rtt;
 	MediaFrameType  type;
 	RTPIncomingSource media;
-	RTPIncomingSource fec;
 	RTPIncomingSource rtx;
 	DWORD lost;
 	DWORD minWaitedTime;
@@ -1078,6 +1076,7 @@ public:
 	void SetBandwidthProbing(bool probe);
 	void SetMaxProbingBitrate(DWORD bitrate);
 	void SetProbingBitrateLimit(DWORD bitrate);
+	void EnableSenderSideEstimation(bool enabled);
 	void SetSenderSideEstimatorListener(RemoteRateEstimatorListener* listener);
 	
 	const char* GetRemoteUsername() const;

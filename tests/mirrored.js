@@ -56,17 +56,14 @@ tap.test("IncomingStream",function(suite){
 		const streamInfo = new StreamInfo("stream1");
 		//Create track
 		let track = new TrackInfo("video", "track1");
-		//Get ssrc, rtx and fec 
+		//Get ssrc and rtx
 		const media = ssrc++;
 		const rtx = ssrc++;
-		const fec = ssrc++;
 		//Add ssrcs to track
 		track.addSSRC(media);
 		track.addSSRC(rtx);
-		track.addSSRC(fec);
-		//Add RTX and FEC group	
+		//Add RTX group	
 		track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 		//Add it
 		streamInfo.addTrack(track);
 		//Create track
@@ -91,17 +88,14 @@ tap.test("IncomingStream",function(suite){
 		const streamInfo = new StreamInfo("stream3");
 		//Create track
 		let track = new TrackInfo("video", "track1");
-		//Get ssrc, rtx and fec 
+		//Get ssrc and rtx
 		const media = ssrc++;
 		const rtx = ssrc++;
-		const fec = ssrc++;
 		//Add ssrcs to track
 		track.addSSRC(media);
 		track.addSSRC(rtx);
-		track.addSSRC(fec);
-		//Add RTX and FEC group	
+		//Add RTX group	
 		track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-		track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 		//Add it
 		streamInfo.addTrack(track);
 		//Create track

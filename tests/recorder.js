@@ -62,17 +62,14 @@ Promise.all([
 			const streamInfo = new StreamInfo("stream0");
 			//Create track
 			let track = new TrackInfo("video", "track1");
-			//Get ssrc, rtx and fec 
+			//Get ssrc and rtx
 			const media = ssrc++;
 			const rtx = ssrc++;
-			const fec = ssrc++;
 			//Add ssrcs to track
 			track.addSSRC(media);
 			track.addSSRC(rtx);
-			track.addSSRC(fec);
-			//Add RTX and FEC group	
+			//Add RTX group	
 			track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-			track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 			//Add it
 			streamInfo.addTrack(track);
 			//Create track
@@ -118,17 +115,14 @@ Promise.all([
 			const streamInfo = new StreamInfo("stream0");
 			//Create track
 			let track = new TrackInfo("video", "track1");
-			//Get ssrc, rtx and fec 
+			//Get ssrc and rtx
 			const media = ssrc++;
 			const rtx = ssrc++;
-			const fec = ssrc++;
 			//Add ssrcs to track
 			track.addSSRC(media);
 			track.addSSRC(rtx);
-			track.addSSRC(fec);
-			//Add RTX and FEC group	
+			//Add RTX group	
 			track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-			track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 			//Add it
 			streamInfo.addTrack(track);
 			//Create track
@@ -176,17 +170,14 @@ Promise.all([
 			const streamInfo = new StreamInfo("stream0");
 			//Create track
 			let track = new TrackInfo("video", "track3");
-			//Get ssrc, rtx and fec 
+			//Get ssrc and rtx
 			const media = ssrc++;
 			const rtx = ssrc++;
-			const fec = ssrc++;
 			//Add ssrcs to track
 			track.addSSRC(media);
 			track.addSSRC(rtx);
-			track.addSSRC(fec);
-			//Add RTX and FEC group	
+			//Add RTX group	
 			track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-			track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 			//Add it
 			streamInfo.addTrack(track);
 			//Create track
@@ -238,17 +229,14 @@ Promise.all([
 			const streamInfo = new StreamInfo("stream01");
 			//Create track
 			let track = new TrackInfo("video", "track5");
-			//Get ssrc, rtx and fec 
+			//Get ssrc and rtx
 			const media = ssrc++;
 			const rtx = ssrc++;
-			const fec = ssrc++;
 			//Add ssrcs to track
 			track.addSSRC(media);
 			track.addSSRC(rtx);
-			track.addSSRC(fec);
-			//Add RTX and FEC group	
+			//Add RTX group	
 			track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
-			track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 			//Add it
 			streamInfo.addTrack(track);
 			//Create track
