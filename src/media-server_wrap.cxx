@@ -2044,6 +2044,8 @@ public:
 		
 	virtual void onRTPPacket(RTPPacket &packet)
 	{
+		//Get time
+		auto now = getTimeMS();
 		//Clone packet
 		auto cloned = packet.Clone();
 		//Copy payload
@@ -2053,19 +2055,19 @@ public:
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				video.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of video
 				cloned->SetSSRC(video.media.ssrc);
 				//Multiplex
-				video.AddPacket(cloned,0);
+				video.AddPacket(cloned,0,now);
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				audio.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of audio
 				cloned->SetSSRC(audio.media.ssrc);
 				//Multiplex
-				audio.AddPacket(cloned,0);
+				audio.AddPacket(cloned,0,now);
 				break;
 			default:
 				///Ignore
@@ -11633,6 +11635,78 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_SetRemoteOverrideBWE(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_SetRemoteOverrideBWE.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_SetRemoteOverrideBWE" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DTLSICETransport_SetRemoteOverrideBWE" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  (arg1)->SetRemoteOverrideBWE(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_DTLSICETransport_SetRemoteOverrideBitrate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_SetRemoteOverrideBitrate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_SetRemoteOverrideBitrate" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
+  }
+  arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DTLSICETransport_SetRemoteOverrideBitrate" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetRemoteOverrideBitrate(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_GetRemoteUsername(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -15751,6 +15825,8 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetMaxProbingBitrate"
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetProbingBitrateLimit", _wrap_DTLSICETransport_SetProbingBitrateLimit);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "EnableSenderSideEstimation", _wrap_DTLSICETransport_EnableSenderSideEstimation);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetSenderSideEstimatorListener", _wrap_DTLSICETransport_SetSenderSideEstimatorListener);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteOverrideBWE", _wrap_DTLSICETransport_SetRemoteOverrideBWE);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteOverrideBitrate", _wrap_DTLSICETransport_SetRemoteOverrideBitrate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRemoteUsername", _wrap_DTLSICETransport_GetRemoteUsername);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRemotePwd", _wrap_DTLSICETransport_GetRemotePwd);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetLocalUsername", _wrap_DTLSICETransport_GetLocalUsername);

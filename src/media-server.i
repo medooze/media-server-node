@@ -357,6 +357,8 @@ public:
 		
 	virtual void onRTPPacket(RTPPacket &packet)
 	{
+		//Get time
+		auto now = getTimeMS();
 		//Clone packet
 		auto cloned = packet.Clone();
 		//Copy payload
@@ -366,19 +368,19 @@ public:
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				video.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of video
 				cloned->SetSSRC(video.media.ssrc);
 				//Multiplex
-				video.AddPacket(cloned,0);
+				video.AddPacket(cloned,0,now);
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio.media.Update(getTimeMS(),cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				audio.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of audio
 				cloned->SetSSRC(audio.media.ssrc);
 				//Multiplex
-				audio.AddPacket(cloned,0);
+				audio.AddPacket(cloned,0,now);
 				break;
 			default:
 				///Ignore
@@ -1078,6 +1080,9 @@ public:
 	void SetProbingBitrateLimit(DWORD bitrate);
 	void EnableSenderSideEstimation(bool enabled);
 	void SetSenderSideEstimatorListener(RemoteRateEstimatorListener* listener);
+
+	void SetRemoteOverrideBWE(bool overrideBWE);
+	void SetRemoteOverrideBitrate(DWORD bitrate);
 	
 	const char* GetRemoteUsername() const;
 	const char* GetRemotePwd()	const;
