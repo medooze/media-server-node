@@ -1150,7 +1150,6 @@ Create new track from a TrackInfo object and add it to this stream
     -   `params.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
         -   `params.ssrcs.media` **[Number][5]?** ssrc for the track
         -   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
-        -   `params.ssrcs.fec` **[Number][5]?** ssrc for the fec video track
 -   `trackInfo` **TrackInfo** Track info object
 
 Returns **[OutgoingStream][16]** The new outgoing stream
@@ -1482,6 +1481,7 @@ Create a new transport object and register it with the remote ICE username and p
 -   `options` **[Object][4]** Dictionary with transport properties
     -   `options.disableSTUNKeepAlive` **[boolean][2]** Disable ICE/STUN keep alives, required for server to server transports
     -   `options.srtpProtectionProfiles` **[String][1]** Colon delimited list of SRTP protection profile names
+    -   `options.overrideBWE` **[String][1]** Override BWE reported by REMB
 
 Returns **[Transport][9]** New transport object
 
@@ -1658,6 +1658,22 @@ Set the maximum bitrate to be used if probing is enabled.
 
 -   `bitrate` **[Number][5]** 
 
+### enableSenderSideEstimation
+
+Enable or disable calculation of sender side estimation if transport wide cc has been negotiated
+
+#### Parameters
+
+-   `enabled` **[Boolean][2]** 
+
+### setRemoteOverrideBitrate
+
+Override the bitrate sent by REMB to the remote sender. The transport must be constructed with teh override bwe option, and transport wide cc must not be offered.
+
+#### Parameters
+
+-   `bitrate` **[Number][5]** 
+
 ### setProbingBitrateLimit
 
 Do not allow probing to increase sent bitrate above certain limit
@@ -1784,7 +1800,6 @@ Create new outgoing stream in this transport
         -   `params.video.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
             -   `params.video.ssrcs.media` **[Number][5]?** ssrc for the video track
             -   `params.video.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
-            -   `params.video.ssrcs.fec` **[Number][5]?** ssrc for the fec video track
 
 Returns **[OutgoingStream][16]** The new outgoing stream
 
@@ -1800,7 +1815,6 @@ Create new outgoing stream in this transport
     -   `params.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
         -   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
         -   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][5]?** ssrc for the fec track
 
 Returns **[OutgoingStreamTrack][23]** The new outgoing stream track
 
@@ -1858,7 +1872,6 @@ Create new incoming stream in this transport. TODO: Simulcast is still not suppo
     -   `params.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
         -   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
         -   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
-        -   `params.ssrcs.fec` **[Number][5]?** ssrc for the fec track
 
 Returns **[IncomingStreamTrack][13]** The new incoming stream track
 
@@ -1962,17 +1975,16 @@ Returns **TrackInfo** Track info
 
 Get stats for all encodings 
 
-You will get stats for media, rtx and fec sources (if used):
+You will get stats for media and rtx sources (if used):
 
 -   timestmap		: timestamp on when this stats where created
 -   media		: mediaStats,
 -   rtx		: rtxStats,
--   fec		: fecStats
 -   remb		: remote estimated bitate (if remb is in use)
 -   numPackets	: number of rtp packets sent
 -   numPacketsDelta	: number of rtp packets sent during last second 
 -   bitrate		: Bitrate for media stream only in bps
--   total		: Accumulated bitrate for rtx, media and fec streams in bps
+-   total		: Accumulated bitrate for media and rtx streams in bps
 
 The stats objects will privide the follwing info for each source
 
@@ -2101,20 +2113,19 @@ Audio or Video track of a remote media stream
 
 Get stats for all encodings 
 
-For each encoding you will get stats for media, rtx and fec sources (if used):
+For each encoding you will get stats for media and rtx sources (if used):
 
 -   media    : Stats for the media stream
 -   rtx      : Stats for the rtx retransmission stream
--   fec      : Stats for the fec stream
 -   rtt      : Round Trip Time in ms
 -   waitTime : "min","max" and "avg" packet waiting times in rtp buffer before delivering them
 -   bitrate  : Bitrate for media stream only in bps
--   total    : Accumulated bitrate for rtx, media and fec streams in bps
+-   total    : Accumulated bitrate for media and rtx streams in bps
 -   remb     : Estimated avialable bitrate for receving (only avaailable if not using tranport wide cc)
 -   timestamp: When this stats was generated, in order to save workload, stats are cached for 200ms
 -   simulcastIdx	: Simulcast layer index based on bitrate received (-1 if it is inactive).
--   lostPackets	: Accumulated lost packets for rtx, media and fec strems
--   numPackets	: Accumulated packets for rtx, media and fec strems
+-   lostPackets	: Accumulated lost packets for media and rtx strems
+-   numPackets	: Accumulated packets for media and rtx strems
 -   lostPacketsRatio	: Lost packets ratio
 
 The stats objects will provide the following info for each source
