@@ -1296,7 +1296,7 @@ IncomingStreamTrack stopped event
 
 ## PeerConnectionServer
 
-Manager of remoe peer connecion clients
+Manager of remote peer connecion clients
 
 ### on
 
