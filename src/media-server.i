@@ -466,29 +466,6 @@ private:
 };
 
 
-RTPSenderFacade* TransportToSender(DTLSICETransport* transport)
-{
-	return new RTPSenderFacade(transport);
-}
-RTPReceiverFacade* TransportToReceiver(DTLSICETransport* transport)
-{
-	return new RTPReceiverFacade(transport);
-}
-
-RTPReceiverFacade* PCAPTransportEmulatorToReceiver(PCAPTransportEmulator* transport)
-{
-	return new RTPReceiverFacade(transport);
-}
-
-RTPSenderFacade* SessionToSender(RTPSessionFacade* session)
-{
-	return new RTPSenderFacade(session);	
-}
-RTPReceiverFacade* SessionToReceiver(RTPSessionFacade* session)
-{
-	return new RTPReceiverFacade(session);
-}
-
 class RTPStreamTransponderFacade : 
 	public RTPStreamTransponder
 {
@@ -1130,13 +1107,6 @@ public:
 	RTPReceiver* get();
 	int SendPLI(DWORD ssrc);
 };
-
-
-RTPSenderFacade*	TransportToSender(DTLSICETransport* transport);
-RTPReceiverFacade*	TransportToReceiver(DTLSICETransport* transport);
-RTPReceiverFacade*	PCAPTransportEmulatorToReceiver(PCAPTransportEmulator* transport);
-RTPSenderFacade*	SessionToSender(RTPSessionFacade* session);
-RTPReceiverFacade*	SessionToReceiver(RTPSessionFacade* session);
 
 class RTPStreamTransponderFacade 
 {

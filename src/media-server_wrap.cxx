@@ -2153,29 +2153,6 @@ private:
 };
 
 
-RTPSenderFacade* TransportToSender(DTLSICETransport* transport)
-{
-	return new RTPSenderFacade(transport);
-}
-RTPReceiverFacade* TransportToReceiver(DTLSICETransport* transport)
-{
-	return new RTPReceiverFacade(transport);
-}
-
-RTPReceiverFacade* PCAPTransportEmulatorToReceiver(PCAPTransportEmulator* transport)
-{
-	return new RTPReceiverFacade(transport);
-}
-
-RTPSenderFacade* SessionToSender(RTPSessionFacade* session)
-{
-	return new RTPSenderFacade(session);	
-}
-RTPReceiverFacade* SessionToReceiver(RTPSessionFacade* session)
-{
-	return new RTPReceiverFacade(session);
-}
-
 class RTPStreamTransponderFacade : 
 	public RTPStreamTransponder
 {
@@ -12721,146 +12698,6 @@ static void _wrap_delete_RTPReceiverFacade(v8::Persistent<v8::Value> object, voi
         }
 
 
-static SwigV8ReturnValue _wrap_TransportToSender(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPSenderFacade *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_TransportToSender.");
-  
-  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransportToSender" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
-  }
-  arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
-  result = (RTPSenderFacade *)TransportToSender(arg1);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPSenderFacade, 0 |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_TransportToReceiver(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPReceiverFacade *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_TransportToReceiver.");
-  
-  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransportToReceiver" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
-  }
-  arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
-  result = (RTPReceiverFacade *)TransportToReceiver(arg1);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_PCAPTransportEmulatorToReceiver(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  PCAPTransportEmulator *arg1 = (PCAPTransportEmulator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPReceiverFacade *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PCAPTransportEmulatorToReceiver.");
-  
-  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_PCAPTransportEmulator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PCAPTransportEmulatorToReceiver" "', argument " "1"" of type '" "PCAPTransportEmulator *""'"); 
-  }
-  arg1 = reinterpret_cast< PCAPTransportEmulator * >(argp1);
-  result = (RTPReceiverFacade *)PCAPTransportEmulatorToReceiver(arg1);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_SessionToSender(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  RTPSessionFacade *arg1 = (RTPSessionFacade *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPSenderFacade *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SessionToSender.");
-  
-  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_RTPSessionFacade, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SessionToSender" "', argument " "1"" of type '" "RTPSessionFacade *""'"); 
-  }
-  arg1 = reinterpret_cast< RTPSessionFacade * >(argp1);
-  result = (RTPSenderFacade *)SessionToSender(arg1);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPSenderFacade, 0 |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_SessionToReceiver(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  RTPSessionFacade *arg1 = (RTPSessionFacade *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  RTPReceiverFacade *result = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SessionToReceiver.");
-  
-  res1 = SWIG_ConvertPtr(args[0], &argp1,SWIGTYPE_p_RTPSessionFacade, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SessionToReceiver" "', argument " "1"" of type '" "RTPSessionFacade *""'"); 
-  }
-  arg1 = reinterpret_cast< RTPSessionFacade * >(argp1);
-  result = (RTPReceiverFacade *)SessionToReceiver(arg1);
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static SwigV8ReturnValue _wrap_new_RTPStreamTransponderFacade(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -16527,11 +16364,6 @@ SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_Med
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetCertificate", _wrap_MediaServer_SetCertificate);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "GetFingerprint", _wrap_MediaServer_GetFingerprint);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetPortRange", _wrap_MediaServer_SetPortRange);
-SWIGV8_AddStaticFunction(exports_obj, "TransportToSender", _wrap_TransportToSender);
-SWIGV8_AddStaticFunction(exports_obj, "TransportToReceiver", _wrap_TransportToReceiver);
-SWIGV8_AddStaticFunction(exports_obj, "PCAPTransportEmulatorToReceiver", _wrap_PCAPTransportEmulatorToReceiver);
-SWIGV8_AddStaticFunction(exports_obj, "SessionToSender", _wrap_SessionToSender);
-SWIGV8_AddStaticFunction(exports_obj, "SessionToReceiver", _wrap_SessionToReceiver);
 
 
   /* register classes */
