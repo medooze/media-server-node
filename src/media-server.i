@@ -777,9 +777,9 @@ public:
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 	}
 		
-	virtual void onActiveSpeakerChanded(uint32_t speakerId,uint32_t multiplexerId) override
+	virtual void onActiveSpeakerChanged(uint32_t speakerId,uint32_t multiplexerId) override
 	{
-		UltraDebug("-ActiveSpeakerMultiplexerFacade::onActiveSpeakerChanded() [speakerId:%d,multiplexerId:%d]\n",speakerId,multiplexerId);
+		UltraDebug("-ActiveSpeakerMultiplexerFacade::onActiveSpeakerChanged() [speakerId:%d,multiplexerId:%d]\n",speakerId,multiplexerId);
 		//Run function on main node thread
 		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
@@ -790,6 +790,21 @@ public:
 			argv[i++] = Nan::New<v8::Uint32>(multiplexerId);
 			//Call object method with arguments
 			MakeCallback(cloned, "onactivespeakerchanged", i, argv);
+		});
+	}
+
+	virtual void onActiveSpeakerRemoved(uint32_t multiplexerId) override
+	{
+		UltraDebug("-ActiveSpeakerMultiplexerFacade::onActiveSpeakerRemoved() [multiplexerId:%d]\n",multiplexerId);
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[1];
+			//Create local args
+			argv[i++] = Nan::New<v8::Uint32>(multiplexerId);
+			//Call object method with arguments
+			MakeCallback(cloned, "onactivespeakerremoved", i, argv);
 		});
 	}
 	
