@@ -67,6 +67,7 @@
 							"media-server/ext/crc32c/src/crc32c_arm64.cc",
 							"media-server/ext/libdatachannels/src/Datachannels.cpp",
 							"media-server/src/ActiveSpeakerDetector.cpp",
+							"media-server/src/ActiveSpeakerMultiplexer.cpp",
 							"media-server/src/EventLoop.cpp",
 							"media-server/src/RTPBundleTransport.cpp",
 							"media-server/src/DTLSICETransport.cpp",

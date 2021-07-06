@@ -1616,49 +1616,49 @@ fail: ;
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_ActiveSpeakerDetectorFacade swig_types[0]
-#define SWIGTYPE_p_DTLSICETransport swig_types[1]
-#define SWIGTYPE_p_DTLSICETransportListener swig_types[2]
-#define SWIGTYPE_p_ICERemoteCandidate swig_types[3]
-#define SWIGTYPE_p_LayerInfo swig_types[4]
-#define SWIGTYPE_p_LayerSource swig_types[5]
-#define SWIGTYPE_p_LayerSources swig_types[6]
-#define SWIGTYPE_p_MP4RecorderFacade swig_types[7]
-#define SWIGTYPE_p_MediaFrameListener swig_types[8]
-#define SWIGTYPE_p_MediaServer swig_types[9]
-#define SWIGTYPE_p_PCAPTransportEmulator swig_types[10]
-#define SWIGTYPE_p_PlayerFacade swig_types[11]
-#define SWIGTYPE_p_Properties swig_types[12]
-#define SWIGTYPE_p_PropertiesFacade swig_types[13]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[14]
-#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[15]
-#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[16]
-#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[17]
-#define SWIGTYPE_p_RTPIncomingMediaStreamListener swig_types[18]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[19]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[20]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[21]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[22]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[23]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[24]
-#define SWIGTYPE_p_RTPReceiver swig_types[25]
-#define SWIGTYPE_p_RTPReceiverFacade swig_types[26]
-#define SWIGTYPE_p_RTPSender swig_types[27]
-#define SWIGTYPE_p_RTPSenderFacade swig_types[28]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[29]
-#define SWIGTYPE_p_RTPSource swig_types[30]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[31]
-#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[32]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[33]
-#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[34]
-#define SWIGTYPE_p_TimeService swig_types[35]
-#define SWIGTYPE_p_UDPDumper swig_types[36]
-#define SWIGTYPE_p_UDPReader swig_types[37]
-#define SWIGTYPE_p_char swig_types[38]
-#define SWIGTYPE_p_int swig_types[39]
-#define SWIGTYPE_p_long_long swig_types[40]
-#define SWIGTYPE_p_short swig_types[41]
-#define SWIGTYPE_p_signed_char swig_types[42]
-#define SWIGTYPE_p_std__string swig_types[43]
+#define SWIGTYPE_p_ActiveSpeakerMultiplexerFacade swig_types[1]
+#define SWIGTYPE_p_DTLSICETransport swig_types[2]
+#define SWIGTYPE_p_DTLSICETransportListener swig_types[3]
+#define SWIGTYPE_p_ICERemoteCandidate swig_types[4]
+#define SWIGTYPE_p_LayerInfo swig_types[5]
+#define SWIGTYPE_p_LayerSource swig_types[6]
+#define SWIGTYPE_p_LayerSources swig_types[7]
+#define SWIGTYPE_p_MP4RecorderFacade swig_types[8]
+#define SWIGTYPE_p_MediaFrameListener swig_types[9]
+#define SWIGTYPE_p_MediaServer swig_types[10]
+#define SWIGTYPE_p_PCAPTransportEmulator swig_types[11]
+#define SWIGTYPE_p_PlayerFacade swig_types[12]
+#define SWIGTYPE_p_Properties swig_types[13]
+#define SWIGTYPE_p_PropertiesFacade swig_types[14]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[15]
+#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[16]
+#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[17]
+#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[18]
+#define SWIGTYPE_p_RTPIncomingMediaStreamListener swig_types[19]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[20]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[21]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[22]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[23]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[24]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[25]
+#define SWIGTYPE_p_RTPReceiver swig_types[26]
+#define SWIGTYPE_p_RTPReceiverFacade swig_types[27]
+#define SWIGTYPE_p_RTPSender swig_types[28]
+#define SWIGTYPE_p_RTPSenderFacade swig_types[29]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[30]
+#define SWIGTYPE_p_RTPSource swig_types[31]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[32]
+#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[33]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[34]
+#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[35]
+#define SWIGTYPE_p_TimeService swig_types[36]
+#define SWIGTYPE_p_UDPDumper swig_types[37]
+#define SWIGTYPE_p_UDPReader swig_types[38]
+#define SWIGTYPE_p_char swig_types[39]
+#define SWIGTYPE_p_int swig_types[40]
+#define SWIGTYPE_p_long_long swig_types[41]
+#define SWIGTYPE_p_short swig_types[42]
+#define SWIGTYPE_p_signed_char swig_types[43]
 #define SWIGTYPE_p_unsigned_char swig_types[44]
 #define SWIGTYPE_p_unsigned_int swig_types[45]
 #define SWIGTYPE_p_unsigned_long_long swig_types[46]
@@ -1707,6 +1707,7 @@ static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
 #include "../media-server/include/rtp/RTPStreamTransponder.h"
 #include "../media-server/include/rtp/RTPIncomingMediaStreamDepacketizer.h"
 #include "../media-server/include/ActiveSpeakerDetector.h"
+#include "../media-server/include/ActiveSpeakerMultiplexer.h"
 #include "../media-server/include/SimulcastMediaFrameListener.h"
 	
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
@@ -2452,6 +2453,52 @@ private:
 };
 
 
+class ActiveSpeakerMultiplexerFacade :
+	public ActiveSpeakerMultiplexer,
+	public ActiveSpeakerMultiplexer::Listener
+{
+public:	
+	ActiveSpeakerMultiplexerFacade(TimeService& timeService,v8::Local<v8::Object> object) :
+		ActiveSpeakerMultiplexer(timeService,this)
+	{
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
+	}
+		
+	virtual void onActiveSpeakerChanged(uint32_t speakerId,uint32_t multiplexerId) override
+	{
+		UltraDebug("-ActiveSpeakerMultiplexerFacade::onActiveSpeakerChanged() [speakerId:%d,multiplexerId:%d]\n",speakerId,multiplexerId);
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[2];
+			//Create local args
+			argv[i++] = Nan::New<v8::Uint32>(speakerId);
+			argv[i++] = Nan::New<v8::Uint32>(multiplexerId);
+			//Call object method with arguments
+			MakeCallback(cloned, "onactivespeakerchanged", i, argv);
+		});
+	}
+
+	virtual void onActiveSpeakerRemoved(uint32_t multiplexerId) override
+	{
+		UltraDebug("-ActiveSpeakerMultiplexerFacade::onActiveSpeakerRemoved() [multiplexerId:%d]\n",multiplexerId);
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[1];
+			//Create local args
+			argv[i++] = Nan::New<v8::Uint32>(multiplexerId);
+			//Call object method with arguments
+			MakeCallback(cloned, "onactivespeakerremoved", i, argv);
+		});
+	}
+	
+private:
+	std::shared_ptr<Persistent<v8::Object>> persistent;
+};
+
 
 #include <stdint.h>		// Use the C99 official header
 
@@ -2759,16 +2806,6 @@ int SWIG_AsVal_int (SWIGV8_VALUE valRef, int* val)
 }
 
 
-SWIGINTERNINLINE
-SWIGV8_VALUE SWIG_From_int  (int value)
-{
-  return SWIGV8_INT32_NEW(value);
-}
-
-
-using RTPIncomingMediaStreamListener = RTPIncomingMediaStream::Listener;
-
-
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
 {
@@ -2852,6 +2889,16 @@ SWIG_AsPtr_std_string (SWIGV8_VALUE obj, std::string **val)
   }
   return SWIG_ERROR;
 }
+
+
+SWIGINTERNINLINE
+SWIGV8_VALUE SWIG_From_int  (int value)
+{
+  return SWIGV8_INT32_NEW(value);
+}
+
+
+using RTPIncomingMediaStreamListener = RTPIncomingMediaStream::Listener;
 
 
 SWIGINTERNINLINE SWIGV8_VALUE
@@ -2947,6 +2994,7 @@ SWIGV8_ClientData _exports_MP4RecorderFacade_clientData;
 SWIGV8_ClientData _exports_PlayerFacade_clientData;
 SWIGV8_ClientData _exports_SenderSideEstimatorListener_clientData;
 SWIGV8_ClientData _exports_ActiveSpeakerDetectorFacade_clientData;
+SWIGV8_ClientData _exports_ActiveSpeakerMultiplexerFacade_clientData;
 SWIGV8_ClientData _exports_SimulcastMediaFrameListener_clientData;
 
 
@@ -6533,8 +6581,7 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup__SWIG_1(const SwigV8Ar
   std::string *arg1 = 0 ;
   MediaFrameType arg2 ;
   TimeService *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   int val2 ;
   int ecode2 = 0 ;
   void *argp3 = 0 ;
@@ -6542,14 +6589,17 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup__SWIG_1(const SwigV8Ar
   RTPOutgoingSourceGroup *result;
   if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_RTPOutgoingSourceGroup__SWIG_1.");
   if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPOutgoingSourceGroup__SWIG_1.");
-  res1 = SWIG_ConvertPtr(args[0], &argp1, SWIGTYPE_p_std__string,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "1"" of type '" "std::string &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RTPOutgoingSourceGroup" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RTPOutgoingSourceGroup" "', argument " "1"" of type '" "std::string &""'"); 
-  }
-  arg1 = reinterpret_cast< std::string * >(argp1);
   ecode2 = SWIG_AsVal_int(args[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_RTPOutgoingSourceGroup" "', argument " "2"" of type '" "MediaFrameType""'");
@@ -6563,9 +6613,9 @@ static SwigV8ReturnValue _wrap_new_RTPOutgoingSourceGroup__SWIG_1(const SwigV8Ar
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RTPOutgoingSourceGroup" "', argument " "3"" of type '" "TimeService &""'"); 
   }
   arg3 = reinterpret_cast< TimeService * >(argp3);
-  result = (RTPOutgoingSourceGroup *)new RTPOutgoingSourceGroup(*arg1,arg2,*arg3);
+  result = (RTPOutgoingSourceGroup *)new RTPOutgoingSourceGroup((std::string const &)*arg1,arg2,*arg3);
   
-  
+  if (SWIG_IsNewObj(res1)) delete arg1;
   
   
   
@@ -14566,6 +14616,376 @@ static void _wrap_delete_ActiveSpeakerDetectorFacade(v8::Persistent<v8::Value> o
         }
 
 
+static SwigV8ReturnValue _wrap_new_ActiveSpeakerMultiplexerFacade(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_OBJECT self = args.Holder();
+  TimeService *arg1 = 0 ;
+  v8::Local< v8::Object > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ActiveSpeakerMultiplexerFacade *result;
+  if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_ActiveSpeakerMultiplexerFacade.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_ActiveSpeakerMultiplexerFacade.");
+  res1 = SWIG_ConvertPtr(args[0], &argp1, SWIGTYPE_p_TimeService,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ActiveSpeakerMultiplexerFacade" "', argument " "1"" of type '" "TimeService &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ActiveSpeakerMultiplexerFacade" "', argument " "1"" of type '" "TimeService &""'"); 
+  }
+  arg1 = reinterpret_cast< TimeService * >(argp1);
+  {
+    arg2 = v8::Local<v8::Object>::Cast(args[1]);
+  }
+  result = (ActiveSpeakerMultiplexerFacade *)new ActiveSpeakerMultiplexerFacade(*arg1,arg2);
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_SetMaxAccumulatedScore(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  uint64_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned long long val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_SetMaxAccumulatedScore.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_SetMaxAccumulatedScore" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ActiveSpeakerMultiplexerFacade_SetMaxAccumulatedScore" "', argument " "2"" of type '" "uint64_t""'");
+  } 
+  arg2 = static_cast< uint64_t >(val2);
+  (arg1)->SetMaxAccumulatedScore(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_SetNoiseGatingThreshold(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  uint8_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_SetNoiseGatingThreshold.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_SetNoiseGatingThreshold" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ActiveSpeakerMultiplexerFacade_SetNoiseGatingThreshold" "', argument " "2"" of type '" "uint8_t""'");
+  } 
+  arg2 = static_cast< uint8_t >(val2);
+  (arg1)->SetNoiseGatingThreshold(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_SetMinActivationScore(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_SetMinActivationScore.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_SetMinActivationScore" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ActiveSpeakerMultiplexerFacade_SetMinActivationScore" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetMinActivationScore(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_AddIncomingSourceGroup(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  RTPIncomingMediaStream *arg2 = (RTPIncomingMediaStream *) 0 ;
+  uint32_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_AddIncomingSourceGroup.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_AddIncomingSourceGroup" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStream, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ActiveSpeakerMultiplexerFacade_AddIncomingSourceGroup" "', argument " "2"" of type '" "RTPIncomingMediaStream *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPIncomingMediaStream * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ActiveSpeakerMultiplexerFacade_AddIncomingSourceGroup" "', argument " "3"" of type '" "uint32_t""'");
+  } 
+  arg3 = static_cast< uint32_t >(val3);
+  (arg1)->AddIncomingSourceGroup(arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_RemoveIncomingSourceGroup(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  RTPIncomingMediaStream *arg2 = (RTPIncomingMediaStream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_RemoveIncomingSourceGroup.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_RemoveIncomingSourceGroup" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStream, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ActiveSpeakerMultiplexerFacade_RemoveIncomingSourceGroup" "', argument " "2"" of type '" "RTPIncomingMediaStream *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPIncomingMediaStream * >(argp2);
+  (arg1)->RemoveIncomingSourceGroup(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  RTPStreamTransponderFacade *arg2 = (RTPStreamTransponderFacade *) 0 ;
+  uint32_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder" "', argument " "2"" of type '" "RTPStreamTransponderFacade *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPStreamTransponderFacade * >(argp2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder" "', argument " "3"" of type '" "uint32_t""'");
+  } 
+  arg3 = static_cast< uint32_t >(val3);
+  (arg1)->AddRTPStreamTransponder(arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_RemoveRTPStreamTransponder(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  RTPStreamTransponderFacade *arg2 = (RTPStreamTransponderFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_RemoveRTPStreamTransponder.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_RemoveRTPStreamTransponder" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ActiveSpeakerMultiplexerFacade_RemoveRTPStreamTransponder" "', argument " "2"" of type '" "RTPStreamTransponderFacade *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPStreamTransponderFacade * >(argp2);
+  (arg1)->RemoveRTPStreamTransponder(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacade *arg1 = (ActiveSpeakerMultiplexerFacade *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacade_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacade_Stop" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacade * >(argp1);
+  (arg1)->Stop();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+static void _wrap_delete_ActiveSpeakerMultiplexerFacade(v8::Persistent<v8::Value> object, void *parameter) {
+  SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+  static void _wrap_delete_ActiveSpeakerMultiplexerFacade(v8::Isolate *isolate, v8::Persistent<v8::Value> object, void *parameter) {
+    SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+    static void _wrap_delete_ActiveSpeakerMultiplexerFacade(v8::Isolate *isolate, v8::Persistent< v8::Object> *object, SWIGV8_Proxy *proxy) {
+#elif (V8_MAJOR_VERSION-0) < 5
+      static void _wrap_delete_ActiveSpeakerMultiplexerFacade(const v8::WeakCallbackData<v8::Object, SWIGV8_Proxy> &data) {
+        v8::Local<v8::Object> object = data.GetValue();
+        SWIGV8_Proxy *proxy = data.GetParameter();
+#else
+        static void _wrap_delete_ActiveSpeakerMultiplexerFacade(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+          SWIGV8_Proxy *proxy = data.GetParameter();
+#endif
+          
+          if(proxy->swigCMemOwn && proxy->swigCObject) {
+            ActiveSpeakerMultiplexerFacade * arg1 = (ActiveSpeakerMultiplexerFacade *)proxy->swigCObject;
+            delete arg1;
+          }
+          delete proxy;
+          
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
+          object.Dispose();
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031900)
+          object.Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x032100)
+          object->Dispose(isolate);
+#elif (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < SWIGV8_SETWEAK_VERSION)
+          object->Dispose();
+#elif (V8_MAJOR_VERSION-0) < 5
+          object.Clear();
+#endif
+        }
+
+
 static SwigV8ReturnValue _wrap_new_SimulcastMediaFrameListener(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -14779,6 +15199,7 @@ static void *_p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStreamList
     return (void *)((RTPIncomingMediaStreamListener *)  ((RTPIncomingMediaStreamMultiplexer *) x));
 }
 static swig_type_info _swigt__p_ActiveSpeakerDetectorFacade = {"_p_ActiveSpeakerDetectorFacade", "p_ActiveSpeakerDetectorFacade|ActiveSpeakerDetectorFacade *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ActiveSpeakerMultiplexerFacade = {"_p_ActiveSpeakerMultiplexerFacade", "p_ActiveSpeakerMultiplexerFacade|ActiveSpeakerMultiplexerFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransport = {"_p_DTLSICETransport", "p_DTLSICETransport|DTLSICETransport *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransportListener = {"_p_DTLSICETransportListener", "p_DTLSICETransportListener|DTLSICETransportListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ICERemoteCandidate = {"_p_ICERemoteCandidate", "ICERemoteCandidate *", 0, 0, (void*)0, 0};
@@ -14821,7 +15242,6 @@ static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|uint_least8_t *|uint_fast8_t *|uint8_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uintptr_t *|uint_least32_t *|uint_fast32_t *|uint32_t *|unsigned int *|uint_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint_least64_t *|uint_fast64_t *|uint64_t *|unsigned long long *|uintmax_t *", 0, 0, (void*)0, 0};
@@ -14830,6 +15250,7 @@ static swig_type_info _swigt__p_v8__LocalT_v8__Object_t = {"_p_v8__LocalT_v8__Ob
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ActiveSpeakerDetectorFacade,
+  &_swigt__p_ActiveSpeakerMultiplexerFacade,
   &_swigt__p_DTLSICETransport,
   &_swigt__p_DTLSICETransportListener,
   &_swigt__p_ICERemoteCandidate,
@@ -14872,7 +15293,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_long_long,
   &_swigt__p_short,
   &_swigt__p_signed_char,
-  &_swigt__p_std__string,
   &_swigt__p_unsigned_char,
   &_swigt__p_unsigned_int,
   &_swigt__p_unsigned_long_long,
@@ -14881,6 +15301,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_ActiveSpeakerDetectorFacade[] = {  {&_swigt__p_ActiveSpeakerDetectorFacade, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ActiveSpeakerMultiplexerFacade[] = {  {&_swigt__p_ActiveSpeakerMultiplexerFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransport[] = {  {&_swigt__p_DTLSICETransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransportListener[] = {  {&_swigt__p_DTLSICETransportListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ICERemoteCandidate[] = {  {&_swigt__p_ICERemoteCandidate, 0, 0, 0},{0, 0, 0, 0}};
@@ -14923,7 +15344,6 @@ static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
@@ -14932,6 +15352,7 @@ static swig_cast_info _swigc__p_v8__LocalT_v8__Object_t[] = {  {&_swigt__p_v8__L
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ActiveSpeakerDetectorFacade,
+  _swigc__p_ActiveSpeakerMultiplexerFacade,
   _swigc__p_DTLSICETransport,
   _swigc__p_DTLSICETransportListener,
   _swigc__p_ICERemoteCandidate,
@@ -14974,7 +15395,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_long_long,
   _swigc__p_short,
   _swigc__p_signed_char,
-  _swigc__p_std__string,
   _swigc__p_unsigned_char,
   _swigc__p_unsigned_int,
   _swigc__p_unsigned_long_long,
@@ -15524,6 +15944,13 @@ _exports_ActiveSpeakerDetectorFacade_clientData.dtor = _wrap_delete_ActiveSpeake
 if (SWIGTYPE_p_ActiveSpeakerDetectorFacade->clientdata == 0) {
   SWIGTYPE_p_ActiveSpeakerDetectorFacade->clientdata = &_exports_ActiveSpeakerDetectorFacade_clientData;
 }
+/* Name: _exports_ActiveSpeakerMultiplexerFacade, Type: p_ActiveSpeakerMultiplexerFacade, Dtor: _wrap_delete_ActiveSpeakerMultiplexerFacade */
+SWIGV8_FUNCTION_TEMPLATE _exports_ActiveSpeakerMultiplexerFacade_class = SWIGV8_CreateClassTemplate("_exports_ActiveSpeakerMultiplexerFacade");
+SWIGV8_SET_CLASS_TEMPL(_exports_ActiveSpeakerMultiplexerFacade_clientData.class_templ, _exports_ActiveSpeakerMultiplexerFacade_class);
+_exports_ActiveSpeakerMultiplexerFacade_clientData.dtor = _wrap_delete_ActiveSpeakerMultiplexerFacade;
+if (SWIGTYPE_p_ActiveSpeakerMultiplexerFacade->clientdata == 0) {
+  SWIGTYPE_p_ActiveSpeakerMultiplexerFacade->clientdata = &_exports_ActiveSpeakerMultiplexerFacade_clientData;
+}
 /* Name: _exports_SimulcastMediaFrameListener, Type: p_SimulcastMediaFrameListener, Dtor: _wrap_delete_SimulcastMediaFrameListener */
 SWIGV8_FUNCTION_TEMPLATE _exports_SimulcastMediaFrameListener_class = SWIGV8_CreateClassTemplate("_exports_SimulcastMediaFrameListener");
 SWIGV8_SET_CLASS_TEMPL(_exports_SimulcastMediaFrameListener_clientData.class_templ, _exports_SimulcastMediaFrameListener_class);
@@ -15721,6 +16148,14 @@ SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetNoiseGa
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "SetMinActivationScore", _wrap_ActiveSpeakerDetectorFacade_SetMinActivationScore);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "AddIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_AddIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerDetectorFacade_class, "RemoveIncomingSourceGroup", _wrap_ActiveSpeakerDetectorFacade_RemoveIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "SetMaxAccumulatedScore", _wrap_ActiveSpeakerMultiplexerFacade_SetMaxAccumulatedScore);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "SetNoiseGatingThreshold", _wrap_ActiveSpeakerMultiplexerFacade_SetNoiseGatingThreshold);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "SetMinActivationScore", _wrap_ActiveSpeakerMultiplexerFacade_SetMinActivationScore);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "AddIncomingSourceGroup", _wrap_ActiveSpeakerMultiplexerFacade_AddIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "RemoveIncomingSourceGroup", _wrap_ActiveSpeakerMultiplexerFacade_RemoveIncomingSourceGroup);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "AddRTPStreamTransponder", _wrap_ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "RemoveRTPStreamTransponder", _wrap_ActiveSpeakerMultiplexerFacade_RemoveRTPStreamTransponder);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "Stop", _wrap_ActiveSpeakerMultiplexerFacade_Stop);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "AddMediaListener", _wrap_SimulcastMediaFrameListener_AddMediaListener);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "RemoveMediaListener", _wrap_SimulcastMediaFrameListener_RemoveMediaListener);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "Stop", _wrap_SimulcastMediaFrameListener_Stop);
@@ -16339,6 +16774,19 @@ v8::Local<v8::Object> _exports_ActiveSpeakerDetectorFacade_obj = _exports_Active
 #else
 v8::Local<v8::Object> _exports_ActiveSpeakerDetectorFacade_obj = _exports_ActiveSpeakerDetectorFacade_class_0->GetFunction(SWIGV8_CURRENT_CONTEXT()).ToLocalChecked();
 #endif
+/* Class: ActiveSpeakerMultiplexerFacade (_exports_ActiveSpeakerMultiplexerFacade) */
+SWIGV8_FUNCTION_TEMPLATE _exports_ActiveSpeakerMultiplexerFacade_class_0 = SWIGV8_CreateClassTemplate("ActiveSpeakerMultiplexerFacade");
+_exports_ActiveSpeakerMultiplexerFacade_class_0->SetCallHandler(_wrap_new_ActiveSpeakerMultiplexerFacade);
+_exports_ActiveSpeakerMultiplexerFacade_class_0->Inherit(_exports_ActiveSpeakerMultiplexerFacade_class);
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+_exports_ActiveSpeakerMultiplexerFacade_class_0->SetHiddenPrototype(true);
+v8::Handle<v8::Object> _exports_ActiveSpeakerMultiplexerFacade_obj = _exports_ActiveSpeakerMultiplexerFacade_class_0->GetFunction();
+#elif (SWIG_V8_VERSION < 0x0704)
+_exports_ActiveSpeakerMultiplexerFacade_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_ActiveSpeakerMultiplexerFacade_obj = _exports_ActiveSpeakerMultiplexerFacade_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_ActiveSpeakerMultiplexerFacade_obj = _exports_ActiveSpeakerMultiplexerFacade_class_0->GetFunction(SWIGV8_CURRENT_CONTEXT()).ToLocalChecked();
+#endif
 /* Class: SimulcastMediaFrameListener (_exports_SimulcastMediaFrameListener) */
 SWIGV8_FUNCTION_TEMPLATE _exports_SimulcastMediaFrameListener_class_0 = SWIGV8_CreateClassTemplate("SimulcastMediaFrameListener");
 _exports_SimulcastMediaFrameListener_class_0->SetCallHandler(_wrap_new_SimulcastMediaFrameListener);
@@ -16531,6 +16979,11 @@ SWIGV8_MAYBE_CHECK(exports_obj->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW(
 exports_obj->Set(SWIGV8_SYMBOL_NEW("ActiveSpeakerDetectorFacade"), _exports_ActiveSpeakerDetectorFacade_obj);
 #else
 SWIGV8_MAYBE_CHECK(exports_obj->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("ActiveSpeakerDetectorFacade"), _exports_ActiveSpeakerDetectorFacade_obj));
+#endif
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+exports_obj->Set(SWIGV8_SYMBOL_NEW("ActiveSpeakerMultiplexerFacade"), _exports_ActiveSpeakerMultiplexerFacade_obj);
+#else
+SWIGV8_MAYBE_CHECK(exports_obj->Set(SWIGV8_CURRENT_CONTEXT(), SWIGV8_SYMBOL_NEW("ActiveSpeakerMultiplexerFacade"), _exports_ActiveSpeakerMultiplexerFacade_obj));
 #endif
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
 exports_obj->Set(SWIGV8_SYMBOL_NEW("SimulcastMediaFrameListener"), _exports_SimulcastMediaFrameListener_obj);

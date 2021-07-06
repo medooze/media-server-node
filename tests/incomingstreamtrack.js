@@ -26,7 +26,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		ice  : SemanticSDP.ICEInfo.generate()
 	});
 
-	suite.test("create",async function(test){
+	await suite.test("create",async function(test){
 		let ssrc = 100;
 		//Create stream
 		const streamInfo = new StreamInfo("stream0");
@@ -57,7 +57,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		
 	});
 	
-	suite.test("track stop",async function(test){
+	await suite.test("track stop",async function(test){
 		let ssrc = 120;
 		//Create stream
 		const streamInfo = new StreamInfo("stream1");
@@ -87,7 +87,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 	});
 	
 	
-	suite.test("stream stop",async function(test){
+	await suite.test("stream stop",async function(test){
 		let ssrc = 140;
 		//Create stream
 		const streamInfo = new StreamInfo("stream2");
@@ -116,7 +116,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		incomingStream.stop();
 	});
 	
-	suite.test("duplicate ssrc",async function(test){
+	await suite.test("duplicate ssrc",async function(test){
 		let ssrc = 150;
 		//Create stream
 		const streamInfo = new StreamInfo("stream3");
@@ -139,7 +139,8 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		}
 		test.done();
 	});
-	
+
+	transport.stop();
 	
 	suite.end();
 }),
@@ -156,7 +157,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 		ice  : SemanticSDP.ICEInfo.generate()
 	});
 
-	suite.test("cached",async function(test){
+	await suite.test("cached",async function(test){
 		let ssrc = 100;
 		//Create stream
 		const streamInfo = new StreamInfo("stream0");
@@ -189,6 +190,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 		
 	});
 	
+	transport.stop();
 	suite.end();
 })
 ]).then(()=>MediaServer.terminate ());
