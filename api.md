@@ -1768,6 +1768,17 @@ Get transport stats
 
 Returns **[Object][4]** stats
 
+### restartICE
+
+Restart ICE on transport object
+
+#### Parameters
+
+-   `remoteICE` **([Object][4] | ICEInfo)** Remote ICE info, containing the username and password.
+-   `localICE` **([Object][4] | ICEInfo)** Local ICE info, containing the username and password [Optional]
+
+Returns **ICEInfo** Local ICE info
+
 ### setBandwidthProbing
 
 Enable bitrate probing.
@@ -1887,6 +1898,18 @@ Returns **ICEInfo** ICE info object
 Get local ICE candidates for this transport
 
 Returns **Array.CandidateInfo** 
+
+### getRemoteDTLSInfo
+
+Get transport remote DTLS info
+
+Returns **DTLSInfo** DTLS info object
+
+### getRemoteICEInfo
+
+Get transport remote ICE info
+
+Returns **ICEInfo** ICE info object
 
 ### getRemoteCandidates
 

@@ -1709,6 +1709,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#transportrestartice'
+                        class='regular pre-open'>
+                        #restartICE
+                      </a></li>
+                      
+                      <li><a
                         href='#transportsetbandwidthprobing'
                         class='regular pre-open'>
                         #setBandwidthProbing
@@ -1790,6 +1796,18 @@
                         href='#transportgetlocalcandidates'
                         class='regular pre-open'>
                         #getLocalCandidates
+                      </a></li>
+                      
+                      <li><a
+                        href='#transportgetremotedtlsinfo'
+                        class='regular pre-open'>
+                        #getRemoteDTLSInfo
+                      </a></li>
+                      
+                      <li><a
+                        href='#transportgetremoteiceinfo'
+                        class='regular pre-open'>
+                        #getRemoteICEInfo
                       </a></li>
                       
                       <li><a
@@ -17035,6 +17053,87 @@ In order to decide how to route your streams you must attach the outgoing stream
       </div>
     </div>
   
+    <div class='border-bottom' id='transportrestartice'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>restartICE(remoteICE, localICE)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Restart ICE on transport object</p>
+
+    <div class='pre p1 fill-light mt0'>restartICE(remoteICE: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | ICEInfo), localICE: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | ICEInfo)): ICEInfo</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>remoteICE</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | ICEInfo))</code>
+	    Remote ICE info, containing the username and password.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>localICE</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | ICEInfo))</code>
+	    Local ICE info, containing the username and password 
+[Optional]
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>ICEInfo</code>:
+        Local ICE info
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='transportsetbandwidthprobing'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -17988,6 +18087,120 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>Array.CandidateInfo</code>:
         
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='transportgetremotedtlsinfo'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getRemoteDTLSInfo()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get transport remote DTLS info</p>
+
+    <div class='pre p1 fill-light mt0'>getRemoteDTLSInfo(): DTLSInfo</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>DTLSInfo</code>:
+        DTLS info object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='transportgetremoteiceinfo'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getRemoteICEInfo()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get transport remote ICE info</p>
+
+    <div class='pre p1 fill-light mt0'>getRemoteICEInfo(): ICEInfo</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>ICEInfo</code>:
+        ICE info object
 
       
     

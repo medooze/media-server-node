@@ -8979,6 +8979,74 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPBundleTransport_RestartICETransport(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPBundleTransport *arg1 = (RTPBundleTransport *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  Properties *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  void *argp4 ;
+  int res4 = 0 ;
+  bool result;
+  
+  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_RestartICETransport.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransport_RestartICETransport" "', argument " "1"" of type '" "RTPBundleTransport *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPBundleTransport * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_RestartICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_RestartICETransport" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(args[1], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPBundleTransport_RestartICETransport" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_RestartICETransport" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  res4 = SWIG_ConvertPtr(args[2], &argp4, SWIGTYPE_p_Properties,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RTPBundleTransport_RestartICETransport" "', argument " "4"" of type '" "Properties const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_RestartICETransport" "', argument " "4"" of type '" "Properties const &""'"); 
+  }
+  arg4 = reinterpret_cast< Properties * >(argp4);
+  result = (bool)(arg1)->RestartICETransport((std::string const &)*arg2,(std::string const &)*arg3,(Properties const &)*arg4);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPBundleTransport_RemoveICETransport(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -16040,6 +16108,7 @@ SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "iceRespon
 SWIGV8_AddMemberVariable(_exports_RTPBundleTransportConnection_class, "iceResponsesReceived", _wrap_RTPBundleTransportConnection_iceResponsesReceived_get, _wrap_RTPBundleTransportConnection_iceResponsesReceived_set);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "Init", _wrap_RTPBundleTransport__wrap_RTPBundleTransport_Init);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddICETransport", _wrap_RTPBundleTransport_AddICETransport);
+SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "RestartICETransport", _wrap_RTPBundleTransport_RestartICETransport);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "RemoveICETransport", _wrap_RTPBundleTransport_RemoveICETransport);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "End", _wrap_RTPBundleTransport_End);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "GetLocalPort", _wrap_RTPBundleTransport_GetLocalPort);
