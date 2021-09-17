@@ -1600,7 +1600,8 @@ Create a new transport object and register it with the remote ICE username and p
 -   `options` **[Object][4]** Dictionary with transport properties
     -   `options.disableSTUNKeepAlive` **[boolean][2]** Disable ICE/STUN keep alives, required for server to server transports
     -   `options.srtpProtectionProfiles` **[String][1]** Colon delimited list of SRTP protection profile names
-    -   `options.overrideBWE` **[String][1]** Override BWE reported by REMB
+    -   `options.overrideBWE` **[boolean][2]** Override BWE reported by REMB
+    -   `options.disableREMB` **[boolean][2]** Disable REMB BWE calculation.
 
 Returns **[Transport][9]** New transport object
 
