@@ -193,4 +193,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 	transport.stop();
 	suite.end();
 })
-]).then(()=>MediaServer.terminate ());
+]).then(()=>{
+endpoint.stop();
+MediaServer.terminate();
+});
