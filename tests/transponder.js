@@ -119,6 +119,8 @@ tap.test("Transponder::create",async function(suite){
 			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
 			//Check it is created
 			test.ok(transponder);
+			//Test it is attached
+			test.ok(incomingVideoTrack.isAttached());
 			//Listen for transponder stop
 			transponder.once("stopped",()=>{
 				//OK
@@ -126,6 +128,8 @@ tap.test("Transponder::create",async function(suite){
 			});
 			//Stop
 			transponder.stop();
+			//Test it is not attached
+			test.notOk(incomingVideoTrack.isAttached());
 			//Ok
 			test.pass();
 		} catch (error) {
@@ -210,6 +214,239 @@ tap.test("Transponder::create",async function(suite){
 			});
 			//Listen for dettach on first one
 			incomingVideoTrack1.on("detached",()=>{
+				//OK
+				test.pass();
+			});
+			//Get transponders
+			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack1);
+			//Replace track
+			transponder.setIncomingTrack(incomingVideoTrack2);
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+	});
+
+	//Create new remote stream
+	await suite.test("stream attach dettach",async function(test){
+		try {
+			test.plan(8)
+			//Create new local stream
+			const outgoingStream  = transportA.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//test outgoing stream creation
+			test.ok(outgoingStream);
+			//Set the info into B so it can receive it
+			const incomingStream = transportB.createIncomingStream(outgoingStream.getStreamInfo());
+			//test outgoing stream creation
+			test.ok(incomingStream);
+
+			//Listen for attach
+			incomingStream.on("attached",()=>{
+				//OK
+				test.pass();
+			});
+			//Listen for attach
+			incomingStream.on("detached",()=>{
+				//OK
+				test.pass();
+			});
+			//Get transponders
+			const transponders = outgoingStream.attachTo(incomingStream);
+			//Check it is created
+			test.ok(transponders);
+			//Test it is attached
+			test.ok(incomingStream.isAttached());
+			//Stop
+			transponders[0].stop();
+			transponders[1].stop();
+			//Ok
+			test.pass();
+			//Test it is not attached
+			test.notOk(incomingStream.isAttached());
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+		test.end();
+	});
+
+	//Create new remote stream
+	await suite.test("stream track detach",async function(test){
+		try {
+			//Create new local stream
+			const outgoingStream  = transportA.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//test outgoing stream creation
+			test.ok(outgoingStream);
+			//Set the info into B so it can receive it
+			const incomingStream = transportB.createIncomingStream(outgoingStream.getStreamInfo());
+			//test outgoing stream creation
+			test.ok(incomingStream);
+			//Get video track
+			const outgoingVideoTrack = outgoingStream.getVideoTracks()[0];
+			const incomingVideoTrack = incomingStream.getVideoTracks()[0]
+			//Listen for attach
+			incomingStream.once("detached",()=>{
+				//OK
+				test.pass();
+			});
+			//Get transponders
+			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
+			//Check it is created
+			test.ok(transponder);
+			//Listen for transponder stop
+			transponder.once("stopped",()=>{
+				//OK
+				test.pass();
+			});
+			//Stop
+			transponder.stop();
+			//Ok
+			test.pass();
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+		test.end();
+	});
+
+	//Create new remote stream
+	await suite.test("stream audio video attach",async function(test){
+		try {
+			//Create new local stream
+			const outgoingStream  = transportA.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//test outgoing stream creation
+			test.ok(outgoingStream);
+			//Set the info into B so it can receive it
+			const incomingStream = transportB.createIncomingStream(outgoingStream.getStreamInfo());
+			//test outgoing stream creation
+			test.ok(incomingStream);
+			//Get video track
+			const outgoingVideoTrack = outgoingStream.getVideoTracks()[0];
+			const outgoingAudioTrack = outgoingStream.getAudioTracks()[0];
+			const incomingVideoTrack = incomingStream.getVideoTracks()[0];
+			const incomingAudioTrack = incomingStream.getAudioTracks()[0]
+			//Listen for attach
+			incomingStream.once("attached",()=>{
+				//OK
+				test.pass();
+
+				//Listen for attach
+				incomingStream.once("attached",()=>{
+					//Only a single event
+					test.fail(true);
+				});
+
+				//Get transponders
+				const transponder = outgoingAudioTrack.attachTo(incomingAudioTrack);
+			});
+			
+			//Get transponders
+			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
+			//Check it is created
+			test.ok(transponder);
+			//Listen for transponder stop
+			transponder.once("stopped",()=>{
+				//OK
+				test.pass();
+			});
+			//Stop
+			transponder.stop();
+			//Ok
+			test.pass();
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+		test.end();
+	});
+
+	await suite.test("stream multi attach+detach",async function(test){
+		try {
+			test.plan(3);
+			let transponder2;
+			//Create new local stream
+			const outgoingStream1  = transportA.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//Create new local stream
+			const outgoingStream2  = transportA.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//Set the info into B so it can receive it
+			const incomingStream = transportB.createIncomingStream(outgoingStream1.getStreamInfo());
+			//Get video track
+			const outgoingVideoTrack1 = outgoingStream1.getVideoTracks()[0];
+			const outgoingVideoTrack2 = outgoingStream2.getVideoTracks()[0];
+			const incomingVideoTrack  = incomingStream.getVideoTracks()[0];
+			
+			//incomingStream for attach
+			incomingStream.on("attached",()=>{
+				//should only fire one
+				test.pass();
+				//Sould fire on first attach
+				transponder2 = outgoingVideoTrack2.attachTo(incomingVideoTrack);
+				
+			});
+			//Listen for detached
+			incomingStream.on("detached",()=>{
+				//should only fire one
+				test.pass();
+			});
+			//Get transponders
+			const transponder1 = outgoingVideoTrack1.attachTo(incomingVideoTrack);
+			//Listen for transponder stop
+			transponder1.once("stopped",()=>{
+				//OK
+				test.pass();
+				//Stop second transponder
+				transponder2.stop();
+			});
+			//Stop
+			transponder1.stop();
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+	});
+
+	
+	//Create new remote stream
+	await suite.test("stream - replace track",async function(test){
+		try {
+			//Create new local stream
+			const outgoingStream  = transportA.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//test outgoing stream creation
+			test.ok(outgoingStream);
+			//Set the info into B so it can receive it
+			const incomingStream1 = transportB.createIncomingStream(outgoingStream.getStreamInfo());
+			const incomingStream2 = transportA.createIncomingStream(outgoingStream.getStreamInfo());
+			//Get video track
+			const outgoingVideoTrack = outgoingStream.getVideoTracks()[0];
+			const incomingVideoTrack1 = incomingStream1.getVideoTracks()[0];
+			const incomingVideoTrack2 = incomingStream2.getVideoTracks()[0];
+			//Listen for attach on second stream
+			incomingStream2.on("attached",()=>{
+				//Check new track is attached
+				test.same(transponder.getIncomingTrack(),incomingVideoTrack2);
+				//OK
+				test.end();
+			});
+			//Listen for dettach on first one
+			incomingStream1.on("detached",()=>{
 				//OK
 				test.pass();
 			});
