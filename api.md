@@ -1124,9 +1124,45 @@ Create new track from a TrackInfo object and add it to this stream
 
 Returns **[IncomingStreamTrack][13]** 
 
+### isAttached
+
+Return if the stream is attached or not
+
 ### stop
 
 Removes the media strem from the transport and also detaches from any attached incoming stream
+
+### attached
+
+IncomingStream attached event
+
+#### Parameters
+
+-   `incomingStream` **[IncomingStream][12]** 
+
+### attached
+
+IncomingStream attached event
+
+#### Parameters
+
+-   `incomingStream` **[IncomingStream][12]** 
+
+### detached
+
+IncomingStream detached event
+
+#### Parameters
+
+-   `incomingStream` **[IncomingStream][12]** 
+
+### detached
+
+IncomingStream detached event
+
+#### Parameters
+
+-   `incomingStream` **[IncomingStream][12]** 
 
 ### track
 
@@ -2394,6 +2430,10 @@ Internal use, you'd beter know what you are doing before calling this method
 
 Request an intra refres on all sources
 
+### isAttached
+
+Return if the track is attached or not
+
 ### detached
 
 Signal that this track has been detached.
@@ -2425,7 +2465,7 @@ Removes the track from the incoming stream and also detaches any attached outgoi
 
 ### attached
 
-IncomingStreamTrack stopped event
+IncomingStreamTrack attached event
 
 #### Parameters
 
@@ -2433,7 +2473,7 @@ IncomingStreamTrack stopped event
 
 ### detached
 
-IncomingStreamTrack stopped event
+IncomingStreamTrack detached event
 
 #### Parameters
 
