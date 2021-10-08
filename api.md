@@ -605,7 +605,19 @@ Set incoming track
 
 #### Parameters
 
--   `track` **[IncomingStreamTrack][13]** 
+-   `track` **[IncomingStreamTrack][13]** Incoming track to attach to
+-   `layers` **[Object][4]** [Optional] Only applicable to video tracks
+    -   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
+    -   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
+    -   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
+
+### getMedia
+
+Get Transponder media type
+
+Returns **[String][1]** "audio"|"video"
 
 ### getIncomingTrack
 
@@ -665,6 +677,12 @@ Returns **[Number][5]** spatial layer id
 Return the temporal layer id that is being forwarded
 
 Returns **[Number][5]** temporal layer id
+
+### getSelectedLayer
+
+Get current selected layer info
+
+Returns **[Object][4]** 
 
 ### selectLayer
 
@@ -1204,6 +1222,12 @@ Listen media from the incoming stream and send it to the remote peer of the asso
 #### Parameters
 
 -   `incomingStream` **[IncomingStream][12]** The incoming stream to listen media for
+-   `layers` **[Object][4]** [Optional] Only applicable to video tracks
+    -   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
+    -   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
+    -   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
 
 Returns **[Array][22]&lt;[Transponder][20]>** Track transponders array
 
@@ -2230,6 +2254,12 @@ This will stop any previous transpoder created by a previous attach.
 #### Parameters
 
 -   `incomingStreamTrack` **[IncomingStreamTrack][13]** The incoming stream to listen media for
+-   `layers` **[Object][4]** [Optional] Only applicable to video tracks
+    -   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
+    -   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
+    -   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
 
 Returns **[Transponder][20]** Track transponder object
 
