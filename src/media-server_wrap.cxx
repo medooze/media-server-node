@@ -1937,6 +1937,7 @@ public:
 	virtual int Enqueue(const RTPPacket::shared& packet)  { return SendPacket(packet); }
 	virtual int Enqueue(const RTPPacket::shared& packet,std::function<RTPPacket::shared(const RTPPacket::shared&)> modifier) { return SendPacket(modifier(packet)); }
 	virtual int SendPLI(DWORD ssrc)				 { return RequestFPU();}
+	virtual int Reset(DWORD ssrc)				 { return 1;}
 	
 	int Init(const Properties &properties)
 	{
@@ -2146,6 +2147,11 @@ public:
 	int SendPLI(DWORD ssrc)
 	{
 		return receiver ? receiver->SendPLI(ssrc) : 0;
+	}
+
+	int Reset(DWORD ssrc)
+	{
+		return receiver ? receiver->Reset(ssrc) : 0;
 	}
 	
 	RTPReceiver* get() { return receiver;}
@@ -12358,6 +12364,43 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPSessionFacade_Reset(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPSessionFacade *arg1 = (RTPSessionFacade *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPSessionFacade_Reset.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPSessionFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSessionFacade_Reset" "', argument " "1"" of type '" "RTPSessionFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPSessionFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPSessionFacade_Reset" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  result = (int)(arg1)->Reset(arg2);
+  jsresult = SWIG_From_int(static_cast< int >(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
 static void _wrap_delete_RTPSessionFacade(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
@@ -12767,6 +12810,43 @@ static SwigV8ReturnValue _wrap_RTPReceiverFacade_SendPLI(const SwigV8Arguments &
   } 
   arg2 = static_cast< uint32_t >(val2);
   result = (int)(arg1)->SendPLI(arg2);
+  jsresult = SWIG_From_int(static_cast< int >(result));
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPReceiverFacade_Reset(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPReceiverFacade *arg1 = (RTPReceiverFacade *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPReceiverFacade_Reset.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPReceiverFacade_Reset" "', argument " "1"" of type '" "RTPReceiverFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPReceiverFacade * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPReceiverFacade_Reset" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  result = (int)(arg1)->Reset(arg2);
   jsresult = SWIG_From_int(static_cast< int >(result));
   
   
@@ -16175,9 +16255,11 @@ SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "GetIncomingSourceGrou
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "End", _wrap_RTPSessionFacade_End);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Enqueue", _wrap_RTPSessionFacade_Enqueue);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "SendPLI", _wrap_RTPSessionFacade_SendPLI);
+SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Reset", _wrap_RTPSessionFacade_Reset);
 SWIGV8_AddMemberFunction(_exports_RTPSenderFacade_class, "get", _wrap_RTPSenderFacade_get);
 SWIGV8_AddMemberFunction(_exports_RTPReceiverFacade_class, "get", _wrap_RTPReceiverFacade_get);
 SWIGV8_AddMemberFunction(_exports_RTPReceiverFacade_class, "SendPLI", _wrap_RTPReceiverFacade_SendPLI);
+SWIGV8_AddMemberFunction(_exports_RTPReceiverFacade_class, "Reset", _wrap_RTPReceiverFacade_Reset);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SetIncoming", _wrap_RTPStreamTransponderFacade__wrap_RTPStreamTransponderFacade_SetIncoming);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "AppendH264ParameterSets", _wrap_RTPStreamTransponderFacade_AppendH264ParameterSets);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SelectLayer", _wrap_RTPStreamTransponderFacade_SelectLayer);

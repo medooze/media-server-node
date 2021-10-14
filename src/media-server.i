@@ -250,6 +250,7 @@ public:
 	virtual int Enqueue(const RTPPacket::shared& packet)  { return SendPacket(packet); }
 	virtual int Enqueue(const RTPPacket::shared& packet,std::function<RTPPacket::shared(const RTPPacket::shared&)> modifier) { return SendPacket(modifier(packet)); }
 	virtual int SendPLI(DWORD ssrc)				 { return RequestFPU();}
+	virtual int Reset(DWORD ssrc)				 { return 1;}
 	
 	int Init(const Properties &properties)
 	{
@@ -459,6 +460,11 @@ public:
 	int SendPLI(DWORD ssrc)
 	{
 		return receiver ? receiver->SendPLI(ssrc) : 0;
+	}
+
+	int Reset(DWORD ssrc)
+	{
+		return receiver ? receiver->Reset(ssrc) : 0;
 	}
 	
 	RTPReceiver* get() { return receiver;}
@@ -1134,6 +1140,7 @@ public:
 	int End();
 	virtual int Enqueue(const RTPPacket::shared& packet);
 	virtual int SendPLI(DWORD ssrc);
+	virtual int Reset(DWORD ssrc);
 };
 
 
@@ -1154,6 +1161,7 @@ public:
 	RTPReceiverFacade(PCAPTransportEmulator *transport);
 	RTPReceiver* get();
 	int SendPLI(DWORD ssrc);
+	int Reset(DWORD ssrc);
 };
 
 class RTPStreamTransponderFacade 
