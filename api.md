@@ -1142,6 +1142,10 @@ Create new track from a TrackInfo object and add it to this stream
 
 Returns **[IncomingStreamTrack][13]** 
 
+### reset
+
+Reset ssrc state of all tracks
+
 ### isAttached
 
 Return if the stream is attached or not
@@ -1936,7 +1940,7 @@ Remove event listener
 
 Returns **[Transport][9]** 
 
-### getDTLSSatate
+### getDTLSState
 
 Get current dtls state for transport
 
@@ -2460,6 +2464,10 @@ Internal use, you'd beter know what you are doing before calling this method
 
 Request an intra refres on all sources
 
+### reset
+
+Reset state of incoming sources
+
 ### isAttached
 
 Return if the track is attached or not
@@ -2488,6 +2496,18 @@ Returns **[Boolean][2]**
 Get out of band h264 parameters from this track
 
 Returns **[Boolean][2]** 
+
+### setMaxWaitTime
+
+Override the maximum period of time to wait for an out of order or rtx packet
+
+#### Parameters
+
+-   `maxWaitTime` **[Number][5]** max wait time in ms (default: 0 if rtx is not supported or rtt based)
+
+### resetMaxWaitTime
+
+Remove override for the maximum period of time to wait for an out of order or rtx packet
 
 ### stop
 
