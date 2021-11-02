@@ -976,6 +976,8 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	void AddListener(RTPIncomingMediaStreamListener* listener);
 	void RemoveListener(RTPIncomingMediaStreamListener* listener);
 	
+	void SetMaxWaitTime(DWORD maxWaitingTime);
+	void ResetMaxWaitTime();
 	void Update();
 };
 

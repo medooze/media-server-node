@@ -7774,6 +7774,69 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_SetMaxWaitTime(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_SetMaxWaitTime.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_SetMaxWaitTime" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSourceGroup_SetMaxWaitTime" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetMaxWaitTime(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_ResetMaxWaitTime" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+  (arg1)->ResetMaxWaitTime();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_Update(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -16175,6 +16238,8 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "maxWaitedTime",
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "avgWaitedTime", _wrap_RTPIncomingSourceGroup_avgWaitedTime_get, _wrap_RTPIncomingSourceGroup_avgWaitedTime_set);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "AddListener", _wrap_RTPIncomingSourceGroup_AddListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "RemoveListener", _wrap_RTPIncomingSourceGroup_RemoveListener);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "SetMaxWaitTime", _wrap_RTPIncomingSourceGroup_SetMaxWaitTime);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "ResetMaxWaitTime", _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamMultiplexer_class, "Stop", _wrap_RTPIncomingMediaStreamMultiplexer_Stop);
 SWIGV8_AddMemberFunction(_exports_PropertiesFacade_class, "SetPropertyInt", _wrap_PropertiesFacade_SetPropertyInt);

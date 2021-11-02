@@ -115,6 +115,28 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		//Stop
 		incomingStream.stop();
 	});
+
+	await suite.test("waiting time",async function(test){
+		let ssrc = 160;
+		//Create stream
+		const streamInfo = new StreamInfo("stream4");
+		//Create track
+		const track = new TrackInfo("audio", "track6");
+		//Add ssrc
+		track.addSSRC(ssrc++);
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		//Get audio track
+		const audioTrack = incomingStream.getAudioTracks()[0];
+		//Set max wait time
+		audioTrack.setMaxWaitTime(100);
+		//Reset it
+		audioTrack.resetMaxWaitTime();
+		test.done();
+	});
 	
 	await suite.test("duplicate ssrc",async function(test){
 		let ssrc = 150;
