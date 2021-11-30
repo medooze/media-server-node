@@ -2626,7 +2626,7 @@ SWIGV8_VALUE SWIG_From_long  (long value)
 SWIGINTERNINLINE
 SWIGV8_VALUE SWIG_From_unsigned_SS_long  (unsigned long value)
 {
-  return SWIGV8_INTEGER_NEW_UNS(value);
+  return value <= UINT32_MAX ? (SWIGV8_VALUE)SWIGV8_INTEGER_NEW_UNS(value) : (SWIGV8_VALUE)SWIGV8_NUMBER_NEW(static_cast<double>(value));
 }
 
 
@@ -2699,7 +2699,7 @@ SWIGV8_VALUE SWIG_From_long_SS_long  (long long value)
 SWIGINTERNINLINE
 SWIGV8_VALUE SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
 {
-  return SWIGV8_INTEGER_NEW_UNS(value);
+  return value <= UINT32_MAX ? (SWIGV8_VALUE)SWIGV8_INTEGER_NEW_UNS(value) : (SWIGV8_VALUE)SWIGV8_NUMBER_NEW(static_cast<double>(value));
 }
 #endif
 
