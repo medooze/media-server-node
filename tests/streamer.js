@@ -36,6 +36,18 @@ tap.test("Sreamer::create",async function(suite){
 		test.done();
 	});
 	
+
+	suite.test("maxWaitTime",async function(test){
+		//Create new streamer
+		const streamer = MediaServer.createStreamer();
+		const session = streamer.createSession(new MediaInfo("video","video"),{noRTCP:true});
+		const track = session.getIncomingStreamTrack();
+		track.setMaxWaitTime(100);
+		session.stop();
+		streamer.stop();
+		test.done();
+	});
+
 	suite.end();
 })
 ]).then(()=>MediaServer.terminate ());
