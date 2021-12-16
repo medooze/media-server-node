@@ -1113,6 +1113,7 @@ public:
 	void SetProbingBitrateLimit(DWORD bitrate);
 	void EnableSenderSideEstimation(bool enabled);
 	void SetSenderSideEstimatorListener(RemoteRateEstimatorListener* listener);
+	uint32_t GetAvailableOutgoingBitrate() const;
 
 	void SetRemoteOverrideBWE(bool overrideBWE);
 	void SetRemoteOverrideBitrate(DWORD bitrate);
