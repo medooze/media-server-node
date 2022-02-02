@@ -26,7 +26,7 @@ Promise.all([
 
 
 		suite.test("ice+dtls",async function(test){
-			test.plan(4);
+			test.plan(8);
 			//create endpoints
 			const localEndpoint	= MediaServer.createEndpoint ("127.0.0.1");
 			const remoteEndpoint	= MediaServer.createEndpoint ("127.0.0.1");
@@ -44,6 +44,11 @@ Promise.all([
 			//Create transports
 			const sender		= localEndpoint.createTransport (localInfo,remoteInfo,{disableSTUNKeepAlive: true});
 			const receiver		= remoteEndpoint.createTransport (remoteInfo,localInfo,{disableSTUNKeepAlive: true});
+
+			//new state
+			test.same(sender.getDTLSState(),"new");
+			test.same(sender.getDTLSState(),"new");
+
 			//wait for ice events
 			sender.once("remoteicecandidate",(candidate)=>{
 				test.ok(candidate);
@@ -62,12 +67,25 @@ Promise.all([
 			sender.addRemoteCandidate(remoteEndpoint.getLocalCandidates()[0]);
 			receiver.addRemoteCandidate(localEndpoint.getLocalCandidates()[0]);
 			
-			await sleep(4000);
+			await sleep(2000);
 			
+			//Should not be any more event
+			sender.once("dtlsstate",(state)=>{
+				test.fail();
+			});
+			receiver.once("dtlsstate",(state)=>{
+				test.fail();
+			});
+
 			sender.stop();
 			receiver.stop();
 			localEndpoint.stop();
 			remoteEndpoint.stop();
+
+			//Closed state
+			test.same(sender.getDTLSState(),"closed");
+			test.same(sender.getDTLSState(),"closed");
+
 		});
 
 		suite.test("ice restart",async function(test){
@@ -123,7 +141,7 @@ Promise.all([
 			//Create now the receiver
 			const receiver		= remoteEndpoint.createTransport (remoteInfo,localInfo,{disableSTUNKeepAlive: true});
 			
-			await sleep(4000);
+			await sleep(1000);
 			
 			sender.stop();
 			receiver.stop();
