@@ -53,6 +53,17 @@ tap.test("Endpoint::create",async function(suite){
 		//Ok
 		test.end();
 	});
+
+	await suite.test("setPriority",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint("127.0.0.1");
+		//Set RealTime, this could fail if user don't have rights to do it
+		endpoint.setPriority(1);
+		//Unset RealTime
+		test.ok(endpoint.setPriority(0));
+		//Ok
+		test.end();
+	});
 	
 	await suite.test("stress test",async function(test){
 		const endpoints = [];
