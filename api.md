@@ -660,7 +660,7 @@ Select encoding and temporal and spatial layers based on the desired bitrate. Th
 
 Returns **[Number][5]** Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
 
-### getSelectedtEncoding
+### getSelectedEncoding
 
 Return the encoding that is being forwarded
 
@@ -1645,6 +1645,17 @@ Set cpu affinity for udp send/recv thread.
 
 Returns **[boolean][2]** 
 
+### setPriority
+
+Set thread priority for udp send/recv thread.
+NOTE: User needs to have the appropiate rights to increase the thread priority in ulimit
+
+#### Parameters
+
+-   `priority` **[Number][5]** 0:Normal -19:RealTime
+
+Returns **[boolean][2]** 
+
 ### setIceTimeout
 
 Set ICE timeout for outgoing ICE binding requests
@@ -1843,6 +1854,12 @@ Restart ICE on transport object
 -   `localICE` **([Object][4] | ICEInfo)** Local ICE info, containing the username and password [Optional]
 
 Returns **ICEInfo** Local ICE info
+
+### getAvailableOutgoingBitrate
+
+Get available outgoing bitrate in bps.
+
+Returns **Nummber** 
 
 ### setBandwidthProbing
 
