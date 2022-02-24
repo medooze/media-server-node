@@ -41,6 +41,14 @@ Set UDP port range for encpoints
 -   `minPort` **Integer** Min UDP port
 -   `maxPort` **Integer** Max UDP port [Optional]
 
+### setAffinity
+
+Set node uv loop cpu affinity
+
+#### Parameters
+
+-   `cpu` **Integer** CPU core number
+
 ### enableUltraDebug
 
 Enable or disable ultra debug level traces
