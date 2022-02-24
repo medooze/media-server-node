@@ -164,17 +164,19 @@
 									"variables": {
 										"sse42_support": "<!(cat /proc/cpuinfo | grep -c sse4_2 || true)"
 									},
-									"conditions" : [["target_arch=='x64'",{
-										"conditions"  : [["sse42_support==0",{
-											"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64_nosse42" ]
-										},{
-											"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64" ]
-										}]],
-										"include_dirs": [  "media-server/ext/crc32c/config/Linux-arm64" ]
-									}]],
-									"conditions" : [["target_arch=='arm64'",{
-										"include_dirs": [  "media-server/ext/crc32c/config/Linux-aarch64" ]
-									}]],
+									"conditions" : [
+										["target_arch=='x64'",{
+											"conditions"  : [["sse42_support==0",{
+												"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64_nosse42" ]
+											},{
+												"include_dirs": [  "media-server/ext/crc32c/config/Linux-x86_64" ]
+											}]],
+											"include_dirs": [  "media-server/ext/crc32c/config/Linux-arm64" ]
+										}],
+										["target_arch=='arm64'",{
+											"include_dirs": [  "media-server/ext/crc32c/config/Linux-aarch64" ]
+										}]
+									],
 									"cflags_cc":  [
 										"-faligned-new",
 										"-DHAVE_STD_ALIGNED_ALLOCC",
