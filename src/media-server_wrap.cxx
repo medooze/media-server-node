@@ -1891,6 +1891,11 @@ public:
 			func();
 		}
 	}
+
+	static bool SetAffinity(int cpu)
+	{
+		return EventLoop::SetAffinity(pthread_self(), cpu);
+	}
 private:
 	//http://stackoverflow.com/questions/31207454/v8-multithreaded-function
 	static uv_async_t  async;
@@ -2223,13 +2228,12 @@ public:
 	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
-		//UltraDebug(">DTLSICETransportListener::onDTLSStateChanged() [state:%d]\n",state);
 		//Run function on main node thread
 		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
-			//UltraDebug("<DTLSICETransportListener::onDTLSStateChanged() [state:%d]\n",state);
+
 			switch(state)
 			{
 				case DTLSICETransport::DTLSState::New:
@@ -8515,6 +8519,34 @@ static SwigV8ReturnValue _wrap_MediaServer_SetPortRange(const SwigV8Arguments &a
   result = (bool)MediaServer::SetPortRange(arg1,arg2);
   jsresult = SWIG_From_bool(static_cast< bool >(result));
   
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaServer_SetAffinity(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  bool result;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_SetAffinity.");
+  
+  ecode1 = SWIG_AsVal_int(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MediaServer_SetAffinity" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (bool)MediaServer::SetAffinity(arg1);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
   
   
   SWIGV8_RETURN(jsresult);
@@ -17208,6 +17240,7 @@ SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_Med
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetCertificate", _wrap_MediaServer_SetCertificate);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "GetFingerprint", _wrap_MediaServer_GetFingerprint);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetPortRange", _wrap_MediaServer_SetPortRange);
+SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "SetAffinity", _wrap_MediaServer_SetAffinity);
 
 
   /* register classes */

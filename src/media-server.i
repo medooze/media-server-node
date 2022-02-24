@@ -204,6 +204,11 @@ public:
 			func();
 		}
 	}
+
+	static bool SetAffinity(int cpu)
+	{
+		return EventLoop::SetAffinity(pthread_self(), cpu);
+	}
 private:
 	//http://stackoverflow.com/questions/31207454/v8-multithreaded-function
 	static uv_async_t  async;
@@ -994,6 +999,7 @@ public:
 	static bool SetCertificate(const char* cert,const char* key);
 	static std::string GetFingerprint();
 	static bool SetPortRange(int minPort, int maxPort);
+	static bool SetAffinity(int cpu);
 };
 
 

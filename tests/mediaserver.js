@@ -27,6 +27,14 @@ tap.test("MediaServer",async function(suite){
 		//Done
 		test.done();
 	});
+	suite.test("affinity",function(test){
+		//This shoudl work
+		test.ok(MediaServer.setAffinity(0));
+		test.ok(MediaServer.setAffinity(1));
+		test.ok(MediaServer.setAffinity(0));
+		//Done
+		test.done();
+	});
 	
 }),
 tap.test("setCertificate",async function(suite){
