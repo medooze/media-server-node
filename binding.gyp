@@ -172,6 +172,9 @@
 										}]],
 										"include_dirs": [  "media-server/ext/crc32c/config/Linux-arm64" ]
 									}]],
+									"conditions" : [["target_arch=='arm64'",{
+										"include_dirs": [  "media-server/ext/crc32c/config/Linux-aarch64" ]
+									}]],
 									"cflags_cc":  [
 										"-faligned-new",
 										"-DHAVE_STD_ALIGNED_ALLOCC",
