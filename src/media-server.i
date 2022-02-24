@@ -150,6 +150,10 @@ public:
 		Debug("-MediaServer::Terminate\n");
 		//Close handle
 		uv_close((uv_handle_t *)&async, NULL);
+		
+		std::function<void()> func;
+		//Dequeue all pending functions
+		while(queue.try_dequeue(func)){}
 	}
 	
 	static void EnableLog(bool flag)
@@ -537,7 +541,7 @@ public:
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
-			
+
 			switch(state)
 			{
 				case DTLSICETransport::DTLSState::New:
@@ -911,7 +915,8 @@ struct RTPOutgoingSourceGroup
 	MediaFrameType  type;
 	RTPOutgoingSource media;
 	RTPOutgoingSource rtx;
-	
+	QWORD lastUpdated;
+
 	void Update();
 };
 
@@ -950,6 +955,7 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	DWORD minWaitedTime;
 	DWORD maxWaitedTime;
 	double avgWaitedTime;
+	QWORD lastUpdated;
 	
 	void AddListener(RTPIncomingMediaStreamListener* listener);
 	void RemoveListener(RTPIncomingMediaStreamListener* listener);

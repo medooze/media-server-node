@@ -1837,6 +1837,10 @@ public:
 		Debug("-MediaServer::Terminate\n");
 		//Close handle
 		uv_close((uv_handle_t *)&async, NULL);
+		
+		std::function<void()> func;
+		//Dequeue all pending functions
+		while(queue.try_dequeue(func)){}
 	}
 	
 	static void EnableLog(bool flag)
@@ -2219,12 +2223,13 @@ public:
 	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
+		//UltraDebug(">DTLSICETransportListener::onDTLSStateChanged() [state:%d]\n",state);
 		//Run function on main node thread
 		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
-			
+			//UltraDebug("<DTLSICETransportListener::onDTLSStateChanged() [state:%d]\n",state);
 			switch(state)
 			{
 				case DTLSICETransport::DTLSState::New:
@@ -6852,6 +6857,70 @@ static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_rtx_get(v8::Local<v8::Stri
   }
 
 
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPOutgoingSourceGroup_lastUpdated_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPOutgoingSourceGroup_lastUpdated_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+    uint64_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned long long val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_lastUpdated_set" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSourceGroup_lastUpdated_set" "', argument " "2"" of type '" "uint64_t""'");
+    } 
+    arg2 = static_cast< uint64_t >(val2);
+    if (arg1) (arg1)->lastUpdated = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_lastUpdated_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_lastUpdated_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint64_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_lastUpdated_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+    result = (uint64_t) ((arg1)->lastUpdated);
+    jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
 static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_Update(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -7670,6 +7739,70 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_avgWaitedTime_get(v8::Loca
     arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
     result = (double) ((arg1)->avgWaitedTime);
     jsresult = SWIG_From_double(static_cast< double >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSourceGroup_lastUpdated_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSourceGroup_lastUpdated_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+    uint64_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned long long val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_lastUpdated_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_long_SS_long(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSourceGroup_lastUpdated_set" "', argument " "2"" of type '" "uint64_t""'");
+    } 
+    arg2 = static_cast< uint64_t >(val2);
+    if (arg1) (arg1)->lastUpdated = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_lastUpdated_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_lastUpdated_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint64_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_lastUpdated_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+    result = (uint64_t) ((arg1)->lastUpdated);
+    jsresult = SWIG_From_unsigned_SS_long_SS_long(static_cast< unsigned long long >(result));
     
     
     SWIGV8_RETURN_INFO(jsresult, info);
@@ -16268,6 +16401,7 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "rtt", _wrap_RTPOutgo
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "type", _wrap_RTPOutgoingSourceGroup_type_get, _wrap_RTPOutgoingSourceGroup_type_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "media", _wrap_RTPOutgoingSourceGroup_media_get, _wrap_RTPOutgoingSourceGroup_media_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTPOutgoingSourceGroup_rtx_get, _wrap_RTPOutgoingSourceGroup_rtx_set);
+SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "lastUpdated", _wrap_RTPOutgoingSourceGroup_lastUpdated_get, _wrap_RTPOutgoingSourceGroup_lastUpdated_set);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Update", _wrap_RTPOutgoingSourceGroup_Update);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rid", _wrap_RTPIncomingSourceGroup_rid_get, _wrap_RTPIncomingSourceGroup_rid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "mid", _wrap_RTPIncomingSourceGroup_mid_get, _wrap_RTPIncomingSourceGroup_mid_set);
@@ -16279,6 +16413,7 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "lost", _wrap_RT
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "minWaitedTime", _wrap_RTPIncomingSourceGroup_minWaitedTime_get, _wrap_RTPIncomingSourceGroup_minWaitedTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "maxWaitedTime", _wrap_RTPIncomingSourceGroup_maxWaitedTime_get, _wrap_RTPIncomingSourceGroup_maxWaitedTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "avgWaitedTime", _wrap_RTPIncomingSourceGroup_avgWaitedTime_get, _wrap_RTPIncomingSourceGroup_avgWaitedTime_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "lastUpdated", _wrap_RTPIncomingSourceGroup_lastUpdated_get, _wrap_RTPIncomingSourceGroup_lastUpdated_set);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "AddListener", _wrap_RTPIncomingSourceGroup_AddListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "RemoveListener", _wrap_RTPIncomingSourceGroup_RemoveListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "SetMaxWaitTime", _wrap_RTPIncomingSourceGroup_SetMaxWaitTime);
