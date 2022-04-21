@@ -1186,20 +1186,13 @@ IncomingStream detached event
 
 -   `incomingStream` **[IncomingStream][12]** 
 
-### detached
+### track
 
-IncomingStream detached event
+IncomingStreamTrack added to stream
 
 #### Parameters
 
 -   `incomingStream` **[IncomingStream][12]** 
-
-### track
-
-IncomingStreamTrack created
-
-#### Parameters
-
 -   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
 
 ### stopped
@@ -1210,6 +1203,148 @@ IncomingStream stopped event
 
 -   `incomingStream` **[IncomingStream][12]** 
 -   `last` **Objects** stats before closing
+
+## IncomingStreamTrackSimulcastAdapter
+
+Bundle multiple video track as if they were a single simulcast video track
+
+### addTrack
+
+Add video track to the simulcast adapter
+
+#### Parameters
+
+-   `encodingId` **[String][1]** Id used as base for encodings id
+-   `incomingStreamTrack` **[IncomingStreamTrack][13]** Incoming video stream track
+
+### removeTrack
+
+Remove video track to the simulcast adapter
+
+#### Parameters
+
+-   `incomingStreamTrack` **[IncomingStreamTrack][13]** Incoming video stream track
+
+### getStats
+
+Get stats for all encodings from the original track
+
+Returns **[Map][25]&lt;[String][1], [Object][4]>** Map with stats by encodingId
+
+### getActiveLayers
+
+Get active encodings and layers ordered by bitrate of the original track
+
+Returns **[Object][4]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+### getId
+
+Get track id as signaled on the SDP
+
+### getMediaId
+
+Get track media id (mid)
+
+### getTrackInfo
+
+Get track info object
+
+Returns **TrackInfo** Track info
+
+### getSSRCs
+
+Return ssrcs associated to this track
+
+Returns **[Object][4]** 
+
+### getMedia
+
+Get track media type
+
+Returns **[String][1]** "audio"|"video"
+
+### on
+
+Add event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][10]** Event listener
+
+Returns **[IncomingStreamTrack][13]** 
+
+### once
+
+Add event listener once
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][10]** Event listener
+
+Returns **[IncomingStream][12]** 
+
+### off
+
+Remove event listener
+
+#### Parameters
+
+-   `event` **[String][1]** Event name
+-   `listener` **[function][10]** Event listener
+
+Returns **[IncomingStreamTrack][13]** 
+
+### getEncodings
+
+Get all track encodings
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Array][22]&lt;[Object][4]>** encodings 
+\*
+
+### getEncoding
+
+Get encoding by id
+Internal use, you'd beter know what you are doing before calling this method
+
+#### Parameters
+
+-   `encodingId` **[String][1]** encoding Id,
+
+Returns **[Object][4]** encoding 
+\*
+
+### getDefaultEncoding
+
+Get default encoding
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Object][4]** encoding 
+\*
+
+### isAttached
+
+Return if the track is attached or not
+
+### attached
+
+Signal that this track has been attached.
+Internal use, you'd beter know what you are doing before calling this method
+
+### refresh
+
+Request an intra refres on all sources
+
+### detached
+
+Signal that this track has been detached.
+Internal use, you'd beter know what you are doing before calling this method
+
+### stop
+
+Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
 
 ## OutgoingStream
 
@@ -1443,6 +1578,38 @@ Remove event listener
 
 Returns **[IncomingStreamTrack][13]** 
 
+### getEncodings
+
+Get all track encodings
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Array][22]&lt;[Object][4]>** encodings 
+\*
+
+### getEncoding
+
+Get encoding by id
+Internal use, you'd beter know what you are doing before calling this method
+
+#### Parameters
+
+-   `encodingId` **[String][1]** encoding Id,
+
+Returns **[Object][4]** encoding 
+\*
+
+### getDefaultEncoding
+
+Get default encoding
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Object][4]** encoding 
+\*
+
+### isAttached
+
+Return if the track is attached or not
+
 ### attached
 
 Signal that this track has been attached.
@@ -1469,9 +1636,33 @@ IncomingStreamTrackMirrored attached event
 
 -   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
 
+### attached
+
+IncomingStreamTrackMirrored attached event
+
+#### Parameters
+
+-   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+
 ### detached
 
 IncomingStreamTrackMirrored dettached event
+
+#### Parameters
+
+-   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+
+### detached
+
+IncomingStreamTrackMirrored dettached event
+
+#### Parameters
+
+-   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+
+### stopped
+
+IncomingStreamTrack stopped event
 
 #### Parameters
 
@@ -2067,7 +2258,7 @@ Create an incoming stream object from the media stream info objet
 
 #### Parameters
 
--   `info` **(StreamInfo | [Object][4])** Contains the ids and ssrcs of the stream to be created
+-   `info` **(StreamInfo | [Object][4] \| [String][1])** Contains the ids and ssrcs of the stream to be created
 
 Returns **[IncomingStream][12]** The newly created incoming stream object
 
@@ -2480,6 +2671,34 @@ Remove event listener
 
 Returns **[IncomingStreamTrack][13]** 
 
+### getEncodings
+
+Get all track encodings
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Array][22]&lt;[Object][4]>** encodings 
+\*
+
+### getEncoding
+
+Get encoding by id
+Internal use, you'd beter know what you are doing before calling this method
+
+#### Parameters
+
+-   `encodingId` **[String][1]** encoding Id,
+
+Returns **[Object][4]** encoding 
+\*
+
+### getDefaultEncoding
+
+Get default encoding
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Object][4]** encoding 
+\*
+
 ### attached
 
 Signal that this track has been attached.
@@ -2537,6 +2756,15 @@ Remove override for the maximum period of time to wait for an out of order or rt
 ### stop
 
 Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
+
+### encoding
+
+IncomingStreamTrack new encoding event
+
+#### Parameters
+
+-   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+-   `encoding` **[Object][4]** 
 
 ### attached
 
