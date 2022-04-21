@@ -1266,6 +1266,7 @@ class SimulcastMediaFrameListener :
 {
 public:
 	SimulcastMediaFrameListener(DWORD ssrc, DWORD numLayers);
+	void SetNumLayers(DWORD numLayers);
 	void AddMediaListener(MediaFrameListener* listener);
 	void RemoveMediaListener(MediaFrameListener* listener);
 	void Stop();

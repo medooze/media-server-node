@@ -15443,6 +15443,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_SetNumLayers(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_SetNumLayers.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_SetNumLayers" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+  }
+  arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SimulcastMediaFrameListener_SetNumLayers" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  (arg1)->SetNumLayers(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_AddMediaListener(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -16584,6 +16620,7 @@ SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "RemoveI
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "AddRTPStreamTransponder", _wrap_ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "RemoveRTPStreamTransponder", _wrap_ActiveSpeakerMultiplexerFacade_RemoveRTPStreamTransponder);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "Stop", _wrap_ActiveSpeakerMultiplexerFacade_Stop);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "SetNumLayers", _wrap_SimulcastMediaFrameListener_SetNumLayers);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "AddMediaListener", _wrap_SimulcastMediaFrameListener_AddMediaListener);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "RemoveMediaListener", _wrap_SimulcastMediaFrameListener_RemoveMediaListener);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "Stop", _wrap_SimulcastMediaFrameListener_Stop);
