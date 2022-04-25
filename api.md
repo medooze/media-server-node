@@ -620,6 +620,7 @@ Set incoming track
     -   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
     -   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
     -   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
+-   `smooth` **[Boolean][2]** Wait until next valid frame before switching to the new encoding
 
 ### getMedia
 
