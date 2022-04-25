@@ -2159,12 +2159,12 @@ public:
 
 	virtual ~RTPStreamTransponderFacade() = default;
 
-	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver)
+	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver, bool smooth = false)
 	{
 		return RTPStreamTransponder::SetIncoming(incoming, receiver ? receiver->get() : NULL);
 	}
 	
-	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiver* receiver)
+	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiver* receiver, bool smooth = false)
 	{
 		return RTPStreamTransponder::SetIncoming(incoming, receiver);
 	}
@@ -13217,6 +13217,60 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_0(co
   RTPStreamTransponderFacade *arg1 = (RTPStreamTransponderFacade *) 0 ;
   RTPIncomingMediaStream *arg2 = (RTPIncomingMediaStream *) 0 ;
   RTPReceiverFacade *arg3 = (RTPReceiverFacade *) 0 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "1"" of type '" "RTPStreamTransponderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPStreamTransponderFacade * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStream, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "2"" of type '" "RTPIncomingMediaStream *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPIncomingMediaStream * >(argp2);
+  res3 = SWIG_ConvertPtr(args[1], &argp3,SWIGTYPE_p_RTPReceiverFacade, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "3"" of type '" "RTPReceiverFacade *""'"); 
+  }
+  arg3 = reinterpret_cast< RTPReceiverFacade * >(argp3);
+  ecode4 = SWIG_AsVal_bool(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  result = (bool)(arg1)->SetIncoming(arg2,arg3,arg4);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPStreamTransponderFacade *arg1 = (RTPStreamTransponderFacade *) 0 ;
+  RTPIncomingMediaStream *arg2 = (RTPIncomingMediaStream *) 0 ;
+  RTPReceiverFacade *arg3 = (RTPReceiverFacade *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -13254,7 +13308,61 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_1(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_2(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
+{
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPStreamTransponderFacade *arg1 = (RTPStreamTransponderFacade *) 0 ;
+  RTPIncomingMediaStream *arg2 = (RTPIncomingMediaStream *) 0 ;
+  RTPReceiver *arg3 = (RTPReceiver *) 0 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  bool result;
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "1"" of type '" "RTPStreamTransponderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPStreamTransponderFacade * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStream, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "2"" of type '" "RTPIncomingMediaStream *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPIncomingMediaStream * >(argp2);
+  res3 = SWIG_ConvertPtr(args[1], &argp3,SWIGTYPE_p_RTPReceiver, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "3"" of type '" "RTPReceiver *""'"); 
+  }
+  arg3 = reinterpret_cast< RTPReceiver * >(argp3);
+  ecode4 = SWIG_AsVal_bool(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  result = (bool)(arg1)->SetIncoming(arg2,arg3,arg4);
+  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  
+  
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_3(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
 {
   SWIGV8_HANDLESCOPE();
   
@@ -13306,7 +13414,7 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade__wrap_RTPStreamTranspo
   OverloadErrorHandler errorHandler;
   
   
-  if(args.Length() == 2) {
+  if(args.Length() == 3) {
     errorHandler.err.Clear();
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
     jsresult = _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_0(args, errorHandler);
@@ -13331,6 +13439,38 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade__wrap_RTPStreamTranspo
     }
 #else
     _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_1(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 3) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_2(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      return;
+    }
+#endif
+  }
+  
+  
+  if(args.Length() == 2) {
+    errorHandler.err.Clear();
+#if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031903)
+    jsresult = _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_3(args, errorHandler);
+    if(errorHandler.err.IsEmpty()) {
+      SWIGV8_ESCAPE(jsresult);
+    }
+#else
+    _wrap_RTPStreamTransponderFacade_SetIncoming__SWIG_3(args, errorHandler);
     if(errorHandler.err.IsEmpty()) {
       return;
     }
