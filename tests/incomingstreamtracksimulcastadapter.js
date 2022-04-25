@@ -89,17 +89,22 @@ tap.test("IncomingStream",function(suite){
 	});
 
 	suite.test("create+stop simulcast adapter",function(test){
-		test.plan(2);
+		test.plan(4);
 		//Create simulcast adapter
 		const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
 		test.ok(simulcastTrack)
 
 		//Create new incoming stream
 		const incomingStreamTrack = transport.createIncomingStreamTrack("video");
-
+		//Listen for the encoding event
+		simulcastTrack.on("encoding", (track,encoding) =>	{
+			test.ok(encoding);
+		})
 		//Add it
 		simulcastTrack.addTrack("",incomingStreamTrack);
 
+		//Check number of encodings
+		test.same(simulcastTrack.getEncodings().length,1);
 		//Listent for stop
 		simulcastTrack.on("stopped",(track)=>{
 			test.ok(track);
@@ -111,7 +116,7 @@ tap.test("IncomingStream",function(suite){
 
 
 	suite.test("stop track",function(test){
-		test.plan(2);
+		test.plan(5);
 		//Create simulcast adapter
 		const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
 		test.ok(simulcastTrack)
@@ -120,9 +125,16 @@ tap.test("IncomingStream",function(suite){
 		const incomingStreamTrack1 = transport.createIncomingStreamTrack("video");
 		const incomingStreamTrack2 = transport.createIncomingStreamTrack("video");
 
+		//Listen for the encoding event
+		simulcastTrack.on("encoding", (track,encoding) =>	{
+			test.ok(encoding);
+		})
 		//Add it
 		simulcastTrack.addTrack("1",incomingStreamTrack1);
 		simulcastTrack.addTrack("2",incomingStreamTrack2);
+
+		//Check number of encodings
+		test.same(simulcastTrack.getEncodings().length,2);
 
 		//Listent for stop
 		simulcastTrack.on("stopped",(track)=>{
@@ -136,6 +148,7 @@ tap.test("IncomingStream",function(suite){
 
 
 	suite.test("getStats",function(test){
+		test.plan(9);
 		//Create simulcast adapter
 		const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
 
@@ -143,6 +156,11 @@ tap.test("IncomingStream",function(suite){
 		const incomingStreamTrack1 = transport.createIncomingStreamTrack("video");
 		const incomingStreamTrack2 = transport.createIncomingStreamTrack("video");
 		const incomingStreamTrack3 = transport.createIncomingStreamTrack("video");
+
+		//Listen for the encoding event
+		simulcastTrack.on("encoding", (track,encoding) =>	{
+			test.ok(encoding);
+		})
 
 		//Add them
 		simulcastTrack.addTrack("1",incomingStreamTrack1);
@@ -153,8 +171,15 @@ tap.test("IncomingStream",function(suite){
 		incomingStreamTrack1.getStats = () => ({"" : stats1});
 		incomingStreamTrack3.getStats = () => ({"" : stats2});
 
+		//Check number of encodings
+		test.same(simulcastTrack.getEncodings().length,3);
+
 		//Remove one
 		incomingStreamTrack2.stop();
+
+
+		//Check number of encodings
+		test.same(simulcastTrack.getEncodings().length,2);
 
 		const stats = simulcastTrack.getStats();
 
@@ -199,6 +224,55 @@ tap.test("IncomingStream",function(suite){
 		test.same(layers.active.length,2);
 		test.same(layers.inactive.length,1);
 		test.same(layers.layers.length,20);
+
+		//Ok
+		test.end();
+
+	});
+
+
+	suite.test("mirror stream",function(test){
+		test.plan(9);
+
+		//Create simulcast adapter
+		const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
+
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream("stream0");
+		test.ok(incomingStream);
+
+		//Mirror it
+		const mirrored = endpoint.mirrorIncomingStream(incomingStream);
+		test.ok(mirrored)
+
+		//Track and encoding events
+		incomingStream.on("track",(stream,track)=>{
+			test.ok(track)
+		});
+		mirrored.on("track",(stream,track)=>{
+			test.ok(track)
+			track.on("encoding", (track,encoding) =>	{
+				test.ok(encoding);
+			})
+		});
+
+		//Add track to original stream
+		incomingStream.addTrack(simulcastTrack);
+
+		//Create new incoming stream
+		const incomingStreamTrack1 = transport.createIncomingStreamTrack("video");
+		const incomingStreamTrack2 = transport.createIncomingStreamTrack("video");
+		const incomingStreamTrack3 = transport.createIncomingStreamTrack("video");
+		const incomingStreamTrack4 = transport.createIncomingStreamTrack("video");
+
+		//Add them
+		simulcastTrack.addTrack("1",incomingStreamTrack1);
+		simulcastTrack.addTrack("2",incomingStreamTrack2);
+		simulcastTrack.addTrack("3",incomingStreamTrack3);
+		simulcastTrack.addTrack("4",incomingStreamTrack4);
+
+		//Check number of encodings
+		test.same(incomingStream.getVideoTracks()[0].getEncodings().length,mirrored.getVideoTracks()[0].getEncodings().length);
 
 		//Ok
 		test.end();
