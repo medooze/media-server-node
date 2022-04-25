@@ -474,12 +474,12 @@ public:
 
 	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiverFacade* receiver, bool smooth = false)
 	{
-		return RTPStreamTransponder::SetIncoming(incoming, receiver ? receiver->get() : NULL);
+		return RTPStreamTransponder::SetIncoming(incoming, receiver ? receiver->get() : NULL, smooth);
 	}
 	
 	bool SetIncoming(RTPIncomingMediaStream* incoming, RTPReceiver* receiver, bool smooth = false)
 	{
-		return RTPStreamTransponder::SetIncoming(incoming, receiver);
+		return RTPStreamTransponder::SetIncoming(incoming, receiver, smooth);
 	}
 	
 	virtual void onREMB(RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
