@@ -622,6 +622,14 @@ Set incoming track
     -   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
 -   `smooth` **[Boolean][2]** Wait until next valid frame before switching to the new encoding
 
+### appendH264ParameterSets
+
+Set out of band negotiated H264 parameter sets
+
+#### Parameters
+
+-   `sprop` **[String][1]** H264 parameters sets
+
 ### getMedia
 
 Get Transponder media type
@@ -655,6 +663,14 @@ This operation will not change the muted state of the stream this track belongs 
 
 -   `muting` **[boolean][2]** if we want to mute or unmute
 
+### setIntraOnlyForwarding
+
+Set intra frame forwarding mode
+
+#### Parameters
+
+-   `intraOnlyForwarding` **[boolean][2]** true if you want to forward only intra frames, false otherwise
+
 ### setTargetBitrate
 
 Select encoding and temporal and spatial layers based on the desired bitrate. This operation will unmute the transponder if it was mutted and it is possible to select an encoding and layer based on the target bitrate and options.
@@ -668,6 +684,20 @@ Select encoding and temporal and spatial layers based on the desired bitrate. Th
 -   `bitrate` **[Number][5]** 
 
 Returns **[Number][5]** Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
+
+### select
+
+Select the simulcast encoding layer and svc layers
+
+#### Parameters
+
+-   `layers` **[Object][4]** [Optional] Only applicable to video tracks
+    -   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: the current one)
+    -   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    -   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
+    -   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
+-   `smooth` **[Boolean][2]** Wait until next valid frame before switching to the new encoding
 
 ### getSelectedEncoding
 
@@ -2757,6 +2787,15 @@ Remove override for the maximum period of time to wait for an out of order or rt
 ### stop
 
 Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
+
+### encoding
+
+IncomingStreamTrack new encoding event
+
+#### Parameters
+
+-   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+-   `encoding` **[Object][4]** 
 
 ### encoding
 
