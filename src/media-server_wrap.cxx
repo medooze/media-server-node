@@ -13609,6 +13609,42 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIntraOnlyForwarding(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPStreamTransponderFacade *arg1 = (RTPStreamTransponderFacade *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponderFacade_SetIntraOnlyForwarding.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponderFacade_SetIntraOnlyForwarding" "', argument " "1"" of type '" "RTPStreamTransponderFacade *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPStreamTransponderFacade * >(argp1);
+  ecode2 = SWIG_AsVal_bool(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPStreamTransponderFacade_SetIntraOnlyForwarding" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  (arg1)->SetIntraOnlyForwarding(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_Close(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -16717,6 +16753,7 @@ SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SetIncoming
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "AppendH264ParameterSets", _wrap_RTPStreamTransponderFacade_AppendH264ParameterSets);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SelectLayer", _wrap_RTPStreamTransponderFacade_SelectLayer);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Mute", _wrap_RTPStreamTransponderFacade_Mute);
+SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SetIntraOnlyForwarding", _wrap_RTPStreamTransponderFacade_SetIntraOnlyForwarding);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Close", _wrap_RTPStreamTransponderFacade_Close);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamDepacketizer_class, "AddMediaListener", _wrap_RTPIncomingMediaStreamDepacketizer_AddMediaListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamDepacketizer_class, "RemoveMediaListener", _wrap_RTPIncomingMediaStreamDepacketizer_RemoveMediaListener);

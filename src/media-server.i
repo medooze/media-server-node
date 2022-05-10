@@ -1167,6 +1167,7 @@ public:
 	bool AppendH264ParameterSets(const std::string& sprops);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
 	void Mute(bool muting);
+	void SetIntraOnlyForwarding(bool intraOnlyForwarding);
 	void Close();
 };
 
