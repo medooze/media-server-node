@@ -209,6 +209,11 @@ public:
 	{
 		return EventLoop::SetAffinity(pthread_self(), cpu);
 	}
+
+	static bool SetThreadName(const std::string& name)
+	{
+		return EventLoop::SetThreadName(pthread_self(), name);
+	}
 private:
 	//http://stackoverflow.com/questions/31207454/v8-multithreaded-function
 	static uv_async_t  async;
@@ -1001,6 +1006,7 @@ public:
 	static std::string GetFingerprint();
 	static bool SetPortRange(int minPort, int maxPort);
 	static bool SetAffinity(int cpu);
+	static bool SetThreadName(const std::string& name);
 };
 
 
@@ -1030,6 +1036,7 @@ public:
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
 	bool SetAffinity(int cpu);
+	bool SetThreadName(const std::string& name);
 	bool SetPriority(int priority);
 	void SetIceTimeout(uint32_t timeout);
 	TimeService& GetTimeService();

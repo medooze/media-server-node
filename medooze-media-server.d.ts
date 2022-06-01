@@ -591,6 +591,17 @@ import SemanticSDP = require('semantic-sdp');
     setAffinity(cpu: number): boolean;
 
     /**
+     * Set name for udp send/recv thread.
+     *
+     * Useful for debugging or tracing. Currently only supported
+     * on Linux, fails on other platforms.
+     * Length is limited to 16 bytes.
+     * @param {String}  name - thread name to set
+     * @returns {boolean} true if operation was successful
+     */
+    setThreadName(name: string): boolean;
+
+    /**
      * Set thread priority for udp send/recv thread.
      * NOTE: User needs to have the appropiate rights to increase the thread priority in ulimit
      * @param {Number}  priority - 0:Normal -19:RealTime
@@ -604,6 +615,10 @@ import SemanticSDP = require('semantic-sdp');
      */
     setIceTimeout(timeout: number): void;
 
+    /**
+     * Get port at which UDP socket is bound
+     */
+    getLocalPort(): number;
 
     /**
      * Create a new transport object and register it with the remote ICE
@@ -856,6 +871,17 @@ import SemanticSDP = require('semantic-sdp');
      * @returns {boolean} true if operation was successful
      */
     setAffinity(cpu: number): boolean;
+  
+    /**
+     * Set node uv loop thread name.
+     *
+     * Useful for debugging or tracing. Currently only supported
+     * on Linux, fails on other platforms.
+     * Length is limited to 16 bytes.
+     * @param {String}  name - thread name to set
+     * @returns {boolean} true if operation was successful
+     */
+     setThreadName(name: string): boolean;
 
     /**
      * Enable or disable ultra debug level traces

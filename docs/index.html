@@ -77,6 +77,12 @@
                       </a></li>
                     
                       <li><a
+                        href='#mediaserversetthreadname'
+                        class='regular pre-open'>
+                        .setThreadName
+                      </a></li>
+                    
+                      <li><a
                         href='#mediaserverenableultradebug'
                         class='regular pre-open'>
                         .enableUltraDebug
@@ -1824,6 +1830,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#endpointsetthreadname'
+                        class='regular pre-open'>
+                        #setThreadName
+                      </a></li>
+                      
+                      <li><a
                         href='#endpointsetpriority'
                         class='regular pre-open'>
                         #setPriority
@@ -1833,6 +1845,12 @@
                         href='#endpointseticetimeout'
                         class='regular pre-open'>
                         #setIceTimeout
+                      </a></li>
+                      
+                      <li><a
+                        href='#endpointgetlocalport'
+                        class='regular pre-open'>
+                        #getLocalPort
                       </a></li>
                       
                       <li><a
@@ -2949,6 +2967,80 @@ Only call it once!</p>
           <div>
             <span class='code bold'>cpu</span> <code class='quiet'>(Integer)</code>
 	    CPU core number
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        true if operation was successful
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='mediaserversetthreadname'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setThreadName(name)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Set node uv loop thread name.</p>
+<p>Useful for debugging or tracing. Currently only supported
+on Linux, fails on other platforms.
+Length is limited to 16 bytes.</p>
+
+    <div class='pre p1 fill-light mt0'>setThreadName(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    thread name to set
 
           </div>
           
@@ -18438,6 +18530,80 @@ Being a server it is ICE-lite.</p>
       </div>
     </div>
   
+    <div class='border-bottom' id='endpointsetthreadname'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setThreadName(name)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Set name for udp send/recv thread.</p>
+<p>Useful for debugging or tracing. Currently only supported
+on Linux, fails on other platforms.
+Length is limited to 16 bytes.</p>
+
+    <div class='pre p1 fill-light mt0'>setThreadName(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    thread name to set
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        true if operation was successful
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='endpointsetpriority'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -18549,6 +18715,55 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
         </div>
       
     </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='endpointgetlocalport'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getLocalPort()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get port at which UDP socket is bound</p>
+
+    <div class='pre p1 fill-light mt0'>getLocalPort()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
   
 
   
