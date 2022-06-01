@@ -237,7 +237,21 @@ import SemanticSDP = require('semantic-sdp');
     layers: Layer[];
   }
 
+  interface OutgoingStreamEventMap {
+    track(track: OutgoingStreamTrack): void;
+    stopped(stream: OutgoingStream, stats: OutgoingStreamStatsReport): void;
+    muted(muted: boolean): void;
+  }
+  
   export interface OutgoingStream {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof OutgoingStreamEventMap>(event: E, ...args: Parameters<OutgoingStreamEventMap[E]>): this;
+    on<E extends keyof OutgoingStreamEventMap>(event: E, listener: OutgoingStreamEventMap[E]): this;
+    once<E extends keyof OutgoingStreamEventMap>(event: E, listener: OutgoingStreamEventMap[E]): this;
+    off<E extends keyof OutgoingStreamEventMap>(event: E, listener: OutgoingStreamEventMap[E]): this;
+    addListener<E extends keyof OutgoingStreamEventMap>(event: E, listener: OutgoingStreamEventMap[E]): this;
+    removeListener<E extends keyof OutgoingStreamEventMap>(event: E, listener: OutgoingStreamEventMap[E]): this;
+
     /**
      * Get statistics for all tracks in the stream
      *
@@ -286,49 +300,6 @@ import SemanticSDP = require('semantic-sdp');
      * @returns {String}
      */
     getId(): string;
-
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    on(event: 'track',
-       listener: (track: OutgoingStreamTrack) => any): OutgoingStream;
-    on(event: 'stopped',
-       listener:
-           (stream: OutgoingStream, stats: OutgoingStreamStatsReport) => any):
-        OutgoingStream;
-    on(event: 'muted', listener: (muted: boolean) => any): OutgoingStream;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'track', listener: (track: OutgoingStreamTrack) => any):
-        OutgoingStream;
-    once(
-        event: 'stopped',
-        listener:
-            (stream: OutgoingStream, stats: OutgoingStreamStatsReport) => any):
-        OutgoingStream;
-    once(event: 'muted', listener: (muted: boolean) => any): OutgoingStream;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {OutgoingStream}
-     */
-    off(event: 'track',
-        listener: (track: OutgoingStreamTrack) => any): OutgoingStream;
-    off(event: 'stopped',
-        listener:
-            (stream: OutgoingStream, stats: OutgoingStreamStatsReport) => any):
-        OutgoingStream;
-    off(event: 'muted', listener: (muted: boolean) => any): OutgoingStream;
 
     /**
      * Get all the tracks
@@ -385,7 +356,22 @@ import SemanticSDP = require('semantic-sdp');
     stop(): void;
   }
 
+  interface TransportEventMap {
+    targetbitrate(bitrate: number, transport: Transport): void;
+    outgoingtrack(track: OutgoingStreamTrack, stream: OutgoingStream|null): void;
+    incomingtrack(track: IncomingStreamTrack, stream: IncomingStream|null): void;
+    stopped(transport: Transport): void;
+  }
+
   export interface Transport {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof TransportEventMap>(event: E, ...args: Parameters<TransportEventMap[E]>): this;
+    on<E extends keyof TransportEventMap>(event: E, listener: TransportEventMap[E]): this;
+    once<E extends keyof TransportEventMap>(event: E, listener: TransportEventMap[E]): this;
+    off<E extends keyof TransportEventMap>(event: E, listener: TransportEventMap[E]): this;
+    addListener<E extends keyof TransportEventMap>(event: E, listener: TransportEventMap[E]): this;
+    removeListener<E extends keyof TransportEventMap>(event: E, listener: TransportEventMap[E]): this;
+
     /**
      * Dump incoming and outgoint rtp and rtcp packets into a pcap file
      * @param {String} filename - Filename of the pcap file
@@ -432,63 +418,6 @@ import SemanticSDP = require('semantic-sdp');
      */
     setRemoteProperties(rtp: SemanticSDP.SDPInfo|
                         SetTransportPropertiesOptions): void;
-
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listeener	- Event listener
-     * @returns {Transport}
-     */
-    on(event: 'targetbitrate',
-       listener: (bitrate: number, transport: Transport) => any): Transport;
-    on(event: 'outgoingtrack',
-       listener:
-           (track: OutgoingStreamTrack, stream: OutgoingStream|null) => any):
-        Transport;
-    on(event: 'incomingtrack',
-       listener:
-           (track: IncomingStreamTrack, stream: IncomingStream|null) => any):
-        Transport;
-    on(event: 'stopped', listener: (transport: Transport) => any): Transport;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(
-        event: 'targetbitrate',
-        listener: (bitrate: number, transport: Transport) => any): Transport;
-    once(
-        event: 'outgoingtrack',
-        listener:
-            (track: OutgoingStreamTrack, stream: OutgoingStream|null) => any):
-        Transport;
-    once(
-        event: 'incomingtrack',
-        listener:
-            (track: IncomingStreamTrack, stream: IncomingStream|null) => any):
-        Transport;
-    once(event: 'stopped', listener: (transport: Transport) => any): Transport;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Transport}
-     */
-    off(event: 'targetbitrate',
-        listener: (bitrate: number, transport: Transport) => any): Transport;
-    off(event: 'outgoingtrack',
-        listener:
-            (track: OutgoingStreamTrack, stream: OutgoingStream|null) => any):
-        Transport;
-    off(event: 'incomingtrack',
-        listener:
-            (track: IncomingStreamTrack, stream: IncomingStream|null) => any):
-        Transport;
-    off(event: 'stopped', listener: (transport: Transport) => any): Transport;
 
     /**
      * Get transport local DTLS info
@@ -637,7 +566,19 @@ import SemanticSDP = require('semantic-sdp');
     stop(): void;
   }
 
+  interface EndpointEventMap {
+    stopped(endpoint: Endpoint): void;
+  }
+
   export interface Endpoint {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof EndpointEventMap>(event: E, ...args: Parameters<EndpointEventMap[E]>): this;
+    on<E extends keyof EndpointEventMap>(event: E, listener: EndpointEventMap[E]): this;
+    once<E extends keyof EndpointEventMap>(event: E, listener: EndpointEventMap[E]): this;
+    off<E extends keyof EndpointEventMap>(event: E, listener: EndpointEventMap[E]): this;
+    addListener<E extends keyof EndpointEventMap>(event: E, listener: EndpointEventMap[E]): this;
+    removeListener<E extends keyof EndpointEventMap>(event: E, listener: EndpointEventMap[E]): this;
+
     /**
      * Set cpu affinity for udp send/recv thread.
      * @param {Number}  cpu - CPU core or -1 to reset affinity.
@@ -740,36 +681,25 @@ import SemanticSDP = require('semantic-sdp');
         capabilities: MediaCapabilities): SDPManager;
 
     /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listeener	- Event listener
-     * @returns {Endpoint}
-     */
-    on(event: 'stopped', listener: (endpoint: Endpoint) => any): Endpoint;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Endpoint}
-     */
-    once(event: 'stopped', listener: (endpoint: Endpoint) => any): Endpoint;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Endpoint}
-     */
-    off(event: 'stopped', listener: (endpoint: Endpoint) => any): Endpoint;
-
-    /**
      * Stop the endpoint UDP server and terminate any associated transport
      */
     stop(): void;
   }
 
+  interface TransponderEventMap {
+    stopped(transponder: Transponder): void;
+    muted(muted: boolean): void;
+  }
+
   export interface Transponder {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof TransponderEventMap>(event: E, ...args: Parameters<TransponderEventMap[E]>): this;
+    on<E extends keyof TransponderEventMap>(event: E, listener: TransponderEventMap[E]): this;
+    once<E extends keyof TransponderEventMap>(event: E, listener: TransponderEventMap[E]): this;
+    off<E extends keyof TransponderEventMap>(event: E, listener: TransponderEventMap[E]): this;
+    addListener<E extends keyof TransponderEventMap>(event: E, listener: TransponderEventMap[E]): this;
+    removeListener<E extends keyof TransponderEventMap>(event: E, listener: TransponderEventMap[E]): this;
+
     /**
      * Set incoming track
      * @param {IncomingStreamTrack} track
@@ -862,36 +792,6 @@ import SemanticSDP = require('semantic-sdp');
      */
     setMaximumLayers(maxSpatialLayerId: number, maxTemporalLayerId: number):
         void;
-
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Transponder}
-     */
-    on(event: 'stopped',
-       listener: (transponder: Transponder) => any): Transponder;
-    on(event: 'muted', listener: (muted: boolean) => any): Transponder;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Transponder}
-     */
-    once(event: 'stopped', listener: (transponder: Transponder) => any):
-        Transponder;
-    once(event: 'muted', listener: (muted: boolean) => any): Transponder;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Transponder}
-     */
-    off(event: 'stopped',
-        listener: (transponder: Transponder) => any): Transponder;
-    off(event: 'muted', listener: (muted: boolean) => any): Transponder;
 
     /**
      * Stop this transponder, will dettach the OutgoingStreamTrack
@@ -998,7 +898,20 @@ import SemanticSDP = require('semantic-sdp');
     getDefaultCapabilities(): MediaCapabilities;
   }
 
+  interface IncomingStreamEventMap {
+    track(track: IncomingStreamTrack): void;
+    stopped(stream: IncomingStream, stats: IncomingStreamStatsReport): void;
+  }
+
   export interface IncomingStream {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof IncomingStreamEventMap>(event: E, ...args: Parameters<IncomingStreamEventMap[E]>): this;
+    on<E extends keyof IncomingStreamEventMap>(event: E, listener: IncomingStreamEventMap[E]): this;
+    once<E extends keyof IncomingStreamEventMap>(event: E, listener: IncomingStreamEventMap[E]): this;
+    off<E extends keyof IncomingStreamEventMap>(event: E, listener: IncomingStreamEventMap[E]): this;
+    addListener<E extends keyof IncomingStreamEventMap>(event: E, listener: IncomingStreamEventMap[E]): this;
+    removeListener<E extends keyof IncomingStreamEventMap>(event: E, listener: IncomingStreamEventMap[E]): this;
+
     /**
      * The media stream id as announced on the SDP
      * @returns {String}
@@ -1011,46 +924,6 @@ import SemanticSDP = require('semantic-sdp');
      * @returns {StreamInfo} The stream info object
      */
     getStreamInfo(): SemanticSDP.StreamInfo;
-
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    on(event: 'track',
-       listener: (track: IncomingStreamTrack) => any): IncomingStream;
-    on(event: 'stopped',
-       listener:
-           (stream: IncomingStream, stats: IncomingStreamStatsReport) => any):
-        IncomingStream;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'track', listener: (track: IncomingStreamTrack) => any):
-        IncomingStream;
-    once(
-        event: 'stopped',
-        listener:
-            (stream: IncomingStream, stats: IncomingStreamStatsReport) => any):
-        IncomingStream;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    off(event: 'track',
-        listener: (track: IncomingStreamTrack) => any): IncomingStream;
-    off(event: 'stopped',
-        listener:
-            (stream: IncomingStream, stats: IncomingStreamStatsReport) => any):
-        IncomingStream;
 
     /**
      * Get statistics for all tracks in the stream
@@ -1111,7 +984,21 @@ import SemanticSDP = require('semantic-sdp');
     stop(): void;
   }
 
+  interface IncomingStreamTrackEventMap {
+    attached(track: IncomingStreamTrack): void;
+    detached(track: IncomingStreamTrack): void;
+    stopped(track: IncomingStreamTrack): void;
+  }
+
   export interface IncomingStreamTrack {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof IncomingStreamTrackEventMap>(event: E, ...args: Parameters<IncomingStreamTrackEventMap[E]>): this;
+    on<E extends keyof IncomingStreamTrackEventMap>(event: E, listener: IncomingStreamTrackEventMap[E]): this;
+    once<E extends keyof IncomingStreamTrackEventMap>(event: E, listener: IncomingStreamTrackEventMap[E]): this;
+    off<E extends keyof IncomingStreamTrackEventMap>(event: E, listener: IncomingStreamTrackEventMap[E]): this;
+    addListener<E extends keyof IncomingStreamTrackEventMap>(event: E, listener: IncomingStreamTrackEventMap[E]): this;
+    removeListener<E extends keyof IncomingStreamTrackEventMap>(event: E, listener: IncomingStreamTrackEventMap[E]): this;
+
     /**
      * Get stats for all encodings
      * @returns {Map<String,Object>} Map with stats by encodingId
@@ -1149,45 +1036,6 @@ import SemanticSDP = require('semantic-sdp');
     getMedia(): SemanticSDP.MediaType;
 
     /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStreamTrack}
-     */
-    on(event: 'attached',
-       listener: (track: IncomingStreamTrack) => any): IncomingStream;
-    on(event: 'detached',
-       listener: (track: IncomingStreamTrack) => any): IncomingStream;
-    on(event: 'stopped',
-       listener: (track: IncomingStreamTrack) => any): IncomingStream;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'attached', listener: (track: IncomingStreamTrack) => any):
-        IncomingStream;
-    once(event: 'detached', listener: (track: IncomingStreamTrack) => any):
-        IncomingStream;
-    once(event: 'stopped', listener: (track: IncomingStreamTrack) => any):
-        IncomingStream;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStreamTrack}
-     */
-    off(event: 'attached',
-        listener: (track: IncomingStreamTrack) => any): IncomingStream;
-    off(event: 'detached',
-        listener: (track: IncomingStreamTrack) => any): IncomingStream;
-    off(event: 'stopped',
-        listener: (track: IncomingStreamTrack) => any): IncomingStream;
-
-    /**
      * Signal that this track has been attached.
      * Internal use, you'd beter know what you are doing before calling this
      * method
@@ -1213,39 +1061,19 @@ import SemanticSDP = require('semantic-sdp');
     stop(): void;
   }
 
+  interface PeerConnectionServerEventMap {
+    stopped(server: PeerConnectionServer): void;
+    transport(transport: Transport): void;
+  }
+
   export interface PeerConnectionServer {
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listeener	- Event listener
-     * @returns {PeerConnectionServer}
-     */
-    on(event: 'stopped',
-       listener: (server: PeerConnectionServer) => any): PeerConnectionServer;
-    on(event: 'transport',
-       listener: (transport: Transport) => any): PeerConnectionServer;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {PeerConnectionServer}
-     */
-    once(event: 'stopped', listener: (server: PeerConnectionServer) => any):
-        PeerConnectionServer;
-    once(event: 'transport', listener: (transport: Transport) => any):
-        PeerConnectionServer;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {PeerConnectionServer}
-     */
-    off(event: 'stopped',
-        listener: (server: PeerConnectionServer) => any): PeerConnectionServer;
-    off(event: 'transport',
-        listener: (transport: Transport) => any): PeerConnectionServer;
+    // copy-pasted code for type-safe events
+    emit<E extends keyof PeerConnectionServerEventMap>(event: E, ...args: Parameters<PeerConnectionServerEventMap[E]>): this;
+    on<E extends keyof PeerConnectionServerEventMap>(event: E, listener: PeerConnectionServerEventMap[E]): this;
+    once<E extends keyof PeerConnectionServerEventMap>(event: E, listener: PeerConnectionServerEventMap[E]): this;
+    off<E extends keyof PeerConnectionServerEventMap>(event: E, listener: PeerConnectionServerEventMap[E]): this;
+    addListener<E extends keyof PeerConnectionServerEventMap>(event: E, listener: PeerConnectionServerEventMap[E]): this;
+    removeListener<E extends keyof PeerConnectionServerEventMap>(event: E, listener: PeerConnectionServerEventMap[E]): this;
 
     /**
      * Stop the peerconnection server, will not stop the transport created by it
@@ -1253,7 +1081,21 @@ import SemanticSDP = require('semantic-sdp');
     stop(): void;
   }
 
+  interface OutgoingStreamTrackEventMap {
+    stopped(track: OutgoingStreamTrack): void;
+    remb(bitrate: number, track: OutgoingStreamTrack): void;
+    muted(muted: boolean): void;
+  }
+
   export interface OutgoingStreamTrack {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof OutgoingStreamTrackEventMap>(event: E, ...args: Parameters<OutgoingStreamTrackEventMap[E]>): this;
+    on<E extends keyof OutgoingStreamTrackEventMap>(event: E, listener: OutgoingStreamTrackEventMap[E]): this;
+    once<E extends keyof OutgoingStreamTrackEventMap>(event: E, listener: OutgoingStreamTrackEventMap[E]): this;
+    off<E extends keyof OutgoingStreamTrackEventMap>(event: E, listener: OutgoingStreamTrackEventMap[E]): this;
+    addListener<E extends keyof OutgoingStreamTrackEventMap>(event: E, listener: OutgoingStreamTrackEventMap[E]): this;
+    removeListener<E extends keyof OutgoingStreamTrackEventMap>(event: E, listener: OutgoingStreamTrackEventMap[E]): this;
+
     /**
      * Get track id as signaled on the SDP
      */
@@ -1314,47 +1156,6 @@ import SemanticSDP = require('semantic-sdp');
     getTransponder(): Transponder;
 
     /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStreamTrack}
-     */
-    on(event: 'stopped',
-       listener: (track: OutgoingStreamTrack) => any): OutgoingStreamTrack;
-    on(event: 'remb',
-       listener: (bitrate: number, track: OutgoingStreamTrack) => any):
-        OutgoingStreamTrack;
-    on(event: 'muted', listener: (muted: boolean) => any): OutgoingStreamTrack;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'stopped', listener: (track: OutgoingStreamTrack) => any):
-        OutgoingStreamTrack;
-    once(
-        event: 'remb',
-        listener: (bitrate: number, track: OutgoingStreamTrack) => any):
-        OutgoingStreamTrack;
-    once(event: 'muted', listener: (muted: boolean) => any):
-        OutgoingStreamTrack;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStreamTrack}
-     */
-    off(event: 'stopped',
-        listener: (track: OutgoingStreamTrack) => any): OutgoingStreamTrack;
-    off(event: 'remb',
-        listener: (bitrate: number, track: OutgoingStreamTrack) => any):
-        OutgoingStreamTrack;
-    off(event: 'muted', listener: (muted: boolean) => any): OutgoingStreamTrack;
-
-    /**
      * Removes the track from the outgoing stream and also detaches from any
      * attached incoming track
      */
@@ -1378,7 +1179,19 @@ import SemanticSDP = require('semantic-sdp');
     stop(): void;
   }
 
+  interface RecorderTrackEventMap {
+    stopped(track: RecorderTrack): void;
+  }
+
   export interface RecorderTrack {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof RecorderTrackEventMap>(event: E, ...args: Parameters<RecorderTrackEventMap[E]>): this;
+    on<E extends keyof RecorderTrackEventMap>(event: E, listener: RecorderTrackEventMap[E]): this;
+    once<E extends keyof RecorderTrackEventMap>(event: E, listener: RecorderTrackEventMap[E]): this;
+    off<E extends keyof RecorderTrackEventMap>(event: E, listener: RecorderTrackEventMap[E]): this;
+    addListener<E extends keyof RecorderTrackEventMap>(event: E, listener: RecorderTrackEventMap[E]): this;
+    removeListener<E extends keyof RecorderTrackEventMap>(event: E, listener: RecorderTrackEventMap[E]): this;
+
     /**
      * Get recorder track id
      */
@@ -1397,39 +1210,25 @@ import SemanticSDP = require('semantic-sdp');
     getEncoding(): Encoding;
 
     /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {RecorderTrack}
-     */
-    on(event: 'stopped',
-       listener: (track: RecorderTrack) => any): RecorderTrack;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'stopped', listener: (track: RecorderTrack) => any):
-        RecorderTrack;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {RecorderTrack}
-     */
-    off(event: 'stopped',
-        listener: (track: RecorderTrack) => any): RecorderTrack;
-
-    /**
      * Stop recording this track
      */
     stop(): void;
   }
 
+  interface PlayerEventMap {
+    stopped(track: Player): void;
+    ended(track: Player): void;
+  }
+
   export interface Player {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof PlayerEventMap>(event: E, ...args: Parameters<PlayerEventMap[E]>): this;
+    on<E extends keyof PlayerEventMap>(event: E, listener: PlayerEventMap[E]): this;
+    once<E extends keyof PlayerEventMap>(event: E, listener: PlayerEventMap[E]): this;
+    off<E extends keyof PlayerEventMap>(event: E, listener: PlayerEventMap[E]): this;
+    addListener<E extends keyof PlayerEventMap>(event: E, listener: PlayerEventMap[E]): this;
+    removeListener<E extends keyof PlayerEventMap>(event: E, listener: PlayerEventMap[E]): this;
+
     /**
      * Get all the tracks
      * @returns {Array<IncomingStreamTrack>}	- Array of tracks
@@ -1475,36 +1274,21 @@ import SemanticSDP = require('semantic-sdp');
      * Stop playing and close file
      */
     stop(): void;
+  }
 
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    on(event: 'stopped', listener: (track: Player) => any): Player;
-    on(event: 'ended', listener: (track: Player) => any): Player;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'stopped', listener: (track: Player) => any): Player;
-    once(event: 'ended', listener: (track: Player) => any): Player;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    off(event: 'stopped', listener: (track: Player) => any): Player;
-    off(event: 'ended', listener: (track: Player) => any): Player;
+  interface EmulatedTransportEventMap {
+    stopped(track: EmulatedTransport): void;
   }
 
   export interface EmulatedTransport {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof EmulatedTransportEventMap>(event: E, ...args: Parameters<EmulatedTransportEventMap[E]>): this;
+    on<E extends keyof EmulatedTransportEventMap>(event: E, listener: EmulatedTransportEventMap[E]): this;
+    once<E extends keyof EmulatedTransportEventMap>(event: E, listener: EmulatedTransportEventMap[E]): this;
+    off<E extends keyof EmulatedTransportEventMap>(event: E, listener: EmulatedTransportEventMap[E]): this;
+    addListener<E extends keyof EmulatedTransportEventMap>(event: E, listener: EmulatedTransportEventMap[E]): this;
+    removeListener<E extends keyof EmulatedTransportEventMap>(event: E, listener: EmulatedTransportEventMap[E]): this;
+
     /**
      * Set remote RTP properties
      * @param {Object|SDPInfo} rtp - Object param containing media information
@@ -1551,33 +1335,6 @@ import SemanticSDP = require('semantic-sdp');
      * Stop transport and all the associated incoming and outgoing streams
      */
     stop(): void;
-
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listeener	- Event listener
-     * @returns {Transport}
-     */
-    on(event: 'stopped',
-       listener: (track: EmulatedTransport) => any): EmulatedTransport;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'stopped', listener: (track: EmulatedTransport) => any):
-        EmulatedTransport;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Transport}
-     */
-    off(event: 'stopped',
-        listener: (track: EmulatedTransport) => any): EmulatedTransport;
   }
 
   /**
@@ -1607,11 +1364,23 @@ import SemanticSDP = require('semantic-sdp');
     stop(): void;
   }
 
+  interface StreamerSessionEventMap {
+    stopped(s: StreamerSession): void;
+  }
+
   /**
    * Represent the connection between a local udp port and a remote one. It
    * sends and/or receive plain RTP data.
    */
   export interface StreamerSession {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof StreamerSessionEventMap>(event: E, ...args: Parameters<StreamerSessionEventMap[E]>): this;
+    on<E extends keyof StreamerSessionEventMap>(event: E, listener: StreamerSessionEventMap[E]): this;
+    once<E extends keyof StreamerSessionEventMap>(event: E, listener: StreamerSessionEventMap[E]): this;
+    off<E extends keyof StreamerSessionEventMap>(event: E, listener: StreamerSessionEventMap[E]): this;
+    addListener<E extends keyof StreamerSessionEventMap>(event: E, listener: StreamerSessionEventMap[E]): this;
+    removeListener<E extends keyof StreamerSessionEventMap>(event: E, listener: StreamerSessionEventMap[E]): this;
+
     /**
      * Returns the incoming stream track associated with this streaming session
      * @returns {IncomingStreamTrack}
@@ -1628,39 +1397,25 @@ import SemanticSDP = require('semantic-sdp');
      * Closes udp socket and frees resources
      */
     stop(): void;
+  }
 
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {StreamerSession}
-     */
-    on(event: 'stopped',
-       listener: (s: StreamerSession) => any): StreamerSession;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'stopped', listener: (s: StreamerSession) => any):
-        StreamerSession;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {StreamerSession}
-     */
-    off(event: 'stopped',
-        listener: (s: StreamerSession) => any): StreamerSession;
+  interface RefresherEventMap {
+    stopped(r: Refresher): void;
+    refreshing(r: Refresher): void;
   }
 
   /**
    * Periodically request an I frame on all incoming stream or tracks
    */
   export interface Refresher {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof RefresherEventMap>(event: E, ...args: Parameters<RefresherEventMap[E]>): this;
+    on<E extends keyof RefresherEventMap>(event: E, listener: RefresherEventMap[E]): this;
+    once<E extends keyof RefresherEventMap>(event: E, listener: RefresherEventMap[E]): this;
+    off<E extends keyof RefresherEventMap>(event: E, listener: RefresherEventMap[E]): this;
+    addListener<E extends keyof RefresherEventMap>(event: E, listener: RefresherEventMap[E]): this;
+    removeListener<E extends keyof RefresherEventMap>(event: E, listener: RefresherEventMap[E]): this;
+
     /**
      * Add stream or track to request
      * @param {IncomintgStream|IncomingStreamTrack} streamOrTrack
@@ -1671,36 +1426,22 @@ import SemanticSDP = require('semantic-sdp');
      * Stop refresher
      */
     stop(): void;
+  }
 
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    on(event: 'stopped', listener: (r: Refresher) => any): Refresher;
-    on(event: 'refreshing', listener: (r: Refresher) => any): Refresher;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'stopped', listener: (r: Refresher) => any): Refresher;
-    once(event: 'refreshing', listener: (r: Refresher) => any): Refresher;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {OutgoingStream}
-     */
-    off(event: 'stopped', listener: (r: Refresher) => any): Refresher;
-    off(event: 'refreshing', listener: (r: Refresher) => any): Refresher;
+  interface SDPManagerEventMap {
+    renegotiationneeded(transport: Transport): void;
+    transport(transport: Transport): void;
   }
 
   export interface SDPManager {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof SDPManagerEventMap>(event: E, ...args: Parameters<SDPManagerEventMap[E]>): this;
+    on<E extends keyof SDPManagerEventMap>(event: E, listener: SDPManagerEventMap[E]): this;
+    once<E extends keyof SDPManagerEventMap>(event: E, listener: SDPManagerEventMap[E]): this;
+    off<E extends keyof SDPManagerEventMap>(event: E, listener: SDPManagerEventMap[E]): this;
+    addListener<E extends keyof SDPManagerEventMap>(event: E, listener: SDPManagerEventMap[E]): this;
+    removeListener<E extends keyof SDPManagerEventMap>(event: E, listener: SDPManagerEventMap[E]): this;
+
     /**
      * Get current SDP offer/answer state
      * @returns {String} one of
@@ -1730,41 +1471,22 @@ import SemanticSDP = require('semantic-sdp');
      * Stop manager and associated tranports
      */
     stop(): void;
+  }
 
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listeener	- Event listener
-     * @returns {Transport}
-     */
-    on(event: 'renegotiationneeded',
-       listener: (transport: Transport) => any): SDPManager;
-    on(event: 'transport', listener: (transport: Transport) => any): SDPManager;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(event: 'renegotiationneeded', listener: (transport: Transport) => any):
-        SDPManager;
-    once(event: 'transport', listener: (transport: Transport) => any):
-        SDPManager;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {Transport}
-     */
-    off(event: 'renegotiationneeded',
-        listener: (transport: Transport) => any): SDPManager;
-    off(event: 'transport',
-        listener: (transport: Transport) => any): SDPManager;
+  interface ActiveSpeakerDetectorEventMap {
+    activespeakerchanged(track: IncomingStreamTrack): void;
+    stopped(): void;
   }
 
   export interface ActiveSpeakerDetector {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof ActiveSpeakerDetectorEventMap>(event: E, ...args: Parameters<ActiveSpeakerDetectorEventMap[E]>): this;
+    on<E extends keyof ActiveSpeakerDetectorEventMap>(event: E, listener: ActiveSpeakerDetectorEventMap[E]): this;
+    once<E extends keyof ActiveSpeakerDetectorEventMap>(event: E, listener: ActiveSpeakerDetectorEventMap[E]): this;
+    off<E extends keyof ActiveSpeakerDetectorEventMap>(event: E, listener: ActiveSpeakerDetectorEventMap[E]): this;
+    addListener<E extends keyof ActiveSpeakerDetectorEventMap>(event: E, listener: ActiveSpeakerDetectorEventMap[E]): this;
+    removeListener<E extends keyof ActiveSpeakerDetectorEventMap>(event: E, listener: ActiveSpeakerDetectorEventMap[E]): this;
+
     /**
      * Set minimum period between active speaker changes
      * @param {Number} minChangePeriod
@@ -1805,37 +1527,6 @@ import SemanticSDP = require('semantic-sdp');
      * Stop this transponder, will dettach the OutgoingStreamTrack
      */
     stop(): void;
-
-    /**
-     * Add event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStreamTrack}
-     */
-    on(event: 'activespeakerchanged',
-       listener: (track: IncomingStreamTrack) => any): ActiveSpeakerDetector;
-    on(event: 'stopped', listener: () => any): ActiveSpeakerDetector;
-
-    /**
-     * Add event listener once
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStream}
-     */
-    once(
-        event: 'activespeakerchanged',
-        listener: (track: IncomingStreamTrack) => any): ActiveSpeakerDetector;
-    once(event: 'stopped', listener: () => any): ActiveSpeakerDetector;
-
-    /**
-     * Remove event listener
-     * @param {String} event	- Event name
-     * @param {function} listener	- Event listener
-     * @returns {IncomingStreamTrack}
-     */
-    off(event: 'activespeakerchanged',
-        listener: (track: IncomingStreamTrack) => any): ActiveSpeakerDetector;
-    off(event: 'stopped', listener: () => any): ActiveSpeakerDetector;
   }
 
   let MediaServer: MediaServer;
