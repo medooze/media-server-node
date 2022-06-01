@@ -67,6 +67,11 @@ We intend to implement support the following features:
 
 You can use the [Media Server Client lib](https://github.com/medooze/media-server-client-js) for easy sync between any browser and the media server. If you do not want to depend on an external library or specifc signaling you can setup everything [manually](manual.md).
 
+## Tracing
+
+Medooze is instrumented with [Perfetto](https://perfetto.dev) track events.
+For information about capturing and interpreting traces, see [Tracing](tracing.md).
+
 ## Author
 
 Sergio Garcia Murillo @ Medooze 
