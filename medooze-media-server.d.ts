@@ -188,7 +188,11 @@ import SemanticSDP = require('semantic-sdp');
      */
     disableSTUNKeepAlive: boolean;
     /** Colon delimited list of SRTP protection profile names */
-    srtpProtectionProfiles: boolean;
+    srtpProtectionProfiles: string;
+    /** Override BWE reported by REMB */
+    overrideBWE: boolean;
+    /** Disable REMB BWE calculation */
+    disableREMB: boolean;
   }
 
   export interface TransportDumpOptions {
@@ -582,25 +586,40 @@ import SemanticSDP = require('semantic-sdp');
     /**
      * Set cpu affinity for udp send/recv thread.
      * @param {Number}  cpu - CPU core or -1 to reset affinity.
-     * @returns {boolean}
+     * @returns {boolean} true if operation was successful
      */
-    setAffinity(cpu: number): void;
+    setAffinity(cpu: number): boolean;
+
+    /**
+     * Set thread priority for udp send/recv thread.
+     * NOTE: User needs to have the appropiate rights to increase the thread priority in ulimit
+     * @param {Number}  priority - 0:Normal -19:RealTime
+     * @returns {boolean} true if operation was successful
+     */
+    setPriority(priority: number): boolean;
+
+    /**
+     * Set ICE timeout for outgoing ICE binding requests
+     * @param {Number}  timeout - Ammount of time in milliseconds between ICE binding requests 
+     */
+    setIceTimeout(timeout: number): void;
+
 
     /**
      * Create a new transport object and register it with the remote ICE
      * username and password
      * @param {Object|SDPInfo}  remoteInfo	- Remote ICE and DTLS properties
-     * @param {Object|ICEInfo}  remote.ice	- Remote ICE info, containing the
+     * @param {Object|ICEInfo}  remoteInfo.ice	- Remote ICE info, containing the
      *     username and password.
-     * @param {Object|DTLSInfo} remote.dtls	- Remote DTLS info
-     * @param {Array.CandidateInfo|Array.Object} remote.candidates - Remote ICE
+     * @param {Object|DTLSInfo} remoteInfo.dtls	- Remote DTLS info
+     * @param {Array.CandidateInfo|Array.Object} remoteInfo.candidates - Remote ICE
      *     candidate info
      * @param {Object}   localInfo		- Local ICE and DTLS properties
      *     (optional)
-     * @param {ICEInfo}  local.ice		- Local ICE info, containing the username
+     * @param {ICEInfo}  localInfo.ice		- Local ICE info, containing the username
      *     and password. Local ICE candidates list is not really used at all.
-     * @param {DTLSInfo} local.dtls		- Local DTLS info
-     * @param {Array.CandidateInfo} local.candidates - Local candidate info
+     * @param {DTLSInfo} localInfo.dtls		- Local DTLS info
+     * @param {Array.CandidateInfo} localInfo.candidates - Local candidate info
      * @param {Object} options		- Dictionary with transport properties
      * @param {boolean} options.disableSTUNKeepAlive - Disable ICE/STUN keep
      *     alives, required for server to server transports
@@ -829,6 +848,14 @@ import SemanticSDP = require('semantic-sdp');
      * @returns {Endpoint} The new created endpoing
      */
     setPortRange(minPort: number, maxPort: number): boolean;
+
+    /**
+     * Set node uv loop cpu affinity
+     * @memberof MediaServer
+     * @param {Integer} cpu - CPU core number
+     * @returns {boolean} true if operation was successful
+     */
+    setAffinity(cpu: number): boolean;
 
     /**
      * Enable or disable ultra debug level traces
