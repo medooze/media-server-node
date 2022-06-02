@@ -6952,6 +6952,33 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSourceGroup_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_Stop" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  (arg1)->Stop();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 #if (V8_MAJOR_VERSION-0) < 4 && (SWIG_V8_VERSION < 0x031710)
 static void _wrap_delete_RTPOutgoingSourceGroup(v8::Persistent<v8::Value> object, void *parameter) {
   SWIGV8_Proxy *proxy = static_cast<SWIGV8_Proxy *>(parameter);
@@ -16647,6 +16674,7 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "media", _wrap_R
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTPOutgoingSourceGroup_rtx_get, _wrap_RTPOutgoingSourceGroup_rtx_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "lastUpdated", _wrap_RTPOutgoingSourceGroup_lastUpdated_get, _wrap_RTPOutgoingSourceGroup_lastUpdated_set);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Update", _wrap_RTPOutgoingSourceGroup_Update);
+SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Stop", _wrap_RTPOutgoingSourceGroup_Stop);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rid", _wrap_RTPIncomingSourceGroup_rid_get, _wrap_RTPIncomingSourceGroup_rid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "mid", _wrap_RTPIncomingSourceGroup_mid_get, _wrap_RTPIncomingSourceGroup_mid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rtt", _wrap_RTPIncomingSourceGroup_rtt_get, _wrap_RTPIncomingSourceGroup_rtt_set);

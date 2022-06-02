@@ -923,6 +923,7 @@ struct RTPOutgoingSourceGroup
 	QWORD lastUpdated;
 
 	void Update();
+	void Stop();
 };
 
 %nodefaultctor RTPSender;
