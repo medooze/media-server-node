@@ -882,6 +882,14 @@ struct RTPIncomingSource : public RTPSource
 	QWORD lastReport;
 	DWORD totalPLIs;
 	DWORD totalNACKs;
+
+	int64_t frameDelay;
+	int64_t frameDelayMax;
+	DWORD   frameTime;
+	DWORD   frameTimeMax;
+	int32_t frameCaptureDelay;
+	int32_t frameCaptureDelayMax;
+
 	int64_t skew;
 	double  drift;
 	bool	aggregatedLayers;
@@ -914,13 +922,6 @@ struct RTPOutgoingSource : public RTPSource
 	BYTE  reportedFractionLost;
 	DWORD reportedJitter;
 	DWORD rtt;
-	
-	DWORD   frameDelay;
-	DWORD   frameDelayMax;
-	DWORD   frameTime;
-	DWORD   frameTimeMax;
-	int32_t frameCaptureDelay;
-	int32_t frameCaptureDelayMax;
 };
 
 %nodefaultctor TimeService;

@@ -2763,6 +2763,25 @@ int SWIG_AsVal_long_SS_long (SWIGV8_VALUE obj, long long* val)
 
 
 SWIGINTERN
+int SWIG_AsVal_int (SWIGV8_VALUE valRef, int* val)
+{
+  if (!valRef->IsNumber()) {
+    return SWIG_TypeError;
+  }
+  if(val) *val = SWIGV8_INTEGER_VALUE(valRef);
+
+  return SWIG_OK;
+}
+
+
+SWIGINTERNINLINE
+SWIGV8_VALUE SWIG_From_int  (int value)
+{
+  return SWIGV8_INT32_NEW(value);
+}
+
+
+SWIGINTERN
 SWIGV8_VALUE SWIG_From_double   (double val)
 {
   return SWIGV8_NUMBER_NEW(val);
@@ -2794,25 +2813,6 @@ SWIGINTERN LayerSources RTPIncomingSource_layers(RTPIncomingSource *self){
 				layers.push_back(&(it->second));
 			return layers;
 		}
-
-SWIGINTERN
-int SWIG_AsVal_int (SWIGV8_VALUE valRef, int* val)
-{
-  if (!valRef->IsNumber()) {
-    return SWIG_TypeError;
-  }
-  if(val) *val = SWIGV8_INTEGER_VALUE(valRef);
-
-  return SWIG_OK;
-}
-
-
-SWIGINTERNINLINE
-SWIGV8_VALUE SWIG_From_int  (int value)
-{
-  return SWIGV8_INT32_NEW(value);
-}
-
 
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
@@ -5387,6 +5387,390 @@ static SwigV8ReturnValue _wrap_RTPIncomingSource_totalNACKs_get(v8::Local<v8::St
 
 
 #if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_frameDelay_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_frameDelay_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    int64_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    long long val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameDelay_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_long_SS_long(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_frameDelay_set" "', argument " "2"" of type '" "int64_t""'");
+    } 
+    arg2 = static_cast< int64_t >(val2);
+    if (arg1) (arg1)->frameDelay = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_frameDelay_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_frameDelay_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int64_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameDelay_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (int64_t) ((arg1)->frameDelay);
+    jsresult = SWIG_From_long_SS_long(static_cast< long long >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_frameDelayMax_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_frameDelayMax_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    int64_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    long long val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameDelayMax_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_long_SS_long(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_frameDelayMax_set" "', argument " "2"" of type '" "int64_t""'");
+    } 
+    arg2 = static_cast< int64_t >(val2);
+    if (arg1) (arg1)->frameDelayMax = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_frameDelayMax_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_frameDelayMax_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int64_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameDelayMax_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (int64_t) ((arg1)->frameDelayMax);
+    jsresult = SWIG_From_long_SS_long(static_cast< long long >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_frameTime_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_frameTime_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    uint32_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned int val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameTime_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_frameTime_set" "', argument " "2"" of type '" "uint32_t""'");
+    } 
+    arg2 = static_cast< uint32_t >(val2);
+    if (arg1) (arg1)->frameTime = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_frameTime_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_frameTime_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint32_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameTime_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (uint32_t) ((arg1)->frameTime);
+    jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_frameTimeMax_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_frameTimeMax_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    uint32_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    unsigned int val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameTimeMax_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_frameTimeMax_set" "', argument " "2"" of type '" "uint32_t""'");
+    } 
+    arg2 = static_cast< uint32_t >(val2);
+    if (arg1) (arg1)->frameTimeMax = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_frameTimeMax_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_frameTimeMax_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    uint32_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameTimeMax_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (uint32_t) ((arg1)->frameTimeMax);
+    jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_frameCaptureDelay_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_frameCaptureDelay_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    int32_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameCaptureDelay_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_int(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_frameCaptureDelay_set" "', argument " "2"" of type '" "int32_t""'");
+    } 
+    arg2 = static_cast< int32_t >(val2);
+    if (arg1) (arg1)->frameCaptureDelay = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_frameCaptureDelay_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_frameCaptureDelay_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int32_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameCaptureDelay_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (int32_t) ((arg1)->frameCaptureDelay);
+    jsresult = SWIG_From_int(static_cast< int >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static void _wrap_RTPIncomingSource_frameCaptureDelayMax_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#else
+  static void _wrap_RTPIncomingSource_frameCaptureDelayMax_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    int32_t arg2 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int val2 ;
+    int ecode2 = 0 ;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameCaptureDelayMax_set" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    ecode2 = SWIG_AsVal_int(value, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSource_frameCaptureDelayMax_set" "', argument " "2"" of type '" "int32_t""'");
+    } 
+    arg2 = static_cast< int32_t >(val2);
+    if (arg1) (arg1)->frameCaptureDelayMax = arg2;
+    
+    
+    
+    goto fail;
+  fail:
+    return;
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
+static SwigV8ReturnValue _wrap_RTPIncomingSource_frameCaptureDelayMax_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
+#else
+  static SwigV8ReturnValue _wrap_RTPIncomingSource_frameCaptureDelayMax_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+#endif
+    SWIGV8_HANDLESCOPE();
+    
+    SWIGV8_VALUE jsresult;
+    RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int32_t result;
+    
+    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_frameCaptureDelayMax_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+    }
+    arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+    result = (int32_t) ((arg1)->frameCaptureDelayMax);
+    jsresult = SWIG_From_int(static_cast< int >(result));
+    
+    
+    SWIGV8_RETURN_INFO(jsresult, info);
+    
+    goto fail;
+  fail:
+    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+  }
+
+
+#if (V8_MAJOR_VERSION-0) < 5
 static void _wrap_RTPIncomingSource_skew_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
 #else
   static void _wrap_RTPIncomingSource_skew_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
@@ -6549,390 +6933,6 @@ static SwigV8ReturnValue _wrap_RTPOutgoingSource_rtt_get(v8::Local<v8::String> p
     arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
     result = (uint32_t) ((arg1)->rtt);
     jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-    
-    
-    SWIGV8_RETURN_INFO(jsresult, info);
-    
-    goto fail;
-  fail:
-    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static void _wrap_RTPOutgoingSource_frameDelay_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#else
-  static void _wrap_RTPOutgoingSource_frameDelay_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    uint32_t arg2 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    unsigned int val2 ;
-    int ecode2 = 0 ;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameDelay_set" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_frameDelay_set" "', argument " "2"" of type '" "uint32_t""'");
-    } 
-    arg2 = static_cast< uint32_t >(val2);
-    if (arg1) (arg1)->frameDelay = arg2;
-    
-    
-    
-    goto fail;
-  fail:
-    return;
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameDelay_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-#else
-  static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameDelay_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    SWIGV8_VALUE jsresult;
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    uint32_t result;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameDelay_get" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    result = (uint32_t) ((arg1)->frameDelay);
-    jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-    
-    
-    SWIGV8_RETURN_INFO(jsresult, info);
-    
-    goto fail;
-  fail:
-    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static void _wrap_RTPOutgoingSource_frameDelayMax_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#else
-  static void _wrap_RTPOutgoingSource_frameDelayMax_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    uint32_t arg2 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    unsigned int val2 ;
-    int ecode2 = 0 ;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameDelayMax_set" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_frameDelayMax_set" "', argument " "2"" of type '" "uint32_t""'");
-    } 
-    arg2 = static_cast< uint32_t >(val2);
-    if (arg1) (arg1)->frameDelayMax = arg2;
-    
-    
-    
-    goto fail;
-  fail:
-    return;
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameDelayMax_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-#else
-  static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameDelayMax_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    SWIGV8_VALUE jsresult;
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    uint32_t result;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameDelayMax_get" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    result = (uint32_t) ((arg1)->frameDelayMax);
-    jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-    
-    
-    SWIGV8_RETURN_INFO(jsresult, info);
-    
-    goto fail;
-  fail:
-    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static void _wrap_RTPOutgoingSource_frameTime_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#else
-  static void _wrap_RTPOutgoingSource_frameTime_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    uint32_t arg2 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    unsigned int val2 ;
-    int ecode2 = 0 ;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameTime_set" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_frameTime_set" "', argument " "2"" of type '" "uint32_t""'");
-    } 
-    arg2 = static_cast< uint32_t >(val2);
-    if (arg1) (arg1)->frameTime = arg2;
-    
-    
-    
-    goto fail;
-  fail:
-    return;
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameTime_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-#else
-  static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameTime_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    SWIGV8_VALUE jsresult;
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    uint32_t result;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameTime_get" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    result = (uint32_t) ((arg1)->frameTime);
-    jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-    
-    
-    SWIGV8_RETURN_INFO(jsresult, info);
-    
-    goto fail;
-  fail:
-    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static void _wrap_RTPOutgoingSource_frameTimeMax_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#else
-  static void _wrap_RTPOutgoingSource_frameTimeMax_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    uint32_t arg2 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    unsigned int val2 ;
-    int ecode2 = 0 ;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameTimeMax_set" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_frameTimeMax_set" "', argument " "2"" of type '" "uint32_t""'");
-    } 
-    arg2 = static_cast< uint32_t >(val2);
-    if (arg1) (arg1)->frameTimeMax = arg2;
-    
-    
-    
-    goto fail;
-  fail:
-    return;
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameTimeMax_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-#else
-  static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameTimeMax_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    SWIGV8_VALUE jsresult;
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    uint32_t result;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameTimeMax_get" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    result = (uint32_t) ((arg1)->frameTimeMax);
-    jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
-    
-    
-    SWIGV8_RETURN_INFO(jsresult, info);
-    
-    goto fail;
-  fail:
-    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static void _wrap_RTPOutgoingSource_frameCaptureDelay_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#else
-  static void _wrap_RTPOutgoingSource_frameCaptureDelay_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    int32_t arg2 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    int val2 ;
-    int ecode2 = 0 ;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameCaptureDelay_set" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    ecode2 = SWIG_AsVal_int(value, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_frameCaptureDelay_set" "', argument " "2"" of type '" "int32_t""'");
-    } 
-    arg2 = static_cast< int32_t >(val2);
-    if (arg1) (arg1)->frameCaptureDelay = arg2;
-    
-    
-    
-    goto fail;
-  fail:
-    return;
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameCaptureDelay_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-#else
-  static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameCaptureDelay_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    SWIGV8_VALUE jsresult;
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    int32_t result;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameCaptureDelay_get" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    result = (int32_t) ((arg1)->frameCaptureDelay);
-    jsresult = SWIG_From_int(static_cast< int >(result));
-    
-    
-    SWIGV8_RETURN_INFO(jsresult, info);
-    
-    goto fail;
-  fail:
-    SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static void _wrap_RTPOutgoingSource_frameCaptureDelayMax_set(v8::Local<v8::String> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#else
-  static void _wrap_RTPOutgoingSource_frameCaptureDelayMax_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    int32_t arg2 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    int val2 ;
-    int ecode2 = 0 ;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameCaptureDelayMax_set" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    ecode2 = SWIG_AsVal_int(value, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSource_frameCaptureDelayMax_set" "', argument " "2"" of type '" "int32_t""'");
-    } 
-    arg2 = static_cast< int32_t >(val2);
-    if (arg1) (arg1)->frameCaptureDelayMax = arg2;
-    
-    
-    
-    goto fail;
-  fail:
-    return;
-  }
-
-
-#if (V8_MAJOR_VERSION-0) < 5
-static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameCaptureDelayMax_get(v8::Local<v8::String> property, const SwigV8PropertyCallbackInfo &info) {
-#else
-  static SwigV8ReturnValue _wrap_RTPOutgoingSource_frameCaptureDelayMax_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
-#endif
-    SWIGV8_HANDLESCOPE();
-    
-    SWIGV8_VALUE jsresult;
-    RTPOutgoingSource *arg1 = (RTPOutgoingSource *) 0 ;
-    void *argp1 = 0 ;
-    int res1 = 0 ;
-    int32_t result;
-    
-    res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSource_frameCaptureDelayMax_get" "', argument " "1"" of type '" "RTPOutgoingSource *""'"); 
-    }
-    arg1 = reinterpret_cast< RTPOutgoingSource * >(argp1);
-    result = (int32_t) ((arg1)->frameCaptureDelayMax);
-    jsresult = SWIG_From_int(static_cast< int >(result));
     
     
     SWIGV8_RETURN_INFO(jsresult, info);
@@ -17122,6 +17122,12 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReceivedSenderRe
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lastReport", _wrap_RTPIncomingSource_lastReport_get, _wrap_RTPIncomingSource_lastReport_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalPLIs", _wrap_RTPIncomingSource_totalPLIs_get, _wrap_RTPIncomingSource_totalPLIs_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "totalNACKs", _wrap_RTPIncomingSource_totalNACKs_get, _wrap_RTPIncomingSource_totalNACKs_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "frameDelay", _wrap_RTPIncomingSource_frameDelay_get, _wrap_RTPIncomingSource_frameDelay_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "frameDelayMax", _wrap_RTPIncomingSource_frameDelayMax_get, _wrap_RTPIncomingSource_frameDelayMax_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "frameTime", _wrap_RTPIncomingSource_frameTime_get, _wrap_RTPIncomingSource_frameTime_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "frameTimeMax", _wrap_RTPIncomingSource_frameTimeMax_get, _wrap_RTPIncomingSource_frameTimeMax_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "frameCaptureDelay", _wrap_RTPIncomingSource_frameCaptureDelay_get, _wrap_RTPIncomingSource_frameCaptureDelay_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "frameCaptureDelayMax", _wrap_RTPIncomingSource_frameCaptureDelayMax_get, _wrap_RTPIncomingSource_frameCaptureDelayMax_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "skew", _wrap_RTPIncomingSource_skew_get, _wrap_RTPIncomingSource_skew_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "drift", _wrap_RTPIncomingSource_drift_get, _wrap_RTPIncomingSource_drift_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "aggregatedLayers", _wrap_RTPIncomingSource_aggregatedLayers_get, _wrap_RTPIncomingSource_aggregatedLayers_set);
@@ -17140,12 +17146,6 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "reportedLostCountDel
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "reportedFractionLost", _wrap_RTPOutgoingSource_reportedFractionLost_get, _wrap_RTPOutgoingSource_reportedFractionLost_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "reportedJitter", _wrap_RTPOutgoingSource_reportedJitter_get, _wrap_RTPOutgoingSource_reportedJitter_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "rtt", _wrap_RTPOutgoingSource_rtt_get, _wrap_RTPOutgoingSource_rtt_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "frameDelay", _wrap_RTPOutgoingSource_frameDelay_get, _wrap_RTPOutgoingSource_frameDelay_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "frameDelayMax", _wrap_RTPOutgoingSource_frameDelayMax_get, _wrap_RTPOutgoingSource_frameDelayMax_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "frameTime", _wrap_RTPOutgoingSource_frameTime_get, _wrap_RTPOutgoingSource_frameTime_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "frameTimeMax", _wrap_RTPOutgoingSource_frameTimeMax_get, _wrap_RTPOutgoingSource_frameTimeMax_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "frameCaptureDelay", _wrap_RTPOutgoingSource_frameCaptureDelay_get, _wrap_RTPOutgoingSource_frameCaptureDelay_set);
-SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "frameCaptureDelayMax", _wrap_RTPOutgoingSource_frameCaptureDelayMax_get, _wrap_RTPOutgoingSource_frameCaptureDelayMax_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "type", _wrap_RTPOutgoingSourceGroup_type_get, _wrap_RTPOutgoingSourceGroup_type_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "media", _wrap_RTPOutgoingSourceGroup_media_get, JS_veto_set_variable);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTPOutgoingSourceGroup_rtx_get, JS_veto_set_variable);
