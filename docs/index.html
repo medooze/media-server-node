@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>medooze-media-server 0.118.0 | Documentation</title>
+  <title>medooze-media-server 0.118.3 | Documentation</title>
   <meta name='description' content='WebRTC Media Server by Medooze'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>medooze-media-server</h3>
-          <div class='mb1'><code>0.118.0</code></div>
+          <div class='mb1'><code>0.118.3</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -2885,8 +2885,7 @@ Only call it once!</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>maxPort</span> <code class='quiet'>(Integer)</code>
-	    Max UDP port 
-[Optional]
+	    Max UDP port [Optional]
 
           </div>
           
@@ -2931,7 +2930,7 @@ Only call it once!</p>
 
   <p>Set node uv loop cpu affinity</p>
 
-    <div class='pre p1 fill-light mt0'>setAffinity(cpu: Integer)</div>
+    <div class='pre p1 fill-light mt0'>setAffinity(cpu: Integer): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
   
   
 
@@ -2960,6 +2959,14 @@ Only call it once!</p>
 
   
 
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        true if operation was successful
+
+      
+    
   
 
   
@@ -3222,7 +3229,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#recorder">Recorder</a></code>:
         
-
       
     
   
@@ -3293,7 +3299,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#player">Player</a></code>:
         
-
       
     
   
@@ -3350,7 +3355,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#streamer">Streamer</a></code>:
         
-
       
     
   
@@ -3762,7 +3766,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#transport">Transport</a></code>:
         
-
       
     
   
@@ -3842,7 +3845,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#sdpmanager">SDPManager</a></code>:
         
-
       
     
   
@@ -3922,7 +3924,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -4002,7 +4003,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#sdpmanager">SDPManager</a></code>:
         
-
       
     
   
@@ -4559,7 +4559,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -4639,7 +4638,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -4719,7 +4717,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -5407,7 +5404,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -5487,7 +5483,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -5567,7 +5562,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -5981,7 +5975,6 @@ Only call it once!</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -6182,7 +6175,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#recordertrack">RecorderTrack</a></code>:
         
-
       
     
   
@@ -6262,7 +6254,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#recordertrack">RecorderTrack</a></code>:
         
-
       
     
   
@@ -6342,7 +6333,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#recordertrack">RecorderTrack</a></code>:
         
-
       
     
   
@@ -6657,7 +6647,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -6737,7 +6726,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -6817,7 +6805,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#outgoingstream">OutgoingStream</a></code>:
         
-
       
     
   
@@ -7117,8 +7104,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>params</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    Network parameters 
-[Optional]
+	    Network parameters [Optional]
 
           </div>
           
@@ -7288,7 +7274,6 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#endpoint">Endpoint</a></code>:
         
-
       
     
   
@@ -7368,7 +7353,6 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#endpoint">Endpoint</a></code>:
         
-
       
     
   
@@ -7448,7 +7432,6 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#endpoint">Endpoint</a></code>:
         
-
       
     
   
@@ -7685,8 +7668,7 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>layers</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    [Optional]
- Only applicable to video tracks
+	    [Optional] Only applicable to video tracks
 
           </div>
           
@@ -7998,7 +7980,6 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         
-
       
     
   
@@ -8245,8 +8226,7 @@ This operation will not change the muted state of the stream this track belongs 
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    Options for configuring algorithm to select best encoding/layers 
-[Optional]
+	    Options for configuring algorithm to select best encoding/layers [Optional]
 
           </div>
           
@@ -8266,8 +8246,7 @@ This operation will not change the muted state of the stream this track belongs 
                 <tr>
   <td class='break-word'><span class='code bold'>options.traversal</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
   </td>
-  <td class='break-word'><span>Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" 
-[Default: "default"]
+  <td class='break-word'><span>Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" [Default: "default"]
 </span></td>
 </tr>
 
@@ -8276,8 +8255,7 @@ This operation will not change the muted state of the stream this track belongs 
                 <tr>
   <td class='break-word'><span class='code bold'>options.strict</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
   </td>
-  <td class='break-word'><span>If there is not a layer with a bitrate lower thatn target, stop sending media 
-[Default: false]
+  <td class='break-word'><span>If there is not a layer with a bitrate lower thatn target, stop sending media [Default: false]
 </span></td>
 </tr>
 
@@ -8361,8 +8339,7 @@ This operation will not change the muted state of the stream this track belongs 
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>layers</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    [Optional]
- Only applicable to video tracks
+	    [Optional] Only applicable to video tracks
 
           </div>
           
@@ -8668,7 +8645,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         
-
       
     
   
@@ -8892,7 +8868,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -8972,7 +8947,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -9052,7 +9026,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -9406,7 +9379,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
         
-
       
     
   
@@ -9463,7 +9435,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a></code>:
         
-
       
     
   
@@ -9520,7 +9491,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>:
         
-
       
     
   
@@ -9575,8 +9545,7 @@ This operation will not change the muted state of the stream this track belongs 
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>filename</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Override filename 
-[Optional]
+	    Override filename [Optional]
 
           </div>
           
@@ -9663,7 +9632,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#recordertrack">RecorderTrack</a>></code>:
         
-
       
     
   
@@ -9807,7 +9775,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#recorder">Recorder</a></code>:
         
-
       
     
   
@@ -9887,7 +9854,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#recorder">Recorder</a></code>:
         
-
       
     
   
@@ -9967,7 +9933,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#recorder">Recorder</a></code>:
         
-
       
     
   
@@ -10023,7 +9988,7 @@ This operation will not change the muted state of the stream this track belongs 
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
-         TODO: return promise when flush is ended
+        TODO: return promise when flush is ended
 
       
     
@@ -10299,7 +10264,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -10379,7 +10343,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -10459,7 +10422,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -11297,7 +11259,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -11354,7 +11315,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#outgoingstreamtrack">OutgoingStreamTrack</a></code>:
         
-
       
     
   
@@ -11434,7 +11394,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#streamersession">StreamerSession</a></code>:
         
-
       
     
   
@@ -11514,7 +11473,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -11594,7 +11552,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#streamersession">StreamerSession</a></code>:
         
-
       
     
   
@@ -11824,7 +11781,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
         
-
       
     
   
@@ -11961,7 +11917,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -12041,7 +11996,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -12121,7 +12075,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -12498,7 +12451,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -13495,7 +13447,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         
-
       
     
   
@@ -13632,7 +13583,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -13712,7 +13662,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -13792,7 +13741,6 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -14457,8 +14405,7 @@ Internal use, you'd beter know what you are doing before calling this method</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>layers</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    [Optional]
- Only applicable to video tracks
+	    [Optional] Only applicable to video tracks
 
           </div>
           
@@ -14698,7 +14645,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
         
-
       
     
   
@@ -14778,7 +14724,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -14858,7 +14803,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -14938,7 +14882,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#outgoingstream">OutgoingStream</a></code>:
         
-
       
     
   
@@ -15352,7 +15295,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>OugoingStreamTrack</code>:
         
-
       
     
   
@@ -15935,7 +15877,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         
-
       
     
   
@@ -16072,7 +16013,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -16152,7 +16092,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -16232,7 +16171,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -17184,7 +17122,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#peerconnectionserver">PeerConnectionServer</a></code>:
         
-
       
     
   
@@ -17264,7 +17201,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#peerconnectionserver">PeerConnectionServer</a></code>:
         
-
       
     
   
@@ -17344,7 +17280,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#peerconnectionserver">PeerConnectionServer</a></code>:
         
-
       
     
   
@@ -17758,7 +17693,6 @@ You must create the incoming streams as signaled on the remote SDP as any incomi
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#transport">Transport</a></code>:
         
-
       
     
   
@@ -17838,7 +17772,6 @@ You must create the incoming streams as signaled on the remote SDP as any incomi
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -17918,7 +17851,6 @@ You must create the incoming streams as signaled on the remote SDP as any incomi
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#transport">Transport</a></code>:
         
-
       
     
   
@@ -18482,7 +18414,7 @@ Being a server it is ICE-lite.</p>
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-        
+        true if operation was successful
 
       
     
@@ -18554,7 +18486,7 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-        
+        true if operation was successful
 
       
     
@@ -18677,6 +18609,49 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
 
           </div>
           
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>remoteInfo.ice</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | ICEInfo)</code>
+  </td>
+  <td class='break-word'><span>Remote ICE info, containing the username and password.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>remoteInfo.dtls</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | DTLSInfo)</code>
+  </td>
+  <td class='break-word'><span>Remote DTLS info
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>remoteInfo.candidates</span> <code class='quiet'>(Array.CandidateInfo | Array.Object)</code>
+  </td>
+  <td class='break-word'><span>Remote ICE candidate info
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
         </div>
       
         <div class='space-bottom0'>
@@ -18685,6 +18660,49 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
 	    Local ICE and DTLS properties (optional)
 
           </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>localInfo.ice</span> <code class='quiet'>ICEInfo</code>
+  </td>
+  <td class='break-word'><span>Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>localInfo.dtls</span> <code class='quiet'>DTLSInfo</code>
+  </td>
+  <td class='break-word'><span>Local DTLS info
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>localInfo.candidates</span> <code class='quiet'>Array.CandidateInfo</code>
+  </td>
+  <td class='break-word'><span>Local candidate info
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
           
         </div>
       
@@ -18816,7 +18834,6 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>Array.CandidateInfo</code>:
         
-
       
     
   
@@ -18873,7 +18890,6 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
         
-
       
     
   
@@ -19024,7 +19040,6 @@ It generates a random ICE username and password and gets endpoint fingerprint</p
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#peerconnectionserver">PeerConnectionServer</a></code>:
         
-
       
     
   
@@ -19095,7 +19110,6 @@ It generates a random ICE username and password and gets endpoint fingerprint</p
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#activespeakermultiplexer">ActiveSpeakerMultiplexer</a></code>:
         
-
       
     
   
@@ -19319,7 +19333,6 @@ The endpoint will cache the cucrrent mirrored tracks and return an already exist
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#sdpmanager">SDPManager</a></code>:
         
-
       
     
   
@@ -19399,7 +19412,6 @@ The endpoint will cache the cucrrent mirrored tracks and return an already exist
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#endpoint">Endpoint</a></code>:
         
-
       
     
   
@@ -19479,7 +19491,6 @@ The endpoint will cache the cucrrent mirrored tracks and return an already exist
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#endpoint">Endpoint</a></code>:
         
-
       
     
   
@@ -19559,7 +19570,6 @@ The endpoint will cache the cucrrent mirrored tracks and return an already exist
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#endpoint">Endpoint</a></code>:
         
-
       
     
   
@@ -19725,7 +19735,7 @@ The endpoint will cache the cucrrent mirrored tracks and return an already exist
   
 
   <p>A transport represent a connection between a local ICE candidate and a remote set of ICE candidates over a single DTLS session.
-The transport object will internally allocate the ICE and DTLS information of the local side in order to singal it to the remote side and establish the connection.
+The transport object will internally allocate the ICE and DTLS information of the local side in order to signal it to the remote side and establish the connection.
 Each transport has a set of incoming and outgoing streams that allow to send or receive RTP streams to the remote peer.
 You must create the incoming streams as signaled on the remote SDP as any incoming RTP with an unknown ssrc will be ignored.
 When you create an outgoing stream, the transport will allocate internally the ssrcs for the different RTP streams in order to avoid collision. You will be able to retrieve that information from the streams object in order to be able to announce them on the SDP sent to the remote side.
@@ -19857,7 +19867,7 @@ In order to decide how to route your streams you must attach the outgoing stream
                 <tr>
   <td class='break-word'><span class='code bold'>options.bwe</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>
   </td>
-  <td class='break-word'><span> Dump bwe stats to a different file (.pcap->.csv)
+  <td class='break-word'><span>Dump bwe stats to a different file (.pcap->.csv)
 </span></td>
 </tr>
 
@@ -20050,8 +20060,7 @@ In order to decide how to route your streams you must attach the outgoing stream
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>localICE</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | ICEInfo))</code>
-	    Local ICE info, containing the username and password 
-[Optional]
+	    Local ICE info, containing the username and password [Optional]
 
           </div>
           
@@ -20124,7 +20133,6 @@ In order to decide how to route your streams you must attach the outgoing stream
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>Nummber</code>:
         
-
       
     
   
@@ -20712,7 +20720,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#transport">Transport</a></code>:
         
-
       
     
   
@@ -20792,7 +20799,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -20872,7 +20878,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#transport">Transport</a></code>:
         
-
       
     
   
@@ -21100,7 +21105,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>Array.CandidateInfo</code>:
         
-
       
     
   
@@ -21271,7 +21275,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code>Array.CandidateInfo</code>:
         
-
       
     
   
@@ -21859,7 +21862,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;IncomingStreams></code>:
         
-
       
     
   
@@ -21930,7 +21932,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -21987,7 +21988,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;OutgoingStreams></code>:
         
-
       
     
   
@@ -22058,7 +22058,6 @@ Note that this will only work on browsers that supports RTX and transport wide c
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -23107,7 +23106,7 @@ This event fires when ICE candidate has correctly being checked out and we start
 
   
 
-  <p>Get stats for all encodings </p>
+  <p>Get stats for all encodings</p>
 <p>You will get stats for media and rtx sources (if used):</p>
 <ul>
 <li>timestmap		: timestamp on when this stats where created</li>
@@ -23115,7 +23114,7 @@ This event fires when ICE candidate has correctly being checked out and we start
 <li>rtx		: rtxStats,</li>
 <li>remb		: remote estimated bitate (if remb is in use)</li>
 <li>numPackets	: number of rtp packets sent</li>
-<li>numPacketsDelta	: number of rtp packets sent during last second </li>
+<li>numPacketsDelta	: number of rtp packets sent during last second</li>
 <li>bitrate		: Bitrate for media stream only in bps</li>
 <li>total		: Accumulated bitrate for media and rtx streams in bps</li>
 </ul>
@@ -23212,7 +23211,6 @@ This event fires when ICE candidate has correctly being checked out and we start
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         
-
       
     
   
@@ -23448,8 +23446,7 @@ This will stop any previous transpoder created by a previous attach.</p>
         <div class='space-bottom0'>
           <div>
             <span class='code bold'>layers</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    [Optional]
- Only applicable to video tracks
+	    [Optional] Only applicable to video tracks
 
           </div>
           
@@ -23713,7 +23710,6 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -23793,7 +23789,6 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -23873,7 +23868,6 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -24214,7 +24208,7 @@ This will set the transponder inconming track to null</p>
 
   
 
-  <p>Get stats for all encodings </p>
+  <p>Get stats for all encodings</p>
 <p>For each encoding you will get stats for media and rtx sources (if used):</p>
 <ul>
 <li>media    : Stats for the media stream</li>
@@ -24248,8 +24242,7 @@ This will set the transponder inconming track to null</p>
 <li>skew		: difference between NTP timestamp and RTP timestamps at sender (from RTCP SR)</li>
 <li>drift		: ratio between RTP timestamps and the NTP timestamp and  at sender (from RTCP SR)</li>
 <li>clockRate		: RTP clockrate</li>
-<li>
-<p>layers		: Information about each spatial/temporal layer (if present)</p>
+<li>layers		: Information about each spatial/temporal layer (if present)
 <ul>
 <li>spatialLayerId  : Spatial layer id</li>
 <li>temporalLayerId : Temporatl layer id</li>
@@ -24549,7 +24542,6 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         
-
       
     
   
@@ -24686,7 +24678,6 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -24766,7 +24757,6 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstream">IncomingStream</a></code>:
         
-
       
     
   
@@ -24846,7 +24836,6 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="#incomingstreamtrack">IncomingStreamTrack</a></code>:
         
-
       
     
   
@@ -25404,7 +25393,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>:
         
-
       
     
   
@@ -25461,7 +25449,6 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></code>:
         
-
       
     
   
