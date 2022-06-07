@@ -51,6 +51,20 @@ Set node uv loop cpu affinity
 
 Returns **[boolean][2]** true if operation was successful
 
+### setThreadName
+
+Set node uv loop thread name.
+
+Useful for debugging or tracing. Currently only supported
+on Linux, fails on other platforms.
+Length is limited to 16 bytes.
+
+#### Parameters
+
+*   `name` **[String][1]** thread name to set
+
+Returns **[boolean][2]** true if operation was successful
+
 ### enableUltraDebug
 
 Enable or disable ultra debug level traces
@@ -1890,6 +1904,20 @@ Set cpu affinity for udp send/recv thread.
 
 Returns **[boolean][2]** true if operation was successful
 
+### setThreadName
+
+Set name for udp send/recv thread.
+
+Useful for debugging or tracing. Currently only supported
+on Linux, fails on other platforms.
+Length is limited to 16 bytes.
+
+#### Parameters
+
+*   `name` **[String][1]** thread name to set
+
+Returns **[boolean][2]** true if operation was successful
+
 ### setPriority
 
 Set thread priority for udp send/recv thread.
@@ -1908,6 +1936,10 @@ Set ICE timeout for outgoing ICE binding requests
 #### Parameters
 
 *   `timeout` **[Number][5]** Ammount of time in milliseconds between ICE binding requests
+
+### getLocalPort
+
+Get port at which UDP socket is bound
 
 ### createTransport
 
