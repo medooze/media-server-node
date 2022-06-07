@@ -31,6 +31,7 @@
 			"include_dirs" : 
 			[
 				'/usr/include/nodejs/',
+				"external/perfetto",
 				"<!(node -e \"require('nan')\")"
 			],
 			"ldflags" : [" -lpthread -lresolv"],
@@ -38,8 +39,13 @@
 			{
         			'libraries': ["-lpthread -lpthread -lresolv"]
       			},
+			"defines":
+			[
+				"MEDOOZE_TRACING",
+			],
 			"sources": 
 			[ 
+				"external/perfetto/perfetto.cc",
 				"src/media-server_wrap.cxx",
 			],
 			"conditions":
@@ -66,6 +72,7 @@
 							"media-server/ext/crc32c/src/crc32c_sse42.cc",
 							"media-server/ext/crc32c/src/crc32c_arm64.cc",
 							"media-server/ext/libdatachannels/src/Datachannels.cpp",
+							"media-server/src/MedoozeTracing.cpp",
 							"media-server/src/ActiveSpeakerDetector.cpp",
 							"media-server/src/ActiveSpeakerMultiplexer.cpp",
 							"media-server/src/EventLoop.cpp",

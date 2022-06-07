@@ -1,5 +1,8 @@
 %module medooze
 %{
+#include <perfetto.h>
+#include "../media-server/include/MedoozeTracing.h"
+#include <stdlib.h>
 	
 #include <string>
 #include <list>
@@ -23,7 +26,7 @@
 #include "../media-server/include/ActiveSpeakerDetector.h"
 #include "../media-server/include/ActiveSpeakerMultiplexer.h"
 #include "../media-server/include/SimulcastMediaFrameListener.h"
-	
+
 using RTPBundleTransportConnection = RTPBundleTransport::Connection;
 using MediaFrameListener = MediaFrame::Listener;
 
@@ -1273,3 +1276,15 @@ public:
 	void RemoveMediaListener(MediaFrameListener* listener);
 	void Stop();
 };
+
+
+%init %{
+	auto tracingVar = getenv("MEDOOZE_TRACING");
+	if (tracingVar && std::string(tracingVar) == "1") {
+		perfetto::TracingInitArgs args;
+		//args.backends |= perfetto::kInProcessBackend;
+		args.backends |= perfetto::kSystemBackend;
+		perfetto::Tracing::Initialize(args);
+		MedoozeTrackEventRegister();
+	}
+%}
