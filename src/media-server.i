@@ -885,8 +885,6 @@ struct RTPIncomingSource : public RTPSource
 
 	int64_t frameDelay;
 	int64_t frameDelayMax;
-	DWORD   frameTime;
-	DWORD   frameTimeMax;
 	int32_t frameCaptureDelay;
 	int32_t frameCaptureDelayMax;
 

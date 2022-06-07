@@ -2704,8 +2704,6 @@ The stats objects will provide the following info for each source
 *   clockRate		: RTP clockrate
 *   frameDelay	: Average frame delay during the last second
 *   frameDelayMax	: Max frame delay during the last second
-*   frameTime		: Average time between the first and last packet of a frame
-*   frameTimeMax	: Average time between the first and last packet of a frame
 *   frameCaptureDelay		: Average bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
 *   frameCaptureDelayMax	: Max bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
 *   layers		: Information about each spatial/temporal layer (if present)
