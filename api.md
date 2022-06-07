@@ -2527,6 +2527,8 @@ You will get stats for media and rtx sources (if used):
 
 The stats objects will privide the follwing info for each source
 
+*   numFrames			: total recevied frames
+*   numFramesDelta		: recevied frames during last second
 *   numPackets		: number of rtp packets sent
 *   numPacketsDelta		: number of rtp packets sent during last second
 *   numRTCPPackets		: number of rtcp packsets sent
@@ -2682,8 +2684,10 @@ For each encoding you will get stats for media and rtx sources (if used):
 
 The stats objects will provide the following info for each source
 
+*   numFrames		: total recevied frames
+*   numFramesDelta	: recevied frames during last second
 *   lostPackets	: total lost packkets
-*   lostPacketsDelta	: total lost/out of order packets during last second
+*   lostPacketsDelta	: Lost/out of order packets during last second
 *   lostPacketsMaxGap	: max total consecutieve packets lossed during last second
 *   lostPacketsGapCount : number of packet looses bursts during last second
 *   dropPackets       : droppted packets by media server
@@ -2698,6 +2702,12 @@ The stats objects will provide the following info for each source
 *   skew		: difference between NTP timestamp and RTP timestamps at sender (from RTCP SR)
 *   drift		: ratio between RTP timestamps and the NTP timestamp and  at sender (from RTCP SR)
 *   clockRate		: RTP clockrate
+*   frameDelay	: Average frame delay during the last second
+*   frameDelayMax	: Max frame delay during the last second
+*   frameTime		: Average time between the first and last packet of a frame
+*   frameTimeMax	: Average time between the first and last packet of a frame
+*   frameCaptureDelay		: Average bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
+*   frameCaptureDelayMax	: Max bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
 *   layers		: Information about each spatial/temporal layer (if present)
     *   spatialLayerId  : Spatial layer id
     *   temporalLayerId : Temporatl layer id

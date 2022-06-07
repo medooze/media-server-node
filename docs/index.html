@@ -5953,7 +5953,7 @@ Length is limited to 16 bytes.</p>
   </div>
   
 
-  <p>Track of the recorder associated to an incoming stream track</p>
+  <p>Track of the recorder associated to an incoming strem track</p>
 
     <div class='pre p1 fill-light mt0'>new RecorderTrack()</div>
   
@@ -23335,6 +23335,8 @@ This event fires when ICE candidate has correctly being checked out and we start
 </ul>
 <p>The stats objects will privide the follwing info for each source</p>
 <ul>
+<li>numFrames			: total recevied frames</li>
+<li>numFramesDelta		: recevied frames during last second</li>
 <li>numPackets		: number of rtp packets sent</li>
 <li>numPacketsDelta		: number of rtp packets sent during last second</li>
 <li>numRTCPPackets		: number of rtcp packsets sent</li>
@@ -24441,8 +24443,10 @@ This will set the transponder inconming track to null</p>
 </ul>
 <p>The stats objects will provide the following info for each source</p>
 <ul>
+<li>numFrames		: total recevied frames</li>
+<li>numFramesDelta	: recevied frames during last second</li>
 <li>lostPackets	: total lost packkets</li>
-<li>lostPacketsDelta	: total lost/out of order packets during last second</li>
+<li>lostPacketsDelta	: Lost/out of order packets during last second</li>
 <li>lostPacketsMaxGap	: max total consecutieve packets lossed during last second</li>
 <li>lostPacketsGapCount : number of packet looses bursts during last second</li>
 <li>dropPackets       : droppted packets by media server</li>
@@ -24457,6 +24461,12 @@ This will set the transponder inconming track to null</p>
 <li>skew		: difference between NTP timestamp and RTP timestamps at sender (from RTCP SR)</li>
 <li>drift		: ratio between RTP timestamps and the NTP timestamp and  at sender (from RTCP SR)</li>
 <li>clockRate		: RTP clockrate</li>
+<li>frameDelay	: Average frame delay during the last second</li>
+<li>frameDelayMax	: Max frame delay during the last second</li>
+<li>frameTime		: Average time between the first and last packet of a frame</li>
+<li>frameTimeMax	: Average time between the first and last packet of a frame</li>
+<li>frameCaptureDelay		: Average bewtween local reception time and sender capture one (Absolute capture time must be negotiated)</li>
+<li>frameCaptureDelayMax	: Max bewtween local reception time and sender capture one (Absolute capture time must be negotiated)</li>
 <li>layers		: Information about each spatial/temporal layer (if present)
 <ul>
 <li>spatialLayerId  : Spatial layer id</li>
