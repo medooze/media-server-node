@@ -901,7 +901,9 @@ struct RTPIncomingSource : public RTPSource
 struct RTPOutgoingSource : public RTPSource
 {
 	DWORD time;
-	DWORD lastTime;
+	DWORD numFrames;
+	DWORD numFramesDelta;
+	DWORD lastTimestamp;
 	QWORD lastSenderReport;
 	QWORD lastSenderReportNTP;
 	DWORD remb;
@@ -912,6 +914,13 @@ struct RTPOutgoingSource : public RTPSource
 	BYTE  reportedFractionLost;
 	DWORD reportedJitter;
 	DWORD rtt;
+	
+	DWORD   frameDelay;
+	DWORD   frameDelayMax;
+	DWORD   frameTime;
+	DWORD   frameTimeMax;
+	int32_t frameCaptureDelay;
+	int32_t frameCaptureDelayMax;
 };
 
 %nodefaultctor TimeService;
@@ -926,8 +935,8 @@ struct RTPOutgoingSourceGroup
 	RTPOutgoingSourceGroup(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
 	
 	MediaFrameType  type;
-	RTPOutgoingSource media;
-	RTPOutgoingSource rtx;
+	const RTPOutgoingSource media;
+	const RTPOutgoingSource rtx;
 	QWORD lastUpdated;
 
 	void Update();
@@ -963,8 +972,8 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	std::string mid;
 	DWORD rtt;
 	MediaFrameType  type;
-	RTPIncomingSource media;
-	RTPIncomingSource rtx;
+	const RTPIncomingSource media;
+	const RTPIncomingSource rtx;
 	DWORD lost;
 	DWORD minWaitedTime;
 	DWORD maxWaitedTime;
