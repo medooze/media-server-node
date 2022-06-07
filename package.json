@@ -39,6 +39,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "documentation": "13.2.5",
     "tap": "^14"
   }
 }
