@@ -962,6 +962,8 @@ struct RTPIncomingMediaStreamListener
 %nodefaultdtor RTPIncomingMediaStream; 
 struct RTPIncomingMediaStream 
 {
+	DWORD GetMediaSSRC();
+	TimeService& GetTimeService();
 };
 
 struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
