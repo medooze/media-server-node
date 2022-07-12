@@ -964,6 +964,9 @@ struct RTPIncomingMediaStream
 {
 	DWORD GetMediaSSRC();
 	TimeService& GetTimeService();
+
+	void AddListener(RTPIncomingMediaStreamListener* listener);
+	void RemoveListener(RTPIncomingMediaStreamListener* listener);
 };
 
 struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
@@ -980,9 +983,6 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	DWORD maxWaitedTime;
 	double avgWaitedTime;
 	QWORD lastUpdated;
-	
-	void AddListener(RTPIncomingMediaStreamListener* listener);
-	void RemoveListener(RTPIncomingMediaStreamListener* listener);
 	
 	void SetMaxWaitTime(DWORD maxWaitingTime);
 	void ResetMaxWaitTime();

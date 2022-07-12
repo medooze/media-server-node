@@ -6471,6 +6471,78 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPIncomingMediaStream_AddListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingMediaStream *arg1 = (RTPIncomingMediaStream *) 0 ;
+  RTPIncomingMediaStreamListener *arg2 = (RTPIncomingMediaStreamListener *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingMediaStream_AddListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingMediaStream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingMediaStream_AddListener" "', argument " "1"" of type '" "RTPIncomingMediaStream *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingMediaStream * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStreamListener, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingMediaStream_AddListener" "', argument " "2"" of type '" "RTPIncomingMediaStreamListener *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPIncomingMediaStreamListener * >(argp2);
+  (arg1)->AddListener(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingMediaStream_RemoveListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingMediaStream *arg1 = (RTPIncomingMediaStream *) 0 ;
+  RTPIncomingMediaStreamListener *arg2 = (RTPIncomingMediaStreamListener *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingMediaStream_RemoveListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingMediaStream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingMediaStream_RemoveListener" "', argument " "1"" of type '" "RTPIncomingMediaStream *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingMediaStream * >(argp1);
+  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStreamListener, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingMediaStream_RemoveListener" "', argument " "2"" of type '" "RTPIncomingMediaStreamListener *""'"); 
+  }
+  arg2 = reinterpret_cast< RTPIncomingMediaStreamListener * >(argp2);
+  (arg1)->RemoveListener(arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_veto_RTPIncomingMediaStream(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -7084,78 +7156,6 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_lastUpdated_get(v8::Local<
   goto fail;
 fail:
   SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_AddListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPIncomingMediaStreamListener *arg2 = (RTPIncomingMediaStreamListener *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_AddListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_AddListener" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStreamListener, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_AddListener" "', argument " "2"" of type '" "RTPIncomingMediaStreamListener *""'"); 
-  }
-  arg2 = reinterpret_cast< RTPIncomingMediaStreamListener * >(argp2);
-  (arg1)->AddListener(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_RemoveListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
-  RTPIncomingMediaStreamListener *arg2 = (RTPIncomingMediaStreamListener *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_RemoveListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_RemoveListener" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
-  }
-  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2,SWIGTYPE_p_RTPIncomingMediaStreamListener, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPIncomingSourceGroup_RemoveListener" "', argument " "2"" of type '" "RTPIncomingMediaStreamListener *""'"); 
-  }
-  arg2 = reinterpret_cast< RTPIncomingMediaStreamListener * >(argp2);
-  (arg1)->RemoveListener(arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
 }
 
 
@@ -15252,6 +15252,8 @@ SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Update", _wrap_
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Stop", _wrap_RTPOutgoingSourceGroup_Stop);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStream_class, "GetMediaSSRC", _wrap_RTPIncomingMediaStream_GetMediaSSRC);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStream_class, "GetTimeService", _wrap_RTPIncomingMediaStream_GetTimeService);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStream_class, "AddListener", _wrap_RTPIncomingMediaStream_AddListener);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStream_class, "RemoveListener", _wrap_RTPIncomingMediaStream_RemoveListener);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rid", _wrap_RTPIncomingSourceGroup_rid_get, _wrap_RTPIncomingSourceGroup_rid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "mid", _wrap_RTPIncomingSourceGroup_mid_get, _wrap_RTPIncomingSourceGroup_mid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rtt", _wrap_RTPIncomingSourceGroup_rtt_get, _wrap_RTPIncomingSourceGroup_rtt_set);
@@ -15263,8 +15265,6 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "minWaitedTime",
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "maxWaitedTime", _wrap_RTPIncomingSourceGroup_maxWaitedTime_get, _wrap_RTPIncomingSourceGroup_maxWaitedTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "avgWaitedTime", _wrap_RTPIncomingSourceGroup_avgWaitedTime_get, _wrap_RTPIncomingSourceGroup_avgWaitedTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "lastUpdated", _wrap_RTPIncomingSourceGroup_lastUpdated_get, _wrap_RTPIncomingSourceGroup_lastUpdated_set);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "AddListener", _wrap_RTPIncomingSourceGroup_AddListener);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "RemoveListener", _wrap_RTPIncomingSourceGroup_RemoveListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "SetMaxWaitTime", _wrap_RTPIncomingSourceGroup_SetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "ResetMaxWaitTime", _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
