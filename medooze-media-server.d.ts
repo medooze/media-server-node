@@ -873,6 +873,55 @@ import SemanticSDP = require('semantic-sdp');
     setAffinity(cpu: number): boolean;
   
     /**
+     * [EXPERIMENTAL] This option is currently Linux-specific and unsafe to use. Its semantics and API are subject to change even in patch versions.
+     *
+     * Causes the endpoint to send packets directly as Ethernet frames using AF_PACKET sockets, thus skipping most of Linux network stack.
+     *
+     * The following assumptions are made about the network configuration:
+     *
+     * - The endpoint will only send traffic destined to this interface.
+     * - The interface is Ethernet and has only one IP.
+     * - The interface has (in addition to the local route due to its IP) a default route (gateway). No more routes to this interface are present.
+     *
+     * If these assumptions are not met, behavior is unspecified. In some cases this function will check for them and throw.
+     * In others, configuration may succeed but traffic will not get through to all or some of the transports.
+     *
+     * Other things to keep in mind:
+     *
+     * - Transmitting raw packets usually requires CAP_NET_RAW or root.
+     *
+     * - Only traffic destined to the interface's gateway will be affected by enabling this option.
+     *   Traffic sent to LAN (link-local addresses) will be sent through the UDP socket as normal.
+     *   Because of that, this option is only useful for Internet-facing endpoints.
+     *
+     * - Since the network stack is skipped, outgoing packets will not be affected by cgroups, firewall, NAT, connection tracking, routing, etc.
+     *   The qdisc (traffic shaping) can optionally be bypassed as well.
+     *
+     *   * If the qdisc is skipped, maxing the interface's bandwidth may cause increased drops, also in traffic coming from the OS.
+     *
+     * - In any of these cases:
+     *
+     *   * The interface disappears or goes down.
+     *   * The physical address, IPs or routes of the interface change.
+     *   * The interface's gateway changes physical address (ARP entry change).
+     *
+     *   it's necessary to call this function again as appropriate (to either reconfigure or disable raw TX) or traffic may stop working for some or all transports.
+     *
+     * This function throws if (re)configuration fails (because the necessary modules weren't found, insufficient privileges, unexpected network configuration, etc.).
+     * In case of failure, configuration is left unchanged.
+     * 
+     * @param options Options for raw TX. Pass false to disable.
+     */
+    setRawTx(options: false | {
+      /** (required) name of interface to send on */
+      interface: string
+      /** whether to skip the traffic shaping (qdisc) on the interface */
+      skipQdisc?: boolean
+      /** AF_PACKET socket send queue */
+      sndBuf?: number
+    }): Promise<void>;
+
+    /**
      * Set node uv loop thread name.
      *
      * Useful for debugging or tracing. Currently only supported

@@ -38,6 +38,9 @@
     "semantic-sdp": "^3",
     "uuid": "^3.3.2"
   },
+  "optionalDependencies": {
+    "netlink": "0.2.3"
+  },
   "devDependencies": {
     "documentation": "13.2.5",
     "tap": "^14"

@@ -817,6 +817,7 @@ private:
 %include "stdint.i"
 %include "std_string.i"
 %include "std_vector.i"
+%include "exception.i"
 #define QWORD		uint64_t
 #define DWORD		uint32_t
 #define WORD		uint16_t
@@ -1048,6 +1049,25 @@ public:
 	int End();
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
+
+	%exception SetRawTx {
+		try {
+			$action
+		} catch (std::system_error& exc) {
+			SWIG_exception(SWIG_SystemError, exc.what());
+		}
+	}
+	%typemap(in) RawTxHelper::MacAddr {
+		if (!($input)->IsUint8Array())
+			SWIG_exception_fail(SWIG_TypeError, "in method '" "$symname" "', argument ""$argnum"" of type '" "$type""'");
+		auto asArray = ($input).As<v8::Uint8Array>();
+		if (asArray->Length() != 6)
+			SWIG_exception_fail(SWIG_TypeError, "in method '" "$symname" "', argument ""$argnum"" of type '" "$type""'");
+		asArray->CopyContents(($1).data(), 6);
+	}
+	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, uint32_t self_addr, uint32_t prefixlen, RawTxHelper::MacAddr self_lladdr, uint32_t gw_addr, RawTxHelper::MacAddr gw_lladdr, uint16_t port);
+	void ClearRawTx();
+
 	bool SetAffinity(int cpu);
 	bool SetThreadName(const std::string& name);
 	bool SetPriority(int priority);
