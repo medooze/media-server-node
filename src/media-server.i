@@ -1065,7 +1065,7 @@ public:
 			SWIG_exception_fail(SWIG_TypeError, "in method '" "$symname" "', argument ""$argnum"" of type '" "$type""'");
 		asArray->CopyContents(($1).data(), 6);
 	}
-	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, uint32_t self_addr, uint32_t prefixlen, RawTxHelper::MacAddr self_lladdr, uint32_t gw_addr, RawTxHelper::MacAddr gw_lladdr, uint16_t port);
+	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, uint32_t selfAddr, uint32_t prefixlen, RawTxHelper::MacAddr selfLladdr, uint32_t gwAddr, RawTxHelper::MacAddr gwLladdr, uint16_t port);
 	void ClearRawTx();
 
 	bool SetAffinity(int cpu);
