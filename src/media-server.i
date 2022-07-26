@@ -1057,15 +1057,7 @@ public:
 			SWIG_exception(SWIG_SystemError, exc.what());
 		}
 	}
-	%typemap(in) RawTxHelper::MacAddr {
-		if (!($input)->IsUint8Array())
-			SWIG_exception_fail(SWIG_TypeError, "in method '" "$symname" "', argument ""$argnum"" of type '" "$type""'");
-		auto asArray = ($input).As<v8::Uint8Array>();
-		if (asArray->Length() != 6)
-			SWIG_exception_fail(SWIG_TypeError, "in method '" "$symname" "', argument ""$argnum"" of type '" "$type""'");
-		asArray->CopyContents(($1).data(), 6);
-	}
-	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, uint32_t selfAddr, uint32_t prefixlen, RawTxHelper::MacAddr selfLladdr, uint32_t gwAddr, RawTxHelper::MacAddr gwLladdr, uint16_t port);
+	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, uint32_t selfAddr, uint32_t prefixlen, const std::string& selfLladdr, uint32_t gwAddr, const std::string& gwLladdr, uint16_t port);
 	void ClearRawTx();
 
 	bool SetAffinity(int cpu);
