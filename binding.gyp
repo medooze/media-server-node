@@ -76,7 +76,6 @@
 							"media-server/src/ActiveSpeakerDetector.cpp",
 							"media-server/src/ActiveSpeakerMultiplexer.cpp",
 							"media-server/src/EventLoop.cpp",
-							"media-server/src/RawTxHelper.cpp",
 							"media-server/src/PacketHeader.cpp",
 							"media-server/src/RTPBundleTransport.cpp",
 							"media-server/src/DTLSICETransport.cpp",

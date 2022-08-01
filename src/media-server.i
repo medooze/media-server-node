@@ -1049,6 +1049,7 @@ public:
 	int End();
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
+	void SetCandidateRawTxData(const std::string& ip, uint16_t port, uint32_t selfAddr, const std::string& dstLladdr);
 
 	%exception SetRawTx {
 		try {
