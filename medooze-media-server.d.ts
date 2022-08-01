@@ -877,36 +877,39 @@ import SemanticSDP = require('semantic-sdp');
      *
      * Causes the endpoint to send packets directly as Ethernet frames using AF_PACKET sockets, thus skipping most of Linux network stack.
      *
-     * The following assumptions are made about the network configuration:
+     * The interface is assumed to be Ethernet. Basic information (MAC address) is collected about it, an AF_PACKET socket is bound to it,
+     * and the endpoint switches to it for transmission. Should that information become obsolete, or the interface disappear / go down,
+     * it's the user's responsibility to call [[setRawTx]] again (to either reconfigure or disable raw TX).
      *
-     * - The endpoint will only send traffic destined to this interface.
-     * - The interface is Ethernet and has only one IP.
-     * - The interface has (in addition to the local route due to its IP) a default route (gateway). No more routes to this interface are present.
-     *
-     * If these assumptions are not met, behavior is unspecified. In some cases this function will check for them and throw.
-     * In others, configuration may succeed but traffic will not get through to all or some of the transports.
+     * When active, calls to [[addRemoteCandidate]] request info to the OS about how traffic to that IP is routed, as well as the
+     * corresponding entry in the ARP table. If the candidate would be routed to a different interface, [[addRemoteCandidate]] rejects it.
+     * Otherwise, the target MAC and the source IP (in case the interface has multiple IPs) are saved together with the candidate.
+     * Should this information become obsolete (i.e. because routing changed, interface IP changed, or target host / gateway changed its
+     * MAC address) it's the user's responsibility to call [[addRemoteCandidate]] again so the information is requested & saved again,
+     * overwriting the existing one.
      *
      * Other things to keep in mind:
      *
      * - Transmitting raw packets usually requires CAP_NET_RAW or root.
      *
-     * - Only traffic destined to the interface's gateway will be affected by enabling this option.
-     *   Traffic sent to LAN (link-local addresses) will be sent through the UDP socket as normal.
-     *   Because of that, this option is only useful for Internet-facing endpoints.
+     * - When active, traffic is only sent from candidates added via [[addRemoteCandidate]] when this option was active (since they have
+     *   the associated info). For candidates not added via [[addRemoteCandidate]] or added when the option was not active, their traffic
+     *   will be silently dropped until you call [[addRemoteCandidate]] to collect & save info in them. Info is never removed from
+     *   candidates, even if raw TX is later disabled.
      *
      * - Since the network stack is skipped, outgoing packets will not be affected by cgroups, firewall, NAT, connection tracking, routing, etc.
      *   The qdisc (traffic shaping) can optionally be bypassed as well.
      *
      *   * If the qdisc is skipped, maxing the interface's bandwidth may cause increased drops, also in traffic coming from the OS.
      *
-     * - In any of these cases:
+     *   [[addRemoteCandidate]] will essentially simulate routing and may reject or even miss nuances in your setup. If missed, open an issue.
      *
-     *   * The interface disappears or goes down.
-     *   * The physical address, IPs or routes of the interface change.
-     *   * The interface's gateway changes physical address (ARP entry change).
+     * - [[addRemoteCandidate]] will sometimes take a significant time (seconds) to resolve, while probing finishes. To prevent delays in most
+     *   cases, **stale ARP entries will be accepted as if they were up to date**. [[addRemoteCandidate]] may send an empty packet to the host /
+     *   gateway to attempt triggering an ARP probe. [[addRemoteCandidate]] will reject if routing or ARP probing fails.
      *
-     *   it's necessary to call this function again as appropriate (to either reconfigure or disable raw TX) or traffic may stop working for some or all transports.
-     *
+     * - The data collection requires Linux 5.0+.
+     * 
      * This function throws if (re)configuration fails (because the necessary modules weren't found, insufficient privileges, unexpected network configuration, etc.).
      * In case of failure, configuration is left unchanged.
      * 
