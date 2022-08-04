@@ -1371,25 +1371,24 @@ fail: ;
 #define SWIGTYPE_p_RTPSessionFacade swig_types[30]
 #define SWIGTYPE_p_RTPSource swig_types[31]
 #define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[32]
-#define SWIGTYPE_p_RawTxHelper__MacAddr swig_types[33]
-#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[34]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[35]
-#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[36]
-#define SWIGTYPE_p_TimeService swig_types[37]
-#define SWIGTYPE_p_UDPDumper swig_types[38]
-#define SWIGTYPE_p_UDPReader swig_types[39]
-#define SWIGTYPE_p_char swig_types[40]
-#define SWIGTYPE_p_int swig_types[41]
-#define SWIGTYPE_p_long_long swig_types[42]
-#define SWIGTYPE_p_short swig_types[43]
-#define SWIGTYPE_p_signed_char swig_types[44]
-#define SWIGTYPE_p_unsigned_char swig_types[45]
-#define SWIGTYPE_p_unsigned_int swig_types[46]
-#define SWIGTYPE_p_unsigned_long_long swig_types[47]
-#define SWIGTYPE_p_unsigned_short swig_types[48]
-#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[49]
-static swig_type_info *swig_types[51];
-static swig_module_info swig_module = {swig_types, 50, 0, 0, 0, 0};
+#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[33]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[34]
+#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[35]
+#define SWIGTYPE_p_TimeService swig_types[36]
+#define SWIGTYPE_p_UDPDumper swig_types[37]
+#define SWIGTYPE_p_UDPReader swig_types[38]
+#define SWIGTYPE_p_char swig_types[39]
+#define SWIGTYPE_p_int swig_types[40]
+#define SWIGTYPE_p_long_long swig_types[41]
+#define SWIGTYPE_p_short swig_types[42]
+#define SWIGTYPE_p_signed_char swig_types[43]
+#define SWIGTYPE_p_unsigned_char swig_types[44]
+#define SWIGTYPE_p_unsigned_int swig_types[45]
+#define SWIGTYPE_p_unsigned_long_long swig_types[46]
+#define SWIGTYPE_p_unsigned_short swig_types[47]
+#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[48]
+static swig_type_info *swig_types[50];
+static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -8556,6 +8555,79 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPBundleTransport_SetCandidateRawTxData(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPBundleTransport *arg1 = (RTPBundleTransport *) 0 ;
+  std::string *arg2 = 0 ;
+  uint16_t arg3 ;
+  uint32_t arg4 ;
+  std::string *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  int res5 = SWIG_OLDOBJ ;
+  
+  if(args.Length() != 4) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_SetCandidateRawTxData.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPBundleTransport_SetCandidateRawTxData" "', argument " "1"" of type '" "RTPBundleTransport *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPBundleTransport * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(args[0], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPBundleTransport_SetCandidateRawTxData" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_SetCandidateRawTxData" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_short(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RTPBundleTransport_SetCandidateRawTxData" "', argument " "3"" of type '" "uint16_t""'");
+  } 
+  arg3 = static_cast< uint16_t >(val3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(args[2], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "RTPBundleTransport_SetCandidateRawTxData" "', argument " "4"" of type '" "uint32_t""'");
+  } 
+  arg4 = static_cast< uint32_t >(val4);
+  {
+    std::string *ptr = (std::string *)0;
+    res5 = SWIG_AsPtr_std_string(args[3], &ptr);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "RTPBundleTransport_SetCandidateRawTxData" "', argument " "5"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_SetCandidateRawTxData" "', argument " "5"" of type '" "std::string const &""'"); 
+    }
+    arg5 = ptr;
+  }
+  (arg1)->SetCandidateRawTxData((std::string const &)*arg2,arg3,arg4,(std::string const &)*arg5);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  
+  
+  if (SWIG_IsNewObj(res5)) delete arg5;
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPBundleTransport_SetRawTx(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -8566,9 +8638,9 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_SetRawTx(const SwigV8Arguments
   bool arg4 ;
   uint32_t arg5 ;
   uint32_t arg6 ;
-  RawTxHelper::MacAddr arg7 ;
+  std::string *arg7 = 0 ;
   uint32_t arg8 ;
-  RawTxHelper::MacAddr arg9 ;
+  std::string *arg9 = 0 ;
   uint16_t arg10 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -8582,8 +8654,10 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_SetRawTx(const SwigV8Arguments
   int ecode5 = 0 ;
   unsigned int val6 ;
   int ecode6 = 0 ;
+  int res7 = SWIG_OLDOBJ ;
   unsigned int val8 ;
   int ecode8 = 0 ;
+  int res9 = SWIG_OLDOBJ ;
   unsigned short val10 ;
   int ecode10 = 0 ;
   
@@ -8620,12 +8694,15 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_SetRawTx(const SwigV8Arguments
   } 
   arg6 = static_cast< uint32_t >(val6);
   {
-    if (!(args[5])->IsUint8Array())
-    SWIG_exception_fail(SWIG_TypeError, "in method '" "RTPBundleTransport_SetRawTx" "', argument ""7"" of type '" "RawTxHelper::MacAddr""'");
-    auto asArray = (args[5]).As<v8::Uint8Array>();
-    if (asArray->Length() != 6)
-    SWIG_exception_fail(SWIG_TypeError, "in method '" "RTPBundleTransport_SetRawTx" "', argument ""7"" of type '" "RawTxHelper::MacAddr""'");
-    asArray->CopyContents((arg7).data(), 6);
+    std::string *ptr = (std::string *)0;
+    res7 = SWIG_AsPtr_std_string(args[5], &ptr);
+    if (!SWIG_IsOK(res7)) {
+      SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "RTPBundleTransport_SetRawTx" "', argument " "7"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_SetRawTx" "', argument " "7"" of type '" "std::string const &""'"); 
+    }
+    arg7 = ptr;
   }
   ecode8 = SWIG_AsVal_unsigned_SS_int(args[6], &val8);
   if (!SWIG_IsOK(ecode8)) {
@@ -8633,12 +8710,15 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_SetRawTx(const SwigV8Arguments
   } 
   arg8 = static_cast< uint32_t >(val8);
   {
-    if (!(args[7])->IsUint8Array())
-    SWIG_exception_fail(SWIG_TypeError, "in method '" "RTPBundleTransport_SetRawTx" "', argument ""9"" of type '" "RawTxHelper::MacAddr""'");
-    auto asArray = (args[7]).As<v8::Uint8Array>();
-    if (asArray->Length() != 6)
-    SWIG_exception_fail(SWIG_TypeError, "in method '" "RTPBundleTransport_SetRawTx" "', argument ""9"" of type '" "RawTxHelper::MacAddr""'");
-    asArray->CopyContents((arg9).data(), 6);
+    std::string *ptr = (std::string *)0;
+    res9 = SWIG_AsPtr_std_string(args[7], &ptr);
+    if (!SWIG_IsOK(res9)) {
+      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "RTPBundleTransport_SetRawTx" "', argument " "9"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_SetRawTx" "', argument " "9"" of type '" "std::string const &""'"); 
+    }
+    arg9 = ptr;
   }
   ecode10 = SWIG_AsVal_unsigned_SS_short(args[8], &val10);
   if (!SWIG_IsOK(ecode10)) {
@@ -8647,7 +8727,7 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_SetRawTx(const SwigV8Arguments
   arg10 = static_cast< uint16_t >(val10);
   {
     try {
-      (arg1)->SetRawTx(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
+      (arg1)->SetRawTx(arg2,arg3,arg4,arg5,arg6,(std::string const &)*arg7,arg8,(std::string const &)*arg9,arg10);
     } catch (std::system_error& exc) {
       SWIG_exception(SWIG_SystemError, exc.what());
     }
@@ -8659,7 +8739,9 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_SetRawTx(const SwigV8Arguments
   
   
   
+  if (SWIG_IsNewObj(res7)) delete arg7;
   
+  if (SWIG_IsNewObj(res9)) delete arg9;
   
   
   SWIGV8_RETURN(jsresult);
@@ -14594,7 +14676,6 @@ static swig_type_info _swigt__p_RTPSenderFacade = {"_p_RTPSenderFacade", "p_RTPS
 static swig_type_info _swigt__p_RTPSessionFacade = {"_p_RTPSessionFacade", "p_RTPSessionFacade|RTPSessionFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPSource = {"_p_RTPSource", "p_RTPSource|RTPSource *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPStreamTransponderFacade = {"_p_RTPStreamTransponderFacade", "p_RTPStreamTransponderFacade|RTPStreamTransponderFacade *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RawTxHelper__MacAddr = {"_p_RawTxHelper__MacAddr", "RawTxHelper::MacAddr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RemoteRateEstimatorListener = {"_p_RemoteRateEstimatorListener", "p_RemoteRateEstimatorListener|RemoteRateEstimatorListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SenderSideEstimatorListener = {"_p_SenderSideEstimatorListener", "p_SenderSideEstimatorListener", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SimulcastMediaFrameListener = {"_p_SimulcastMediaFrameListener", "p_SimulcastMediaFrameListener|SimulcastMediaFrameListener *", 0, 0, (void*)0, 0};
@@ -14646,7 +14727,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RTPSessionFacade,
   &_swigt__p_RTPSource,
   &_swigt__p_RTPStreamTransponderFacade,
-  &_swigt__p_RawTxHelper__MacAddr,
   &_swigt__p_RemoteRateEstimatorListener,
   &_swigt__p_SenderSideEstimatorListener,
   &_swigt__p_SimulcastMediaFrameListener,
@@ -14698,7 +14778,6 @@ static swig_cast_info _swigc__p_RTPSenderFacade[] = {  {&_swigt__p_RTPSenderFaca
 static swig_cast_info _swigc__p_RTPSessionFacade[] = {  {&_swigt__p_RTPSessionFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPSource[] = {  {&_swigt__p_RTPSource, 0, 0, 0},  {&_swigt__p_RTPIncomingSource, _p_RTPIncomingSourceTo_p_RTPSource, 0, 0},  {&_swigt__p_RTPOutgoingSource, _p_RTPOutgoingSourceTo_p_RTPSource, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPStreamTransponderFacade[] = {  {&_swigt__p_RTPStreamTransponderFacade, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RawTxHelper__MacAddr[] = {  {&_swigt__p_RawTxHelper__MacAddr, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RemoteRateEstimatorListener[] = {  {&_swigt__p_RemoteRateEstimatorListener, 0, 0, 0},  {&_swigt__p_SenderSideEstimatorListener, _p_SenderSideEstimatorListenerTo_p_RemoteRateEstimatorListener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SenderSideEstimatorListener[] = {  {&_swigt__p_SenderSideEstimatorListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SimulcastMediaFrameListener[] = {  {&_swigt__p_SimulcastMediaFrameListener, 0, 0, 0},{0, 0, 0, 0}};
@@ -14750,7 +14829,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RTPSessionFacade,
   _swigc__p_RTPSource,
   _swigc__p_RTPStreamTransponderFacade,
-  _swigc__p_RawTxHelper__MacAddr,
   _swigc__p_RemoteRateEstimatorListener,
   _swigc__p_SenderSideEstimatorListener,
   _swigc__p_SimulcastMediaFrameListener,
@@ -15431,6 +15509,7 @@ SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "RemoveICETransport"
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "End", _wrap_RTPBundleTransport_End);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "GetLocalPort", _wrap_RTPBundleTransport_GetLocalPort);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "AddRemoteCandidate", _wrap_RTPBundleTransport_AddRemoteCandidate);
+SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetCandidateRawTxData", _wrap_RTPBundleTransport_SetCandidateRawTxData);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetRawTx", _wrap_RTPBundleTransport_SetRawTx);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "ClearRawTx", _wrap_RTPBundleTransport_ClearRawTx);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetAffinity", _wrap_RTPBundleTransport_SetAffinity);
