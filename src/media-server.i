@@ -1058,7 +1058,7 @@ public:
 			SWIG_exception(SWIG_SystemError, exc.what());
 		}
 	}
-	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, uint32_t selfAddr, uint32_t prefixlen, const std::string& selfLladdr, uint32_t gwAddr, const std::string& gwLladdr, uint16_t port);
+	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, const std::string& selfLladdr, uint32_t fallbackSelfAddr, const std::string& fallbackDstLladdr, uint16_t port);
 	void ClearRawTx();
 
 	bool SetAffinity(int cpu);
