@@ -365,6 +365,13 @@ import SemanticSDP = require('semantic-sdp');
     outgoingtrack(track: OutgoingStreamTrack, stream: OutgoingStream|null): void;
     incomingtrack(track: IncomingStreamTrack, stream: IncomingStream|null): void;
     stopped(transport: Transport): void;
+
+    /**
+     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
+     *
+     * Error occurred when calling [[setCandidateRawTxData]] automatically. See [[Endpoint.setRawTx]].
+     */
+    rawtxdataerror(ip: string, port: number, error: any): void;
   }
 
   export interface Transport {
@@ -462,6 +469,13 @@ import SemanticSDP = require('semantic-sdp');
      * @param {Array.CandidateInfo} candidates
      */
     addRemoteCandidates(candidates: SemanticSDP.CandidateInfo[]): void;
+
+    /**
+     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
+     *
+     * Refresh the raw TX data for a candidate. See [[Endpoint.setRawTx]].
+     */
+    setCandidateRawTxData(ip, port): Promise<void>
 
     /**
      * Create new outgoing stream in this transport
@@ -873,45 +887,7 @@ import SemanticSDP = require('semantic-sdp');
     setAffinity(cpu: number): boolean;
   
     /**
-     * [EXPERIMENTAL] This option is currently Linux-specific and unsafe to use. Its semantics and API are subject to change even in patch versions.
-     *
-     * Causes the endpoint to send packets directly as Ethernet frames using AF_PACKET sockets, thus skipping most of Linux network stack.
-     *
-     * The interface is assumed to be Ethernet. Basic information (MAC address) is collected about it, an AF_PACKET socket is bound to it,
-     * and the endpoint switches to it for transmission. Should that information become obsolete, or the interface disappear / go down,
-     * it's the user's responsibility to call [[setRawTx]] again (to either reconfigure or disable raw TX).
-     *
-     * When active, calls to [[addRemoteCandidate]] request info to the OS about how traffic to that IP is routed, as well as the
-     * corresponding entry in the ARP table. If the candidate would be routed to a different interface, [[addRemoteCandidate]] rejects it.
-     * Otherwise, the target MAC and the source IP (in case the interface has multiple IPs) are saved together with the candidate.
-     * Should this information become obsolete (i.e. because routing changed, interface IP changed, or target host / gateway changed its
-     * MAC address) it's the user's responsibility to call [[addRemoteCandidate]] again so the information is requested & saved again,
-     * overwriting the existing one.
-     *
-     * Other things to keep in mind:
-     *
-     * - Transmitting raw packets usually requires CAP_NET_RAW or root.
-     *
-     * - When active, traffic is only sent from candidates added via [[addRemoteCandidate]] when this option was active (since they have
-     *   the associated info). For candidates not added via [[addRemoteCandidate]] or added when the option was not active, their traffic
-     *   will be silently dropped until you call [[addRemoteCandidate]] to collect & save info in them. Info is never removed from
-     *   candidates, even if raw TX is later disabled.
-     *
-     * - Since the network stack is skipped, outgoing packets will not be affected by cgroups, firewall, NAT, connection tracking, routing, etc.
-     *   The qdisc (traffic shaping) can optionally be bypassed as well.
-     *
-     *   * If the qdisc is skipped, maxing the interface's bandwidth may cause increased drops, also in traffic coming from the OS.
-     *
-     *   [[addRemoteCandidate]] will essentially simulate routing and may reject or even miss nuances in your setup. If missed, open an issue.
-     *
-     * - [[addRemoteCandidate]] will sometimes take a significant time (seconds) to resolve, while probing finishes. To prevent delays in most
-     *   cases, **stale ARP entries will be accepted as if they were up to date**. [[addRemoteCandidate]] may send an empty packet to the host /
-     *   gateway to attempt triggering an ARP probe. [[addRemoteCandidate]] will reject if routing or ARP probing fails.
-     *
-     * - The data collection requires Linux 5.0+.
-     * 
-     * This function throws if (re)configuration fails (because the necessary modules weren't found, insufficient privileges, unexpected network configuration, etc.).
-     * In case of failure, configuration is left unchanged.
+     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
      * 
      * @param options Options for raw TX. Pass false to disable.
      */
