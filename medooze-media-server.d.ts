@@ -914,7 +914,7 @@ import SemanticSDP = require('semantic-sdp');
      */
     setRawTx(options: false | {
       /** (required) name of interface to send on */
-      interface: string
+      interfaceName: string
       /** whether to skip the traffic shaping (qdisc) on the interface */
       skipQdisc?: boolean
       /** AF_PACKET socket send queue */
