@@ -190,6 +190,13 @@
         'lib/crypto/replay/rdb.c',
         'lib/crypto/replay/rdbx.c',
         'lib/crypto/replay/ut_sim.c',
+
+        # stream list override
+        'stream_list.cpp',
+      ],
+      'defines': [
+        # override stream list
+        'SRTP_NO_STREAM_LIST',
       ],
       'conditions': [
         ['use_openssl==1', {
