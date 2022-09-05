@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>medooze-media-server 0.119.4 | Documentation</title>
+  <title>medooze-media-server 0.120.0 | Documentation</title>
   <meta name='description' content='WebRTC Media Server by Medooze'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>medooze-media-server</h3>
-          <div class='mb1'><code>0.119.4</code></div>
+          <div class='mb1'><code>0.120.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -1121,6 +1121,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#incomingstreamismuted'
+                        class='regular pre-open'>
+                        #isMuted
+                      </a></li>
+                      
+                      <li><a
                         href='#incomingstreamgettrack'
                         class='regular pre-open'>
                         #getTrack
@@ -1174,6 +1180,12 @@
                   
                     <ul class='list-reset py1-ul pl1'>
                       <li class='h5'>Events</li>
+                      
+                        <li><a
+                          href='#incomingstreameventmuted'
+                          class='regular pre-open'>
+                          ⓔ muted
+                        </a></li>
                       
                         <li><a
                           href='#incomingstreameventattached'
@@ -1313,6 +1325,12 @@
                         href='#incomingstreamtracksimulcastadaptergetdefaultencoding'
                         class='regular pre-open'>
                         #getDefaultEncoding
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterismuted'
+                        class='regular pre-open'>
+                        #isMuted
                       </a></li>
                       
                       <li><a
@@ -1596,6 +1614,12 @@
                         href='#incomingstreamtrackmirroreddetached'
                         class='regular pre-open'>
                         #detached
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtrackmirroredismuted'
+                        class='regular pre-open'>
+                        #isMuted
                       </a></li>
                       
                       <li><a
@@ -2353,6 +2377,24 @@
                         </a></li>
                       
                         <li><a
+                          href='#outgoingstreamtrackeventmuted'
+                          class='regular pre-open'>
+                          ⓔ muted
+                        </a></li>
+                      
+                        <li><a
+                          href='#outgoingstreamtrackeventmuted'
+                          class='regular pre-open'>
+                          ⓔ muted
+                        </a></li>
+                      
+                        <li><a
+                          href='#outgoingstreamtrackeventmuted'
+                          class='regular pre-open'>
+                          ⓔ muted
+                        </a></li>
+                      
+                        <li><a
                           href='#outgoingstreamtrackeventstopped'
                           class='regular pre-open'>
                           ⓔ stopped
@@ -2472,6 +2514,12 @@
                         href='#incomingstreamtrackreset'
                         class='regular pre-open'>
                         #reset
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtrackismuted'
+                        class='regular pre-open'>
+                        #isMuted
                       </a></li>
                       
                       <li><a
@@ -12239,6 +12287,63 @@ This operation will not change the muted state of the stream this track belongs 
       </div>
     </div>
   
+    <div class='border-bottom' id='incomingstreamismuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isMuted()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check if the stream is muted or not</p>
+
+    <div class='pre p1 fill-light mt0'>isMuted(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        muted
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='incomingstreamgettrack'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -12721,6 +12826,68 @@ This operation will not change the muted state of the stream this track belongs 
   
     <div class='py1 quiet mt1 prose-big'>Events</div>
     <div class="clearfix">
+  
+    <div class='border-bottom' id='incomingstreameventmuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>muted</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>OutgoingStreamTrack stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>muted</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>muted</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
   
     <div class='border-bottom' id='incomingstreameventattached'>
       <div class="clearfix small pointer toggle-sibling">
@@ -14023,6 +14190,63 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         encoding
 *
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterismuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isMuted()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check if the track is muted or not</p>
+
+    <div class='pre p1 fill-light mt0'>isMuted(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        muted
 
       
     
@@ -16654,6 +16878,63 @@ Internal use, you'd beter know what you are doing before calling this method</p>
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtrackmirroredismuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isMuted()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check if the track is muted or not</p>
+
+    <div class='pre p1 fill-light mt0'>isMuted(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        muted
+
+      
+    
   
 
   
@@ -24299,6 +24580,192 @@ This will set the transponder inconming track to null</p>
       </div>
     </div>
   
+    <div class='border-bottom' id='outgoingstreamtrackeventmuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>muted</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>IncomingStreamTrack stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>muted</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>muted</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='outgoingstreamtrackeventmuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>muted</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>IncomingStreamTrack stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>muted</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>muted</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='outgoingstreamtrackeventmuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>muted</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>IncomingStreamTrack stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>muted</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>muted</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='outgoingstreamtrackeventstopped'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -25400,6 +25867,63 @@ Internal use, you'd beter know what you are doing before calling this method</p>
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtrackismuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isMuted()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check if the track is muted or not</p>
+
+    <div class='pre p1 fill-light mt0'>isMuted(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        muted
+
+      
+    
   
 
   

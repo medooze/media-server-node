@@ -1163,6 +1163,12 @@ Get statistics for all tracks in the stream
 
 See IncomingStreamTrack.getStats for information about the stats returned by each track.
 
+### isMuted
+
+Check if the stream is muted or not
+
+Returns **[boolean][2]** muted
+
 ### getTrack
 
 Get track by id
@@ -1216,6 +1222,14 @@ Return if the stream is attached or not
 ### stop
 
 Removes the media strem from the transport and also detaches from any attached incoming stream
+
+### muted
+
+OutgoingStreamTrack stopped event
+
+#### Parameters
+
+*   `muted` **[boolean][2]** 
 
 ### attached
 
@@ -1378,6 +1392,12 @@ Internal use, you'd beter know what you are doing before calling this method
 
 Returns **[Object][4]** encoding
 \*
+
+### isMuted
+
+Check if the track is muted or not
+
+Returns **[boolean][2]** muted
 
 ### isAttached
 
@@ -1681,6 +1701,12 @@ Request an intra refres on all sources
 
 Signal that this track has been detached.
 Internal use, you'd beter know what you are doing before calling this method
+
+### isMuted
+
+Check if the track is muted or not
+
+Returns **[boolean][2]** muted
 
 ### stop
 
@@ -2651,6 +2677,30 @@ OutgoingStreamTrack stopped event
 
 *   `muted` **[boolean][2]** 
 
+### muted
+
+IncomingStreamTrack stopped event
+
+#### Parameters
+
+*   `muted` **[boolean][2]** 
+
+### muted
+
+IncomingStreamTrack stopped event
+
+#### Parameters
+
+*   `muted` **[boolean][2]** 
+
+### muted
+
+IncomingStreamTrack stopped event
+
+#### Parameters
+
+*   `muted` **[boolean][2]** 
+
 ### stopped
 
 OutgoingStreamTrack stopped event
@@ -2820,6 +2870,12 @@ Request an intra refres on all sources
 ### reset
 
 Reset state of incoming sources
+
+### isMuted
+
+Check if the track is muted or not
+
+Returns **[boolean][2]** muted
 
 ### isAttached
 
