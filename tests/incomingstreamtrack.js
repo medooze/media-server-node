@@ -162,6 +162,92 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.done();
 	});
 
+	suite.test("mute",function(test){
+		try {
+			test.plan(4);
+
+			let ssrc = 170;
+			//Create stream
+			const streamInfo = new StreamInfo("stream5");
+			//Create track
+			const track = new TrackInfo("video", "track7");
+			//Add ssrc
+			track.addSSRC(ssrc++);
+			//Add it
+			streamInfo.addTrack(track);
+			//Create new incoming stream
+			const incomingStream  = transport.createIncomingStream(streamInfo);
+			//Should not fire
+			incomingStream.on("muted",(muted)=>{
+				test.fail();
+			});
+			//Get video track
+			const videoTrack = incomingStream.getVideoTracks()[0];
+			
+			videoTrack.once("muted",(muted)=>{
+				test.ok(muted);
+			});
+			//Should not be muted
+			test.ok(!videoTrack.isMuted());
+			//Mute
+			videoTrack.mute(true);
+			//Should be muted
+			test.ok(videoTrack.isMuted());
+			//Should not be muted
+			test.ok(!incomingStream.isMuted());
+		} catch (error) {
+			//Test error
+			test.fail(error);
+		}
+		test.end();
+	});
+	
+	
+	suite.test("unmute",function(test){
+		try {
+			test.plan(3);
+
+			let ssrc = 180;
+			//Create stream
+			const streamInfo = new StreamInfo("stream6");
+			//Create track
+			const track = new TrackInfo("audio", "track8");
+			//Create track
+			const track2 = new TrackInfo("video", "track9");
+			//Add same ssrc
+			track.addSSRC(ssrc++);
+			track2.addSSRC(ssrc);
+			//Add it
+			streamInfo.addTrack(track);
+			streamInfo.addTrack(track2);
+			//Create new incoming stream
+			const incomingStream  = transport.createIncomingStream(streamInfo);
+			//Mute
+			incomingStream.mute(true);
+			//Get video track
+			const videoTrack = incomingStream.getVideoTracks()[0];
+			//Should not fire
+			incomingStream.on("muted",(muted)=>{
+				test.fail();
+			});
+
+			//Event
+			videoTrack.once("muted",(muted)=>{
+				test.ok(!muted);
+			});
+			//Mute
+			videoTrack.mute(false);
+			//Should not be muted
+			test.ok(!videoTrack.isMuted());
+			//Should still be muted
+			test.ok(incomingStream.isMuted());
+		} catch (error) {
+			//Test error
+			test.fail(error);
+		}
+		test.end();
+	});
+
 	transport.stop();
 	
 	suite.end();

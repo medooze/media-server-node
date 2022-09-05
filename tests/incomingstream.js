@@ -176,7 +176,97 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		incomingStream.stop();
 	});
 	
+	suite.test("mute",function(test){
+		try {
+			test.plan(5);
+			//Create stream
+			const streamInfo = new StreamInfo("stream5");
+			//Create track
+			let videoTrack = new TrackInfo("video", "track1");
+			//Get ssrc and rtx
+			const media = ssrc++;
+			const rtx = ssrc++;
+			//Add ssrcs to track
+			videoTrack.addSSRC(media);
+			videoTrack.addSSRC(rtx);
+			//Add RTX group	
+			videoTrack.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
+			//Add it
+			streamInfo.addTrack(videoTrack);
+			//Create track
+			let audioTrack = new TrackInfo("audio", "track2");
+			//Add ssrc
+			audioTrack.addSSRC(ssrc++);
+			//Add it
+			streamInfo.addTrack(audioTrack);
+			//Create new incoming stream
+			const incomingStream = transport.createIncomingStream(streamInfo);
+			//Muted event
+			incomingStream.once("muted",(muted)=>{
+				test.ok(muted);
+			});
+			//Should not be muted
+			test.ok(!incomingStream.isMuted());
+			//Mute
+			incomingStream.mute(true);
+			//Should be muted
+			test.ok(incomingStream.isMuted());
+			//All streams should be muted also
+			test.ok(incomingStream.getAudioTracks()[0].isMuted());
+			test.ok(incomingStream.getVideoTracks()[0].isMuted());
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+		test.end();
+	});
 	
+	
+	suite.test("unmute",function(test){
+		try {
+			test.plan(4);
+			//Create stream
+			const streamInfo = new StreamInfo("stream6");
+			//Create track
+			let videoTrack = new TrackInfo("video", "track1");
+			//Get ssrc and rtx
+			const media = ssrc++;
+			const rtx = ssrc++;
+			//Add ssrcs to track
+			videoTrack.addSSRC(media);
+			videoTrack.addSSRC(rtx);
+			//Add RTX group	
+			videoTrack.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
+			//Add it
+			streamInfo.addTrack(videoTrack);
+			//Create track
+			let audioTrack = new TrackInfo("audio", "track2");
+			//Add ssrc
+			audioTrack.addSSRC(ssrc++);
+			//Add it
+			streamInfo.addTrack(audioTrack);
+			//Create new incoming stream
+			const incomingStream = transport.createIncomingStream(streamInfo);
+			//Mute
+			incomingStream.mute(true);
+			//Events for unmute
+			incomingStream.once("muted",(muted)=>{
+				test.ok(!muted);
+			});
+			//Unmute
+			incomingStream.mute(false);
+			//Should be muted
+			test.ok(!incomingStream.isMuted());
+			//All streams should be muted also
+			test.ok(!incomingStream.getAudioTracks()[0].isMuted());
+			test.ok(!incomingStream.getVideoTracks()[0].isMuted());
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+		test.end();
+	});
+
 	suite.end();
 })
 ]).then(()=>MediaServer.terminate ());

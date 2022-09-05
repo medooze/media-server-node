@@ -278,6 +278,174 @@ tap.test("IncomingStream",function(suite){
 		test.end();
 
 	});
+
+
+	suite.test("mute",function(test){
+		try {
+			test.plan(6);
+
+			let ssrc = 170;
+			//Create stream
+			const streamInfo = new StreamInfo("stream5");
+			//Create track
+			const track = new TrackInfo("video", "track7");
+			//Add ssrc
+			track.addSSRC(ssrc++);
+			//Add it
+			streamInfo.addTrack(track);
+			//Create new incoming stream
+			const incomingStream  = transport.createIncomingStream(streamInfo);
+			//Should not fire
+			incomingStream.on("muted",(muted)=>{
+				test.fail();
+			});
+
+			//Get video track
+			const videoTrack = incomingStream.getVideoTracks()[0];
+
+			//Create simulcast adapter
+			const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
+		
+			//Add it
+			simulcastTrack.addTrack("",videoTrack);
+
+			//Mute should trigger in the adapter
+			simulcastTrack.once("muted",(muted)=>{
+				test.ok(muted);
+			});
+			//And in the track
+			videoTrack.on("muted",(muted)=>{
+				test.ok(muted);
+			});
+			//Should not be muted
+			test.ok(!simulcastTrack.isMuted());
+			//Mute
+			simulcastTrack.mute(true);
+			//Should be muted
+			test.ok(simulcastTrack.isMuted());
+			test.ok(videoTrack.isMuted());
+			//Should not be muted
+			test.ok(!incomingStream.isMuted());
+			
+		} catch (error) {
+			//Test error
+			test.fail(error);
+		}
+		test.end();
+	});
+	
+	
+	suite.test("unmute",function(test){
+		try {
+			test.plan(5);
+
+			let ssrc = 180;
+			//Create stream
+			const streamInfo = new StreamInfo("stream6");
+			//Create track
+			const track = new TrackInfo("audio", "track8");
+			//Create track
+			const track2 = new TrackInfo("video", "track9");
+			//Add same ssrc
+			track.addSSRC(ssrc++);
+			track2.addSSRC(ssrc);
+			//Add it
+			streamInfo.addTrack(track);
+			streamInfo.addTrack(track2);
+			//Create new incoming stream
+			const incomingStream  = transport.createIncomingStream(streamInfo);
+			//Mute
+			incomingStream.mute(true);
+			//Get video track
+			const videoTrack = incomingStream.getVideoTracks()[0];
+
+			//Should not fire
+			incomingStream.on("muted",(muted)=>{
+				test.fail();
+			});
+
+			//Create simulcast adapter
+			const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
+
+			//Mute it
+			simulcastTrack.mute(true);
+			
+			//Add video track
+			simulcastTrack.addTrack("",videoTrack);
+
+			//Event
+			simulcastTrack.once("muted",(muted)=>{
+				test.ok(!muted);
+			});
+			videoTrack.on("muted",(muted)=>{
+				test.ok(!muted);
+			});
+			//Mute
+			simulcastTrack.mute(false);
+			//Should not be muted
+			test.ok(!simulcastTrack.isMuted());
+			test.ok(!videoTrack.isMuted());
+			//Should still be muted
+			test.ok(incomingStream.isMuted());
+		} catch (error) {
+			//Test error
+			test.fail(error);
+		}
+		test.end();
+	});
+
+
+	suite.test("add track while muted",function(test){
+		try {
+			test.plan(4);
+
+			let ssrc = 190;
+			//Create stream
+			const streamInfo = new StreamInfo("stream7");
+			//Create track
+			const track = new TrackInfo("video", "track10");
+			//Add ssrc
+			track.addSSRC(ssrc++);
+			//Add it
+			streamInfo.addTrack(track);
+			//Create new incoming stream
+			const incomingStream  = transport.createIncomingStream(streamInfo);
+			//Should not fire
+			incomingStream.on("muted",(muted)=>{
+				test.fail("stream muted event");
+			});
+
+			//Get video track
+			const videoTrack = incomingStream.getVideoTracks()[0];
+
+			//Create simulcast adapter
+			const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
+		
+			//Mute should trigger in the added tracki
+			videoTrack.on("muted",(muted)=>{
+				test.ok(muted, "track muted event");
+			});
+
+			//Mute adapter before adding track
+			simulcastTrack.mute(true);
+
+			//Add it
+			simulcastTrack.addTrack("",videoTrack);
+
+			//Both should be muted
+			test.ok(simulcastTrack.isMuted(), "adapter muted");
+			test.ok(videoTrack.isMuted()	, "video track muted");
+			//Should not be muted
+			test.ok(!incomingStream.isMuted(), "stream not muted");
+			
+		} catch (error) {
+		console.error(error);
+			//Test error
+			test.fail(error);
+		}
+		test.end();
+	});
+
 	suite.end();
 })
 ]).then(()=>MediaServer.terminate ());
