@@ -12,6 +12,7 @@
       'HAVE_STDLIB_H',
       'HAVE_STRING_H',
       'TESTAPP_SOURCE',
+      'GCM',
     ],
     'include_dirs': [
       './config',
@@ -132,52 +133,44 @@
       'type': 'static_library',
       'sources': [
         # includes
-        'lib/include/ekt.h',
-        'lib/include/getopt_s.h',
-        'lib/include/rtp.h',
-        'lib/include/rtp_priv.h',
         'lib/include/srtp.h',
         'lib/include/srtp_priv.h',
-        'lib/include/ut_sim.h',
+        'lib/include/stream_list_priv.h'
 
         # headers
-        'lib/crypto/include/aes_cbc.h',
+        'lib/crypto/include/aes_gcm.h',
         'lib/crypto/include/aes.h',
+        'lib/crypto/include/aes_icm_ext.h',
         'lib/crypto/include/aes_icm.h',
         'lib/crypto/include/alloc.h',
         'lib/crypto/include/auth.h',
         'lib/crypto/include/cipher.h',
-        'lib/crypto/include/cryptoalg.h',
-        'lib/crypto/include/crypto.h',
+        'lib/crypto/include/cipher_priv.h',
+        'lib/crypto/include/cipher_types.h',
         'lib/crypto/include/crypto_kernel.h',
-        'lib/crypto/include/crypto_math.h',
         'lib/crypto/include/crypto_types.h',
         'lib/crypto/include/datatypes.h',
         'lib/crypto/include/err.h',
         'lib/crypto/include/hmac.h',
         'lib/crypto/include/integers.h',
-        'lib/crypto/include/kernel_compat.h',
         'lib/crypto/include/key.h',
         'lib/crypto/include/null_auth.h',
         'lib/crypto/include/null_cipher.h',
-        'lib/crypto/include/prng.h',
-        'lib/crypto/include/rand_source.h',
         'lib/crypto/include/rdb.h',
         'lib/crypto/include/rdbx.h',
         'lib/crypto/include/sha1.h',
-        'lib/crypto/include/stat.h',
-        'lib/crypto/include/xfm.h',
 
         # sources
-        'lib/srtp/ekt.c',
         'lib/srtp/srtp.c',
 
         'lib/crypto/cipher/aes.c',
         'lib/crypto/cipher/aes_cbc.c',
         'lib/crypto/cipher/aes_icm.c',
         'lib/crypto/cipher/cipher.c',
+        'lib/crypto/cipher/cipher_test_cases.c',
         'lib/crypto/cipher/null_cipher.c',
         'lib/crypto/hash/auth.c',
+        'lib/crypto/hash/auth_test_cases.c',
         'lib/crypto/hash/hmac.c',
         'lib/crypto/hash/null_auth.c',
         'lib/crypto/hash/sha1.c',
@@ -186,10 +179,8 @@
         'lib/crypto/kernel/err.c',
         'lib/crypto/kernel/key.c',
         'lib/crypto/math/datatypes.c',
-        'lib/crypto/math/stat.c',
         'lib/crypto/replay/rdb.c',
         'lib/crypto/replay/rdbx.c',
-        'lib/crypto/replay/ut_sim.c',
 
         # stream list override
         'stream_list.cpp',
@@ -214,366 +205,6 @@
             'lib/crypto/include/aes_icm_ossl.h',
           ],
         }],
-      ],
-    }, # target libsrtp
-    {
-      'target_name': 'rdbx_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/include/getopt_s.h',
-        'lib/test/getopt_s.c',
-        'lib/test/rdbx_driver.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/include/getopt_s.h',
-        'lib/include/srtp_priv.h',
-        'lib/test/getopt_s.c',
-        'lib/test/srtp_driver.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'roc_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/include/rdbx.h',
-        'lib/include/ut_sim.h',
-        'lib/test/roc_driver.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'replay_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/include/rdbx.h',
-        'lib/include/ut_sim.h',
-        'lib/test/replay_driver.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'rtpw',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/include/getopt_s.h',
-        'lib/include/rtp.h',
-        'lib/include/srtp.h',
-        'lib/crypto/include/datatypes.h',
-        'lib/test/getopt_s.c',
-        'lib/test/rtp.c',
-        'lib/test/rtpw.c',
-      ],
-      'conditions': [
-        ['OS=="android"', {
-          'defines': [
-            'HAVE_SYS_SOCKET_H',
-          ],
-        }],
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ],
-    },
-    {
-      'target_name': 'srtp_test_cipher_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/cipher_driver.c',
-        'lib/include/getopt_s.h',
-        'lib/test/getopt_s.c',
-      ],
-      'conditions': [
-        ['use_openssl==1', {
-          'dependencies': [
-          ],
-        }],
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-          'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }], 
-      ],
-    },
-    {
-      'target_name': 'srtp_test_datatypes_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/datatypes_driver.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_test_stat_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/stat_driver.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_test_sha1_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/sha1_driver.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_test_kernel_driver',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/kernel_driver.c',
-        'lib/include/getopt_s.h',
-        'lib/test/getopt_s.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_test_aes_calc',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/aes_calc.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_test_rand_gen',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/rand_gen.c',
-        'lib/include/getopt_s.h',
-        'lib/test/getopt_s.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_test_rand_gen_soak',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/rand_gen_soak.c',
-        'lib/include/getopt_s.h',
-        'lib/test/getopt_s.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_test_env',
-      'type': 'executable',
-      'dependencies': [
-        'libsrtp',
-      ],
-      'sources': [
-        'lib/crypto/test/env.c',
-      ],
-      'conditions': [
-        ['OS=="win" and OS_RUNTIME=="winrt"', {
-          'type': 'static_library',
-          'defines': [
-            'WINRT',
-          ],
-         'sources': [
-            'lib/test/winrt_helpers.h',
-            'lib/test/winrt_helpers.cpp',
-          ],
-        }],
-      ], 
-    },
-    {
-      'target_name': 'srtp_runtest',
-      'type': 'none',
-      'dependencies': [
-        'rdbx_driver',
-        'srtp_driver',
-        'roc_driver',
-        'replay_driver',
-        'rtpw',
-        'srtp_test_cipher_driver',
-        'srtp_test_datatypes_driver',
-        'srtp_test_stat_driver',
-        'srtp_test_sha1_driver',
-        'srtp_test_kernel_driver',
-        'srtp_test_aes_calc',
-        'srtp_test_rand_gen',
-        'srtp_test_rand_gen_soak',
-        'srtp_test_env',
       ],
     },
   ], # targets
