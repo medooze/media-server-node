@@ -817,6 +817,7 @@ private:
 %include "stdint.i"
 %include "std_string.i"
 %include "std_vector.i"
+%include "exception.i"
 #define QWORD		uint64_t
 #define DWORD		uint32_t
 #define WORD		uint16_t
@@ -1049,6 +1050,18 @@ public:
 	int End();
 	int GetLocalPort() const { return port; }
 	int AddRemoteCandidate(const std::string& username,const char* ip, WORD port);		
+	void SetCandidateRawTxData(const std::string& ip, uint16_t port, uint32_t selfAddr, const std::string& dstLladdr);
+
+	%exception SetRawTx {
+		try {
+			$action
+		} catch (std::system_error& exc) {
+			SWIG_exception(SWIG_SystemError, exc.what());
+		}
+	}
+	void SetRawTx(int32_t ifindex, unsigned int sndbuf, bool skipQdisc, const std::string& selfLladdr, uint32_t defaultSelfAddr, const std::string& defaultDstLladdr, uint16_t port);
+	void ClearRawTx();
+
 	bool SetAffinity(int cpu);
 	bool SetThreadName(const std::string& name);
 	bool SetPriority(int priority);

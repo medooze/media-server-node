@@ -365,6 +365,13 @@ import SemanticSDP = require('semantic-sdp');
     outgoingtrack(track: OutgoingStreamTrack, stream: OutgoingStream|null): void;
     incomingtrack(track: IncomingStreamTrack, stream: IncomingStream|null): void;
     stopped(transport: Transport): void;
+
+    /**
+     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
+     *
+     * Error occurred when calling [[setCandidateRawTxData]] automatically. See [[Endpoint.setRawTx]].
+     */
+    rawtxdataerror(ip: string, port: number, error: any): void;
   }
 
   export interface Transport {
@@ -462,6 +469,13 @@ import SemanticSDP = require('semantic-sdp');
      * @param {Array.CandidateInfo} candidates
      */
     addRemoteCandidates(candidates: SemanticSDP.CandidateInfo[]): void;
+
+    /**
+     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
+     *
+     * Refresh the raw TX data for a candidate. See [[Endpoint.setRawTx]].
+     */
+    setCandidateRawTxData(ip, port): Promise<void>
 
     /**
      * Create new outgoing stream in this transport
@@ -872,6 +886,20 @@ import SemanticSDP = require('semantic-sdp');
      */
     setAffinity(cpu: number): boolean;
   
+    /**
+     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
+     * 
+     * @param options Options for raw TX. Pass false to disable.
+     */
+    setRawTx(options: false | {
+      /** (required) name of interface to send on */
+      interfaceName: string
+      /** whether to skip the traffic shaping (qdisc) on the interface */
+      skipQdisc?: boolean
+      /** AF_PACKET socket send queue */
+      sndBuf?: number
+    }): Promise<void>;
+
     /**
      * Set node uv loop thread name.
      *
