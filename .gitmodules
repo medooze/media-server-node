@@ -6,4 +6,4 @@
 	url = https://github.com/medooze/mp4v2.git
 [submodule "external/srtp/lib"]
 	path = external/srtp/lib
-	url = https://github.com/cisco/libsrtp.git
+	url = https://github.com/medooze/libsrtp.git
