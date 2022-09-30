@@ -41,7 +41,7 @@
       			},
 			"defines":
 			[
-				"MEDOOZE_TRACING",
+				#"MEDOOZE_TRACING",
 			],
 			"sources": 
 			[ 

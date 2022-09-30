@@ -993,7 +993,7 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 
 struct RTPIncomingMediaStreamMultiplexer : public RTPIncomingMediaStream, public RTPIncomingMediaStreamListener
 {
-	RTPIncomingMediaStreamMultiplexer(DWORD ssrc, TimeService& TimeService);
+	RTPIncomingMediaStreamMultiplexer(RTPIncomingMediaStream* incomingMediaStream, TimeService& TimeService);
 	void Stop();
 };
 
