@@ -83,6 +83,7 @@
 							"media-server/src/VideoLayerSelector.cpp",
 							"media-server/src/opus/opusdepacketizer.cpp",
 							"media-server/src/h264/h264depacketizer.cpp",
+							"media-server/src/h265/H265Depacketizer.cpp",
 							"media-server/src/vp8/vp8depacketizer.cpp",
 							"media-server/src/h264/H264LayerSelector.cpp",
 							"media-server/src/vp8/VP8LayerSelector.cpp",
