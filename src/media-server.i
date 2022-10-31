@@ -1170,6 +1170,7 @@ public:
 	virtual int Enqueue(const RTPPacket::shared& packet);
 	virtual int SendPLI(DWORD ssrc);
 	virtual int Reset(DWORD ssrc);
+	TimeService& GetTimeService();
 };
 
 
@@ -1301,13 +1302,20 @@ class SimulcastMediaFrameListener :
 	public MediaFrameListener
 {
 public:
-	SimulcastMediaFrameListener(DWORD ssrc, DWORD numLayers);
+	SimulcastMediaFrameListener(TimeService &timeService, DWORD ssrc, DWORD numLayers);
 	void SetNumLayers(DWORD numLayers);
 	void AddMediaListener(MediaFrameListener* listener);
 	void RemoveMediaListener(MediaFrameListener* listener);
 	void Stop();
 };
 
+
+class EventLoop : public TimeService
+{
+public:
+	bool Start();
+	bool Stop();
+};
 
 %init %{
 	auto tracingVar = getenv("MEDOOZE_TRACING");
