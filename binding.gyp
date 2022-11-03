@@ -16,7 +16,9 @@
 				"-g",
 				"-Wno-unused-function -Wno-comment",
 				#"-O0",
-				#"-fsanitize=address,leak"
+				#"-fsanitize=address,leak",
+				#"-fsanitize-address-use-after-scope",
+                                #"-fno-omit-frame-pointer"
 			],
 			"cflags_cc": 
 			[
@@ -26,7 +28,9 @@
 				"-g",
 				"-Wno-unused-function",
 				#"-O0",
-				#"-fsanitize=address,leak"
+				#"-fsanitize=address,leak",
+				#"-fsanitize-address-use-after-scope",
+                                #"-fno-omit-frame-pointer"
 			],
 			"include_dirs" : 
 			[
@@ -37,7 +41,7 @@
 			"ldflags" : [" -lpthread -lresolv"],
 			"link_settings": 
 			{
-        			'libraries': ["-lpthread -lpthread -lresolv"]
+        			'libraries': ["-lpthread -lresolv"]
       			},
 			"defines":
 			[
