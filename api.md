@@ -703,6 +703,7 @@ Select encoding and temporal and spatial layers based on the desired bitrate. Th
 
     *   `options.traversal` **[Object][4]** Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" \[Default: "default"]
     *   `options.strict` **[Object][4]** If there is not a layer with a bitrate lower thatn target, stop sending media \[Default: false]
+    *   `options.smooth` **[Object][4]** When going to a lower simulcast layer, keep the higher one visible \[Default: true]
 *   `bitrate` **[Number][5]** 
 
 Returns **[Number][5]** Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
@@ -1225,7 +1226,7 @@ Removes the media strem from the transport and also detaches from any attached i
 
 ### muted
 
-OutgoingStreamTrack stopped event
+IncomingStream stopped event
 
 #### Parameters
 
@@ -1930,6 +1931,14 @@ Set cpu affinity for udp send/recv thread.
 
 Returns **[boolean][2]** true if operation was successful
 
+### setRawTx
+
+\[EXPERIMENTAL] See TypeScript typings for usage.
+
+#### Parameters
+
+*   `options`  
+
 ### setThreadName
 
 Set name for udp send/recv thread.
@@ -2512,6 +2521,14 @@ Transport stopped event
 
 *   `transport` **[Transport][9]** 
 
+## parseIPv4
+
+parse a dot-separated IPv4 into a normalized address as u32be
+
+### Parameters
+
+*   `ip`  
+
 ## OutgoingStreamTrack
 
 Audio or Video track of a media stream sent to a remote peer
@@ -2708,6 +2725,14 @@ OutgoingStreamTrack stopped event
 #### Parameters
 
 *   `outgoingStreamTrack` **[OutgoingStreamTrack][24]** 
+
+## parseCIDR
+
+parse a CIDR into a normalized \[address as u32be, prefix length] tuple
+
+### Parameters
+
+*   `cidr`  
 
 ## IncomingStreamTrack
 
@@ -2963,6 +2988,35 @@ IncomingStreamTrack stopped event
 #### Parameters
 
 *   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+
+## withSocket
+
+Create a dedicated socket on each query, no caching... it's inefficient
+but more robust, we don't need to give user a way to invalidate the cache,
+we don't need to be careful when managing refs, subscriptions...
+
+### Parameters
+
+*   `callback`  
+
+## extractOne
+
+### Parameters
+
+*   `list`  
+*   `name`  
+
+## collectRoutingInfoWithRoute
+
+Continuation of collectRoutingInfo once a route has been
+selected (split to allow reusal from getInterfaceRawConfig).
+
+### Parameters
+
+*   `rtNetlink`  
+*   `ifindex` **[number][5]** Interface
+*   `route`  
+*   `dst` **[number][5]** Resolved next hop address for route
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
