@@ -11231,6 +11231,34 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_DTLSICETransport_GetEstimatedOutgoingBitrate(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_GetEstimatedOutgoingBitrate.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_GetEstimatedOutgoingBitrate" "', argument " "1"" of type '" "DTLSICETransport const *""'"); 
+  }
+  arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
+  result = (uint32_t)((DTLSICETransport const *)arg1)->GetEstimatedOutgoingBitrate();
+  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_DTLSICETransport_SetRemoteOverrideBWE(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -15723,6 +15751,7 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetProbingBitrateLimi
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "EnableSenderSideEstimation", _wrap_DTLSICETransport_EnableSenderSideEstimation);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetSenderSideEstimatorListener", _wrap_DTLSICETransport_SetSenderSideEstimatorListener);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetAvailableOutgoingBitrate", _wrap_DTLSICETransport_GetAvailableOutgoingBitrate);
+SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetEstimatedOutgoingBitrate", _wrap_DTLSICETransport_GetEstimatedOutgoingBitrate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteOverrideBWE", _wrap_DTLSICETransport_SetRemoteOverrideBWE);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteOverrideBitrate", _wrap_DTLSICETransport_SetRemoteOverrideBitrate);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetRemoteUsername", _wrap_DTLSICETransport_GetRemoteUsername);
