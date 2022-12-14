@@ -89,8 +89,9 @@ tap.test("Transponder::create",async function(suite){
 			test.ok(transponder);
 			test.same(transponder.getIncomingTrack(),incomingVideoTrack);
 		} catch (error) {
+			console.error(error)
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -134,7 +135,7 @@ tap.test("Transponder::create",async function(suite){
 			test.pass();
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
@@ -184,7 +185,7 @@ tap.test("Transponder::create",async function(suite){
 			transponder1.stop();
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -223,7 +224,7 @@ tap.test("Transponder::create",async function(suite){
 			transponder.setIncomingTrack(incomingVideoTrack2);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 
@@ -268,7 +269,7 @@ tap.test("Transponder::create",async function(suite){
 			test.notOk(incomingStream.isAttached());
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
@@ -310,7 +311,7 @@ tap.test("Transponder::create",async function(suite){
 			test.pass();
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
@@ -364,7 +365,7 @@ tap.test("Transponder::create",async function(suite){
 			test.pass();
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
@@ -416,7 +417,7 @@ tap.test("Transponder::create",async function(suite){
 			transponder1.stop();
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 
@@ -456,7 +457,7 @@ tap.test("Transponder::create",async function(suite){
 			transponder.setIncomingTrack(incomingVideoTrack2);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -482,7 +483,7 @@ tap.test("Transponder::create",async function(suite){
 			test.ok(!outgoingStream.getVideoTracks()[0].isMuted());
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
@@ -566,7 +567,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.ok(bitrate==target);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -583,7 +584,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.same(transponder.getSelectedTemporalLayerId(),1);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -604,7 +605,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.ok(bitrate==0);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -627,7 +628,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.same(transponder.getSelectedTemporalLayerId(),0);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -642,7 +643,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.same(transponder.getSelectedTemporalLayerId(),0);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -657,7 +658,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.same(transponder.getSelectedTemporalLayerId(),2);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -672,7 +673,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.same(transponder.getSelectedTemporalLayerId(),2);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -687,7 +688,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.same(transponder.getSelectedTemporalLayerId(),2);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	
@@ -721,7 +722,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			test.same(transponder.getSelectedTemporalLayerId(),maxTemporalLayerId);
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 	});
 	

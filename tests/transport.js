@@ -24,7 +24,25 @@ function sleep(ms) {
 Promise.all([
 	tap.test("Transport",async function(suite){
 
+		suite.test("start + stop",async function(test){
+			test.plan(1);
+			//Genereate info
+			const localInfo = {
+				dtls		: new DTLSInfo(Setup.ACTIVE,"sha-256",endpoint.getDTLSFingerprint()),
+				ice		: ICEInfo.generate(true),
+			};
+			//Create transports
+			const transport		= endpoint.createTransport (localInfo);
+			//Listen for stopped event
+			transport.once("stopped", () => {
+				test.pass("got stopped event");
+			});
+			//Stop transport
+			transport.stop();
+			//Done
+			test.done();
 
+		});
 		suite.test("ice+dtls",async function(test){
 			test.plan(8);
 			//create endpoints
@@ -87,7 +105,6 @@ Promise.all([
 			test.same(sender.getDTLSState(),"closed");
 
 		});
-
 		suite.test("ice restart",async function(test){
 			test.plan(1);
 			//Init test
@@ -339,10 +356,10 @@ Promise.all([
 
 		});
 
-		
 		suite.end();
 	}),
 ])
 .then(()=>{
+console.log("terminate")
 	MediaServer.terminate ();
 });

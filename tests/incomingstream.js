@@ -203,17 +203,17 @@ tap.test("IncomingMediaStream::create",async function(suite){
 			const incomingStream = transport.createIncomingStream(streamInfo);
 			//Muted event
 			incomingStream.once("muted",(muted)=>{
-				test.ok(muted);
+				test.ok(muted, "got mutted event on stream");
 			});
 			//Should not be muted
-			test.ok(!incomingStream.isMuted());
+			test.ok(!incomingStream.isMuted(), "stream is not mutted");
 			//Mute
 			incomingStream.mute(true);
 			//Should be muted
-			test.ok(incomingStream.isMuted());
+			test.ok(incomingStream.isMuted(), "stream is mutted");
 			//All streams should be muted also
-			test.ok(incomingStream.getAudioTracks()[0].isMuted());
-			test.ok(incomingStream.getVideoTracks()[0].isMuted());
+			test.ok(incomingStream.getAudioTracks()[0].isMuted(), "audio track is be muted");
+			test.ok(incomingStream.getVideoTracks()[0].isMuted()), "video track is muted";
 		} catch (error) {
 			//Test error
 			test.notOk(error,error);
@@ -251,18 +251,19 @@ tap.test("IncomingMediaStream::create",async function(suite){
 			incomingStream.mute(true);
 			//Events for unmute
 			incomingStream.once("muted",(muted)=>{
-				test.ok(!muted);
+				test.ok(!muted, "got muted event with !muted");
 			});
 			//Unmute
 			incomingStream.mute(false);
 			//Should be muted
-			test.ok(!incomingStream.isMuted());
+			test.ok(!incomingStream.isMuted(), "stream is not muted");
 			//All streams should be muted also
-			test.ok(!incomingStream.getAudioTracks()[0].isMuted());
-			test.ok(!incomingStream.getVideoTracks()[0].isMuted());
+			test.ok(!incomingStream.getAudioTracks()[0].isMuted(), "audio track is not muted");
+			test.ok(!incomingStream.getVideoTracks()[0].isMuted(), "video track is not muted");
 		} catch (error) {
+		console.dir(error)
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
