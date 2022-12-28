@@ -1,4 +1,5 @@
 %{
+#include "media.h"
 using MediaFrameListener = MediaFrame::Listener;
 using MediaFrameType = MediaFrame::Type;
 %}
@@ -8,5 +9,7 @@ using MediaFrameType = MediaFrame::Type;
 struct MediaFrameListener
 {
 };
+
+SHARED_PTR(MediaFrameListener)
 
 enum MediaFrameType;

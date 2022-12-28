@@ -1,5 +1,5 @@
 %include "shared_ptr.i"
-
+%include "MediaFrame.i"
 %include "RTPIncomingMediaStream.i"
 %include "RTPIncomingSource.i"
 

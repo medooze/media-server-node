@@ -1,4 +1,7 @@
 %include "shared_ptr.i"
+%include "EventLoop.i"
+%include "MediaFrame.i"
+%include "RTPOutgoingSource.i"
 
 struct RTPOutgoingSourceGroup
 {

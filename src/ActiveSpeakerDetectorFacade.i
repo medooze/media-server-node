@@ -70,7 +70,7 @@ public:
 		}
 	}
 	
-	virtual void onRTP(RTPIncomingMediaStream* incoming,const RTPPacket::shared& packet) override
+	virtual void onRTP(const RTPIncomingMediaStream* incoming,const RTPPacket::shared& packet) override
 	{
 		if (packet->HasAudioLevel())
 		{
@@ -86,11 +86,11 @@ public:
 		}
 	}
 	
-	virtual void onBye(RTPIncomingMediaStream* group) override
+	virtual void onBye(const RTPIncomingMediaStream* group) override
 	{
 	}
 	
-	virtual void onEnded(RTPIncomingMediaStream* incoming) override
+	virtual void onEnded(const RTPIncomingMediaStream* incoming) override
 	{
 		Debug("-ActiveSpeakerDetectorFacade::onEnded() [incoming:%p]\n",incoming);
 		
@@ -111,7 +111,7 @@ public:
 	}
 private:
 	Mutex mutex;
-	std::map<RTPIncomingMediaStream*,uint32_t> sources;
+	std::map<RTPIncomingMediaStream*,uint32_t,std::less<>> sources;
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 %}

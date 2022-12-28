@@ -1,4 +1,8 @@
 %include "MediaServer.i"
+%include "RTPIncomingMediaStream.i"
+%include "RTPOutgoingSourceGroup.i"
+%include "RTPReceiver.i"
+%include "RTPSender.i"
 
 %{
 
@@ -16,7 +20,7 @@ public:
 
 	virtual ~RTPStreamTransponderFacade() = default;
 
-	virtual void onREMB(RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
+	virtual void onREMB(const RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
 	{
 		//Check we have not send an update too recently (1s)
 		if (getTimeDiff(last)/1000<period)
@@ -48,12 +52,8 @@ private:
 
 %}
 
-%include "RTPIncomingMediaStream.i"
-%include "RTPOutgoingSourceGroup.i"
-%include "RTPReceiver.i"
-%include "RTPSender.i"
-
-class RTPStreamTransponderFacade 
+class RTPStreamTransponderFacade : 
+	public RTPStreamTransponder
 {
 public:
 	RTPStreamTransponderFacade(const RTPOutgoingSourceGroupShared& outgoing, const RTPSenderShared& sender,v8::Local<v8::Object> object);

@@ -1,4 +1,7 @@
 %include "MediaServer.i"
+%include "EventLoop.i"
+%include "RTPIncomingMediaStream.i"
+%include "RTPStreamTransponderFacade.i"
 
 %{
 class ActiveSpeakerMultiplexerFacade :
@@ -57,8 +60,8 @@ public:
 	void SetMaxAccumulatedScore(uint64_t maxAcummulatedScore);
 	void SetNoiseGatingThreshold(uint8_t noiseGatingThreshold);
 	void SetMinActivationScore(uint32_t minActivationScore);
-	void AddIncomingSourceGroup(RTPIncomingMediaStreamShared incoming, uint32_t id);
-	void RemoveIncomingSourceGroup(RTPIncomingMediaStreamShared incoming);
+	void AddIncomingSourceGroup(const RTPIncomingMediaStreamShared& incoming, uint32_t id);
+	void RemoveIncomingSourceGroup(const RTPIncomingMediaStreamShared& incoming);
 	void AddRTPStreamTransponder(RTPStreamTransponder* transpoder, uint32_t id);
 	void RemoveRTPStreamTransponder(RTPStreamTransponder* transpoder);
 	void Stop();

@@ -80,7 +80,7 @@ using Persistent = Nan::Persistent<T,NonCopyablePersistentTraits<T>>;
 %include "MP4RecorderFacade.i"
 %include "PCAPTransportEmulator.i"
 %include "PlayerFacade.i"
-%include "PropertiesFacade.i"
+%include "Properties.i"
 %include "RemoteRateEstimatorListener.i"
 %include "RTPSource.i"
 %include "RTPIncomingSource.i"

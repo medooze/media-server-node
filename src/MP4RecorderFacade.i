@@ -1,4 +1,5 @@
 %include "MediaServer.i"
+%include "MediaFrame.i"
 
 %{
 class MP4RecorderFacade :
@@ -42,6 +43,8 @@ private:
 
 %}
 
+
+
 class MP4RecorderFacade :
 	public MediaFrameListener
 {
@@ -57,3 +60,15 @@ public:
 	bool SetH264ParameterSets(const std::string& sprops);
 	bool Close(bool async);
 };
+
+
+
+SHARED_PTR_BEGIN(MP4RecorderFacade)
+{
+	MP4RecorderFacadeShared(v8::Local<v8::Object> object)
+	{
+		return new std::shared_ptr<MP4RecorderFacade>(new MP4RecorderFacade(object));
+	}
+	SHARED_PTR_TO(MediaFrameListener)
+}
+SHARED_PTR_END(MP4RecorderFacade)

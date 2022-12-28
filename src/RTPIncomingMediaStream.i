@@ -1,12 +1,9 @@
-%include "shared_ptr.i"
-
 %{
-using RTPIncomingMediaStreamListener = RTPIncomingMediaStream::Listener;
+#include "rtp/RTPIncomingMediaStream.h"
 %}
-%nodefaultctor RTPIncomingMediaStreamListener;
-struct RTPIncomingMediaStreamListener
-{
-};
+
+%include "shared_ptr.i"
+%include "EventLoop.i"
 
 %nodefaultctor RTPIncomingMediaStream;
 %nodefaultdtor RTPIncomingMediaStream; 
@@ -15,8 +12,6 @@ struct RTPIncomingMediaStream
 	DWORD GetMediaSSRC();
 	TimeService& GetTimeService();
 
-	void AddListener(RTPIncomingMediaStreamListener* listener);
-	void RemoveListener(RTPIncomingMediaStreamListener* listener);
 	void Mute(bool muting);
 };
 
