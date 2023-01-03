@@ -1352,53 +1352,55 @@ fail: ;
 #define SWIGTYPE_p_MP4RecorderFacadeShared swig_types[11]
 #define SWIGTYPE_p_MediaFrameListener swig_types[12]
 #define SWIGTYPE_p_MediaFrameListenerShared swig_types[13]
-#define SWIGTYPE_p_MediaServer swig_types[14]
-#define SWIGTYPE_p_PCAPTransportEmulator swig_types[15]
-#define SWIGTYPE_p_PlayerFacade swig_types[16]
-#define SWIGTYPE_p_Properties swig_types[17]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[18]
-#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[19]
-#define SWIGTYPE_p_RTPBundleTransportConnectionShared swig_types[20]
-#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[21]
-#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[22]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[23]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexerShared swig_types[24]
-#define SWIGTYPE_p_RTPIncomingMediaStreamShared swig_types[25]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[26]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[27]
-#define SWIGTYPE_p_RTPIncomingSourceGroupShared swig_types[28]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[29]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[30]
-#define SWIGTYPE_p_RTPOutgoingSourceGroupShared swig_types[31]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[32]
-#define SWIGTYPE_p_RTPReceiver swig_types[33]
-#define SWIGTYPE_p_RTPReceiverShared swig_types[34]
-#define SWIGTYPE_p_RTPSender swig_types[35]
-#define SWIGTYPE_p_RTPSenderShared swig_types[36]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[37]
-#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[38]
-#define SWIGTYPE_p_RTPSource swig_types[39]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[40]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[41]
-#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[42]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[43]
-#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[44]
-#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[45]
-#define SWIGTYPE_p_TimeService swig_types[46]
-#define SWIGTYPE_p_UDPDumper swig_types[47]
-#define SWIGTYPE_p_UDPReader swig_types[48]
-#define SWIGTYPE_p_char swig_types[49]
-#define SWIGTYPE_p_int swig_types[50]
-#define SWIGTYPE_p_long_long swig_types[51]
-#define SWIGTYPE_p_short swig_types[52]
-#define SWIGTYPE_p_signed_char swig_types[53]
-#define SWIGTYPE_p_unsigned_char swig_types[54]
-#define SWIGTYPE_p_unsigned_int swig_types[55]
-#define SWIGTYPE_p_unsigned_long_long swig_types[56]
-#define SWIGTYPE_p_unsigned_short swig_types[57]
-#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[58]
-static swig_type_info *swig_types[60];
-static swig_module_info swig_module = {swig_types, 59, 0, 0, 0, 0};
+#define SWIGTYPE_p_MediaFrameReader swig_types[14]
+#define SWIGTYPE_p_MediaFrameReaderShared swig_types[15]
+#define SWIGTYPE_p_MediaServer swig_types[16]
+#define SWIGTYPE_p_PCAPTransportEmulator swig_types[17]
+#define SWIGTYPE_p_PlayerFacade swig_types[18]
+#define SWIGTYPE_p_Properties swig_types[19]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[20]
+#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[21]
+#define SWIGTYPE_p_RTPBundleTransportConnectionShared swig_types[22]
+#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[23]
+#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[24]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[25]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexerShared swig_types[26]
+#define SWIGTYPE_p_RTPIncomingMediaStreamShared swig_types[27]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[28]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[29]
+#define SWIGTYPE_p_RTPIncomingSourceGroupShared swig_types[30]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[31]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[32]
+#define SWIGTYPE_p_RTPOutgoingSourceGroupShared swig_types[33]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[34]
+#define SWIGTYPE_p_RTPReceiver swig_types[35]
+#define SWIGTYPE_p_RTPReceiverShared swig_types[36]
+#define SWIGTYPE_p_RTPSender swig_types[37]
+#define SWIGTYPE_p_RTPSenderShared swig_types[38]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[39]
+#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[40]
+#define SWIGTYPE_p_RTPSource swig_types[41]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[42]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[43]
+#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[44]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[45]
+#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[46]
+#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[47]
+#define SWIGTYPE_p_TimeService swig_types[48]
+#define SWIGTYPE_p_UDPDumper swig_types[49]
+#define SWIGTYPE_p_UDPReader swig_types[50]
+#define SWIGTYPE_p_char swig_types[51]
+#define SWIGTYPE_p_int swig_types[52]
+#define SWIGTYPE_p_long_long swig_types[53]
+#define SWIGTYPE_p_short swig_types[54]
+#define SWIGTYPE_p_signed_char swig_types[55]
+#define SWIGTYPE_p_unsigned_char swig_types[56]
+#define SWIGTYPE_p_unsigned_int swig_types[57]
+#define SWIGTYPE_p_unsigned_long_long swig_types[58]
+#define SWIGTYPE_p_unsigned_short swig_types[59]
+#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[60]
+static swig_type_info *swig_types[62];
+static swig_module_info swig_module = {swig_types, 61, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2453,6 +2455,129 @@ SWIGINTERN RTPReceiverShared DTLSICETransportShared_toRTPReceiver__SWIG(DTLSICET
 	return std::static_pointer_cast<RTPReceiver>(*self);
 }
 
+
+#include "codecs.h"
+#include "h264/h264.h"
+
+class MediaFrameReader :
+	public MediaFrame::Listener
+{
+
+public:
+	MediaFrameReader(v8::Local<v8::Object> object,bool intraOnly, uint16_t minPeriod)
+	{
+		persistent = std::make_shared<Persistent<v8::Object>>(object);
+		this->intraOnly = intraOnly;
+		this->minPeriod = minPeriod;
+	}
+		
+	virtual ~MediaFrameReader() = default;
+
+	virtual void onMediaFrame(const MediaFrame &frame) override
+	{
+		onMediaFrame(0, frame);
+	}
+
+	virtual void onMediaFrame(DWORD ssrc, const MediaFrame &frame)
+	{
+		//UltraDebug("-onMediaFrame() [minPeriod:%d,lastFrame:%lld]\n",minPeriod,lastFrame);
+
+		if (intraOnly && frame.GetType()==MediaFrame::Video && !((VideoFrame*)&frame)->IsIntra())
+			//Ignore non intra video frames
+			return;
+
+		//Get timestamp
+		uint64_t now = getTimeMS();
+
+		if (minPeriod && now < lastFrame + minPeriod)
+			//Ignore frame before min perior
+			return;
+
+		//Update last frame time
+		lastFrame = now;
+
+		//Get media typ
+		const char* type = MediaFrame::TypeToString(frame.GetType());
+		const char* codec =  frame.GetType()==MediaFrame::Video 
+					? VideoCodec::GetNameFor(((VideoFrame*)&frame)->GetCodec())
+					: AudioCodec::GetNameFor(((AudioFrame*)&frame)->GetCodec());
+
+		//Get frame buffer
+		Buffer::shared buffer = frame.GetBuffer();
+
+		//UltraDebug("-onMediaFrame() [type:%s,codec:%s,minPeriod:%d,lastFrame:%d]\n",type,codec,minPeriod,lastFrame);
+
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[3];
+			//Create buffer
+			v8::Local<v8::Value> frame = Nan::CopyBuffer(reinterpret_cast<const char*>(buffer->GetData()), buffer->GetSize()).ToLocalChecked();
+			
+			//If is h264
+			if (strcasecmp(codec,"H264")==0)
+			{
+				//Convert to Uint8Array
+				v8::Local<v8::Uint8Array> uint8array = frame.As<v8::Uint8Array>();
+				//Convert to annexB
+				H264ToAnnexB((uint8_t*)uint8array->Buffer()->GetContents().Data(), uint8array->Buffer()->ByteLength());
+			}
+			//Create local args
+			argv[i++] = frame;
+			argv[i++] = Nan::New(type).ToLocalChecked();
+			argv[i++] = Nan::New(codec).ToLocalChecked();
+
+			
+			//Call object method with arguments
+			MakeCallback(cloned, "onframe", i, argv);
+		});
+	}
+private:
+	std::shared_ptr<Persistent<v8::Object>> persistent;
+	bool intraOnly = false;
+	uint32_t minPeriod = 0;
+	uint64_t lastFrame = 0;
+};
+
+
+using MediaFrameReaderShared = std::shared_ptr<MediaFrameReader>;
+
+static MediaFrameReaderShared MediaFrameReaderShared_null_ptr = {};
+
+MediaFrameReaderShared* MediaFrameReaderShared_from_proxy(const v8::Local<v8::Value> input)
+{
+  void *ptr = nullptr;
+  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_MediaFrameReaderShared,  0 );
+  if (!ptr) return &MediaFrameReaderShared_null_ptr;
+  return reinterpret_cast<MediaFrameReaderShared*>(ptr);
+}
+
+
+
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_short (SWIGV8_VALUE obj, unsigned short *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > USHRT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< unsigned short >(v);
+    }
+  }  
+  return res;
+}
+
+SWIGINTERN MediaFrameReaderShared *new_MediaFrameReaderShared(v8::Local< v8::Object > object,bool intraOnly,uint16_t minPeriod){
+		return new std::shared_ptr<MediaFrameReader>(new MediaFrameReader(object,intraOnly,minPeriod));
+	}
+SWIGINTERN MediaFrameListenerShared MediaFrameReaderShared_toMediaFrameListener__SWIG(MediaFrameReaderShared *self){
+	return std::static_pointer_cast<MediaFrameListener>(*self);
+}
+
 class MP4RecorderFacade :
 	public MP4Recorder,
 	public MP4Recorder::Listener
@@ -2781,22 +2906,6 @@ RTPBundleTransportConnectionShared* RTPBundleTransportConnectionShared_from_prox
 
 
 
-SWIGINTERN int
-SWIG_AsVal_unsigned_SS_short (SWIGV8_VALUE obj, unsigned short *val)
-{
-  unsigned long v;
-  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v > USHRT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< unsigned short >(v);
-    }
-  }  
-  return res;
-}
-
-
 #include "rtp/RTPIncomingMediaStreamDepacketizer.h"
 
 
@@ -2877,6 +2986,8 @@ SWIGV8_ClientData _exports_ActiveSpeakerMultiplexerFacade_clientData;
 SWIGV8_ClientData _exports_DTLSICETransportListener_clientData;
 SWIGV8_ClientData _exports_DTLSICETransport_clientData;
 SWIGV8_ClientData _exports_DTLSICETransportShared_clientData;
+SWIGV8_ClientData _exports_MediaFrameReader_clientData;
+SWIGV8_ClientData _exports_MediaFrameReaderShared_clientData;
 SWIGV8_ClientData _exports_MP4RecorderFacade_clientData;
 SWIGV8_ClientData _exports_MP4RecorderFacadeShared_clientData;
 SWIGV8_ClientData _exports_UDPReader_clientData;
@@ -9094,6 +9205,124 @@ static SwigV8ReturnValue _wrap_new_veto_DTLSICETransportShared(const SwigV8Argum
   SWIG_exception(SWIG_ERROR, "Class DTLSICETransportShared can not be instantiated");
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_veto_MediaFrameReader(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIG_exception(SWIG_ERROR, "Class MediaFrameReader can not be instantiated");
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_MediaFrameReaderShared(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_OBJECT self = args.Holder();
+  v8::Local< v8::Object > arg1 ;
+  bool arg2 ;
+  uint16_t arg3 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  MediaFrameReaderShared *result;
+  if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_MediaFrameReaderShared.");
+  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_MediaFrameReaderShared.");
+  {
+    arg1 = v8::Local<v8::Object>::Cast(args[0]);
+  }
+  ecode2 = SWIG_AsVal_bool(args[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MediaFrameReaderShared" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(args[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MediaFrameReaderShared" "', argument " "3"" of type '" "uint16_t""'");
+  } 
+  arg3 = static_cast< uint16_t >(val3);
+  result = (MediaFrameReaderShared *)new_MediaFrameReaderShared(arg1,arg2,arg3);
+  
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_MediaFrameReaderShared, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrameReaderShared_toMediaFrameListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  MediaFrameReaderShared *arg1 = (MediaFrameReaderShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  MediaFrameListenerShared result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrameReaderShared_toMediaFrameListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrameReaderShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrameReaderShared_toMediaFrameListener" "', argument " "1"" of type '" "MediaFrameReaderShared *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrameReaderShared * >(argp1);
+  result = MediaFrameReaderShared_toMediaFrameListener__SWIG(arg1);
+  jsresult = SWIG_NewPointerObj((new MediaFrameListenerShared(static_cast< const MediaFrameListenerShared& >(result))), SWIGTYPE_p_MediaFrameListenerShared, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrameReaderShared_get(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  MediaFrameReaderShared *arg1 = (MediaFrameReaderShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  MediaFrameReader *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrameReaderShared_get.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrameReaderShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrameReaderShared_get" "', argument " "1"" of type '" "MediaFrameReaderShared *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrameReaderShared * >(argp1);
+  result = (MediaFrameReader *)(arg1)->get();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_MediaFrameReader, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static void _wrap_delete_MediaFrameReaderShared(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+  SWIGV8_Proxy *proxy = data.GetParameter();
+  
+  if(proxy->swigCMemOwn && proxy->swigCObject) {
+    MediaFrameReaderShared * arg1 = (MediaFrameReaderShared *)proxy->swigCObject;
+    delete arg1;
+  }
+  delete proxy;
 }
 
 
@@ -15489,6 +15718,8 @@ static swig_type_info _swigt__p_MP4RecorderFacade = {"_p_MP4RecorderFacade", "p_
 static swig_type_info _swigt__p_MP4RecorderFacadeShared = {"_p_MP4RecorderFacadeShared", "p_MP4RecorderFacadeShared|MP4RecorderFacadeShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrameListener = {"_p_MediaFrameListener", "p_MediaFrameListener|MediaFrameListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrameListenerShared = {"_p_MediaFrameListenerShared", "p_MediaFrameListenerShared|MediaFrameListenerShared *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MediaFrameReader = {"_p_MediaFrameReader", "p_MediaFrameReader|MediaFrameReader *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MediaFrameReaderShared = {"_p_MediaFrameReaderShared", "p_MediaFrameReaderShared|MediaFrameReaderShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaServer = {"_p_MediaServer", "p_MediaServer", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PCAPTransportEmulator = {"_p_PCAPTransportEmulator", "PCAPTransportEmulator *|p_PCAPTransportEmulator", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PlayerFacade = {"_p_PlayerFacade", "p_PlayerFacade|PlayerFacade *", 0, 0, (void*)0, 0};
@@ -15550,6 +15781,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MP4RecorderFacadeShared,
   &_swigt__p_MediaFrameListener,
   &_swigt__p_MediaFrameListenerShared,
+  &_swigt__p_MediaFrameReader,
+  &_swigt__p_MediaFrameReaderShared,
   &_swigt__p_MediaServer,
   &_swigt__p_PCAPTransportEmulator,
   &_swigt__p_PlayerFacade,
@@ -15611,6 +15844,8 @@ static swig_cast_info _swigc__p_MP4RecorderFacade[] = {  {&_swigt__p_MP4Recorder
 static swig_cast_info _swigc__p_MP4RecorderFacadeShared[] = {  {&_swigt__p_MP4RecorderFacadeShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrameListener[] = {  {&_swigt__p_MediaFrameListener, 0, 0, 0},  {&_swigt__p_MP4RecorderFacade, _p_MP4RecorderFacadeTo_p_MediaFrameListener, 0, 0},  {&_swigt__p_SimulcastMediaFrameListener, _p_SimulcastMediaFrameListenerTo_p_MediaFrameListener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrameListenerShared[] = {  {&_swigt__p_MediaFrameListenerShared, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MediaFrameReader[] = {  {&_swigt__p_MediaFrameReader, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MediaFrameReaderShared[] = {  {&_swigt__p_MediaFrameReaderShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PCAPTransportEmulator[] = {  {&_swigt__p_PCAPTransportEmulator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PlayerFacade[] = {  {&_swigt__p_PlayerFacade, 0, 0, 0},{0, 0, 0, 0}};
@@ -15672,6 +15907,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MP4RecorderFacadeShared,
   _swigc__p_MediaFrameListener,
   _swigc__p_MediaFrameListenerShared,
+  _swigc__p_MediaFrameReader,
+  _swigc__p_MediaFrameReaderShared,
   _swigc__p_MediaServer,
   _swigc__p_PCAPTransportEmulator,
   _swigc__p_PlayerFacade,
@@ -16204,6 +16441,20 @@ _exports_DTLSICETransportShared_clientData.dtor = _wrap_delete_DTLSICETransportS
 if (SWIGTYPE_p_DTLSICETransportShared->clientdata == 0) {
   SWIGTYPE_p_DTLSICETransportShared->clientdata = &_exports_DTLSICETransportShared_clientData;
 }
+/* Name: _exports_MediaFrameReader, Type: p_MediaFrameReader, Dtor: 0 */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameReader_class = SWIGV8_CreateClassTemplate("_exports_MediaFrameReader");
+SWIGV8_SET_CLASS_TEMPL(_exports_MediaFrameReader_clientData.class_templ, _exports_MediaFrameReader_class);
+_exports_MediaFrameReader_clientData.dtor = 0;
+if (SWIGTYPE_p_MediaFrameReader->clientdata == 0) {
+  SWIGTYPE_p_MediaFrameReader->clientdata = &_exports_MediaFrameReader_clientData;
+}
+/* Name: _exports_MediaFrameReaderShared, Type: p_MediaFrameReaderShared, Dtor: _wrap_delete_MediaFrameReaderShared */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameReaderShared_class = SWIGV8_CreateClassTemplate("_exports_MediaFrameReaderShared");
+SWIGV8_SET_CLASS_TEMPL(_exports_MediaFrameReaderShared_clientData.class_templ, _exports_MediaFrameReaderShared_class);
+_exports_MediaFrameReaderShared_clientData.dtor = _wrap_delete_MediaFrameReaderShared;
+if (SWIGTYPE_p_MediaFrameReaderShared->clientdata == 0) {
+  SWIGTYPE_p_MediaFrameReaderShared->clientdata = &_exports_MediaFrameReaderShared_clientData;
+}
 /* Name: _exports_MP4RecorderFacade, Type: p_MP4RecorderFacade, Dtor: _wrap_delete_MP4RecorderFacade */
 SWIGV8_FUNCTION_TEMPLATE _exports_MP4RecorderFacade_class = SWIGV8_CreateClassTemplate("_exports_MP4RecorderFacade");
 SWIGV8_SET_CLASS_TEMPL(_exports_MP4RecorderFacade_clientData.class_templ, _exports_MP4RecorderFacade_class);
@@ -16464,6 +16715,8 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetTimeService", _wra
 SWIGV8_AddMemberFunction(_exports_DTLSICETransportShared_class, "toRTPSender", _wrap_DTLSICETransportShared_toRTPSender);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransportShared_class, "toRTPReceiver", _wrap_DTLSICETransportShared_toRTPReceiver);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransportShared_class, "get", _wrap_DTLSICETransportShared_get);
+SWIGV8_AddMemberFunction(_exports_MediaFrameReaderShared_class, "toMediaFrameListener", _wrap_MediaFrameReaderShared_toMediaFrameListener);
+SWIGV8_AddMemberFunction(_exports_MediaFrameReaderShared_class, "get", _wrap_MediaFrameReaderShared_get);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Create", _wrap_MP4RecorderFacade_Create);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Record", _wrap_MP4RecorderFacade_Record);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Stop", _wrap_MP4RecorderFacade_Stop);
@@ -16986,6 +17239,26 @@ v8::Local<v8::Object> _exports_DTLSICETransportShared_obj = _exports_DTLSICETran
 #else
 v8::Local<v8::Object> _exports_DTLSICETransportShared_obj = _exports_DTLSICETransportShared_class_0->GetFunction(context).ToLocalChecked();
 #endif
+/* Class: MediaFrameReader (_exports_MediaFrameReader) */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameReader_class_0 = SWIGV8_CreateClassTemplate("MediaFrameReader");
+_exports_MediaFrameReader_class_0->SetCallHandler(_wrap_new_veto_MediaFrameReader);
+_exports_MediaFrameReader_class_0->Inherit(_exports_MediaFrameReader_class);
+#if (SWIG_V8_VERSION < 0x0704)
+_exports_MediaFrameReader_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_MediaFrameReader_obj = _exports_MediaFrameReader_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_MediaFrameReader_obj = _exports_MediaFrameReader_class_0->GetFunction(context).ToLocalChecked();
+#endif
+/* Class: MediaFrameReaderShared (_exports_MediaFrameReaderShared) */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameReaderShared_class_0 = SWIGV8_CreateClassTemplate("MediaFrameReaderShared");
+_exports_MediaFrameReaderShared_class_0->SetCallHandler(_wrap_new_MediaFrameReaderShared);
+_exports_MediaFrameReaderShared_class_0->Inherit(_exports_MediaFrameReaderShared_class);
+#if (SWIG_V8_VERSION < 0x0704)
+_exports_MediaFrameReaderShared_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_MediaFrameReaderShared_obj = _exports_MediaFrameReaderShared_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_MediaFrameReaderShared_obj = _exports_MediaFrameReaderShared_class_0->GetFunction(context).ToLocalChecked();
+#endif
 /* Class: MP4RecorderFacade (_exports_MP4RecorderFacade) */
 SWIGV8_FUNCTION_TEMPLATE _exports_MP4RecorderFacade_class_0 = SWIGV8_CreateClassTemplate("MP4RecorderFacade");
 _exports_MP4RecorderFacade_class_0->SetCallHandler(_wrap_new_MP4RecorderFacade);
@@ -17237,6 +17510,8 @@ SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("ActiveSpeakerMul
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("DTLSICETransportListener"), _exports_DTLSICETransportListener_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("DTLSICETransport"), _exports_DTLSICETransport_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("DTLSICETransportShared"), _exports_DTLSICETransportShared_obj));
+SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MediaFrameReader"), _exports_MediaFrameReader_obj));
+SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MediaFrameReaderShared"), _exports_MediaFrameReaderShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MP4RecorderFacade"), _exports_MP4RecorderFacade_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MP4RecorderFacadeShared"), _exports_MP4RecorderFacadeShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("UDPReader"), _exports_UDPReader_obj));

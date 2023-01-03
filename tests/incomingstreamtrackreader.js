@@ -43,18 +43,19 @@ tap.test("Refresher",async function(suite){
 	
 	suite.test("start+stop",function(test){
 		try {
-			//Create refresher
-			const refresher = MediaServer.createRefresher(100);
-			//Stop refresher
-			refresher.stop();
+			//Create reader
+			const reader = MediaServer.createIncomingStreamTrackReader(true,30000);
+			//Stop reader
+			reader.stop();
 		} catch (error) {
+			console.error(error)
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
 	
-	suite.test("strem+stop refresher",function(test){
+	suite.test("stream+stop reader",function(test){
 		try {
 			const transport = endpoint.createTransport({
 				dtls : SemanticSDP.DTLSInfo.expand({
@@ -65,17 +66,17 @@ tap.test("Refresher",async function(suite){
 			});
 			//Create new incoming stream
 			const incomingStream = transport.createIncomingStream(streamInfo);
-			//Create refresher
-			const refresher = MediaServer.createRefresher(100);
-			//Do periodic refresh
-			refresher.add(incomingStream);
-			//Stop refresher
-			refresher.stop();
+			//Create reader
+			const reader = MediaServer.createIncomingStreamTrackReader(true,30000);
+			//Read frames
+			reader.attachTo(incomingStream.getVideoTracks()[0]);
+			//Stop reader
+			reader.stop();
 			//Stop stream
 			incomingStream.stop();
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
@@ -91,45 +92,17 @@ tap.test("Refresher",async function(suite){
 			});
 			//Create new incoming stream
 			const incomingStream = transport.createIncomingStream(streamInfo);
-			//Create refresher
-			const refresher = MediaServer.createRefresher(100);
-			//Do periodic refresh
-			refresher.add(incomingStream);
+			//Create reader
+			const reader = MediaServer.createIncomingStreamTrackReader(true, 30000);
+			//Read frames
+			reader.attachTo(incomingStream.getVideoTracks()[0]);
 			//Stop stream
 			incomingStream.stop();
-			//Stop refresher
-			refresher.stop();
+			//Stop reader
+			reader.stop();
 		} catch (error) {
 			//Test error
-			test.notOk(error,error);
-		}
-		test.end();
-	});
-
-	suite.test("stream remove",function(test){
-		try {
-			const transport = endpoint.createTransport({
-				dtls : SemanticSDP.DTLSInfo.expand({
-					"hash"        : "sha-256",
-					"fingerprint" : "F2:AA:0E:C3:22:59:5E:14:95:69:92:3D:13:B4:84:24:2C:C2:A2:C0:3E:FD:34:8E:5E:EA:6F:AF:52:CE:E6:0F"
-				}),
-				ice  : SemanticSDP.ICEInfo.generate()
-			});
-			//Create new incoming stream
-			const incomingStream = transport.createIncomingStream(streamInfo);
-			//Create refresher
-			const refresher = MediaServer.createRefresher(100);
-			//Do periodic refresh
-			refresher.add(incomingStream);
-			//Remove from refresher
-			refresher.remove(incomingStream);
-			//Stop stream
-			incomingStream.stop();
-			//Stop refresher
-			refresher.stop();
-		} catch (error) {
-			//Test error
-			test.notOk(error,error);
+			test.notOk(error,error.message);
 		}
 		test.end();
 	});
