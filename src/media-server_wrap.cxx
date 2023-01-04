@@ -2097,7 +2097,10 @@ static RTPIncomingMediaStreamShared RTPIncomingMediaStreamShared_null_ptr = {};
 RTPIncomingMediaStreamShared* RTPIncomingMediaStreamShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPIncomingMediaStreamShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPIncomingMediaStreamShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPIncomingMediaStreamShared,  0 );
   if (!ptr) return &RTPIncomingMediaStreamShared_null_ptr;
   return reinterpret_cast<RTPIncomingMediaStreamShared*>(ptr);
@@ -2117,7 +2120,10 @@ static MediaFrameListenerShared MediaFrameListenerShared_null_ptr = {};
 MediaFrameListenerShared* MediaFrameListenerShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &MediaFrameListenerShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &MediaFrameListenerShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_MediaFrameListenerShared,  0 );
   if (!ptr) return &MediaFrameListenerShared_null_ptr;
   return reinterpret_cast<MediaFrameListenerShared*>(ptr);
@@ -2209,7 +2215,10 @@ static RTPOutgoingSourceGroupShared RTPOutgoingSourceGroupShared_null_ptr = {};
 RTPOutgoingSourceGroupShared* RTPOutgoingSourceGroupShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPOutgoingSourceGroupShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPOutgoingSourceGroupShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPOutgoingSourceGroupShared,  0 );
   if (!ptr) return &RTPOutgoingSourceGroupShared_null_ptr;
   return reinterpret_cast<RTPOutgoingSourceGroupShared*>(ptr);
@@ -2230,7 +2239,10 @@ static RTPReceiverShared RTPReceiverShared_null_ptr = {};
 RTPReceiverShared* RTPReceiverShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPReceiverShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPReceiverShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPReceiverShared,  0 );
   if (!ptr) return &RTPReceiverShared_null_ptr;
   return reinterpret_cast<RTPReceiverShared*>(ptr);
@@ -2245,7 +2257,10 @@ static RTPSenderShared RTPSenderShared_null_ptr = {};
 RTPSenderShared* RTPSenderShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPSenderShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPSenderShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPSenderShared,  0 );
   if (!ptr) return &RTPSenderShared_null_ptr;
   return reinterpret_cast<RTPSenderShared*>(ptr);
@@ -2441,7 +2456,10 @@ static DTLSICETransportShared DTLSICETransportShared_null_ptr = {};
 DTLSICETransportShared* DTLSICETransportShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &DTLSICETransportShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &DTLSICETransportShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_DTLSICETransportShared,  0 );
   if (!ptr) return &DTLSICETransportShared_null_ptr;
   return reinterpret_cast<DTLSICETransportShared*>(ptr);
@@ -2548,7 +2566,10 @@ static MediaFrameReaderShared MediaFrameReaderShared_null_ptr = {};
 MediaFrameReaderShared* MediaFrameReaderShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &MediaFrameReaderShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &MediaFrameReaderShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_MediaFrameReaderShared,  0 );
   if (!ptr) return &MediaFrameReaderShared_null_ptr;
   return reinterpret_cast<MediaFrameReaderShared*>(ptr);
@@ -2626,7 +2647,10 @@ static MP4RecorderFacadeShared MP4RecorderFacadeShared_null_ptr = {};
 MP4RecorderFacadeShared* MP4RecorderFacadeShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &MP4RecorderFacadeShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &MP4RecorderFacadeShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_MP4RecorderFacadeShared,  0 );
   if (!ptr) return &MP4RecorderFacadeShared_null_ptr;
   return reinterpret_cast<MP4RecorderFacadeShared*>(ptr);
@@ -2829,7 +2853,10 @@ static RTPSessionFacadeShared RTPSessionFacadeShared_null_ptr = {};
 RTPSessionFacadeShared* RTPSessionFacadeShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPSessionFacadeShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPSessionFacadeShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPSessionFacadeShared,  0 );
   if (!ptr) return &RTPSessionFacadeShared_null_ptr;
   return reinterpret_cast<RTPSessionFacadeShared*>(ptr);
@@ -2853,7 +2880,10 @@ static RTPIncomingSourceGroupShared RTPIncomingSourceGroupShared_null_ptr = {};
 RTPIncomingSourceGroupShared* RTPIncomingSourceGroupShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPIncomingSourceGroupShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPIncomingSourceGroupShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPIncomingSourceGroupShared,  0 );
   if (!ptr) return &RTPIncomingSourceGroupShared_null_ptr;
   return reinterpret_cast<RTPIncomingSourceGroupShared*>(ptr);
@@ -2874,7 +2904,10 @@ static RTPIncomingMediaStreamMultiplexerShared RTPIncomingMediaStreamMultiplexer
 RTPIncomingMediaStreamMultiplexerShared* RTPIncomingMediaStreamMultiplexerShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPIncomingMediaStreamMultiplexerShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPIncomingMediaStreamMultiplexerShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPIncomingMediaStreamMultiplexerShared,  0 );
   if (!ptr) return &RTPIncomingMediaStreamMultiplexerShared_null_ptr;
   return reinterpret_cast<RTPIncomingMediaStreamMultiplexerShared*>(ptr);
@@ -2898,7 +2931,10 @@ static RTPBundleTransportConnectionShared RTPBundleTransportConnectionShared_nul
 RTPBundleTransportConnectionShared* RTPBundleTransportConnectionShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &RTPBundleTransportConnectionShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPBundleTransportConnectionShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPBundleTransportConnectionShared,  0 );
   if (!ptr) return &RTPBundleTransportConnectionShared_null_ptr;
   return reinterpret_cast<RTPBundleTransportConnectionShared*>(ptr);
@@ -2945,7 +2981,10 @@ static SimulcastMediaFrameListenerShared SimulcastMediaFrameListenerShared_null_
 SimulcastMediaFrameListenerShared* SimulcastMediaFrameListenerShared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return &SimulcastMediaFrameListenerShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &SimulcastMediaFrameListenerShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_SimulcastMediaFrameListenerShared,  0 );
   if (!ptr) return &SimulcastMediaFrameListenerShared_null_ptr;
   return reinterpret_cast<SimulcastMediaFrameListenerShared*>(ptr);
