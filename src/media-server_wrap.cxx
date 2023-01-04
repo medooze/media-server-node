@@ -2521,7 +2521,7 @@ public:
 				//Convert to Uint8Array
 				v8::Local<v8::Uint8Array> uint8array = frame.As<v8::Uint8Array>();
 				//Convert to annexB
-				H264ToAnnexB((uint8_t*)uint8array->Buffer()->GetContents().Data(), uint8array->Buffer()->ByteLength());
+				H264ToAnnexB((uint8_t*)uint8array->Buffer()->GetBackingStore()->Data(), uint8array->Buffer()->ByteLength());
 			}
 			//Create local args
 			argv[i++] = frame;
