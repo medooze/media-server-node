@@ -10,7 +10,10 @@ static T ## Shared T ## Shared_null_ptr = {};
 T ## Shared* T ## Shared_from_proxy(const v8::Local<v8::Value> input)
 {
   void *ptr = nullptr;
-  v8::Local<v8::Value> target = v8::Local<v8::Proxy>::Cast(input)->GetTarget();
+  if (input.IsEmpty() || !input->IsObject()) return & ## T ## Shared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return & ## T ## Shared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_## T ## Shared,  0 );
   if (!ptr) return & ## T ## Shared_null_ptr;
   return reinterpret_cast<T ## Shared*>(ptr);
