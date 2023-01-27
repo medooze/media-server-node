@@ -153,6 +153,8 @@ Returns **[Object][4]** Object containing the capabilities by media ("audio","vi
 
 ## SDPManager
 
+**Extends Emitter**
+
 SDPManager
 
 ### getState
@@ -167,44 +169,21 @@ Returns the Transport object created by the SDP O/A
 
 Returns **[Transport][9]** 
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listeener` **[function][10]** Event listener
-
-Returns **[SDPManager][11]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[SDPManager][11]** 
-
 ### stop
 
 Stop manager and associated tranports
 
+### stopped
+
+SDPManager stopped event
+
+#### Parameters
+
+*   `transport` **[SDPManager][10]** 
+
 ## ActiveSpeakerMultiplexer
+
+**Extends Emitter**
 
 ActiveSpeakerMultiplexer multiplex multiple incoming audio tracks into fewer outgoing tracks based on voice activity.
 
@@ -246,7 +225,7 @@ Add incoming track for speaker detection
 
 #### Parameters
 
-*   `track` **[IncomingStreamTrack][13]** 
+*   `track` **[IncomingStreamTrack][11]** 
 
 ### removeSpeaker
 
@@ -254,40 +233,7 @@ Remove track from speaker detection
 
 #### Parameters
 
-*   `track` **[IncomingStreamTrack][13]** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
+*   `track` **[IncomingStreamTrack][11]** 
 
 ### stop
 
@@ -299,8 +245,8 @@ ActiveSpeakerMultiplexer new active speaker detected event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** Track that has been voice activated
-*   `outgoingStreamTrack` **[IncomingStreamTrack][13]** Track that has been multiplexed into
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** Track that has been voice activated
+*   `outgoingStreamTrack` **[IncomingStreamTrack][11]** Track that has been multiplexed into
 
 ### noactivespeaker
 
@@ -308,7 +254,7 @@ ActiveSpeakerMultiplexer active speaker removed event
 
 #### Parameters
 
-*   `outgoingStreamTrack` **[IncomingStreamTrack][13]** Track with no active speaker
+*   `outgoingStreamTrack` **[IncomingStreamTrack][11]** Track with no active speaker
 
 ### stopped
 
@@ -316,9 +262,11 @@ ActiveSpeakerMultiplexer stopped event
 
 #### Parameters
 
-*   `ActiveSpeakerMultiplexer` **[ActiveSpeakerMultiplexer][14]** 
+*   `ActiveSpeakerMultiplexer` **[ActiveSpeakerMultiplexer][12]** 
 
 ## RecorderTrack
+
+**Extends Emitter**
 
 Track of the recorder associated to an incoming strem track
 
@@ -330,7 +278,7 @@ Get recorder track id
 
 Get incoming stream track
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack][11]** 
 
 ### isMuted
 
@@ -347,39 +295,6 @@ This operation will not change the muted state of the stream this track belongs 
 
 *   `muting` **[boolean][2]** if we want to mute or unmute
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[RecorderTrack][15]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[RecorderTrack][15]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[RecorderTrack][15]** 
-
 ### stop
 
 Stop recording this track
@@ -390,9 +305,11 @@ RecorderTrack stopped event
 
 #### Parameters
 
-*   `recorderTrack` **[RecorderTrack][15]** 
+*   `recorderTrack` **[RecorderTrack][13]** 
 
 ## Refresher
+
+**Extends Emitter**
 
 Periodically request an I frame on all incoming stream or tracks
 
@@ -402,7 +319,7 @@ Add stream or track to request
 
 #### Parameters
 
-*   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
+*   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][11])** 
 
 ### remove
 
@@ -410,40 +327,7 @@ Remove stream or track to request
 
 #### Parameters
 
-*   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][13])** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[OutgoingStream][16]** 
+*   `streamOrTrack` **(IncomintgStream | [IncomingStreamTrack][11])** 
 
 ### stop
 
@@ -455,7 +339,7 @@ Refresher event to indicate that refesh is taking place
 
 #### Parameters
 
-*   `refreser` **[Refresher][17]** 
+*   `refreser` **[Refresher][14]** 
 
 ### stopped
 
@@ -463,9 +347,11 @@ Refresher stopped event
 
 #### Parameters
 
-*   `refresher` **[Refresher][17]** 
+*   `refresher` **[Refresher][14]** 
 
 ## Streamer
+
+**Extends Emitter**
 
 An streamer allows to send and receive plain RTP over udp sockets.
 This allows both to bridge legacy enpoints or integrate streaming/broadcasting services.
@@ -488,40 +374,7 @@ Creates a new streaming session from a media description
         *   `params.remote.port` **[Number][5]** Sending port
     *   `params.noRTCP` **[Number][5]** Disable sending rtcp
 
-Returns **[StreamerSession][18]** The new streaming session
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listeener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
+Returns **[StreamerSession][15]** The new streaming session
 
 ### stop
 
@@ -536,6 +389,8 @@ Streamer stopped event
 *   `streamer` **[Streamer][8]** 
 
 ## ActiveSpeakerDetector
+
+**Extends Emitter**
 
 ActiveSpeakerDetector accumulate received voice activity and fires an event when it changes
 
@@ -577,7 +432,7 @@ Add incoming track for speaker detection
 
 #### Parameters
 
-*   `track` **[IncomingStreamTrack][13]** 
+*   `track` **[IncomingStreamTrack][11]** 
 
 ### removeSpeaker
 
@@ -586,39 +441,6 @@ Remove track from speaker detection
 #### Parameters
 
 *   `track` **IncomingStreamTrakc** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
 
 ### stop
 
@@ -630,7 +452,7 @@ ActiveSpeakerDetector new active speaker detected event
 
 #### Parameters
 
-*   `track` **[IncomingStreamTrack][13]** Track that has been activated
+*   `track` **[IncomingStreamTrack][11]** Track that has been activated
 
 ### stopped
 
@@ -638,9 +460,11 @@ ActiveSpeakerDetector stopped event
 
 #### Parameters
 
-*   `activeSpeakerDetector` **[ActiveSpeakerDetector][19]** 
+*   `activeSpeakerDetector` **[ActiveSpeakerDetector][16]** 
 
 ## Transponder
+
+**Extends Emitter**
 
 Transponder copies data from an incoming track to an outgoing track and allows stream modifications
 
@@ -650,7 +474,7 @@ Set incoming track
 
 #### Parameters
 
-*   `track` **[IncomingStreamTrack][13]** Incoming track to attach to
+*   `track` **[IncomingStreamTrack][11]** Incoming track to attach to
 *   `layers` **[Object][4]** \[Optional] Only applicable to video tracks
 
     *   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
@@ -678,7 +502,7 @@ Returns **[String][1]** "audio"|"video"
 
 Get attached track
 
-Returns **[IncomingStreamTrack][13]** track
+Returns **[IncomingStreamTrack][11]** track
 
 ### getAvailableLayers
 
@@ -782,39 +606,6 @@ Set maximum statial and temporal layers to be forwrarded. Base layer is always e
 *   `maxSpatialLayerId` **[Number][5]** Max spatial layer id
 *   `maxTemporalLayerId` **[Number][5]** Max temporal layer id
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
 ### stop
 
 Stop this transponder, will dettach the OutgoingStreamTrack
@@ -825,7 +616,7 @@ Transponder muted event
 
 #### Parameters
 
-*   `transponder` **[Transponder][20]** 
+*   `transponder` **[Transponder][17]** 
 
 ### muted
 
@@ -833,7 +624,7 @@ Transponder muted event
 
 #### Parameters
 
-*   `transponder` **[Transponder][20]** 
+*   `transponder` **[Transponder][17]** 
 
 ### stopped
 
@@ -841,9 +632,11 @@ Transponder stopped event
 
 #### Parameters
 
-*   `transponder` **[Transponder][20]** 
+*   `transponder` **[Transponder][17]** 
 
 ## Recorder
+
+**Extends Emitter**
 
 MP4 recorder that allows to record several streams/tracks on a single mp4 file
 
@@ -857,7 +650,7 @@ Returns **[String][1]**
 
 Get recording filename
 
-Returns **[Date][21]** 
+Returns **[Date][18]** 
 
 ### isTimeShifted
 
@@ -879,10 +672,10 @@ Start recording and incoming
 
 #### Parameters
 
-*   `incomingStreamOrTrack` **([IncomingStream][12] | [IncomingStreamTrack][13])** Incomining stream or track to be recordeds
+*   `incomingStreamOrTrack` **([IncomingStream][19] | [IncomingStreamTrack][11])** Incomining stream or track to be recordeds
 *   `options`  
 
-Returns **[Array][22]<[RecorderTrack][15]>** 
+Returns **[Array][20]<[RecorderTrack][13]>** 
 
 ### mute
 
@@ -893,44 +686,11 @@ This operation will not change the muted state of the stream this track belongs 
 
 *   `muting` **[boolean][2]** if we want to mute or unmute
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Recorder][6]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Recorder][6]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Recorder][6]** 
-
 ### stop
 
 Stop recording and close file. NOTE: File will be flsuh async,
 
-Returns **[undefined][23]** TODO: return promise when flush is ended
+Returns **[undefined][21]** TODO: return promise when flush is ended
 
 ### started
 
@@ -951,58 +711,27 @@ Recorder stopped event
 
 ## Player
 
+**Extends Emitter**
+
 MP4 recorder that allows to record several streams/tracks on a single mp4 file
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
 
 ### getTracks
 
 Get all the tracks
 
-Returns **[Array][22]<[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array][20]<[IncomingStreamTrack][11]>** Array of tracks
 
 ### getAudioTracks
 
 Get an array of the media stream audio tracks
 
-Returns **[Array][22]<[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array][20]<[IncomingStreamTrack][11]>** Array of tracks
 
 ### getVideoTracks
 
 Get an array of the media stream video tracks
 
-Returns **[Array][22]<[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array][20]<[IncomingStreamTrack][11]>** Array of tracks
 
 ### play
 
@@ -1052,6 +781,8 @@ Player stopped event
 
 ## StreamerSession
 
+**Extends Emitter**
+
 Represent the connection between a local udp port and a remote one. It sends and/or receive plain RTP data.
 
 ### getLocalPort
@@ -1073,46 +804,13 @@ Set the rempte rtp/udp ip and port
 
 Returns the incoming stream track associated with this streaming session
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack][11]** 
 
 ### getOutgoingStreamTrack
 
 Returns the outgoing stream track associated with this streaming session
 
-Returns **[OutgoingStreamTrack][24]** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[StreamerSession][18]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[StreamerSession][18]** 
+Returns **[OutgoingStreamTrack][22]** 
 
 ### stop
 
@@ -1124,7 +822,7 @@ StreamerSession stopped event
 
 #### Parameters
 
-*   `session` **[StreamerSession][18]** 
+*   `session` **[StreamerSession][15]** 
 
 ## on
 
@@ -1133,7 +831,7 @@ Add event listener
 ### Parameters
 
 *   `event` **[String][1]** Event name
-*   `listeener` **[function][10]** Event listener
+*   `listeener` **[function][23]** Event listener
 
 Returns **[Transport][9]** 
 
@@ -1144,9 +842,9 @@ Add event listener once
 ### Parameters
 
 *   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
+*   `listener` **[function][23]** Event listener
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream][19]** 
 
 ## off
 
@@ -1155,11 +853,13 @@ Remove event listener
 ### Parameters
 
 *   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
+*   `listener` **[function][23]** Event listener
 
 Returns **[Transport][9]** 
 
 ## IncomingStream
+
+**Extends Emitter**
 
 The incoming streams represent the recived media stream from a remote peer.
 
@@ -1174,39 +874,6 @@ Returns **[String][1]**
 Get the stream info object for signaling the ssrcs and stream info on the SDP from the remote peer
 
 Returns **StreamInfo** The stream info object
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
 
 ### getStats
 
@@ -1228,7 +895,7 @@ Get track by id
 
 *   `trackId` **[String][1]** The track id
 
-Returns **[IncomingStreamTrack][13]** requested track or null
+Returns **[IncomingStreamTrack][11]** requested track or null
 
 ### getTracks
 
@@ -1238,19 +905,19 @@ Get all the tracks
 
 *   `type` **[String][1]** The media type (Optional)
 
-Returns **[Array][22]<[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array][20]<[IncomingStreamTrack][11]>** Array of tracks
 
 ### getAudioTracks
 
 Get an array of the media stream audio tracks
 
-Returns **[Array][22]<[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array][20]<[IncomingStreamTrack][11]>** Array of tracks
 
 ### getVideoTracks
 
 Get an array of the media stream video tracks
 
-Returns **[Array][22]<[IncomingStreamTrack][13]>** Array of tracks
+Returns **[Array][20]<[IncomingStreamTrack][11]>** Array of tracks
 
 ### createTrack
 
@@ -1260,7 +927,7 @@ Create new track from a TrackInfo object and add it to this stream
 
 *   `trackInfo` **TrackInfo** Track info object
 
-Returns **[IncomingStreamTrack][13]** 
+Returns **[IncomingStreamTrack][11]** 
 
 ### reset
 
@@ -1288,7 +955,7 @@ IncomingStream attached event
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** 
+*   `incomingStream` **[IncomingStream][19]** 
 
 ### attached
 
@@ -1296,7 +963,7 @@ IncomingStream attached event
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** 
+*   `incomingStream` **[IncomingStream][19]** 
 
 ### detached
 
@@ -1304,7 +971,7 @@ IncomingStream detached event
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** 
+*   `incomingStream` **[IncomingStream][19]** 
 
 ### track
 
@@ -1312,8 +979,8 @@ IncomingStreamTrack added to stream
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+*   `incomingStream` **[IncomingStream][19]** 
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
 
 ### stopped
 
@@ -1321,10 +988,12 @@ IncomingStream stopped event
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** 
+*   `incomingStream` **[IncomingStream][19]** 
 *   `last` **Objects** stats before closing
 
 ## IncomingStreamTrackSimulcastAdapter
+
+**Extends Emitter**
 
 Bundle multiple video track as if they were a single simulcast video track
 
@@ -1335,7 +1004,7 @@ Add video track to the simulcast adapter
 #### Parameters
 
 *   `encodingId` **[String][1]** Id used as base for encodings id
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** Incoming video stream track
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** Incoming video stream track
 
 ### removeTrack
 
@@ -1343,13 +1012,13 @@ Remove video track to the simulcast adapter
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** Incoming video stream track
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** Incoming video stream track
 
 ### getStats
 
 Get stats for all encodings from the original track
 
-Returns **[Map][25]<[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
 
 ### getActiveLayers
 
@@ -1383,45 +1052,12 @@ Get track media type
 
 Returns **[String][1]** "audio"|"video"
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
 ### getEncodings
 
 Get all track encodings
 Internal use, you'd beter know what you are doing before calling this method
 
-Returns **[Array][22]<[Object][4]>** encodings
+Returns **[Array][20]<[Object][4]>** encodings
 \*
 
 ### getEncoding
@@ -1474,13 +1110,15 @@ Removes the track from the incoming stream and also detaches any attached outgoi
 
 ## IncomingStreamTrackMirrored
 
+**Extends Emitter**
+
 Mirror incoming stream from another endpoint. Used to avoid inter-thread synchronization when attaching multiple output streams.
 
 ### getStats
 
 Get stats for all encodings from the original track
 
-Returns **[Map][25]<[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
 
 ### getActiveLayers
 
@@ -1514,45 +1152,12 @@ Get track media type
 
 Returns **[String][1]** "audio"|"video"
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
 ### getEncodings
 
 Get all track encodings
 Internal use, you'd beter know what you are doing before calling this method
 
-Returns **[Array][22]<[Object][4]>** encodings
+Returns **[Array][20]<[Object][4]>** encodings
 \*
 
 ### getEncoding
@@ -1609,7 +1214,7 @@ IncomingStreamTrackMirrored attached event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][25]** 
 
 ### attached
 
@@ -1617,7 +1222,7 @@ IncomingStreamTrackMirrored attached event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][25]** 
 
 ### detached
 
@@ -1625,7 +1230,7 @@ IncomingStreamTrackMirrored dettached event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][25]** 
 
 ### detached
 
@@ -1633,7 +1238,7 @@ IncomingStreamTrackMirrored dettached event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][25]** 
 
 ### stopped
 
@@ -1641,7 +1246,7 @@ IncomingStreamTrack stopped event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][25]** 
 
 ### stopped
 
@@ -1649,9 +1254,11 @@ IncomingStreamTrack stopped event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][26]** 
+*   `incomingStreamTrack` **[IncomingStreamTrackMirrored][25]** 
 
 ## OutgoingStream
+
+**Extends Emitter**
 
 The incoming streams represent the media stream sent to a remote peer.
 
@@ -1673,7 +1280,7 @@ Listen media from the incoming stream and send it to the remote peer of the asso
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** The incoming stream to listen media for
+*   `incomingStream` **[IncomingStream][19]** The incoming stream to listen media for
 *   `layers` **[Object][4]** \[Optional] Only applicable to video tracks
 
     *   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
@@ -1682,7 +1289,7 @@ Listen media from the incoming stream and send it to the remote peer of the asso
     *   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
     *   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
 
-Returns **[Array][22]<[Transponder][20]>** Track transponders array
+Returns **[Array][20]<[Transponder][17]>** Track transponders array
 
 ### detach
 
@@ -1700,39 +1307,6 @@ The media stream id as announced on the SDP
 
 Returns **[String][1]** 
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[OutgoingStream][16]** 
-
 ### getTracks
 
 Get all the tracks
@@ -1741,7 +1315,7 @@ Get all the tracks
 
 *   `type` **[String][1]** The media type (Optional)
 
-Returns **[Array][22]<[OutgoingStreamTrack][24]>** Array of tracks
+Returns **[Array][20]<[OutgoingStreamTrack][22]>** Array of tracks
 
 ### getTrack
 
@@ -1751,19 +1325,19 @@ Get track by id
 
 *   `trackId` **[String][1]** The track id
 
-Returns **[IncomingStreamTrack][13]** requested track or null
+Returns **[IncomingStreamTrack][11]** requested track or null
 
 ### getAudioTracks
 
 Get an array of the media stream audio tracks
 
-Returns **([Array][22] | OutgoingStreamTracks)** Array of tracks
+Returns **([Array][20] | OutgoingStreamTracks)** Array of tracks
 
 ### getVideoTracks
 
 Get an array of the media stream video tracks
 
-Returns **([Array][22] | [OutgoingStreamTrack][24])** Array of tracks
+Returns **([Array][20] | [OutgoingStreamTrack][22])** Array of tracks
 
 ### createTrack
 
@@ -1782,7 +1356,7 @@ Create new track from a TrackInfo object and add it to this stream
         *   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
 *   `trackInfo` **TrackInfo** Track info object
 
-Returns **[OutgoingStream][16]** The new outgoing stream
+Returns **[OutgoingStream][26]** The new outgoing stream
 
 Returns **OugoingStreamTrack** 
 
@@ -1808,45 +1382,14 @@ OutgoingStream stopped event
 
 #### Parameters
 
-*   `outgoingStream` **[OutgoingStream][16]** 
+*   `outgoingStream` **[OutgoingStream][26]** 
 *   `last` **Objects** stats before closing
 
 ## PeerConnectionServer
 
+**Extends Emitter**
+
 Manager of remote peer connecion clients
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listeener` **[function][10]** Event listener
-
-Returns **[PeerConnectionServer][27]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[PeerConnectionServer][27]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[PeerConnectionServer][27]** 
 
 ### stop
 
@@ -1870,6 +1413,8 @@ PeerConnectionServer stopped event
 
 ## EmulatedTransport
 
+**Extends Emitter**
+
 An emulated transport reads data from a unencrypted pcap file (typically from a transport dump), and acts like if it was a live transport from a remote peer.
 You must create the incoming streams as signaled on the remote SDP as any incoming RTP with an unknown ssrc will be ignored. The emulated transport does not allow creating outgoing streams.
 
@@ -1884,39 +1429,6 @@ Set remote RTP properties
     *   `rtp.audio` **MediaInfo** Audio media info
     *   `rtp.video` **MediaInfo** Video media info
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listeener` **[function][10]** Event listener
-
-Returns **[Transport][9]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Transport][9]** 
-
 ### createIncomingStream
 
 Create an incoming stream object from the media stream info objet
@@ -1925,7 +1437,7 @@ Create an incoming stream object from the media stream info objet
 
 *   `info` **StreamInfo** Contains the ids and ssrcs of the stream to be created
 
-Returns **[IncomingStream][12]** The newly created incoming stream object
+Returns **[IncomingStream][19]** The newly created incoming stream object
 
 ### play
 
@@ -1966,6 +1478,8 @@ Transport stopped event
 *   `transport` **[EmulatedTransport][28]** 
 
 ## Endpoint
+
+**Extends Emitter**
 
 An endpoint represent an UDP server socket.
 The endpoint will process STUN requests in order to be able to associate the remote ip:port with the registered transport and forward any further data comming from that transport.
@@ -2091,9 +1605,9 @@ Create new active speaker multiplexer for given outgoing tracks
 
 #### Parameters
 
-*   `streamOrTracks` **([OutgoingStream][16] | Array.OutgoingStreamTrack)** Outgoing stream or outgoing stream track array to be multiplexed
+*   `streamOrTracks` **([OutgoingStream][26] | Array.OutgoingStreamTrack)** Outgoing stream or outgoing stream track array to be multiplexed
 
-Returns **[ActiveSpeakerMultiplexer][14]** 
+Returns **[ActiveSpeakerMultiplexer][12]** 
 
 ### mirrorIncomingStream
 
@@ -2102,9 +1616,9 @@ The endpoint will cache the cucrrent mirrored streams and return an already exis
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** stream to mirror
+*   `incomingStream` **[IncomingStream][19]** stream to mirror
 
-Returns **[IncomingStream][12]** mirrored stream.
+Returns **[IncomingStream][19]** mirrored stream.
 
 ### mirrorIncomingStreamTrack
 
@@ -2113,9 +1627,9 @@ The endpoint will cache the cucrrent mirrored tracks and return an already exist
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** track to mirror
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** track to mirror
 
-Returns **[IncomingStreamTrackMirrored][26]** mirrored track.
+Returns **[IncomingStreamTrackMirrored][25]** mirrored track.
 
 ### createSDPManager
 
@@ -2126,40 +1640,7 @@ Create new SDP manager, this object will manage the SDP O/A for you and produce 
 *   `sdpSemantics` **[String][1]** Type of sdp plan "unified-plan" or "plan-b"
 *   `capabilities` **[Object][4]** Capabilities objects
 
-Returns **[SDPManager][11]** 
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listeener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Endpoint][3]** 
+Returns **[SDPManager][10]** 
 
 ### stop
 
@@ -2174,6 +1655,8 @@ Endpoint stopped event
 *   `endpoint` **[Endpoint][3]** 
 
 ## Transport
+
+**Extends Emitter**
 
 A transport represent a connection between a local ICE candidate and a remote set of ICE candidates over a single DTLS session.
 The transport object will internally allocate the ICE and DTLS information of the local side in order to signal it to the remote side and establish the connection.
@@ -2237,6 +1720,12 @@ Returns **Nummber**
 ### getEstimatedBitrate
 
 Get bandwidth estimation in bps.
+
+Returns **Nummber** 
+
+### getTotalSentBitrate
+
+Get current sent bitrate
 
 Returns **Nummber** 
 
@@ -2304,39 +1793,6 @@ Set remote RTP properties
 
     *   `rtp.audio` **MediaInfo** Audio media info
     *   `rtp.video` **MediaInfo** Video media info
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listeener` **[function][10]** Event listener
-
-Returns **[Transport][9]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[Transport][9]** 
 
 ### getDTLSState
 
@@ -2406,14 +1862,14 @@ Create new outgoing stream in this transport
 
 *   `params` **([Object][4] | StreamInfo | [String][1])** Params plain object, StreamInfo object or stream id
 
-    *   `params.audio` **([Array][22]<[Object][4]> | [Object][4] | [boolean][2])** Add audio track to the new stream
+    *   `params.audio` **([Array][20]<[Object][4]> | [Object][4] | [boolean][2])** Add audio track to the new stream
 
         *   `params.audio.id` **[Object][4]?** Stream track id (default: "audio")
         *   `params.audio.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
 
             *   `params.audio.ssrcs.media` **[Number][5]?** ssrc for the audio track
     *   `params.id` **[Object][4]?** Stream id, an UUID will be generated if not provided
-    *   `params.video` **([Array][22]<[Object][4]> | [Object][4] | [boolean][2])** Add video track to the new stream
+    *   `params.video` **([Array][20]<[Object][4]> | [Object][4] | [boolean][2])** Add video track to the new stream
 
         *   `params.video.id` **[Object][4]?** Stream track id (default: "video")
         *   `params.video.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
@@ -2421,7 +1877,7 @@ Create new outgoing stream in this transport
             *   `params.video.ssrcs.media` **[Number][5]?** ssrc for the video track
             *   `params.video.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
 
-Returns **[OutgoingStream][16]** The new outgoing stream
+Returns **[OutgoingStream][26]** The new outgoing stream
 
 ### createOutgoingStreamTrack
 
@@ -2439,7 +1895,7 @@ Create new outgoing stream in this transport
         *   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
         *   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
 
-Returns **[OutgoingStreamTrack][24]** The new outgoing stream track
+Returns **[OutgoingStreamTrack][22]** The new outgoing stream track
 
 ### createIncomingStream
 
@@ -2449,13 +1905,13 @@ Create an incoming stream object from the media stream info objet
 
 *   `info` **(StreamInfo | [Object][4] | [String][1])** Contains the ids and ssrcs of the stream to be created
 
-Returns **[IncomingStream][12]** The newly created incoming stream object
+Returns **[IncomingStream][19]** The newly created incoming stream object
 
 ### getIncomingStreams
 
 Get all the incoming streams in the transport
 
-Returns **[Array][22]\<IncomingStreams>** 
+Returns **[Array][20]\<IncomingStreams>** 
 
 ### getIncomingStream
 
@@ -2465,13 +1921,13 @@ Get incoming stream
 
 *   `streamId` **[String][1]** the stream ID
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream][19]** 
 
 ### getOutgoingStreams
 
 Get all the outgoing streams in the transport
 
-Returns **[Array][22]\<OutgoingStreams>** 
+Returns **[Array][20]\<OutgoingStreams>** 
 
 ### getOutgoingStream
 
@@ -2481,7 +1937,7 @@ Get incoming stream
 
 *   `streamId` **[String][1]** the stream ID
 
-Returns **[IncomingStream][12]** 
+Returns **[IncomingStream][19]** 
 
 ### createIncomingStreamTrack
 
@@ -2499,7 +1955,7 @@ Create new incoming stream in this transport. TODO: Simulcast is still not suppo
         *   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
         *   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
 
-Returns **[IncomingStreamTrack][13]** The new incoming stream track
+Returns **[IncomingStreamTrack][11]** The new incoming stream track
 
 ### publish
 
@@ -2507,9 +1963,9 @@ Create new outgoing stream and attach to the incoming stream
 
 #### Parameters
 
-*   `incomingStream` **[IncomingStream][12]** the incoming stream to be published in this transport
+*   `incomingStream` **[IncomingStream][19]** the incoming stream to be published in this transport
 
-Returns **[OutgoingStream][16]** The new outgoing stream
+Returns **[OutgoingStream][26]** The new outgoing stream
 
 ### stop
 
@@ -2550,6 +2006,7 @@ Transport sender side estimation bitrate target udpate
 
 *   `targetBitrate` **Integer** 
 *   `bandwidthEstimation` **Integer** 
+*   `totalBitrate` **Integer** 
 *   `transport` **[Transport][9]** 
 
 ### outgoingtrack
@@ -2558,8 +2015,8 @@ New outgoing stream track added to transport
 
 #### Parameters
 
-*   `track` **[OutgoingStreamTrack][24]** 
-*   `stream` **[OutgoingStream][16]?** 
+*   `track` **[OutgoingStreamTrack][22]** 
+*   `stream` **[OutgoingStream][26]?** 
 
 ### incomingtrack
 
@@ -2567,8 +2024,8 @@ New incoming stream track added to transport
 
 #### Parameters
 
-*   `track` **[IncomingStreamTrack][13]** 
-*   `stream` **[IncomingStream][12]** 
+*   `track` **[IncomingStreamTrack][11]** 
+*   `stream` **[IncomingStream][19]** 
 
 ### stopped
 
@@ -2604,6 +2061,8 @@ parse a dot-separated IPv4 into a normalized address as u32be
 *   `ip`  
 
 ## OutgoingStreamTrack
+
+**Extends Emitter**
 
 Audio or Video track of a media stream sent to a remote peer
 
@@ -2659,7 +2118,7 @@ The stats objects will privide the follwing info for each source
 *   reportedFractionLost	: fraction loss media reported during last second
 *   reportedJitter		: last reported jitter buffer value
 
-Returns **[Map][25]<[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
 
 ### getSSRCs
 
@@ -2683,7 +2142,7 @@ Returns **[Boolean][2]** true if attached, false otherwise
 
 Create a transponder if not already attached or return current one.
 
-Returns **[Transponder][20]** Track transponder object
+Returns **[Transponder][17]** Track transponder object
 
 ### attachTo
 
@@ -2692,7 +2151,7 @@ This will stop any previous transpoder created by a previous attach.
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** The incoming stream to listen media for
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** The incoming stream to listen media for
 *   `layers` **[Object][4]** \[Optional] Only applicable to video tracks
 
     *   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
@@ -2701,7 +2160,7 @@ This will stop any previous transpoder created by a previous attach.
     *   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
     *   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
 
-Returns **[Transponder][20]** Track transponder object
+Returns **[Transponder][17]** Track transponder object
 
 ### detach
 
@@ -2712,40 +2171,7 @@ This will set the transponder inconming track to null
 
 Get attached transpoder for this track
 
-Returns **[Transponder][20]** Attached transpoder or null if not attached
-
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
+Returns **[Transponder][17]** Attached transpoder or null if not attached
 
 ### stop
 
@@ -2757,7 +2183,7 @@ OutgoingStreamTrack remb event
 
 #### Parameters
 
-*   `outgoingStreamTrack` **[OutgoingStreamTrack][24]** 
+*   `outgoingStreamTrack` **[OutgoingStreamTrack][22]** 
 *   `bitrate` **[Number][5]** estimation
 
 ### muted
@@ -2798,7 +2224,7 @@ OutgoingStreamTrack stopped event
 
 #### Parameters
 
-*   `outgoingStreamTrack` **[OutgoingStreamTrack][24]** 
+*   `outgoingStreamTrack` **[OutgoingStreamTrack][22]** 
 
 ## parseCIDR
 
@@ -2809,6 +2235,8 @@ parse a CIDR into a normalized \[address as u32be, prefix length] tuple
 *   `cidr`  
 
 ## IncomingStreamTrack
+
+**Extends Emitter**
 
 Audio or Video track of a remote media stream
 
@@ -2862,7 +2290,7 @@ The stats objects will provide the following info for each source
     *   numPackets	: number of rtp packets received for this layer
     *   bitrate		: average bitrate received during last second for this layer
 
-Returns **[Map][25]<[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
 
 ### getActiveLayers
 
@@ -2896,45 +2324,12 @@ Get track media type
 
 Returns **[String][1]** "audio"|"video"
 
-### on
-
-Add event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
-### once
-
-Add event listener once
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStream][12]** 
-
-### off
-
-Remove event listener
-
-#### Parameters
-
-*   `event` **[String][1]** Event name
-*   `listener` **[function][10]** Event listener
-
-Returns **[IncomingStreamTrack][13]** 
-
 ### getEncodings
 
 Get all track encodings
 Internal use, you'd beter know what you are doing before calling this method
 
-Returns **[Array][22]<[Object][4]>** encodings
+Returns **[Array][20]<[Object][4]>** encodings
 \*
 
 ### getEncoding
@@ -3027,7 +2422,7 @@ IncomingStreamTrack new encoding event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
 *   `encoding` **[Object][4]** 
 
 ### encoding
@@ -3036,7 +2431,7 @@ IncomingStreamTrack new encoding event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
 *   `encoding` **[Object][4]** 
 
 ### attached
@@ -3045,7 +2440,7 @@ IncomingStreamTrack attached event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
 
 ### detached
 
@@ -3053,7 +2448,7 @@ IncomingStreamTrack detached event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
 
 ### stopped
 
@@ -3061,7 +2456,7 @@ IncomingStreamTrack stopped event
 
 #### Parameters
 
-*   `incomingStreamTrack` **[IncomingStreamTrack][13]** 
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
 
 ## withSocket
 
@@ -3110,39 +2505,39 @@ selected (split to allow reusal from getInterfaceRawConfig).
 
 [9]: #transport
 
-[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[10]: #sdpmanager
 
-[11]: #sdpmanager
+[11]: #incomingstreamtrack
 
-[12]: #incomingstream
+[12]: #activespeakermultiplexer
 
-[13]: #incomingstreamtrack
+[13]: #recordertrack
 
-[14]: #activespeakermultiplexer
+[14]: #refresher
 
-[15]: #recordertrack
+[15]: #streamersession
 
-[16]: #outgoingstream
+[16]: #activespeakerdetector
 
-[17]: #refresher
+[17]: #transponder
 
-[18]: #streamersession
+[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
 
-[19]: #activespeakerdetector
+[19]: #incomingstream
 
-[20]: #transponder
+[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[21]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date
+[21]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
 
-[22]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[22]: #outgoingstreamtrack
 
-[23]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[23]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[24]: #outgoingstreamtrack
+[24]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
 
-[25]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+[25]: #incomingstreamtrackmirrored
 
-[26]: #incomingstreamtrackmirrored
+[26]: #outgoingstream
 
 [27]: #peerconnectionserver
 
