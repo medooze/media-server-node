@@ -137,6 +137,28 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 		}
 		test.end();
 	});
+
+	suite.test("forcePlaoutDelay",function(test){
+		try {
+			//Create new local stream
+			const outgoingStream  = transport.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//Mute
+			outgoingStream.mute(true);
+			//Get video track
+			const videoTrack = outgoingStream.getVideoTracks()[0];
+			//Should not fail
+			videoTrack.forcePlayoutDelay(0,0);
+			//Should be attached
+			test.pass("forcePlayoutDelay didn't fail");
+		} catch (error) {
+			//Test error
+			test.notOk(error,error);
+		}
+		test.end();
+	});
 	
 	suite.end();
 }),

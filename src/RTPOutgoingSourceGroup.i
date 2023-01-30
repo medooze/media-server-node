@@ -15,6 +15,7 @@ struct RTPOutgoingSourceGroup
 
 	void Update();
 	void Stop();
+	void SetForcedPlayoutDelay(uint16_t min, uint16_t max);
 };
 
 SHARED_PTR_BEGIN(RTPOutgoingSourceGroup)

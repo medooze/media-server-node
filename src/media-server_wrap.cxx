@@ -2208,6 +2208,22 @@ SWIGV8_VALUE SWIG_From_int  (int value)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_short (SWIGV8_VALUE obj, unsigned short *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > USHRT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< unsigned short >(v);
+    }
+  }  
+  return res;
+}
+
+
 using RTPOutgoingSourceGroupShared = std::shared_ptr<RTPOutgoingSourceGroup>;
 
 static RTPOutgoingSourceGroupShared RTPOutgoingSourceGroupShared_null_ptr = {};
@@ -2575,22 +2591,6 @@ MediaFrameReaderShared* MediaFrameReaderShared_from_proxy(const v8::Local<v8::Va
   return reinterpret_cast<MediaFrameReaderShared*>(ptr);
 }
 
-
-
-SWIGINTERN int
-SWIG_AsVal_unsigned_SS_short (SWIGV8_VALUE obj, unsigned short *val)
-{
-  unsigned long v;
-  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v > USHRT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< unsigned short >(v);
-    }
-  }  
-  return res;
-}
 
 SWIGINTERN MediaFrameReaderShared *new_MediaFrameReaderShared(v8::Local< v8::Object > object,bool intraOnly,uint16_t minPeriod){
 		return new std::shared_ptr<MediaFrameReader>(new MediaFrameReader(object,intraOnly,minPeriod));
@@ -6192,6 +6192,51 @@ static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_Stop(const SwigV8Arguments
   arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
   (arg1)->Stop();
   jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_SetForcedPlayoutDelay(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  uint16_t arg2 ;
+  uint16_t arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned short val2 ;
+  int ecode2 = 0 ;
+  unsigned short val3 ;
+  int ecode3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSourceGroup_SetForcedPlayoutDelay.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_SetForcedPlayoutDelay" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_short(args[0], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPOutgoingSourceGroup_SetForcedPlayoutDelay" "', argument " "2"" of type '" "uint16_t""'");
+  } 
+  arg2 = static_cast< uint16_t >(val2);
+  ecode3 = SWIG_AsVal_unsigned_SS_short(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RTPOutgoingSourceGroup_SetForcedPlayoutDelay" "', argument " "3"" of type '" "uint16_t""'");
+  } 
+  arg3 = static_cast< uint16_t >(val3);
+  (arg1)->SetForcedPlayoutDelay(arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
   
   
   SWIGV8_RETURN(jsresult);
@@ -16696,6 +16741,7 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTP
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "lastUpdated", _wrap_RTPOutgoingSourceGroup_lastUpdated_get, _wrap_RTPOutgoingSourceGroup_lastUpdated_set);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Update", _wrap_RTPOutgoingSourceGroup_Update);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Stop", _wrap_RTPOutgoingSourceGroup_Stop);
+SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "SetForcedPlayoutDelay", _wrap_RTPOutgoingSourceGroup_SetForcedPlayoutDelay);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroupShared_class, "get", _wrap_RTPOutgoingSourceGroupShared_get);
 SWIGV8_AddMemberFunction(_exports_RTPReceiver_class, "SendPLI", _wrap_RTPReceiver_SendPLI);
 SWIGV8_AddMemberFunction(_exports_RTPReceiver_class, "Reset", _wrap_RTPReceiver_Reset);
