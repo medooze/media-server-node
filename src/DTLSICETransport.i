@@ -40,6 +40,7 @@ struct DTLSICETransport
 	void SetSenderSideEstimatorListener(RemoteRateEstimatorListener* listener);
 	uint32_t GetAvailableOutgoingBitrate() const;
 	uint32_t GetEstimatedOutgoingBitrate() const;
+	uint32_t GetTotalSentBitrate() const;
 
 	void SetRemoteOverrideBWE(bool overrideBWE);
 	void SetRemoteOverrideBitrate(DWORD bitrate);

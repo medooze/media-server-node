@@ -8,7 +8,7 @@ public:
 	SimulcastMediaFrameListener(TimeService &timeService, DWORD ssrc, DWORD numLayers);
 	void SetNumLayers(DWORD numLayers);
 	void AddMediaListener(const MediaFrameListenerShared& listener);
-	void RemoveMediaListener(const MediaFrameListenerShared listener);
+	void RemoveMediaListener(const MediaFrameListenerShared& listener);
 	void Stop();
 };
 
