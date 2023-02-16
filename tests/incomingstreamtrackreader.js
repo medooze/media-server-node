@@ -75,7 +75,6 @@ tap.test("Refresher",async function(suite){
 			//Stop stream
 			incomingStream.stop();
 		} catch (error) {
-			//Test error
 			test.notOk(error,error.message);
 		}
 		test.end();

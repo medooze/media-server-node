@@ -2498,11 +2498,12 @@ class MediaFrameReader :
 {
 
 public:
-	MediaFrameReader(v8::Local<v8::Object> object,bool intraOnly, uint16_t minPeriod)
+	MediaFrameReader(v8::Local<v8::Object> object,bool intraOnly, uint32_t minPeriod, bool onDemand)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 		this->intraOnly = intraOnly;
 		this->minPeriod = minPeriod;
+		this->onDemand = onDemand;
 	}
 		
 	virtual ~MediaFrameReader() = default;
@@ -2523,6 +2524,10 @@ public:
 		//Get timestamp
 		uint64_t now = getTimeMS();
 
+		if (onDemand && !grabNextFrame)
+			//Ignore non requested frames when on demand mode
+			return;
+
 		if (minPeriod && now < lastFrame + minPeriod)
 			//Ignore frame before min perior
 			return;
@@ -2535,6 +2540,8 @@ public:
 		const char* codec =  frame.GetType()==MediaFrame::Video 
 					? VideoCodec::GetNameFor(((VideoFrame*)&frame)->GetCodec())
 					: AudioCodec::GetNameFor(((AudioFrame*)&frame)->GetCodec());
+		//Got frame, reset flag
+		grabNextFrame = false;
 
 		//Get frame buffer
 		Buffer::shared buffer = frame.GetBuffer();
@@ -2567,11 +2574,18 @@ public:
 			MakeCallback(cloned, "onframe", i, argv);
 		});
 	}
+
+	void GrabNextFrame()
+	{
+		grabNextFrame = true;
+	}
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 	bool intraOnly = false;
 	uint32_t minPeriod = 0;
 	uint64_t lastFrame = 0;
+	bool grabNextFrame = false;
+	bool onDemand = false;
 };
 
 
@@ -2592,8 +2606,8 @@ MediaFrameReaderShared* MediaFrameReaderShared_from_proxy(const v8::Local<v8::Va
 }
 
 
-SWIGINTERN MediaFrameReaderShared *new_MediaFrameReaderShared(v8::Local< v8::Object > object,bool intraOnly,uint16_t minPeriod){
-		return new std::shared_ptr<MediaFrameReader>(new MediaFrameReader(object,intraOnly,minPeriod));
+SWIGINTERN MediaFrameReaderShared *new_MediaFrameReaderShared(v8::Local< v8::Object > object,bool intraOnly,uint32_t minPeriod,bool onDemand){
+		return new std::shared_ptr<MediaFrameReader>(new MediaFrameReader(object,intraOnly,minPeriod,onDemand));
 	}
 SWIGINTERN MediaFrameListenerShared MediaFrameReaderShared_toMediaFrameListener__SWIG(MediaFrameReaderShared *self){
 	return std::static_pointer_cast<MediaFrameListener>(*self);
@@ -9321,6 +9335,33 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_MediaFrameReader_GrabNextFrame(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  MediaFrameReader *arg1 = (MediaFrameReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrameReader_GrabNextFrame.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrameReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrameReader_GrabNextFrame" "', argument " "1"" of type '" "MediaFrameReader *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrameReader * >(argp1);
+  (arg1)->GrabNextFrame();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_veto_MediaFrameReader(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -9336,14 +9377,17 @@ static SwigV8ReturnValue _wrap_new_MediaFrameReaderShared(const SwigV8Arguments 
   SWIGV8_OBJECT self = args.Holder();
   v8::Local< v8::Object > arg1 ;
   bool arg2 ;
-  uint16_t arg3 ;
+  uint32_t arg3 ;
+  bool arg4 ;
   bool val2 ;
   int ecode2 = 0 ;
-  unsigned short val3 ;
+  unsigned int val3 ;
   int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
   MediaFrameReaderShared *result;
   if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_MediaFrameReaderShared.");
-  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_MediaFrameReaderShared.");
+  if(args.Length() != 4) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_MediaFrameReaderShared.");
   {
     arg1 = v8::Local<v8::Object>::Cast(args[0]);
   }
@@ -9352,12 +9396,18 @@ static SwigV8ReturnValue _wrap_new_MediaFrameReaderShared(const SwigV8Arguments 
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MediaFrameReaderShared" "', argument " "2"" of type '" "bool""'");
   } 
   arg2 = static_cast< bool >(val2);
-  ecode3 = SWIG_AsVal_unsigned_SS_short(args[2], &val3);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(args[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MediaFrameReaderShared" "', argument " "3"" of type '" "uint16_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MediaFrameReaderShared" "', argument " "3"" of type '" "uint32_t""'");
   } 
-  arg3 = static_cast< uint16_t >(val3);
-  result = (MediaFrameReaderShared *)new_MediaFrameReaderShared(arg1,arg2,arg3);
+  arg3 = static_cast< uint32_t >(val3);
+  ecode4 = SWIG_AsVal_bool(args[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_MediaFrameReaderShared" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  result = (MediaFrameReaderShared *)new_MediaFrameReaderShared(arg1,arg2,arg3,arg4);
+  
   
   
   
@@ -16821,6 +16871,7 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "GetTimeService", _wra
 SWIGV8_AddMemberFunction(_exports_DTLSICETransportShared_class, "toRTPSender", _wrap_DTLSICETransportShared_toRTPSender);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransportShared_class, "toRTPReceiver", _wrap_DTLSICETransportShared_toRTPReceiver);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransportShared_class, "get", _wrap_DTLSICETransportShared_get);
+SWIGV8_AddMemberFunction(_exports_MediaFrameReader_class, "GrabNextFrame", _wrap_MediaFrameReader_GrabNextFrame);
 SWIGV8_AddMemberFunction(_exports_MediaFrameReaderShared_class, "toMediaFrameListener", _wrap_MediaFrameReaderShared_toMediaFrameListener);
 SWIGV8_AddMemberFunction(_exports_MediaFrameReaderShared_class, "get", _wrap_MediaFrameReaderShared_get);
 SWIGV8_AddMemberFunction(_exports_MP4RecorderFacade_class, "Create", _wrap_MP4RecorderFacade_Create);

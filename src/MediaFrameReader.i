@@ -11,11 +11,12 @@ class MediaFrameReader :
 {
 
 public:
-	MediaFrameReader(v8::Local<v8::Object> object,bool intraOnly, uint16_t minPeriod)
+	MediaFrameReader(v8::Local<v8::Object> object,bool intraOnly, uint32_t minPeriod, bool onDemand)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 		this->intraOnly = intraOnly;
 		this->minPeriod = minPeriod;
+		this->onDemand = onDemand;
 	}
 		
 	virtual ~MediaFrameReader() = default;
@@ -36,6 +37,10 @@ public:
 		//Get timestamp
 		uint64_t now = getTimeMS();
 
+		if (onDemand && !grabNextFrame)
+			//Ignore non requested frames when on demand mode
+			return;
+
 		if (minPeriod && now < lastFrame + minPeriod)
 			//Ignore frame before min perior
 			return;
@@ -48,6 +53,8 @@ public:
 		const char* codec =  frame.GetType()==MediaFrame::Video 
 					? VideoCodec::GetNameFor(((VideoFrame*)&frame)->GetCodec())
 					: AudioCodec::GetNameFor(((AudioFrame*)&frame)->GetCodec());
+		//Got frame, reset flag
+		grabNextFrame = false;
 
 		//Get frame buffer
 		Buffer::shared buffer = frame.GetBuffer();
@@ -80,11 +87,18 @@ public:
 			MakeCallback(cloned, "onframe", i, argv);
 		});
 	}
+
+	void GrabNextFrame()
+	{
+		grabNextFrame = true;
+	}
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 	bool intraOnly = false;
 	uint32_t minPeriod = 0;
 	uint64_t lastFrame = 0;
+	bool grabNextFrame = false;
+	bool onDemand = false;
 };
 %}
 
@@ -92,15 +106,18 @@ private:
 %nodefaultdtor MediaFrameReader;
 class MediaFrameReader 
 {
+public:
+	void GrabNextFrame();
 };
 
 SHARED_PTR_BEGIN(MediaFrameReader)
 {
-	MediaFrameReaderShared(v8::Local<v8::Object> object,bool intraOnly, uint16_t minPeriod)
+	MediaFrameReaderShared(v8::Local<v8::Object> object,bool intraOnly,  uint32_t minPeriod, bool onDemand)
 	{
-		return new std::shared_ptr<MediaFrameReader>(new MediaFrameReader(object,intraOnly,minPeriod));
+		return new std::shared_ptr<MediaFrameReader>(new MediaFrameReader(object,intraOnly,minPeriod,onDemand));
 	}
-	SHARED_PTR_TO( MediaFrameListener)
+	
+	SHARED_PTR_TO(MediaFrameListener)
 }
 SHARED_PTR_END(MediaFrameReader)
 
