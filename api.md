@@ -313,6 +313,15 @@ RecorderTrack stopped event
 
 Periodically request an I frame on all incoming stream or tracks
 
+### restart
+
+Restart refreshing interval
+
+#### Parameters
+
+*   `period`  
+*   `timeout` **[Number][5]** Refresh pedior in ms
+
 ### add
 
 Add stream or track to request
@@ -1495,6 +1504,15 @@ Set cpu affinity for udp send/recv thread.
 
 Returns **[boolean][2]** true if operation was successful
 
+### setDefaultSRTProtectionProfiles
+
+setDefaultSRTProtectionProfiles
+
+#### Parameters
+
+*   `srtpProtectionProfiles`  
+*   `profiles` **[String][1]** Colon delimited list of SRTP protection profile names
+
 ### setRawTx
 
 \[EXPERIMENTAL] See TypeScript typings for usage.
@@ -1562,6 +1580,7 @@ Create a new transport object and register it with the remote ICE username and p
     *   `options.srtpProtectionProfiles` **[String][1]** Colon delimited list of SRTP protection profile names
     *   `options.overrideBWE` **[boolean][2]** Override BWE reported by REMB
     *   `options.disableREMB` **[boolean][2]** Disable REMB BWE calculation.
+    *   `options.prefferDTLSSetupActive` **[boolean][2]** Preffer setting local DTLS setup to 'active' if remote is 'actpass'.
 
 Returns **[Transport][9]** New transport object
 
@@ -2035,23 +2054,6 @@ Transport stopped event
 
 *   `transport` **[Transport][9]** 
 
-## stopped
-
-AudioDecoder stopped event
-
-### Parameters
-
-*   `frame` **[Object][4]** 
-*   `reader` **IncomingStreamTrackReader** 
-
-## stopped
-
-AudioDecoder stopped event
-
-### Parameters
-
-*   `reader` **IncomingStreamTrackReader** 
-
 ## parseIPv4
 
 parse a dot-separated IPv4 into a normalized address as u32be
@@ -2225,6 +2227,23 @@ OutgoingStreamTrack stopped event
 #### Parameters
 
 *   `outgoingStreamTrack` **[OutgoingStreamTrack][22]** 
+
+## stopped
+
+AudioDecoder stopped event
+
+### Parameters
+
+*   `frame` **[Object][4]** 
+*   `reader` **IncomingStreamTrackReader** 
+
+## stopped
+
+AudioDecoder stopped event
+
+### Parameters
+
+*   `reader` **IncomingStreamTrackReader** 
 
 ## parseCIDR
 

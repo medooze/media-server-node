@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>medooze-media-server 0.129.9 | Documentation</title>
+  <title>medooze-media-server 0.133.0 | Documentation</title>
   <meta name='description' content='WebRTC Media Server by Medooze'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>medooze-media-server</h3>
-          <div class='mb1'><code>0.129.9</code></div>
+          <div class='mb1'><code>0.133.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -365,6 +365,12 @@
                   
                     <ul class='list-reset py1-ul pl1'>
                       <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#refresherrestart'
+                        class='regular pre-open'>
+                        #restart
+                      </a></li>
                       
                       <li><a
                         href='#refresheradd'
@@ -1619,6 +1625,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#endpointsetdefaultsrtprotectionprofiles'
+                        class='regular pre-open'>
+                        #setDefaultSRTProtectionProfiles
+                      </a></li>
+                      
+                      <li><a
                         href='#endpointsetrawtx'
                         class='regular pre-open'>
                         #setRawTx
@@ -1996,26 +2008,6 @@
               
                 
                 <li><a
-                  href='#eventstopped'
-                  class="">
-                  stopped
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#eventstopped'
-                  class="">
-                  stopped
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
                   href='#parseipv4'
                   class="">
                   parseIPv4
@@ -2162,6 +2154,26 @@
                     </ul>
                   
                 </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventstopped'
+                  class="">
+                  stopped
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventstopped'
+                  class="">
+                  stopped
+                  
+                </a>
                 
                 </li>
               
@@ -5060,6 +5072,77 @@ This operation will not change the muted state of the stream this track belongs 
   
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
+  
+    <div class='border-bottom' id='refresherrestart'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>restart(period, timeout)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Restart refreshing interval</p>
+
+    <div class='pre p1 fill-light mt0'>restart(period: any, timeout: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>period</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>timeout</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    Refresh pedior in ms
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
   
     <div class='border-bottom' id='refresheradd'>
       <div class="clearfix small pointer toggle-sibling">
@@ -15370,6 +15453,77 @@ Being a server it is ICE-lite.</p>
       </div>
     </div>
   
+    <div class='border-bottom' id='endpointsetdefaultsrtprotectionprofiles'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setDefaultSRTProtectionProfiles(srtpProtectionProfiles, profiles)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>setDefaultSRTProtectionProfiles</p>
+
+    <div class='pre p1 fill-light mt0'>setDefaultSRTProtectionProfiles(srtpProtectionProfiles: any, profiles: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>srtpProtectionProfiles</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>profiles</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Colon delimited list of SRTP protection profile names
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='endpointsetrawtx'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -15874,6 +16028,15 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
   <td class='break-word'><span class='code bold'>options.disableREMB</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
   </td>
   <td class='break-word'><span>Disable REMB BWE calculation.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.prefferDTLSSetupActive</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
+  </td>
+  <td class='break-word'><span>Preffer setting local DTLS setup to 'active' if remote is 'actpass'.
 </span></td>
 </tr>
 
@@ -19621,140 +19784,6 @@ This event fires when ICE candidate has correctly being checked out and we start
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='eventstopped'>
-      stopped
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>AudioDecoder stopped event</p>
-
-    <div class='pre p1 fill-light mt0'>stopped</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>frame</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='eventstopped'>
-      stopped
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>AudioDecoder stopped event</p>
-
-    <div class='pre p1 fill-light mt0'>stopped</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
     <h3 class='fl m0' id='parseipv4'>
       parseIPv4
     </h3>
@@ -21078,6 +21107,140 @@ This will set the transponder inconming track to null</p>
     </div>
   
 </div>
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventstopped'>
+      stopped
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>AudioDecoder stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>stopped</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>frame</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventstopped'>
+      stopped
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>AudioDecoder stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>stopped</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 </section>
