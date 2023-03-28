@@ -41,6 +41,7 @@
           'HAVE_UNISTD_H',
         ],
         'cflags': [
+          '-g',
           '-Wno-unused-variable',
         ],
       }],
