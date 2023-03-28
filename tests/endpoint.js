@@ -79,6 +79,15 @@ tap.test("Endpoint::create",async function(suite){
 		test.end();
 	});
 	
+	await suite.test("setDefaultSRTProtectionProfiles",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint("127.0.0.1");
+		//Set default profiles
+		endpoint.setDefaultSRTProtectionProfiles("SRTP_AEAD_AES_128_GCM:SRTP_AEAD_AES_256_GCM:SRTP_AES128_CM_SHA1_80");
+		//Ok
+		test.end();
+	});
+
 	suite.end();
 })
 ]).then(()=>MediaServer.terminate ());

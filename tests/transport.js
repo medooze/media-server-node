@@ -8,7 +8,10 @@ const OS		= require("os");
 MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
 MediaServer.enableUltraDebug(false);
+
 const endpoint = MediaServer.createEndpoint("127.0.0.1");
+//Set default srtp profiles
+endpoint.setDefaultSRTProtectionProfiles("SRTP_AEAD_AES_128_GCM:SRTP_AEAD_AES_256_GCM:SRTP_AES128_CM_SHA1_80");
 
 const DTLSInfo		= SemanticSDP.DTLSInfo;
 const ICEInfo		= SemanticSDP.ICEInfo;
@@ -31,6 +34,7 @@ Promise.all([
 				dtls		: new DTLSInfo(Setup.ACTIVE,"sha-256",endpoint.getDTLSFingerprint()),
 				ice		: ICEInfo.generate(true),
 			};
+			
 			//Create transports
 			const transport		= endpoint.createTransport (localInfo);
 			//Listen for stopped event
@@ -43,6 +47,7 @@ Promise.all([
 			test.done();
 
 		});
+
 		suite.test("ice+dtls",async function(test){
 			test.plan(8);
 			//create endpoints
