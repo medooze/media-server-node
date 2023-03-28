@@ -36,22 +36,24 @@ struct srtp_stream_list_ctx_t {
 // API implementation
 
 srtp_err_status_t
-srtp_stream_list_create(srtp_stream_list_t *list)
+srtp_stream_list_alloc(srtp_stream_list_t* list_ptr)
 {
-	(*list) = (srtp_stream_list_t) new srtp_stream_list_ctx_t;
+	(*list_ptr) = (srtp_stream_list_t) new srtp_stream_list_ctx_t;
 	return srtp_err_status_ok;
 }
 
-void srtp_stream_list_insert(srtp_stream_list_t *list, srtp_stream_t stream)
+srtp_err_status_t
+srtp_stream_list_insert(srtp_stream_list_t list, srtp_stream_t stream)
 {
-	auto &streams = (*(srtp_stream_list_ctx_t**)list)->streams;
+	auto &streams = ((srtp_stream_list_ctx_t*)list)->streams;
 	streams.insert(stream);
+	return srtp_err_status_ok;
 }
 
 srtp_stream_t
-srtp_stream_list_get(srtp_stream_list_t *list, uint32_t ssrc)
+srtp_stream_list_get(srtp_stream_list_t list, uint32_t ssrc)
 {
-	auto &streams = (*(srtp_stream_list_ctx_t**)list)->streams;
+	auto &streams = ((srtp_stream_list_ctx_t*)list)->streams;
 	// build key
 	srtp_stream_ctx_t key;
 	key.ssrc = ssrc;
@@ -63,26 +65,20 @@ srtp_stream_list_get(srtp_stream_list_t *list, uint32_t ssrc)
 	return *it;
 }
 
-srtp_stream_t
-srtp_stream_list_delete(srtp_stream_list_t *list, uint32_t ssrc)
+void
+srtp_stream_list_remove(srtp_stream_list_t list, srtp_stream_t stream)
 {
-	auto &streams = (*(srtp_stream_list_ctx_t**)list)->streams;
+	auto &streams = ((srtp_stream_list_ctx_t*)list)->streams;
 	// build key
 	srtp_stream_ctx_t key;
-	key.ssrc = ssrc;
-	// try to retrieve
-	auto it = streams.find(&key);
-	if (it == streams.end())
-		return nullptr;
-	// if successful, return
-	auto stream = *it;
-	streams.erase(it);
-	return stream;
+	key.ssrc = stream->ssrc;
+	streams.erase(&key);
 }
 
-void srtp_stream_list_for_each(srtp_stream_list_t *list, int (*callback)(srtp_stream_t, void *), void *data)
+void
+srtp_stream_list_for_each(srtp_stream_list_t list, int (*callback)(srtp_stream_t, void *), void *data)
 {
-	auto &streams = (*(srtp_stream_list_ctx_t**)list)->streams;
+	auto &streams = ((srtp_stream_list_ctx_t*)list)->streams;
 
 	for (auto it = streams.begin(); it != streams.end();)
 	{
@@ -92,20 +88,9 @@ void srtp_stream_list_for_each(srtp_stream_list_t *list, int (*callback)(srtp_st
 }
 
 srtp_err_status_t
-srtp_stream_list_dealloc(srtp_stream_list_t *list, srtp_stream_t template_)
+srtp_stream_list_dealloc(srtp_stream_list_t list)
 {
-	auto &streams = (*(srtp_stream_list_ctx_t**)list)->streams;
-
-	// walk list of streams, deallocating as we go
-	for (auto it = streams.begin(); it != streams.end();)
-	{
-		auto status = srtp_stream_dealloc(*it, template_);
-		if (status)
-			return status;
-		it = streams.erase(it);
-	}
-
 	// deallocate our state
-	delete (*(srtp_stream_list_ctx_t**)list);
+	delete ((srtp_stream_list_ctx_t*)list);
 	return srtp_err_status_ok;
 }
