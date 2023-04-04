@@ -2766,6 +2766,9 @@ SWIGV8_VALUE SWIG_From_double   (double val)
   return SWIGV8_NUMBER_NEW(val);
 }
 
+SWIGINTERN void Properties_SetIntegerProperty__SWIG(Properties *self,char const *key,int intval){ self->SetProperty(key,intval);	}
+SWIGINTERN void Properties_SetStringProperty__SWIG(Properties *self,char const *key,char const *val){ self->SetProperty(key,val);		}
+SWIGINTERN void Properties_SetBooleanProperty__SWIG(Properties *self,char const *key,bool boolval){ self->SetProperty(key,boolval);	}
 
 using RemoteRateEstimatorListener = RemoteRateEstimator::Listener;
 
@@ -11237,6 +11240,145 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_Properties_SetIntegerProperty(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  Properties *arg1 = (Properties *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Properties_SetIntegerProperty.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_SetIntegerProperty" "', argument " "1"" of type '" "Properties *""'"); 
+  }
+  arg1 = reinterpret_cast< Properties * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_SetIntegerProperty" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_int(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Properties_SetIntegerProperty" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  Properties_SetIntegerProperty__SWIG(arg1,(char const *)arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_Properties_SetStringProperty(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  Properties *arg1 = (Properties *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Properties_SetStringProperty.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_SetStringProperty" "', argument " "1"" of type '" "Properties *""'"); 
+  }
+  arg1 = reinterpret_cast< Properties * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_SetStringProperty" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(args[1], &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Properties_SetStringProperty" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  Properties_SetStringProperty__SWIG(arg1,(char const *)arg2,(char const *)arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_Properties_SetBooleanProperty(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  Properties *arg1 = (Properties *) 0 ;
+  char *arg2 = (char *) 0 ;
+  bool arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_Properties_SetBooleanProperty.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_Properties, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Properties_SetBooleanProperty" "', argument " "1"" of type '" "Properties *""'"); 
+  }
+  arg1 = reinterpret_cast< Properties * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(args[0], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Properties_SetBooleanProperty" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_bool(args[1], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Properties_SetBooleanProperty" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  Properties_SetBooleanProperty__SWIG(arg1,(char const *)arg2,arg3);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_new_Properties(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -16918,6 +17060,9 @@ SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Tell", _wrap_PlayerFacade
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Stop", _wrap_PlayerFacade_Stop);
 SWIGV8_AddMemberFunction(_exports_PlayerFacade_class, "Close", _wrap_PlayerFacade_Close);
 SWIGV8_AddMemberFunction(_exports_Properties_class, "SetProperty", _wrap_Properties__wrap_Properties_SetProperty);
+SWIGV8_AddMemberFunction(_exports_Properties_class, "SetIntegerProperty", _wrap_Properties_SetIntegerProperty);
+SWIGV8_AddMemberFunction(_exports_Properties_class, "SetStringProperty", _wrap_Properties_SetStringProperty);
+SWIGV8_AddMemberFunction(_exports_Properties_class, "SetBooleanProperty", _wrap_Properties_SetBooleanProperty);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "numFrames", _wrap_RTPIncomingSource_numFrames_get, _wrap_RTPIncomingSource_numFrames_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "numFramesDelta", _wrap_RTPIncomingSource_numFramesDelta_get, _wrap_RTPIncomingSource_numFramesDelta_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lostPackets", _wrap_RTPIncomingSource_lostPackets_get, _wrap_RTPIncomingSource_lostPackets_set);
