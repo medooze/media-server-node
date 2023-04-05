@@ -1,6 +1,8 @@
 %include "shared_ptr.i"
 %include "RTPSender.i"
 %include "RTPReceiver.i"
+%include "RTPIncomingSourceGroup.i"
+%include "RTPOutgoingSourceGroup.i"
 %include "DTLSICETransportListener.i"
 
 %nodefaultctor DTLSICETransport; 
@@ -28,10 +30,10 @@ struct DTLSICETransport
 	int SetRemoteCryptoDTLS(const char *setup,const char *hash,const char *fingerprint);
 	int SetLocalSTUNCredentials(const char* username, const char* pwd);
 	int SetRemoteSTUNCredentials(const char* username, const char* pwd);
-	bool AddOutgoingSourceGroup(RTPOutgoingSourceGroup *group);
-	bool RemoveOutgoingSourceGroup(RTPOutgoingSourceGroup *group);
-	bool AddIncomingSourceGroup(RTPIncomingSourceGroup *group);
-	bool RemoveIncomingSourceGroup(RTPIncomingSourceGroup *group);
+	bool AddOutgoingSourceGroup(const RTPOutgoingSourceGroupShared& group);
+	bool RemoveOutgoingSourceGroup(const RTPOutgoingSourceGroupShared& group);
+	bool AddIncomingSourceGroup(const RTPIncomingSourceGroupShared& group);
+	bool RemoveIncomingSourceGroup(const RTPIncomingSourceGroupShared& group);
 	
 	void SetBandwidthProbing(bool probe);
 	void SetMaxProbingBitrate(DWORD bitrate);
