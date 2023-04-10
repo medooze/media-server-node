@@ -1352,55 +1352,58 @@ fail: ;
 #define SWIGTYPE_p_MP4RecorderFacadeShared swig_types[11]
 #define SWIGTYPE_p_MediaFrameListener swig_types[12]
 #define SWIGTYPE_p_MediaFrameListenerShared swig_types[13]
-#define SWIGTYPE_p_MediaFrameReader swig_types[14]
-#define SWIGTYPE_p_MediaFrameReaderShared swig_types[15]
-#define SWIGTYPE_p_MediaServer swig_types[16]
-#define SWIGTYPE_p_PCAPTransportEmulator swig_types[17]
-#define SWIGTYPE_p_PlayerFacade swig_types[18]
-#define SWIGTYPE_p_Properties swig_types[19]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[20]
-#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[21]
-#define SWIGTYPE_p_RTPBundleTransportConnectionShared swig_types[22]
-#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[23]
-#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[24]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[25]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexerShared swig_types[26]
-#define SWIGTYPE_p_RTPIncomingMediaStreamShared swig_types[27]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[28]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[29]
-#define SWIGTYPE_p_RTPIncomingSourceGroupShared swig_types[30]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[31]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[32]
-#define SWIGTYPE_p_RTPOutgoingSourceGroupShared swig_types[33]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[34]
-#define SWIGTYPE_p_RTPReceiver swig_types[35]
-#define SWIGTYPE_p_RTPReceiverShared swig_types[36]
-#define SWIGTYPE_p_RTPSender swig_types[37]
-#define SWIGTYPE_p_RTPSenderShared swig_types[38]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[39]
-#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[40]
-#define SWIGTYPE_p_RTPSource swig_types[41]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[42]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[43]
-#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[44]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[45]
-#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[46]
-#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[47]
-#define SWIGTYPE_p_TimeService swig_types[48]
-#define SWIGTYPE_p_UDPDumper swig_types[49]
-#define SWIGTYPE_p_UDPReader swig_types[50]
-#define SWIGTYPE_p_char swig_types[51]
-#define SWIGTYPE_p_int swig_types[52]
-#define SWIGTYPE_p_long_long swig_types[53]
-#define SWIGTYPE_p_short swig_types[54]
-#define SWIGTYPE_p_signed_char swig_types[55]
-#define SWIGTYPE_p_unsigned_char swig_types[56]
-#define SWIGTYPE_p_unsigned_int swig_types[57]
-#define SWIGTYPE_p_unsigned_long_long swig_types[58]
-#define SWIGTYPE_p_unsigned_short swig_types[59]
-#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[60]
-static swig_type_info *swig_types[62];
-static swig_module_info swig_module = {swig_types, 61, 0, 0, 0, 0};
+#define SWIGTYPE_p_MediaFrameProducer swig_types[14]
+#define SWIGTYPE_p_MediaFrameProducerShared swig_types[15]
+#define SWIGTYPE_p_MediaFrameReader swig_types[16]
+#define SWIGTYPE_p_MediaFrameReaderShared swig_types[17]
+#define SWIGTYPE_p_MediaServer swig_types[18]
+#define SWIGTYPE_p_PCAPTransportEmulator swig_types[19]
+#define SWIGTYPE_p_PlayerFacade swig_types[20]
+#define SWIGTYPE_p_Properties swig_types[21]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[22]
+#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[23]
+#define SWIGTYPE_p_RTPBundleTransportConnectionShared swig_types[24]
+#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[25]
+#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[26]
+#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared swig_types[27]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[28]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexerShared swig_types[29]
+#define SWIGTYPE_p_RTPIncomingMediaStreamShared swig_types[30]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[31]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[32]
+#define SWIGTYPE_p_RTPIncomingSourceGroupShared swig_types[33]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[34]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[35]
+#define SWIGTYPE_p_RTPOutgoingSourceGroupShared swig_types[36]
+#define SWIGTYPE_p_RTPPacket__shared swig_types[37]
+#define SWIGTYPE_p_RTPReceiver swig_types[38]
+#define SWIGTYPE_p_RTPReceiverShared swig_types[39]
+#define SWIGTYPE_p_RTPSender swig_types[40]
+#define SWIGTYPE_p_RTPSenderShared swig_types[41]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[42]
+#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[43]
+#define SWIGTYPE_p_RTPSource swig_types[44]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[45]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[46]
+#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[47]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[48]
+#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[49]
+#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[50]
+#define SWIGTYPE_p_TimeService swig_types[51]
+#define SWIGTYPE_p_UDPDumper swig_types[52]
+#define SWIGTYPE_p_UDPReader swig_types[53]
+#define SWIGTYPE_p_char swig_types[54]
+#define SWIGTYPE_p_int swig_types[55]
+#define SWIGTYPE_p_long_long swig_types[56]
+#define SWIGTYPE_p_short swig_types[57]
+#define SWIGTYPE_p_signed_char swig_types[58]
+#define SWIGTYPE_p_unsigned_char swig_types[59]
+#define SWIGTYPE_p_unsigned_int swig_types[60]
+#define SWIGTYPE_p_unsigned_long_long swig_types[61]
+#define SWIGTYPE_p_unsigned_short swig_types[62]
+#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[63]
+static swig_type_info *swig_types[65];
+static swig_module_info swig_module = {swig_types, 64, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2110,6 +2113,7 @@ RTPIncomingMediaStreamShared* RTPIncomingMediaStreamShared_from_proxy(const v8::
 
 #include "media.h"
 using MediaFrameListener = MediaFrame::Listener;
+using MediaFrameProducer = MediaFrame::Producer;
 using MediaFrameType = MediaFrame::Type;
 
 
@@ -2127,6 +2131,24 @@ MediaFrameListenerShared* MediaFrameListenerShared_from_proxy(const v8::Local<v8
   SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_MediaFrameListenerShared,  0 );
   if (!ptr) return &MediaFrameListenerShared_null_ptr;
   return reinterpret_cast<MediaFrameListenerShared*>(ptr);
+}
+
+
+
+using MediaFrameProducerShared = std::shared_ptr<MediaFrameProducer>;
+
+static MediaFrameProducerShared MediaFrameProducerShared_null_ptr = {};
+
+MediaFrameProducerShared* MediaFrameProducerShared_from_proxy(const v8::Local<v8::Value> input)
+{
+  void *ptr = nullptr;
+  if (input.IsEmpty() || !input->IsObject()) return &MediaFrameProducerShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &MediaFrameProducerShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
+  SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_MediaFrameProducerShared,  0 );
+  if (!ptr) return &MediaFrameProducerShared_null_ptr;
+  return reinterpret_cast<MediaFrameProducerShared*>(ptr);
 }
 
 
@@ -2962,6 +2984,30 @@ RTPBundleTransportConnectionShared* RTPBundleTransportConnectionShared_from_prox
 #include "rtp/RTPIncomingMediaStreamDepacketizer.h"
 
 
+using RTPIncomingMediaStreamDepacketizerShared = std::shared_ptr<RTPIncomingMediaStreamDepacketizer>;
+
+static RTPIncomingMediaStreamDepacketizerShared RTPIncomingMediaStreamDepacketizerShared_null_ptr = {};
+
+RTPIncomingMediaStreamDepacketizerShared* RTPIncomingMediaStreamDepacketizerShared_from_proxy(const v8::Local<v8::Value> input)
+{
+  void *ptr = nullptr;
+  if (input.IsEmpty() || !input->IsObject()) return &RTPIncomingMediaStreamDepacketizerShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPIncomingMediaStreamDepacketizerShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
+  SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared,  0 );
+  if (!ptr) return &RTPIncomingMediaStreamDepacketizerShared_null_ptr;
+  return reinterpret_cast<RTPIncomingMediaStreamDepacketizerShared*>(ptr);
+}
+
+
+SWIGINTERN RTPIncomingMediaStreamDepacketizerShared *new_RTPIncomingMediaStreamDepacketizerShared(RTPIncomingMediaStreamShared const &incomingSource){
+		return new std::shared_ptr<RTPIncomingMediaStreamDepacketizer>(new RTPIncomingMediaStreamDepacketizer(incomingSource));
+	}
+SWIGINTERN MediaFrameProducerShared RTPIncomingMediaStreamDepacketizerShared_toMediaFrameProducer__SWIG(RTPIncomingMediaStreamDepacketizerShared *self){
+	return std::static_pointer_cast<MediaFrameProducer>(*self);
+}
+
 class SenderSideEstimatorListener : 
 	public RemoteRateEstimator::Listener
 {
@@ -3015,6 +3061,9 @@ SWIGINTERN SimulcastMediaFrameListenerShared *new_SimulcastMediaFrameListenerSha
 SWIGINTERN MediaFrameListenerShared SimulcastMediaFrameListenerShared_toMediaFrameListener__SWIG(SimulcastMediaFrameListenerShared *self){
 	return std::static_pointer_cast<MediaFrameListener>(*self);
 }
+SWIGINTERN MediaFrameProducerShared SimulcastMediaFrameListenerShared_toMediaFrameProducer__SWIG(SimulcastMediaFrameListenerShared *self){
+	return std::static_pointer_cast<MediaFrameProducer>(*self);
+}
 
 #define SWIGV8_INIT medooze_initialize
 
@@ -3027,6 +3076,8 @@ SWIGV8_ClientData _exports_RTPIncomingMediaStream_clientData;
 SWIGV8_ClientData _exports_RTPIncomingMediaStreamShared_clientData;
 SWIGV8_ClientData _exports_MediaFrameListener_clientData;
 SWIGV8_ClientData _exports_MediaFrameListenerShared_clientData;
+SWIGV8_ClientData _exports_MediaFrameProducer_clientData;
+SWIGV8_ClientData _exports_MediaFrameProducerShared_clientData;
 SWIGV8_ClientData _exports_LayerInfo_clientData;
 SWIGV8_ClientData _exports_LayerSource_clientData;
 SWIGV8_ClientData _exports_LayerSources_clientData;
@@ -3063,6 +3114,7 @@ SWIGV8_ClientData _exports_RTPBundleTransportConnection_clientData;
 SWIGV8_ClientData _exports_RTPBundleTransportConnectionShared_clientData;
 SWIGV8_ClientData _exports_RTPBundleTransport_clientData;
 SWIGV8_ClientData _exports_RTPIncomingMediaStreamDepacketizer_clientData;
+SWIGV8_ClientData _exports_RTPIncomingMediaStreamDepacketizerShared_clientData;
 SWIGV8_ClientData _exports_SenderSideEstimatorListener_clientData;
 SWIGV8_ClientData _exports_SimulcastMediaFrameListener_clientData;
 SWIGV8_ClientData _exports_SimulcastMediaFrameListenerShared_clientData;
@@ -3929,6 +3981,127 @@ static SwigV8ReturnValue _wrap_new_veto_MediaFrameListenerShared(const SwigV8Arg
   SWIGV8_HANDLESCOPE();
   
   SWIG_exception(SWIG_ERROR, "Class MediaFrameListenerShared can not be instantiated");
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrameProducer_AddMediaListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  MediaFrameProducer *arg1 = (MediaFrameProducer *) 0 ;
+  MediaFrameListenerShared *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrameProducer_AddMediaListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrameProducer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrameProducer_AddMediaListener" "', argument " "1"" of type '" "MediaFrameProducer *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrameProducer * >(argp1);
+  {
+    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
+  }
+  (arg1)->AddMediaListener((MediaFrameListenerShared const &)*arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrameProducer_RemoveMediaListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  MediaFrameProducer *arg1 = (MediaFrameProducer *) 0 ;
+  MediaFrameListenerShared *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrameProducer_RemoveMediaListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrameProducer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrameProducer_RemoveMediaListener" "', argument " "1"" of type '" "MediaFrameProducer *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrameProducer * >(argp1);
+  {
+    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
+  }
+  (arg1)->RemoveMediaListener((MediaFrameListenerShared const &)*arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_veto_MediaFrameProducer(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIG_exception(SWIG_ERROR, "Class MediaFrameProducer can not be instantiated");
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaFrameProducerShared_get(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  MediaFrameProducerShared *arg1 = (MediaFrameProducerShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  MediaFrameProducer *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaFrameProducerShared_get.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_MediaFrameProducerShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MediaFrameProducerShared_get" "', argument " "1"" of type '" "MediaFrameProducerShared *""'"); 
+  }
+  arg1 = reinterpret_cast< MediaFrameProducerShared * >(argp1);
+  result = (MediaFrameProducer *)(arg1)->get();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_MediaFrameProducer, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static void _wrap_delete_MediaFrameProducerShared(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+  SWIGV8_Proxy *proxy = data.GetParameter();
+  
+  if(proxy->swigCMemOwn && proxy->swigCObject) {
+    MediaFrameProducerShared * arg1 = (MediaFrameProducerShared *)proxy->swigCObject;
+    delete arg1;
+  }
+  delete proxy;
+}
+
+
+static SwigV8ReturnValue _wrap_new_veto_MediaFrameProducerShared(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIG_exception(SWIG_ERROR, "Class MediaFrameProducerShared can not be instantiated");
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
 }
@@ -15510,70 +15683,6 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_RTPIncomingMediaStreamDepacketizer_AddMediaListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  RTPIncomingMediaStreamDepacketizer *arg1 = (RTPIncomingMediaStreamDepacketizer *) 0 ;
-  MediaFrameListenerShared *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingMediaStreamDepacketizer_AddMediaListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingMediaStreamDepacketizer_AddMediaListener" "', argument " "1"" of type '" "RTPIncomingMediaStreamDepacketizer *""'"); 
-  }
-  arg1 = reinterpret_cast< RTPIncomingMediaStreamDepacketizer * >(argp1);
-  {
-    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
-  }
-  (arg1)->AddMediaListener((MediaFrameListenerShared const &)*arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
-static SwigV8ReturnValue _wrap_RTPIncomingMediaStreamDepacketizer_RemoveMediaListener(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  RTPIncomingMediaStreamDepacketizer *arg1 = (RTPIncomingMediaStreamDepacketizer *) 0 ;
-  MediaFrameListenerShared *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingMediaStreamDepacketizer_RemoveMediaListener.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingMediaStreamDepacketizer_RemoveMediaListener" "', argument " "1"" of type '" "RTPIncomingMediaStreamDepacketizer *""'"); 
-  }
-  arg1 = reinterpret_cast< RTPIncomingMediaStreamDepacketizer * >(argp1);
-  {
-    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
-  }
-  (arg1)->RemoveMediaListener((MediaFrameListenerShared const &)*arg2);
-  jsresult = SWIGV8_UNDEFINED();
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static SwigV8ReturnValue _wrap_RTPIncomingMediaStreamDepacketizer_Stop(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -15606,6 +15715,98 @@ static void _wrap_delete_RTPIncomingMediaStreamDepacketizer(const v8::WeakCallba
   
   if(proxy->swigCMemOwn && proxy->swigCObject) {
     RTPIncomingMediaStreamDepacketizer * arg1 = (RTPIncomingMediaStreamDepacketizer *)proxy->swigCObject;
+    delete arg1;
+  }
+  delete proxy;
+}
+
+
+static SwigV8ReturnValue _wrap_new_RTPIncomingMediaStreamDepacketizerShared(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_OBJECT self = args.Holder();
+  RTPIncomingMediaStreamShared *arg1 = 0 ;
+  RTPIncomingMediaStreamDepacketizerShared *result;
+  if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_RTPIncomingMediaStreamDepacketizerShared.");
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPIncomingMediaStreamDepacketizerShared.");
+  {
+    arg1 = RTPIncomingMediaStreamShared_from_proxy(args[0]);
+  }
+  result = (RTPIncomingMediaStreamDepacketizerShared *)new_RTPIncomingMediaStreamDepacketizerShared((RTPIncomingMediaStreamShared const &)*arg1);
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingMediaStreamDepacketizerShared_toMediaFrameProducer(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingMediaStreamDepacketizerShared *arg1 = (RTPIncomingMediaStreamDepacketizerShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  MediaFrameProducerShared result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingMediaStreamDepacketizerShared_toMediaFrameProducer.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingMediaStreamDepacketizerShared_toMediaFrameProducer" "', argument " "1"" of type '" "RTPIncomingMediaStreamDepacketizerShared *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingMediaStreamDepacketizerShared * >(argp1);
+  result = RTPIncomingMediaStreamDepacketizerShared_toMediaFrameProducer__SWIG(arg1);
+  jsresult = SWIG_NewPointerObj((new MediaFrameProducerShared(static_cast< const MediaFrameProducerShared& >(result))), SWIGTYPE_p_MediaFrameProducerShared, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingMediaStreamDepacketizerShared_get(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingMediaStreamDepacketizerShared *arg1 = (RTPIncomingMediaStreamDepacketizerShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  RTPIncomingMediaStreamDepacketizer *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingMediaStreamDepacketizerShared_get.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingMediaStreamDepacketizerShared_get" "', argument " "1"" of type '" "RTPIncomingMediaStreamDepacketizerShared *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingMediaStreamDepacketizerShared * >(argp1);
+  result = (RTPIncomingMediaStreamDepacketizer *)(arg1)->get();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static void _wrap_delete_RTPIncomingMediaStreamDepacketizerShared(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+  SWIGV8_Proxy *proxy = data.GetParameter();
+  
+  if(proxy->swigCMemOwn && proxy->swigCObject) {
+    RTPIncomingMediaStreamDepacketizerShared * arg1 = (RTPIncomingMediaStreamDepacketizerShared *)proxy->swigCObject;
     delete arg1;
   }
   delete proxy;
@@ -15733,26 +15934,26 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_AddMediaListener(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_AttachTo(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   SWIGV8_VALUE jsresult;
   SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
-  MediaFrameListenerShared *arg2 = 0 ;
+  MediaFrameProducerShared *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_AddMediaListener.");
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_AttachTo.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_AddMediaListener" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_AttachTo" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
   }
   arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
   {
-    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
+    arg2 = MediaFrameProducerShared_from_proxy(args[0]);
   }
-  (arg1)->AddMediaListener((MediaFrameListenerShared const &)*arg2);
+  (arg1)->AttachTo((MediaFrameProducerShared const &)*arg2);
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -15765,26 +15966,26 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_RemoveMediaListener(const SwigV8Arguments &args) {
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_Detach(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
   SWIGV8_VALUE jsresult;
   SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
-  MediaFrameListenerShared *arg2 = 0 ;
+  MediaFrameProducerShared *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_RemoveMediaListener.");
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_Detach.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_RemoveMediaListener" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_Detach" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
   }
   arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
   {
-    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
+    arg2 = MediaFrameProducerShared_from_proxy(args[0]);
   }
-  (arg1)->RemoveMediaListener((MediaFrameListenerShared const &)*arg2);
+  (arg1)->Detach((MediaFrameProducerShared const &)*arg2);
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -15913,6 +16114,34 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListenerShared_toMediaFrameProducer(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  SimulcastMediaFrameListenerShared *arg1 = (SimulcastMediaFrameListenerShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  MediaFrameProducerShared result;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListenerShared_toMediaFrameProducer.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListenerShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListenerShared_toMediaFrameProducer" "', argument " "1"" of type '" "SimulcastMediaFrameListenerShared *""'"); 
+  }
+  arg1 = reinterpret_cast< SimulcastMediaFrameListenerShared * >(argp1);
+  result = SimulcastMediaFrameListenerShared_toMediaFrameProducer__SWIG(arg1);
+  jsresult = SWIG_NewPointerObj((new MediaFrameProducerShared(static_cast< const MediaFrameProducerShared& >(result))), SWIGTYPE_p_MediaFrameProducerShared, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_SimulcastMediaFrameListenerShared_get(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -15957,6 +16186,12 @@ static void _wrap_delete_SimulcastMediaFrameListenerShared(const v8::WeakCallbac
 static void *_p_LayerSourceTo_p_LayerInfo(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((LayerInfo *)  ((LayerSource *) x));
 }
+static void *_p_RTPIncomingMediaStreamDepacketizerTo_p_MediaFrameProducer(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((MediaFrameProducer *)  ((RTPIncomingMediaStreamDepacketizer *) x));
+}
+static void *_p_SimulcastMediaFrameListenerTo_p_MediaFrameProducer(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((MediaFrameProducer *)  ((SimulcastMediaFrameListener *) x));
+}
 static void *_p_EventLoopTo_p_TimeService(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((TimeService *)  ((EventLoop *) x));
 }
@@ -15998,6 +16233,8 @@ static swig_type_info _swigt__p_MP4RecorderFacade = {"_p_MP4RecorderFacade", "p_
 static swig_type_info _swigt__p_MP4RecorderFacadeShared = {"_p_MP4RecorderFacadeShared", "p_MP4RecorderFacadeShared|MP4RecorderFacadeShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrameListener = {"_p_MediaFrameListener", "p_MediaFrameListener|MediaFrameListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrameListenerShared = {"_p_MediaFrameListenerShared", "p_MediaFrameListenerShared|MediaFrameListenerShared *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MediaFrameProducer = {"_p_MediaFrameProducer", "MediaFrameProducer *|p_MediaFrameProducer", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MediaFrameProducerShared = {"_p_MediaFrameProducerShared", "p_MediaFrameProducerShared|MediaFrameProducerShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrameReader = {"_p_MediaFrameReader", "p_MediaFrameReader|MediaFrameReader *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaFrameReaderShared = {"_p_MediaFrameReaderShared", "p_MediaFrameReaderShared|MediaFrameReaderShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MediaServer = {"_p_MediaServer", "p_MediaServer", 0, 0, (void*)0, 0};
@@ -16009,6 +16246,7 @@ static swig_type_info _swigt__p_RTPBundleTransportConnection = {"_p_RTPBundleTra
 static swig_type_info _swigt__p_RTPBundleTransportConnectionShared = {"_p_RTPBundleTransportConnectionShared", "p_RTPBundleTransportConnectionShared|RTPBundleTransportConnectionShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStream = {"_p_RTPIncomingMediaStream", "p_RTPIncomingMediaStream|RTPIncomingMediaStream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStreamDepacketizer = {"_p_RTPIncomingMediaStreamDepacketizer", "p_RTPIncomingMediaStreamDepacketizer|RTPIncomingMediaStreamDepacketizer *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RTPIncomingMediaStreamDepacketizerShared = {"_p_RTPIncomingMediaStreamDepacketizerShared", "p_RTPIncomingMediaStreamDepacketizerShared|RTPIncomingMediaStreamDepacketizerShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStreamMultiplexer = {"_p_RTPIncomingMediaStreamMultiplexer", "p_RTPIncomingMediaStreamMultiplexer|RTPIncomingMediaStreamMultiplexer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStreamMultiplexerShared = {"_p_RTPIncomingMediaStreamMultiplexerShared", "p_RTPIncomingMediaStreamMultiplexerShared|RTPIncomingMediaStreamMultiplexerShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPIncomingMediaStreamShared = {"_p_RTPIncomingMediaStreamShared", "p_RTPIncomingMediaStreamShared|RTPIncomingMediaStreamShared *", 0, 0, (void*)0, 0};
@@ -16061,6 +16299,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MP4RecorderFacadeShared,
   &_swigt__p_MediaFrameListener,
   &_swigt__p_MediaFrameListenerShared,
+  &_swigt__p_MediaFrameProducer,
+  &_swigt__p_MediaFrameProducerShared,
   &_swigt__p_MediaFrameReader,
   &_swigt__p_MediaFrameReaderShared,
   &_swigt__p_MediaServer,
@@ -16072,6 +16312,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RTPBundleTransportConnectionShared,
   &_swigt__p_RTPIncomingMediaStream,
   &_swigt__p_RTPIncomingMediaStreamDepacketizer,
+  &_swigt__p_RTPIncomingMediaStreamDepacketizerShared,
   &_swigt__p_RTPIncomingMediaStreamMultiplexer,
   &_swigt__p_RTPIncomingMediaStreamMultiplexerShared,
   &_swigt__p_RTPIncomingMediaStreamShared,
@@ -16124,6 +16365,8 @@ static swig_cast_info _swigc__p_MP4RecorderFacade[] = {  {&_swigt__p_MP4Recorder
 static swig_cast_info _swigc__p_MP4RecorderFacadeShared[] = {  {&_swigt__p_MP4RecorderFacadeShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrameListener[] = {  {&_swigt__p_MediaFrameListener, 0, 0, 0},  {&_swigt__p_MP4RecorderFacade, _p_MP4RecorderFacadeTo_p_MediaFrameListener, 0, 0},  {&_swigt__p_SimulcastMediaFrameListener, _p_SimulcastMediaFrameListenerTo_p_MediaFrameListener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrameListenerShared[] = {  {&_swigt__p_MediaFrameListenerShared, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MediaFrameProducer[] = {  {&_swigt__p_MediaFrameProducer, 0, 0, 0},  {&_swigt__p_RTPIncomingMediaStreamDepacketizer, _p_RTPIncomingMediaStreamDepacketizerTo_p_MediaFrameProducer, 0, 0},  {&_swigt__p_SimulcastMediaFrameListener, _p_SimulcastMediaFrameListenerTo_p_MediaFrameProducer, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MediaFrameProducerShared[] = {  {&_swigt__p_MediaFrameProducerShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrameReader[] = {  {&_swigt__p_MediaFrameReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaFrameReaderShared[] = {  {&_swigt__p_MediaFrameReaderShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MediaServer[] = {  {&_swigt__p_MediaServer, 0, 0, 0},{0, 0, 0, 0}};
@@ -16135,6 +16378,7 @@ static swig_cast_info _swigc__p_RTPBundleTransportConnection[] = {  {&_swigt__p_
 static swig_cast_info _swigc__p_RTPBundleTransportConnectionShared[] = {  {&_swigt__p_RTPBundleTransportConnectionShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStream[] = {  {&_swigt__p_RTPIncomingMediaStream, 0, 0, 0},  {&_swigt__p_RTPIncomingMediaStreamMultiplexer, _p_RTPIncomingMediaStreamMultiplexerTo_p_RTPIncomingMediaStream, 0, 0},  {&_swigt__p_RTPIncomingSourceGroup, _p_RTPIncomingSourceGroupTo_p_RTPIncomingMediaStream, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStreamDepacketizer[] = {  {&_swigt__p_RTPIncomingMediaStreamDepacketizer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RTPIncomingMediaStreamDepacketizerShared[] = {  {&_swigt__p_RTPIncomingMediaStreamDepacketizerShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStreamMultiplexer[] = {  {&_swigt__p_RTPIncomingMediaStreamMultiplexer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStreamMultiplexerShared[] = {  {&_swigt__p_RTPIncomingMediaStreamMultiplexerShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPIncomingMediaStreamShared[] = {  {&_swigt__p_RTPIncomingMediaStreamShared, 0, 0, 0},{0, 0, 0, 0}};
@@ -16187,6 +16431,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MP4RecorderFacadeShared,
   _swigc__p_MediaFrameListener,
   _swigc__p_MediaFrameListenerShared,
+  _swigc__p_MediaFrameProducer,
+  _swigc__p_MediaFrameProducerShared,
   _swigc__p_MediaFrameReader,
   _swigc__p_MediaFrameReaderShared,
   _swigc__p_MediaServer,
@@ -16198,6 +16444,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RTPBundleTransportConnectionShared,
   _swigc__p_RTPIncomingMediaStream,
   _swigc__p_RTPIncomingMediaStreamDepacketizer,
+  _swigc__p_RTPIncomingMediaStreamDepacketizerShared,
   _swigc__p_RTPIncomingMediaStreamMultiplexer,
   _swigc__p_RTPIncomingMediaStreamMultiplexerShared,
   _swigc__p_RTPIncomingMediaStreamShared,
@@ -16609,6 +16856,20 @@ _exports_MediaFrameListenerShared_clientData.dtor = _wrap_delete_MediaFrameListe
 if (SWIGTYPE_p_MediaFrameListenerShared->clientdata == 0) {
   SWIGTYPE_p_MediaFrameListenerShared->clientdata = &_exports_MediaFrameListenerShared_clientData;
 }
+/* Name: _exports_MediaFrameProducer, Type: p_MediaFrameProducer, Dtor: 0 */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameProducer_class = SWIGV8_CreateClassTemplate("_exports_MediaFrameProducer");
+SWIGV8_SET_CLASS_TEMPL(_exports_MediaFrameProducer_clientData.class_templ, _exports_MediaFrameProducer_class);
+_exports_MediaFrameProducer_clientData.dtor = 0;
+if (SWIGTYPE_p_MediaFrameProducer->clientdata == 0) {
+  SWIGTYPE_p_MediaFrameProducer->clientdata = &_exports_MediaFrameProducer_clientData;
+}
+/* Name: _exports_MediaFrameProducerShared, Type: p_MediaFrameProducerShared, Dtor: _wrap_delete_MediaFrameProducerShared */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameProducerShared_class = SWIGV8_CreateClassTemplate("_exports_MediaFrameProducerShared");
+SWIGV8_SET_CLASS_TEMPL(_exports_MediaFrameProducerShared_clientData.class_templ, _exports_MediaFrameProducerShared_class);
+_exports_MediaFrameProducerShared_clientData.dtor = _wrap_delete_MediaFrameProducerShared;
+if (SWIGTYPE_p_MediaFrameProducerShared->clientdata == 0) {
+  SWIGTYPE_p_MediaFrameProducerShared->clientdata = &_exports_MediaFrameProducerShared_clientData;
+}
 /* Name: _exports_LayerInfo, Type: p_LayerInfo, Dtor: _wrap_delete_LayerInfo */
 SWIGV8_FUNCTION_TEMPLATE _exports_LayerInfo_class = SWIGV8_CreateClassTemplate("_exports_LayerInfo");
 SWIGV8_SET_CLASS_TEMPL(_exports_LayerInfo_clientData.class_templ, _exports_LayerInfo_class);
@@ -16861,6 +17122,13 @@ _exports_RTPIncomingMediaStreamDepacketizer_clientData.dtor = _wrap_delete_RTPIn
 if (SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer->clientdata == 0) {
   SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer->clientdata = &_exports_RTPIncomingMediaStreamDepacketizer_clientData;
 }
+/* Name: _exports_RTPIncomingMediaStreamDepacketizerShared, Type: p_RTPIncomingMediaStreamDepacketizerShared, Dtor: _wrap_delete_RTPIncomingMediaStreamDepacketizerShared */
+SWIGV8_FUNCTION_TEMPLATE _exports_RTPIncomingMediaStreamDepacketizerShared_class = SWIGV8_CreateClassTemplate("_exports_RTPIncomingMediaStreamDepacketizerShared");
+SWIGV8_SET_CLASS_TEMPL(_exports_RTPIncomingMediaStreamDepacketizerShared_clientData.class_templ, _exports_RTPIncomingMediaStreamDepacketizerShared_class);
+_exports_RTPIncomingMediaStreamDepacketizerShared_clientData.dtor = _wrap_delete_RTPIncomingMediaStreamDepacketizerShared;
+if (SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared->clientdata == 0) {
+  SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared->clientdata = &_exports_RTPIncomingMediaStreamDepacketizerShared_clientData;
+}
 /* Name: _exports_SenderSideEstimatorListener, Type: p_SenderSideEstimatorListener, Dtor: _wrap_delete_SenderSideEstimatorListener */
 SWIGV8_FUNCTION_TEMPLATE _exports_SenderSideEstimatorListener_class = SWIGV8_CreateClassTemplate("_exports_SenderSideEstimatorListener");
 SWIGV8_SET_CLASS_TEMPL(_exports_SenderSideEstimatorListener_clientData.class_templ, _exports_SenderSideEstimatorListener_class);
@@ -16898,6 +17166,9 @@ SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStream_class, "GetTimeService"
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStream_class, "Mute", _wrap_RTPIncomingMediaStream_Mute);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamShared_class, "get", _wrap_RTPIncomingMediaStreamShared_get);
 SWIGV8_AddMemberFunction(_exports_MediaFrameListenerShared_class, "get", _wrap_MediaFrameListenerShared_get);
+SWIGV8_AddMemberFunction(_exports_MediaFrameProducer_class, "AddMediaListener", _wrap_MediaFrameProducer_AddMediaListener);
+SWIGV8_AddMemberFunction(_exports_MediaFrameProducer_class, "RemoveMediaListener", _wrap_MediaFrameProducer_RemoveMediaListener);
+SWIGV8_AddMemberFunction(_exports_MediaFrameProducerShared_class, "get", _wrap_MediaFrameProducerShared_get);
 SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "temporalLayerId", _wrap_LayerInfo_temporalLayerId_get, _wrap_LayerInfo_temporalLayerId_set);
 SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "spatialLayerId", _wrap_LayerInfo_spatialLayerId_get, _wrap_LayerInfo_spatialLayerId_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "numPackets", _wrap_LayerSource_numPackets_get, _wrap_LayerSource_numPackets_set);
@@ -17126,14 +17397,15 @@ SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetThreadName", _wr
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetPriority", _wrap_RTPBundleTransport_SetPriority);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "SetIceTimeout", _wrap_RTPBundleTransport_SetIceTimeout);
 SWIGV8_AddMemberFunction(_exports_RTPBundleTransport_class, "GetTimeService", _wrap_RTPBundleTransport_GetTimeService);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamDepacketizer_class, "AddMediaListener", _wrap_RTPIncomingMediaStreamDepacketizer_AddMediaListener);
-SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamDepacketizer_class, "RemoveMediaListener", _wrap_RTPIncomingMediaStreamDepacketizer_RemoveMediaListener);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamDepacketizer_class, "Stop", _wrap_RTPIncomingMediaStreamDepacketizer_Stop);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamDepacketizerShared_class, "toMediaFrameProducer", _wrap_RTPIncomingMediaStreamDepacketizerShared_toMediaFrameProducer);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingMediaStreamDepacketizerShared_class, "get", _wrap_RTPIncomingMediaStreamDepacketizerShared_get);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "SetNumLayers", _wrap_SimulcastMediaFrameListener_SetNumLayers);
-SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "AddMediaListener", _wrap_SimulcastMediaFrameListener_AddMediaListener);
-SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "RemoveMediaListener", _wrap_SimulcastMediaFrameListener_RemoveMediaListener);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "AttachTo", _wrap_SimulcastMediaFrameListener_AttachTo);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "Detach", _wrap_SimulcastMediaFrameListener_Detach);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "Stop", _wrap_SimulcastMediaFrameListener_Stop);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListenerShared_class, "toMediaFrameListener", _wrap_SimulcastMediaFrameListenerShared_toMediaFrameListener);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListenerShared_class, "toMediaFrameProducer", _wrap_SimulcastMediaFrameListenerShared_toMediaFrameProducer);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListenerShared_class, "get", _wrap_SimulcastMediaFrameListenerShared_get);
 
 
@@ -17250,6 +17522,22 @@ if (SWIGTYPE_p_RTPIncomingMediaStream->clientdata && !(static_cast<SWIGV8_Client
   printf("Unable to inherit baseclass, it didn't exist _exports_RTPIncomingMediaStreamMultiplexer _RTPIncomingMediaStream\n");
 #endif
 }
+if (SWIGTYPE_p_MediaFrameProducer->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameProducer->clientdata)->class_templ.IsEmpty()))
+{
+  _exports_RTPIncomingMediaStreamDepacketizer_class->Inherit(
+    v8::Local<v8::FunctionTemplate>::New(
+      v8::Isolate::GetCurrent(),
+      static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameProducer->clientdata)->class_templ)
+    );
+  
+#ifdef SWIGRUNTIME_DEBUG
+  printf("Inheritance successful _exports_RTPIncomingMediaStreamDepacketizer _MediaFrameProducer\n");
+#endif
+} else {
+#ifdef SWIGRUNTIME_DEBUG
+  printf("Unable to inherit baseclass, it didn't exist _exports_RTPIncomingMediaStreamDepacketizer _MediaFrameProducer\n");
+#endif
+}
 if (SWIGTYPE_p_RemoteRateEstimatorListener->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_RemoteRateEstimatorListener->clientdata)->class_templ.IsEmpty()))
 {
   _exports_SenderSideEstimatorListener_class->Inherit(
@@ -17364,6 +17652,26 @@ _exports_MediaFrameListenerShared_class_0->SetHiddenPrototype(true);
 v8::Local<v8::Object> _exports_MediaFrameListenerShared_obj = _exports_MediaFrameListenerShared_class_0->GetFunction();
 #else
 v8::Local<v8::Object> _exports_MediaFrameListenerShared_obj = _exports_MediaFrameListenerShared_class_0->GetFunction(context).ToLocalChecked();
+#endif
+/* Class: MediaFrameProducer (_exports_MediaFrameProducer) */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameProducer_class_0 = SWIGV8_CreateClassTemplate("MediaFrameProducer");
+_exports_MediaFrameProducer_class_0->SetCallHandler(_wrap_new_veto_MediaFrameProducer);
+_exports_MediaFrameProducer_class_0->Inherit(_exports_MediaFrameProducer_class);
+#if (SWIG_V8_VERSION < 0x0704)
+_exports_MediaFrameProducer_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_MediaFrameProducer_obj = _exports_MediaFrameProducer_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_MediaFrameProducer_obj = _exports_MediaFrameProducer_class_0->GetFunction(context).ToLocalChecked();
+#endif
+/* Class: MediaFrameProducerShared (_exports_MediaFrameProducerShared) */
+SWIGV8_FUNCTION_TEMPLATE _exports_MediaFrameProducerShared_class_0 = SWIGV8_CreateClassTemplate("MediaFrameProducerShared");
+_exports_MediaFrameProducerShared_class_0->SetCallHandler(_wrap_new_veto_MediaFrameProducerShared);
+_exports_MediaFrameProducerShared_class_0->Inherit(_exports_MediaFrameProducerShared_class);
+#if (SWIG_V8_VERSION < 0x0704)
+_exports_MediaFrameProducerShared_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_MediaFrameProducerShared_obj = _exports_MediaFrameProducerShared_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_MediaFrameProducerShared_obj = _exports_MediaFrameProducerShared_class_0->GetFunction(context).ToLocalChecked();
 #endif
 /* Class: LayerInfo (_exports_LayerInfo) */
 SWIGV8_FUNCTION_TEMPLATE _exports_LayerInfo_class_0 = SWIGV8_CreateClassTemplate("LayerInfo");
@@ -17725,6 +18033,16 @@ v8::Local<v8::Object> _exports_RTPIncomingMediaStreamDepacketizer_obj = _exports
 #else
 v8::Local<v8::Object> _exports_RTPIncomingMediaStreamDepacketizer_obj = _exports_RTPIncomingMediaStreamDepacketizer_class_0->GetFunction(context).ToLocalChecked();
 #endif
+/* Class: RTPIncomingMediaStreamDepacketizerShared (_exports_RTPIncomingMediaStreamDepacketizerShared) */
+SWIGV8_FUNCTION_TEMPLATE _exports_RTPIncomingMediaStreamDepacketizerShared_class_0 = SWIGV8_CreateClassTemplate("RTPIncomingMediaStreamDepacketizerShared");
+_exports_RTPIncomingMediaStreamDepacketizerShared_class_0->SetCallHandler(_wrap_new_RTPIncomingMediaStreamDepacketizerShared);
+_exports_RTPIncomingMediaStreamDepacketizerShared_class_0->Inherit(_exports_RTPIncomingMediaStreamDepacketizerShared_class);
+#if (SWIG_V8_VERSION < 0x0704)
+_exports_RTPIncomingMediaStreamDepacketizerShared_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_RTPIncomingMediaStreamDepacketizerShared_obj = _exports_RTPIncomingMediaStreamDepacketizerShared_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_RTPIncomingMediaStreamDepacketizerShared_obj = _exports_RTPIncomingMediaStreamDepacketizerShared_class_0->GetFunction(context).ToLocalChecked();
+#endif
 /* Class: SenderSideEstimatorListener (_exports_SenderSideEstimatorListener) */
 SWIGV8_FUNCTION_TEMPLATE _exports_SenderSideEstimatorListener_class_0 = SWIGV8_CreateClassTemplate("SenderSideEstimatorListener");
 _exports_SenderSideEstimatorListener_class_0->SetCallHandler(_wrap_new_SenderSideEstimatorListener);
@@ -17780,6 +18098,8 @@ SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPIncomingMedia
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPIncomingMediaStreamShared"), _exports_RTPIncomingMediaStreamShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MediaFrameListener"), _exports_MediaFrameListener_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MediaFrameListenerShared"), _exports_MediaFrameListenerShared_obj));
+SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MediaFrameProducer"), _exports_MediaFrameProducer_obj));
+SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("MediaFrameProducerShared"), _exports_MediaFrameProducerShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("LayerInfo"), _exports_LayerInfo_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("LayerSource"), _exports_LayerSource_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("LayerSources"), _exports_LayerSources_obj));
@@ -17816,6 +18136,7 @@ SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPBundleTranspo
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPBundleTransportConnectionShared"), _exports_RTPBundleTransportConnectionShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPBundleTransport"), _exports_RTPBundleTransport_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPIncomingMediaStreamDepacketizer"), _exports_RTPIncomingMediaStreamDepacketizer_obj));
+SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPIncomingMediaStreamDepacketizerShared"), _exports_RTPIncomingMediaStreamDepacketizerShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("SenderSideEstimatorListener"), _exports_SenderSideEstimatorListener_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("SimulcastMediaFrameListener"), _exports_SimulcastMediaFrameListener_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("SimulcastMediaFrameListenerShared"), _exports_SimulcastMediaFrameListenerShared_obj));

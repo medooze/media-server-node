@@ -39,7 +39,7 @@
     "uuid": "^3.3.2"
   },
   "optionalDependencies": {
-    "netlink": "0.2.4"
+    "netlink": "^0"
   },
   "devDependencies": {
     "documentation": "13.2.5",
