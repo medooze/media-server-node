@@ -85,3 +85,13 @@ class DTLSICETransportListener
 public:
 	DTLSICETransportListener(v8::Local<v8::Object> object);
 };
+
+
+SHARED_PTR_BEGIN(DTLSICETransportListener)
+{
+	DTLSICETransportListenerShared(v8::Local<v8::Object> object)
+	{
+		return new std::shared_ptr<DTLSICETransportListener>(new DTLSICETransportListener(object));
+	}
+}
+SHARED_PTR_END(DTLSICETransport)

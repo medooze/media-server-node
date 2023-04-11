@@ -9,7 +9,7 @@
 %nodefaultdtor DTLSICETransport; 
 struct DTLSICETransport
 {
-	void SetListener(DTLSICETransportListener* listener);
+	void SetListener(const DTLSICETransportListenerShared& listener);
 
 	void Start();
 	void Stop();
