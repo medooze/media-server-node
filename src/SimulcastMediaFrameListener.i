@@ -2,8 +2,8 @@
 %include "EventLoop.i"
 
 class SimulcastMediaFrameListener :
-	public MediaFrameListener,
-	public MediaFrameProducer
+	public MediaFrameProducer,
+	public MediaFrameListener
 {
 public:
 	SimulcastMediaFrameListener(TimeService &timeService, DWORD ssrc, DWORD numLayers);
