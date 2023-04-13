@@ -16107,6 +16107,70 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_AddMediaListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
+  MediaFrameListenerShared *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_AddMediaListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_AddMediaListener" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+  }
+  arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
+  {
+    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
+  }
+  (arg1)->AddMediaListener((MediaFrameListenerShared const &)*arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_SimulcastMediaFrameListener_RemoveMediaListener(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  SimulcastMediaFrameListener *arg1 = (SimulcastMediaFrameListener *) 0 ;
+  MediaFrameListenerShared *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_SimulcastMediaFrameListener_RemoveMediaListener.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_SimulcastMediaFrameListener, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SimulcastMediaFrameListener_RemoveMediaListener" "', argument " "1"" of type '" "SimulcastMediaFrameListener *""'"); 
+  }
+  arg1 = reinterpret_cast< SimulcastMediaFrameListener * >(argp1);
+  {
+    arg2 = MediaFrameListenerShared_from_proxy(args[0]);
+  }
+  (arg1)->RemoveMediaListener((MediaFrameListenerShared const &)*arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static void _wrap_delete_SimulcastMediaFrameListener(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
   SWIGV8_Proxy *proxy = data.GetParameter();
   
@@ -17498,6 +17562,8 @@ SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "SetNumLaye
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "AttachTo", _wrap_SimulcastMediaFrameListener_AttachTo);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "Detach", _wrap_SimulcastMediaFrameListener_Detach);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "Stop", _wrap_SimulcastMediaFrameListener_Stop);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "AddMediaListener", _wrap_SimulcastMediaFrameListener_AddMediaListener);
+SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListener_class, "RemoveMediaListener", _wrap_SimulcastMediaFrameListener_RemoveMediaListener);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListenerShared_class, "toMediaFrameListener", _wrap_SimulcastMediaFrameListenerShared_toMediaFrameListener);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListenerShared_class, "toMediaFrameProducer", _wrap_SimulcastMediaFrameListenerShared_toMediaFrameProducer);
 SWIGV8_AddMemberFunction(_exports_SimulcastMediaFrameListenerShared_class, "get", _wrap_SimulcastMediaFrameListenerShared_get);

@@ -11,6 +11,9 @@ public:
 	void AttachTo(const MediaFrameProducerShared& producer);
 	void Detach(const MediaFrameProducerShared& producer);
 	void Stop();
+	//From MediaFrameProducer
+	void AddMediaListener(const MediaFrameListenerShared& listener);
+	void RemoveMediaListener(const MediaFrameListenerShared& listener);
 };
 
 
