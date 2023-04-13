@@ -17648,20 +17648,20 @@ if (SWIGTYPE_p_RemoteRateEstimatorListener->clientdata && !(static_cast<SWIGV8_C
   printf("Unable to inherit baseclass, it didn't exist _exports_SenderSideEstimatorListener _RemoteRateEstimatorListener\n");
 #endif
 }
-if (SWIGTYPE_p_MediaFrameListener->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ.IsEmpty()))
+if (SWIGTYPE_p_MediaFrameProducer->clientdata && !(static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameProducer->clientdata)->class_templ.IsEmpty()))
 {
   _exports_SimulcastMediaFrameListener_class->Inherit(
     v8::Local<v8::FunctionTemplate>::New(
       v8::Isolate::GetCurrent(),
-      static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameListener->clientdata)->class_templ)
+      static_cast<SWIGV8_ClientData *>(SWIGTYPE_p_MediaFrameProducer->clientdata)->class_templ)
     );
   
 #ifdef SWIGRUNTIME_DEBUG
-  printf("Inheritance successful _exports_SimulcastMediaFrameListener _MediaFrameListener\n");
+  printf("Inheritance successful _exports_SimulcastMediaFrameListener _MediaFrameProducer\n");
 #endif
 } else {
 #ifdef SWIGRUNTIME_DEBUG
-  printf("Unable to inherit baseclass, it didn't exist _exports_SimulcastMediaFrameListener _MediaFrameListener\n");
+  printf("Unable to inherit baseclass, it didn't exist _exports_SimulcastMediaFrameListener _MediaFrameProducer\n");
 #endif
 }
 
