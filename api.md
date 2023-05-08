@@ -11,6 +11,12 @@ Set new DTLS certificates. Should be called before any Endpoint is established.
 *   `cert` **[String][1]** path of the certificate file
 *   `key` **[String][1]** path of the key file
 
+### getDTLSFingerprint
+
+Get local DTLS fingerprint for this Media Server.
+
+Returns **[String][1]** 
+
 ### terminate
 
 Close async handlers so nodejs can exit nicely
@@ -82,6 +88,17 @@ Create a new endpoint object
 *   `ip` **[String][1]** External IP address of server, to be used when announcing the local ICE candidate
 
 Returns **[Endpoint][3]** The new created endpoing
+
+### createOffer
+
+Helper that creates an offer from capabilities
+It generates a random ICE username and password and gets media server dtls fingerprint
+
+#### Parameters
+
+*   `capabilities` **[Object][4]** Media capabilities as required by SDPInfo.create
+
+Returns **SDPInfo** SDP offer
 
 ### createRecorder
 
