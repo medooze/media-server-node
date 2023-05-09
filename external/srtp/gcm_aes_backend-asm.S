@@ -10,10 +10,10 @@
 # -----------------------------------------------------------------------------
 # Adapted from <crypto/x86_64cpuid.pl> (OPENSSL_ia32_cpuid)
 
-.globl	OPENSSL_ia32_cpuid
-.type	OPENSSL_ia32_cpuid,@function
+.globl	AesGcmSrtpBackend_asm_ia32_cpuid
+.type	AesGcmSrtpBackend_asm_ia32_cpuid,@function
 .align	16
-OPENSSL_ia32_cpuid:
+AesGcmSrtpBackend_asm_ia32_cpuid:
 .cfi_startproc	
 .byte	243,15,30,250
 	movq	%rbx,%r8
@@ -178,17 +178,17 @@ OPENSSL_ia32_cpuid:
 	orq	%r9,%rax
 	.byte	0xf3,0xc3
 .cfi_endproc	
-.size	OPENSSL_ia32_cpuid,.-OPENSSL_ia32_cpuid
+.size	AesGcmSrtpBackend_asm_ia32_cpuid,.-AesGcmSrtpBackend_asm_ia32_cpuid
 
 
 
 # -----------------------------------------------------------------------------
 # Adapted from <crypto/aes/asm/aesni-x86_64.pl> (aesni_set_encrypt_key):
 
-.globl	aesni_set_encrypt_key
-.type	aesni_set_encrypt_key,@function
+.globl	AesGcmSrtpBackend_asm_aesni_set_encrypt_key
+.type	AesGcmSrtpBackend_asm_aesni_set_encrypt_key,@function
 .align	16
-aesni_set_encrypt_key:
+AesGcmSrtpBackend_asm_aesni_set_encrypt_key:
 __aesni_set_encrypt_key:
 .cfi_startproc	
 .byte	0x48,0x83,0xEC,0x08
@@ -558,7 +558,7 @@ __aesni_set_encrypt_key:
 	xorps	%xmm1,%xmm2
 	.byte	0xf3,0xc3
 .cfi_endproc	
-.size	aesni_set_encrypt_key,.-aesni_set_encrypt_key
+.size	AesGcmSrtpBackend_asm_aesni_set_encrypt_key,.-AesGcmSrtpBackend_asm_aesni_set_encrypt_key
 .size	__aesni_set_encrypt_key,.-__aesni_set_encrypt_key
 .align	64
 .Lbswap_mask:
@@ -586,10 +586,10 @@ __aesni_set_encrypt_key:
 # Adapted from <crypto/modes/asm/aes-gcm-avx512.pl>:
 
 
-.globl	ossl_vaes_vpclmulqdq_capable
-.type	ossl_vaes_vpclmulqdq_capable,@function
+.globl	AesGcmSrtpBackend_asm_vpclmulqdq_capable
+.type	AesGcmSrtpBackend_asm_vpclmulqdq_capable,@function
 .align	32
-ossl_vaes_vpclmulqdq_capable:
+AesGcmSrtpBackend_asm_vpclmulqdq_capable:
 	movq	OPENSSL_ia32cap_P+8(%rip),%rcx
 
 	movq	$6600291188736,%rdx
@@ -598,12 +598,12 @@ ossl_vaes_vpclmulqdq_capable:
 	cmpq	%rdx,%rcx
 	cmoveq	%rcx,%rax
 	.byte	0xf3,0xc3
-.size	ossl_vaes_vpclmulqdq_capable, .-ossl_vaes_vpclmulqdq_capable
+.size	AesGcmSrtpBackend_asm_vpclmulqdq_capable, .-AesGcmSrtpBackend_asm_vpclmulqdq_capable
 .text	
-.globl	ossl_aes_gcm_init_avx512
-.type	ossl_aes_gcm_init_avx512,@function
+.globl	AesGcmSrtpBackend_asm_init_avx512
+.type	AesGcmSrtpBackend_asm_init_avx512,@function
 .align	32
-ossl_aes_gcm_init_avx512:
+AesGcmSrtpBackend_asm_init_avx512:
 .cfi_startproc	
 .byte	243,15,30,250
 	vpxorq	%xmm16,%xmm16,%xmm16
@@ -884,11 +884,11 @@ ossl_aes_gcm_init_avx512:
 .Labort_init:
 	.byte	0xf3,0xc3
 .cfi_endproc	
-.size	ossl_aes_gcm_init_avx512, .-ossl_aes_gcm_init_avx512
-.globl	ossl_aes_gcm_setiv_avx512
-.type	ossl_aes_gcm_setiv_avx512,@function
+.size	AesGcmSrtpBackend_asm_init_avx512, .-AesGcmSrtpBackend_asm_init_avx512
+.globl	AesGcmSrtpBackend_asm_setiv_avx512
+.type	AesGcmSrtpBackend_asm_setiv_avx512,@function
 .align	32
-ossl_aes_gcm_setiv_avx512:
+AesGcmSrtpBackend_asm_setiv_avx512:
 .cfi_startproc	
 .Lsetiv_seh_begin:
 .byte	243,15,30,250
@@ -2791,11 +2791,11 @@ skip_iv_len_12_init_IV:
 	.byte	0xf3,0xc3
 .Lsetiv_seh_end:
 .cfi_endproc	
-.size	ossl_aes_gcm_setiv_avx512, .-ossl_aes_gcm_setiv_avx512
-.globl	ossl_aes_gcm_update_aad_avx512
-.type	ossl_aes_gcm_update_aad_avx512,@function
+.size	AesGcmSrtpBackend_asm_setiv_avx512, .-AesGcmSrtpBackend_asm_setiv_avx512
+.globl	AesGcmSrtpBackend_asm_update_aad_avx512
+.type	AesGcmSrtpBackend_asm_update_aad_avx512,@function
 .align	32
-ossl_aes_gcm_update_aad_avx512:
+AesGcmSrtpBackend_asm_update_aad_avx512:
 .cfi_startproc	
 .Lghash_seh_begin:
 .byte	243,15,30,250
@@ -4548,11 +4548,11 @@ ossl_aes_gcm_update_aad_avx512:
 	.byte	0xf3,0xc3
 .Lghash_seh_end:
 .cfi_endproc	
-.size	ossl_aes_gcm_update_aad_avx512, .-ossl_aes_gcm_update_aad_avx512
-.globl	ossl_aes_gcm_encrypt_avx512
-.type	ossl_aes_gcm_encrypt_avx512,@function
+.size	AesGcmSrtpBackend_asm_update_aad_avx512, .-AesGcmSrtpBackend_asm_update_aad_avx512
+.globl	AesGcmSrtpBackend_asm_encrypt_avx512
+.type	AesGcmSrtpBackend_asm_encrypt_avx512,@function
 .align	32
-ossl_aes_gcm_encrypt_avx512:
+AesGcmSrtpBackend_asm_encrypt_avx512:
 .cfi_startproc	
 .Lencrypt_seh_begin:
 .byte	243,15,30,250
@@ -70493,11 +70493,11 @@ ossl_aes_gcm_encrypt_avx512:
 	.byte	0xf3,0xc3
 .Lencrypt_seh_end:
 .cfi_endproc	
-.size	ossl_aes_gcm_encrypt_avx512, .-ossl_aes_gcm_encrypt_avx512
-.globl	ossl_aes_gcm_decrypt_avx512
-.type	ossl_aes_gcm_decrypt_avx512,@function
+.size	AesGcmSrtpBackend_asm_encrypt_avx512, .-AesGcmSrtpBackend_asm_encrypt_avx512
+.globl	AesGcmSrtpBackend_asm_decrypt_avx512
+.type	AesGcmSrtpBackend_asm_decrypt_avx512,@function
 .align	32
-ossl_aes_gcm_decrypt_avx512:
+AesGcmSrtpBackend_asm_decrypt_avx512:
 .cfi_startproc	
 .Ldecrypt_seh_begin:
 .byte	243,15,30,250
@@ -136438,11 +136438,11 @@ ossl_aes_gcm_decrypt_avx512:
 	.byte	0xf3,0xc3
 .Ldecrypt_seh_end:
 .cfi_endproc	
-.size	ossl_aes_gcm_decrypt_avx512, .-ossl_aes_gcm_decrypt_avx512
-.globl	ossl_aes_gcm_finalize_avx512
-.type	ossl_aes_gcm_finalize_avx512,@function
+.size	AesGcmSrtpBackend_asm_decrypt_avx512, .-AesGcmSrtpBackend_asm_decrypt_avx512
+.globl	AesGcmSrtpBackend_asm_finalize_avx512
+.type	AesGcmSrtpBackend_asm_finalize_avx512,@function
 .align	32
-ossl_aes_gcm_finalize_avx512:
+AesGcmSrtpBackend_asm_finalize_avx512:
 .cfi_startproc	
 .byte	243,15,30,250
 	vmovdqu	336(%rdi),%xmm2
@@ -136524,12 +136524,12 @@ ossl_aes_gcm_finalize_avx512:
 .Labort_finalize:
 	.byte	0xf3,0xc3
 .cfi_endproc	
-.size	ossl_aes_gcm_finalize_avx512, .-ossl_aes_gcm_finalize_avx512
-.globl	ossl_gcm_gmult_avx512
-.hidden	ossl_gcm_gmult_avx512
-.type	ossl_gcm_gmult_avx512,@function
+.size	AesGcmSrtpBackend_asm_finalize_avx512, .-AesGcmSrtpBackend_asm_finalize_avx512
+.globl	AesGcmSrtpBackend_asm_gmult_avx512
+.hidden	AesGcmSrtpBackend_asm_gmult_avx512
+.type	AesGcmSrtpBackend_asm_gmult_avx512,@function
 .align	32
-ossl_gcm_gmult_avx512:
+AesGcmSrtpBackend_asm_gmult_avx512:
 .cfi_startproc	
 .byte	243,15,30,250
 	vmovdqu64	(%rdi),%xmm1
@@ -136568,7 +136568,7 @@ ossl_gcm_gmult_avx512:
 .Labort_gmult:
 	.byte	0xf3,0xc3
 .cfi_endproc	
-.size	ossl_gcm_gmult_avx512, .-ossl_gcm_gmult_avx512
+.size	AesGcmSrtpBackend_asm_gmult_avx512, .-AesGcmSrtpBackend_asm_gmult_avx512
 .data	
 .align	16
 POLY:.quad	0x0000000000000001, 0xC200000000000000
