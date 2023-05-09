@@ -25,6 +25,7 @@
 #include "../media-server/include/ActiveSpeakerDetector.h"
 #include "../media-server/include/ActiveSpeakerMultiplexer.h"
 #include "../media-server/include/SimulcastMediaFrameListener.h"
+#include "../external/srtp/gcm_aes_backend.h"
 
 template<typename T>
 struct CopyablePersistentTraits {
@@ -108,4 +109,6 @@ using Persistent = Nan::Persistent<T,NonCopyablePersistentTraits<T>>;
 		perfetto::Tracing::Initialize(args);
 		MedoozeTrackEventRegister();
 	}
+
+	AesGcmSrtpBackend_Register();
 %}
