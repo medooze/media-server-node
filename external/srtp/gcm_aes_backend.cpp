@@ -1,11 +1,103 @@
+/*
+ * Copyright 2023 Dolby Laboratories.
+ * Copyright 2009-2022 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright (c) 2021, Intel Corporation. All Rights Reserved.
+ *
+ * Code adapted from OpenSSL @ 4f373a9773:
+ *  <providers/implementations/ciphers/cipher_aes_gcm_hw_vaes_avx512.inc>
+ *  <include/crypto/modes.h> (struct gcm128_context)
+ *  <include/openssl/aes.h> (struct aes_key_st)
+ *  <include/crypto/aes_platform.h> (aesni_set_encrypt_key prototype)
+ *  <crypto/cpuid.c> (OPENSSL_ia32cap_P, OPENSSL_ia32_cpuid prototype)
+ */
+
+#include "gcm_aes_backend.h"
+#include <cstdint>
 #include <string.h>
 #include <memory>
+#include <openssl/crypto.h> // CRYPTO_memcmp
+
+// ASM interface for crypto/x86_64cpuid
+
+typedef uint64_t IA32CAP;
+
+extern unsigned int AesGcmSrtpBackend_ia32cap_P[4];
+
+extern "C" {
+	IA32CAP AesGcmSrtpBackend_asm_ia32_cpuid(unsigned int *cap);
+};
+
+static void setupCaps() {
+	auto vec = AesGcmSrtpBackend_asm_ia32_cpuid(AesGcmSrtpBackend_ia32cap_P);
+
+	/*
+	 * |(1<<10) sets a reserved bit to signal that variable
+	 * was initialized already... This is to avoid interference
+	 * with cpuid snippets in ELF .init segment.
+	 */
+	AesGcmSrtpBackend_ia32cap_P[0] = (unsigned int)vec | (1 << 10);
+	AesGcmSrtpBackend_ia32cap_P[1] = (unsigned int)(vec >> 32);
+}
+
+// ASM interface for aesni-x86_64.pl
+
+#define AES_MAXNR 14
+
+struct aes_key_st {
+	uint32_t rd_key[4 * (AES_MAXNR + 1)];
+	int rounds;
+};
+
+extern "C" {
+	int AesGcmSrtpBackend_asm_aesni_set_encrypt_key(const unsigned char *userKey, int bits, aes_key_st *key);
+};
+
+// ASM interface for aes-gcm-avx512.pl
+
+struct gcm128_context {
+	// see "Offsets in gcm128_context structure" in <crypto/modes/asm/aes-gcm-avx512.pl>
+	union {
+		uint64_t u[2];
+		uint32_t d[4];
+		uint8_t c[16];
+		size_t t[16 / sizeof(size_t)];
+	} Yi, EKi, EK0, len, Xi, H, Htable[16];
+};
+
+extern "C" {
+	/* Returns non-zero when AVX512F + VAES + VPCLMULDQD combination is available */
+	int AesGcmSrtpBackend_asm_vpclmulqdq_capable(void);
+
+#define OSSL_AES_GCM_UPDATE(direction) \
+	void AesGcmSrtpBackend_asm_ ## direction ## _avx512( \
+		const aes_key_st *ks, \
+		gcm128_context *ctx, \
+		unsigned int *pblocklen, \
+		const unsigned char *in, \
+		size_t len, \
+		unsigned char *out \
+	);
+
+	OSSL_AES_GCM_UPDATE(encrypt)
+	OSSL_AES_GCM_UPDATE(decrypt)
+
+	void AesGcmSrtpBackend_asm_init_avx512(const aes_key_st *ks, gcm128_context *ctx);
+	void AesGcmSrtpBackend_asm_setiv_avx512(const aes_key_st *ks, gcm128_context *ctx, const unsigned char *iv, size_t ivlen);
+	void AesGcmSrtpBackend_asm_update_aad_avx512(gcm128_context *ctx, const unsigned char *aad, size_t aadlen);
+	void AesGcmSrtpBackend_asm_finalize_avx512(gcm128_context *ctx, unsigned int pblocklen);
+
+	void AesGcmSrtpBackend_asm_gmult_avx512(uint64_t Xi[2], const gcm128_context *ctx);
+};
+
+// libsrtp backend interface
 
 extern "C" {
 #include "crypto_types.h"
 #include "cipher.h"
 #include "lib/crypto/cipher/cipher_test_cases.h"
 };
+
+// backend implementation
 
 struct AesGcmSrtpBackend {
 	// parameters saved from the alloc call
@@ -147,6 +239,9 @@ struct AesGcmSrtpBackend {
 	};
 
 	static void Register() {
+		setupCaps();
+		if (!AesGcmSrtpBackend_asm_vpclmulqdq_capable())
+			return; // hardware support not available, fall back to normal backend
 		srtp_replace_cipher_type(&backend_128, backend_128.id);
 		srtp_replace_cipher_type(&backend_256, backend_256.id);
 	}
@@ -156,7 +251,7 @@ struct AesGcmSrtpBackend {
 constexpr const srtp_cipher_type_t AesGcmSrtpBackend::backend_128;
 constexpr const srtp_cipher_type_t AesGcmSrtpBackend::backend_256;
 
-// call on startup to override libsrtp's default backend with ours
+// call on startup to conditionally override libsrtp's default backend with ours
 void AesGcmSrtpBackend_Register() {
 	AesGcmSrtpBackend::Register();
 }

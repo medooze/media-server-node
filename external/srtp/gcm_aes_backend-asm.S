@@ -10,6 +10,9 @@
 # -----------------------------------------------------------------------------
 # Adapted from <crypto/x86_64cpuid.pl> (OPENSSL_ia32_cpuid)
 
+.hidden	AesGcmSrtpBackend_ia32cap_P
+.comm	AesGcmSrtpBackend_ia32cap_P,16,4
+
 .globl	AesGcmSrtpBackend_asm_ia32_cpuid
 .type	AesGcmSrtpBackend_asm_ia32_cpuid,@function
 .align	16
@@ -202,7 +205,7 @@ __aesni_set_encrypt_key:
 	movl	$268437504,%r10d
 	movups	(%rdi),%xmm0
 	xorps	%xmm4,%xmm4
-	andl	OPENSSL_ia32cap_P+4(%rip),%r10d
+	andl	AesGcmSrtpBackend_ia32cap_P+4(%rip),%r10d
 	leaq	16(%rdx),%rax
 	cmpl	$256,%esi
 	je	.L14rounds
@@ -590,7 +593,7 @@ __aesni_set_encrypt_key:
 .type	AesGcmSrtpBackend_asm_vpclmulqdq_capable,@function
 .align	32
 AesGcmSrtpBackend_asm_vpclmulqdq_capable:
-	movq	OPENSSL_ia32cap_P+8(%rip),%rcx
+	movq	AesGcmSrtpBackend_ia32cap_P+8(%rip),%rcx
 
 	movq	$6600291188736,%rdx
 	xorl	%eax,%eax
