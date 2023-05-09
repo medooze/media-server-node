@@ -97,20 +97,74 @@ extern "C" {
 #include "lib/crypto/cipher/cipher_test_cases.h"
 };
 
+// while ASM has code to handle partial blocks when encrypting/decrypting,
+// it doesn't handle them for AAD. declare a wrapper for update_aad to do it:
+
+#define AES_BLOCK_SIZE 16
+
+static void update_aad_wrapper(gcm128_context *gcmctx, unsigned int* pblocklen, const unsigned char *aad, size_t aad_len)
+{
+	auto& ares = *pblocklen;
+
+	/* Partial AAD block left from previous AAD update calls */
+	if (ares > 0) {
+		/*
+		 * Fill partial block buffer till full block
+		 * (note, the hash is stored reflected)
+		 */
+		while (ares > 0 && aad_len > 0) {
+			gcmctx->Xi.c[15 - ares] ^= *(aad++);
+			--aad_len;
+			ares = (ares + 1) % AES_BLOCK_SIZE;
+		}
+		/* Full block gathered */
+		if (ares == 0) {
+			AesGcmSrtpBackend_asm_gmult_avx512(gcmctx->Xi.u, gcmctx);
+		} else { /* no more AAD */
+			return;
+		}
+	}
+
+	/* Bulk AAD processing */
+	auto lenBlks = aad_len & ((size_t)(-AES_BLOCK_SIZE));
+	if (lenBlks > 0) {
+		AesGcmSrtpBackend_asm_update_aad_avx512(gcmctx, aad, lenBlks);
+		aad += lenBlks;
+		aad_len -= lenBlks;
+	}
+
+	/* Add remaining AAD to the hash (note, the hash is stored reflected) */
+	if (aad_len > 0) {
+		ares = aad_len;
+		for (size_t i = 0; i < aad_len; i++)
+			gcmctx->Xi.c[15 - i] ^= aad[i];
+	}
+}
+
+
 // backend implementation
 
+#define BAD_SEQUENCE (srtp_err_status_bad_param)
+
 struct AesGcmSrtpBackend {
+	// state guards
+	bool has_key, has_iv;
+	srtp_cipher_direction_t direction;
+
 	// parameters saved from the alloc call
 	size_t tag_len, key_size;
 
-	// TODO: state
+	// cipher state
+	gcm128_context gcm_state;
+	aes_key_st key_state;
+	unsigned int ares, mres; // partial block fill (bytes) for AAD and payload
+
+	// ALLOCATION / DEALLOCATION
 
 	static srtp_err_status_t alloc(srtp_cipher_t** cptr, int key_len, int tlen)
 	{
 		auto c = std::make_unique<srtp_cipher_t>();
 		auto ctx = std::make_unique<AesGcmSrtpBackend>();
-
-		// TODO: allocate state
 
 		if (tlen != 8 && tlen != 16) {
 			return (srtp_err_status_bad_param);
@@ -128,6 +182,7 @@ struct AesGcmSrtpBackend {
 		}
 		c->key_len = key_len;
 
+		ctx->has_key = false;
 		c->algorithm = c->type->id;
 		c->state = ctx.release();
 		*cptr = c.release();
@@ -146,38 +201,117 @@ struct AesGcmSrtpBackend {
 		return (srtp_err_status_ok);
 	}
 
+	// INIT
+
 	static srtp_err_status_t context_init(void* cv, const uint8_t* key)
 	{
 		auto c = static_cast<AesGcmSrtpBackend*>(cv);
 
-		// TODO: init state
+		AesGcmSrtpBackend_asm_aesni_set_encrypt_key(key, c->key_size * 8, &c->key_state);
+		memset(&c->gcm_state, 0, sizeof(c->gcm_state));
+		AesGcmSrtpBackend_asm_init_avx512(&c->key_state, &c->gcm_state);
 
+		c->has_key = true;
+		c->has_iv = false;
 		return (srtp_err_status_ok);
 	}
 
-	static srtp_err_status_t set_iv(void* cv, unsigned char* iv, srtp_cipher_direction_t /*direction*/)
+	static srtp_err_status_t set_iv(void* cv, unsigned char* iv, srtp_cipher_direction_t direction)
 	{
 		auto c = static_cast<AesGcmSrtpBackend*>(cv);
+		if (!c->has_key)
+			return BAD_SEQUENCE;
+		if (direction != srtp_direction_decrypt && direction != srtp_direction_encrypt)
+			return srtp_err_status_bad_param;
 
-		// TODO: set IV
+		c->gcm_state.Yi.u[0] = 0;           /* Current counter */
+		c->gcm_state.Yi.u[1] = 0;
+		c->gcm_state.Xi.u[0] = 0;           /* AAD hash */
+		c->gcm_state.Xi.u[1] = 0;
+		c->gcm_state.len.u[0] = 0;          /* AAD length */
+		c->gcm_state.len.u[1] = 0;          /* Message length */
+		c->ares = 0;
+		c->mres = 0;
 
+		AesGcmSrtpBackend_asm_setiv_avx512(&c->key_state, &c->gcm_state, iv, 12);
+
+		c->direction = direction;
+		c->has_iv = true;
 		return (srtp_err_status_ok);
 	}
 
-	static srtp_err_status_t set_aad(void* cv, const uint8_t* aad, uint32_t aad_len)
+	// CORE CIPHER
+
+	static srtp_err_status_t _try_increment_length(uint64_t& len_var, size_t len, uint64_t limit)
+	{
+		auto new_len = len_var + len;
+		// AAD is limited by 2^64 bits, thus 2^61 bytes
+		if (new_len > limit || new_len < len)
+			return (srtp_err_status_algo_fail);
+
+		len_var = new_len;
+		return (srtp_err_status_ok);
+	}
+
+	static srtp_err_status_t set_aad(void* cv, const uint8_t* buf, uint32_t len)
 	{
 		auto c = static_cast<AesGcmSrtpBackend*>(cv);
+		if (!c->has_iv || c->gcm_state.len.u[1] > 0)
+			return BAD_SEQUENCE;
 
-		// TODO: process AAD
+		if (auto r = _try_increment_length(c->gcm_state.len.u[0], len, uint64_t(1) << 61))
+			return r;
+		update_aad_wrapper(&c->gcm_state, &c->ares, buf, len);
 
 		return (srtp_err_status_ok);
 	}
+
+	static srtp_err_status_t _update(void* cv, unsigned char* buf, unsigned int len, srtp_cipher_direction_t direction)
+	{
+		auto c = static_cast<AesGcmSrtpBackend*>(cv);
+		if (!c->has_iv || direction != c->direction)
+			return BAD_SEQUENCE;
+
+		// Finalize GHASH(AAD) if AAD partial blocks left unprocessed
+		if (c->ares > 0) {
+			AesGcmSrtpBackend_asm_gmult_avx512(c->gcm_state.Xi.u, &c->gcm_state);
+			c->ares = 0;
+		}
+
+		if (auto r = _try_increment_length(c->gcm_state.len.u[1], len, (uint64_t(1) << 36) - 32))
+			return r;
+		if (direction == srtp_direction_encrypt)
+			AesGcmSrtpBackend_asm_encrypt_avx512(&c->key_state, &c->gcm_state, &c->mres, buf, len, buf);
+		else
+			AesGcmSrtpBackend_asm_decrypt_avx512(&c->key_state, &c->gcm_state, &c->mres, buf, len, buf);
+
+		return (srtp_err_status_ok);
+	}
+
+	static srtp_err_status_t _finalize(void *cv)
+	{
+		auto c = static_cast<AesGcmSrtpBackend*>(cv);
+		if (!c->has_iv)
+			return BAD_SEQUENCE;
+
+		auto res = c->mres;
+		// Finalize AAD processing
+		if (c->ares > 0)
+			res = c->ares;
+		AesGcmSrtpBackend_asm_finalize_avx512(&c->gcm_state, res);
+
+		c->has_iv = false;
+		return (srtp_err_status_ok);
+	}
+
+	// SRTP-SPECIFIC LOGIC
 
 	static srtp_err_status_t encrypt(void* cv, unsigned char* buf, unsigned int* enc_len)
 	{
 		auto c = static_cast<AesGcmSrtpBackend*>(cv);
 
-		// TODO: encrypt chunk
+		if (auto r = _update(cv, buf, *enc_len, srtp_direction_encrypt))
+			return r;
 
 		return (srtp_err_status_ok);
 	}
@@ -185,8 +319,12 @@ struct AesGcmSrtpBackend {
 	static srtp_err_status_t get_tag(void* cv, uint8_t* buf, uint32_t* len)
 	{
 		auto c = static_cast<AesGcmSrtpBackend*>(cv);
+		if (c->direction != srtp_direction_encrypt)
+			return BAD_SEQUENCE;
 
-		// TODO: finalize encryption and copy tag_len bytes to buf
+		if (auto r = _finalize(cv))
+			return r;
+		memcpy(buf, c->gcm_state.Xi.c, c->tag_len);
 		*len = c->tag_len;
 
 		return (srtp_err_status_ok);
@@ -203,8 +341,12 @@ struct AesGcmSrtpBackend {
 		new_enc_len -= c->tag_len;
 		auto tag = buf + new_enc_len;
 
-		// decrypt buf / new_enc_len, finalize and check tag
-		// TODO (fail with srtp_err_status_auth_fail if needed)
+		if (auto r = _update(cv, buf, new_enc_len, srtp_direction_decrypt))
+			return r;
+		if (auto r = _finalize(cv))
+			return r;
+		if (CRYPTO_memcmp(c->gcm_state.Xi.c, tag, c->tag_len))
+			return (srtp_err_status_auth_fail);
 
 		*enc_len = new_enc_len;
 		return (srtp_err_status_ok);
