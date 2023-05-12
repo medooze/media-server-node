@@ -27,6 +27,9 @@ struct RTPIncomingSource : public RTPSource
 	int64_t skew;
 	double  drift;
 	bool	aggregatedLayers;
+
+	uint16_t width;
+	uint16_t height;
 	
 	%extend 
 	{
