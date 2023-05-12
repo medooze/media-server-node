@@ -2319,6 +2319,8 @@ The stats objects will provide the following info for each source
 *   frameDelayMax	: Max frame delay during the last second
 *   frameCaptureDelay		: Average bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
 *   frameCaptureDelayMax	: Max bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
+*   width		: video width
+*   height		: video height
 *   layers		: Information about each spatial/temporal layer (if present)
     *   spatialLayerId  : Spatial layer id
     *   temporalLayerId : Temporatl layer id
