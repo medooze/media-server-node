@@ -185,6 +185,10 @@
 
         # stream list override
         'stream_list.cpp',
+
+        # AES-GCM backend conditional override
+        'gcm_aes_backend.cpp',
+        'gcm_aes_backend-asm.S',
       ],
       'defines': [
         # override stream list

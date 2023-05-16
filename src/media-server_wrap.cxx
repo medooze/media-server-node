@@ -1451,6 +1451,7 @@ static swig_module_info swig_module = {swig_types, 65, 0, 0, 0, 0};
 #include "../media-server/include/ActiveSpeakerDetector.h"
 #include "../media-server/include/ActiveSpeakerMultiplexer.h"
 #include "../media-server/include/SimulcastMediaFrameListener.h"
+#include "../external/srtp/gcm_aes_backend.h"
 
 template<typename T>
 struct CopyablePersistentTraits {
@@ -17059,6 +17060,8 @@ void SWIGV8_INIT (SWIGV8_OBJECT exports_obj, SWIGV8_VALUE /*module*/, v8::Local<
 		perfetto::Tracing::Initialize(args);
 		MedoozeTrackEventRegister();
 	}
+
+	AesGcmSrtpBackend_Register();
 
 
   // a class template for creating proxies of undefined types
