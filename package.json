@@ -32,7 +32,6 @@
   },
   "homepage": "https://github.com/medooze/media-server-node#readme",
   "dependencies": {
-    "clone-deep": "^4.0.1",
     "lfsr": "0.0.3",
     "nan": "^2.11.1",
     "semantic-sdp": "^3",

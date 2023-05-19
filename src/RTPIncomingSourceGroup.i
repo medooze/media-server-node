@@ -1,4 +1,5 @@
 %include "shared_ptr.i"
+%include "MediaServer.i"
 %include "MediaFrame.i"
 %include "RTPIncomingMediaStream.i"
 %include "RTPIncomingSource.i"
@@ -22,6 +23,22 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	void SetMaxWaitTime(DWORD maxWaitingTime);
 	void ResetMaxWaitTime();
 	void Update();
+	
+%extend {
+	void UpdateAsync(v8::Local<v8::Object> object)
+	{
+		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
+		self->UpdateAsync([=](std::chrono::milliseconds){
+			MediaServer::Async([=](){
+				Nan::HandleScope scope;
+				int i = 0;
+				v8::Local<v8::Value> argv[0];
+				//Call object method with arguments
+				MakeCallback(persistent, "resolve", i, argv);
+			});
+		});
+	}
+}
 };
 
 

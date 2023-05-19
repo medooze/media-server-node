@@ -297,6 +297,40 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 		test.done();
 		
 	});
+
+
+	await suite.test("async cached",async function(test){
+		let ssrc = 100;
+		//Create stream
+		const streamInfo = new StreamInfo("stream1");
+		//Create track
+		let track = new TrackInfo("video", "track1");
+		//Get ssrc and rtx
+		const media = ssrc++;
+		const rtx = ssrc++;
+		//Add ssrcs to track
+		track.addSSRC(media);
+		track.addSSRC(rtx);
+		//Add RTX group	
+		track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		//Get new track
+		const videoTrack = incomingStream.getVideoTracks()[0];
+		//Get stats
+		const stats = await videoTrack.getStatsAsync();
+		test.ok(stats);
+		//Get them again
+		const cached = await videoTrack.getStats();
+		test.ok(cached);
+		//Ensure they are the same
+		test.same(stats[''].timestamp,cached[''].timestamp);
+		test.done();
+		
+	});
 	
 	transport.stop();
 	suite.end();

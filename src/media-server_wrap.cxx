@@ -2247,6 +2247,18 @@ SWIG_AsVal_unsigned_SS_short (SWIGV8_VALUE obj, unsigned short *val)
   return res;
 }
 
+SWIGINTERN void RTPOutgoingSourceGroup_UpdateAsync__SWIG(RTPOutgoingSourceGroup *self,v8::Local< v8::Object > object){
+		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
+		self->UpdateAsync([=](std::chrono::milliseconds){
+			MediaServer::Async([=](){
+				Nan::HandleScope scope;
+				int i = 0;
+				v8::Local<v8::Value> argv[0];
+				//Call object method with arguments
+				MakeCallback(persistent, "resolve", i, argv);
+			});
+		});
+	}
 
 using RTPOutgoingSourceGroupShared = std::shared_ptr<RTPOutgoingSourceGroup>;
 
@@ -2436,6 +2448,18 @@ SWIGINTERN LayerSources RTPIncomingSource_layers__SWIG(RTPIncomingSource *self){
 				layers.push_back(&(it->second));
 			return layers;
 		}
+SWIGINTERN void RTPIncomingSourceGroup_UpdateAsync__SWIG(RTPIncomingSourceGroup *self,v8::Local< v8::Object > object){
+		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
+		self->UpdateAsync([=](std::chrono::milliseconds){
+			MediaServer::Async([=](){
+				Nan::HandleScope scope;
+				int i = 0;
+				v8::Local<v8::Value> argv[0];
+				//Call object method with arguments
+				MakeCallback(persistent, "resolve", i, argv);
+			});
+		});
+	}
 
 using RTPIncomingSourceGroupShared = std::shared_ptr<RTPIncomingSourceGroup>;
 
@@ -6467,6 +6491,37 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_UpdateAsync(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  v8::Local< v8::Object > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPOutgoingSourceGroup_UpdateAsync.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_UpdateAsync" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  {
+    arg2 = v8::Local<v8::Object>::Cast(args[0]);
+  }
+  RTPOutgoingSourceGroup_UpdateAsync__SWIG(arg1,arg2);
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static void _wrap_delete_RTPOutgoingSourceGroup(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
   SWIGV8_Proxy *proxy = data.GetParameter();
   
@@ -9621,6 +9676,37 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_Update(const SwigV8Argumen
   }
   arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
   (arg1)->Update();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_UpdateAsync(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  v8::Local< v8::Object > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_UpdateAsync.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_UpdateAsync" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+  {
+    arg2 = v8::Local<v8::Object>::Cast(args[0]);
+  }
+  RTPIncomingSourceGroup_UpdateAsync__SWIG(arg1,arg2);
   jsresult = SWIGV8_UNDEFINED();
   
   
@@ -17486,6 +17572,7 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "lastUpdated", _
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Update", _wrap_RTPOutgoingSourceGroup_Update);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Stop", _wrap_RTPOutgoingSourceGroup_Stop);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "SetForcedPlayoutDelay", _wrap_RTPOutgoingSourceGroup_SetForcedPlayoutDelay);
+SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "UpdateAsync", _wrap_RTPOutgoingSourceGroup_UpdateAsync);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroupShared_class, "get", _wrap_RTPOutgoingSourceGroupShared_get);
 SWIGV8_AddMemberFunction(_exports_RTPReceiver_class, "SendPLI", _wrap_RTPReceiver_SendPLI);
 SWIGV8_AddMemberFunction(_exports_RTPReceiver_class, "Reset", _wrap_RTPReceiver_Reset);
@@ -17546,6 +17633,7 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "lastUpdated", _
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "SetMaxWaitTime", _wrap_RTPIncomingSourceGroup_SetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "ResetMaxWaitTime", _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "UpdateAsync", _wrap_RTPIncomingSourceGroup_UpdateAsync);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroupShared_class, "toRTPIncomingMediaStream", _wrap_RTPIncomingSourceGroupShared_toRTPIncomingMediaStream);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroupShared_class, "get", _wrap_RTPIncomingSourceGroupShared_get);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransportListenerShared_class, "get", _wrap_DTLSICETransportListenerShared_get);
