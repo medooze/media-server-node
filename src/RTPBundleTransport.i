@@ -21,7 +21,7 @@ SHARED_PTR(RTPBundleTransportConnection)
 class RTPBundleTransport
 {
 public:
-	RTPBundleTransport();
+	RTPBundleTransport(uint32_t packetPoolSize);
 	int Init();
 	int Init(int port);
 	RTPBundleTransportConnectionShared AddICETransport(const std::string &username,const Properties& properties);

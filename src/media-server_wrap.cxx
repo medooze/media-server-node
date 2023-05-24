@@ -15155,10 +15155,19 @@ static SwigV8ReturnValue _wrap_new_RTPBundleTransport(const SwigV8Arguments &arg
   SWIGV8_HANDLESCOPE();
   
   SWIGV8_OBJECT self = args.Holder();
+  uint32_t arg1 ;
+  unsigned int val1 ;
+  int ecode1 = 0 ;
   RTPBundleTransport *result;
   if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_RTPBundleTransport.");
-  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPBundleTransport.");
-  result = (RTPBundleTransport *)new RTPBundleTransport();
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPBundleTransport.");
+  ecode1 = SWIG_AsVal_unsigned_SS_int(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RTPBundleTransport" "', argument " "1"" of type '" "uint32_t""'");
+  } 
+  arg1 = static_cast< uint32_t >(val1);
+  result = (RTPBundleTransport *)new RTPBundleTransport(arg1);
+  
   
   
   

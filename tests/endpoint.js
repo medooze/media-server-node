@@ -17,6 +17,25 @@ tap.test("Endpoint::create",async function(suite){
 		//Ok
 		test.end();
 	});
+
+	await suite.test("start+stop packetPool",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint("127.0.0.1",{packetPoolSize:65536});
+		//Stop it
+		endpoint.stop();
+		//Ok
+		test.end();
+	});
+
+	await suite.test("start+stop invalid packetPool",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint("127.0.0.1",{packetPoolSize:"invalid"});
+		//Stop it
+		endpoint.stop();
+		//Ok
+		test.end();
+	});
+	
 	
 	await suite.test("candidate",async function(test){
 		//Create UDP server endpoint
