@@ -56,6 +56,37 @@
 #include "cipher_types.h"
 #include "lib/crypto/cipher/cipher_test_cases.h"
 
+#if OPENSSL_VERSION_MAJOR >= 3
+#define _BYPASS_OSSL_PARAM
+#endif
+
+#ifdef _BYPASS_OSSL_PARAM
+// I should be jailed for this
+#define __field_addr(ptr, offset, type) ((type *)((char *)(ptr) + (offset)))
+// <providers/implementations/include/prov/ciphercommon.h>
+#define IV_STATE_BUFFERED      1
+// struct evp_cipher_ctx_st <crypto/evp/evp_local.h>:
+//     clang -E -Iinclude crypto/evp/evp_enc.c | clang -cc1 -emit-llvm -fdump-record-layouts - | grep -B2 -A20 'struct evp_cipher_ctx_st'
+static void *get_openssl_algctx(EVP_CIPHER_CTX *ctx) {
+    return * __field_addr(ctx, 168, void *);
+}
+// struct prov_gcm_ctx_st <providers/implementations/include/prov/ciphercommon_gcm.h>
+//     clang -E -Iinclude -Iproviders/{implementations,common}/include providers/implementations/ciphers/ciphercommon_gcm.c | clang -cc1 -emit-llvm -fdump-record-layouts - | grep -B2 -A20 'struct prov_gcm_ctx_st'
+static void get_openssl_ctx_tag(EVP_CIPHER_CTX *ctx, char **buf, size_t **taglen) {
+    void *algctx = get_openssl_algctx(ctx);
+    *buf = __field_addr(algctx, 213, char);
+    *taglen = __field_addr(algctx, 24, size_t);
+}
+static void set_openssl_iv(EVP_CIPHER_CTX *ctx, uint8_t *iv, int enc) {
+    void *algctx = get_openssl_algctx(ctx);
+    if (enc)   * __field_addr(algctx, 84, uint8_t) |=  1; // enc
+    else       * __field_addr(algctx, 84, uint8_t) &= ~1; // enc
+    memcpy(__field_addr(algctx, 85, char), iv, 12); // iv
+    * __field_addr(algctx, 16, size_t) = 12; // ivlen
+    * __field_addr(algctx, 80, unsigned int) = IV_STATE_BUFFERED; // iv_state
+}
+#endif
+
 srtp_debug_module_t srtp_mod_aes_gcm = {
     0,        /* debugging is off by default */
     "aes gcm" /* printable module name       */
@@ -226,10 +257,14 @@ static srtp_err_status_t srtp_aes_gcm_openssl_set_iv(
     debug_print(srtp_mod_aes_gcm, "setting iv: %s",
                 srtp_octet_string_hex_string(iv, 12));
 
+#ifdef _BYPASS_OSSL_PARAM
+    set_openssl_iv(c->ctx, iv, (c->dir == srtp_direction_encrypt ? 1 : 0));
+#else
     if (!EVP_CipherInit_ex(c->ctx, NULL, NULL, NULL, iv,
                            (c->dir == srtp_direction_encrypt ? 1 : 0))) {
         return (srtp_err_status_init_fail);
     }
+#endif
 
     return (srtp_err_status_ok);
 }
@@ -252,6 +287,7 @@ static srtp_err_status_t srtp_aes_gcm_openssl_set_aad(void *cv,
     debug_print(srtp_mod_aes_gcm, "setting AAD: %s",
                 srtp_octet_string_hex_string(aad, aad_len));
 
+#if OPENSSL_VERSION_MAJOR < 3
     /*
      * EVP_CTRL_GCM_SET_TAG can only be used when decrypting
      */
@@ -274,6 +310,7 @@ static srtp_err_status_t srtp_aes_gcm_openssl_set_aad(void *cv,
             return (srtp_err_status_algo_fail);
         }
     }
+#endif
 
     rv = EVP_Cipher(c->ctx, NULL, aad, aad_len);
     if (rv < 0 || (uint32_t)rv != aad_len) {
@@ -332,9 +369,16 @@ static srtp_err_status_t srtp_aes_gcm_openssl_get_tag(void *cv,
     /*
      * Retreive the tag
      */
+#ifdef _BYPASS_OSSL_PARAM
+    char *tag;
+    size_t *taglen;
+    get_openssl_ctx_tag(c->ctx, &tag, &taglen);
+    memcpy(buf, tag, c->tag_len);
+#else
     if (!EVP_CIPHER_CTX_ctrl(c->ctx, EVP_CTRL_GCM_GET_TAG, c->tag_len, buf)) {
         return (srtp_err_status_algo_fail);
     }
+#endif
 
     /*
      * Increase encryption length by desired tag size
@@ -364,10 +408,19 @@ static srtp_err_status_t srtp_aes_gcm_openssl_decrypt(void *cv,
     /*
      * Set the tag before decrypting
      */
+#ifdef _BYPASS_OSSL_PARAM
+    char *tag;
+    size_t *taglen;
+    get_openssl_ctx_tag(c->ctx, &tag, &taglen);
+    memcpy(tag, buf + (*enc_len - c->tag_len), c->tag_len);
+    *taglen = c->tag_len;
+#else
     if (!EVP_CIPHER_CTX_ctrl(c->ctx, EVP_CTRL_GCM_SET_TAG, c->tag_len,
                              buf + (*enc_len - c->tag_len))) {
         return (srtp_err_status_auth_fail);
     }
+#endif
+
     EVP_Cipher(c->ctx, buf, buf, *enc_len - c->tag_len);
 
     /*
