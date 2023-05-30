@@ -203,7 +203,7 @@
             'lib/crypto/hash/sha1.c',
           ],
           'sources': [
-            'lib/crypto/cipher/aes_gcm_ossl.c',
+            'aes_gcm_ossl.c', # 'lib/crypto/cipher/aes_gcm_ossl.c',
             'lib/crypto/cipher/aes_icm_ossl.c',
             'lib/crypto/hash/hmac_ossl.c',
             'lib/crypto/include/aes_gcm_ossl.h',
