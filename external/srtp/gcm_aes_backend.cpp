@@ -61,7 +61,7 @@ struct gcm128_context {
 		uint32_t d[4];
 		uint8_t c[16];
 		size_t t[16 / sizeof(size_t)];
-	} Yi, EKi, EK0, len, Xi, H, Htable[16];
+	} Yi, EKi, EK0, len, Xi, H, Htable[48];
 };
 
 extern "C" {
