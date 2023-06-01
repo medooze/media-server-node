@@ -9687,6 +9687,33 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_Stop(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPIncomingSourceGroup_Stop.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_Stop" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+  (arg1)->Stop();
+  jsresult = SWIGV8_UNDEFINED();
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
 static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_UpdateAsync(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -17642,6 +17669,7 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "lastUpdated", _
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "SetMaxWaitTime", _wrap_RTPIncomingSourceGroup_SetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "ResetMaxWaitTime", _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
+SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Stop", _wrap_RTPIncomingSourceGroup_Stop);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "UpdateAsync", _wrap_RTPIncomingSourceGroup_UpdateAsync);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroupShared_class, "toRTPIncomingMediaStream", _wrap_RTPIncomingSourceGroupShared_toRTPIncomingMediaStream);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroupShared_class, "get", _wrap_RTPIncomingSourceGroupShared_get);

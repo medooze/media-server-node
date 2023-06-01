@@ -24,6 +24,8 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	void ResetMaxWaitTime();
 	void Update();
 	
+	void Stop();
+
 %extend {
 	void UpdateAsync(v8::Local<v8::Object> object)
 	{
