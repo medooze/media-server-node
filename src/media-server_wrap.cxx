@@ -6935,7 +6935,6 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming(const Swig
   int res1 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
-  bool result;
   
   if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponderFacade_SetIncoming.");
   
@@ -6955,8 +6954,8 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_SetIncoming(const Swig
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "RTPStreamTransponderFacade_SetIncoming" "', argument " "4"" of type '" "bool""'");
   } 
   arg4 = static_cast< bool >(val4);
-  result = (bool)(arg1)->SetIncoming((RTPIncomingMediaStreamShared const &)*arg2,(RTPReceiverShared const &)*arg3,arg4);
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  (arg1)->SetIncoming((RTPIncomingMediaStreamShared const &)*arg2,(RTPReceiverShared const &)*arg3,arg4);
+  jsresult = SWIGV8_UNDEFINED();
   
   
   
@@ -6977,7 +6976,6 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_ResetIncoming(const Sw
   RTPStreamTransponderFacade *arg1 = (RTPStreamTransponderFacade *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  bool result;
   
   if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponderFacade_ResetIncoming.");
   
@@ -6986,8 +6984,8 @@ static SwigV8ReturnValue _wrap_RTPStreamTransponderFacade_ResetIncoming(const Sw
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponderFacade_ResetIncoming" "', argument " "1"" of type '" "RTPStreamTransponderFacade *""'"); 
   }
   arg1 = reinterpret_cast< RTPStreamTransponderFacade * >(argp1);
-  result = (bool)(arg1)->ResetIncoming();
-  jsresult = SWIG_From_bool(static_cast< bool >(result));
+  (arg1)->ResetIncoming();
+  jsresult = SWIGV8_UNDEFINED();
   
   
   SWIGV8_RETURN(jsresult);

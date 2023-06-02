@@ -57,8 +57,8 @@ class RTPStreamTransponderFacade :
 {
 public:
 	RTPStreamTransponderFacade(const RTPOutgoingSourceGroupShared& outgoing, const RTPSenderShared& sender,v8::Local<v8::Object> object);
-	bool SetIncoming(const RTPIncomingMediaStreamShared& incoming, const RTPReceiverShared& receiver, bool smooth);
-	bool ResetIncoming();
+	void SetIncoming(const RTPIncomingMediaStreamShared& incoming, const RTPReceiverShared& receiver, bool smooth);
+	void ResetIncoming();
 	bool AppendH264ParameterSets(const std::string& sprops);
 	void SelectLayer(int spatialLayerId,int temporalLayerId);
 	void Mute(bool muting);
