@@ -110,6 +110,7 @@
 							"media-server/src/rtp/DependencyDescriptor.cpp",
 							"media-server/src/rtp/LayerInfo.cpp",
 							"media-server/src/rtp/RTCPCommonHeader.cpp",
+							"media-server/src/rtp/RTPMap.cpp",
 							"media-server/src/rtp/RTPHeader.cpp",
 							"media-server/src/rtp/RTPHeaderExtension.cpp",
 							"media-server/src/rtp/RTCPApp.cpp",
