@@ -2946,7 +2946,7 @@ public:
 			//Get codec type
 			BYTE type = it->GetProperty("pt",0);
 			//ADD it
-			rtp[type] = codec;
+			rtp.SetCodecForType(type, codec);
 		}
 	
 		//Set local 
