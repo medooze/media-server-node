@@ -83,7 +83,6 @@ public:
 	RTPOutgoingSourceGroupShared GetOutgoingSourceGroup();
 	RTPIncomingSourceGroupShared GetIncomingSourceGroup();
 	int End();
-	virtual int Enqueue(const RTPPacket::shared& packet);
 	virtual int SendPLI(DWORD ssrc);
 	virtual int Reset(DWORD ssrc);
 	TimeService& GetTimeService();

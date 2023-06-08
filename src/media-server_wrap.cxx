@@ -1376,35 +1376,34 @@ fail: ;
 #define SWIGTYPE_p_RTPOutgoingSource swig_types[35]
 #define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[36]
 #define SWIGTYPE_p_RTPOutgoingSourceGroupShared swig_types[37]
-#define SWIGTYPE_p_RTPPacket__shared swig_types[38]
-#define SWIGTYPE_p_RTPReceiver swig_types[39]
-#define SWIGTYPE_p_RTPReceiverShared swig_types[40]
-#define SWIGTYPE_p_RTPSender swig_types[41]
-#define SWIGTYPE_p_RTPSenderShared swig_types[42]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[43]
-#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[44]
-#define SWIGTYPE_p_RTPSource swig_types[45]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[46]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[47]
-#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[48]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[49]
-#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[50]
-#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[51]
-#define SWIGTYPE_p_TimeService swig_types[52]
-#define SWIGTYPE_p_UDPDumper swig_types[53]
-#define SWIGTYPE_p_UDPReader swig_types[54]
-#define SWIGTYPE_p_char swig_types[55]
-#define SWIGTYPE_p_int swig_types[56]
-#define SWIGTYPE_p_long_long swig_types[57]
-#define SWIGTYPE_p_short swig_types[58]
-#define SWIGTYPE_p_signed_char swig_types[59]
-#define SWIGTYPE_p_unsigned_char swig_types[60]
-#define SWIGTYPE_p_unsigned_int swig_types[61]
-#define SWIGTYPE_p_unsigned_long_long swig_types[62]
-#define SWIGTYPE_p_unsigned_short swig_types[63]
-#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[64]
-static swig_type_info *swig_types[66];
-static swig_module_info swig_module = {swig_types, 65, 0, 0, 0, 0};
+#define SWIGTYPE_p_RTPReceiver swig_types[38]
+#define SWIGTYPE_p_RTPReceiverShared swig_types[39]
+#define SWIGTYPE_p_RTPSender swig_types[40]
+#define SWIGTYPE_p_RTPSenderShared swig_types[41]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[42]
+#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[43]
+#define SWIGTYPE_p_RTPSource swig_types[44]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[45]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[46]
+#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[47]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[48]
+#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[49]
+#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[50]
+#define SWIGTYPE_p_TimeService swig_types[51]
+#define SWIGTYPE_p_UDPDumper swig_types[52]
+#define SWIGTYPE_p_UDPReader swig_types[53]
+#define SWIGTYPE_p_char swig_types[54]
+#define SWIGTYPE_p_int swig_types[55]
+#define SWIGTYPE_p_long_long swig_types[56]
+#define SWIGTYPE_p_short swig_types[57]
+#define SWIGTYPE_p_signed_char swig_types[58]
+#define SWIGTYPE_p_unsigned_char swig_types[59]
+#define SWIGTYPE_p_unsigned_int swig_types[60]
+#define SWIGTYPE_p_unsigned_long_long swig_types[61]
+#define SWIGTYPE_p_unsigned_short swig_types[62]
+#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[63]
+static swig_type_info *swig_types[65];
+static swig_module_info swig_module = {swig_types, 64, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -10202,46 +10201,6 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_DTLSICETransport_Enqueue(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  DTLSICETransport *arg1 = (DTLSICETransport *) 0 ;
-  RTPPacket::shared *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  int result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_DTLSICETransport_Enqueue.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_DTLSICETransport, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DTLSICETransport_Enqueue" "', argument " "1"" of type '" "DTLSICETransport *""'"); 
-  }
-  arg1 = reinterpret_cast< DTLSICETransport * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_RTPPacket__shared,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DTLSICETransport_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DTLSICETransport_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
-  }
-  arg2 = reinterpret_cast< RTPPacket::shared * >(argp2);
-  result = (int)(arg1)->Enqueue((RTPPacket::shared const &)*arg2);
-  jsresult = SWIG_From_int(static_cast< int >(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static SwigV8ReturnValue _wrap_DTLSICETransport_Dump__SWIG_0(const SwigV8Arguments &args, V8ErrorHandler &SWIGV8_ErrorHandler)
 {
   SWIGV8_HANDLESCOPE();
@@ -14327,46 +14286,6 @@ fail:
 }
 
 
-static SwigV8ReturnValue _wrap_RTPSessionFacade_Enqueue(const SwigV8Arguments &args) {
-  SWIGV8_HANDLESCOPE();
-  
-  SWIGV8_VALUE jsresult;
-  RTPSessionFacade *arg1 = (RTPSessionFacade *) 0 ;
-  RTPPacket::shared *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  int result;
-  
-  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPSessionFacade_Enqueue.");
-  
-  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPSessionFacade, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSessionFacade_Enqueue" "', argument " "1"" of type '" "RTPSessionFacade *""'"); 
-  }
-  arg1 = reinterpret_cast< RTPSessionFacade * >(argp1);
-  res2 = SWIG_ConvertPtr(args[0], &argp2, SWIGTYPE_p_RTPPacket__shared,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPSessionFacade_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPSessionFacade_Enqueue" "', argument " "2"" of type '" "RTPPacket::shared const &""'"); 
-  }
-  arg2 = reinterpret_cast< RTPPacket::shared * >(argp2);
-  result = (int)(arg1)->Enqueue((RTPPacket::shared const &)*arg2);
-  jsresult = SWIG_From_int(static_cast< int >(result));
-  
-  
-  
-  SWIGV8_RETURN(jsresult);
-  
-  goto fail;
-fail:
-  SWIGV8_RETURN(SWIGV8_UNDEFINED());
-}
-
-
 static SwigV8ReturnValue _wrap_RTPSessionFacade_SendPLI(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -16642,7 +16561,6 @@ static swig_type_info _swigt__p_RTPIncomingSourceGroupShared = {"_p_RTPIncomingS
 static swig_type_info _swigt__p_RTPOutgoingSource = {"_p_RTPOutgoingSource", "p_RTPOutgoingSource|RTPOutgoingSource *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPOutgoingSourceGroup = {"_p_RTPOutgoingSourceGroup", "RTPOutgoingSourceGroup *|p_RTPOutgoingSourceGroup", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPOutgoingSourceGroupShared = {"_p_RTPOutgoingSourceGroupShared", "p_RTPOutgoingSourceGroupShared|RTPOutgoingSourceGroupShared *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RTPPacket__shared = {"_p_RTPPacket__shared", "RTPPacket::shared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPReceiver = {"_p_RTPReceiver", "RTPReceiver *|p_RTPReceiver", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPReceiverShared = {"_p_RTPReceiverShared", "p_RTPReceiverShared|RTPReceiverShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPSender = {"_p_RTPSender", "p_RTPSender|RTPSender *", 0, 0, (void*)0, 0};
@@ -16709,7 +16627,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RTPOutgoingSource,
   &_swigt__p_RTPOutgoingSourceGroup,
   &_swigt__p_RTPOutgoingSourceGroupShared,
-  &_swigt__p_RTPPacket__shared,
   &_swigt__p_RTPReceiver,
   &_swigt__p_RTPReceiverShared,
   &_swigt__p_RTPSender,
@@ -16776,7 +16693,6 @@ static swig_cast_info _swigc__p_RTPIncomingSourceGroupShared[] = {  {&_swigt__p_
 static swig_cast_info _swigc__p_RTPOutgoingSource[] = {  {&_swigt__p_RTPOutgoingSource, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOutgoingSourceGroup[] = {  {&_swigt__p_RTPOutgoingSourceGroup, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPOutgoingSourceGroupShared[] = {  {&_swigt__p_RTPOutgoingSourceGroupShared, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RTPPacket__shared[] = {  {&_swigt__p_RTPPacket__shared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPReceiver[] = {  {&_swigt__p_RTPReceiver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPReceiverShared[] = {  {&_swigt__p_RTPReceiverShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPSender[] = {  {&_swigt__p_RTPSender, 0, 0, 0},{0, 0, 0, 0}};
@@ -16843,7 +16759,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RTPOutgoingSource,
   _swigc__p_RTPOutgoingSourceGroup,
   _swigc__p_RTPOutgoingSourceGroupShared,
-  _swigc__p_RTPPacket__shared,
   _swigc__p_RTPReceiver,
   _swigc__p_RTPReceiverShared,
   _swigc__p_RTPSender,
@@ -17679,7 +17594,6 @@ SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetSRTPProtectionProf
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetRemoteProperties", _wrap_DTLSICETransport_SetRemoteProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SetLocalProperties", _wrap_DTLSICETransport_SetLocalProperties);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "SendPLI", _wrap_DTLSICETransport_SendPLI);
-SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Enqueue", _wrap_DTLSICETransport_Enqueue);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "Dump", _wrap_DTLSICETransport__wrap_DTLSICETransport_Dump);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "StopDump", _wrap_DTLSICETransport_StopDump);
 SWIGV8_AddMemberFunction(_exports_DTLSICETransport_class, "DumpBWEStats", _wrap_DTLSICETransport_DumpBWEStats);
@@ -17769,7 +17683,6 @@ SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "SetRemotePort", _wrap
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "GetOutgoingSourceGroup", _wrap_RTPSessionFacade_GetOutgoingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "GetIncomingSourceGroup", _wrap_RTPSessionFacade_GetIncomingSourceGroup);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "End", _wrap_RTPSessionFacade_End);
-SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Enqueue", _wrap_RTPSessionFacade_Enqueue);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "SendPLI", _wrap_RTPSessionFacade_SendPLI);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "Reset", _wrap_RTPSessionFacade_Reset);
 SWIGV8_AddMemberFunction(_exports_RTPSessionFacade_class, "GetTimeService", _wrap_RTPSessionFacade_GetTimeService);

@@ -18,7 +18,6 @@ struct DTLSICETransport
 	void SetRemoteProperties(const Properties& properties);
 	void SetLocalProperties(const Properties& properties);
 	virtual int SendPLI(DWORD ssrc) override;
-	virtual int Enqueue(const RTPPacket::shared& packet) override;
 	int Dump(const char* filename, bool inbound = true, bool outbound = true, bool rtcp = true,bool rtpHeadersOnly = false);
 	int Dump(UDPDumper* dumper, bool inbound = true, bool outbound = true, bool rtcp, bool rtpHeadersOnly = false);
 	int StopDump();
