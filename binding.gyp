@@ -15,6 +15,7 @@
 				"-O3",
 				"-g",
 				"-Wno-unused-function -Wno-comment",
+				"-flto",
 				#"-O0",
 				#"-fsanitize=address,leak",
 				#"-fsanitize-address-use-after-scope",
@@ -27,6 +28,7 @@
 				"-O3",
 				"-g",
 				"-Wno-unused-function",
+				"-flto",
 				#"-O0",
 				#"-fsanitize=address,leak",
 				#"-fsanitize-address-use-after-scope",
@@ -38,7 +40,7 @@
 				"external/perfetto",
 				"<!(node -e \"require('nan')\")"
 			],
-			"ldflags" : [" -lpthread -lresolv"],
+			"ldflags" : [" -lpthread -lresolv -flto"],
 			"link_settings": 
 			{
         			'libraries': ["-lpthread -lresolv"]
