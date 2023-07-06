@@ -1564,6 +1564,10 @@ public:
 		
 		//Init async handler
 		uv_async_init(uv_default_loop(), &async, async_cb_handler);
+
+		Logger::EnableLog(true);
+		Logger::EnableDebug(true);
+		Logger::EnableUltraDebug(true);
 	}
 	
 	static void Terminate()
@@ -2685,6 +2689,8 @@ public:
 			//If is h264
 			if (strcasecmp(codec,"H264")==0)
 			{
+				Debug("ttxgz: %s, line %d\n", __PRETTY_FUNCTION__, __LINE__);
+				UltraDebug("ttxgz: set H264 to annexB!\n");
 				//Convert to Uint8Array
 				v8::Local<v8::Uint8Array> uint8array = frame.As<v8::Uint8Array>();
 				//Convert to annexB

@@ -72,6 +72,8 @@ public:
 			//If is h264
 			if (strcasecmp(codec,"H264")==0)
 			{
+                
+		        UltraDebug("ttxgz: set h264 to AnnexB!\n");
 				//Convert to Uint8Array
 				v8::Local<v8::Uint8Array> uint8array = frame.As<v8::Uint8Array>();
 				//Convert to annexB
