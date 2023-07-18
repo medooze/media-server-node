@@ -2618,6 +2618,7 @@ SWIGINTERN RTPReceiverShared DTLSICETransportShared_toRTPReceiver__SWIG(DTLSICET
 
 #include "codecs.h"
 #include "h264/h264.h"
+#include "h264/H26xNal.h"
 
 class MediaFrameReader :
 	public MediaFrame::Listener
@@ -2681,9 +2682,10 @@ public:
 			v8::Local<v8::Value> argv[3];
 			//Create buffer
 			v8::Local<v8::Value> frame = Nan::CopyBuffer(reinterpret_cast<const char*>(buffer->GetData()), buffer->GetSize()).ToLocalChecked();
-			
+			UltraDebug("ttxgz: %s, line %d\n", __PRETTY_FUNCTION__, __LINE__);
 			//If is h264
-			if (strcasecmp(codec,"H264")==0)
+			//if (strcasecmp(codec,"H264")==0)
+			if ((strcasecmp(codec,"H264")==0) || (strcasecmp(codec,"H265")==0))
 			{
 				//Convert to Uint8Array
 				v8::Local<v8::Uint8Array> uint8array = frame.As<v8::Uint8Array>();

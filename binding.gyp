@@ -94,6 +94,7 @@
 							"media-server/src/h265/HEVCDescriptor.cpp",
 							"media-server/src/vp8/vp8depacketizer.cpp",
 							"media-server/src/h264/H264LayerSelector.cpp",
+							"media-server/src/h265/H265LayerSelector.cpp",
 							"media-server/src/vp8/VP8LayerSelector.cpp",
 							"media-server/src/vp9/VP9PayloadDescription.cpp",
 							"media-server/src/vp9/VP9LayerSelector.cpp",

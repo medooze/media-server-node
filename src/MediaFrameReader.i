@@ -4,7 +4,8 @@
 %{
 
 #include "codecs.h"
-#include "h264/h264.h"
+//#include "h264/h264.h"
+#include "h264/H26xNal.h"
 
 class MediaFrameReader :
 	public MediaFrame::Listener
@@ -59,7 +60,8 @@ public:
 		//Get frame buffer
 		Buffer::shared buffer = frame.GetBuffer();
 
-		//UltraDebug("-onMediaFrame() [type:%s,codec:%s,minPeriod:%d,lastFrame:%d]\n",type,codec,minPeriod,lastFrame);
+		UltraDebug("-onMediaFrame() [type:%s,codec:%s,minPeriod:%d,lastFrame:%d]\n",type,codec,minPeriod,lastFrame);
+        UltraDebug("ttxgz: %s, line %d\n", __PRETTY_FUNCTION__, __LINE__);
 
 		//Run function on main node thread
 		MediaServer::Async([=,cloned=persistent](){
@@ -72,6 +74,16 @@ public:
 			//If is h264
 			if (strcasecmp(codec,"H264")==0)
 			{
+                UltraDebug("ttxgz: %s, line %d\n", __PRETTY_FUNCTION__, __LINE__);
+				//Convert to Uint8Array
+				v8::Local<v8::Uint8Array> uint8array = frame.As<v8::Uint8Array>();
+				//Convert to annexB
+				NalToAnnexB((uint8_t*)uint8array->Buffer()->GetBackingStore()->Data(), uint8array->Buffer()->ByteLength());
+			}
+			//If is h265
+			if (strcasecmp(codec,"H265")==0)
+			{
+                UltraDebug("ttxgz: %s, line %d\n", __PRETTY_FUNCTION__, __LINE__);
 				//Convert to Uint8Array
 				v8::Local<v8::Uint8Array> uint8array = frame.As<v8::Uint8Array>();
 				//Convert to annexB
