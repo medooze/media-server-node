@@ -9,13 +9,15 @@ public:
 	PlayerFacade(v8::Local<v8::Object> object) :
 		MP4Streamer(this),
 		audio(MediaFrame::Audio,loop),
-		video(MediaFrame::Video,loop)
+		//video(MediaFrame::Video,loop)
+        video(new RTPIncomingSourceGroup(MediaFrame::Video, loop))
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 		Reset();
 		//Start dispatching
 		audio.Start();
-		video.Start();
+		//video.Start();
+		video->Start();
 	}
 		
 	virtual void onRTPPacket(RTPPacket &packet)
@@ -31,11 +33,14 @@ public:
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				//video.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				video->media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of video
-				cloned->SetSSRC(video.media.ssrc);
+				//cloned->SetSSRC(video.media.ssrc);
+				cloned->SetSSRC(video->media.ssrc);
 				//Multiplex
-				video.AddPacket(cloned,0,now);
+				//video.AddPacket(cloned,0,now);
+				video->AddPacket(cloned,0,now);
 				break;
 			case MediaFrame::Audio:
 				//Update stats
@@ -64,22 +69,28 @@ public:
 	void Reset() 
 	{
 		audio.media.Reset();
-		video.media.Reset();
+		//video.media.Reset();
+		video->media.Reset();
 		audio.media.ssrc = rand();
-		video.media.ssrc = rand();
+		//video.media.ssrc = rand();
+		video->media.ssrc = rand();
 	}
 	
 	virtual void onMediaFrame(const MediaFrame &frame)  {}
 	virtual void onMediaFrame(DWORD ssrc, const MediaFrame &frame) {}
 
 	RTPIncomingMediaStream* GetAudioSource() { return &audio; }
-	RTPIncomingMediaStream* GetVideoSource() { return &video; }
+	//RTPIncomingMediaStream* GetVideoSource() { return &video; }
+	//RTPIncomingMediaStreamShared GetVideoSource() { return video; }
+	RTPIncomingSourceGroup::shared GetVideoSource() { return video; }
 	
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;	
 	//TODO: Update to multitrack
 	RTPIncomingSourceGroup audio;
-	RTPIncomingSourceGroup video;
+	//RTPIncomingSourceGroup video;
+	//RTPIncomingMediaStreamShared video;
+	RTPIncomingSourceGroup::shared video;
 };
 %}
 
@@ -88,7 +99,9 @@ class PlayerFacade
 public:
 	PlayerFacade(v8::Local<v8::Object> object);
 	RTPIncomingSourceGroup* GetAudioSource();
-	RTPIncomingSourceGroup* GetVideoSource();
+	//RTPIncomingSourceGroup* GetVideoSource();
+	//RTPIncomingMediaStreamShared GetVideoSource();
+	RTPIncomingSourceGroupShared GetVideoSource();
 	void Reset();
 	
 	int Open(const char* filename);
