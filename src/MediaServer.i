@@ -1,5 +1,7 @@
 %{
 
+#include "../media-server/include/ThreadRegistry.h"
+
 bool MakeCallback(const std::shared_ptr<Persistent<v8::Object>>& persistent, const char* name, int argc = 0, v8::Local<v8::Value>* argv = nullptr)
 {
 	Nan::HandleScope scope;
@@ -186,3 +188,7 @@ public:
 	static bool SetAffinity(int cpu);
 	static bool SetThreadName(const std::string& name);
 };
+
+%init %{ 
+	std::atexit(ThreadRegistry::Close);
+%}
