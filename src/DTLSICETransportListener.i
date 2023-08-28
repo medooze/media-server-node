@@ -3,12 +3,13 @@
 %{
 
 class DTLSICETransportListener :
-	public DTLSICETransport::Listener
+	public DTLSICETransport::Listener,
+	public node::AsyncResource
 {
 public:
-	DTLSICETransportListener(v8::Local<v8::Object> object)
+	DTLSICETransportListener(v8::Local<v8::Object> object) : 
+		node::AsyncResource(v8::Isolate::GetCurrent(), object, "Medooze::DTLSICETransportListener")
 	{
-		persistent = std::make_shared<Persistent<v8::Object>>(object);
 	}
 		
 	virtual ~DTLSICETransportListener() = default;
@@ -16,7 +17,7 @@ public:
 	virtual void onRemoteICECandidateActivated(const std::string& ip, uint16_t port, uint32_t priority) override
 	{
 		//Run function on main node thread
-		MediaServer::Async([=,cloned=persistent](){
+		CallInJs([=](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[3];
@@ -25,14 +26,14 @@ public:
 			argv[i++] = Nan::New<v8::Uint32>(port);
 			argv[i++] = Nan::New<v8::Uint32>(priority);
 			//Call object method with arguments
-			MakeCallback(cloned, "onremoteicecandidate", i, argv);
+			this->MakeCallback("onremoteicecandidate", i, argv);
 		});
 	}
 	
 	virtual void onDTLSStateChanged(const DTLSICETransport::DTLSState state) override 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=,cloned=persistent](){
+		CallInJs([=](){
 			Nan::HandleScope scope;
 			int i = 0;
 			v8::Local<v8::Value> argv[1];
@@ -61,22 +62,19 @@ public:
 					break;
 			}
 			//Call method
-			MakeCallback(cloned,"ondtlsstate",i,argv);
+			this->MakeCallback("ondtlsstate",i,argv);
 		});
 	}
 	
 	virtual void onICETimeout() override 
 	{
 		//Run function on main node thread
-		MediaServer::Async([=,cloned=persistent](){
+		CallInJs([=](){
 			Nan::HandleScope scope;
 			//Call object method with arguments
-			MakeCallback(cloned, "onicetimeout");
+			this->MakeCallback("onicetimeout", 0, nullptr);
 		});
 	}
-
-private:
-	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
 %}
 

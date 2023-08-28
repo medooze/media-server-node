@@ -1,5 +1,36 @@
 %{
 
+class MedoozeRequest {
+public:
+	MedoozeRequest(const std::function<void()>& func) :
+		func(func)
+	{
+		request.data = this;
+	}
+
+	std::function<void()> func;
+	uv_work_t request;
+};
+
+void MedoozeNoop(uv_work_t* req) 
+{
+	// Nothing to do
+}
+
+void MedoozeAfterCallback(uv_work_t* req, int status) 
+{
+	auto request = std::unique_ptr<MedoozeRequest>(static_cast<MedoozeRequest*>(req->data));
+	request->func();
+}
+
+template<typename T>
+void CallInJs(const T& func)
+{
+	auto req = new MedoozeRequest(func);
+	(void)uv_queue_work(uv_default_loop(), &req->request, MedoozeNoop, reinterpret_cast<uv_after_work_cb>(MedoozeAfterCallback));
+}
+
+
 bool MakeCallback(const std::shared_ptr<Persistent<v8::Object>>& persistent, const char* name, int argc = 0, v8::Local<v8::Value>* argv = nullptr)
 {
 	Nan::HandleScope scope;
