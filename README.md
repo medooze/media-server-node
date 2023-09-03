@@ -10,7 +10,7 @@ Supported systems:
 
 ## Install
  
-Just add the Medooze media server as a dependency to your node proyect:
+Just add the Medooze media server as a dependency to your node project:
 ```
     npm i --save medooze-media-server
 ```
