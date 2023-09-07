@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>medooze-media-server 0.136.1 | Documentation</title>
+  <title>medooze-media-server 0.140.6 | Documentation</title>
   <meta name='description' content='WebRTC Media Server by Medooze'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>medooze-media-server</h3>
-          <div class='mb1'><code>0.136.1</code></div>
+          <div class='mb1'><code>0.140.6</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -598,6 +598,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#transpondergetavailablelayersasync'
+                        class='regular pre-open'>
+                        #getAvailableLayersAsync
+                      </a></li>
+                      
+                      <li><a
                         href='#transponderismuted'
                         class='regular pre-open'>
                         #isMuted
@@ -619,6 +625,12 @@
                         href='#transpondersettargetbitrate'
                         class='regular pre-open'>
                         #setTargetBitrate
+                      </a></li>
+                      
+                      <li><a
+                        href='#transpondersettargetbitrateasync'
+                        class='regular pre-open'>
+                        #setTargetBitrateAsync
                       </a></li>
                       
                       <li><a
@@ -649,6 +661,12 @@
                         href='#transpondergetselectedlayer'
                         class='regular pre-open'>
                         #getSelectedLayer
+                      </a></li>
+                      
+                      <li><a
+                        href='#transpondergetselectedlayerasync'
+                        class='regular pre-open'>
+                        #getSelectedLayerAsync
                       </a></li>
                       
                       <li><a
@@ -994,6 +1012,12 @@
                       </a></li>
                       
                       <li><a
+                        href='#incomingstreamgetstatsasync'
+                        class='regular pre-open'>
+                        #getStatsAsync
+                      </a></li>
+                      
+                      <li><a
                         href='#incomingstreamismuted'
                         class='regular pre-open'>
                         #isMuted
@@ -1098,136 +1122,6 @@
               
                 
                 <li><a
-                  href='#incomingstreamtracksimulcastadapter'
-                  class=" toggle-sibling">
-                  IncomingStreamTrackSimulcastAdapter
-                  <span class='icon'>▸</span>
-                </a>
-                
-                <div class='toggle-target display-none'>
-                  
-                  
-                    <ul class='list-reset py1-ul pl1'>
-                      <li class='h5'><span>Instance members</span></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapteraddtrack'
-                        class='regular pre-open'>
-                        #addTrack
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapterremovetrack'
-                        class='regular pre-open'>
-                        #removeTrack
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetstats'
-                        class='regular pre-open'>
-                        #getStats
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetactivelayers'
-                        class='regular pre-open'>
-                        #getActiveLayers
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetid'
-                        class='regular pre-open'>
-                        #getId
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetmediaid'
-                        class='regular pre-open'>
-                        #getMediaId
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergettrackinfo'
-                        class='regular pre-open'>
-                        #getTrackInfo
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetssrcs'
-                        class='regular pre-open'>
-                        #getSSRCs
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetmedia'
-                        class='regular pre-open'>
-                        #getMedia
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetencodings'
-                        class='regular pre-open'>
-                        #getEncodings
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetencoding'
-                        class='regular pre-open'>
-                        #getEncoding
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadaptergetdefaultencoding'
-                        class='regular pre-open'>
-                        #getDefaultEncoding
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapterismuted'
-                        class='regular pre-open'>
-                        #isMuted
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapterisattached'
-                        class='regular pre-open'>
-                        #isAttached
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapterattached'
-                        class='regular pre-open'>
-                        #attached
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapterrefresh'
-                        class='regular pre-open'>
-                        #refresh
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapterdetached'
-                        class='regular pre-open'>
-                        #detached
-                      </a></li>
-                      
-                      <li><a
-                        href='#incomingstreamtracksimulcastadapterstop'
-                        class='regular pre-open'>
-                        #stop
-                      </a></li>
-                      
-                    </ul>
-                  
-                  
-                  
-                </div>
-                
-                </li>
-              
-                
-                <li><a
                   href='#incomingstreamtrackmirrored'
                   class=" toggle-sibling">
                   IncomingStreamTrackMirrored
@@ -1247,9 +1141,21 @@
                       </a></li>
                       
                       <li><a
+                        href='#incomingstreamtrackmirroredgetstatsasync'
+                        class='regular pre-open'>
+                        #getStatsAsync
+                      </a></li>
+                      
+                      <li><a
                         href='#incomingstreamtrackmirroredgetactivelayers'
                         class='regular pre-open'>
                         #getActiveLayers
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtrackmirroredgetactivelayersasync'
+                        class='regular pre-open'>
+                        #getActiveLayersAsync
                       </a></li>
                       
                       <li><a
@@ -1403,6 +1309,12 @@
                         href='#outgoingstreamgetstats'
                         class='regular pre-open'>
                         #getStats
+                      </a></li>
+                      
+                      <li><a
+                        href='#outgoingstreamgetstatsasync'
+                        class='regular pre-open'>
+                        #getStatsAsync
                       </a></li>
                       
                       <li><a
@@ -2030,6 +1942,36 @@
               
                 
                 <li><a
+                  href='#eventstopped'
+                  class="">
+                  stopped
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventstopped'
+                  class="">
+                  stopped
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#parsecidr'
+                  class="">
+                  parseCIDR
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#outgoingstreamtrack'
                   class=" toggle-sibling">
                   OutgoingStreamTrack
@@ -2070,6 +2012,12 @@
                         href='#outgoingstreamtrackgetstats'
                         class='regular pre-open'>
                         #getStats
+                      </a></li>
+                      
+                      <li><a
+                        href='#outgoingstreamtrackgetstatsasync'
+                        class='regular pre-open'>
+                        #getStatsAsync
                       </a></li>
                       
                       <li><a
@@ -2171,36 +2119,6 @@
               
                 
                 <li><a
-                  href='#eventstopped'
-                  class="">
-                  stopped
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#eventstopped'
-                  class="">
-                  stopped
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#parsecidr'
-                  class="">
-                  parseCIDR
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
                   href='#incomingstreamtrack'
                   class=" toggle-sibling">
                   IncomingStreamTrack
@@ -2214,6 +2132,12 @@
                       <li class='h5'><span>Instance members</span></li>
                       
                       <li><a
+                        href='#incomingstreamtrackgetstatsasync'
+                        class='regular pre-open'>
+                        #getStatsAsync
+                      </a></li>
+                      
+                      <li><a
                         href='#incomingstreamtrackgetstats'
                         class='regular pre-open'>
                         #getStats
@@ -2223,6 +2147,12 @@
                         href='#incomingstreamtrackgetactivelayers'
                         class='regular pre-open'>
                         #getActiveLayers
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtrackgetactivelayersasync'
+                        class='regular pre-open'>
+                        #getActiveLayersAsync
                       </a></li>
                       
                       <li><a
@@ -2395,6 +2325,148 @@
                   withSocket
                   
                 </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#incomingstreamtracksimulcastadapter'
+                  class=" toggle-sibling">
+                  IncomingStreamTrackSimulcastAdapter
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapteraddtrack'
+                        class='regular pre-open'>
+                        #addTrack
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterremovetrack'
+                        class='regular pre-open'>
+                        #removeTrack
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetstats'
+                        class='regular pre-open'>
+                        #getStats
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetstatsasync'
+                        class='regular pre-open'>
+                        #getStatsAsync
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetactivelayers'
+                        class='regular pre-open'>
+                        #getActiveLayers
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetactivelayersasync'
+                        class='regular pre-open'>
+                        #getActiveLayersAsync
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetid'
+                        class='regular pre-open'>
+                        #getId
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetmediaid'
+                        class='regular pre-open'>
+                        #getMediaId
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergettrackinfo'
+                        class='regular pre-open'>
+                        #getTrackInfo
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetssrcs'
+                        class='regular pre-open'>
+                        #getSSRCs
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetmedia'
+                        class='regular pre-open'>
+                        #getMedia
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetencodings'
+                        class='regular pre-open'>
+                        #getEncodings
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetencoding'
+                        class='regular pre-open'>
+                        #getEncoding
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadaptergetdefaultencoding'
+                        class='regular pre-open'>
+                        #getDefaultEncoding
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterismuted'
+                        class='regular pre-open'>
+                        #isMuted
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterisattached'
+                        class='regular pre-open'>
+                        #isAttached
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterattached'
+                        class='regular pre-open'>
+                        #attached
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterrefresh'
+                        class='regular pre-open'>
+                        #refresh
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterdetached'
+                        class='regular pre-open'>
+                        #detached
+                      </a></li>
+                      
+                      <li><a
+                        href='#incomingstreamtracksimulcastadapterstop'
+                        class='regular pre-open'>
+                        #stop
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
                 
                 </li>
               
@@ -3054,7 +3126,7 @@ Length is limited to 16 bytes.</p>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>createEndpoint(ip)</span>
+            <span class='code strong strong truncate'>createEndpoint(ip, params)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -3064,7 +3136,7 @@ Length is limited to 16 bytes.</p>
 
   <p>Create a new endpoint object</p>
 
-    <div class='pre p1 fill-light mt0'>createEndpoint(ip: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="#endpoint">Endpoint</a></div>
+    <div class='pre p1 fill-light mt0'>createEndpoint(ip: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, params: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="#endpoint">Endpoint</a></div>
   
   
 
@@ -3085,6 +3157,40 @@ Length is limited to 16 bytes.</p>
 	    External IP address of server, to be used when announcing the local ICE candidate
 
           </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>params</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Creation parameters
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>params.packetPoolSize</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code>
+  </td>
+  <td class='break-word'><span>Packet pool size
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
           
         </div>
       
@@ -6975,6 +7081,62 @@ This allows both to bridge legacy enpoints or integrate streaming/broadcasting s
       </div>
     </div>
   
+    <div class='border-bottom' id='transpondergetavailablelayersasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getAvailableLayersAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get available encodings and layers</p>
+
+    <div class='pre p1 fill-light mt0'>getAvailableLayersAsync(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='transponderismuted'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -7266,6 +7428,136 @@ This operation will not change the muted state of the stream this track belongs 
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></code>:
         Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='transpondersettargetbitrateasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>setTargetBitrateAsync(target, options, bitrate)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Select encoding and temporal and spatial layers based on the desired bitrate. This operation will unmute the transponder if it was mutted and it is possible to select an encoding and layer based on the target bitrate and options.</p>
+
+    <div class='pre p1 fill-light mt0'>setTargetBitrateAsync(target: any, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>, bitrate: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>target</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    Options for configuring algorithm to select best encoding/layers [Optional]
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.traversal</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
+  </td>
+  <td class='break-word'><span>Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" [Default: "default"]
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.strict</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
+  </td>
+  <td class='break-word'><span>If there is not a layer with a bitrate lower thatn target, stop sending media [Default: false]
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.smooth</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
+  </td>
+  <td class='break-word'><span>When going to a lower simulcast layer, keep the higher one visible [Default: true]
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>bitrate</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Promise&#x3C;{Number}> Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
 
       
     
@@ -7608,6 +7900,62 @@ This operation will not change the muted state of the stream this track belongs 
   <p>Get current selected layer info</p>
 
     <div class='pre p1 fill-light mt0'>getSelectedLayer(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='transpondergetselectedlayerasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getSelectedLayerAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get current selected layer info</p>
+
+    <div class='pre p1 fill-light mt0'>getSelectedLayerAsync(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -10212,6 +10560,65 @@ This operation will not change the muted state of the stream this track belongs 
       </div>
     </div>
   
+    <div class='border-bottom' id='incomingstreamgetstatsasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStatsAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get statistics for all tracks in the stream</p>
+<p>See IncomingStreamTrack.getStats for information about the stats returned by each track.</p>
+
+    <div class='pre p1 fill-light mt0'>getStatsAsync(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Promise&#x3C;{Map
+,Object}> Map with stats by trackId
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='incomingstreamismuted'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -11154,1081 +11561,6 @@ This operation will not change the muted state of the stream this track belongs 
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='incomingstreamtracksimulcastadapter'>
-      IncomingStreamTrackSimulcastAdapter
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Bundle multiple video track as if they were a single simulcast video track</p>
-
-    <div class='pre p1 fill-light mt0'>new IncomingStreamTrackSimulcastAdapter()</div>
-  
-  
-    <p>
-      Extends
-      
-        Emitter
-      
-    </p>
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapteraddtrack'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>addTrack(encodingId, incomingStreamTrack)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Add video track to the simulcast adapter</p>
-
-    <div class='pre p1 fill-light mt0'>addTrack(encodingId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, incomingStreamTrack: <a href="#incomingstreamtrack">IncomingStreamTrack</a>)</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>encodingId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    Id used as base for encodings id
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>incomingStreamTrack</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
-	    Incoming video stream track
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapterremovetrack'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>removeTrack(incomingStreamTrack)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Remove video track to the simulcast adapter</p>
-
-    <div class='pre p1 fill-light mt0'>removeTrack(incomingStreamTrack: <a href="#incomingstreamtrack">IncomingStreamTrack</a>)</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>incomingStreamTrack</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
-	    Incoming video stream track
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetstats'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getStats()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get stats for all encodings from the original track</p>
-
-    <div class='pre p1 fill-light mt0'>getStats(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></code>:
-        Map with stats by encodingId
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetactivelayers'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getActiveLayers()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get active encodings and layers ordered by bitrate of the original track</p>
-
-    <div class='pre p1 fill-light mt0'>getActiveLayers(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        Active layers object containing an array of active and inactive encodings and an array of all available layer info
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetid'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getId()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get track id as signaled on the SDP</p>
-
-    <div class='pre p1 fill-light mt0'>getId()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetmediaid'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getMediaId()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get track media id (mid)</p>
-
-    <div class='pre p1 fill-light mt0'>getMediaId()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergettrackinfo'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getTrackInfo()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get track info object</p>
-
-    <div class='pre p1 fill-light mt0'>getTrackInfo(): TrackInfo</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>TrackInfo</code>:
-        Track info
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetssrcs'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getSSRCs()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Return ssrcs associated to this track</p>
-
-    <div class='pre p1 fill-light mt0'>getSSRCs(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetmedia'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getMedia()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get track media type</p>
-
-    <div class='pre p1 fill-light mt0'>getMedia(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
-        "audio"|"video"
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetencodings'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getEncodings()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get all track encodings
-Internal use, you'd beter know what you are doing before calling this method</p>
-
-    <div class='pre p1 fill-light mt0'>getEncodings(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></code>:
-        encodings
-*
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetencoding'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getEncoding(encodingId)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get encoding by id
-Internal use, you'd beter know what you are doing before calling this method</p>
-
-    <div class='pre p1 fill-light mt0'>getEncoding(encodingId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>encodingId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
-	    encoding Id,
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        encoding
-*
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetdefaultencoding'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getDefaultEncoding()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Get default encoding
-Internal use, you'd beter know what you are doing before calling this method</p>
-
-    <div class='pre p1 fill-light mt0'>getDefaultEncoding(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        encoding
-*
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapterismuted'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>isMuted()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Check if the track is muted or not</p>
-
-    <div class='pre p1 fill-light mt0'>isMuted(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-        muted
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapterisattached'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>isAttached()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Return if the track is attached or not</p>
-
-    <div class='pre p1 fill-light mt0'>isAttached()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapterattached'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>attached()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Signal that this track has been attached.
-Internal use, you'd beter know what you are doing before calling this method</p>
-
-    <div class='pre p1 fill-light mt0'>attached()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapterrefresh'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>refresh()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Request an intra refres on all sources</p>
-
-    <div class='pre p1 fill-light mt0'>refresh()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapterdetached'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>detached()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Signal that this track has been detached.
-Internal use, you'd beter know what you are doing before calling this method</p>
-
-    <div class='pre p1 fill-light mt0'>detached()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='incomingstreamtracksimulcastadapterstop'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>stop()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Removes the track from the incoming stream and also detaches any attached outgoing track or recorder</p>
-
-    <div class='pre p1 fill-light mt0'>stop()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-</div>
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
     <h3 class='fl m0' id='incomingstreamtrackmirrored'>
       IncomingStreamTrackMirrored
     </h3>
@@ -12332,6 +11664,63 @@ Internal use, you'd beter know what you are doing before calling this method</p>
       </div>
     </div>
   
+    <div class='border-bottom' id='incomingstreamtrackmirroredgetstatsasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStatsAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get stats for all encodings from the original track</p>
+
+    <div class='pre p1 fill-light mt0'>getStatsAsync(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></code>:
+        Map with stats by encodingId
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
     <div class='border-bottom' id='incomingstreamtrackmirroredgetactivelayers'>
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
@@ -12347,6 +11736,63 @@ Internal use, you'd beter know what you are doing before calling this method</p>
   <p>Get active encodings and layers ordered by bitrate of the original track</p>
 
     <div class='pre p1 fill-light mt0'>getActiveLayers(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtrackmirroredgetactivelayersasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getActiveLayersAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get active encodings and layers ordered by bitrate of the original track</p>
+
+    <div class='pre p1 fill-light mt0'>getActiveLayersAsync(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
   
   
 
@@ -13609,6 +13055,56 @@ Internal use, you'd beter know what you are doing before calling this method</p>
 <p>See OutgoingStreamTrack.getStats for information about the stats returned by each track.</p>
 
     <div class='pre p1 fill-light mt0'>getStats()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='outgoingstreamgetstatsasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStatsAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get statistics for all tracks in the stream</p>
+<p>See OutgoingStreamTrack.getStats for information about the stats returned by each track.</p>
+
+    <div class='pre p1 fill-light mt0'>getStatsAsync()</div>
   
   
 
@@ -19987,6 +19483,203 @@ This event fires when ICE candidate has correctly being checked out and we start
   
   <div class='clearfix'>
     
+    <h3 class='fl m0' id='eventstopped'>
+      stopped
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>AudioDecoder stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>stopped</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>frame</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventstopped'>
+      stopped
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>AudioDecoder stopped event</p>
+
+    <div class='pre p1 fill-light mt0'>stopped</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='parsecidr'>
+      parseCIDR
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>parse a CIDR into a normalized [address as u32be, prefix length] tuple</p>
+
+    <div class='pre p1 fill-light mt0'>parseCIDR(cidr: any)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>cidr</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
     <h3 class='fl m0' id='outgoingstreamtrack'>
       OutgoingStreamTrack
     </h3>
@@ -20288,6 +19981,91 @@ This event fires when ICE candidate has correctly being checked out and we start
 </ul>
 
     <div class='pre p1 fill-light mt0'>getStats(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></code>:
+        Map with stats by encodingId
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='outgoingstreamtrackgetstatsasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStatsAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get stats for all encodings</p>
+<p>You will get stats for media and rtx sources (if used):</p>
+<ul>
+<li>timestmap		: timestamp on when this stats where created</li>
+<li>media		: mediaStats,</li>
+<li>rtx		: rtxStats,</li>
+<li>remb		: remote estimated bitate (if remb is in use)</li>
+<li>numPackets	: number of rtp packets sent</li>
+<li>numPacketsDelta	: number of rtp packets sent during last second</li>
+<li>bitrate		: Bitrate for media stream only in bps</li>
+<li>total		: Accumulated bitrate for media and rtx streams in bps</li>
+</ul>
+<p>The stats objects will privide the follwing info for each source</p>
+<ul>
+<li>numFrames			: total recevied frames</li>
+<li>numFramesDelta		: recevied frames during last second</li>
+<li>numPackets		: number of rtp packets sent</li>
+<li>numPacketsDelta		: number of rtp packets sent during last second</li>
+<li>numRTCPPackets		: number of rtcp packsets sent</li>
+<li>totalBytes		: total rtp sent bytes</li>
+<li>totalRTCPBytes		: total rtp sent bytes</li>
+<li>bitrate			: average bitrate sent during last second in bps</li>
+<li>reportCount		: number of RTCP receiver reports received</li>
+<li>reportCountDelta		: number of RTCP receiver reports received during last second</li>
+<li>reportedLostCount		: total packet loses reported</li>
+<li>reportedLostCountDelta	: packet losses reported in last second</li>
+<li>reportedFractionLost	: fraction loss media reported during last second</li>
+<li>reportedJitter		: last reported jitter buffer value</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>getStatsAsync(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></div>
   
   
 
@@ -21259,203 +21037,6 @@ This will set the transponder inconming track to null</p>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='eventstopped'>
-      stopped
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>AudioDecoder stopped event</p>
-
-    <div class='pre p1 fill-light mt0'>stopped</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>frame</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='eventstopped'>
-      stopped
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>AudioDecoder stopped event</p>
-
-    <div class='pre p1 fill-light mt0'>stopped</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>reader</span> <code class='quiet'>(IncomingStreamTrackReader)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='parsecidr'>
-      parseCIDR
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>parse a CIDR into a normalized [address as u32be, prefix length] tuple</p>
-
-    <div class='pre p1 fill-light mt0'>parseCIDR(cidr: any)</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>cidr</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
     <h3 class='fl m0' id='incomingstreamtrack'>
       IncomingStreamTrack
     </h3>
@@ -21501,6 +21082,118 @@ This will set the transponder inconming track to null</p>
   
     <div class='py1 quiet mt1 prose-big'>Instance Members</div>
     <div class="clearfix">
+  
+    <div class='border-bottom' id='incomingstreamtrackgetstatsasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStatsAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get stats for all encodings</p>
+<p>For each encoding you will get stats for media and rtx sources (if used):</p>
+<ul>
+<li>media    : Stats for the media stream</li>
+<li>rtx      : Stats for the rtx retransmission stream</li>
+<li>rtt      : Round Trip Time in ms</li>
+<li>waitTime : "min","max" and "avg" packet waiting times in rtp buffer before delivering them</li>
+<li>bitrate  : Bitrate for media stream only in bps</li>
+<li>total    : Accumulated bitrate for media and rtx streams in bps</li>
+<li>remb     : Estimated avialable bitrate for receving (only avaailable if not using tranport wide cc)</li>
+<li>timestamp: When this stats was generated, in order to save workload, stats are cached for 200ms</li>
+<li>simulcastIdx	: Simulcast layer index based on bitrate received (-1 if it is inactive).</li>
+<li>lostPackets	: Accumulated lost packets for media and rtx strems</li>
+<li>numPackets	: Accumulated packets for media and rtx strems</li>
+<li>lostPacketsRatio	: Lost packets ratio</li>
+</ul>
+<p>The stats objects will provide the following info for each source</p>
+<ul>
+<li>numFrames		: total recevied frames</li>
+<li>numFramesDelta	: recevied frames during last second</li>
+<li>lostPackets	: total lost packkets</li>
+<li>lostPacketsDelta	: Lost/out of order packets during last second</li>
+<li>lostPacketsMaxGap	: max total consecutieve packets lossed during last second</li>
+<li>lostPacketsGapCount : number of packet looses bursts during last second</li>
+<li>dropPackets       : droppted packets by media server</li>
+<li>numPackets	: number of rtp packets received</li>
+<li>numPacketsDelta	: number of rtp packets received during last seconds</li>
+<li>numRTCPPackets	: number of rtcp packsets received</li>
+<li>totalBytes	: total rtp received bytes</li>
+<li>totalRTCPBytes	: total rtp received bytes</li>
+<li>totalPLIs		: total PLIs sent</li>
+<li>totalNACKs	: total NACk packets sent</li>
+<li>bitrate		: average bitrate received during last second in bps</li>
+<li>skew		: difference between NTP timestamp and RTP timestamps at sender (from RTCP SR)</li>
+<li>drift		: ratio between RTP timestamps and the NTP timestamp and  at sender (from RTCP SR)</li>
+<li>clockRate		: RTP clockrate</li>
+<li>frameDelay	: Average frame delay during the last second</li>
+<li>frameDelayMax	: Max frame delay during the last second</li>
+<li>frameCaptureDelay		: Average bewtween local reception time and sender capture one (Absolute capture time must be negotiated)</li>
+<li>frameCaptureDelayMax	: Max bewtween local reception time and sender capture one (Absolute capture time must be negotiated)</li>
+<li>width		: video width</li>
+<li>height		: video height</li>
+<li>layers		: Information about each spatial/temporal layer (if present)
+<ul>
+<li>spatialLayerId  : Spatial layer id</li>
+<li>temporalLayerId : Temporatl layer id</li>
+<li>totalBytes	: total rtp received bytes for this layer</li>
+<li>numPackets	: number of rtp packets received for this layer</li>
+<li>bitrate		: average bitrate received during last second for this layer</li>
+<li>targetBitrate	: Signaled target bitrate on the VideoLayersAllocation header</li>
+<li>targetWidth	: Signaled target width on the VideoLayersAllocation header</li>
+<li>targetHeight	: Signaled target height on the VideoLayersAllocation header</li>
+<li>targetFps	: Signaled target fps on the VideoLayersAllocation header</li>
+</ul>
+</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>getStatsAsync(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Promise&#x3C;{Map&#x3C;String,Object>}> Promise resolving to a map with stats by encodingId
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
   
     <div class='border-bottom' id='incomingstreamtrackgetstats'>
       <div class="clearfix small pointer toggle-sibling">
@@ -21644,6 +21337,63 @@ This will set the transponder inconming track to null</p>
       <div class='py1 quiet mt1 prose-big'>Returns</div>
       <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
         Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtrackgetactivelayersasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getActiveLayersAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get active encodings and layers ordered by bitrate</p>
+
+    <div class='pre p1 fill-light mt0'>getActiveLayersAsync(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Promise&#x3C;{Object}> Active layers object containing an array of active and inactive encodings and an array of all available layer info
 
       
     
@@ -23164,6 +22914,1195 @@ we don't need to be careful when managing refs, subscriptions...</p>
   
 
   
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='incomingstreamtracksimulcastadapter'>
+      IncomingStreamTrackSimulcastAdapter
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Bundle multiple video track as if they were a single simulcast video track</p>
+
+    <div class='pre p1 fill-light mt0'>new IncomingStreamTrackSimulcastAdapter()</div>
+  
+  
+    <p>
+      Extends
+      
+        Emitter
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapteraddtrack'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>addTrack(encodingId, incomingStreamTrack)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Add video track to the simulcast adapter</p>
+
+    <div class='pre p1 fill-light mt0'>addTrack(encodingId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, incomingStreamTrack: <a href="#incomingstreamtrack">IncomingStreamTrack</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>encodingId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    Id used as base for encodings id
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>incomingStreamTrack</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
+	    Incoming video stream track
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterremovetrack'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>removeTrack(incomingStreamTrack)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Remove video track to the simulcast adapter</p>
+
+    <div class='pre p1 fill-light mt0'>removeTrack(incomingStreamTrack: <a href="#incomingstreamtrack">IncomingStreamTrack</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>incomingStreamTrack</span> <code class='quiet'>(<a href="#incomingstreamtrack">IncomingStreamTrack</a>)</code>
+	    Incoming video stream track
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetstats'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStats()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get stats for all encodings from the original track</p>
+
+    <div class='pre p1 fill-light mt0'>getStats(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>, <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></code>:
+        Map with stats by encodingId
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetstatsasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getStatsAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get stats for all encodings from the original track</p>
+
+    <div class='pre p1 fill-light mt0'>getStatsAsync(): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        Promise&#x3C;{Map&#x3C;String,Object>}> Map with stats by encodingId
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetactivelayers'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getActiveLayers()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get active encodings and layers ordered by bitrate of the original track</p>
+
+    <div class='pre p1 fill-light mt0'>getActiveLayers(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetactivelayersasync'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getActiveLayersAsync()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get active encodings and layers ordered by bitrate of the original track</p>
+
+    <div class='pre p1 fill-light mt0'>getActiveLayersAsync(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetid'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getId()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get track id as signaled on the SDP</p>
+
+    <div class='pre p1 fill-light mt0'>getId()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetmediaid'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getMediaId()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get track media id (mid)</p>
+
+    <div class='pre p1 fill-light mt0'>getMediaId()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergettrackinfo'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getTrackInfo()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get track info object</p>
+
+    <div class='pre p1 fill-light mt0'>getTrackInfo(): TrackInfo</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>TrackInfo</code>:
+        Track info
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetssrcs'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getSSRCs()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Return ssrcs associated to this track</p>
+
+    <div class='pre p1 fill-light mt0'>getSSRCs(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetmedia'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getMedia()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get track media type</p>
+
+    <div class='pre p1 fill-light mt0'>getMedia(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></code>:
+        "audio"|"video"
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetencodings'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getEncodings()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get all track encodings
+Internal use, you'd beter know what you are doing before calling this method</p>
+
+    <div class='pre p1 fill-light mt0'>getEncodings(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>></code>:
+        encodings
+*
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetencoding'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getEncoding(encodingId)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get encoding by id
+Internal use, you'd beter know what you are doing before calling this method</p>
+
+    <div class='pre p1 fill-light mt0'>getEncoding(encodingId: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>encodingId</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)</code>
+	    encoding Id,
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        encoding
+*
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadaptergetdefaultencoding'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>getDefaultEncoding()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Get default encoding
+Internal use, you'd beter know what you are doing before calling this method</p>
+
+    <div class='pre p1 fill-light mt0'>getDefaultEncoding(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        encoding
+*
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterismuted'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isMuted()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check if the track is muted or not</p>
+
+    <div class='pre p1 fill-light mt0'>isMuted(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        muted
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterisattached'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isAttached()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Return if the track is attached or not</p>
+
+    <div class='pre p1 fill-light mt0'>isAttached()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterattached'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>attached()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Signal that this track has been attached.
+Internal use, you'd beter know what you are doing before calling this method</p>
+
+    <div class='pre p1 fill-light mt0'>attached()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterrefresh'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>refresh()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Request an intra refres on all sources</p>
+
+    <div class='pre p1 fill-light mt0'>refresh()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterdetached'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>detached()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Signal that this track has been detached.
+Internal use, you'd beter know what you are doing before calling this method</p>
+
+    <div class='pre p1 fill-light mt0'>detached()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='incomingstreamtracksimulcastadapterstop'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>stop()</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Removes the track from the incoming stream and also detaches any attached outgoing track or recorder</p>
+
+    <div class='pre p1 fill-light mt0'>stop()</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
 
   
 

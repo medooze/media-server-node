@@ -3,6 +3,11 @@ struct LayerInfo
 	static BYTE MaxLayerId; 
 	BYTE temporalLayerId = MaxLayerId;
 	BYTE spatialLayerId  = MaxLayerId;
+
+	std::optional<uint16_t> targetBitrate;
+	std::optional<uint16_t> targetWidth;
+	std::optional<uint16_t> targetHeight;
+	std::optional<uint8_t>  targetFps;
 };
 
 %{

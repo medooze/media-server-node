@@ -86,8 +86,11 @@ Create a new endpoint object
 #### Parameters
 
 *   `ip` **[String][1]** External IP address of server, to be used when announcing the local ICE candidate
+*   `params` **[Object][3]** Creation parameters
 
-Returns **[Endpoint][3]** The new created endpoing
+    *   `params.packetPoolSize` **[Number][4]** Packet pool size
+
+Returns **[Endpoint][5]** The new created endpoing
 
 ### createOffer
 
@@ -96,7 +99,7 @@ It generates a random ICE username and password and gets media server dtls finge
 
 #### Parameters
 
-*   `capabilities` **[Object][4]** Media capabilities as required by SDPInfo.create
+*   `capabilities` **[Object][3]** Media capabilities as required by SDPInfo.create
 
 Returns **SDPInfo** SDP offer
 
@@ -107,11 +110,11 @@ Create a new MP4 recorder
 #### Parameters
 
 *   `filename` **[String][1]** Path and filename of the recorded mp4 file
-*   `params` **[Object][4]** Recording parameters (Optional)
+*   `params` **[Object][3]** Recording parameters (Optional)
 
-    *   `params.refresh` **[Number][5]** Periodically refresh an intra on all video tracks (in ms)
+    *   `params.refresh` **[Number][4]** Periodically refresh an intra on all video tracks (in ms)
     *   `params.waitForIntra` **[Boolean][2]** Wait until first video iframe is received to start recording media
-    *   `params.timeShift` **[Number][5]** Buffer time in ms. Recording must be splicity started with flush() call
+    *   `params.timeShift` **[Number][4]** Buffer time in ms. Recording must be splicity started with flush() call
     *   `params.disableHints` **[Boolean][2]** Disable recording hint tracks. Note that this file won't be playable with the Player object;
 
 Returns **[Recorder][6]** 
@@ -166,7 +169,7 @@ Create a new emulated transport from pcap file
 
 Get the default media server capabilities for each supported media type
 
-Returns **[Object][4]** Object containing the capabilities by media ("audio","video")
+Returns **[Object][3]** Object containing the capabilities by media ("audio","video")
 
 ## SDPManager
 
@@ -210,7 +213,7 @@ Set minimum period between active speaker changes
 
 #### Parameters
 
-*   `minChangePeriod` **[Number][5]** 
+*   `minChangePeriod` **[Number][4]** 
 
 ### setMaxAccumulatedScore
 
@@ -218,7 +221,7 @@ Maximux activity score accumulated by an speaker
 
 #### Parameters
 
-*   `maxAcummulatedScore` **[Number][5]** 
+*   `maxAcummulatedScore` **[Number][4]** 
 
 ### setNoiseGatingThreshold
 
@@ -226,7 +229,7 @@ Minimum db level to not be considered as muted
 
 #### Parameters
 
-*   `noiseGatingThreshold` **[Number][5]** 
+*   `noiseGatingThreshold` **[Number][4]** 
 
 ### setMinActivationScore
 
@@ -234,7 +237,7 @@ Set minimum activation score to be electible as active speaker
 
 #### Parameters
 
-*   `minActivationScore` **[Number][5]** 
+*   `minActivationScore` **[Number][4]** 
 
 ### addSpeaker
 
@@ -337,7 +340,7 @@ Restart refreshing interval
 #### Parameters
 
 *   `period`  
-*   `timeout` **[Number][5]** Refresh pedior in ms
+*   `timeout` **[Number][4]** Refresh pedior in ms
 
 ### add
 
@@ -389,16 +392,16 @@ Creates a new streaming session from a media description
 #### Parameters
 
 *   `media` **MediaInfo** Media codec description info
-*   `params` **[Object][4]** Network parameters \[Optional]
+*   `params` **[Object][3]** Network parameters \[Optional]
 
-    *   `params.local` **[Object][4]** Local parameters
+    *   `params.local` **[Object][3]** Local parameters
 
-        *   `params.local.port` **[Number][5]** receiving port
-    *   `params.remote` **[Object][4]** Remote parameters
+        *   `params.local.port` **[Number][4]** receiving port
+    *   `params.remote` **[Object][3]** Remote parameters
 
         *   `params.remote.ip` **[String][1]** Sending ip address
-        *   `params.remote.port` **[Number][5]** Sending port
-    *   `params.noRTCP` **[Number][5]** Disable sending rtcp
+        *   `params.remote.port` **[Number][4]** Sending port
+    *   `params.noRTCP` **[Number][4]** Disable sending rtcp
 
 Returns **[StreamerSession][15]** The new streaming session
 
@@ -426,7 +429,7 @@ Set minimum period between active speaker changes
 
 #### Parameters
 
-*   `minChangePeriod` **[Number][5]** 
+*   `minChangePeriod` **[Number][4]** 
 
 ### setMaxAccumulatedScore
 
@@ -434,7 +437,7 @@ Maximux activity score accumulated by an speaker
 
 #### Parameters
 
-*   `maxAcummulatedScore` **[Number][5]** 
+*   `maxAcummulatedScore` **[Number][4]** 
 
 ### setNoiseGatingThreshold
 
@@ -442,7 +445,7 @@ Minimum db level to not be considered as muted
 
 #### Parameters
 
-*   `noiseGatingThreshold` **[Number][5]** 
+*   `noiseGatingThreshold` **[Number][4]** 
 
 ### setMinActivationScore
 
@@ -450,7 +453,7 @@ Set minimum activation score to be electible as active speaker
 
 #### Parameters
 
-*   `minActivationScore` **[Number][5]** 
+*   `minActivationScore` **[Number][4]** 
 
 ### addSpeaker
 
@@ -501,13 +504,13 @@ Set incoming track
 #### Parameters
 
 *   `track` **[IncomingStreamTrack][11]** Incoming track to attach to
-*   `layers` **[Object][4]** \[Optional] Only applicable to video tracks
+*   `layers` **[Object][3]** \[Optional] Only applicable to video tracks
 
     *   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
-    *   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
-    *   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
+    *   `layers.spatialLayerId` **[Number][4]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.temporalLayerId` **[Number][4]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.maxSpatialLayerId` **[Number][4]** Max spatial layer id (default: unlimited)
+    *   `layers.maxTemporalLayerId` **[Number][4]** Max temporal layer id (default: unlimited)
 *   `smooth` **[Boolean][2]** Wait until next valid frame before switching to the new encoding
 
 ### appendH264ParameterSets
@@ -534,7 +537,13 @@ Returns **[IncomingStreamTrack][11]** track
 
 Get available encodings and layers
 
-Returns **[Object][4]** 
+Returns **[Object][3]** 
+
+### getAvailableLayersAsync
+
+Get available encodings and layers
+
+Returns **[Object][3]** 
 
 ### isMuted
 
@@ -566,14 +575,30 @@ Select encoding and temporal and spatial layers based on the desired bitrate. Th
 #### Parameters
 
 *   `target`  
-*   `options` **[Object][4]** Options for configuring algorithm to select best encoding/layers \[Optional]
+*   `options` **[Object][3]** Options for configuring algorithm to select best encoding/layers \[Optional]
 
-    *   `options.traversal` **[Object][4]** Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" \[Default: "default"]
-    *   `options.strict` **[Object][4]** If there is not a layer with a bitrate lower thatn target, stop sending media \[Default: false]
-    *   `options.smooth` **[Object][4]** When going to a lower simulcast layer, keep the higher one visible \[Default: true]
-*   `bitrate` **[Number][5]** 
+    *   `options.traversal` **[Object][3]** Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" \[Default: "default"]
+    *   `options.strict` **[Object][3]** If there is not a layer with a bitrate lower thatn target, stop sending media \[Default: false]
+    *   `options.smooth` **[Object][3]** When going to a lower simulcast layer, keep the higher one visible \[Default: true]
+*   `bitrate` **[Number][4]** 
 
-Returns **[Number][5]** Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
+Returns **[Number][4]** Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
+
+### setTargetBitrateAsync
+
+Select encoding and temporal and spatial layers based on the desired bitrate. This operation will unmute the transponder if it was mutted and it is possible to select an encoding and layer based on the target bitrate and options.
+
+#### Parameters
+
+*   `target`  
+*   `options` **[Object][3]** Options for configuring algorithm to select best encoding/layers \[Optional]
+
+    *   `options.traversal` **[Object][3]** Traversal algorithm "default", "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial", "zig-zag-temporal-spatial" \[Default: "default"]
+    *   `options.strict` **[Object][3]** If there is not a layer with a bitrate lower thatn target, stop sending media \[Default: false]
+    *   `options.smooth` **[Object][3]** When going to a lower simulcast layer, keep the higher one visible \[Default: true]
+*   `bitrate` **[Number][4]** 
+
+Returns **any** Promise<{Number}> Current bitrate of the selected encoding and layers, it aslo incudes the selected layer indexes and available layers as properties of the Number object.
 
 ### select
 
@@ -581,13 +606,13 @@ Select the simulcast encoding layer and svc layers
 
 #### Parameters
 
-*   `layers` **[Object][4]** \[Optional] Only applicable to video tracks
+*   `layers` **[Object][3]** \[Optional] Only applicable to video tracks
 
     *   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: the current one)
-    *   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
-    *   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
+    *   `layers.spatialLayerId` **[Number][4]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.temporalLayerId` **[Number][4]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.maxSpatialLayerId` **[Number][4]** Max spatial layer id (default: unlimited)
+    *   `layers.maxTemporalLayerId` **[Number][4]** Max temporal layer id (default: unlimited)
 *   `smooth` **[Boolean][2]** Wait until next valid frame before switching to the new encoding
 
 ### getSelectedEncoding
@@ -600,19 +625,25 @@ Returns **[String][1]** encodingId
 
 Return the spatial layer id that is being forwarded
 
-Returns **[Number][5]** spatial layer id
+Returns **[Number][4]** spatial layer id
 
 ### getSelectedTemporalLayerId
 
 Return the temporal layer id that is being forwarded
 
-Returns **[Number][5]** temporal layer id
+Returns **[Number][4]** temporal layer id
 
 ### getSelectedLayer
 
 Get current selected layer info
 
-Returns **[Object][4]** 
+Returns **[Object][3]** 
+
+### getSelectedLayerAsync
+
+Get current selected layer info
+
+Returns **[Object][3]** 
 
 ### selectLayer
 
@@ -620,8 +651,8 @@ Select SVC temporatl and spatial layers. Only available for VP9 media.
 
 #### Parameters
 
-*   `spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream
-*   `temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream
+*   `spatialLayerId` **[Number][4]** The spatial layer id to send to the outgoing stream
+*   `temporalLayerId` **[Number][4]** The temporaral layer id to send to the outgoing stream
 
 ### setMaximumLayers
 
@@ -629,8 +660,8 @@ Set maximum statial and temporal layers to be forwrarded. Base layer is always e
 
 #### Parameters
 
-*   `maxSpatialLayerId` **[Number][5]** Max spatial layer id
-*   `maxTemporalLayerId` **[Number][5]** Max temporal layer id
+*   `maxSpatialLayerId` **[Number][4]** Max spatial layer id
+*   `maxTemporalLayerId` **[Number][4]** Max temporal layer id
 
 ### stop
 
@@ -725,7 +756,7 @@ Recorder started event. This event will be triggered when the first media frame 
 #### Parameters
 
 *   `recorder` **[Recorder][6]** 
-*   `timestamp` **[Number][5]** Timestamp of the first frame in milliseconds
+*   `timestamp` **[Number][4]** Timestamp of the first frame in milliseconds
 
 ### stopped
 
@@ -765,9 +796,9 @@ Starts playback
 
 #### Parameters
 
-*   `params` **[Object][4]** 
+*   `params` **[Object][3]** 
 
-    *   `params.repeat` **[Object][4]** Repeat playback when file is ended
+    *   `params.repeat` **[Object][3]** Repeat playback when file is ended
 
 ### resume
 
@@ -783,7 +814,7 @@ Start playback from given time
 
 #### Parameters
 
-*   `time` **[Number][5]** in miliseconds
+*   `time` **[Number][4]** in miliseconds
 
 ### stop
 
@@ -815,7 +846,7 @@ Represent the connection between a local udp port and a remote one. It sends and
 
 Get the local rtp/udp port
 
-Returns **[Number][5]** port number
+Returns **[Number][4]** port number
 
 ### setRemote
 
@@ -906,6 +937,14 @@ Returns **StreamInfo** The stream info object
 Get statistics for all tracks in the stream
 
 See IncomingStreamTrack.getStats for information about the stats returned by each track.
+
+### getStatsAsync
+
+Get statistics for all tracks in the stream
+
+See IncomingStreamTrack.getStats for information about the stats returned by each track.
+
+Returns **any** Promise<{Map<String>,Object}> Map with stats by trackId
 
 ### isMuted
 
@@ -1017,123 +1056,6 @@ IncomingStream stopped event
 *   `incomingStream` **[IncomingStream][19]** 
 *   `last` **Objects** stats before closing
 
-## IncomingStreamTrackSimulcastAdapter
-
-**Extends Emitter**
-
-Bundle multiple video track as if they were a single simulcast video track
-
-### addTrack
-
-Add video track to the simulcast adapter
-
-#### Parameters
-
-*   `encodingId` **[String][1]** Id used as base for encodings id
-*   `incomingStreamTrack` **[IncomingStreamTrack][11]** Incoming video stream track
-
-### removeTrack
-
-Remove video track to the simulcast adapter
-
-#### Parameters
-
-*   `incomingStreamTrack` **[IncomingStreamTrack][11]** Incoming video stream track
-
-### getStats
-
-Get stats for all encodings from the original track
-
-Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
-
-### getActiveLayers
-
-Get active encodings and layers ordered by bitrate of the original track
-
-Returns **[Object][4]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
-
-### getId
-
-Get track id as signaled on the SDP
-
-### getMediaId
-
-Get track media id (mid)
-
-### getTrackInfo
-
-Get track info object
-
-Returns **TrackInfo** Track info
-
-### getSSRCs
-
-Return ssrcs associated to this track
-
-Returns **[Object][4]** 
-
-### getMedia
-
-Get track media type
-
-Returns **[String][1]** "audio"|"video"
-
-### getEncodings
-
-Get all track encodings
-Internal use, you'd beter know what you are doing before calling this method
-
-Returns **[Array][20]<[Object][4]>** encodings
-\*
-
-### getEncoding
-
-Get encoding by id
-Internal use, you'd beter know what you are doing before calling this method
-
-#### Parameters
-
-*   `encodingId` **[String][1]** encoding Id,
-
-Returns **[Object][4]** encoding
-\*
-
-### getDefaultEncoding
-
-Get default encoding
-Internal use, you'd beter know what you are doing before calling this method
-
-Returns **[Object][4]** encoding
-\*
-
-### isMuted
-
-Check if the track is muted or not
-
-Returns **[boolean][2]** muted
-
-### isAttached
-
-Return if the track is attached or not
-
-### attached
-
-Signal that this track has been attached.
-Internal use, you'd beter know what you are doing before calling this method
-
-### refresh
-
-Request an intra refres on all sources
-
-### detached
-
-Signal that this track has been detached.
-Internal use, you'd beter know what you are doing before calling this method
-
-### stop
-
-Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
-
 ## IncomingStreamTrackMirrored
 
 **Extends Emitter**
@@ -1144,13 +1066,25 @@ Mirror incoming stream from another endpoint. Used to avoid inter-thread synchro
 
 Get stats for all encodings from the original track
 
-Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map][24]<[String][1], [Object][3]>** Map with stats by encodingId
+
+### getStatsAsync
+
+Get stats for all encodings from the original track
+
+Returns **[Map][24]<[String][1], [Object][3]>** Map with stats by encodingId
 
 ### getActiveLayers
 
 Get active encodings and layers ordered by bitrate of the original track
 
-Returns **[Object][4]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+Returns **[Object][3]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+### getActiveLayersAsync
+
+Get active encodings and layers ordered by bitrate of the original track
+
+Returns **[Object][3]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
 
 ### getId
 
@@ -1170,7 +1104,7 @@ Returns **TrackInfo** Track info
 
 Return ssrcs associated to this track
 
-Returns **[Object][4]** 
+Returns **[Object][3]** 
 
 ### getMedia
 
@@ -1183,7 +1117,7 @@ Returns **[String][1]** "audio"|"video"
 Get all track encodings
 Internal use, you'd beter know what you are doing before calling this method
 
-Returns **[Array][20]<[Object][4]>** encodings
+Returns **[Array][20]<[Object][3]>** encodings
 \*
 
 ### getEncoding
@@ -1195,7 +1129,7 @@ Internal use, you'd beter know what you are doing before calling this method
 
 *   `encodingId` **[String][1]** encoding Id,
 
-Returns **[Object][4]** encoding
+Returns **[Object][3]** encoding
 \*
 
 ### getDefaultEncoding
@@ -1203,7 +1137,7 @@ Returns **[Object][4]** encoding
 Get default encoding
 Internal use, you'd beter know what you are doing before calling this method
 
-Returns **[Object][4]** encoding
+Returns **[Object][3]** encoding
 \*
 
 ### isAttached
@@ -1294,6 +1228,12 @@ Get statistics for all tracks in the stream
 
 See OutgoingStreamTrack.getStats for information about the stats returned by each track.
 
+### getStatsAsync
+
+Get statistics for all tracks in the stream
+
+See OutgoingStreamTrack.getStats for information about the stats returned by each track.
+
 ### isMuted
 
 Check if the stream is muted or not
@@ -1307,13 +1247,13 @@ Listen media from the incoming stream and send it to the remote peer of the asso
 #### Parameters
 
 *   `incomingStream` **[IncomingStream][19]** The incoming stream to listen media for
-*   `layers` **[Object][4]** \[Optional] Only applicable to video tracks
+*   `layers` **[Object][3]** \[Optional] Only applicable to video tracks
 
     *   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
-    *   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
-    *   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
+    *   `layers.spatialLayerId` **[Number][4]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.temporalLayerId` **[Number][4]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.maxSpatialLayerId` **[Number][4]** Max spatial layer id (default: unlimited)
+    *   `layers.maxTemporalLayerId` **[Number][4]** Max temporal layer id (default: unlimited)
 
 Returns **[Array][20]<[Transponder][17]>** Track transponders array
 
@@ -1371,15 +1311,15 @@ Create new track from a TrackInfo object and add it to this stream
 
 #### Parameters
 
-*   `params` **([Object][4] | TrackInfo | [String][1])** Params plain object, StreamInfo object or media type
+*   `params` **([Object][3] | TrackInfo | [String][1])** Params plain object, StreamInfo object or media type
 
     *   `params.id` **[String][1]?** Stream track id
     *   `params.mediaId` **[String][1]?** Stream track media id (mid)
     *   `params.media` **[String][1]?** Media type ("audio" or "video")
-    *   `params.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
+    *   `params.ssrcs` **[Object][3]?** Override the generated ssrcs for this track
 
-        *   `params.ssrcs.media` **[Number][5]?** ssrc for the track
-        *   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
+        *   `params.ssrcs.media` **[Number][4]?** ssrc for the track
+        *   `params.ssrcs.rtx` **[Number][4]?** ssrc for the rtx video track
 *   `trackInfo` **TrackInfo** Track info object
 
 Returns **[OutgoingStream][26]** The new outgoing stream
@@ -1450,7 +1390,7 @@ Set remote RTP properties
 
 #### Parameters
 
-*   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
+*   `rtp` **([Object][3] | SDPInfo)** Object param containing media information for audio and video
 
     *   `rtp.audio` **MediaInfo** Audio media info
     *   `rtp.video` **MediaInfo** Video media info
@@ -1471,9 +1411,9 @@ Starts playback
 
 #### Parameters
 
-*   `params` **[Object][4]** 
+*   `params` **[Object][3]** 
 
-    *   `params.start` **[Object][4]** Set start time
+    *   `params.start` **[Object][3]** Set start time
 
 ### resume
 
@@ -1489,7 +1429,7 @@ Start playback from given time
 
 #### Parameters
 
-*   `time` **[Number][5]** in miliseconds
+*   `time` **[Number][4]** in miliseconds
 
 ### stop
 
@@ -1517,7 +1457,7 @@ Set cpu affinity for udp send/recv thread.
 
 #### Parameters
 
-*   `cpu` **[Number][5]** CPU core or -1 to reset affinity.
+*   `cpu` **[Number][4]** CPU core or -1 to reset affinity.
 
 Returns **[boolean][2]** true if operation was successful
 
@@ -1559,7 +1499,7 @@ NOTE: User needs to have the appropiate rights to increase the thread priority i
 
 #### Parameters
 
-*   `priority` **[Number][5]** 0:Normal -19:RealTime
+*   `priority` **[Number][4]** 0:Normal -19:RealTime
 
 Returns **[boolean][2]** true if operation was successful
 
@@ -1569,7 +1509,7 @@ Set ICE timeout for outgoing ICE binding requests
 
 #### Parameters
 
-*   `timeout` **[Number][5]** Ammount of time in milliseconds between ICE binding requests
+*   `timeout` **[Number][4]** Ammount of time in milliseconds between ICE binding requests
 
 ### getLocalPort
 
@@ -1581,17 +1521,17 @@ Create a new transport object and register it with the remote ICE username and p
 
 #### Parameters
 
-*   `remoteInfo` **([Object][4] | SDPInfo)** Remote ICE and DTLS properties
+*   `remoteInfo` **([Object][3] | SDPInfo)** Remote ICE and DTLS properties
 
-    *   `remoteInfo.ice` **([Object][4] | ICEInfo)** Remote ICE info, containing the username and password.
-    *   `remoteInfo.dtls` **([Object][4] | DTLSInfo)** Remote DTLS info
+    *   `remoteInfo.ice` **([Object][3] | ICEInfo)** Remote ICE info, containing the username and password.
+    *   `remoteInfo.dtls` **([Object][3] | DTLSInfo)** Remote DTLS info
     *   `remoteInfo.candidates` **(Array.CandidateInfo | Array.Object)** Remote ICE candidate info
-*   `localInfo` **[Object][4]** Local ICE and DTLS properties (optional)
+*   `localInfo` **[Object][3]** Local ICE and DTLS properties (optional)
 
     *   `localInfo.ice` **ICEInfo** Local ICE info, containing the username and password. Local ICE candidates list is not really used at all.
     *   `localInfo.dtls` **DTLSInfo** Local DTLS info
     *   `localInfo.candidates` **Array.CandidateInfo** Local candidate info
-*   `options` **[Object][4]** Dictionary with transport properties
+*   `options` **[Object][3]** Dictionary with transport properties
 
     *   `options.disableSTUNKeepAlive` **[boolean][2]** Disable ICE/STUN keep alives, required for server to server transports
     *   `options.srtpProtectionProfiles` **[String][1]** Colon delimited list of SRTP protection profile names
@@ -1620,7 +1560,7 @@ It generates a random ICE username and password and gets endpoint fingerprint
 
 #### Parameters
 
-*   `capabilities` **[Object][4]** Media capabilities as required by SDPInfo.create
+*   `capabilities` **[Object][3]** Media capabilities as required by SDPInfo.create
 
 Returns **SDPInfo** SDP offer
 
@@ -1631,7 +1571,7 @@ Create new peer connection server to manage remote peer connection clients
 #### Parameters
 
 *   `tm` **TransactionManager** 
-*   `capabilities` **[Object][4]** Same as SDPInfo.answer capabilites
+*   `capabilities` **[Object][3]** Same as SDPInfo.answer capabilites
 
 Returns **[PeerConnectionServer][27]** 
 
@@ -1674,7 +1614,7 @@ Create new SDP manager, this object will manage the SDP O/A for you and produce 
 #### Parameters
 
 *   `sdpSemantics` **[String][1]** Type of sdp plan "unified-plan" or "plan-b"
-*   `capabilities` **[Object][4]** Capabilities objects
+*   `capabilities` **[Object][3]** Capabilities objects
 
 Returns **[SDPManager][10]** 
 
@@ -1688,7 +1628,7 @@ Endpoint stopped event
 
 #### Parameters
 
-*   `endpoint` **[Endpoint][3]** 
+*   `endpoint` **[Endpoint][5]** 
 
 ## Transport
 
@@ -1708,7 +1648,7 @@ Dump incoming and outgoint rtp and rtcp packets into a pcap file
 #### Parameters
 
 *   `filename` **[String][1]** Filename of the pcap file
-*   `options` **[Object][4]** Dump parameters (optional)
+*   `options` **[Object][3]** Dump parameters (optional)
 
     *   `options.incoming` **[Boolean][2]** Dump incomoning RTP data
     *   `options.outgoing` **[Boolean][2]** Dump outgoing RTP data
@@ -1734,7 +1674,7 @@ Get transport stats
 *   responsesSent		: Number of ice responses sent
 *   responsesReceived	: Number of ice responses received
 
-Returns **[Object][4]** stats
+Returns **[Object][3]** stats
 
 ### restartICE
 
@@ -1742,8 +1682,8 @@ Restart ICE on transport object
 
 #### Parameters
 
-*   `remoteICE` **([Object][4] | ICEInfo)** Remote ICE info, containing the username and password.
-*   `localICE` **([Object][4] | ICEInfo)** Local ICE info, containing the username and password \[Optional]
+*   `remoteICE` **([Object][3] | ICEInfo)** Remote ICE info, containing the username and password.
+*   `localICE` **([Object][3] | ICEInfo)** Local ICE info, containing the username and password \[Optional]
 
 Returns **ICEInfo** Local ICE info
 
@@ -1782,7 +1722,7 @@ Set the maximum bitrate to be used if probing is enabled.
 
 #### Parameters
 
-*   `bitrate` **[Number][5]** 
+*   `bitrate` **[Number][4]** 
 
 ### enableSenderSideEstimation
 
@@ -1798,7 +1738,7 @@ Override the bitrate sent by REMB to the remote sender. The transport must be co
 
 #### Parameters
 
-*   `bitrate` **[Number][5]** 
+*   `bitrate` **[Number][4]** 
 
 ### setProbingBitrateLimit
 
@@ -1806,7 +1746,7 @@ Do not allow probing to increase sent bitrate above certain limit
 
 #### Parameters
 
-*   `bitrate` **[Number][5]** limit
+*   `bitrate` **[Number][4]** limit
 
 ### setLocalProperties
 
@@ -1814,7 +1754,7 @@ Set local RTP properties
 
 #### Parameters
 
-*   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
+*   `rtp` **([Object][3] | SDPInfo)** Object param containing media information for audio and video
 
     *   `rtp.audio` **MediaInfo** Audio media info
     *   `rtp.video` **MediaInfo** Video media info
@@ -1825,7 +1765,7 @@ Set remote RTP properties
 
 #### Parameters
 
-*   `rtp` **([Object][4] | SDPInfo)** Object param containing media information for audio and video
+*   `rtp` **([Object][3] | SDPInfo)** Object param containing media information for audio and video
 
     *   `rtp.audio` **MediaInfo** Audio media info
     *   `rtp.video` **MediaInfo** Video media info
@@ -1896,22 +1836,22 @@ Create new outgoing stream in this transport
 
 #### Parameters
 
-*   `params` **([Object][4] | StreamInfo | [String][1])** Params plain object, StreamInfo object or stream id
+*   `params` **([Object][3] | StreamInfo | [String][1])** Params plain object, StreamInfo object or stream id
 
-    *   `params.audio` **([Array][20]<[Object][4]> | [Object][4] | [boolean][2])** Add audio track to the new stream
+    *   `params.audio` **([Array][20]<[Object][3]> | [Object][3] | [boolean][2])** Add audio track to the new stream
 
-        *   `params.audio.id` **[Object][4]?** Stream track id (default: "audio")
-        *   `params.audio.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
+        *   `params.audio.id` **[Object][3]?** Stream track id (default: "audio")
+        *   `params.audio.ssrcs` **[Number][4]?** Override the generated ssrcs for this track
 
-            *   `params.audio.ssrcs.media` **[Number][5]?** ssrc for the audio track
-    *   `params.id` **[Object][4]?** Stream id, an UUID will be generated if not provided
-    *   `params.video` **([Array][20]<[Object][4]> | [Object][4] | [boolean][2])** Add video track to the new stream
+            *   `params.audio.ssrcs.media` **[Number][4]?** ssrc for the audio track
+    *   `params.id` **[Object][3]?** Stream id, an UUID will be generated if not provided
+    *   `params.video` **([Array][20]<[Object][3]> | [Object][3] | [boolean][2])** Add video track to the new stream
 
-        *   `params.video.id` **[Object][4]?** Stream track id (default: "video")
-        *   `params.video.ssrcs` **[Object][4]?** Override the generated ssrcs for this track
+        *   `params.video.id` **[Object][3]?** Stream track id (default: "video")
+        *   `params.video.ssrcs` **[Object][3]?** Override the generated ssrcs for this track
 
-            *   `params.video.ssrcs.media` **[Number][5]?** ssrc for the video track
-            *   `params.video.ssrcs.rtx` **[Number][5]?** ssrc for the rtx video track
+            *   `params.video.ssrcs.media` **[Number][4]?** ssrc for the video track
+            *   `params.video.ssrcs.rtx` **[Number][4]?** ssrc for the rtx video track
 
 Returns **[OutgoingStream][26]** The new outgoing stream
 
@@ -1922,14 +1862,14 @@ Create new outgoing stream in this transport
 #### Parameters
 
 *   `media` **[String][1]** Track media type "audio" or "video"
-*   `params` **[Object][4]?** Track parameters
+*   `params` **[Object][3]?** Track parameters
 
-    *   `params.id` **[Object][4]?** Stream track id
-    *   `params.mediaId` **[Object][4]?** Stream track media id (mid)
-    *   `params.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
+    *   `params.id` **[Object][3]?** Stream track id
+    *   `params.mediaId` **[Object][3]?** Stream track media id (mid)
+    *   `params.ssrcs` **[Number][4]?** Override the generated ssrcs for this track
 
-        *   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
-        *   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
+        *   `params.ssrcs.media` **[Number][4]?** ssrc for the media track
+        *   `params.ssrcs.rtx` **[Number][4]?** ssrc for the rtx track
 
 Returns **[OutgoingStreamTrack][22]** The new outgoing stream track
 
@@ -1939,7 +1879,7 @@ Create an incoming stream object from the media stream info objet
 
 #### Parameters
 
-*   `info` **(StreamInfo | [Object][4] | [String][1])** Contains the ids and ssrcs of the stream to be created
+*   `info` **(StreamInfo | [Object][3] | [String][1])** Contains the ids and ssrcs of the stream to be created
 
 Returns **[IncomingStream][19]** The newly created incoming stream object
 
@@ -1982,14 +1922,14 @@ Create new incoming stream in this transport. TODO: Simulcast is still not suppo
 #### Parameters
 
 *   `media` **[String][1]** Track media type "audio" or "video"
-*   `params` **[Object][4]?** Track parameters
+*   `params` **[Object][3]?** Track parameters
 
-    *   `params.id` **[Object][4]?** Stream track id
-    *   `params.mediaId` **[Object][4]?** Stream track media id (mid)
-    *   `params.ssrcs` **[Number][5]?** Override the generated ssrcs for this track
+    *   `params.id` **[Object][3]?** Stream track id
+    *   `params.mediaId` **[Object][3]?** Stream track media id (mid)
+    *   `params.ssrcs` **[Number][4]?** Override the generated ssrcs for this track
 
-        *   `params.ssrcs.media` **[Number][5]?** ssrc for the media track
-        *   `params.ssrcs.rtx` **[Number][5]?** ssrc for the rtx track
+        *   `params.ssrcs.media` **[Number][4]?** ssrc for the media track
+        *   `params.ssrcs.rtx` **[Number][4]?** ssrc for the rtx track
 
 Returns **[IncomingStreamTrack][11]** The new incoming stream track
 
@@ -2079,6 +2019,31 @@ parse a dot-separated IPv4 into a normalized address as u32be
 
 *   `ip`  
 
+## stopped
+
+AudioDecoder stopped event
+
+### Parameters
+
+*   `frame` **[Object][3]** 
+*   `reader` **IncomingStreamTrackReader** 
+
+## stopped
+
+AudioDecoder stopped event
+
+### Parameters
+
+*   `reader` **IncomingStreamTrackReader** 
+
+## parseCIDR
+
+parse a CIDR into a normalized \[address as u32be, prefix length] tuple
+
+### Parameters
+
+*   `cidr`  
+
 ## OutgoingStreamTrack
 
 **Extends Emitter**
@@ -2137,13 +2102,47 @@ The stats objects will privide the follwing info for each source
 *   reportedFractionLost	: fraction loss media reported during last second
 *   reportedJitter		: last reported jitter buffer value
 
-Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map][24]<[String][1], [Object][3]>** Map with stats by encodingId
+
+### getStatsAsync
+
+Get stats for all encodings
+
+You will get stats for media and rtx sources (if used):
+
+*   timestmap		: timestamp on when this stats where created
+*   media		: mediaStats,
+*   rtx		: rtxStats,
+*   remb		: remote estimated bitate (if remb is in use)
+*   numPackets	: number of rtp packets sent
+*   numPacketsDelta	: number of rtp packets sent during last second
+*   bitrate		: Bitrate for media stream only in bps
+*   total		: Accumulated bitrate for media and rtx streams in bps
+
+The stats objects will privide the follwing info for each source
+
+*   numFrames			: total recevied frames
+*   numFramesDelta		: recevied frames during last second
+*   numPackets		: number of rtp packets sent
+*   numPacketsDelta		: number of rtp packets sent during last second
+*   numRTCPPackets		: number of rtcp packsets sent
+*   totalBytes		: total rtp sent bytes
+*   totalRTCPBytes		: total rtp sent bytes
+*   bitrate			: average bitrate sent during last second in bps
+*   reportCount		: number of RTCP receiver reports received
+*   reportCountDelta		: number of RTCP receiver reports received during last second
+*   reportedLostCount		: total packet loses reported
+*   reportedLostCountDelta	: packet losses reported in last second
+*   reportedFractionLost	: fraction loss media reported during last second
+*   reportedJitter		: last reported jitter buffer value
+
+Returns **[Map][24]<[String][1], [Object][3]>** Map with stats by encodingId
 
 ### getSSRCs
 
 Return ssrcs associated to this track
 
-Returns **[Object][4]** 
+Returns **[Object][3]** 
 
 ### isMuted
 
@@ -2171,13 +2170,13 @@ This will stop any previous transpoder created by a previous attach.
 #### Parameters
 
 *   `incomingStreamTrack` **[IncomingStreamTrack][11]** The incoming stream to listen media for
-*   `layers` **[Object][4]** \[Optional] Only applicable to video tracks
+*   `layers` **[Object][3]** \[Optional] Only applicable to video tracks
 
     *   `layers.encodingId` **[String][1]** rid value of the simulcast encoding of the track (default: first encoding available)
-    *   `layers.spatialLayerId` **[Number][5]** The spatial layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.temporalLayerId` **[Number][5]** The temporaral layer id to send to the outgoing stream (default: max layer available)
-    *   `layers.maxSpatialLayerId` **[Number][5]** Max spatial layer id (default: unlimited)
-    *   `layers.maxTemporalLayerId` **[Number][5]** Max temporal layer id (default: unlimited)
+    *   `layers.spatialLayerId` **[Number][4]** The spatial layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.temporalLayerId` **[Number][4]** The temporaral layer id to send to the outgoing stream (default: max layer available)
+    *   `layers.maxSpatialLayerId` **[Number][4]** Max spatial layer id (default: unlimited)
+    *   `layers.maxTemporalLayerId` **[Number][4]** Max temporal layer id (default: unlimited)
 
 Returns **[Transponder][17]** Track transponder object
 
@@ -2203,7 +2202,7 @@ OutgoingStreamTrack remb event
 #### Parameters
 
 *   `outgoingStreamTrack` **[OutgoingStreamTrack][22]** 
-*   `bitrate` **[Number][5]** estimation
+*   `bitrate` **[Number][4]** estimation
 
 ### muted
 
@@ -2245,36 +2244,69 @@ OutgoingStreamTrack stopped event
 
 *   `outgoingStreamTrack` **[OutgoingStreamTrack][22]** 
 
-## stopped
-
-AudioDecoder stopped event
-
-### Parameters
-
-*   `frame` **[Object][4]** 
-*   `reader` **IncomingStreamTrackReader** 
-
-## stopped
-
-AudioDecoder stopped event
-
-### Parameters
-
-*   `reader` **IncomingStreamTrackReader** 
-
-## parseCIDR
-
-parse a CIDR into a normalized \[address as u32be, prefix length] tuple
-
-### Parameters
-
-*   `cidr`  
-
 ## IncomingStreamTrack
 
 **Extends Emitter**
 
 Audio or Video track of a remote media stream
+
+### getStatsAsync
+
+Get stats for all encodings
+
+For each encoding you will get stats for media and rtx sources (if used):
+
+*   media    : Stats for the media stream
+*   rtx      : Stats for the rtx retransmission stream
+*   rtt      : Round Trip Time in ms
+*   waitTime : "min","max" and "avg" packet waiting times in rtp buffer before delivering them
+*   bitrate  : Bitrate for media stream only in bps
+*   total    : Accumulated bitrate for media and rtx streams in bps
+*   remb     : Estimated avialable bitrate for receving (only avaailable if not using tranport wide cc)
+*   timestamp: When this stats was generated, in order to save workload, stats are cached for 200ms
+*   simulcastIdx	: Simulcast layer index based on bitrate received (-1 if it is inactive).
+*   lostPackets	: Accumulated lost packets for media and rtx strems
+*   numPackets	: Accumulated packets for media and rtx strems
+*   lostPacketsRatio	: Lost packets ratio
+
+The stats objects will provide the following info for each source
+
+*   numFrames		: total recevied frames
+*   numFramesDelta	: recevied frames during last second
+*   lostPackets	: total lost packkets
+*   lostPacketsDelta	: Lost/out of order packets during last second
+*   lostPacketsMaxGap	: max total consecutieve packets lossed during last second
+*   lostPacketsGapCount : number of packet looses bursts during last second
+*   dropPackets       : droppted packets by media server
+*   numPackets	: number of rtp packets received
+*   numPacketsDelta	: number of rtp packets received during last seconds
+*   numRTCPPackets	: number of rtcp packsets received
+*   totalBytes	: total rtp received bytes
+*   totalRTCPBytes	: total rtp received bytes
+*   totalPLIs		: total PLIs sent
+*   totalNACKs	: total NACk packets sent
+*   bitrate		: average bitrate received during last second in bps
+*   skew		: difference between NTP timestamp and RTP timestamps at sender (from RTCP SR)
+*   drift		: ratio between RTP timestamps and the NTP timestamp and  at sender (from RTCP SR)
+*   clockRate		: RTP clockrate
+*   frameDelay	: Average frame delay during the last second
+*   frameDelayMax	: Max frame delay during the last second
+*   frameCaptureDelay		: Average bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
+*   frameCaptureDelayMax	: Max bewtween local reception time and sender capture one (Absolute capture time must be negotiated)
+*   width		: video width
+*   height		: video height
+*   layers		: Information about each spatial/temporal layer (if present)
+    *   spatialLayerId  : Spatial layer id
+    *   temporalLayerId : Temporatl layer id
+    *   totalBytes	: total rtp received bytes for this layer
+    *   numPackets	: number of rtp packets received for this layer
+    *   bitrate		: average bitrate received during last second for this layer
+    *   targetBitrate	: Signaled target bitrate on the VideoLayersAllocation header
+    *   targetWidth	: Signaled target width on the VideoLayersAllocation header
+    *   targetHeight	: Signaled target height on the VideoLayersAllocation header
+    *   targetFps	: Signaled target fps on the VideoLayersAllocation header
+
+Returns **any** Promise<{Map\<String,Object>}> Promise resolving to a map with stats by encodingId
 
 ### getStats
 
@@ -2328,13 +2360,19 @@ The stats objects will provide the following info for each source
     *   numPackets	: number of rtp packets received for this layer
     *   bitrate		: average bitrate received during last second for this layer
 
-Returns **[Map][24]<[String][1], [Object][4]>** Map with stats by encodingId
+Returns **[Map][24]<[String][1], [Object][3]>** Map with stats by encodingId
 
 ### getActiveLayers
 
 Get active encodings and layers ordered by bitrate
 
-Returns **[Object][4]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+Returns **[Object][3]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+### getActiveLayersAsync
+
+Get active encodings and layers ordered by bitrate
+
+Returns **any** Promise<{Object}> Active layers object containing an array of active and inactive encodings and an array of all available layer info
 
 ### getId
 
@@ -2354,7 +2392,7 @@ Returns **TrackInfo** Track info
 
 Return ssrcs associated to this track
 
-Returns **[Object][4]** 
+Returns **[Object][3]** 
 
 ### getMedia
 
@@ -2367,7 +2405,7 @@ Returns **[String][1]** "audio"|"video"
 Get all track encodings
 Internal use, you'd beter know what you are doing before calling this method
 
-Returns **[Array][20]<[Object][4]>** encodings
+Returns **[Array][20]<[Object][3]>** encodings
 \*
 
 ### getEncoding
@@ -2379,7 +2417,7 @@ Internal use, you'd beter know what you are doing before calling this method
 
 *   `encodingId` **[String][1]** encoding Id,
 
-Returns **[Object][4]** encoding
+Returns **[Object][3]** encoding
 \*
 
 ### getDefaultEncoding
@@ -2387,7 +2425,7 @@ Returns **[Object][4]** encoding
 Get default encoding
 Internal use, you'd beter know what you are doing before calling this method
 
-Returns **[Object][4]** encoding
+Returns **[Object][3]** encoding
 \*
 
 ### attached
@@ -2444,7 +2482,7 @@ Override the maximum period of time to wait for an out of order or rtx packet
 
 #### Parameters
 
-*   `maxWaitTime` **[Number][5]** max wait time in ms (default: 0 if rtx is not supported or rtt based)
+*   `maxWaitTime` **[Number][4]** max wait time in ms (default: 0 if rtx is not supported or rtt based)
 
 ### resetMaxWaitTime
 
@@ -2461,7 +2499,7 @@ IncomingStreamTrack new encoding event
 #### Parameters
 
 *   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
-*   `encoding` **[Object][4]** 
+*   `encoding` **[Object][3]** 
 
 ### encoding
 
@@ -2470,7 +2508,7 @@ IncomingStreamTrack new encoding event
 #### Parameters
 
 *   `incomingStreamTrack` **[IncomingStreamTrack][11]** 
-*   `encoding` **[Object][4]** 
+*   `encoding` **[Object][3]** 
 
 ### attached
 
@@ -2506,6 +2544,135 @@ we don't need to be careful when managing refs, subscriptions...
 
 *   `callback`  
 
+## IncomingStreamTrackSimulcastAdapter
+
+**Extends Emitter**
+
+Bundle multiple video track as if they were a single simulcast video track
+
+### addTrack
+
+Add video track to the simulcast adapter
+
+#### Parameters
+
+*   `encodingId` **[String][1]** Id used as base for encodings id
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** Incoming video stream track
+
+### removeTrack
+
+Remove video track to the simulcast adapter
+
+#### Parameters
+
+*   `incomingStreamTrack` **[IncomingStreamTrack][11]** Incoming video stream track
+
+### getStats
+
+Get stats for all encodings from the original track
+
+Returns **[Map][24]<[String][1], [Object][3]>** Map with stats by encodingId
+
+### getStatsAsync
+
+Get stats for all encodings from the original track
+
+Returns **any** Promise<{Map\<String,Object>}> Map with stats by encodingId
+
+### getActiveLayers
+
+Get active encodings and layers ordered by bitrate of the original track
+
+Returns **[Object][3]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+### getActiveLayersAsync
+
+Get active encodings and layers ordered by bitrate of the original track
+
+Returns **[Object][3]** Active layers object containing an array of active and inactive encodings and an array of all available layer info
+
+### getId
+
+Get track id as signaled on the SDP
+
+### getMediaId
+
+Get track media id (mid)
+
+### getTrackInfo
+
+Get track info object
+
+Returns **TrackInfo** Track info
+
+### getSSRCs
+
+Return ssrcs associated to this track
+
+Returns **[Object][3]** 
+
+### getMedia
+
+Get track media type
+
+Returns **[String][1]** "audio"|"video"
+
+### getEncodings
+
+Get all track encodings
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Array][20]<[Object][3]>** encodings
+\*
+
+### getEncoding
+
+Get encoding by id
+Internal use, you'd beter know what you are doing before calling this method
+
+#### Parameters
+
+*   `encodingId` **[String][1]** encoding Id,
+
+Returns **[Object][3]** encoding
+\*
+
+### getDefaultEncoding
+
+Get default encoding
+Internal use, you'd beter know what you are doing before calling this method
+
+Returns **[Object][3]** encoding
+\*
+
+### isMuted
+
+Check if the track is muted or not
+
+Returns **[boolean][2]** muted
+
+### isAttached
+
+Return if the track is attached or not
+
+### attached
+
+Signal that this track has been attached.
+Internal use, you'd beter know what you are doing before calling this method
+
+### refresh
+
+Request an intra refres on all sources
+
+### detached
+
+Signal that this track has been detached.
+Internal use, you'd beter know what you are doing before calling this method
+
+### stop
+
+Removes the track from the incoming stream and also detaches any attached outgoing track or recorder
+
 ## extractOne
 
 ### Parameters
@@ -2521,19 +2688,19 @@ selected (split to allow reusal from getInterfaceRawConfig).
 ### Parameters
 
 *   `rtNetlink`  
-*   `ifindex` **[number][5]** Interface
+*   `ifindex` **[number][4]** Interface
 *   `route`  
-*   `dst` **[number][5]** Resolved next hop address for route
+*   `dst` **[number][4]** Resolved next hop address for route
 
 [1]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [2]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[3]: #endpoint
+[3]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[5]: #endpoint
 
 [6]: #recorder
 

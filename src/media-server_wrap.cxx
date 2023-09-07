@@ -1397,13 +1397,15 @@ fail: ;
 #define SWIGTYPE_p_long_long swig_types[56]
 #define SWIGTYPE_p_short swig_types[57]
 #define SWIGTYPE_p_signed_char swig_types[58]
-#define SWIGTYPE_p_unsigned_char swig_types[59]
-#define SWIGTYPE_p_unsigned_int swig_types[60]
-#define SWIGTYPE_p_unsigned_long_long swig_types[61]
-#define SWIGTYPE_p_unsigned_short swig_types[62]
-#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[63]
-static swig_type_info *swig_types[65];
-static swig_module_info swig_module = {swig_types, 64, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__optionalT_unsigned_char_t swig_types[59]
+#define SWIGTYPE_p_std__optionalT_unsigned_short_t swig_types[60]
+#define SWIGTYPE_p_unsigned_char swig_types[61]
+#define SWIGTYPE_p_unsigned_int swig_types[62]
+#define SWIGTYPE_p_unsigned_long_long swig_types[63]
+#define SWIGTYPE_p_unsigned_short swig_types[64]
+#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[65]
+static swig_type_info *swig_types[67];
+static swig_module_info swig_module = {swig_types, 66, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4300,6 +4302,250 @@ static SwigV8ReturnValue _wrap_LayerInfo_spatialLayerId_get(v8::Local<v8::Name> 
   arg1 = reinterpret_cast< LayerInfo * >(argp1);
   result = (uint8_t) ((arg1)->spatialLayerId);
   jsresult = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_LayerInfo_targetBitrate_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  std::optional< uint16_t > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetBitrate_set" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__optionalT_unsigned_short_t,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LayerInfo_targetBitrate_set" "', argument " "2"" of type '" "std::optional< uint16_t >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LayerInfo_targetBitrate_set" "', argument " "2"" of type '" "std::optional< uint16_t >""'");
+    } else {
+      arg2 = *(reinterpret_cast< std::optional< uint16_t > * >(argp2));
+    }
+  }
+  if (arg1) (arg1)->targetBitrate = arg2;
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_LayerInfo_targetBitrate_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::optional< uint16_t > result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetBitrate_get" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  result =  ((arg1)->targetBitrate);
+  jsresult = SWIG_NewPointerObj((new std::optional< uint16_t >(static_cast< const std::optional< uint16_t >& >(result))), SWIGTYPE_p_std__optionalT_unsigned_short_t, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_LayerInfo_targetWidth_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  std::optional< uint16_t > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetWidth_set" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__optionalT_unsigned_short_t,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LayerInfo_targetWidth_set" "', argument " "2"" of type '" "std::optional< uint16_t >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LayerInfo_targetWidth_set" "', argument " "2"" of type '" "std::optional< uint16_t >""'");
+    } else {
+      arg2 = *(reinterpret_cast< std::optional< uint16_t > * >(argp2));
+    }
+  }
+  if (arg1) (arg1)->targetWidth = arg2;
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_LayerInfo_targetWidth_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::optional< uint16_t > result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetWidth_get" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  result =  ((arg1)->targetWidth);
+  jsresult = SWIG_NewPointerObj((new std::optional< uint16_t >(static_cast< const std::optional< uint16_t >& >(result))), SWIGTYPE_p_std__optionalT_unsigned_short_t, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_LayerInfo_targetHeight_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  std::optional< uint16_t > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetHeight_set" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__optionalT_unsigned_short_t,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LayerInfo_targetHeight_set" "', argument " "2"" of type '" "std::optional< uint16_t >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LayerInfo_targetHeight_set" "', argument " "2"" of type '" "std::optional< uint16_t >""'");
+    } else {
+      arg2 = *(reinterpret_cast< std::optional< uint16_t > * >(argp2));
+    }
+  }
+  if (arg1) (arg1)->targetHeight = arg2;
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_LayerInfo_targetHeight_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::optional< uint16_t > result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetHeight_get" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  result =  ((arg1)->targetHeight);
+  jsresult = SWIG_NewPointerObj((new std::optional< uint16_t >(static_cast< const std::optional< uint16_t >& >(result))), SWIGTYPE_p_std__optionalT_unsigned_short_t, SWIG_POINTER_OWN |  0 );
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_LayerInfo_targetFps_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  std::optional< uint8_t > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetFps_set" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(value, &argp2, SWIGTYPE_p_std__optionalT_unsigned_char_t,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LayerInfo_targetFps_set" "', argument " "2"" of type '" "std::optional< uint8_t >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LayerInfo_targetFps_set" "', argument " "2"" of type '" "std::optional< uint8_t >""'");
+    } else {
+      arg2 = *(reinterpret_cast< std::optional< uint8_t > * >(argp2));
+    }
+  }
+  if (arg1) (arg1)->targetFps = arg2;
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_LayerInfo_targetFps_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  LayerInfo *arg1 = (LayerInfo *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::optional< uint8_t > result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerInfo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerInfo_targetFps_get" "', argument " "1"" of type '" "LayerInfo *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerInfo * >(argp1);
+  result =  ((arg1)->targetFps);
+  jsresult = SWIG_NewPointerObj((new std::optional< uint8_t >(static_cast< const std::optional< uint8_t >& >(result))), SWIGTYPE_p_std__optionalT_unsigned_char_t, SWIG_POINTER_OWN |  0 );
   
   
   SWIGV8_RETURN_INFO(jsresult, info);
@@ -16582,6 +16828,8 @@ static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__optionalT_unsigned_char_t = {"_p_std__optionalT_unsigned_char_t", "std::optional< unsigned char > *|std::optional< uint8_t > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__optionalT_unsigned_short_t = {"_p_std__optionalT_unsigned_short_t", "std::optional< unsigned short > *|std::optional< uint16_t > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|uint_least8_t *|uint_fast8_t *|uint8_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uintptr_t *|uint_least32_t *|uint_fast32_t *|uint32_t *|unsigned int *|uint_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint_least64_t *|uint_fast64_t *|uint64_t *|unsigned long long *|uintmax_t *", 0, 0, (void*)0, 0};
@@ -16648,6 +16896,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_long_long,
   &_swigt__p_short,
   &_swigt__p_signed_char,
+  &_swigt__p_std__optionalT_unsigned_char_t,
+  &_swigt__p_std__optionalT_unsigned_short_t,
   &_swigt__p_unsigned_char,
   &_swigt__p_unsigned_int,
   &_swigt__p_unsigned_long_long,
@@ -16714,6 +16964,8 @@ static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__optionalT_unsigned_char_t[] = {  {&_swigt__p_std__optionalT_unsigned_char_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__optionalT_unsigned_short_t[] = {  {&_swigt__p_std__optionalT_unsigned_short_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
@@ -16780,6 +17032,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_long_long,
   _swigc__p_short,
   _swigc__p_signed_char,
+  _swigc__p_std__optionalT_unsigned_char_t,
+  _swigc__p_std__optionalT_unsigned_short_t,
   _swigc__p_unsigned_char,
   _swigc__p_unsigned_int,
   _swigc__p_unsigned_long_long,
@@ -17484,6 +17738,10 @@ SWIGV8_AddMemberFunction(_exports_MediaFrameProducer_class, "RemoveMediaListener
 SWIGV8_AddMemberFunction(_exports_MediaFrameProducerShared_class, "get", _wrap_MediaFrameProducerShared_get);
 SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "temporalLayerId", _wrap_LayerInfo_temporalLayerId_get, _wrap_LayerInfo_temporalLayerId_set);
 SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "spatialLayerId", _wrap_LayerInfo_spatialLayerId_get, _wrap_LayerInfo_spatialLayerId_set);
+SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "targetBitrate", _wrap_LayerInfo_targetBitrate_get, _wrap_LayerInfo_targetBitrate_set);
+SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "targetWidth", _wrap_LayerInfo_targetWidth_get, _wrap_LayerInfo_targetWidth_set);
+SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "targetHeight", _wrap_LayerInfo_targetHeight_get, _wrap_LayerInfo_targetHeight_set);
+SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "targetFps", _wrap_LayerInfo_targetFps_get, _wrap_LayerInfo_targetFps_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "numPackets", _wrap_LayerSource_numPackets_get, _wrap_LayerSource_numPackets_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "totalBytes", _wrap_LayerSource_totalBytes_get, _wrap_LayerSource_totalBytes_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "bitrate", _wrap_LayerSource_bitrate_get, _wrap_LayerSource_bitrate_set);
