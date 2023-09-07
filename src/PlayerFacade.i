@@ -88,8 +88,6 @@ class PlayerFacade
 public:
 	PlayerFacade(v8::Local<v8::Object> object);
 	RTPIncomingSourceGroup* GetAudioSource();
-	//RTPIncomingSourceGroup* GetVideoSource();
-	//RTPIncomingMediaStreamShared GetVideoSource();
 	RTPIncomingSourceGroupShared GetVideoSource();
 	void Reset();
 	
