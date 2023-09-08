@@ -3,11 +3,6 @@ struct LayerInfo
 	static BYTE MaxLayerId; 
 	BYTE temporalLayerId = MaxLayerId;
 	BYTE spatialLayerId  = MaxLayerId;
-
-	std::optional<uint16_t> targetBitrate;
-	std::optional<uint16_t> targetWidth;
-	std::optional<uint16_t> targetHeight;
-	std::optional<uint8_t>  targetFps;
 };
 
 %{
@@ -24,7 +19,23 @@ struct LayerSource : public LayerInfo
 	DWORD		numPackets;
 	QWORD		totalBytes;
 	DWORD		bitrate;
+
+	bool		active;
+
+	%extend 
+	{
+		const int64_t targetBitrate;
+		const int64_t targetWidth;
+		const int64_t targetHeight;
+		const int64_t targetFps;
+	}
 };
+%{
+int64_t LayerSource_targetBitrate_get(LayerSource* self)	{ return self->targetBitrate.has_value()	? self->targetBitrate.value()	: -1; } 
+int64_t LayerSource_targetWidth_get(LayerSource* self)		{ return self->targetWidth.has_value()		? self->targetWidth.value()	: -1; } 
+int64_t LayerSource_targetHeight_get(LayerSource* self)		{ return self->targetHeight.has_value()		? self->targetHeight.value()	: -1; } 
+int64_t LayerSource_targetFps_get(LayerSource* self)		{ return self->targetFps.has_value()		? self->targetFps.value()	: -1; } 
+%}
 
 class LayerSources
 {
