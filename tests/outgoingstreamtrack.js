@@ -49,11 +49,10 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 	suite.test("mute",function(test){
 		try {
 			test.plan(4);
-			console.log("x")
 			//Create new local stream
 			const outgoingStream  = transport.createOutgoingStream({
 				video: true
-			}); console.log("x")
+			}); 
 			//Should not fire
 			outgoingStream.on("muted",(muted)=>{
 				test.fail();
