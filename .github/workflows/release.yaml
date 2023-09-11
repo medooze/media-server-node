@@ -15,7 +15,6 @@ jobs:
         submodules: 'recursive'
     - name: Initialize submodules
       run: git submodule update --init --recursive
-    - uses: actions/checkout@v1
     - name: Install and build
       run: npm i
     - name: Run Test
