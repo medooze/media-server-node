@@ -1,3 +1,5 @@
+[![media-server-node-test](https://github.com/medooze/media-server-node/actions/workflows/release.yaml/badge.svg)](https://github.com/medooze/media-server-node/actions/workflows/release.yaml)
+
 # WebRTC Medooze Media Server for Node.js
 
 This media server will allow you to receive and send media streams from remote WebRTC peers and manage how you want to route them. 
