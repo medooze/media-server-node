@@ -47,6 +47,8 @@ public:
 	 */
 	static void Async(std::function<void()> func) 
 	{
+		while (queueInUse.test_and_set(std::memory_order_acquire));
+		
 		//Check if not terminatd
 		if (uv_is_active((uv_handle_t *)&async))
 		{
@@ -55,6 +57,8 @@ public:
 			//Signal main thread
 			uv_async_send(&async);
 		}
+		
+		queueInUse.clear(std::memory_order_release);
 	}
 
 	static void Initialize()
@@ -72,6 +76,8 @@ public:
 	
 	static void Terminate()
 	{
+		while (queueInUse.test_and_set(std::memory_order_acquire));
+		
 		Debug("-MediaServer::Terminate\n");
 		//Close handle
 		uv_close((uv_handle_t *)&async, NULL);
@@ -79,6 +85,8 @@ public:
 		std::function<void()> func;
 		//Dequeue all pending functions
 		while(queue.try_dequeue(func)){}
+		
+		queueInUse.clear(std::memory_order_release);
 	}
 	
 	static void EnableLog(bool flag)
@@ -143,11 +151,13 @@ private:
 	//http://stackoverflow.com/questions/31207454/v8-multithreaded-function
 	static uv_async_t  async;
 	static moodycamel::ConcurrentQueue<std::function<void()>> queue;
+	static std::atomic_flag queueInUse;
 };
 
 //Static initializaion
 uv_async_t MediaServer::async;
 moodycamel::ConcurrentQueue<std::function<void()>>  MediaServer::queue;
+std::atomic_flag MediaServer::queueInUse = ATOMIC_FLAG_INIT;
 
 //Empty implementation of event source
 EvenSource::EvenSource()
@@ -186,3 +196,7 @@ public:
 	static bool SetAffinity(int cpu);
 	static bool SetThreadName(const std::string& name);
 };
+
+%init %{ 
+	std::atexit(MediaServer::Terminate);
+%}
