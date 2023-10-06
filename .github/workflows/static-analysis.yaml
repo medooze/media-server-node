@@ -1,0 +1,23 @@
+name: static-analysis
+
+on:
+  push:
+    branches: [ master ]
+    
+  pull_request:
+    
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.PAT_STATIC_ANALYSIS }}
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: 'medooze',
+            repo: 'static-analysis',
+            workflow_id: 'coverity-single-repo.yml',
+            ref: 'master',
+            inputs: { repo: 'media-server-node', private: false, commit: '${{ github.sha }}' }
+          })
