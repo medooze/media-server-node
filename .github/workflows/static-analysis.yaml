@@ -4,8 +4,6 @@ on:
   push:
     branches: [ master ]
     
-  pull_request:
-    
 jobs:
   dispatch:
     runs-on: ubuntu-latest
