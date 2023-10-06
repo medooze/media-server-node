@@ -1569,6 +1569,9 @@ public:
 	static void Terminate()
 	{
 		Debug("-MediaServer::Terminate\n");
+		
+		if (!uv_is_active((uv_handle_t *)&async)) return;
+		
 		//Close handle
 		uv_close((uv_handle_t *)&async, NULL);
 		
@@ -17251,6 +17254,9 @@ void SWIGV8_INIT (SWIGV8_OBJECT exports_obj, SWIGV8_VALUE /*module*/, v8::Local<
 #endif
 
   SWIG_InitializeModule(context);
+
+ 
+	std::atexit(MediaServer::Terminate);
 
 
 	auto tracingVar = getenv("MEDOOZE_TRACING");
