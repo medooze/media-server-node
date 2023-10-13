@@ -2820,14 +2820,14 @@ class PlayerFacade :
 public:
 	PlayerFacade(v8::Local<v8::Object> object) :
 		MP4Streamer(this),
-		audio(MediaFrame::Audio,loop),
-		video(MediaFrame::Video,loop)
+        audio(new RTPIncomingSourceGroup(MediaFrame::Audio, loop)),
+        video(new RTPIncomingSourceGroup(MediaFrame::Video, loop))
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 		Reset();
 		//Start dispatching
-		audio.Start();
-		video.Start();
+		audio->Start();
+		video->Start();
 	}
 		
 	virtual void onRTPPacket(RTPPacket &packet)
@@ -2843,19 +2843,19 @@ public:
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				video->media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of video
-				cloned->SetSSRC(video.media.ssrc);
+				cloned->SetSSRC(video->media.ssrc);
 				//Multiplex
-				video.AddPacket(cloned,0,now);
+				video->AddPacket(cloned,0,now);
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio.media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				audio->media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
 				//Set ssrc of audio
-				cloned->SetSSRC(audio.media.ssrc);
+				cloned->SetSSRC(audio->media.ssrc);
 				//Multiplex
-				audio.AddPacket(cloned,0,now);
+				audio->AddPacket(cloned,0,now);
 				break;
 			default:
 				///Ignore
@@ -2875,23 +2875,23 @@ public:
 	
 	void Reset() 
 	{
-		audio.media.Reset();
-		video.media.Reset();
-		audio.media.ssrc = rand();
-		video.media.ssrc = rand();
+		audio->media.Reset();
+		video->media.Reset();
+		audio->media.ssrc = rand();
+		video->media.ssrc = rand();
 	}
 	
 	virtual void onMediaFrame(const MediaFrame &frame)  {}
 	virtual void onMediaFrame(DWORD ssrc, const MediaFrame &frame) {}
 
-	RTPIncomingMediaStream* GetAudioSource() { return &audio; }
-	RTPIncomingMediaStream* GetVideoSource() { return &video; }
+	RTPIncomingSourceGroup::shared GetAudioSource() { return audio; }
+	RTPIncomingSourceGroup::shared GetVideoSource() { return video; }
 	
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;	
 	//TODO: Update to multitrack
-	RTPIncomingSourceGroup audio;
-	RTPIncomingSourceGroup video;
+	RTPIncomingSourceGroup::shared audio;
+	RTPIncomingSourceGroup::shared video;
 };
 
 SWIGINTERN void Properties_SetIntegerProperty__SWIG(Properties *self,char const *key,int intval){ self->SetProperty(key,intval);	}
@@ -13259,7 +13259,7 @@ static SwigV8ReturnValue _wrap_PlayerFacade_GetAudioSource(const SwigV8Arguments
   PlayerFacade *arg1 = (PlayerFacade *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  RTPIncomingSourceGroup *result = 0 ;
+  SwigValueWrapper< RTPIncomingSourceGroupShared > result;
   
   if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetAudioSource.");
   
@@ -13268,8 +13268,8 @@ static SwigV8ReturnValue _wrap_PlayerFacade_GetAudioSource(const SwigV8Arguments
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetAudioSource" "', argument " "1"" of type '" "PlayerFacade *""'"); 
   }
   arg1 = reinterpret_cast< PlayerFacade * >(argp1);
-  result = (RTPIncomingSourceGroup *)(arg1)->GetAudioSource();
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  result = (arg1)->GetAudioSource();
+  jsresult = SWIG_NewPointerObj((new RTPIncomingSourceGroupShared(static_cast< const RTPIncomingSourceGroupShared& >(result))), SWIGTYPE_p_RTPIncomingSourceGroupShared, SWIG_POINTER_OWN |  0 );
   
   
   SWIGV8_RETURN(jsresult);
@@ -13287,7 +13287,7 @@ static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoSource(const SwigV8Arguments
   PlayerFacade *arg1 = (PlayerFacade *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  RTPIncomingSourceGroup *result = 0 ;
+  SwigValueWrapper< RTPIncomingSourceGroupShared > result;
   
   if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_PlayerFacade_GetVideoSource.");
   
@@ -13296,8 +13296,8 @@ static SwigV8ReturnValue _wrap_PlayerFacade_GetVideoSource(const SwigV8Arguments
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PlayerFacade_GetVideoSource" "', argument " "1"" of type '" "PlayerFacade *""'"); 
   }
   arg1 = reinterpret_cast< PlayerFacade * >(argp1);
-  result = (RTPIncomingSourceGroup *)(arg1)->GetVideoSource();
-  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  result = (arg1)->GetVideoSource();
+  jsresult = SWIG_NewPointerObj((new RTPIncomingSourceGroupShared(static_cast< const RTPIncomingSourceGroupShared& >(result))), SWIGTYPE_p_RTPIncomingSourceGroupShared, SWIG_POINTER_OWN |  0 );
   
   
   SWIGV8_RETURN(jsresult);
