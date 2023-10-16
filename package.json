@@ -35,14 +35,17 @@
     "lfsr": "0.0.3",
     "medooze-event-emitter": "^1.0.0",
     "nan": "^2.11.1",
-    "semantic-sdp": "^3",
+    "semantic-sdp": "^3.26.5",
     "uuid": "^3.3.2"
   },
   "optionalDependencies": {
     "netlink": "^0"
   },
   "devDependencies": {
+    "@types/node": "^20.8.6",
+    "@types/uuid": "^9.0.5",
     "documentation": "13.2.5",
-    "tap": "^14"
+    "tap": "^14",
+    "typescript": "^5.2.2"
   }
 }
