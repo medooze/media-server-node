@@ -33,6 +33,7 @@
   "homepage": "https://github.com/medooze/media-server-node#readme",
   "dependencies": {
     "lfsr": "0.0.3",
+    "medooze-event-emitter": "^1.0.0",
     "nan": "^2.11.1",
     "semantic-sdp": "^3",
     "uuid": "^3.3.2"
