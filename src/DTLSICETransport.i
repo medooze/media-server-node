@@ -19,7 +19,7 @@ struct DTLSICETransport
 	void SetLocalProperties(const Properties& properties);
 	virtual int SendPLI(DWORD ssrc) override;
 	int Dump(const char* filename, bool inbound = true, bool outbound = true, bool rtcp = true,bool rtpHeadersOnly = false);
-	int Dump(UDPDumper* dumper, bool inbound = true, bool outbound = true, bool rtcp, bool rtpHeadersOnly = false);
+	int Dump(UDPDumper* dumper, bool inbound = true, bool outbound = true, bool rtcp = true, bool rtpHeadersOnly = false);
 	int StopDump();
 	int DumpBWEStats(const char* filename);
 	int StopDumpBWEStats();
