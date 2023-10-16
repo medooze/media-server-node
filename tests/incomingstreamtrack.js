@@ -51,8 +51,8 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		const ssrcs = videoTrack.getSSRCs();
 		//Check them
 		test.equals(Object.keys(ssrcs).length,1);
-		test.equals(ssrcs[""].media.ssrc,media);
-		test.equals(ssrcs[""].rtx.ssrc,rtx);
+		test.equals(ssrcs[""].media,media);
+		test.equals(ssrcs[""].rtx,rtx);
 		test.done();
 		
 	});
