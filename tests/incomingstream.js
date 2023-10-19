@@ -170,7 +170,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 			streamInfo.addTrack(audioTrack);
 			//Do it again
 			const retry = transport.createIncomingStream(streamInfo);
-			test.done(retry);
+			test.end(retry);
 		});
 		//Stop
 		incomingStream.stop();

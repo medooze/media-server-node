@@ -53,7 +53,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.equals(Object.keys(ssrcs).length,1);
 		test.equals(ssrcs[""].media,media);
 		test.equals(ssrcs[""].rtx,rtx);
-		test.done();
+		test.end();
 		
 	});
 	
@@ -80,7 +80,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 			streamInfo.addTrack(track);
 			//Create another one
 			const retry = transport.createIncomingStream(streamInfo);
-			test.done(retry);
+			test.end(retry);
 		});
 		//Stop
 		audioTrack.stop();
@@ -110,7 +110,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 			streamInfo.addTrack(track);
 			//New one
 			const retry = transport.createIncomingStream(streamInfo);
-			test.done(retry);
+			test.end(retry);
 		});
 		//Stop
 		incomingStream.stop();
@@ -135,7 +135,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		audioTrack.setMaxWaitTime(100);
 		//Reset it
 		audioTrack.resetMaxWaitTime();
-		test.done();
+		test.end();
 	});
 /*TODO: enable when refactoring the Async call	
 	await suite.test("duplicate ssrc",async function(test){
@@ -159,7 +159,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		} catch(e) {
 			test.ok(e);
 		}
-		test.done();
+		test.end();
 	});
 */
 	suite.test("mute",function(test){
@@ -294,7 +294,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 		test.ok(cached);
 		//Ensure they are the same
 		test.same(stats[''].timestamp,cached[''].timestamp);
-		test.done();
+		test.end();
 		
 	});
 
@@ -328,7 +328,7 @@ tap.test("IncomingMediaStream::stats",async function(suite){
 		test.ok(cached);
 		//Ensure they are the same
 		test.same(stats[''].timestamp,cached[''].timestamp);
-		test.done();
+		test.end();
 		
 	});
 	

@@ -104,7 +104,7 @@ tap.test("unified",async function(suite){
 			sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
 			//Set answer
 			sdpManagerA.processRemoteDescription(sdpManagerB.createLocalDescription());
-			test.done();
+			test.end();
 		});
 		//Set offer
 		sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
@@ -129,7 +129,7 @@ tap.test("unified",async function(suite){
 			sdpManagerA.processRemoteDescription(sdpManagerB.createLocalDescription());
 			//Set answer
 			sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
-			test.done();
+			test.end();
 		});
 		//Set offer
 		sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
@@ -154,7 +154,7 @@ tap.test("unified",async function(suite){
 			sdpManagerA.processRemoteDescription(sdpManagerB.createLocalDescription());
 			//Set answer
 			sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
-			test.done();
+			test.end();
 		});
 		//Set offer
 		sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
@@ -272,7 +272,7 @@ tap.test("planb",async function(suite){
 			sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
 			//Set answer
 			sdpManagerA.processRemoteDescription(sdpManagerB.createLocalDescription());
-			test.done();
+			test.end();
 		});
 		//Set offer
 		sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
@@ -297,7 +297,7 @@ tap.test("planb",async function(suite){
 			sdpManagerA.processRemoteDescription(sdpManagerB.createLocalDescription());
 			//Set answer
 			sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());
-			test.done();
+			test.end();
 		});
 		//Set offer
 		sdpManagerB.processRemoteDescription(sdpManagerA.createLocalDescription());

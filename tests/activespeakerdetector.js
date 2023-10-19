@@ -45,7 +45,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		const activeSpeakerDetector = MediaServer.createActiveSpeakerDetector();
 		//Stop 
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
@@ -63,7 +63,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		//Stop it
 		activeSpeakerDetector.stop();
 		//Done
-		test.done();
+		test.end();
 	});
 	
 	suite.test("add speaker",async function(test){
@@ -72,7 +72,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		activeSpeakerDetector.addSpeaker(audioTrack);
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
@@ -93,7 +93,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
@@ -108,7 +108,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		activeSpeakerDetector.removeSpeaker(audioTrack);
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
@@ -129,7 +129,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		}
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
@@ -146,7 +146,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		}
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
@@ -163,7 +163,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		activeSpeakerDetector.addSpeaker(audioTrack);
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
@@ -177,7 +177,7 @@ tap.test("ActiveSpeaker",async function(suite){
 		audioTrack.stop();
 		//Stop
 		activeSpeakerDetector.once("stopped",()=>{
-			test.done();
+			test.end();
 		});
 		//Stop it
 		activeSpeakerDetector.stop();
