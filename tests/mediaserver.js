@@ -15,7 +15,7 @@ tap.test("MediaServer",async function(suite){
 		//This shoudl work
 		test.ok(MediaServer.getDefaultCapabilities());
 		//Done
-		test.done();
+		test.end();
 	});
 	suite.test("ports",function(test){
 		//This shoudl fail
@@ -25,7 +25,7 @@ tap.test("MediaServer",async function(suite){
 		test.ok(MediaServer.setPortRange(10000,20000));
 		test.ok(MediaServer.setPortRange(1024,65535));
 		//Done
-		test.done();
+		test.end();
 	});
 	suite.test("affinity",function(test){
 		//This shoudl work
@@ -33,7 +33,7 @@ tap.test("MediaServer",async function(suite){
 		test.ok(MediaServer.setAffinity(1));
 		test.ok(MediaServer.setAffinity(0));
 		//Done
-		test.done();
+		test.end();
 	});
 	
 }),
@@ -88,7 +88,7 @@ tap.test("setCertificate",async function(suite){
 			test.fail();
 		} catch (error) {
 			//Test forerror
-			test.done();
+			test.end();
 		}
 	});
 	
@@ -101,7 +101,7 @@ tap.test("setCertificate",async function(suite){
 			test.fail();
 		} catch (error) {
 			//Test forerror
-			test.done();
+			test.end();
 		}
 	});
 	
@@ -113,7 +113,7 @@ tap.test("setCertificate",async function(suite){
 			test.fail();
 		} catch (error) {
 			//Test forerror
-			test.done();
+			test.end();
 		}
 	});
 	await suite.test("success",function(test){
@@ -121,7 +121,7 @@ tap.test("setCertificate",async function(suite){
 			//Set empty certificate
 			MediaServer.setCertificate(crt,key);
 			//Test for ok
-			test.done();
+			test.end();
 		} catch (error) {
 			console.error(error);
 			//Should not get here

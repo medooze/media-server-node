@@ -24,7 +24,7 @@ tap.test("Sreamer::create",async function(suite){
 		const streamer = MediaServer.createStreamer();
 		test.ok(streamer);
 		streamer.stop();
-		test.done();
+		test.end();
 	});
 	
 	suite.test("createSession",async function(test){
@@ -33,7 +33,7 @@ tap.test("Sreamer::create",async function(suite){
 		const session = streamer.createSession(new MediaInfo("video","video"),{noRTCP:true});
 		session.stop();
 		streamer.stop();
-		test.done();
+		test.end();
 	});
 	
 
@@ -45,7 +45,7 @@ tap.test("Sreamer::create",async function(suite){
 		track.setMaxWaitTime(100);
 		session.stop();
 		streamer.stop();
-		test.done();
+		test.end();
 	});
 
 	suite.end();

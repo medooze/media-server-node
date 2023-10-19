@@ -191,7 +191,7 @@ tap.test("OutgoingMediaStreamTrack::stats",async function(suite){
 		test.ok(cached);
 		//Ensure they are the same
 		test.same(stats.timestamp,cached.timestamp);
-		test.done();
+		test.end();
 	});
 	
 	

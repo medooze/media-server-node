@@ -44,7 +44,7 @@ Promise.all([
 			//Stop transport
 			transport.stop();
 			//Done
-			test.done();
+			test.end();
 
 		});
 
@@ -191,7 +191,7 @@ Promise.all([
 
 			//Set override
 			transport.setRemoteOverrideBitrate(1000000);
-			test.done();
+			test.end();
 		});
 
 		suite.end();
@@ -213,7 +213,7 @@ Promise.all([
 			});
 
 			transport.getAvailableOutgoingBitrate();
-			test.done();
+			test.end();
 		});
 
 		suite.end();
@@ -235,7 +235,7 @@ Promise.all([
 			});
 
 			transport.getTotalSentBitrate();
-			test.done();
+			test.end();
 		});
 
 		suite.end();
@@ -255,7 +255,7 @@ Promise.all([
 			//Create new incoming stream
 			const stats = transport.getStats();
 			test.ok(stats);
-			test.done();
+			test.end();
 		});
 
 		suite.test("setBandwidthProbing",async function(test){
@@ -264,13 +264,13 @@ Promise.all([
 			transport.setBandwidthProbing(false);
 			transport.setBandwidthProbing(1);
 			transport.setBandwidthProbing(0);
-			test.done();
+			test.end();
 		});
 
 		suite.test("setMaxProbingBitrate",async function(test){
 			//Create new incoming stream
 			transport.setBandwidthProbing(1000);
-			test.done();
+			test.end();
 		});
 
 		suite.end();
