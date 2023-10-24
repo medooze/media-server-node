@@ -1,6 +1,6 @@
-declare module 'medooze-media-server' {
 import SemanticSDP = require('semantic-sdp');
 
+declare namespace _default {
   /**
    * "min","max" and "avg" packet waiting times in rtp buffer before delivering
    * them
@@ -31,6 +31,9 @@ import SemanticSDP = require('semantic-sdp');
     };
   }
 
+  /** DTLS connection state as per the w3c spec */
+  export type DTLSState = "new" | "connecting" | "connected" | "closed" | "failed";
+
   export interface CreateOutgoingStreamOptions {
     id?: string;
     audio?: boolean|CreateStreamTrackOptions|CreateStreamTrackOptions[];
@@ -53,10 +56,23 @@ import SemanticSDP = require('semantic-sdp');
     depacketizer: any;
   }
 
+  export interface LayerSelection {
+    /** rid value of the simulcast encoding of the track (default: first encoding available) */
+    encodingId: string;
+    /** The spatial layer id to send to the outgoing stream (default: max layer available) */
+    spatialLayerId: number;
+    /** The temporal layer id to send to the outgoing stream (default: max layer available) */
+    temporalLayerId: number;
+    /** Max spatial layer id (default: unlimited) */
+    maxSpatialLayerId: number;
+    /** Max temporal layer id (default: unlimited) */
+    maxTemporalLayerId: number;
+  }
+
   export interface LayerStats {
     /** Spatial layer id */
     spatialLayerId: number;
-    /** Temporatl layer id */
+    /** Temporal layer id */
     temporalLayerId: number;
     /** total rtp received bytes for this layer */
     totalBytes: number;
@@ -67,12 +83,24 @@ import SemanticSDP = require('semantic-sdp');
   }
 
   export interface IncomingSourceStats {
+    /** total recevied frames */
+    numFrames: number;
+    /** recevied frames during last second */
+    numFramesDelta: number;
     /** total lost packkets */
     lostPackets: number;
+    /** Lost/out of order packets during last second */
+    lostPacketsDelta: number;
+    /** max total consecutieve packets lossed during last second */
+    lostPacketsMaxGap: number;
+    /** number of packet looses bursts during last second */
+    lostPacketsGapCount: number;
     /** droppted packets by media server */
     dropPackets: number;
     /** number of rtp packets received */
     numPackets: number;
+    /** number of rtp packets received during last seconds */
+    numPacketsDelta: number;
     /** number of rtcp packsets received */
     numRTCPPackets: number;
     /** total rtp received bytes */
@@ -81,18 +109,40 @@ import SemanticSDP = require('semantic-sdp');
     totalRTCPBytes: number;
     /** total PLIs sent */
     totalPLIs: number;
-    /** total NACk packets setn */
+    /** total NACk packets sent */
     totalNACKs: number;
     /** average bitrate received during last second in bps */
     bitrate: number;
+    /** difference between NTP timestamp and RTP timestamps at sender (from RTCP SR) */
+    skew: number;
+    /** ratio between RTP timestamps and the NTP timestamp and  at sender (from RTCP SR) */
+    drift: number;
+    /** RTP clockrate */
+    clockRate: number;
+    /** Average frame delay during the last second */
+    frameDelay: number;
+    /** Max frame delay during the last second */
+    frameDelayMax: number;
+    /** Average bewtween local reception time and sender capture one (Absolute capture time must be negotiated) */
+    frameCaptureDelay: number;
+    /** Max bewtween local reception time and sender capture one (Absolute capture time must be negotiated) */
+    frameCaptureDelayMax: number;
     /** Information about each spatial/temporal layer (if present) */
     layers: LayerStats[];
   }
 
   export interface OutgoingSourceStats {
+    /** Round Trip Time in ms */
+    rtt: number;
+    /** total recevied frames */
+    numFrames: number;
+    /** recevied frames during last second */
+    numFramesDelta: number;
     /** number of rtp packets sent */
     numPackets: number;
-    /** number of rtcp packsets sent */
+    /** number of rtp packets sent during last second */
+    numPacketsDelta: number;
+    /** number of rtcp packets sent */
     numRTCPPackets: number;
     /** total rtp sent bytes */
     totalBytes: number;
@@ -100,20 +150,49 @@ import SemanticSDP = require('semantic-sdp');
     totalRTCPBytes: number;
     /** average bitrate sent during last second in bps */
     bitrate: number;
+    /** number of RTCP receiver reports received */
+    reportCount: number;
+    /** number of RTCP receiver reports received during last second */
+    reportCountDelta: number;
+    /** last report, if available */
+    reported: {
+      /** total packet loses reported */
+      lostCount: number;
+      /** packet losses reported in last second */
+      lostCountDelta: number;
+      /** fraction loss media reported during last second */
+      fractionLost: number;
+      /** last reported jitter buffer value */
+      jitter: number;
+    } | undefined;
   }
 
   export interface OutgoingStreamTrackStats {
+    /** Stats for the media stream */
     media: OutgoingSourceStats;
+    /** Stats for the rtx retransmission stream */
     rtx: OutgoingSourceStats;
-    fec: OutgoingSourceStats;
+    /** remote estimated bitate (if remb is in use) */
+    remb: number;
+    /** timestamp (ms since epoch) on when this stats where created */
     timestamp: number;
+    /** number of rtp packets sent */
+    numPackets: number;
+    /** number of rtp packets sent during last second  */
+    numPacketsDelta: number;
+    /** Round Trip Time in ms */
+    rtt: number;
+    /** Bitrate for media stream only in bps */
+    bitrate: number;
+    /** Accumulated bitrate for media and rtx streams in bps */
+    total: number;
   }
 
-  export interface OutgoingStreamStatsReport {
+  export interface OutgoingStreamStats {
     [trackID: string]: OutgoingStreamTrackStats;
   }
 
-  export interface IncomingStreamTrackStats {
+  export interface IncomingStreamTrackEncodingStats {
     /** Stats for the media stream */
     media: IncomingSourceStats;
     /** Stats for the rtx retransmission stream */
@@ -122,36 +201,31 @@ import SemanticSDP = require('semantic-sdp');
     fec: IncomingSourceStats;
     /** Round Trip Time in ms */
     rtt: number;
-    /**
-     * "min","max" and "avg" packet waiting times in rtp buffer before
-     * delivering them
-     */
+    /** "min","max" and "avg" packet waiting times in rtp buffer before delivering them */
     waitTime: WaitTimeStats;
     /** Bitrate for media stream only in bps */
     bitrate: number;
     /** Accumulated bitrate for rtx, media and fec streams in bps */
     total: number;
-    /**
-     * Estimated avialable bitrate for receving (only avaailable if not using
-     * tranport wide cc)
-     */
+    /** Estimated available bitrate for receiving (only available if not using transport wide cc) */
     remb: number;
-    /**
-     * When this stats was generated, in order to save workload, stats are
-     * cached for 200ms
-     */
+    /** When this stats was generated, in order to save workload, stats are cached for 200ms */
     timestamp: number;
-    /**
-     * Simulcast layer index based on bitrate received (-1 if it is inactive).
-     */
+    /** Simulcast layer index based on bitrate received (-1 if it is inactive). */
     simulcastIdx: number;
+    /** Accumulated lost packets for media and rtx streams */
+    lostPackets: number;
+    /** Accumulated packets for media and rtx streams */
+    numPackets: number;
+    /** Lost packets ratio */
+    lostPacketsRatio: number;
   }
 
-  export interface IncomingStreamTrackStatsReport {
-    [layerID: string]: IncomingStreamTrackStats;
+  export interface IncomingStreamTrackStats {
+    [encodingID: string]: IncomingStreamTrackEncodingStats;
   }
-  export interface IncomingStreamStatsReport {
-    [trackID: string]: IncomingStreamTrackStatsReport;
+  export interface IncomingStreamStats {
+    [trackID: string]: IncomingStreamTrackStats;
   }
 
   export interface CreateRecorderOptions {
@@ -163,16 +237,26 @@ import SemanticSDP = require('semantic-sdp');
 
   export interface SetTargetBitrateOptions {
     /**
-     * Traversal algorithm "default", "spatial-temporal",
-     * "zig-zag-spatial-temporal", "temporal-spatial",
-     * "zig-zag-temporal-spatial" [Default: "default"]
+     * Traversal algorithm [Default: "default"]
      */
-    traversal?: 'default'|'spatial-temporal'|'zig-zag-temporal-spatial';
+    traversal?: "default" | "spatial-temporal" | "zig-zag-spatial-temporal" | "temporal-spatial" | "zig-zag-temporal-spatial";
     /**
-     * If there is not a layer with a bitrate lower thatn target, stop sending
+     * If there is not a layer with a bitrate lower than target, stop sending
      * media [Default: false]
      */
     strict?: boolean;
+  }
+
+  export interface SetTargetBitrateResult {
+    encodingId: string;
+    spatialLayerId: number;
+    temporalLayerId: number;
+    /** available layers considered for selection */
+    layers: Layer[];
+    /** layer that was selected */
+    layerIndex: number;
+    /** equivalent to `layers[layerIndex]` */
+    layer: Layer;
   }
 
   export interface SetTransportPropertiesOptions {
@@ -207,15 +291,15 @@ import SemanticSDP = require('semantic-sdp');
   export interface SSRCs {
     /** ssrc for the media track  */
     media?: number;
-    /** ssrc for the rtx track */
+    /** ssrc for the rtx track (only applicable to video tracks) */
     rtx?: number;
-    /** ssrc for the fec track */
-    fec?: number;
   }
 
   export interface CreateStreamTrackOptions {
-    /** Stream track id */
+    /** Stream track id (default: "audio" for audio tracks, "video" for video tracks) */
     id?: string;
+    /** Stream track media id (mid) */
+    mediaId?: string;
     /** Override the generated ssrcs for this track */
     ssrcs?: SSRCs;
   }
@@ -243,7 +327,7 @@ import SemanticSDP = require('semantic-sdp');
 
   interface OutgoingStreamEventMap {
     track(track: OutgoingStreamTrack): void;
-    stopped(stream: OutgoingStream, stats: OutgoingStreamStatsReport): void;
+    stopped(stream: OutgoingStream, stats: OutgoingStreamStats): void;
     muted(muted: boolean): void;
   }
   
@@ -258,34 +342,27 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get statistics for all tracks in the stream
-     *
-     * See OutgoingStreamTrack.getStats for information about the stats returned
-     * by each track.
-     *
-     * @returns {Map<String>,Object} Map with stats by trackId
      */
-    getStats(): OutgoingStreamStatsReport;
+    getStats(): OutgoingStreamStats;
 
     /**
      * Check if the stream is muted or not
-     * @returns {boolean} muted
      */
     isMuted(): boolean;
 
-    /*
+    /**
      * Mute/Unmute this stream and all the tracks in it
-     * @param {boolean} muting - if we want to mute or unmute
+     * @param muting - if we want to mute or unmute
      */
     mute(muting: boolean): void;
 
     /**
-     * Listen media from the incoming stream and send it to the remote peer of
-     * the associated transport.
-     * @param {IncomingStream} incomingStream - The incoming stream to listen
-     *     media for
-     * @returns {Array<Transponder>} Track transponders array
+     * Listen media from the incoming stream and send it to the remote peer of the associated transport.
+     * @param incomingStream - The incoming stream to listen media for
+     * @param layers - [Optional] Only applicable to video tracks
+     * @returns Track transponders array
      */
-    attachTo(incomingStream: IncomingStream): Transponder[];
+    attachTo(incomingStream: IncomingStream, layers?: LayerSelection): Transponder[];
 
     /**
      * Stop listening for media
@@ -307,64 +384,87 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get all the tracks
-     * @param {String} type	- The media type (Optional)
-     * @returns {Array<OutgoingStreamTrack>}	- Array of tracks
+     * @param type - The media type (Optional)
      */
-    getTracks(type?: string): OutgoingStreamTrack[];
+    getTracks(type?: SemanticSDP.MediaType): OutgoingStreamTrack[];
 
     /**
      * Get track by id
-     * @param {String} trackId	- The track id
-     * @returns {IncomingStreamTrack}	- requested track or null
+     * @param trackId - The track id
+     * @returns requested track, or undefined if not found
      */
-    getTrack(trackId: string): IncomingStreamTrack;
+    getTrack(trackId: string): IncomingStreamTrack | undefined;
 
     /**
      * Get an array of the media stream audio tracks
-     * @returns {Array|OutgoingStreamTracks}	- Array of tracks
      */
     getAudioTracks(): OutgoingStreamTrack[];
 
     /**
      * Get an array of the media stream video tracks
-     * @returns {Array|OutgoingStreamTrack}	- Array of tracks
      */
     getVideoTracks(): OutgoingStreamTrack[];
 
-    /*
+    /**
      * Adds an incoming stream track created using the
-     * Transpocnder.createOutgoingStreamTrack to this stream
-     *
-     * @param {OuggoingStreamTrack} track
+     * [[Transponder.createOutgoingStreamTrack]] to this stream
      */
     addTrack(track: OutgoingStreamTrack): void;
 
     /**
      * Create new track from a TrackInfo object and add it to this stream
-     * @param {Object|TrackInfo|String} params Params plain object, StreamInfo
-     *     object or media type
-     * @param {String?} params.id		- Stream track id
-     * @param {String?} params.media	- Media type ("audio" or "video")
-     * @param {Object?} params.ssrcs	- Override the generated ssrcs for this
-     *     track
-     * @param {Number?} params.ssrcs.media	- ssrc for the track
-     * @param {Number?} params.ssrcs.rtx 	- ssrc for the rtx video track
-     * @param {Number?} params.ssrcs.fec	- ssrc for the fec video track
-     * @returns {OutgoingStream} The new outgoing stream
-     * @param {TrackInfo} trackInfo Track info object
-     * @returns {OuggoingStreamTrack}
+     * @param params - Params plain object, StreamInfo object or media type
+     * @returns The new outgoing stream
      */
-    createTrack(params: SemanticSDP.TrackInfo|SemanticSDP.TrackInfoPlain|
-                string): OutgoingStreamTrack;
+    createTrack(params: SemanticSDP.TrackInfo |SemanticSDP.TrackInfoPlain |
+                (CreateStreamTrackOptions & { media: SemanticSDP.MediaType }) |
+                SemanticSDP.MediaType): OutgoingStreamTrack;
 
     stop(): void;
   }
 
+  export interface TransportStats {
+    /** Sender side estimation bitrate (if available) */
+    senderSideEstimationBitrate?: number;
+    /** ICE related stats */
+    ice: {
+      /** Number of ice requests sent */
+      requestsSent: number;
+      /** Number of ice requests received */
+      requestsReceived: number;
+      /** Number of ice responses sent */
+      responsesSent: number;
+      /** Number of ice responses received */
+      responsesReceived: number;
+    };
+  }
+
   interface TransportEventMap {
-    targetbitrate(bitrate: number, transport: Transport): void;
     outgoingtrack(track: OutgoingStreamTrack, stream: OutgoingStream|null): void;
     incomingtrack(track: IncomingStreamTrack, stream: IncomingStream|null): void;
     stopped(transport: Transport): void;
+
+    /**
+     * Transport sender side estimation bitrate target update
+     */
+    targetbitrate(bitrate: number): void;
+
+    /**
+     * DTLS state change event
+     */
+    dtlsstate(newState: DTLSState): void;
+
+    /**
+     * ICE remote candidate activation event.
+     * This event fires when ICE candidate has correctly being checked out and we start using it for sending.
+     * @param {CandidateInfo} candidate - Candidate that is in use by transport
+     */
+    remoteicecandidate(candidate: SemanticSDP.CandidateInfo): void;
+
+    /**
+     * ICE timoute event. Fired when no ICE request ar received for 30 seconds.
+     */
+    icetimeout(): void;
 
     /**
      * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
@@ -394,21 +494,57 @@ import SemanticSDP = require('semantic-sdp');
     dump(filename: string, options?: TransportDumpOptions): void;
 
     /**
+     * Stop dumping transport rtp and rtcp packets
+     */
+    stopDump(): void;
+
+    /**
+     * Get transport stats
+     */
+    getStats(): TransportStats;
+
+    /**
+     * Restart ICE on transport object
+     * @param remoteICE - Remote ICE info, containing the username and password.
+     * @param localICE - Local ICE info, containing the username and password [Optional]
+     * @returns Local ICE info
+     */
+    restartICE(remoteICE: SemanticSDP.ICEInfo, localICE?: SemanticSDP.ICEInfo): SemanticSDP.ICEInfo;
+
+    /**
+     * Get available outgoing bitrate in bps
+     */
+    getAvailableOutgoingBitrate(): number;
+
+    /**
      * Enable bitrate probing.
      * This will send padding only RTX packets to allow bandwidth estimation
      * algortithm to probe bitrate beyonf current sent values. The ammoung of
      * probing bitrate would be limited by the sender bitrate estimation and the
      * limit set on the setMaxProbing Bitrate. Note that this will only work on
      * browsers that supports RTX and transport wide cc.
-     * @param {Boolen} probe
      */
     setBandwidthProbing(probe: boolean): void;
 
     /**
      * Set the maximum bitrate to be used if probing is enabled.
-     * @param {Number} bitrate
      */
     setMaxProbingBitrate(bitrate: number): void;
+
+    /**
+     * Enable or disable calculation of sender side estimation if transport wide cc has been negotiated
+     */
+    enableSenderSideEstimation(enabled: boolean): void;
+
+    /**
+      * Override the bitrate sent by REMB to the remote sender. The transport must be constructed with teh override bwe option, and transport wide cc must not be offered.
+      */
+    setRemoteOverrideBitrate(bitrate: number): void;
+
+    /**
+      * Do not allow probing to increase sent bitrate above certain limit
+      */
+    setProbingBitrateLimit(bitrate: number): void;
 
     /**
      * Set local RTP properties
@@ -432,15 +568,23 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get transport local DTLS info
-     * @returns {DTLSInfo} DTLS info object
      */
     getLocalDTLSInfo(): SemanticSDP.DTLSInfo;
 
     /**
      * Get transport local ICE info
-     * @returns {ICEInfo} ICE info object
      */
     getLocalICEInfo(): SemanticSDP.ICEInfo;
+
+    /**
+     * Get transport remote DTLS info
+     */
+    getRemoteDTLSInfo(): SemanticSDP.DTLSInfo;
+
+    /**
+     * Get transport remote ICE info
+     */
+    getRemoteICEInfo(): SemanticSDP.ICEInfo;
 
     /**
      * Get local ICE candidates for this transport
@@ -457,16 +601,13 @@ import SemanticSDP = require('semantic-sdp');
     /**
      * Register a remote candidate info. Only needed for ice-lite to ice-lite
      * endpoints
-     * @param {CandidateInfo} candidate
-     * @returns {boolean} Wheter the remote ice candidate was alrady presnet or
-     *     not
+     * @returns Whether the remote ice candidate was already present or not
      */
     addRemoteCandidate(candidate: SemanticSDP.CandidateInfo): boolean;
 
     /**
      * Register an array remote candidate info. Only needed for ice-lite to
      * ice-lite endpoints
-     * @param {Array.CandidateInfo} candidates
      */
     addRemoteCandidates(candidates: SemanticSDP.CandidateInfo[]): void;
 
@@ -475,45 +616,21 @@ import SemanticSDP = require('semantic-sdp');
      *
      * Refresh the raw TX data for a candidate. See [[Endpoint.setRawTx]].
      */
-    setCandidateRawTxData(ip, port): Promise<void>
+    setCandidateRawTxData(ip: string, port: number): Promise<void>
 
     /**
      * Create new outgoing stream in this transport
-     * @param {Object|StreamInfo|String} params Params plain object, StreamInfo
-     *     object or stream id
-     * @param {Array<Object>|Object|boolean} params.audio	- Add audio track to
-     *     the new stream
-     * @param {Object?} params.id	- Stream id, an UUID will be generated if not
-     *     provided
-     * @param {Object?} params.audio.id	- Stream track id (default: "audio")
-     * @param {Number?} params.audio.ssrcs	- Override the generated ssrcs for
-     *     this track
-     * @param {Number?} params.audio.ssrcs.media - ssrc for the audio track
-     * @param {Array<Object>|Object|boolean} params.video	- Add video track to
-     *     the new stream
-     * @param {Object?} params.video.id	- Stream track id (default: "video")
-     * @param {Object?} params.video.ssrcs	- Override the generated ssrcs for
-     *     this track
-     * @param {Number?} params.video.ssrcs.media	- ssrc for the video
-     *     track
-     * @param {Number?} params.video.ssrcs.rtx 	- ssrc for the rtx video track
-     * @param {Number?} params.video.ssrcs.fec	- ssrc for the fec video track
+     * @param params - Params plain object, StreamInfo object or stream id (`mediaId` ignored)
      * @returns {OutgoingStream} The new outgoing stream
      */
-    createOutgoingStream(params: SemanticSDP.StreamInfo|
+    createOutgoingStream(params?: SemanticSDP.StreamInfo|
                          CreateOutgoingStreamOptions|string): OutgoingStream;
 
     /**
      * Create new outgoing stream in this transport
-     * @param {String}  media		- Track media type "audio" or "video"
-     * @param {Object?} params		- Track parameters
-     * @param {Object?} params.id		- Stream track id
-     * @param {Number?} params.ssrcs	- Override the generated ssrcs for this
-     *     track
-     * @param {Number?} params.ssrcs.media	- ssrc for the media track
-     * @param {Number?} params.ssrcs.rtx 	- ssrc for the rtx track
-     * @param {Number?} params.ssrcs.fec	- ssrc for the fec track
-     * @returns {OutgoingStreamTrack} The new outgoing stream track
+     * @param media - Track media type "audio" or "video"
+     * @param params - Track parameters
+     * @returns The new outgoing stream track
      */
     createOutgoingStreamTrack(
         media: SemanticSDP.MediaType,
@@ -529,42 +646,34 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get all the incoming streams in the transport
-     * @returns {Array<IncomingStreams>}
      */
     getIncomingStreams(): IncomingStream[];
 
     /**
      * Get incoming stream
-     * @param {String} streamId the stream ID
-     * @returns {IncomingStream}
+     * @param streamId - the stream ID
+     * @returns the requested stream, or undefined if not found
      */
-    getIncomingStream(streamId: string): IncomingStream;
+    getIncomingStream(streamId: string): IncomingStream | undefined;
 
     /**
      * Get all the outgoing streams in the transport
-     * @returns {Array<OutgoingStreams>}
      */
     getOutgoingStreams(): OutgoingStream[];
 
     /**
-     * Get incoming stream
-     * @param {String} streamId the stream ID
-     * @returns {IncomingStream}
+     * Get outgoing stream
+     * @param streamId - the stream ID
+     * @returns the requested stream, or undefined if not found
      */
-    getOutgoingStream(streamId: string): OutgoingStream;
+    getOutgoingStream(streamId: string): OutgoingStream | undefined;
 
     /**
      * Create new incoming stream in this transport. TODO: Simulcast is still
      * not supported
-     * @param {String}  media		- Track media type "audio" or "video"
-     * @param {Object?} params		- Track parameters
-     * @param {Object?} params.id		- Stream track id
-     * @param {Number?} params.ssrcs	- Override the generated ssrcs for this
-     *     track
-     * @param {Number?} params.ssrcs.media	- ssrc for the media track
-     * @param {Number?} params.ssrcs.rtx 	- ssrc for the rtx track
-     * @param {Number?} params.ssrcs.fec	- ssrc for the fec track
-     * @returns {IncomingStreamTrack} The new incoming stream track
+     * @param media - Track media type "audio" or "video"
+     * @param params - Track parameters
+     * @returns The new incoming stream track
      */
     createIncomingStreamTrack(
         media: SemanticSDP.MediaType,
@@ -572,9 +681,8 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Create new outgoing stream and attach to the incoming stream
-     * @param {IncomingStream} incomingStream the incoming stream to be
-     *     published in this transport
-     * @returns {OutgoingStream} The new outgoing stream
+     * @param incomingStream - the incoming stream to be published in this transport
+     * @returns The new outgoing stream
      */
     publish(incomingStream: IncomingStream): OutgoingStream;
 
@@ -628,6 +736,20 @@ import SemanticSDP = require('semantic-sdp');
      * @param {Number}  timeout - Ammount of time in milliseconds between ICE binding requests 
      */
     setIceTimeout(timeout: number): void;
+
+    /**
+     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
+     * 
+     * @param options Options for raw TX. Pass false to disable.
+     */
+     setRawTx(options: false | {
+      /** (required) name of interface to send on */
+      interfaceName: string
+      /** whether to skip the traffic shaping (qdisc) on the interface */
+      skipQdisc?: boolean
+      /** AF_PACKET socket send queue */
+      sndBuf?: number
+    }): Promise<void>;
 
     /**
      * Get port at which UDP socket is bound
@@ -696,12 +818,19 @@ import SemanticSDP = require('semantic-sdp');
         PeerConnectionServer;
 
     /**
+     * Create new active speaker multiplexer for given outgoing tracks
+     * @param streamOrTracks - Outgoing stream or outgoing stream track array to be multiplexed
+     */
+    createActiveSpeakerMultiplexer(
+      streamOrTracks: OutgoingStream|OutgoingStreamTrack[]): ActiveSpeakerMultiplexer;
+
+    /**
      * Mirror incoming stream from another endpoint. Used to avoid inter-thread
      * synchronization when attaching multiple output streams. The endpoint will
      * cache the cucrrent mirrored streams and return an already existing object
      * if calling this method twice with same stream.
-     * @param {IncomingStream} incomingStream - stream to mirror
-     * @returns {IncomingStream} mirrored stream.
+     * @param incomingStream - stream to mirror
+     * @returns mirrored stream
      */
     mirrorIncomingStream(incomingStream: IncomingStream): IncomingStream;
 
@@ -710,19 +839,17 @@ import SemanticSDP = require('semantic-sdp');
      * inter-thread synchronization when attaching multiple output tracks. The
      * endpoint will cache the cucrrent mirrored tracks and return an already
      * existing object if calling this method twice with same track.
-     * @param {IncomingStreamTrack} incomingStreamTrack - track to mirror
-     * @returns {IncomingStreamTrackMirrored} mirrored track.
+     * @param incomingStreamTrack - track to mirror
+     * @returns mirrored track
      */
     mirrorIncomingStreamTrack(incomingStreamTrack: IncomingStreamTrack):
         IncomingStreamTrack;
 
     /**
      * Create new SDP manager, this object will manage the SDP O/A for you and
-     * produce a suitable trasnport.
-     * @param {String} sdpSemantics - Type of sdp plan "unified-plan" or
-     *     "plan-b"
-     * @param {Object} capabilities - Capabilities objects
-     * @returns {SDPManager}
+     * produce a suitable transport.
+     * @param sdpSemantics - Type of sdp plan
+     * @param capabilities - Capabilities objects
      */
     createSDPManager(
         sdpSemantics: 'unified-plan'|'plan-b',
@@ -750,99 +877,116 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Set incoming track
-     * @param {IncomingStreamTrack} track
+     * @param track Incoming track to attach to
+     * @param layers [Optional] Only applicable to video tracks
+     * @param smooth Wait until next valid frame before switching to the new encoding
      */
-    setIncomingTrack(track: IncomingStreamTrack): void;
+    setIncomingTrack(track: IncomingStreamTrack, layers?: LayerSelection, smooth?: boolean): void;
+
+    /**
+     * Set out of band negotiated H264 parameter sets
+     * @param sprop - H264 parameters sets
+     */
+    appendH264ParameterSets(sprop: string): void;
+
+    /**
+     * Get Transponder media type
+     */
+    getMedia(): SemanticSDP.MediaType;
 
     /**
      * Get attached track
-     * @returns {IncomingStreamTrack} track
      */
     getIncomingTrack(): IncomingStreamTrack;
 
     /**
      * Get available encodings and layers
-     * @returns {Object}
      */
     getAvailableLayers(): ActiveLayers|null;
 
     /**
      * Check if the track is muted or not
-     * @returns {boolean} muted
      */
     isMuted(): boolean;
 
-    /*
+    /**
      * Mute/Unmute track
      * This operation will not change the muted state of the stream this track
      * belongs too.
-     * @param {boolean} muting - if we want to mute or unmute
+     * @param muting - if we want to mute or unmute
      */
     mute(muting: boolean): void;
 
-    /*
+    /**
+     * Set intra frame forwarding mode
+     * @param intraOnlyForwarding true if you want to forward only intra frames, false otherwise
+     */
+    setIntraOnlyForwarding(intraOnlyForwarding: boolean): void;
+
+    /**
      * Select encoding and temporal and spatial layers based on the desired
-     * bitrate. This operation will unmute the transponder if it was mutted and
+     * bitrate. This operation will unmute the transponder if it was muted and
      * it is possible to select an encoding and layer based on the target
      * bitrate and options.
      *
-     * @param {Number} bitrate
-     * @param {Object} options - Options for configuring algorithm to select
-     *     best encoding/layers [Optional]
-     * @param {Object} options.traversal - Traversal algorithm "default",
-     *     "spatial-temporal", "zig-zag-spatial-temporal", "temporal-spatial",
-     *     "zig-zag-temporal-spatial" [Default: "default"]
-     * @param {Object} options.strict    - If there is not a layer with a
-     *     bitrate lower thatn target, stop sending media [Default: false]
-     * @returns {Number} Current bitrate of the selected encoding and layers
+     * @param target - Target bitrate
+     * @param options - Options for configuring algorithm to select best encoding/layers
+     * @returns Current bitrate of the selected encoding and layers, it also incudes
+     * the selected layer indexes and available layers as properties of the Number object.
      */
-    setTargetBitrate(target: number, options?: SetTargetBitrateOptions): number;
+    setTargetBitrate(target: number, options?: SetTargetBitrateOptions): number & SetTargetBitrateResult;
 
-    /*
+    /**
+     * Select the simulcast encoding layer and svc layers
+     * @param layers - [Optional] Only applicable to video tracks
+     * @param smooth - Wait until next valid frame before switching to the new encoding
+     */
+    select(layers?: LayerSelection, smooth?: boolean): void;
+
+    /**
      * Select the simulcast encoding layer
-     * @param {String} encoding Id - rid value of the simulcast encoding of the
-     *     track
+     * @param encodingId - rid value of the simulcast encoding of the track
      */
     selectEncoding(encodingId: string): void;
 
     /**
      * Return the encoding that is being forwarded
-     * @returns {String} encodingId
      */
     getSelectedEncoding(): string;
 
     /**
      * Return the spatial layer id that is being forwarded
-     * @returns {Number} spatial layer id
      */
     getSelectedSpatialLayerId(): number;
 
     /**
      * Return the temporal layer id that is being forwarded
-     * @returns {Number} temporal layer id
      */
     getSelectedTemporalLayerId(): number;
 
     /**
+     * Get current selected layer info
+     */
+    getSelectedLayer(): Layer;
+
+    /**
      * Select SVC temporatl and spatial layers. Only available for VP9 media.
-     * @param {Number} spatialLayerId The spatial layer id to send to the
-     *     outgoing stream
-     * @param {Number} temporalLayerId The temporaral layer id to send to the
-     *     outgoing stream
+     * @param spatialLayerId - The spatial layer id to send to the outgoing stream
+     * @param temporalLayerId - The temporal layer id to send to the outgoing stream
      */
     selectLayer(spatialLayerId: number, temporalLayerId: number): void;
 
     /**
-     * Set maximum statial and temporal layers to be forwrarded. Base layer is
+     * Set maximum spatial and temporal layers to be forwarded. Base layer is
      * always enabled.
-     * @param {Number} maxSpatialLayerId  - Max spatial layer id
-     * @param {Number} maxTemporalLayerId - Max temporal layer id
+     * @param maxSpatialLayerId - Max spatial layer id
+     * @param maxTemporalLayerId - Max temporal layer id
      */
     setMaximumLayers(maxSpatialLayerId: number, maxTemporalLayerId: number):
         void;
 
     /**
-     * Stop this transponder, will dettach the OutgoingStreamTrack
+     * Stop this transponder, will detach the OutgoingStreamTrack
      */
     stop(): void;
   }
@@ -885,20 +1029,6 @@ import SemanticSDP = require('semantic-sdp');
      * @returns {boolean} true if operation was successful
      */
     setAffinity(cpu: number): boolean;
-  
-    /**
-     * [EXPERIMENTAL] This option is currently Linux-specific and undocumented. Use at your own risk.
-     * 
-     * @param options Options for raw TX. Pass false to disable.
-     */
-    setRawTx(options: false | {
-      /** (required) name of interface to send on */
-      interfaceName: string
-      /** whether to skip the traffic shaping (qdisc) on the interface */
-      skipQdisc?: boolean
-      /** AF_PACKET socket send queue */
-      sndBuf?: number
-    }): Promise<void>;
 
     /**
      * Set node uv loop thread name.
@@ -981,7 +1111,7 @@ import SemanticSDP = require('semantic-sdp');
 
   interface IncomingStreamEventMap {
     track(track: IncomingStreamTrack): void;
-    stopped(stream: IncomingStream, stats: IncomingStreamStatsReport): void;
+    stopped(stream: IncomingStream, stats: IncomingStreamStats): void;
   }
 
   export interface IncomingStream {
@@ -1008,27 +1138,32 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get statistics for all tracks in the stream
-     *
-     * See OutgoingStreamTrack.getStats for information about the stats returned
-     * by each track.
-     *
-     * @returns {Map<String>,Object} Map with stats by trackId
      */
-    getStats(): IncomingStreamStatsReport;
+    getStats(): IncomingStreamStats;
+
+    /**
+     * Check if the stream is muted or not
+     */
+    isMuted(): boolean;
+
+    /**
+     * Mute/Unmute this stream and all the tracks in it
+     * @param {boolean} muting - if we want to mute or unmute
+     */
+    mute(muting: boolean): void;
 
     /**
      * Get track by id
-     * @param {String} trackId	- The track id
-     * @returns {IncomingStreamTrack}	- requested track or null
+     * @param trackId	- The track id
+     * @returns requested track, or undefined if not found
      */
-    getTrack(trackId: string): IncomingStreamTrack;
+    getTrack(trackId: string): IncomingStreamTrack | undefined;
 
     /**
      * Get all the tracks
-     * @param {String} type	- The media type (Optional)
-     * @returns {Array<IncomingStreamTrack>}	- Array of tracks
+     * @param type - The media type (Optional)
      */
-    getTracks(type?: string): IncomingStreamTrack[];
+    getTracks(type?: SemanticSDP.MediaType): IncomingStreamTrack[];
 
     /**
      * Get an array of the media stream audio tracks
@@ -1042,7 +1177,7 @@ import SemanticSDP = require('semantic-sdp');
      */
     getVideoTracks(): IncomingStreamTrack[];
 
-    /*
+    /**
      * Adds an incoming stream track created using the
      * Transpocnder.createIncomingStreamTrack to this stream
      *
@@ -1052,11 +1187,18 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Create new track from a TrackInfo object and add it to this stream
-     *
-     * @param {TrackInfo} trackInfo  Track info object
-     * @returns {IncomingStreamTrack}
      */
     createTrack(trackInfo: SemanticSDP.TrackInfo): IncomingStreamTrack;
+
+    /**
+     * Reset ssrc state of all tracks
+     */
+    reset(): void;
+
+    /**
+     * Return if the stream is attached or not
+     */
+    isAttached(): boolean;
 
     /**
      * Removes the media strem from the transport and also detaches from any
@@ -1082,9 +1224,8 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get stats for all encodings
-     * @returns {Map<String,Object>} Map with stats by encodingId
      */
-    getStats(): IncomingStreamTrackStatsReport;
+    getStats(): IncomingStreamTrackStats;
 
     /**
      * Get active encodings and layers ordered by bitrate
@@ -1097,6 +1238,11 @@ import SemanticSDP = require('semantic-sdp');
      * Get track id as signaled on the SDP
      */
     getId(): string;
+
+    /**
+     * Get track media id
+     */
+    getMediaId(): string;
 
     /**
      * Get track info object
@@ -1127,6 +1273,27 @@ import SemanticSDP = require('semantic-sdp');
      * Request an intra refres on all sources
      */
     refresh(): void;
+
+    /** 
+     * Reset state of incoming sources
+     */
+    reset(): void;
+
+    /**
+     * Check if the track is muted or not
+     */
+    isMuted(): boolean;
+
+    /**
+     * Mute/Unmute track
+     * @param muting - if we want to mute or unmute
+     */
+    mute(muting: boolean): void;
+
+    /**
+     * Return if the track is attached or not
+     */
+    isAttached(): boolean;
 
     /**
      * Signal that this track has been detached.
@@ -1184,21 +1351,23 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get track media type
-     * @returns {String} "audio"|"video"
      */
     getMedia(): SemanticSDP.MediaType;
 
     /**
+     * Get track media id
+     */
+    getMediaId(): string;
+
+    /**
      * Get track info object
-     * @returns {TrackInfo} Track info
      */
     getTrackInfo(): SemanticSDP.TrackInfo;
 
     /**
      * Get stats for all encodings
-     * @returns {Map<String,Object>} Map with stats by encodingId
      */
-    getStats(): OutgoingStreamStatsReport;
+    getStats(): OutgoingStreamTrackStats;
 
     /**
      * Return ssrcs associated to this track
@@ -1208,27 +1377,36 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Check if the track is muted or not
-     * @returns {boolean} muted
      */
     isMuted(): boolean;
 
-    /*
+    /**
      * Mute/Unmute track
      * This operation will not change the muted state of the stream this track
      * belongs too.
-     * @param {boolean} muting - if we want to mute or unmute
+     * @param muting if we want to mute or unmute
      */
     mute(muting: boolean): void;
 
     /**
-     * Listen media from the incoming stream track and send it to the remote
-     * peer of the associated transport. This will stop any previous transpoder
-     * created by a previous attach.
-     * @param {IncomingStreamTrack} incomingStreamTrack - The incoming stream to
-     *     listen media for
-     * @returns {Transponder} Track transponder object
+     * Listen media from the incoming stream track and send it to the remote peer of the associated transport.
+     * This will stop any previous transpoder created by a previous attach.
+     * @param incomingStreamTrack - The incoming stream to listen media for
+     * @param layers - [Optional] Only applicable to video tracks
+     * @returns Track transponder object
      */
-    attachTo(incomingStreamTrack: IncomingStreamTrack): Transponder;
+    attachTo(incomingStreamTrack: IncomingStreamTrack, layers?: LayerSelection): Transponder;
+
+    /**
+     * Check if this outgoing stream track is already attached to an incoming stream track
+     */
+    isAttached(): boolean;
+
+    /**
+     * Stop forwarding any previous attached track.
+     * This will set the transponder inconming track to null
+     */
+    detach(): void;
 
     /**
      * Get attached transpoder for this track
@@ -1248,14 +1426,12 @@ import SemanticSDP = require('semantic-sdp');
      * Start recording and incoming
      * @param {IncomingStream|IncomingStreamTrack} incomingStreamOrTrack -
      *     Incomining stream or track to be recordeds
-     * @returns {Array<RecorderTrack>}
      */
     record(incomingStreamOrTrack: IncomingStream|
            IncomingStreamTrack): RecorderTrack[];
 
     /**
-     * Stop recording and close file. NOTE: File will be flsuh async,
-     * @returns {undefined} -  TODO: return promise when flush is ended
+     * Stop recording and close file. NOTE: File will be flush async,
      */
     stop(): void;
   }
@@ -1294,6 +1470,18 @@ import SemanticSDP = require('semantic-sdp');
      * Stop recording this track
      */
     stop(): void;
+
+    /**
+     * Check if the track is muted or not
+     */
+    isMuted(): boolean;
+    
+    /**
+     * Mute/Unmute track
+     * This operation will not change the muted state of the stream this track belongs too.
+     * @param {boolean} muting - if we want to mute or unmute
+     */
+    mute(muting: boolean): void;
   }
 
   interface PlayerEventMap {
@@ -1499,7 +1687,6 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Add stream or track to request
-     * @param {IncomintgStream|IncomingStreamTrack} streamOrTrack
      */
     add(streamOrTrack: IncomingStream|IncomingStreamTrack): void;
 
@@ -1525,26 +1712,22 @@ import SemanticSDP = require('semantic-sdp');
 
     /**
      * Get current SDP offer/answer state
-     * @returns {String} one of
-     *     "initial","local-offer","remote-offer","stabable".
      */
     getState(): 'initial'|'local-offer'|'remote-offer'|'stable';
 
     /**
      * Returns the Transport object created by the SDP O/A
-     * @returns {Transport}
      */
     getTransport(): Transport;
 
     /**
      * Create local description
-     * @returns {String}
      */
     createLocalDescription(): string;
 
     /**
      * Process remote offer
-     * @param {String} sdp	- Remote session description
+     * @param sdp - Remote session description
      */
     processRemoteDescription(sdp: string): void;
 
@@ -1605,11 +1788,74 @@ import SemanticSDP = require('semantic-sdp');
     removeSpeaker(track: IncomingStreamTrack): void;
 
     /**
-     * Stop this transponder, will dettach the OutgoingStreamTrack
+     * Stop this transponder, will detach the OutgoingStreamTrack
      */
     stop(): void;
   }
 
-  let MediaServer: MediaServer;
-  export default MediaServer;
+  interface ActiveSpeakerMultiplexerEventMap {
+    /**
+     * new active speaker detected event
+     * @param incomingStreamTrack - Track that has been voice activated
+     * @param outgoingStreamTrack - Track that has been multiplexed into
+     */
+    activespeakerchanged(incomingStreamTrack: IncomingStreamTrack, outgoingStreamTrack: OutgoingStreamTrack): void;
+    /**
+     * active speaker removed event
+     * @param outgoingStreamTrack - Track with no active speaker
+     */
+    noactivespeaker(outgoingStreamTrack: OutgoingStreamTrack): void;
+    stopped(): void;
+  }
+
+  /**
+   * multiplex multiple incoming audio tracks into fewer outgoing tracks based on voice activity.
+   */
+  export interface ActiveSpeakerMultiplexer {
+    // copy-pasted code for type-safe events
+    emit<E extends keyof ActiveSpeakerMultiplexerEventMap>(event: E, ...args: Parameters<ActiveSpeakerMultiplexerEventMap[E]>): this;
+    on<E extends keyof ActiveSpeakerMultiplexerEventMap>(event: E, listener: ActiveSpeakerMultiplexerEventMap[E]): this;
+    once<E extends keyof ActiveSpeakerMultiplexerEventMap>(event: E, listener: ActiveSpeakerMultiplexerEventMap[E]): this;
+    off<E extends keyof ActiveSpeakerMultiplexerEventMap>(event: E, listener: ActiveSpeakerMultiplexerEventMap[E]): this;
+    addListener<E extends keyof ActiveSpeakerMultiplexerEventMap>(event: E, listener: ActiveSpeakerMultiplexerEventMap[E]): this;
+    removeListener<E extends keyof ActiveSpeakerMultiplexerEventMap>(event: E, listener: ActiveSpeakerMultiplexerEventMap[E]): this;
+
+    /**
+     * Set minimum period between active speaker changes
+     */
+    setMinChangePeriod(minChangePeriod: number): void;
+    
+    /**
+     * Maximux activity score accumulated by an speaker
+     */
+    setMaxAccumulatedScore(maxAcummulatedScore: number): void;
+    
+    /**
+     * Minimum db level to not be considered as muted
+     */
+    setNoiseGatingThreshold(noiseGatingThreshold: number): void;
+    
+    /**
+     * Set minimum activation score to be electible as active speaker
+     */
+    setMinActivationScore(minActivationScore: number): void;
+    
+    /**
+     * Add incoming track for speaker detection
+     */
+    addSpeaker(track: IncomingStreamTrack): void;
+
+    /**
+     * Remove track from speaker detection
+     */
+    removeSpeaker(track: IncomingStreamTrack): void;
+
+    /**
+     * Stop this transponder, will detach the OutgoingStreamTrack
+     */
+    stop(): void;
+  }
 }
+
+declare const _default: _default.MediaServer;
+export = _default;
