@@ -1,0 +1,17 @@
+{
+	"include": ["lib/**/*"],
+	"compilerOptions": {
+		"lib": ["ES2018"],
+		"target": "ES2018",
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"allowJs": true,
+		"checkJs": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"outDir": "build/types",
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"declarationMap": true
+	}
+}
