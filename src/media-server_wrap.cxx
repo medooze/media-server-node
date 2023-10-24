@@ -17270,6 +17270,9 @@ void SWIGV8_INIT (SWIGV8_OBJECT exports_obj, SWIGV8_VALUE /*module*/, v8::Local<
 
 	AesGcmSrtpBackend_Register();
 
+	MediaServer.Initialize();
+	std::atexit(MediaServer::Terminate);
+
 
   // a class template for creating proxies of undefined types
   SWIGV8_SET_CLASS_TEMPL(SWIGV8_SWIGTYPE_Proxy_class_templ, SWIGV8_CreateClassTemplate("SwigProxy"));
