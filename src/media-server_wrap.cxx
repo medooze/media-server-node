@@ -17270,7 +17270,7 @@ void SWIGV8_INIT (SWIGV8_OBJECT exports_obj, SWIGV8_VALUE /*module*/, v8::Local<
 
 	AesGcmSrtpBackend_Register();
 
-	MediaServer.Initialize();
+	MediaServer::Initialize();
 	std::atexit(MediaServer::Terminate);
 
 
