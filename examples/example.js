@@ -3,13 +3,15 @@ const ip = "127.0.0.1";
 
 
 const SemanticSDP	= require("semantic-sdp");
-const SDPInfo		= SemanticSDP.SDPInfo;
-const MediaInfo		= SemanticSDP.MediaInfo;
-const CandidateInfo	= SemanticSDP.CandidateInfo;
-const DTLSInfo		= SemanticSDP.DTLSInfo;
-const ICEInfo		= SemanticSDP.ICEInfo;
-const StreamInfo	= SemanticSDP.StreamInfo;
-const TrackInfo		= SemanticSDP.TrackInfo;
+const {
+	SDPInfo,
+	MediaInfo,
+	CandidateInfo,
+	DTLSInfo,
+	ICEInfo,
+	StreamInfo,
+	TrackInfo,
+} = require("semantic-sdp");
 
 
 const sdp = "v=0\r\n" +

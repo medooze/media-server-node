@@ -7,13 +7,15 @@ MediaServer.enableDebug(false);
 MediaServer.enableUltraDebug(false);
 
 
-const StreamInfo	= SemanticSDP.StreamInfo;
-const TrackInfo		= SemanticSDP.TrackInfo;
-const Setup		= SemanticSDP.Setup;
-const Direction		= SemanticSDP.Direction;
-const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
-const CodecInfo		= SemanticSDP.CodecInfo;
-const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
+const {
+	StreamInfo,
+	TrackInfo,
+	Setup,
+	Direction,
+	SourceGroupInfo,
+	CodecInfo,
+	TrackEncodingInfo,
+} = require("semantic-sdp");
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));

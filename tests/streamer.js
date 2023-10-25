@@ -6,14 +6,16 @@ MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
 MediaServer.enableUltraDebug(false);
 
-const StreamInfo	= SemanticSDP.StreamInfo;
-const TrackInfo		= SemanticSDP.TrackInfo;
-const MediaInfo		= SemanticSDP.MediaInfo;
-const Setup		= SemanticSDP.Setup;
-const Direction		= SemanticSDP.Direction;
-const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
-const CodecInfo		= SemanticSDP.CodecInfo;
-const TrackEncodingInfo = SemanticSDP.TrackEncodingInfo;
+const {
+	StreamInfo,
+	TrackInfo,
+	MediaInfo,
+	Setup,
+	Direction,
+	SourceGroupInfo,
+	CodecInfo,
+	TrackEncodingInfo,
+} = require("semantic-sdp");
 
 Promise.all([
 tap.test("Sreamer::create",async function(suite){
