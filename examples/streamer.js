@@ -1,6 +1,8 @@
 const SemanticSDP	= require("semantic-sdp");
-const MediaInfo		= SemanticSDP.MediaInfo;
-const CodecInfo		= SemanticSDP.CodecInfo;
+const {
+	MediaInfo,
+	CodecInfo,
+} = require("semantic-sdp");
 
 
 //Get the Medooze Media Server interface

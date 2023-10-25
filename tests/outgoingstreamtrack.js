@@ -7,12 +7,14 @@ MediaServer.enableDebug(false);
 MediaServer.enableUltraDebug(false);
 const endpoint = MediaServer.createEndpoint("127.0.0.1");
 
-const StreamInfo	= SemanticSDP.StreamInfo;
-const TrackInfo		= SemanticSDP.TrackInfo;
-const Setup		= SemanticSDP.Setup;
-const Direction		= SemanticSDP.Direction;
-const SourceGroupInfo   = SemanticSDP.SourceGroupInfo;
-const CodecInfo		= SemanticSDP.CodecInfo;
+const {
+	StreamInfo,
+	TrackInfo,
+	Setup,
+	Direction,
+	SourceGroupInfo,
+	CodecInfo,
+} = require("semantic-sdp");
 
 Promise.all([
 tap.test("OutgoingMediaStreamTrack::mute",async function(suite){

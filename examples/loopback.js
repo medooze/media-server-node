@@ -3,15 +3,17 @@ const ip = "127.0.0.1";
 
 
 const SemanticSDP	= require("semantic-sdp");
-const SDPInfo		= SemanticSDP.SDPInfo;
-const MediaInfo		= SemanticSDP.MediaInfo;
-const CodecInfo		= SemanticSDP.CodecInfo;
-const CandidateInfo	= SemanticSDP.CandidateInfo;
-const DTLSInfo		= SemanticSDP.DTLSInfo;
-const ICEInfo		= SemanticSDP.ICEInfo;
-const StreamInfo	= SemanticSDP.StreamInfo;
-const TrackInfo		= SemanticSDP.TrackInfo;
-const Setup		= SemanticSDP.Setup;
+const {
+	SDPInfo,
+	MediaInfo,
+	CodecInfo,
+	CandidateInfo,
+	DTLSInfo,
+	ICEInfo,
+	StreamInfo,
+	TrackInfo,
+	Setup,
+} = require("semantic-sdp");
 
 //Get the Medooze Media Server interface
 const MediaServer = require("../index");

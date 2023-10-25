@@ -2,15 +2,17 @@ const tap		= require("tap");
 const MediaServer	= require("../index");
 const SemanticSDP	= require("semantic-sdp");
 
-const SDPInfo		= SemanticSDP.SDPInfo;
-const MediaInfo		= SemanticSDP.MediaInfo;
-const CandidateInfo	= SemanticSDP.CandidateInfo;
-const DTLSInfo		= SemanticSDP.DTLSInfo;
-const ICEInfo		= SemanticSDP.ICEInfo;
-const StreamInfo	= SemanticSDP.StreamInfo;
-const TrackInfo		= SemanticSDP.TrackInfo;
-const Setup		= SemanticSDP.Setup;
-const CodecInfo		= SemanticSDP.CodecInfo;
+const {
+	SDPInfo,
+	MediaInfo,
+	CandidateInfo,
+	DTLSInfo,
+	ICEInfo,
+	StreamInfo,
+	TrackInfo,
+	Setup,
+	CodecInfo,
+} = require("semantic-sdp");
 
 MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
