@@ -1564,6 +1564,9 @@ public:
 		
 		//Init async handler
 		uv_async_init(uv_default_loop(), &async, async_cb_handler);
+
+		//Init random numbers
+		srand(time(NULL));
 	}
 	
 	static void Terminate()
