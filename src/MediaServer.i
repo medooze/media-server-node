@@ -189,7 +189,3 @@ public:
 	static bool SetAffinity(int cpu);
 	static bool SetThreadName(const std::string& name);
 };
-
-%init %{ 
-	std::atexit(MediaServer::Terminate);
-%}

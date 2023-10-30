@@ -111,4 +111,7 @@ using Persistent = Nan::Persistent<T,NonCopyablePersistentTraits<T>>;
 	}
 
 	AesGcmSrtpBackend_Register();
+
+	MediaServer::Initialize();
+	std::atexit(MediaServer::Terminate);
 %}

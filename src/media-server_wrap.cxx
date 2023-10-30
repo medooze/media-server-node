@@ -17258,9 +17258,6 @@ void SWIGV8_INIT (SWIGV8_OBJECT exports_obj, SWIGV8_VALUE /*module*/, v8::Local<
 
   SWIG_InitializeModule(context);
 
- 
-	std::atexit(MediaServer::Terminate);
-
 
 	auto tracingVar = getenv("MEDOOZE_TRACING");
 	if (tracingVar && std::string(tracingVar) == "1") {
@@ -17272,6 +17269,9 @@ void SWIGV8_INIT (SWIGV8_OBJECT exports_obj, SWIGV8_VALUE /*module*/, v8::Local<
 	}
 
 	AesGcmSrtpBackend_Register();
+
+	MediaServer::Initialize();
+	std::atexit(MediaServer::Terminate);
 
 
   // a class template for creating proxies of undefined types
