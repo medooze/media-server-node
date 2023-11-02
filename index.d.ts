@@ -1,35 +1,42 @@
 export * from "./build/types/MediaServer";
 
+export type ActiveSpeakerDetector = import("./build/types/ActiveSpeakerDetector");
+export type ActiveSpeakerMultiplexer = import("./build/types/ActiveSpeakerMultiplexer");
+//export type EmulatedTransport = import("./build/types/EmulatedTransport");
+export type Endpoint = import("./build/types/Endpoint");
+export type IncomingStream = import("./build/types/IncomingStream");
+export type IncomingStreamTrack = import("./build/types/IncomingStreamTrack");
+export type IncomingStreamTrackMirrored = import("./build/types/IncomingStreamTrackMirrored");
+export type IncomingStreamTrackReader = import("./build/types/IncomingStreamTrackReader");
+export type IncomingStreamTrackSimulcastAdapter = import("./build/types/IncomingStreamTrackSimulcastAdapter");
+export type OutgoingStream = import("./build/types/OutgoingStream");
+export type OutgoingStreamTrack = import("./build/types/OutgoingStreamTrack");
+//export type PeerConnectionServer = import("./build/types/PeerConnectionServer");
+export type Player = import("./build/types/Player");
+export type Recorder = import("./build/types/Recorder");
+export type RecorderTrack = import("./build/types/RecorderTrack");
+export type Refresher = import("./build/types/Refresher");
+export type SDPManager = import("./build/types/SDPManager");
+export type SDPManagerPlanB = import("./build/types/SDPManagerPlanB");
+export type SDPManagerUnified = import( "./build/types/SDPManagerUnified");
+//export type Streamer = import("./build/types/Streamer");
+//export type StreamerSession = import("./build/types/StreamerSession");
+export type Transponder = import("./build/types/Transponder");
+export type Transport = import("./build/types/Transport");
+
 export type {
-	default as IncomingStreamTrack,
 	MediaStats as IncomingMediaStats, TrackStats as IncomingTrackStats,
 	ActiveEncodingInfo, ActiveLayersInfo, EncodingStats, LayerStats, PacketWaitTime,
 } from "./build/types/IncomingStreamTrack";
 
 export type {
-	default as OutgoingStreamTrack,
 	MediaStats as OutgoingMediaStats, TrackStats as OutgoingTrackStats,
 	ReceiverReport,
 } from "./build/types/OutgoingStreamTrack";
 
-export type { default as ActiveSpeakerDetector } from "./build/types/ActiveSpeakerDetector";
-export type { default as ActiveSpeakerMultiplexer } from "./build/types/ActiveSpeakerMultiplexer";
-//export type { default as EmulatedTransport } from "./build/types/EmulatedTransport";
-export type { default as Endpoint, CreateTransportOptions, RawTxOptions, PeerInfo, ParsedPeerInfo } from "./build/types/Endpoint";
-export type { default as IncomingStream, SourceId } from "./build/types/IncomingStream";
-export type { default as IncomingStreamTrackMirrored } from "./build/types/IncomingStreamTrackMirrored";
-export type { default as IncomingStreamTrackReader, Frame, FrameType } from "./build/types/IncomingStreamTrackReader";
-export type { default as IncomingStreamTrackSimulcastAdapter } from "./build/types/IncomingStreamTrackSimulcastAdapter";
-export type { default as OutgoingStream } from "./build/types/OutgoingStream";
-//export type { default as PeerConnectionServer } from "./build/types/PeerConnectionServer";
-export type { default as Player } from "./build/types/Player";
-export type { default as Recorder, RecorderParams } from "./build/types/Recorder";
-export type { default as RecorderTrack } from "./build/types/RecorderTrack";
-export type { default as Refresher } from "./build/types/Refresher";
-export type { default as SDPManager, SDPState } from "./build/types/SDPManager";
-export type { default as SDPManagerPlanB } from "./build/types/SDPManagerPlanB";
-export type { default as SDPManagerUnified  } from "./build/types/SDPManagerUnified";
-//export type { default as Streamer } from "./build/types/Streamer";
-//export type { default as StreamerSession } from "./build/types/StreamerSession";
-export type { default as Transponder, LayerSelection, SetTargetBitrateOptions } from "./build/types/Transponder";
-export type { default as Transport, DTLSState, ICEStats, TransportStats, TransportDumpOptions } from "./build/types/Transport";
+export type { CreateTransportOptions, RawTxOptions, PeerInfo, ParsedPeerInfo } from "./build/types/Endpoint";
+export type { Frame, FrameType } from "./build/types/IncomingStreamTrackReader";
+export type { RecorderParams } from "./build/types/Recorder";
+export type { SDPState } from "./build/types/SDPManager";
+export type { LayerSelection, SetTargetBitrateOptions } from "./build/types/Transponder";
+export type { DTLSState, ICEStats, TransportStats, TransportDumpOptions, CreateStreamOptions, CreateStreamTrackOptions, SSRCs } from "./build/types/Transport";

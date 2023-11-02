@@ -4,7 +4,7 @@
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
-    "prepare": "tsc --checkJs false",
+    "prepare": "tsc --checkJs false && mkdir -p build/src && cp src/*.d.ts build/src",
     "check": "tsc --noEmit --emitDeclarationOnly false",
     "configure": "node-gyp configure",
     "swig": "swig -javascript -node -c++ src/media-server.i",
