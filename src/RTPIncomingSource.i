@@ -40,5 +40,15 @@ struct RTPIncomingSource : public RTPSource
 				layers.push_back(&(it->second));
 			return layers;
 		}
+		const int64_t targetBitrate;
+		const int64_t targetWidth;
+		const int64_t targetHeight;
+		const int64_t targetFps;
 	}
 };
+%{
+int64_t RTPIncomingSource_targetBitrate_get(RTPIncomingSource* self)	{ return self->targetBitrate.value_or(0); } 
+int64_t RTPIncomingSource_targetWidth_get(RTPIncomingSource* self)	{ return self->targetWidth.value_or(0); }  
+int64_t RTPIncomingSource_targetHeight_get(RTPIncomingSource* self)	{ return self->targetHeight.value_or(0); } 
+int64_t RTPIncomingSource_targetFps_get(RTPIncomingSource* self)	{ return self->targetFps.value_or(0); }  
+%}

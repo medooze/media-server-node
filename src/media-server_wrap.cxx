@@ -1564,9 +1564,6 @@ public:
 		
 		//Init async handler
 		uv_async_init(uv_default_loop(), &async, async_cb_handler);
-
-		//Init random numbers
-		srand(time(NULL));
 	}
 	
 	static void Terminate()
@@ -2193,10 +2190,10 @@ SWIGV8_VALUE SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
 #endif
 
 
-int64_t LayerSource_targetBitrate_get(LayerSource* self)	{ return self->targetBitrate.has_value()	? self->targetBitrate.value()	: -1; } 
-int64_t LayerSource_targetWidth_get(LayerSource* self)		{ return self->targetWidth.has_value()		? self->targetWidth.value()	: -1; } 
-int64_t LayerSource_targetHeight_get(LayerSource* self)		{ return self->targetHeight.has_value()		? self->targetHeight.value()	: -1; } 
-int64_t LayerSource_targetFps_get(LayerSource* self)		{ return self->targetFps.has_value()		? self->targetFps.value()	: -1; } 
+int64_t LayerSource_targetBitrate_get(LayerSource* self)	{ return self->targetBitrate.value_or(0);	} 
+int64_t LayerSource_targetWidth_get(LayerSource* self)		{ return self->targetWidth.value_or(0);		} 
+int64_t LayerSource_targetHeight_get(LayerSource* self)		{ return self->targetHeight.value_or(0);	} 
+int64_t LayerSource_targetFps_get(LayerSource* self)		{ return self->targetFps.value_or(0);		} 
 
 
 SWIGINTERNINLINE SWIGV8_VALUE
@@ -2459,6 +2456,12 @@ SWIGINTERN LayerSources RTPIncomingSource_layers__SWIG(RTPIncomingSource *self){
 				layers.push_back(&(it->second));
 			return layers;
 		}
+
+int64_t RTPIncomingSource_targetBitrate_get(RTPIncomingSource* self)	{ return self->targetBitrate.value_or(0); } 
+int64_t RTPIncomingSource_targetWidth_get(RTPIncomingSource* self)	{ return self->targetWidth.value_or(0); }  
+int64_t RTPIncomingSource_targetHeight_get(RTPIncomingSource* self)	{ return self->targetHeight.value_or(0); } 
+int64_t RTPIncomingSource_targetFps_get(RTPIncomingSource* self)	{ return self->targetFps.value_or(0); }  
+
 SWIGINTERN void RTPIncomingSourceGroup_UpdateAsync__SWIG(RTPIncomingSourceGroup *self,v8::Local< v8::Object > object){
 		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
 		self->UpdateAsync([=](std::chrono::milliseconds){
@@ -9125,6 +9128,110 @@ static SwigV8ReturnValue _wrap_RTPIncomingSource_layers(const SwigV8Arguments &a
   goto fail;
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSource_targetBitrate_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int64_t result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_targetBitrate_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+  result = (int64_t)RTPIncomingSource_targetBitrate_get(arg1);
+  jsresult = SWIG_From_long_SS_long(static_cast< long long >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSource_targetWidth_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int64_t result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_targetWidth_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+  result = (int64_t)RTPIncomingSource_targetWidth_get(arg1);
+  jsresult = SWIG_From_long_SS_long(static_cast< long long >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSource_targetHeight_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int64_t result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_targetHeight_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+  result = (int64_t)RTPIncomingSource_targetHeight_get(arg1);
+  jsresult = SWIG_From_long_SS_long(static_cast< long long >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSource_targetFps_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSource *arg1 = (RTPIncomingSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int64_t result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSource_targetFps_get" "', argument " "1"" of type '" "RTPIncomingSource *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPIncomingSource * >(argp1);
+  result = (int64_t)RTPIncomingSource_targetFps_get(arg1);
+  jsresult = SWIG_From_long_SS_long(static_cast< long long >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
 }
 
 
@@ -17748,6 +17855,10 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "aggregatedLayers", _
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "width", _wrap_RTPIncomingSource_width_get, _wrap_RTPIncomingSource_width_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "height", _wrap_RTPIncomingSource_height_get, _wrap_RTPIncomingSource_height_set);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSource_class, "layers", _wrap_RTPIncomingSource_layers);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "targetBitrate", _wrap_RTPIncomingSource_targetBitrate_get, JS_veto_set_variable);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "targetWidth", _wrap_RTPIncomingSource_targetWidth_get, JS_veto_set_variable);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "targetHeight", _wrap_RTPIncomingSource_targetHeight_get, JS_veto_set_variable);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "targetFps", _wrap_RTPIncomingSource_targetFps_get, JS_veto_set_variable);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rid", _wrap_RTPIncomingSourceGroup_rid_get, _wrap_RTPIncomingSourceGroup_rid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "mid", _wrap_RTPIncomingSourceGroup_mid_get, _wrap_RTPIncomingSourceGroup_mid_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "rtt", _wrap_RTPIncomingSourceGroup_rtt_get, _wrap_RTPIncomingSourceGroup_rtt_set);
