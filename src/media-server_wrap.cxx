@@ -2190,10 +2190,10 @@ SWIGV8_VALUE SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
 #endif
 
 
-int64_t LayerSource_targetBitrate_get(LayerSource* self)	{ return self->targetBitrate.has_value()	? self->targetBitrate.value()	: -1; } 
-int64_t LayerSource_targetWidth_get(LayerSource* self)		{ return self->targetWidth.has_value()		? self->targetWidth.value()	: -1; } 
-int64_t LayerSource_targetHeight_get(LayerSource* self)		{ return self->targetHeight.has_value()		? self->targetHeight.value()	: -1; } 
-int64_t LayerSource_targetFps_get(LayerSource* self)		{ return self->targetFps.has_value()		? self->targetFps.value()	: -1; } 
+int64_t LayerSource_targetBitrate_get(LayerSource* self)	{ return self->targetBitrate.value_or(0);	} 
+int64_t LayerSource_targetWidth_get(LayerSource* self)		{ return self->targetWidth.value_or(0);		} 
+int64_t LayerSource_targetHeight_get(LayerSource* self)		{ return self->targetHeight.value_or(0);	} 
+int64_t LayerSource_targetFps_get(LayerSource* self)		{ return self->targetFps.value_or(0);		} 
 
 
 SWIGINTERNINLINE SWIGV8_VALUE
@@ -2457,10 +2457,10 @@ SWIGINTERN LayerSources RTPIncomingSource_layers__SWIG(RTPIncomingSource *self){
 			return layers;
 		}
 
-int64_t RTPIncomingSource_targetBitrate_get(RTPIncomingSource* self)	{ return self->targetBitrate.has_value()	? self->targetBitrate.value()	: -1; } 
-int64_t RTPIncomingSource_targetWidth_get(RTPIncomingSource* self)	{ return self->targetWidth.has_value()		? self->targetWidth.value()	: -1; } 
-int64_t RTPIncomingSource_targetHeight_get(RTPIncomingSource* self)	{ return self->targetHeight.has_value()		? self->targetHeight.value()	: -1; } 
-int64_t RTPIncomingSource_targetFps_get(RTPIncomingSource* self)	{ return self->targetFps.has_value()		? self->targetFps.value()	: -1; } 
+int64_t RTPIncomingSource_targetBitrate_get(RTPIncomingSource* self)	{ return self->targetBitrate.value_or(0); } 
+int64_t RTPIncomingSource_targetWidth_get(RTPIncomingSource* self)	{ return self->targetWidth.value_or(0); }  
+int64_t RTPIncomingSource_targetHeight_get(RTPIncomingSource* self)	{ return self->targetHeight.value_or(0); } 
+int64_t RTPIncomingSource_targetFps_get(RTPIncomingSource* self)	{ return self->targetFps.value_or(0); }  
 
 SWIGINTERN void RTPIncomingSourceGroup_UpdateAsync__SWIG(RTPIncomingSourceGroup *self,v8::Local< v8::Object > object){
 		auto persistent = std::make_shared<Persistent<v8::Object>>(object);

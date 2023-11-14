@@ -47,8 +47,8 @@ struct RTPIncomingSource : public RTPSource
 	}
 };
 %{
-int64_t RTPIncomingSource_targetBitrate_get(RTPIncomingSource* self)	{ return self->value_or(0); } 
-int64_t RTPIncomingSource_targetWidth_get(RTPIncomingSource* self)	{ return self->value_or(0); }  
-int64_t RTPIncomingSource_targetHeight_get(RTPIncomingSource* self)	{ return self->value_or(0); } 
-int64_t RTPIncomingSource_targetFps_get(RTPIncomingSource* self)	{ return self->value_or(0); }  
+int64_t RTPIncomingSource_targetBitrate_get(RTPIncomingSource* self)	{ return self->targetBitrate.value_or(0); } 
+int64_t RTPIncomingSource_targetWidth_get(RTPIncomingSource* self)	{ return self->targetWidth.value_or(0); }  
+int64_t RTPIncomingSource_targetHeight_get(RTPIncomingSource* self)	{ return self->targetHeight.value_or(0); } 
+int64_t RTPIncomingSource_targetFps_get(RTPIncomingSource* self)	{ return self->targetFps.value_or(0); }  
 %}
