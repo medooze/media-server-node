@@ -343,6 +343,14 @@ export  class RTPIncomingSource extends RTPSource {
 
   height: number;
 
+  targetBitrate: number;
+
+  targetWidth: number;
+
+  targetHeight: number;
+
+  targetFps: number;
+
   layers(): LayerSources;
 
   constructor();

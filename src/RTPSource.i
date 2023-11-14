@@ -31,10 +31,10 @@ struct LayerSource : public LayerInfo
 	}
 };
 %{
-int64_t LayerSource_targetBitrate_get(LayerSource* self)	{ return self->targetBitrate.has_value()	? self->targetBitrate.value()	: -1; } 
-int64_t LayerSource_targetWidth_get(LayerSource* self)		{ return self->targetWidth.has_value()		? self->targetWidth.value()	: -1; } 
-int64_t LayerSource_targetHeight_get(LayerSource* self)		{ return self->targetHeight.has_value()		? self->targetHeight.value()	: -1; } 
-int64_t LayerSource_targetFps_get(LayerSource* self)		{ return self->targetFps.has_value()		? self->targetFps.value()	: -1; } 
+int64_t LayerSource_targetBitrate_get(LayerSource* self)	{ return self->targetBitrate.value_or(0);	} 
+int64_t LayerSource_targetWidth_get(LayerSource* self)		{ return self->targetWidth.value_or(0);		} 
+int64_t LayerSource_targetHeight_get(LayerSource* self)		{ return self->targetHeight.value_or(0);	} 
+int64_t LayerSource_targetFps_get(LayerSource* self)		{ return self->targetFps.value_or(0);		} 
 %}
 
 class LayerSources
