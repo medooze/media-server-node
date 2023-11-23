@@ -9873,6 +9873,62 @@ fail:
 }
 
 
+static void _wrap_RTPIncomingSourceGroup_codec_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_codec_set" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'");
+  }
+  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPIncomingSourceGroup_codec_set" "', argument " "2"" of type '" "uint32_t""'");
+  }
+  arg2 = static_cast< uint32_t >(val2);
+  if (arg1) (arg1)->codec = arg2;
+
+
+
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_codec_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_codec_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'");
+  }
+  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+  result = (uint32_t) ((arg1)->codec);
+  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+
+
+  SWIGV8_RETURN_INFO(jsresult, info);
+
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
 static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_SetMaxWaitTime(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -17870,6 +17926,7 @@ SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "minWaitedTime",
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "maxWaitedTime", _wrap_RTPIncomingSourceGroup_maxWaitedTime_get, _wrap_RTPIncomingSourceGroup_maxWaitedTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "avgWaitedTime", _wrap_RTPIncomingSourceGroup_avgWaitedTime_get, _wrap_RTPIncomingSourceGroup_avgWaitedTime_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "lastUpdated", _wrap_RTPIncomingSourceGroup_lastUpdated_get, _wrap_RTPIncomingSourceGroup_lastUpdated_set);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "codec", _wrap_RTPIncomingSourceGroup_codec_get, _wrap_RTPIncomingSourceGroup_codec_set);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "SetMaxWaitTime", _wrap_RTPIncomingSourceGroup_SetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "ResetMaxWaitTime", _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
