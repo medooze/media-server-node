@@ -19,6 +19,7 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	DWORD maxWaitedTime;
 	double avgWaitedTime;
 	QWORD lastUpdated;
+	DWORD codec;
 	
 	void SetMaxWaitTime(DWORD maxWaitingTime);
 	void ResetMaxWaitTime();
