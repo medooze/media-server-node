@@ -2475,6 +2475,9 @@ SWIGINTERN void RTPIncomingSourceGroup_UpdateAsync__SWIG(RTPIncomingSourceGroup 
 		});
 	}
 
+       char const * const RTPIncomingSourceGroup_codec_get(RTPIncomingSourceGroup* self)       { return GetNameForCodec(self->type, self->codec); }
+
+
 using RTPIncomingSourceGroupShared = std::shared_ptr<RTPIncomingSourceGroup>;
 
 static RTPIncomingSourceGroupShared RTPIncomingSourceGroupShared_null_ptr = {};
@@ -9987,6 +9990,32 @@ static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_Stop(const SwigV8Arguments
   goto fail;
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_codec_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+
+  SWIGV8_VALUE jsresult;
+  RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char *result = 0 ;
+
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_codec_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'");
+  }
+  arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
+  result = (char *)RTPIncomingSourceGroup_codec_get(arg1);
+  jsresult = SWIG_FromCharPtr((const char *)result);
+
+
+  SWIGV8_RETURN_INFO(jsresult, info);
+
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
 }
 
 
@@ -17874,6 +17903,7 @@ SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "SetMaxWaitTime"
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "ResetMaxWaitTime", _wrap_RTPIncomingSourceGroup_ResetMaxWaitTime);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Update", _wrap_RTPIncomingSourceGroup_Update);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "Stop", _wrap_RTPIncomingSourceGroup_Stop);
+SWIGV8_AddMemberVariable(_exports_RTPIncomingSourceGroup_class, "codec", _wrap_RTPIncomingSourceGroup_codec_get, JS_veto_set_variable);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroup_class, "UpdateAsync", _wrap_RTPIncomingSourceGroup_UpdateAsync);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroupShared_class, "toRTPIncomingMediaStream", _wrap_RTPIncomingSourceGroupShared_toRTPIncomingMediaStream);
 SWIGV8_AddMemberFunction(_exports_RTPIncomingSourceGroupShared_class, "get", _wrap_RTPIncomingSourceGroupShared_get);

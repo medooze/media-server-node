@@ -27,6 +27,9 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	void Stop();
 
 %extend {
+	// Note: Extra const on right of pointer to let SWIG know this only wants a get accessor
+	char const * const codec;
+
 	void UpdateAsync(v8::Local<v8::Object> object)
 	{
 		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
@@ -42,6 +45,10 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	}
 }
 };
+
+%{
+	char const * const RTPIncomingSourceGroup_codec_get(RTPIncomingSourceGroup* self)	{ return GetNameForCodec(self->type, self->codec); } 
+%}
 
 
 SHARED_PTR_BEGIN(RTPIncomingSourceGroup)
