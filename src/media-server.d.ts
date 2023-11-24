@@ -382,7 +382,7 @@ export  class RTPIncomingSourceGroup extends RTPIncomingMediaStream {
 
   lastUpdated: number;
 
-  codec: number;
+  codec: string;
 
   SetMaxWaitTime(maxWaitingTime: number): void;
 
