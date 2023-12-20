@@ -68,7 +68,7 @@ tap.test("OutgoingMediaStream::create",async function(suite){
 			},
 			video: {
 				id: "testvideo",
-				ssrcs : { media: 2, rtx: 3}
+				ssrcs : { media: 2, rtx: 3, fec: 4}
 			}
 			
 		});
@@ -129,11 +129,11 @@ tap.test("OutgoingMediaStream::create",async function(suite){
 			video: [
 				{
 					id: "testvideo",
-					ssrcs : { media: 2, rtx: 3}
+					ssrcs : { media: 2, rtx: 3, fec: 4}
 				},
 				{
 					id: "thumb",
-					ssrcs : { media: 5, rtx: 6}
+					ssrcs : { media: 5, rtx: 6, fec: 7}
 				},
 			]
 			

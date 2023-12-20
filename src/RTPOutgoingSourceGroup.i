@@ -10,6 +10,7 @@ struct RTPOutgoingSourceGroup
 	
 	MediaFrameType  type;
 	const RTPOutgoingSource media;
+	const RTPOutgoingSource fec;
 	const RTPOutgoingSource rtx;
 	QWORD lastUpdated;
 

@@ -215,6 +215,8 @@ export  class RTPOutgoingSourceGroup {
 
   rtx: RTPOutgoingSource;
 
+  fec: RTPOutgoingSource;
+
   lastUpdated: number;
 
   Update(): void;
