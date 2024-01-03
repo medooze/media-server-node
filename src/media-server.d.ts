@@ -160,6 +160,8 @@ export  class RTPSource {
   totalRTCPBytes: number;
 
   bitrate: number;
+  
+  totalBitrate: number;
 
   clockrate: number;
 

@@ -31,7 +31,7 @@ public:
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video->media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				video->media.Update(now,cloned->GetSeqNum(),cloned->GetMediaLength(),cloned->GetRTPHeader().GetSize());
 				//Set ssrc of video
 				cloned->SetSSRC(video->media.ssrc);
 				//Multiplex
@@ -39,7 +39,7 @@ public:
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio->media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				audio->media.Update(now,cloned->GetSeqNum(),cloned->GetMediaLength(),cloned->GetRTPHeader().GetSize());
 				//Set ssrc of audio
 				cloned->SetSSRC(audio->media.ssrc);
 				//Multiplex

@@ -56,5 +56,6 @@ struct RTPSource
 	QWORD totalBytes;
 	QWORD totalRTCPBytes;
 	DWORD bitrate;
+	DWORD totalBitrate;
 	DWORD clockrate;
 };
