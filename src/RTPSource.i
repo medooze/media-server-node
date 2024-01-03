@@ -16,11 +16,12 @@ public:
 
 struct LayerSource : public LayerInfo
 {
-	DWORD		numPackets;
-	QWORD		totalBytes;
-	DWORD		bitrate;
+	DWORD numPackets;
+	QWORD totalBytes;
+	DWORD bitrate;
+	DWORD totalBitrate;
 
-	bool		active;
+	bool  active;
 
 	%extend 
 	{
@@ -56,5 +57,6 @@ struct RTPSource
 	QWORD totalBytes;
 	QWORD totalRTCPBytes;
 	DWORD bitrate;
+	DWORD totalBitrate;
 	DWORD clockrate;
 };
