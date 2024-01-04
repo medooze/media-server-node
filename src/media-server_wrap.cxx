@@ -2462,6 +2462,13 @@ int64_t RTPIncomingSource_targetWidth_get(RTPIncomingSource* self)	{ return self
 int64_t RTPIncomingSource_targetHeight_get(RTPIncomingSource* self)	{ return self->targetHeight.value_or(0); } 
 int64_t RTPIncomingSource_targetFps_get(RTPIncomingSource* self)	{ return self->targetFps.value_or(0); }  
 
+
+SWIGINTERNINLINE SWIGV8_VALUE 
+SWIG_FromCharPtr(const char *cptr)
+{ 
+  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
 SWIGINTERN void RTPIncomingSourceGroup_UpdateAsync__SWIG(RTPIncomingSourceGroup *self,v8::Local< v8::Object > object){
 		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
 		self->UpdateAsync([=](std::chrono::milliseconds){
@@ -2475,7 +2482,7 @@ SWIGINTERN void RTPIncomingSourceGroup_UpdateAsync__SWIG(RTPIncomingSourceGroup 
 		});
 	}
 
-       char const * const RTPIncomingSourceGroup_codec_get(RTPIncomingSourceGroup* self)       { return GetNameForCodec(self->type, self->codec); }
+	char const * const RTPIncomingSourceGroup_codec_get(RTPIncomingSourceGroup* self)	{ return GetNameForCodec(self->type, self->codec); } 
 
 
 using RTPIncomingSourceGroupShared = std::shared_ptr<RTPIncomingSourceGroup>;
@@ -2601,13 +2608,6 @@ DTLSICETransportListenerShared* DTLSICETransportListenerShared_from_proxy(const 
 SWIGINTERN DTLSICETransportListenerShared *new_DTLSICETransportListenerShared(v8::Local< v8::Object > object){
 		return new std::shared_ptr<DTLSICETransportListener>(new DTLSICETransportListener(object));
 	}
-
-SWIGINTERNINLINE SWIGV8_VALUE 
-SWIG_FromCharPtr(const char *cptr)
-{ 
-  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
-}
-
 
 using DTLSICETransportShared = std::shared_ptr<DTLSICETransport>;
 
@@ -2852,7 +2852,7 @@ public:
 		{
 			case MediaFrame::Video:
 				//Update stats
-				video->media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				video->media.Update(now,cloned->GetSeqNum(),cloned->GetMediaLength(),cloned->GetRTPHeader().GetSize());
 				//Set ssrc of video
 				cloned->SetSSRC(video->media.ssrc);
 				//Multiplex
@@ -2860,7 +2860,7 @@ public:
 				break;
 			case MediaFrame::Audio:
 				//Update stats
-				audio->media.Update(now,cloned->GetSeqNum(),cloned->GetRTPHeader().GetSize()+cloned->GetMediaLength());
+				audio->media.Update(now,cloned->GetSeqNum(),cloned->GetMediaLength(),cloned->GetRTPHeader().GetSize());
 				//Set ssrc of audio
 				cloned->SetSSRC(audio->media.ssrc);
 				//Multiplex
@@ -4527,6 +4527,62 @@ fail:
 }
 
 
+static void _wrap_LayerSource_totalBitrate_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  LayerSource *arg1 = (LayerSource *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_totalBitrate_set" "', argument " "1"" of type '" "LayerSource *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerSource * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LayerSource_totalBitrate_set" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  if (arg1) (arg1)->totalBitrate = arg2;
+  
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_LayerSource_totalBitrate_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  LayerSource *arg1 = (LayerSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_LayerSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LayerSource_totalBitrate_get" "', argument " "1"" of type '" "LayerSource *""'"); 
+  }
+  arg1 = reinterpret_cast< LayerSource * >(argp1);
+  result = (uint32_t) ((arg1)->totalBitrate);
+  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
 static void _wrap_LayerSource_active_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
   SWIGV8_HANDLESCOPE();
   
@@ -5363,6 +5419,62 @@ static SwigV8ReturnValue _wrap_RTPSource_bitrate_get(v8::Local<v8::Name> propert
   }
   arg1 = reinterpret_cast< RTPSource * >(argp1);
   result = (uint32_t) ((arg1)->bitrate);
+  jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_RTPSource_totalBitrate_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  RTPSource *arg1 = (RTPSource *) 0 ;
+  uint32_t arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned int val2 ;
+  int ecode2 = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_totalBitrate_set" "', argument " "1"" of type '" "RTPSource *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPSource * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_int(value, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RTPSource_totalBitrate_set" "', argument " "2"" of type '" "uint32_t""'");
+  } 
+  arg2 = static_cast< uint32_t >(val2);
+  if (arg1) (arg1)->totalBitrate = arg2;
+  
+  
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_RTPSource_totalBitrate_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPSource *arg1 = (RTPSource *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  uint32_t result;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPSource, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPSource_totalBitrate_get" "', argument " "1"" of type '" "RTPSource *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPSource * >(argp1);
+  result = (uint32_t) ((arg1)->totalBitrate);
   jsresult = SWIG_From_unsigned_SS_int(static_cast< unsigned int >(result));
   
   
@@ -9995,24 +10107,24 @@ fail:
 
 static SwigV8ReturnValue _wrap_RTPIncomingSourceGroup_codec_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
   SWIGV8_HANDLESCOPE();
-
+  
   SWIGV8_VALUE jsresult;
   RTPIncomingSourceGroup *arg1 = (RTPIncomingSourceGroup *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   char *result = 0 ;
-
+  
   res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPIncomingSourceGroup, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_codec_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'");
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPIncomingSourceGroup_codec_get" "', argument " "1"" of type '" "RTPIncomingSourceGroup *""'"); 
   }
   arg1 = reinterpret_cast< RTPIncomingSourceGroup * >(argp1);
   result = (char *)RTPIncomingSourceGroup_codec_get(arg1);
   jsresult = SWIG_FromCharPtr((const char *)result);
-
-
+  
+  
   SWIGV8_RETURN_INFO(jsresult, info);
-
+  
   goto fail;
 fail:
   SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
@@ -17798,6 +17910,7 @@ SWIGV8_AddMemberVariable(_exports_LayerInfo_class, "spatialLayerId", _wrap_Layer
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "numPackets", _wrap_LayerSource_numPackets_get, _wrap_LayerSource_numPackets_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "totalBytes", _wrap_LayerSource_totalBytes_get, _wrap_LayerSource_totalBytes_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "bitrate", _wrap_LayerSource_bitrate_get, _wrap_LayerSource_bitrate_set);
+SWIGV8_AddMemberVariable(_exports_LayerSource_class, "totalBitrate", _wrap_LayerSource_totalBitrate_get, _wrap_LayerSource_totalBitrate_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "active", _wrap_LayerSource_active_get, _wrap_LayerSource_active_set);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "targetBitrate", _wrap_LayerSource_targetBitrate_get, JS_veto_set_variable);
 SWIGV8_AddMemberVariable(_exports_LayerSource_class, "targetWidth", _wrap_LayerSource_targetWidth_get, JS_veto_set_variable);
@@ -17815,6 +17928,7 @@ SWIGV8_AddMemberVariable(_exports_RTPSource_class, "numRTCPPackets", _wrap_RTPSo
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "totalBytes", _wrap_RTPSource_totalBytes_get, _wrap_RTPSource_totalBytes_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "totalRTCPBytes", _wrap_RTPSource_totalRTCPBytes_get, _wrap_RTPSource_totalRTCPBytes_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "bitrate", _wrap_RTPSource_bitrate_get, _wrap_RTPSource_bitrate_set);
+SWIGV8_AddMemberVariable(_exports_RTPSource_class, "totalBitrate", _wrap_RTPSource_totalBitrate_get, _wrap_RTPSource_totalBitrate_set);
 SWIGV8_AddMemberVariable(_exports_RTPSource_class, "clockrate", _wrap_RTPSource_clockrate_get, _wrap_RTPSource_clockrate_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "time", _wrap_RTPOutgoingSource_time_get, _wrap_RTPOutgoingSource_time_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "numFrames", _wrap_RTPOutgoingSource_numFrames_get, _wrap_RTPOutgoingSource_numFrames_set);

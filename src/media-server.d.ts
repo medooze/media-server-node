@@ -117,6 +117,8 @@ export  class LayerSource extends LayerInfo {
 
   bitrate: number;
 
+  totalBitrate: number;
+
   active: boolean;
 
   targetBitrate: number;
@@ -160,6 +162,8 @@ export  class RTPSource {
   totalRTCPBytes: number;
 
   bitrate: number;
+
+  totalBitrate: number;
 
   clockrate: number;
 
