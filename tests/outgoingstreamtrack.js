@@ -140,6 +140,36 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 		test.end();
 	});
 
+	suite.test("attach after closed",function(test){
+		try {
+			test.plan(3);
+			//Create new local stream
+			const outgoingStream  = transport.createOutgoingStream({
+				audio: true,
+				video: true
+			});
+			//Mute
+			outgoingStream.mute(true);
+			//Get video tracks
+			const outgoingVideoTrack = outgoingStream.getVideoTracks()[0];
+			const incomingVideoTrack = incomingStream.getVideoTracks()[0];
+			//Should not be attached
+			test.ok(!outgoingVideoTrack.isAttached(), "OutgoingStreamTrack not attached");
+			//Stop track
+			outgoingVideoTrack.stop();
+			//No error yet
+			test.pass("OutgoingStreamTrack stopped");
+			//Attach stream
+			outgoingVideoTrack.attachTo(incomingVideoTrack);
+			//Should be attached
+			test.error("Cannot attach after close");
+		} catch (error) {
+			//It should throw an error
+			test.ok(error,error.message);
+		}
+		test.end();
+	});
+
 	suite.test("forcePlaoutDelay",function(test){
 		try {
 			//Create new local stream
