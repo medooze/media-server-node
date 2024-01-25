@@ -1536,6 +1536,26 @@ public:
 	{
 		Terminate();
 	}
+
+	/*
+	 * MakeSharedPersistent
+	 *  Creates a shared pointer to a persistent object ensuring it is deleted on the js thread
+	 */
+	static std::shared_ptr<Persistent<v8::Object>> MakeSharedPersistent (v8::Local<v8::Object> &object)
+	{
+		//This MUST be called on the main thread
+		return std::shared_ptr<Persistent<v8::Object>>(new Persistent<v8::Object>(object), [id = std::this_thread::get_id()](Persistent<v8::Object> *object) {
+			//If called in a different thread
+			if (id != std::this_thread::get_id())
+				//delete in main thread
+				MediaServer::Async([=](){
+					delete(object);
+				});
+			else 
+				//We are in the main thread already
+				delete(object);
+		});
+	}
 	
 	/*
 	 * Async
@@ -2256,9 +2276,8 @@ SWIG_AsVal_unsigned_SS_short (SWIGV8_VALUE obj, unsigned short *val)
 }
 
 SWIGINTERN void RTPOutgoingSourceGroup_UpdateAsync__SWIG(RTPOutgoingSourceGroup *self,v8::Local< v8::Object > object){
-		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
-		self->UpdateAsync([=](std::chrono::milliseconds){
-			MediaServer::Async([=](){
+		self->UpdateAsync([persistent = MediaServer::MakeSharedPersistent(object)](std::chrono::milliseconds){
+			MediaServer::Async([persistent = std::move(persistent)](){
 				Nan::HandleScope scope;
 				int i = 0;
 				v8::Local<v8::Value> argv[0];
@@ -2470,9 +2489,8 @@ SWIG_FromCharPtr(const char *cptr)
 }
 
 SWIGINTERN void RTPIncomingSourceGroup_UpdateAsync__SWIG(RTPIncomingSourceGroup *self,v8::Local< v8::Object > object){
-		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
-		self->UpdateAsync([=](std::chrono::milliseconds){
-			MediaServer::Async([=](){
+		self->UpdateAsync([persistent = MediaServer::MakeSharedPersistent(object)](std::chrono::milliseconds){
+			MediaServer::Async([persistent = std::move(persistent)](){
 				Nan::HandleScope scope;
 				int i = 0;
 				v8::Local<v8::Value> argv[0];

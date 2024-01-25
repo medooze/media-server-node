@@ -40,6 +40,26 @@ public:
 	{
 		Terminate();
 	}
+
+	/*
+	 * MakeSharedPersistent
+	 *  Creates a shared pointer to a persistent object ensuring it is deleted on the js thread
+	 */
+	static std::shared_ptr<Persistent<v8::Object>> MakeSharedPersistent (v8::Local<v8::Object> &object)
+	{
+		//This MUST be called on the main thread
+		return std::shared_ptr<Persistent<v8::Object>>(new Persistent<v8::Object>(object), [id = std::this_thread::get_id()](Persistent<v8::Object> *object) {
+			//If called in a different thread
+			if (id != std::this_thread::get_id())
+				//delete in main thread
+				MediaServer::Async([=](){
+					delete(object);
+				});
+			else 
+				//We are in the main thread already
+				delete(object);
+		});
+	}
 	
 	/*
 	 * Async
