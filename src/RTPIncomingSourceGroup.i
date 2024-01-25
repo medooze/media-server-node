@@ -32,9 +32,8 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 
 	void UpdateAsync(v8::Local<v8::Object> object)
 	{
-		auto persistent = std::make_shared<Persistent<v8::Object>>(object);
-		self->UpdateAsync([=](std::chrono::milliseconds){
-			MediaServer::Async([=](){
+		self->UpdateAsync([persistent = MediaServer::MakeSharedPersistent(object)](std::chrono::milliseconds){
+			MediaServer::Async([persistent = std::move(persistent)](){
 				Nan::HandleScope scope;
 				int i = 0;
 				v8::Local<v8::Value> argv[0];
