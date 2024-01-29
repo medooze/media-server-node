@@ -3,14 +3,23 @@ name: static-analysis
 on:
   push:
     branches: [ master ]
-    
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/create-github-app-token@v1
+      id: app-token
+      with:
+        app-id: ${{ secrets.APP_CHECKOUT_ID }}
+        private-key: ${{ secrets.APP_CHECKOUT_PRIVATE_KEY }}
+        owner: ${{ github.repository_owner }}
+        repositories: "static-analysis"
     - uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.PAT_STATIC_ANALYSIS }}
+        github-token: ${{ steps.app-token.outputs.token }}
         script: |
           await github.rest.actions.createWorkflowDispatch({
             owner: 'medooze',
