@@ -155,7 +155,9 @@
 							"media-server/src/remoteratecontrol.cpp",
 							"media-server/src/remoterateestimator.cpp",
 							"media-server/src/SendSideBandwidthEstimation.cpp",
-							"media-server/src/SimulcastMediaFrameListener.cpp"
+							"media-server/src/SimulcastMediaFrameListener.cpp",
+							"media-server/src/ForwardErrorCorrection.cpp",
+							"media-server/src/FecProbeGenerator.cpp"
 						],
 						"dependencies":
 						[

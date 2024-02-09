@@ -35,14 +35,17 @@ tap.test("OutgoingMediaStreamTrack::mute",async function(suite){
 	const streamInfo = new StreamInfo("stream0");
 	//Create track
 	let track = new TrackInfo("video", "track1");
-	//Get ssrc and rtx
+	//Get ssrc, rtx and fec
 	const media = ssrc++;
 	const rtx = ssrc++;
+	const fec = ssrc++;
 	//Add ssrcs to track
 	track.addSSRC(media);
 	track.addSSRC(rtx);
-	//Add RTX  group	
+	track.addSSRC(fec);
+	//Add RTX and FEC group	
 	track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
+	track.addSourceGroup(new SourceGroupInfo("FEC-FR",[media,fec]));
 	//Add it
 	streamInfo.addTrack(track);
 	//Create new incoming stream
