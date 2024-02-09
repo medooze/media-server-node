@@ -6617,6 +6617,32 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_fec_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  RTPOutgoingSource *result = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_fec_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  result = (RTPOutgoingSource *)& ((arg1)->fec);
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPOutgoingSource, 0 |  0 );
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
 static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_rtx_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
   SWIGV8_HANDLESCOPE();
   
@@ -17964,6 +17990,7 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "reportedJitter", _wr
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "rtt", _wrap_RTPOutgoingSource_rtt_get, _wrap_RTPOutgoingSource_rtt_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "type", _wrap_RTPOutgoingSourceGroup_type_get, _wrap_RTPOutgoingSourceGroup_type_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "media", _wrap_RTPOutgoingSourceGroup_media_get, JS_veto_set_variable);
+SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "fec", _wrap_RTPOutgoingSourceGroup_fec_get, JS_veto_set_variable);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTPOutgoingSourceGroup_rtx_get, JS_veto_set_variable);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "lastUpdated", _wrap_RTPOutgoingSourceGroup_lastUpdated_get, _wrap_RTPOutgoingSourceGroup_lastUpdated_set);
 SWIGV8_AddMemberFunction(_exports_RTPOutgoingSourceGroup_class, "Update", _wrap_RTPOutgoingSourceGroup_Update);
