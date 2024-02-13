@@ -14,6 +14,7 @@ struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 	MediaFrameType  type;
 	const RTPIncomingSource media;
 	const RTPIncomingSource rtx;
+	DWORD remoteBitrateEstimation;
 	DWORD lost;
 	DWORD minWaitedTime;
 	DWORD maxWaitedTime;

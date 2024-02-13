@@ -378,6 +378,8 @@ export  class RTPIncomingSourceGroup extends RTPIncomingMediaStream {
 
   rtx: RTPIncomingSource;
 
+  remoteBitrateEstimation: number;
+
   lost: number;
 
   minWaitedTime: number;
