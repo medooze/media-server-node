@@ -82,6 +82,7 @@
 							"media-server/src/ActiveSpeakerDetector.cpp",
 							"media-server/src/ActiveSpeakerMultiplexer.cpp",
 							"media-server/src/EventLoop.cpp",
+							"media-server/src/log.cpp",
 							"media-server/src/PacketHeader.cpp",
 							"media-server/src/MacAddress.cpp",
 							"media-server/src/RTPBundleTransport.cpp",
