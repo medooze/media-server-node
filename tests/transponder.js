@@ -1,5 +1,6 @@
 const tap		= require("tap");
 const MediaServer	= require("../index");
+const LayerInfo		= require("../lib/LayerInfo");
 const SemanticSDP	= require("semantic-sdp");
 
 const {
@@ -10,9 +11,12 @@ const {
 	ICEInfo,
 	StreamInfo,
 	TrackInfo,
+	TrackEncodingInfo,
 	Setup,
 	CodecInfo,
 } = require("semantic-sdp");
+
+
 
 MediaServer.enableLog(false);
 MediaServer.enableDebug(false);
@@ -33,6 +37,7 @@ rtp.audio.addCodec(opus);
 rtp.video.addCodec(vp8);
 
 Promise.all([
+
 tap.test("Transponder::create",async function(suite){
 	
 	//Create UDP server endpoint
@@ -62,7 +67,7 @@ tap.test("Transponder::create",async function(suite){
 	//Add remote candidates
 	transportA.addRemoteCandidates(transportB.getLocalCandidates());
 	transportB.addRemoteCandidates(transportA.getLocalCandidates());
-
+	
 	//Create new remote stream
 	await suite.test("attach",async function(test){
 		try {
@@ -87,7 +92,7 @@ tap.test("Transponder::create",async function(suite){
 			});
 			//Get transponders
 			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(transponder);
 			test.same(transponder.getIncomingTrack(),incomingVideoTrack);
 		} catch (error) {
@@ -120,7 +125,7 @@ tap.test("Transponder::create",async function(suite){
 			});
 			//Get transponders
 			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(transponder);
 			//Test it is attached
 			test.ok(incomingVideoTrack.isAttached());
@@ -258,7 +263,7 @@ tap.test("Transponder::create",async function(suite){
 			});
 			//Get transponders
 			const transponders = outgoingStream.attachTo(incomingStream);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(transponders);
 			//Test it is attached
 			test.ok(incomingStream.isAttached());
@@ -300,7 +305,7 @@ tap.test("Transponder::create",async function(suite){
 			});
 			//Get transponders
 			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(transponder);
 			//Listen for transponder stop
 			transponder.once("stopped",()=>{
@@ -354,7 +359,7 @@ tap.test("Transponder::create",async function(suite){
 			
 			//Get transponders
 			const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(transponder);
 			//Listen for transponder stop
 			transponder.once("stopped",()=>{
@@ -493,9 +498,7 @@ tap.test("Transponder::create",async function(suite){
 	suite.end();
 }),
 
-
-
-tap.test("Transponder::targetbitrate",async function(suite){
+tap.test("Transponder::targetbitrate svc",async function(suite){
 	
 	//Create UDP server endpoint
 	let endpointA = MediaServer.createEndpoint("127.0.0.1");
@@ -544,28 +547,27 @@ tap.test("Transponder::targetbitrate",async function(suite){
 				bitrate : 1250000,
 				media	: {
 					layers  : [
-						{temporalLayerId: 0, spatialLayerId: 0, bitrate: 89000},
-						{temporalLayerId: 0, spatialLayerId: 1, bitrate: 268000},
-						{temporalLayerId: 0, spatialLayerId: 2, bitrate: 625000},
-						{temporalLayerId: 1, spatialLayerId: 0, bitrate: 134000},
-						{temporalLayerId: 1, spatialLayerId: 1, bitrate: 402000},
-						{temporalLayerId: 1, spatialLayerId: 2, bitrate: 938000},
-						{temporalLayerId: 2, spatialLayerId: 0, bitrate: 179000},
-						{temporalLayerId: 2, spatialLayerId: 1, bitrate: 536000},
-						{temporalLayerId: 2, spatialLayerId: 2, bitrate: 1250000}
+						{temporalLayerId: 0, spatialLayerId: 0, bitrate: 89000,   targetWidth: 240, targetHeight: 240},
+						{temporalLayerId: 0, spatialLayerId: 1, bitrate: 268000,  targetWidth: 360, targetHeight: 360},
+						{temporalLayerId: 0, spatialLayerId: 2, bitrate: 625000,  targetWidth: 480, targetHeight: 480},
+						{temporalLayerId: 1, spatialLayerId: 0, bitrate: 134000,  targetWidth: 240, targetHeight: 240},
+						{temporalLayerId: 1, spatialLayerId: 1, bitrate: 402000,  targetWidth: 360, targetHeight: 360},
+						{temporalLayerId: 1, spatialLayerId: 2, bitrate: 938000,  targetWidth: 480, targetHeight: 480},
+						{temporalLayerId: 2, spatialLayerId: 0, bitrate: 179000,  targetWidth: 240, targetHeight: 240},
+						{temporalLayerId: 2, spatialLayerId: 1, bitrate: 536000,  targetWidth: 360, targetHeight: 360},
+						{temporalLayerId: 2, spatialLayerId: 2, bitrate: 1250000, targetWidth: 480, targetHeight: 480},
 					]
 				}
 			}
 	});
 
-	
 	await suite.test("top",async function(test){
 		try {
 			//Target bitrate
 			const target = 1250000;
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(bitrate == target);
 		} catch (error) {
 			//Test error
@@ -580,7 +582,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			const target = 1240000;
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(bitrate<target);
 			test.same(transponder.getSelectedSpatialLayerId() ,2);
 			test.same(transponder.getSelectedTemporalLayerId(),1);
@@ -603,7 +605,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			});
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target,{strict:true});
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(bitrate==0);
 		} catch (error) {
 			//Test error
@@ -624,7 +626,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			});
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target);
-			//Check it is created
+			//Check it is correctly selected
 			test.ok(bitrate>target);
 			test.same(transponder.getSelectedSpatialLayerId() ,0);
 			test.same(transponder.getSelectedTemporalLayerId(),0);
@@ -640,7 +642,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			const target = 700000;
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target,{traversal:"spatial-temporal"});
-			//Check it is created
+			//Check it is correctly selected
 			test.same(transponder.getSelectedSpatialLayerId() ,2);
 			test.same(transponder.getSelectedTemporalLayerId(),0);
 		} catch (error) {
@@ -655,7 +657,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			const target = 700000;
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target,{traversal:"zig-zag-spatial-temporal"});
-			//Check it is created
+			//Check it is correctly selected
 			test.same(transponder.getSelectedSpatialLayerId() ,1);
 			test.same(transponder.getSelectedTemporalLayerId(),2);
 		} catch (error) {
@@ -670,7 +672,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			const target = 500000;
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target,{traversal:"temporal-spatial"});
-			//Check it is created
+			//Check it is correctly selected
 			test.same(transponder.getSelectedSpatialLayerId() ,0);
 			test.same(transponder.getSelectedTemporalLayerId(),2);
 		} catch (error) {
@@ -685,7 +687,7 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			const target = 500000;
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target,{traversal:"zig-zag-temporal-spatial"});
-			//Check it is created
+			//Check it is correctly selected
 			test.same(transponder.getSelectedSpatialLayerId() ,0);
 			test.same(transponder.getSelectedTemporalLayerId(),2);
 		} catch (error) {
@@ -722,6 +724,224 @@ tap.test("Transponder::targetbitrate",async function(suite){
 			);
 			test.same(transponder.getSelectedSpatialLayerId() ,maxSpatialLayerId);
 			test.same(transponder.getSelectedTemporalLayerId(),maxTemporalLayerId);
+			//Unset maximum so next tests can reuse sane transponder
+			transponder.setMaximumLayers(LayerInfo.MaxLayerId,LayerInfo.MaxLayerId);
+		} catch (error) {
+			//Test error
+			test.notOk(error,error.message);
+		}
+	});
+	
+	await suite.test("setMaximumDimensions",async function(test){
+		try {
+			//Set max dimensions
+			transponder.setMaximumDimensions(360,360);
+			//Target bitrate
+			const target = 10000000;
+			//Set bitrate
+			const bitrate = transponder.setTargetBitrate(target);
+			//Check we have given a layer with proper dimensions
+			test.ok(bitrate.layer.targetWidth<=360);
+			test.ok(bitrate.layer.targetHeight<=360);
+			test.same(transponder.getSelectedSpatialLayerId() ,1);
+			test.same(transponder.getSelectedTemporalLayerId(),2);
+			//Reset dimensions
+			transponder.setMaximumDimensions(0,0);
+
+			//Set bitrate without restriction
+			transponder.setTargetBitrate(target);
+			//Check we choose top layer
+			test.same(transponder.getSelectedSpatialLayerId() ,2);
+			test.same(transponder.getSelectedTemporalLayerId(),2);
+
+		} catch (error) {
+			//Test error
+			test.notOk(error,error.message);
+		}
+	});
+	
+	suite.end();
+}),
+
+tap.test("Transponder::targetbitrate simulcast",async function(suite){
+	
+	//Create UDP server endpoint
+	let endpointA = MediaServer.createEndpoint("127.0.0.1");
+	let endpointB = MediaServer.createEndpoint("127.0.0.1");
+
+	const A = {
+		ice	   :  ICEInfo.generate(),
+		dtls	   :  new DTLSInfo(Setup.ACTIVE, "sha-256",endpointA.getDTLSFingerprint())
+	};
+
+	const B = {
+		ice	   :  ICEInfo.generate(),
+		dtls	   :  new DTLSInfo(Setup.PASSIVE, "sha-256",endpointB.getDTLSFingerprint()),
+	};
+
+	//Create an DTLS ICE transport in that enpoint
+	let transportA = endpointA.createTransport(B, A, {disableSTUNKeepAlive: true});
+	let transportB = endpointB.createTransport(A, B, {disableSTUNKeepAlive: true});
+
+	//Set local&remote properties
+	transportA.setLocalProperties(rtp);
+	transportA.setRemoteProperties(rtp);
+	transportB.setLocalProperties(rtp);
+	transportB.setRemoteProperties(rtp);
+
+	//Add remote candidates
+	transportA.addRemoteCandidates(transportB.getLocalCandidates());
+	transportB.addRemoteCandidates(transportA.getLocalCandidates());
+	
+	//Create new local stream
+	const outgoingStream  = transportA.createOutgoingStream({
+		video: true
+	});
+	//Get ougoing stream info
+	const outgoingStreamInfo = outgoingStream.getStreamInfo();
+	//Add simulcast info
+	const outgoingVideoTrackInfo = outgoingStreamInfo.getFirstTrack("video");
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("0"));
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("1"));
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("2"));
+
+	//Set the info into B so it can receive it
+	const incomingStream = transportB.createIncomingStream(outgoingStreamInfo);
+	//Get video track
+	const outgoingVideoTrack = outgoingStream.getVideoTracks()[0];
+	const incomingVideoTrack = incomingStream.getVideoTracks()[0];
+	//Get transponders
+	const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
+	
+	//Modify incoming track stats for SVC like stuff
+	
+	incomingVideoTrack.getStats = () => ({
+			"0" : {
+				bitrate : 179000,
+				media	: {
+					width: 240,
+					height: 240,
+					layers: []
+				},
+				targetWidth: 240,
+				targetHeight: 240
+			},
+			"1"  : {
+				bitrate : 536000,
+				media	: {
+					width: 360,
+					height: 360,
+					layers: []
+				},
+				targetWidth: 360,
+				targetHeight: 360
+			},
+			"2"  : {
+				bitrate : 1250000,
+				media	: {
+					width: 480,
+					height: 360,
+					layers: []
+				},
+				targetWidth: 480,
+				targetHeight: 480
+			},
+	});
+
+	
+	await suite.test("top",async function(test){
+		try {
+			//Target bitrate
+			const target = 1250000;
+			//Set bitrate
+			const bitrate = transponder.setTargetBitrate(target);
+			//Check it is correctly selected
+			test.ok(bitrate == target);
+			test.same(transponder.getSelectedEncoding() ,"2");
+		} catch (error) {
+			//Test error
+			test.notOk(error,error.message);
+		}
+	});
+	
+	
+	await suite.test("default",async function(test){
+		try {
+			//Target bitrate
+			const target = 1240000;
+			//Set bitrate
+			const bitrate = transponder.setTargetBitrate(target);
+			//Check it is correctly selected
+			test.ok(bitrate<target);
+			test.same(transponder.getSelectedEncoding() ,"1");
+		} catch (error) {
+			//Test error
+			test.notOk(error,error.message);
+		}
+	});
+	
+	//Create new remote stream
+	await suite.test("strict",async function(test){
+		try {
+			test.plan(2);
+			//Target bitrate
+			const target = 80000;
+			//This should mute
+			transponder.once("muted",(muted)=>{
+				//OK
+				test.ok(muted);
+			});
+			//Set bitrate
+			const bitrate = transponder.setTargetBitrate(target,{strict:true});
+			//Check it is correctly selected
+			test.ok(bitrate==0);
+		} catch (error) {
+			//Test error
+			test.notOk(error,error.message);
+		}
+	});
+	
+	
+	await suite.test("min+unmute",async function(test){
+		try {
+			test.plan(3);
+			//Target bitrate
+			const target = 80000;
+			//This should unmute
+			transponder.once("muted",(muted)=>{
+				//OK
+				test.ok(!muted);
+			});
+			//Set bitrate
+			const bitrate = transponder.setTargetBitrate(target);
+			//Check it is correctly selected
+			test.ok(bitrate>target);
+			test.same(transponder.getSelectedEncoding() ,"0");
+		} catch (error) {
+			//Test error
+			test.notOk(error,error.message);
+		}
+	});
+	
+	
+	await suite.test("setMaximumDimensions",async function(test){
+		try {
+			//Set max dimensions
+			transponder.setMaximumDimensions(360,360);
+			//Target bitrate
+			const target = 10000000;
+			//Set bitrate
+			const bitrate = transponder.setTargetBitrate(target);
+			//Check we have given a layer with proper dimensions
+			test.same(transponder.getSelectedEncoding() ,"1");
+			//Reset dimensions
+			transponder.setMaximumDimensions(0,0);
+
+			//Set bitrate without restriction
+			transponder.setTargetBitrate(target);
+			//Check we choose top layer
+			test.same(transponder.getSelectedEncoding() ,"2");
+
 		} catch (error) {
 			//Test error
 			test.notOk(error,error.message);
