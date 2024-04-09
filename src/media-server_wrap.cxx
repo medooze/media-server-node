@@ -1600,6 +1600,12 @@ public:
 		while(queue.try_dequeue(func)){}
 	}
 	
+	static void EnableWarning(bool flag)
+	{
+		//Enable log
+		Logger::EnableWarning(flag);
+	}
+	
 	static void EnableLog(bool flag)
 	{
 		//Enable log
@@ -3236,6 +3242,33 @@ static SwigV8ReturnValue _wrap_MediaServer_Terminate(const SwigV8Arguments &args
   
   MediaServer::Terminate();
   jsresult = SWIGV8_UNDEFINED();
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_MediaServer_EnableWarning(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  bool arg1 ;
+  bool val1 ;
+  int ecode1 = 0 ;
+  
+  if(args.Length() != 1) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_MediaServer_EnableWarning.");
+  
+  ecode1 = SWIG_AsVal_bool(args[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MediaServer_EnableWarning" "', argument " "1"" of type '" "bool""'");
+  } 
+  arg1 = static_cast< bool >(val1);
+  MediaServer::EnableWarning(arg1);
+  jsresult = SWIGV8_UNDEFINED();
+  
   
   SWIGV8_RETURN(jsresult);
   
@@ -18887,6 +18920,7 @@ v8::Local<v8::Object> _exports_SimulcastMediaFrameListenerShared_obj = _exports_
   /* add static class functions and variables */
   SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Initialize", _wrap_MediaServer_Initialize, context);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "Terminate", _wrap_MediaServer_Terminate, context);
+SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableWarning", _wrap_MediaServer_EnableWarning, context);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableLog", _wrap_MediaServer_EnableLog, context);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableDebug", _wrap_MediaServer_EnableDebug, context);
 SWIGV8_AddStaticFunction(_exports_MediaServer_obj, "EnableUltraDebug", _wrap_MediaServer_EnableUltraDebug, context);
