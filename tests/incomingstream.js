@@ -64,9 +64,15 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		incomingStream.on("trackremoved", (incomingStream, incomingStreamTrack) => {
 			removed = true;
 		});
+		
+		let removedTrack = incomingStream.getTrack("track2");
 		incomingStream.removeTrack("track2");
 		test.ok(removed);
 		test.same(0,incomingStream.getAudioTracks().length);
+		
+		// Stop it manually as it doesn't belong to any stream and wouldn't be
+		// stopped when the terminate function is called.
+		removedTrack.stop();
 	});
 	
 	await suite.test("simulcast",async function(test){
@@ -317,8 +323,13 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.ok(attached);
 		test.notOk(detached);
 		
-		incomingStream.removeTrack(incomingStream.getAudioTracks()[0].getId());
-		test.ok(detached);		
+		let removedTrack = incomingStream.getAudioTracks()[0];
+		incomingStream.removeTrack(removedTrack.getId());
+		test.ok(detached);
+		
+		// Stop it manually as it doesn't belong to any stream and wouldn't be
+		// stopped when the terminate function is called.
+		removedTrack.stop();
 	});
 
 	suite.end();
