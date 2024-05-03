@@ -32,7 +32,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 
 	let ssrc = 100;
 
-	suite.test("audio+video",async function(test){
+	await suite.test("audio+video",async function(test){
 		//Create stream
 		const streamInfo = new StreamInfo("stream0");
 		//Create track
@@ -58,9 +58,24 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.ok(incomingStream);
 		test.same(1,incomingStream.getAudioTracks().length);
 		test.same(1,incomingStream.getVideoTracks().length);
+		
+		// Test track removal
+		let removed = false;
+		incomingStream.on("trackremoved", (incomingStream, incomingStreamTrack) => {
+			removed = true;
+		});
+		
+		let removedTrack = incomingStream.getTrack("track2");
+		incomingStream.removeTrack("track2");
+		test.ok(removed);
+		test.same(0,incomingStream.getAudioTracks().length);
+		
+		// Stop it manually as it doesn't belong to any stream and wouldn't be
+		// stopped when the terminate function is called.
+		removedTrack.stop();
 	});
 	
-	suite.test("simulcast",async function(test){
+	await suite.test("simulcast",async function(test){
 		//Create stream
 		const streamInfo = new StreamInfo("stream1");
 		//Create track
@@ -96,7 +111,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.same(1,incomingStream.getVideoTracks().length);
 	});
 	
-	suite.test("audio",async function(test){
+	await suite.test("audio",async function(test){
 		//Create stream
 		const streamInfo = new StreamInfo("stream2");
 		//Create track
@@ -112,8 +127,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.same(0,incomingStream.getVideoTracks().length);
 	});
 	
-	
-	suite.test("duplicated",async function(test){
+	await suite.test("duplicated",async function(test){
 		//Create stream
 		const streamInfo = new StreamInfo("stream3");
 		//Create track
@@ -139,7 +153,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		}
 	});
 	
-	suite.test("stop",async function(test){
+	await suite.test("stop",async function(test){
 		//Create stream
 		const streamInfo = new StreamInfo("stream4");
 		//Create track
@@ -178,7 +192,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		incomingStream.stop();
 	});
 	
-	suite.test("mute",function(test){
+	await suite.test("mute", async function(test){
 		try {
 			test.plan(5);
 			//Create stream
@@ -223,8 +237,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.end();
 	});
 	
-	
-	suite.test("unmute",function(test){
+	await suite.test("unmute", async function(test){
 		try {
 			test.plan(4);
 			//Create stream
@@ -268,6 +281,55 @@ tap.test("IncomingMediaStream::create",async function(suite){
 			test.notOk(error,error.message);
 		}
 		test.end();
+	});
+	
+	await suite.test("attach",async function(test){
+
+		//Create stream
+		const streamInfo = new StreamInfo("stream7");
+		//Create track
+		let track = new TrackInfo("audio", "track2");
+		//Add ssrc
+		track.addSSRC(ssrc++);
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream  = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		test.same(1,incomingStream.getAudioTracks().length);
+		
+		// Test track attaching
+		let attached = false;
+		incomingStream.on("attached", (incomingStream) => {
+			attached = true;
+		});
+		incomingStream.getAudioTracks()[0].attached();
+		test.ok(attached);
+		
+		// Test track detaching
+		let detached = false;
+		incomingStream.on("detached", (incomingStream) => {
+			detached = true;
+		});
+		incomingStream.getAudioTracks()[0].detached();
+		test.ok(detached);
+		
+		// Clear flags
+		attached = false;
+		detached = false;
+		
+		// Attach it again and test removal
+		incomingStream.getAudioTracks()[0].attached();
+		test.ok(attached);
+		test.notOk(detached);
+		
+		let removedTrack = incomingStream.getAudioTracks()[0];
+		incomingStream.removeTrack(removedTrack.getId());
+		test.ok(detached);
+		
+		// Stop it manually as it doesn't belong to any stream and wouldn't be
+		// stopped when the terminate function is called.
+		removedTrack.stop();
 	});
 
 	suite.end();
