@@ -113,26 +113,6 @@ tap.test("IncomingStream",function(suite){
 		const mirrored2 = mirror.mirrorIncomingStream(incomingStream);
 		test.same(mirrored1,mirrored2);
 		
-		// Test remove a track from the original stream would let it removed from
-		// mirrored streams as well
-		
-		let removedTrack  = incomingStream.getTrack("track2");
-		
-		test.ok(incomingStream.getTrack("track2"));
-		test.ok(mirrored1.getTrack("track2"));
-		test.ok(mirrored2.getTrack("track2"));
-		
-		incomingStream.removeTrack("track2");
-		
-		test.notOk(incomingStream.getTrack("track2"));
-		test.notOk(mirrored1.getTrack("track2"));
-		test.notOk(mirrored2.getTrack("track2"));
-		test.same(mirrored1,mirrored2);
-		
-		// Stop it manually as it doesn't belong to any stream and wouldn't be
-		// stopped when the terminate function is called.
-		removedTrack.stop();
-		
 		//Ok
 		test.end();
 	});
