@@ -34,6 +34,9 @@ struct DTLSICETransport
 	bool AddIncomingSourceGroup(const RTPIncomingSourceGroupShared& group);
 	bool RemoveIncomingSourceGroup(const RTPIncomingSourceGroupShared& group);
 	
+	void SetDataChannelEndpointMode(datachannels::Endpoint::Mode mode);
+	void CreateDataChannel(const std::string& label, const std::string& endpointIdentifier);
+	
 	void SetBandwidthProbing(bool probe);
 	void SetMaxProbingBitrate(DWORD bitrate);
 	void SetProbingBitrateLimit(DWORD bitrate);

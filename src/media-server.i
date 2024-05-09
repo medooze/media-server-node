@@ -99,6 +99,8 @@ using Persistent = Nan::Persistent<T,NonCopyablePersistentTraits<T>>;
 %include "RTPStreamTransponderFacade.i"
 %include "SenderSideEstimatorListener.i"
 %include "SimulcastMediaFrameListener.i"
+%include "DataChannel.i"
+
 
 %init %{
 	auto tracingVar = getenv("MEDOOZE_TRACING");

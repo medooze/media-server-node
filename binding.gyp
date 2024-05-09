@@ -12,7 +12,8 @@
 			[
 				"-march=native",
 				"-fexceptions",
-				"-O3",
+				"-O0",
+				"-DENABLE_DATACHANNEL_LOGGING",
 				"-g",
 				"-Wno-unused-function -Wno-comment",
 				"-flto",
@@ -25,7 +26,8 @@
 			[
 				"-fexceptions",
 				"-std=c++17",
-				"-O3",
+				"-O0",
+				"-DENABLE_DATACHANNEL_LOGGING",
 				"-g",
 				"-Wno-unused-function",
 				"-flto",
@@ -64,6 +66,7 @@
 							'media-server/include',
 							'media-server/src',
 							'media-server/ext/crc32c/include',
+							'media-server/ext/libdatachannels/include',
 							'media-server/ext/libdatachannels/src',
 							'media-server/ext/libdatachannels/src/internal',
 							'external/mp4v2/lib/include',
