@@ -75,12 +75,12 @@ public:
 		});
 	}
 	
-	virtual void onDataChannelOpen(const std::shared_ptr<datachannels::DataChannel>& dataChannel) override
+	virtual void onDataChannelCreated(const datachannels::DataChannel::shared& dataChannel) override
 	{
 		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
 			//We create anothger shared pointer
-			auto shared = new std::shared_ptr<datachannels::DataChannel>(dataChannel);
+			auto shared = new datachannels::DataChannel::shared(dataChannel);
 			//Create local args
 			v8::Local<v8::Value> argv[1] = {
 				SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_DataChannelShared,SWIG_POINTER_OWN)
