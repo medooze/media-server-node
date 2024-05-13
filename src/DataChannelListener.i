@@ -20,7 +20,7 @@ public:
 			Nan::HandleScope scope;
 			
 			//Create buffer
-			v8::Local<v8::Value> frame = Nan::CopyBuffer(reinterpret_cast<const char*>(message->GetData()), message->GetLength()).ToLocalChecked();
+			v8::Local<v8::Value> frame = Nan::CopyBuffer(reinterpret_cast<const char*>(message->data.data()), message->data.size()).ToLocalChecked();
 
 			//Create local args
 			v8::Local<v8::Value> argv[1] = {

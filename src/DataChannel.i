@@ -41,7 +41,7 @@ struct DataChannel
 
 	bool Send(v8::Local<v8::ArrayBuffer> object)
 	{
-		return self->Send(datachannels::MessageType::Binary, static_cast<const uint8_t*>(object->Data()), object->ByteLength());
+		return self->Send(datachannels::MessageType::WebRTCBinary, static_cast<const uint8_t*>(object->Data()), object->ByteLength());
 	}
 	
 	bool Send(datachannels::MessageType type, v8::Local<v8::String> str)
@@ -50,7 +50,7 @@ struct DataChannel
 		char buffer[len];
 		SWIGV8_WRITE_UTF8(str, buffer, len);
 		
-		return self->Send(datachannels::MessageType::UTF8, reinterpret_cast<const uint8_t*>(buffer), len);
+		return self->Send(datachannels::MessageType::WebRTCString, reinterpret_cast<const uint8_t*>(buffer), len);
 	}
 }
 
