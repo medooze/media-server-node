@@ -831,4 +831,9 @@ export  class SimulcastMediaFrameListenerShared {
   get(): SimulcastMediaFrameListener;
 }
 
-
+export  class FrameDispatchCoordinatorShared {
+  
+  constructor();
+  
+  get(): FrameDispatchCoordinator;
+}

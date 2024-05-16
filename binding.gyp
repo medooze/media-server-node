@@ -12,7 +12,7 @@
 			[
 				"-march=native",
 				"-fexceptions",
-				"-O3",
+				"-O0",
 				"-g",
 				"-Wno-unused-function -Wno-comment",
 				"-flto",
@@ -25,7 +25,7 @@
 			[
 				"-fexceptions",
 				"-std=c++17",
-				"-O3",
+				"-O0",
 				"-g",
 				"-Wno-unused-function",
 				"-flto",
@@ -157,6 +157,9 @@
 							"media-server/src/remoterateestimator.cpp",
 							"media-server/src/SendSideBandwidthEstimation.cpp",
 							"media-server/src/SimulcastMediaFrameListener.cpp",
+							"media-server/src/MediaFrameListenerBridge.cpp",
+							"media-server/src/FrameDelayCalculator.cpp",
+							"media-server/src/FrameDispatchCoordinator.cpp",
 							"media-server/src/ForwardErrorCorrection.cpp",
 							"media-server/src/FecProbeGenerator.cpp"
 						],
