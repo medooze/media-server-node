@@ -148,6 +148,40 @@ tap.test("IncomingStream",function(suite){
 		test.end();
 	});
 
+	suite.test("remove track",function(test){
+		test.plan(5);
+		//Create simulcast adapter
+		const simulcastTrack = MediaServer.createIncomingStreamTrackSimulcastAdapter("video");
+		test.ok(simulcastTrack)
+
+		//Create new incoming stream
+		const incomingStreamTrack1 = transport.createIncomingStreamTrack("video");
+		const incomingStreamTrack2 = transport.createIncomingStreamTrack("video");
+
+		//Listen for the encoding event
+		simulcastTrack.on("encoding", (track,encoding) =>	{
+			test.ok(encoding);
+		})
+		//Add it
+		simulcastTrack.addTrack("1",incomingStreamTrack1);
+		simulcastTrack.addTrack("2",incomingStreamTrack2);
+
+		//Check number of encodings
+		test.same(simulcastTrack.getEncodings().length,2);
+
+		//Listent for removed encoding
+		simulcastTrack.on("encodingremoved",(track)=>{
+			test.ok(track);
+		});
+		//Remove track
+		simulcastTrack.removeTrack(incomingStreamTrack1);
+
+		//Stop track
+		simulcastTrack.stop();
+		//Ok
+		test.end();
+	});
+
 
 	suite.test("getStats",function(test){
 		test.plan(9);
