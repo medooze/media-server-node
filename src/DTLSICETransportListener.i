@@ -109,4 +109,4 @@ SHARED_PTR_BEGIN(DTLSICETransportListener)
 		return new std::shared_ptr<DTLSICETransportListener>(new DTLSICETransportListener(object));
 	}
 }
-SHARED_PTR_END(DTLSICETransport)
+SHARED_PTR_END(DTLSICETransportListener)

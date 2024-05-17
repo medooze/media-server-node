@@ -28,7 +28,7 @@ public:
 			};
 			
 			//Call object method with arguments
-			MakeCallback(cloned, "onData", 1, argv);
+			MakeCallback(cloned, "ondata", 1, argv);
 		});
 	}
 
