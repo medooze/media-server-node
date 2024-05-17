@@ -20,15 +20,15 @@ public:
 			Nan::HandleScope scope;
 			
 			//Create buffer
-			v8::Local<v8::Value> frame = Nan::CopyBuffer(reinterpret_cast<const char*>(message->data.data()), message->data.size()).ToLocalChecked();
+			v8::Local<v8::Value> msg = Nan::CopyBuffer(reinterpret_cast<const char*>(message->data.data()), message->data.size()).ToLocalChecked();
 
 			//Create local args
 			v8::Local<v8::Value> argv[1] = {
-				frame
+				msg
 			};
 			
 			//Call object method with arguments
-			MakeCallback(cloned, "ondata", 1, argv);
+			MakeCallback(cloned, "ondatachannelmessage", 1, argv);
 		});
 	}
 

@@ -10,7 +10,6 @@ using EnpointMode = datachannels::Endpoint::Mode;
 
 %}
 
-%include "DataChannelListener.i"
 %include "DataChannelMessageListener.i"
 
 enum MessageType;
@@ -40,9 +39,7 @@ struct DataChannel
 {
 	void AddMessageListener(const DataChannelMessageListenerShared& listener);
 	void RemoveMessageListener(const DataChannelMessageListenerShared& listener);
-	
-	void SetListener(const DataChannelListenerShared& listener);
-	
+	std::string GetLabel() const;
 	bool Close();
 	
 %extend {

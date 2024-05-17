@@ -100,7 +100,6 @@ using Persistent = Nan::Persistent<T,NonCopyablePersistentTraits<T>>;
 %include "SenderSideEstimatorListener.i"
 %include "SimulcastMediaFrameListener.i"
 %include "DataChannel.i"
-%include "DataChannelListener.i"
 %include "DataChannelMessageListener.i"
 
 
