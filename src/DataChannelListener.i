@@ -3,7 +3,7 @@
 %{
 
 class DataChannelListener :
-	public datachannels::MessageListener
+	public datachannels::DataChannel::Listener
 {
 public:
 	DataChannelListener(v8::Local<v8::Object> object)
@@ -13,23 +13,34 @@ public:
 		
 	virtual ~DataChannelListener() = default;
 	
-	
-	virtual void OnMessage(const std::shared_ptr<datachannels::Message>& message) override
+	virtual void OnOpen(const datachannels::DataChannel::shared& dataChannel)
 	{
 		MediaServer::Async([=,cloned=persistent](){
 			Nan::HandleScope scope;
-			
-			//Create buffer
-			v8::Local<v8::Value> frame = Nan::CopyBuffer(reinterpret_cast<const char*>(message->data.data()), message->data.size()).ToLocalChecked();
-
+			//We create anothger shared pointer
+			auto shared = new datachannels::DataChannel::shared(dataChannel);
 			//Create local args
 			v8::Local<v8::Value> argv[1] = {
-				frame
+				SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_DataChannelShared,SWIG_POINTER_OWN)
 			};
-			
 			//Call object method with arguments
-			MakeCallback(cloned, "ondata", 1, argv);
-		});
+			MakeCallback(cloned, "onopen", 1, argv);
+		});	
+	}
+			
+	virtual void OnClosed(const datachannels::DataChannel::shared& dataChannel)
+	{
+		MediaServer::Async([=,cloned=persistent](){
+			Nan::HandleScope scope;
+			//We create anothger shared pointer
+			auto shared = new datachannels::DataChannel::shared(dataChannel);
+			//Create local args
+			v8::Local<v8::Value> argv[1] = {
+				SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_DataChannelShared,SWIG_POINTER_OWN)
+			};
+			//Call object method with arguments
+			MakeCallback(cloned, "onclose", 1, argv);
+		});	
 	}
 
 private:

@@ -11,6 +11,7 @@ using EnpointMode = datachannels::Endpoint::Mode;
 %}
 
 %include "DataChannelListener.i"
+%include "DataChannelMessageListener.i"
 
 enum MessageType;
 enum EnpointMode;
@@ -37,8 +38,10 @@ SHARED_PTR(MessageProducer)
 %nodefaultdtor DataChannel;
 struct DataChannel
 {
-	void AddMessageListener(const DataChannelListenerShared& listener);
-	void RemoveMessageListener(const DataChannelListenerShared& listener);
+	void AddMessageListener(const DataChannelMessageListenerShared& listener);
+	void RemoveMessageListener(const DataChannelMessageListenerShared& listener);
+	
+	void SetListener(const DataChannelListenerShared& listener);
 	
 	bool Close();
 	
