@@ -5,6 +5,21 @@
 %include "RTPOutgoingSourceGroup.i"
 %include "DTLSICETransportListener.i"
 
+%typemap(out) std::vector<datachannels::DataChannel::shared> {
+
+	v8::EscapableHandleScope handScope(v8::Isolate::GetCurrent());
+
+	v8::Local<v8::Array> array = v8::Array::New(v8::Isolate::GetCurrent(), $1.size());
+
+	for (size_t i = 0; i < $1.size(); i++)
+	{
+		auto shared = new datachannels::DataChannel::shared($1.at(i));
+		(void)array->Set(SWIGV8_CURRENT_CONTEXT(), i, SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_DataChannelShared,SWIG_POINTER_OWN));
+	}
+	
+	$result = handScope.Escape(array);
+}
+
 %nodefaultctor DTLSICETransport; 
 %nodefaultdtor DTLSICETransport; 
 struct DTLSICETransport
@@ -57,6 +72,8 @@ struct DTLSICETransport
 	DWORD GetRTT() const { return rtt; }
 	
 	TimeService& GetTimeService();
+	
+	std::vector<datachannels::DataChannel::shared> GetDataChannels() const;
 };
 
 SHARED_PTR_BEGIN(DTLSICETransport)
