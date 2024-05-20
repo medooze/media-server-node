@@ -20,6 +20,17 @@
 	$result = handScope.Escape(array);
 }
 
+%typemap(out) std::optional<std::string> {
+	if ($1.has_value())
+	{
+		$result = SWIG_From_std_string(static_cast< std::string >($1.value()));
+	}
+	else
+	{
+		$result = SWIGV8_UNDEFINED();
+	}
+}
+
 %nodefaultctor DTLSICETransport; 
 %nodefaultdtor DTLSICETransport; 
 struct DTLSICETransport
@@ -74,6 +85,8 @@ struct DTLSICETransport
 	TimeService& GetTimeService();
 	
 	std::vector<datachannels::DataChannel::shared> GetDataChannels() const;
+	
+	std::optional<std::string> GetEndpointIdentifier(datachannels::DataChannel& dataChannel) const;
 };
 
 SHARED_PTR_BEGIN(DTLSICETransport)
