@@ -39,6 +39,9 @@
     "semantic-sdp": "^3.27.1",
     "uuid": "^3.3.2"
   },
+  "peerDependencies": {
+    "medooze-media-server-src": "0.0.4"
+  },
   "optionalDependencies": {
     "netlink": "^0"
   },

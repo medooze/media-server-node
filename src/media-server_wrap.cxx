@@ -1426,30 +1426,30 @@ static swig_module_info swig_module = {swig_types, 64, 0, 0, 0, 0};
 
 
 #include <perfetto.h>
-#include "../media-server/include/MedoozeTracing.h"
+#include "MedoozeTracing.h"
 #include <stdlib.h>
 	
 #include <string>
 #include <list>
 #include <functional>
 #include <nan.h>
-#include "../media-server/include/config.h"	
-#include "../media-server/include/concurrentqueue.h"
-#include "../media-server/include/dtls.h"
-#include "../media-server/include/OpenSSL.h"
-#include "../media-server/include/media.h"
-#include "../media-server/include/rtp.h"
-#include "../media-server/include/rtpsession.h"
-#include "../media-server/include/DTLSICETransport.h"	
-#include "../media-server/include/RTPBundleTransport.h"
-#include "../media-server/include/PCAPTransportEmulator.h"	
-#include "../media-server/include/mp4recorder.h"
-#include "../media-server/include/mp4streamer.h"
-#include "../media-server/src/vp9/VP9LayerSelector.h"
-#include "../media-server/include/rtp/RTPIncomingMediaStreamDepacketizer.h"
-#include "../media-server/include/ActiveSpeakerDetector.h"
-#include "../media-server/include/ActiveSpeakerMultiplexer.h"
-#include "../media-server/include/SimulcastMediaFrameListener.h"
+#include "config.h"
+#include "concurrentqueue.h"
+#include "dtls.h"
+#include "OpenSSL.h"
+#include "media.h"
+#include "rtp.h"
+#include "rtpsession.h"
+#include "DTLSICETransport.h"
+#include "RTPBundleTransport.h"
+#include "PCAPTransportEmulator.h"
+#include "mp4recorder.h"
+#include "mp4streamer.h"
+#include "vp9/VP9LayerSelector.h"
+#include "rtp/RTPIncomingMediaStreamDepacketizer.h"
+#include "ActiveSpeakerDetector.h"
+#include "ActiveSpeakerMultiplexer.h"
+#include "SimulcastMediaFrameListener.h"
 #include "../external/srtp/gcm_aes_backend.h"
 
 template<typename T>
@@ -2354,7 +2354,7 @@ RTPSenderShared* RTPSenderShared_from_proxy(const v8::Local<v8::Value> input)
 
 
 
-#include "../media-server/include/rtp/RTPStreamTransponder.h"
+#include "rtp/RTPStreamTransponder.h"
 
 class RTPStreamTransponderFacade : 
 	public RTPStreamTransponder

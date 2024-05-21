@@ -6,7 +6,7 @@
 
 %{
 
-#include "../media-server/include/rtp/RTPStreamTransponder.h"
+#include "rtp/RTPStreamTransponder.h"
 
 class RTPStreamTransponderFacade : 
 	public RTPStreamTransponder

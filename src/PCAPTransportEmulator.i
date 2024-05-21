@@ -1,5 +1,5 @@
 
-%include "../media-server/include/UDPReader.h"
+%include "UDPReader.h"
 class PCAPTransportEmulator
 {
 public:
