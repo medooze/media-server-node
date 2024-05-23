@@ -40,6 +40,8 @@ struct DataChannel
 	void AddMessageListener(const DataChannelMessageListenerShared& listener);
 	void RemoveMessageListener(const DataChannelMessageListenerShared& listener);
 	std::string GetLabel() const;
+	uint16_t GetId() const;
+	
 	bool Close();
 	
 %extend {

@@ -14,10 +14,32 @@
 	for (size_t i = 0; i < $1.size(); i++)
 	{
 		auto shared = new datachannels::DataChannel::shared($1.at(i));
-		(void)array->Set(SWIGV8_CURRENT_CONTEXT(), i, SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_DataChannelShared,SWIG_POINTER_OWN));
+		[[maybe_unused]] auto r = array->Set(SWIGV8_CURRENT_CONTEXT(), i, SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_DataChannelShared,SWIG_POINTER_OWN));
 	}
 	
 	$result = handScope.Escape(array);
+}
+
+%typemap(out) std::unordered_map<std::string, std::vector<datachannels::DataChannel::shared>> {
+	
+	v8::EscapableHandleScope handScope(v8::Isolate::GetCurrent());
+	v8::Local<v8::Map> map = v8::Map::New(v8::Isolate::GetCurrent());
+	
+	for (auto it = $1.begin(); it != $1.end(); it++)
+	{
+		v8::Local<v8::String> id = SWIGV8_STRING_NEW2(it->first.c_str(), it->first.length());
+		v8::Local<v8::Array> array = v8::Array::New(v8::Isolate::GetCurrent(), it->second.size());
+
+		for (size_t i = 0; i < it->second.size(); i++)
+		{
+			auto shared = new datachannels::DataChannel::shared(it->second.at(i));
+			[[maybe_unused]] auto r = array->Set(SWIGV8_CURRENT_CONTEXT(), i, SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_DataChannelShared,SWIG_POINTER_OWN));
+		}
+		
+		[[maybe_unused]] auto r = map->Set(SWIGV8_CURRENT_CONTEXT(), id, array);
+	}
+
+	$result = handScope.Escape(map);
 }
 
 %typemap(out) std::optional<std::string> {
@@ -84,7 +106,7 @@ struct DTLSICETransport
 	
 	TimeService& GetTimeService();
 	
-	std::vector<datachannels::DataChannel::shared> GetDataChannels() const;
+	std::unordered_map<std::string, std::vector<datachannels::DataChannel::shared>> GetDataChannels() const;
 	
 	std::optional<std::string> GetEndpointIdentifier(datachannels::DataChannel& dataChannel) const;
 };
