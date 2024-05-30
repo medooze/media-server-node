@@ -3,7 +3,7 @@
 	{
 		'external_libmediaserver%'		: '<!(echo $LIBMEDIASERVER)',
 		'external_libmediaserver_include_dirs%'	: '<!(echo $LIBMEDIASERVER_INCLUDE)',
-        'medooze_media_server_src' : "<!(node -e \"require('medooze-media-server-src')\")",
+		'medooze_media_server_src' : "<!(node -e \"require('medooze-media-server-src')\")",
 	},
 	"targets": 
 	[
