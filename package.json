@@ -43,6 +43,7 @@
     "netlink": "^0"
   },
   "devDependencies": {
+    "@types/lfsr": "^0.0.0",
     "@types/node": "^20.8.6",
     "@types/uuid": "^9.0.5",
     "documentation": "13.2.5",
