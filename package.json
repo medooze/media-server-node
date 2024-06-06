@@ -53,10 +53,6 @@
   },
   "files": [
     "external/*",
-    "media-server/src/*",
-    "media-server/include/*",
-    "media-server/ext/libdatachannels/src/*",
-    "media-server/ext/crc32c/*",
     "lib/*",
     "package.json",
     "index.js",
