@@ -1,13 +1,13 @@
 {
   "name": "medooze-media-server",
-  "version": "0.146.3",
+  "version": "0.147.0",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
     "prepare": "tsc --checkJs false && mkdir -p build/src && cp src/*.d.ts build/src",
     "check": "tsc --noEmit --emitDeclarationOnly false",
     "configure": "node-gyp configure",
-    "swig": "swig -javascript -node -c++ src/media-server.i",
+    "swig": "swig -javascript -node -c++ -I`node -e \"require('medooze-media-server-src')\"`/include src/media-server.i",
     "build": "node-gyp build --jobs=max",
     "install": "test -f build/Release/medooze-media-server.node || (node-gyp configure && node-gyp rebuild --jobs=max)",
     "docs": "documentation build lib/MediaServer.js lib/*.js --shallow -o docs -f html && documentation build lib/MediaServer.js lib/*.js --shallow -o api.md -f md --markdown-toc false",
@@ -38,6 +38,9 @@
     "semantic-sdp": "^3.28.0",
     "uuid": "^3.3.2"
   },
+  "peerDependencies": {
+    "medooze-media-server-src": "^1.0.0"
+  },
   "optionalDependencies": {
     "netlink": "^0"
   },
@@ -51,10 +54,6 @@
   },
   "files": [
     "external/*",
-    "media-server/src/*",
-    "media-server/include/*",
-    "media-server/ext/libdatachannels/src/*",
-    "media-server/ext/crc32c/*",
     "lib/*",
     "package.json",
     "index.js",
