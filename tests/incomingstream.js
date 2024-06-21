@@ -59,20 +59,6 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.same(1,incomingStream.getAudioTracks().length);
 		test.same(1,incomingStream.getVideoTracks().length);
 		
-		// Test track removal
-		let removed = false;
-		incomingStream.on("trackremoved", (incomingStream, incomingStreamTrack) => {
-			removed = true;
-		});
-		
-		let removedTrack = incomingStream.getTrack("track2");
-		incomingStream.removeTrack("track2");
-		test.ok(removed);
-		test.same(0,incomingStream.getAudioTracks().length);
-		
-		// Stop it manually as it doesn't belong to any stream and wouldn't be
-		// stopped when the terminate function is called.
-		removedTrack.stop();
 	});
 	
 	await suite.test("simulcast",async function(test){
@@ -283,7 +269,7 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.end();
 	});
 	
-	await suite.test("attach",async function(test){
+	await suite.test("attach+remove",async function(test){
 
 		//Create stream
 		const streamInfo = new StreamInfo("stream7");
@@ -323,9 +309,58 @@ tap.test("IncomingMediaStream::create",async function(suite){
 		test.ok(attached);
 		test.notOk(detached);
 		
-		let removedTrack = incomingStream.getAudioTracks()[0];
-		incomingStream.removeTrack(removedTrack.getId());
+		let removedTrack = incomingStream.removeTrack("track2");
 		test.ok(detached);
+		
+		// Stop it manually as it doesn't belong to any stream and wouldn't be
+		// stopped when the terminate function is called.
+		removedTrack.stop();
+	});
+	
+	await suite.test("remove",async function(test){
+		//Create stream
+		const streamInfo = new StreamInfo("stream8");
+		//Create track
+		let track = new TrackInfo("video", "track1");
+		//Get ssrc and rtx
+		const media = ssrc++;
+		const rtx = ssrc++;
+		//Add ssrcs to track
+		track.addSSRC(media);
+		track.addSSRC(rtx);
+		//Add RTX group	
+		track.addSourceGroup(new SourceGroupInfo("FID",[media,rtx]));
+		//Add it
+		streamInfo.addTrack(track);
+		//Create track
+		track = new TrackInfo("audio", "track2");
+		//Add ssrc
+		track.addSSRC(ssrc++);
+		//Add it
+		streamInfo.addTrack(track);
+		//Create new incoming stream
+		const incomingStream = transport.createIncomingStream(streamInfo);
+		test.ok(incomingStream);
+		test.same(1,incomingStream.getAudioTracks().length);
+		test.same(1,incomingStream.getVideoTracks().length);
+
+		// Create a mirroed stream
+		const mirrored = endpoint.mirrorIncomingStream(incomingStream);
+		test.same(1,mirrored.getAudioTracks().length);
+		test.same(1,mirrored.getVideoTracks().length);
+		
+		// Test track removal
+		let removed = false;
+		incomingStream.on("trackremoved", (incomingStream, incomingStreamTrack) => {
+			removed = true;
+		});
+		
+		let removedTrack = incomingStream.removeTrack("track2");
+		test.ok(removed);
+		test.same(0,incomingStream.getAudioTracks().length);
+		
+		// Check the track was also removed from the mirrored stream
+		test.same(0,mirrored.getAudioTracks().length);
 		
 		// Stop it manually as it doesn't belong to any stream and wouldn't be
 		// stopped when the terminate function is called.

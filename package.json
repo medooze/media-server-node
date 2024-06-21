@@ -1,17 +1,16 @@
 {
   "name": "medooze-media-server",
-  "version": "0.144.1",
+  "version": "0.147.1",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
     "prepare": "tsc --checkJs false && mkdir -p build/src && cp src/*.d.ts build/src",
     "check": "tsc --noEmit --emitDeclarationOnly false",
     "configure": "node-gyp configure",
-    "swig": "swig -javascript -node -c++ src/media-server.i",
+    "swig": "swig -javascript -node -c++ -I`node -e \"require('medooze-media-server-src')\"`/include src/media-server.i",
     "build": "node-gyp build --jobs=max",
     "install": "test -f build/Release/medooze-media-server.node || (node-gyp configure && node-gyp rebuild --jobs=max)",
     "docs": "documentation build lib/MediaServer.js lib/*.js --shallow -o docs -f html && documentation build lib/MediaServer.js lib/*.js --shallow -o api.md -f md --markdown-toc false",
-    "package": "npm run prepare && tar cvzf build/medooze-media-server.tgz  `([ \"$(uname)\" = 'Darwin' ] && echo \"-s |^|medooze-media-server/|\") || echo \" --transform=flags=r;s|^|medooze-media-server/|\"` external/* media-server/src/* media-server/include/* media-server/ext/libdatachannels/src/* media-server/ext/crc32c/* lib/* package.json index.js index.d.ts build/types binding.gyp README.md src",
     "dist": "npm run configure && npm run build && npm run prepare && mkdir -p dist && tar cvzf dist/medooze-media-server-`node -e 'console.log(require(\"./package.json\").version)'`.tgz `([ \"$(uname)\" = 'Darwin' ] && echo \"-s |^|medooze-media-server/|\") || echo \" --transform=flags=r;s|^|medooze-media-server/|\"` package.json index.js index.d.ts build/types README.md lib/* build/Release/medooze-media-server.node",
     "test": "tap tests/*.js --cov --no-check-coverage --reporter dump --jobs 1"
   },
@@ -36,17 +35,32 @@
     "lfsr": "0.0.3",
     "medooze-event-emitter": "^1.0.0",
     "nan": "^2.18.0",
-    "semantic-sdp": "^3.27.1",
+    "semantic-sdp": "^3.28.0",
     "uuid": "^3.3.2"
+  },
+  "peerDependencies": {
+    "medooze-media-server-src": "^1.0.0"
   },
   "optionalDependencies": {
     "netlink": "^0"
   },
   "devDependencies": {
+    "@types/lfsr": "^0.0.0",
     "@types/node": "^20.8.6",
     "@types/uuid": "^9.0.5",
     "documentation": "13.2.5",
     "tap": "^16.3.9",
     "typescript": "^5.2.2"
-  }
+  },
+  "files": [
+    "external/*",
+    "lib/*",
+    "package.json",
+    "index.js",
+    "index.d.ts",
+    "build/types",
+    "binding.gyp",
+    "README.md",
+    "src"
+  ]
 }
