@@ -841,3 +841,75 @@ export  class FrameDispatchCoordinatorShared {
   
   get(): FrameDispatchCoordinator;
 }
+
+
+export  class MediaFrameListenerBridge extends RTPIncomingMediaStream {
+
+  constructor(timeService: TimeService | EventLoop, ssrc: number);
+
+  numFrames: number;
+
+  numPackets: number;
+
+  numFramesDelta: number;
+
+  numPacketsDelta: number;
+
+  totalBytes: number;
+
+  bitrate: number;
+
+  minWaitedTime: number;
+
+  maxWaitedTime: number;
+
+  avgWaitedTime: number;
+  
+  width: number;
+  
+  height: number;
+  
+  iframes: number;
+  
+  iframesDelta: number;
+
+  bframes: number;
+  
+  bframesDelta: number;
+  
+  pframes: number;
+  
+  pframesDelta: number;
+
+  codec: string;
+
+  Update(): void;
+
+  UpdateAsync(object: any): void;
+
+  Stop(): void;
+
+  AddMediaListener(listener: MediaFrameListenerShared): void;
+
+  RemoveMediaListener(listener: MediaFrameListenerShared): void;
+
+  SetTargetBitrateHint(targetBitrateHint: number): void;
+  
+  SetFrameDispatchCoordinator(coordinator: FrameDispatchCoordinatorShared): void;
+}
+
+
+export  class MediaFrameListenerBridgeShared {
+
+  constructor(timeService: TimeService | EventLoop, ssrc: number);
+
+  toRTPIncomingMediaStream(): RTPIncomingMediaStreamShared;
+
+  toRTPReceiver(): RTPReceiverShared;
+
+  toMediaFrameListener(): MediaFrameListenerShared;
+
+  toMediaFrameProducer(): MediaFrameProducerShared;
+
+  get(): MediaFrameListenerBridge;
+}
