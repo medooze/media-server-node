@@ -5,7 +5,14 @@
 class FrameDispatchCoordinator
 {
 public:
-	
+
+%extend
+{
+	void SetMaxDelayMs(uint32_t maxDelayMs)
+	{
+		self->SetMaxDelayMs(std::chrono::milliseconds(maxDelayMs));
+	}
+}
 };
 
 SHARED_PTR_BEGIN(FrameDispatchCoordinator)
