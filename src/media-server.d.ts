@@ -832,12 +832,12 @@ export  class SimulcastMediaFrameListenerShared {
 }
 
 export class FrameDispatchCoordinator {
-  
+  SetMaxDelayMs(maxDelayMs: number): void;
 }
 
 export  class FrameDispatchCoordinatorShared {
   
-  constructor();
+  constructor(updateRefsPacketLateThresholdMs : number, updateRefsStepPacketEarlyMs : number);
   
   get(): FrameDispatchCoordinator;
 }
