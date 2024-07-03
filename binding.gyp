@@ -159,7 +159,10 @@
 							"<(medooze_media_server_src)/src/SendSideBandwidthEstimation.cpp",
 							"<(medooze_media_server_src)/src/SimulcastMediaFrameListener.cpp",
 							"<(medooze_media_server_src)/src/ForwardErrorCorrection.cpp",
-							"<(medooze_media_server_src)/src/FecProbeGenerator.cpp"
+							"<(medooze_media_server_src)/src/FecProbeGenerator.cpp",
+							"<(medooze_media_server_src)/src/MediaFrameListenerBridge.cpp",
+							"<(medooze_media_server_src)/src/FrameDelayCalculator.cpp",
+							"<(medooze_media_server_src)/src/FrameDispatchCoordinator.cpp",
 						],
 						"dependencies":
 						[
