@@ -20,6 +20,7 @@ public:
 
 	virtual ~RTPStreamTransponderFacade() = default;
 
+	// Reciever Estimated Max Bandwidth
 	virtual void onREMB(const RTPOutgoingSourceGroup* group,DWORD ssrc, DWORD bitrate) override
 	{
 		//Check we have not send an update too recently (1s)
