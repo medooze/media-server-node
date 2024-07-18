@@ -144,7 +144,9 @@
 				"./lib/src/qtff/ColorParameterBox.cpp",
 				"./lib/src/atom_avcC.cpp",
 				"./lib/src/atom_stsc.cpp",
-				"./lib/src/text.cpp"
+				"./lib/src/text.cpp",
+				"./lib/src/atom_av1C.cpp",
+				"./lib/src/atom_avxx.cpp"
 			]
 		}
 	]
