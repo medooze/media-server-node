@@ -35,7 +35,6 @@
 			],
 			"include_dirs" : 
 			[
-				'/usr/include/nodejs/',
 				"external/perfetto",
 				"<!(node -e \"require('nan')\")"
 			],
