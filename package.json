@@ -58,6 +58,7 @@
     "package.json",
     "index.js",
     "index.d.ts",
+    "build/src",
     "build/types",
     "binding.gyp",
     "README.md",
