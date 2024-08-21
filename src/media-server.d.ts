@@ -464,7 +464,7 @@ export  class DTLSICETransport {
 
   StopDump(): number;
 
-  DumpBWEStats(filename: string): number;
+  DumpBWEStats(filename: string, fileSizeLimit: number): number;
 
   StopDumpBWEStats(): number;
 
