@@ -367,14 +367,17 @@ Promise.all([
 			//Get temp file
 			const pcap = Path.join(tmp,"dump.pcap");
 			const csv = Path.join(tmp,"dump.csv");
+
+			test.notOk(FileSystem.existsSync(pcap));
+			test.notOk(FileSystem.existsSync(csv));
 			
 			//Dump
 			transport.dump(pcap);
 			
 			//Check file exist
-			test.ok(pcap);
-			test.ok(csv);
-			
+			test.ok(FileSystem.existsSync(pcap));
+			test.ok(FileSystem.existsSync(csv));
+
 			//Stop it
 			transport.stopDump();
 			
