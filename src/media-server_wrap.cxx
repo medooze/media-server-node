@@ -16091,14 +16091,16 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddICETransport(const SwigV8Ar
   RTPBundleTransport *arg1 = (RTPBundleTransport *) 0 ;
   std::string *arg2 = 0 ;
   Properties *arg3 = 0 ;
+  std::string *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
   void *argp3 ;
   int res3 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
   RTPBundleTransportConnectionShared result;
   
-  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_AddICETransport.");
+  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPBundleTransport_AddICETransport.");
   
   res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPBundleTransport, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
@@ -16124,11 +16126,23 @@ static SwigV8ReturnValue _wrap_RTPBundleTransport_AddICETransport(const SwigV8Ar
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddICETransport" "', argument " "3"" of type '" "Properties const &""'"); 
   }
   arg3 = reinterpret_cast< Properties * >(argp3);
-  result = (arg1)->AddICETransport((std::string const &)*arg2,(Properties const &)*arg3);
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(args[2], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RTPBundleTransport_AddICETransport" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPBundleTransport_AddICETransport" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  result = (arg1)->AddICETransport((std::string const &)*arg2,(Properties const &)*arg3,(std::string const &)*arg4);
   jsresult = SWIG_NewPointerObj((new RTPBundleTransportConnectionShared(static_cast< const RTPBundleTransportConnectionShared& >(result))), SWIGTYPE_p_RTPBundleTransportConnectionShared, SWIG_POINTER_OWN |  0 );
   
   if (SWIG_IsNewObj(res2)) delete arg2;
   
+  if (SWIG_IsNewObj(res4)) delete arg4;
   
   SWIGV8_RETURN(jsresult);
   
