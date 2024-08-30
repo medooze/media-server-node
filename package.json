@@ -34,7 +34,7 @@
   "dependencies": {
     "lfsr": "0.0.3",
     "medooze-event-emitter": "^1.2.0",
-    "medooze-logger": "^1.0.2",
+    "medooze-logger": "^1.1.0",
     "nan": "^2.18.0",
     "semantic-sdp": "^3.29.0",
     "uuid": "^3.3.2"
