@@ -2611,6 +2611,24 @@ public:
 		});
 	}
 
+	virtual void onUnsignaledIncomingSourceGroup(const RTPIncomingSourceGroup::shared& group)
+	{
+		Log("-DTLSICETransportListener::onUnsignaledIncomingSourceGroup()\n");
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Log("-DTLSICETransportListener::onUnsignaledIncomingSourceGroup() async\n");
+			//We create shared pointer for connection pointer
+			auto shared = new std::shared_ptr<RTPIncomingSourceGroup>(group);
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[1];
+			//Create local args
+			argv[i++] = SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_RTPIncomingSourceGroupShared,SWIG_POINTER_OWN);
+			//Call object method with arguments
+			MakeCallback(cloned, "onunsignaledincomingsourcegroup",i,argv);
+		});
+	}
+
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };
@@ -6707,6 +6725,128 @@ static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_type_get(v8::Local<v8::Nam
   arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
   result = (MediaFrameType) ((arg1)->type);
   jsresult = SWIG_From_int(static_cast< int >(result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_RTPOutgoingSourceGroup_rid_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_rid_set" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(value, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPOutgoingSourceGroup_rid_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->rid = *arg2;
+  
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_rid_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_rid_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  result = (std::string *) & ((arg1)->rid);
+  jsresult = SWIG_From_std_string(static_cast< std::string >(*result));
+  
+  
+  SWIGV8_RETURN_INFO(jsresult, info);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN_INFO(SWIGV8_UNDEFINED(), info);
+}
+
+
+static void _wrap_RTPOutgoingSourceGroup_mid_set(v8::Local<v8::Name> property, v8::Local<v8::Value> value, const SwigV8PropertyCallbackInfoVoid &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_mid_set" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(value, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RTPOutgoingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RTPOutgoingSourceGroup_mid_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->mid = *arg2;
+  
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  
+  goto fail;
+fail:
+  return;
+}
+
+
+static SwigV8ReturnValue _wrap_RTPOutgoingSourceGroup_mid_get(v8::Local<v8::Name> property, const SwigV8PropertyCallbackInfo &info) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPOutgoingSourceGroup *arg1 = (RTPOutgoingSourceGroup *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  res1 = SWIG_ConvertPtr(info.Holder(), &argp1,SWIGTYPE_p_RTPOutgoingSourceGroup, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPOutgoingSourceGroup_mid_get" "', argument " "1"" of type '" "RTPOutgoingSourceGroup *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPOutgoingSourceGroup * >(argp1);
+  result = (std::string *) & ((arg1)->mid);
+  jsresult = SWIG_From_std_string(static_cast< std::string >(*result));
   
   
   SWIGV8_RETURN_INFO(jsresult, info);
@@ -19977,6 +20117,8 @@ SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "reportedFractionLost
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "reportedJitter", _wrap_RTPOutgoingSource_reportedJitter_get, _wrap_RTPOutgoingSource_reportedJitter_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSource_class, "rtt", _wrap_RTPOutgoingSource_rtt_get, _wrap_RTPOutgoingSource_rtt_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "type", _wrap_RTPOutgoingSourceGroup_type_get, _wrap_RTPOutgoingSourceGroup_type_set);
+SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rid", _wrap_RTPOutgoingSourceGroup_rid_get, _wrap_RTPOutgoingSourceGroup_rid_set);
+SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "mid", _wrap_RTPOutgoingSourceGroup_mid_get, _wrap_RTPOutgoingSourceGroup_mid_set);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "media", _wrap_RTPOutgoingSourceGroup_media_get, JS_veto_set_variable);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "fec", _wrap_RTPOutgoingSourceGroup_fec_get, JS_veto_set_variable);
 SWIGV8_AddMemberVariable(_exports_RTPOutgoingSourceGroup_class, "rtx", _wrap_RTPOutgoingSourceGroup_rtx_get, JS_veto_set_variable);
