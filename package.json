@@ -35,7 +35,7 @@
     "lfsr": "0.0.3",
     "medooze-event-emitter": "^1.2.0",
     "nan": "^2.18.0",
-    "semantic-sdp": "^3.28.0",
+    "semantic-sdp": "^3.29.0",
     "uuid": "^3.3.2"
   },
   "peerDependencies": {

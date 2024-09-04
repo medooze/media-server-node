@@ -107,6 +107,48 @@ tap.test("Endpoint::create",async function(suite){
 		test.end();
 	});
 
+	await suite.test("createOffer",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint("127.0.0.1");
+		//Create non unified sdp
+		const offer = endpoint.createOffer({
+			audio   : {
+				codecs	: [ "opus"],
+				rtx     : true,
+				rtcpfbs : [
+					{ "id": "nack" },
+				],
+				extensions: ["urn:ietf:params:rtp-hdrext:ssrc-audio-level"]
+			},
+		});
+		//Check mid
+		test.same(offer.getMedias()[0].getId(), "audio");
+		//Ok
+		test.end();
+	});
+
+	await suite.test("createOffer",async function(test){
+		//Create UDP server endpoint
+		const endpoint = MediaServer.createEndpoint("127.0.0.1");
+		//Create non unified sdp
+		const offer = endpoint.createOffer({
+			audio   : {
+				codecs	: [ "opus"],
+				rtx     : true,
+				rtcpfbs : [
+					{ "id": "nack" },
+				],
+				extensions: ["urn:ietf:params:rtp-hdrext:ssrc-audio-level"]
+			},
+		},{
+			unified: true
+		});
+		//Check mid
+		test.same(offer.getMedias()[0].getId(), "0");
+		//Ok
+		test.end();
+	});
+
 	suite.end();
 })
 ]).then(()=>MediaServer.terminate ());
