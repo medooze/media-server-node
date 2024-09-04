@@ -9,6 +9,8 @@ struct RTPOutgoingSourceGroup
 	RTPOutgoingSourceGroup(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
 	
 	MediaFrameType  type;
+	std::string rid;
+	std::string mid;
 	const RTPOutgoingSource media;
 	const RTPOutgoingSource fec;
 	const RTPOutgoingSource rtx;

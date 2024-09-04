@@ -75,6 +75,24 @@ public:
 		});
 	}
 
+	virtual void onUnsignaledIncomingSourceGroup(const RTPIncomingSourceGroup::shared& group)
+	{
+		Log("-DTLSICETransportListener::onUnsignaledIncomingSourceGroup()\n");
+		//Run function on main node thread
+		MediaServer::Async([=,cloned=persistent](){
+			Log("-DTLSICETransportListener::onUnsignaledIncomingSourceGroup() async\n");
+			//We create shared pointer for connection pointer
+			auto shared = new std::shared_ptr<RTPIncomingSourceGroup>(group);
+			Nan::HandleScope scope;
+			int i = 0;
+			v8::Local<v8::Value> argv[1];
+			//Create local args
+			argv[i++] = SWIG_NewPointerObj(SWIG_as_voidptr(shared), SWIGTYPE_p_RTPIncomingSourceGroupShared,SWIG_POINTER_OWN);
+			//Call object method with arguments
+			MakeCallback(cloned, "onunsignaledincomingsourcegroup",i,argv);
+		});
+	}
+
 private:
 	std::shared_ptr<Persistent<v8::Object>> persistent;
 };

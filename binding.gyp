@@ -80,6 +80,7 @@
 							"<(medooze_media_server_src)/src/ActiveSpeakerDetector.cpp",
 							"<(medooze_media_server_src)/src/ActiveSpeakerMultiplexer.cpp",
 							"<(medooze_media_server_src)/src/EventLoop.cpp",
+							"<(medooze_media_server_src)/src/NetEventLoop.cpp",
 							"<(medooze_media_server_src)/src/log.cpp",
 							"<(medooze_media_server_src)/src/PacketHeader.cpp",
 							"<(medooze_media_server_src)/src/MacAddress.cpp",
