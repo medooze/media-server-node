@@ -39,7 +39,7 @@
     "uuid": "^3.3.2"
   },
   "peerDependencies": {
-    "medooze-media-server-src": "^2.0.2"
+    "medooze-media-server-src": "^2.0.3"
   },
   "optionalDependencies": {
     "netlink": "^0"
