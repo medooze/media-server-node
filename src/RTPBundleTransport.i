@@ -24,7 +24,7 @@ public:
 	RTPBundleTransport(uint32_t packetPoolSize);
 	int Init();
 	int Init(int port);
-	RTPBundleTransportConnectionShared AddICETransport(const std::string &username,const Properties& properties);
+	RTPBundleTransportConnectionShared AddICETransport(const std::string &username,const Properties& properties,const std::string& logId);
 	bool RestartICETransport(const std::string& username, const std::string& restarted, const Properties& properties);
 	int RemoveICETransport(const std::string &username);
 	int End();

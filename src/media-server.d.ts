@@ -753,7 +753,7 @@ export  class RTPBundleTransport {
 
   Init(port: number): number;
 
-  AddICETransport(username: string, properties: Properties): RTPBundleTransportConnectionShared;
+  AddICETransport(username: string, properties: Properties, logId: string): RTPBundleTransportConnectionShared;
 
   RestartICETransport(username: string, restarted: string, properties: Properties): boolean;
 
