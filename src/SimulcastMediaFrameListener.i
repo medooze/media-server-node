@@ -5,8 +5,10 @@ class SimulcastMediaFrameListener :
 	public MediaFrameProducer,
 	public MediaFrameListener
 {
+private:
+	SimulcastMediaFrameListener();
 public:
-	SimulcastMediaFrameListener(TimeService &timeService, DWORD ssrc, DWORD numLayers);
+	//SimulcastMediaFrameListener(TimeService &timeService, DWORD ssrc, DWORD numLayers);
 	void SetNumLayers(DWORD numLayers);
 	void AttachTo(const MediaFrameProducerShared& producer);
 	void Detach(const MediaFrameProducerShared& producer);
@@ -21,7 +23,7 @@ SHARED_PTR_BEGIN(SimulcastMediaFrameListener)
 {
 	SimulcastMediaFrameListenerShared(TimeService &timeService, DWORD ssrc, DWORD numLayers)
 	{
-		return new std::shared_ptr<SimulcastMediaFrameListener>(new SimulcastMediaFrameListener(timeService,ssrc,numLayers));
+		return new std::shared_ptr<SimulcastMediaFrameListener>(SimulcastMediaFrameListener::Create(timeService,ssrc,numLayers));
 	}
 	SHARED_PTR_TO(MediaFrameListener)
 	SHARED_PTR_TO(MediaFrameProducer)

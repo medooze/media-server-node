@@ -5,8 +5,15 @@
 
 struct RTPOutgoingSourceGroup
 {
-	RTPOutgoingSourceGroup(MediaFrameType type, TimeService& TimeService);
-	RTPOutgoingSourceGroup(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
+	// Prevents SWIG using it
+private:
+	RTPOutgoingSourceGroup();
+public:
+	// @todo Constructors are private can create using factory if it is needed somewhere but didnt find it
+	//RTPOutgoingSourceGroup(MediaFrameType type, TimeService& TimeService);
+	//RTPOutgoingSourceGroup(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
+	static RTPOutgoingSourceGroupShared Create(MediaFrameType type, TimeService& TimeService);
+	static RTPOutgoingSourceGroupShared Create(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
 	
 	MediaFrameType  type;
 	std::string rid;
@@ -40,12 +47,12 @@ SHARED_PTR_BEGIN(RTPOutgoingSourceGroup)
 {
 	RTPOutgoingSourceGroupShared(MediaFrameType type, TimeService& TimeService)
 	{
-		return new std::shared_ptr<RTPOutgoingSourceGroup>(new RTPOutgoingSourceGroup(type,TimeService));
+		return new std::shared_ptr<RTPOutgoingSourceGroup>(RTPOutgoingSourceGroup::Create(type,TimeService));
 	}
 
 	RTPOutgoingSourceGroupShared(const std::string &streamId,MediaFrameType type, TimeService& TimeService)
 	{
-		return new std::shared_ptr<RTPOutgoingSourceGroup>(new RTPOutgoingSourceGroup(streamId,type,TimeService));
+		return new std::shared_ptr<RTPOutgoingSourceGroup>(RTPOutgoingSourceGroup::Create(streamId,type,TimeService));
 	}
 
 }

@@ -11,11 +11,17 @@
 class RTPStreamTransponderFacade : 
 	public RTPStreamTransponder
 {
-public:
+private:
 	RTPStreamTransponderFacade(const RTPOutgoingSourceGroupShared& outgoing, const RTPSender::shared& sender, v8::Local<v8::Object> object) :
 		RTPStreamTransponder(outgoing, sender)
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
+	}
+
+public:
+	static std::shared_ptr<RTPStreamTransponderFacade> Create(const RTPOutgoingSourceGroupShared& outgoing, const RTPSender::shared& sender, v8::Local<v8::Object> object)
+	{
+		return std::shared_ptr<RTPStreamTransponderFacade>(new RTPStreamTransponderFacade(outgoing, sender, object));
 	}
 
 	virtual ~RTPStreamTransponderFacade() = default;
@@ -55,8 +61,14 @@ private:
 class RTPStreamTransponderFacade : 
 	public RTPStreamTransponder
 {
+private:
+	RTPStreamTransponderFacade();
+
 public:
-	RTPStreamTransponderFacade(const RTPOutgoingSourceGroupShared& outgoing, const RTPSenderShared& sender,v8::Local<v8::Object> object);
+	// @todo
+	//RTPStreamTransponderFacade(const RTPOutgoingSourceGroupShared& outgoing, const RTPSenderShared& sender,v8::Local<v8::Object> object);
+	static std::shared_ptr<RTPStreamTransponderFacade> Create(const RTPOutgoingSourceGroupShared& outgoing, const RTPSenderShared& sender,v8::Local<v8::Object> object);
+
 	void SetIncoming(const RTPIncomingMediaStreamShared& incoming, const RTPReceiverShared& receiver, bool smooth);
 	void ResetIncoming();
 	bool AppendH264ParameterSets(const std::string& sprops);

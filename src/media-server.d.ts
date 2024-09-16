@@ -207,10 +207,6 @@ export  class RTPOutgoingSource extends RTPSource {
 
 export  class RTPOutgoingSourceGroup {
 
-  constructor(type: MediaFrameType, TimeService: TimeService | EventLoop);
-
-  constructor(streamId: string, type: MediaFrameType, TimeService: TimeService | EventLoop);
-
   type: MediaFrameType;
 
   media: RTPOutgoingSource;
