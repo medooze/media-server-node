@@ -1340,76 +1340,78 @@ fail: ;
 
 #define SWIGTYPE_p_ActiveSpeakerDetectorFacade swig_types[0]
 #define SWIGTYPE_p_ActiveSpeakerMultiplexerFacade swig_types[1]
-#define SWIGTYPE_p_DTLSICETransport swig_types[2]
-#define SWIGTYPE_p_DTLSICETransportListener swig_types[3]
-#define SWIGTYPE_p_DTLSICETransportListenerShared swig_types[4]
-#define SWIGTYPE_p_DTLSICETransportShared swig_types[5]
-#define SWIGTYPE_p_EventLoop swig_types[6]
-#define SWIGTYPE_p_FrameDispatchCoordinator swig_types[7]
-#define SWIGTYPE_p_FrameDispatchCoordinatorShared swig_types[8]
-#define SWIGTYPE_p_ICERemoteCandidate swig_types[9]
-#define SWIGTYPE_p_LayerInfo swig_types[10]
-#define SWIGTYPE_p_LayerSource swig_types[11]
-#define SWIGTYPE_p_LayerSources swig_types[12]
-#define SWIGTYPE_p_MP4RecorderFacade swig_types[13]
-#define SWIGTYPE_p_MP4RecorderFacadeShared swig_types[14]
-#define SWIGTYPE_p_MediaFrameListener swig_types[15]
-#define SWIGTYPE_p_MediaFrameListenerBridge swig_types[16]
-#define SWIGTYPE_p_MediaFrameListenerBridgeShared swig_types[17]
-#define SWIGTYPE_p_MediaFrameListenerShared swig_types[18]
-#define SWIGTYPE_p_MediaFrameProducer swig_types[19]
-#define SWIGTYPE_p_MediaFrameProducerShared swig_types[20]
-#define SWIGTYPE_p_MediaFrameReader swig_types[21]
-#define SWIGTYPE_p_MediaFrameReaderShared swig_types[22]
-#define SWIGTYPE_p_MediaServer swig_types[23]
-#define SWIGTYPE_p_PCAPTransportEmulator swig_types[24]
-#define SWIGTYPE_p_PlayerFacade swig_types[25]
-#define SWIGTYPE_p_Properties swig_types[26]
-#define SWIGTYPE_p_RTPBundleTransport swig_types[27]
-#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[28]
-#define SWIGTYPE_p_RTPBundleTransportConnectionShared swig_types[29]
-#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[30]
-#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[31]
-#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared swig_types[32]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[33]
-#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexerShared swig_types[34]
-#define SWIGTYPE_p_RTPIncomingMediaStreamShared swig_types[35]
-#define SWIGTYPE_p_RTPIncomingSource swig_types[36]
-#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[37]
-#define SWIGTYPE_p_RTPIncomingSourceGroupShared swig_types[38]
-#define SWIGTYPE_p_RTPOutgoingSource swig_types[39]
-#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[40]
-#define SWIGTYPE_p_RTPOutgoingSourceGroupShared swig_types[41]
-#define SWIGTYPE_p_RTPReceiver swig_types[42]
-#define SWIGTYPE_p_RTPReceiverShared swig_types[43]
-#define SWIGTYPE_p_RTPSender swig_types[44]
-#define SWIGTYPE_p_RTPSenderShared swig_types[45]
-#define SWIGTYPE_p_RTPSessionFacade swig_types[46]
-#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[47]
-#define SWIGTYPE_p_RTPSource swig_types[48]
-#define SWIGTYPE_p_RTPStreamTransponder swig_types[49]
-#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[50]
-#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[51]
-#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[52]
-#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[53]
-#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[54]
-#define SWIGTYPE_p_TimeService swig_types[55]
-#define SWIGTYPE_p_UDPDumper swig_types[56]
-#define SWIGTYPE_p_UDPReader swig_types[57]
-#define SWIGTYPE_p_char swig_types[58]
-#define SWIGTYPE_p_int swig_types[59]
-#define SWIGTYPE_p_long_long swig_types[60]
-#define SWIGTYPE_p_short swig_types[61]
-#define SWIGTYPE_p_signed_char swig_types[62]
-#define SWIGTYPE_p_std__shared_ptrT_ActiveSpeakerMultiplexerFacade_t swig_types[63]
-#define SWIGTYPE_p_std__shared_ptrT_RTPStreamTransponderFacade_t swig_types[64]
-#define SWIGTYPE_p_unsigned_char swig_types[65]
-#define SWIGTYPE_p_unsigned_int swig_types[66]
-#define SWIGTYPE_p_unsigned_long_long swig_types[67]
-#define SWIGTYPE_p_unsigned_short swig_types[68]
-#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[69]
-static swig_type_info *swig_types[71];
-static swig_module_info swig_module = {swig_types, 70, 0, 0, 0, 0};
+#define SWIGTYPE_p_ActiveSpeakerMultiplexerFacadeShared swig_types[2]
+#define SWIGTYPE_p_DTLSICETransport swig_types[3]
+#define SWIGTYPE_p_DTLSICETransportListener swig_types[4]
+#define SWIGTYPE_p_DTLSICETransportListenerShared swig_types[5]
+#define SWIGTYPE_p_DTLSICETransportShared swig_types[6]
+#define SWIGTYPE_p_EventLoop swig_types[7]
+#define SWIGTYPE_p_FrameDispatchCoordinator swig_types[8]
+#define SWIGTYPE_p_FrameDispatchCoordinatorShared swig_types[9]
+#define SWIGTYPE_p_ICERemoteCandidate swig_types[10]
+#define SWIGTYPE_p_LayerInfo swig_types[11]
+#define SWIGTYPE_p_LayerSource swig_types[12]
+#define SWIGTYPE_p_LayerSources swig_types[13]
+#define SWIGTYPE_p_MP4RecorderFacade swig_types[14]
+#define SWIGTYPE_p_MP4RecorderFacadeShared swig_types[15]
+#define SWIGTYPE_p_MediaFrameListener swig_types[16]
+#define SWIGTYPE_p_MediaFrameListenerBridge swig_types[17]
+#define SWIGTYPE_p_MediaFrameListenerBridgeShared swig_types[18]
+#define SWIGTYPE_p_MediaFrameListenerShared swig_types[19]
+#define SWIGTYPE_p_MediaFrameProducer swig_types[20]
+#define SWIGTYPE_p_MediaFrameProducerShared swig_types[21]
+#define SWIGTYPE_p_MediaFrameReader swig_types[22]
+#define SWIGTYPE_p_MediaFrameReaderShared swig_types[23]
+#define SWIGTYPE_p_MediaServer swig_types[24]
+#define SWIGTYPE_p_PCAPTransportEmulator swig_types[25]
+#define SWIGTYPE_p_PlayerFacade swig_types[26]
+#define SWIGTYPE_p_Properties swig_types[27]
+#define SWIGTYPE_p_RTPBundleTransport swig_types[28]
+#define SWIGTYPE_p_RTPBundleTransportConnection swig_types[29]
+#define SWIGTYPE_p_RTPBundleTransportConnectionShared swig_types[30]
+#define SWIGTYPE_p_RTPIncomingMediaStream swig_types[31]
+#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizer swig_types[32]
+#define SWIGTYPE_p_RTPIncomingMediaStreamDepacketizerShared swig_types[33]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexer swig_types[34]
+#define SWIGTYPE_p_RTPIncomingMediaStreamMultiplexerShared swig_types[35]
+#define SWIGTYPE_p_RTPIncomingMediaStreamShared swig_types[36]
+#define SWIGTYPE_p_RTPIncomingSource swig_types[37]
+#define SWIGTYPE_p_RTPIncomingSourceGroup swig_types[38]
+#define SWIGTYPE_p_RTPIncomingSourceGroupShared swig_types[39]
+#define SWIGTYPE_p_RTPOutgoingSource swig_types[40]
+#define SWIGTYPE_p_RTPOutgoingSourceGroup swig_types[41]
+#define SWIGTYPE_p_RTPOutgoingSourceGroupShared swig_types[42]
+#define SWIGTYPE_p_RTPReceiver swig_types[43]
+#define SWIGTYPE_p_RTPReceiverShared swig_types[44]
+#define SWIGTYPE_p_RTPSender swig_types[45]
+#define SWIGTYPE_p_RTPSenderShared swig_types[46]
+#define SWIGTYPE_p_RTPSessionFacade swig_types[47]
+#define SWIGTYPE_p_RTPSessionFacadeShared swig_types[48]
+#define SWIGTYPE_p_RTPSource swig_types[49]
+#define SWIGTYPE_p_RTPStreamTransponder swig_types[50]
+#define SWIGTYPE_p_RTPStreamTransponderFacade swig_types[51]
+#define SWIGTYPE_p_RTPStreamTransponderFacadeShared swig_types[52]
+#define SWIGTYPE_p_RemoteRateEstimatorListener swig_types[53]
+#define SWIGTYPE_p_SenderSideEstimatorListener swig_types[54]
+#define SWIGTYPE_p_SimulcastMediaFrameListener swig_types[55]
+#define SWIGTYPE_p_SimulcastMediaFrameListenerShared swig_types[56]
+#define SWIGTYPE_p_TimeService swig_types[57]
+#define SWIGTYPE_p_UDPDumper swig_types[58]
+#define SWIGTYPE_p_UDPReader swig_types[59]
+#define SWIGTYPE_p_char swig_types[60]
+#define SWIGTYPE_p_int swig_types[61]
+#define SWIGTYPE_p_long_long swig_types[62]
+#define SWIGTYPE_p_short swig_types[63]
+#define SWIGTYPE_p_signed_char swig_types[64]
+#define SWIGTYPE_p_std__shared_ptrT_ActiveSpeakerMultiplexerFacade_t swig_types[65]
+#define SWIGTYPE_p_std__shared_ptrT_RTPStreamTransponderFacade_t swig_types[66]
+#define SWIGTYPE_p_unsigned_char swig_types[67]
+#define SWIGTYPE_p_unsigned_int swig_types[68]
+#define SWIGTYPE_p_unsigned_long_long swig_types[69]
+#define SWIGTYPE_p_unsigned_short swig_types[70]
+#define SWIGTYPE_p_v8__LocalT_v8__Object_t swig_types[71]
+static swig_type_info *swig_types[73];
+static swig_module_info swig_module = {swig_types, 72, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2376,7 +2378,9 @@ private:
 public:
 	static std::shared_ptr<RTPStreamTransponderFacade> Create(const RTPOutgoingSourceGroupShared& outgoing, const RTPSender::shared& sender, v8::Local<v8::Object> object)
 	{
-		return std::shared_ptr<RTPStreamTransponderFacade>(new RTPStreamTransponderFacade(outgoing, sender, object));
+		auto obj = std::shared_ptr<RTPStreamTransponderFacade>(new RTPStreamTransponderFacade(outgoing, sender, object));
+		obj->OnCreated();
+		return obj;
 	}
 
 	virtual ~RTPStreamTransponderFacade() = default;
@@ -2413,6 +2417,27 @@ private:
 
 
 
+using RTPStreamTransponderFacadeShared = std::shared_ptr<RTPStreamTransponderFacade>;
+
+static RTPStreamTransponderFacadeShared RTPStreamTransponderFacadeShared_null_ptr = {};
+
+RTPStreamTransponderFacadeShared* RTPStreamTransponderFacadeShared_from_proxy(const v8::Local<v8::Value> input)
+{
+  void *ptr = nullptr;
+  if (input.IsEmpty() || !input->IsObject()) return &RTPStreamTransponderFacadeShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &RTPStreamTransponderFacadeShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
+  SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_RTPStreamTransponderFacadeShared,  0 );
+  if (!ptr) return &RTPStreamTransponderFacadeShared_null_ptr;
+  return reinterpret_cast<RTPStreamTransponderFacadeShared*>(ptr);
+}
+
+
+SWIGINTERN RTPStreamTransponderFacadeShared *new_RTPStreamTransponderFacadeShared(RTPOutgoingSourceGroupShared const &outgoing,RTPSenderShared const &sender,v8::Local< v8::Object > object){
+		return new std::shared_ptr<RTPStreamTransponderFacade>(RTPStreamTransponderFacade::Create(outgoing, sender, object));
+	}
+
 class ActiveSpeakerMultiplexerFacade :
 	public ActiveSpeakerMultiplexer,
 	public ActiveSpeakerMultiplexer::Listener
@@ -2429,7 +2454,9 @@ private:
 public:
 	static std::shared_ptr<ActiveSpeakerMultiplexerFacade> Create(TimeService& timeService,v8::Local<v8::Object> object)
 	{
-		return std::shared_ptr<ActiveSpeakerMultiplexerFacade>(new ActiveSpeakerMultiplexerFacade(timeService, object));
+		auto obj = std::shared_ptr<ActiveSpeakerMultiplexerFacade>(new ActiveSpeakerMultiplexerFacade(timeService, object));
+		obj->OnCreated();
+		return obj;
 	}
 		
 	virtual void onActiveSpeakerChanged(uint32_t speakerId,uint32_t multiplexerId) override
@@ -2468,6 +2495,27 @@ private:
 };
 
 
+
+using ActiveSpeakerMultiplexerFacadeShared = std::shared_ptr<ActiveSpeakerMultiplexerFacade>;
+
+static ActiveSpeakerMultiplexerFacadeShared ActiveSpeakerMultiplexerFacadeShared_null_ptr = {};
+
+ActiveSpeakerMultiplexerFacadeShared* ActiveSpeakerMultiplexerFacadeShared_from_proxy(const v8::Local<v8::Value> input)
+{
+  void *ptr = nullptr;
+  if (input.IsEmpty() || !input->IsObject()) return &ActiveSpeakerMultiplexerFacadeShared_null_ptr;
+  v8::Local<v8::Proxy> proxy = v8::Local<v8::Proxy>::Cast(input);
+  if (proxy.IsEmpty()) return &ActiveSpeakerMultiplexerFacadeShared_null_ptr;
+  v8::Local<v8::Value> target = proxy->GetTarget();
+  SWIG_ConvertPtr(target, &ptr, SWIGTYPE_p_ActiveSpeakerMultiplexerFacadeShared,  0 );
+  if (!ptr) return &ActiveSpeakerMultiplexerFacadeShared_null_ptr;
+  return reinterpret_cast<ActiveSpeakerMultiplexerFacadeShared*>(ptr);
+}
+
+
+SWIGINTERN ActiveSpeakerMultiplexerFacadeShared *new_ActiveSpeakerMultiplexerFacadeShared(TimeService &timeService,v8::Local< v8::Object > object){
+		return new std::shared_ptr<ActiveSpeakerMultiplexerFacade>(ActiveSpeakerMultiplexerFacade::Create(timeService, object));
+	}
 
 #ifdef SWIG_LONG_LONG_AVAILABLE
 SWIGINTERN
@@ -3308,7 +3356,9 @@ SWIGV8_ClientData _exports_RTPReceiverShared_clientData;
 SWIGV8_ClientData _exports_RTPSender_clientData;
 SWIGV8_ClientData _exports_RTPSenderShared_clientData;
 SWIGV8_ClientData _exports_RTPStreamTransponderFacade_clientData;
+SWIGV8_ClientData _exports_RTPStreamTransponderFacadeShared_clientData;
 SWIGV8_ClientData _exports_ActiveSpeakerMultiplexerFacade_clientData;
+SWIGV8_ClientData _exports_ActiveSpeakerMultiplexerFacadeShared_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSource_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSourceGroup_clientData;
 SWIGV8_ClientData _exports_RTPIncomingSourceGroupShared_clientData;
@@ -7822,6 +7872,79 @@ fail:
 }
 
 
+static SwigV8ReturnValue _wrap_new_RTPStreamTransponderFacadeShared(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_OBJECT self = args.Holder();
+  RTPOutgoingSourceGroupShared *arg1 = 0 ;
+  RTPSenderShared *arg2 = 0 ;
+  v8::Local< v8::Object > arg3 ;
+  RTPStreamTransponderFacadeShared *result;
+  if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_RTPStreamTransponderFacadeShared.");
+  if(args.Length() != 3) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_RTPStreamTransponderFacadeShared.");
+  {
+    arg1 = RTPOutgoingSourceGroupShared_from_proxy(args[0]);
+  }
+  {
+    arg2 = RTPSenderShared_from_proxy(args[1]);
+  }
+  {
+    arg3 = v8::Local<v8::Object>::Cast(args[2]);
+  }
+  result = (RTPStreamTransponderFacadeShared *)new_RTPStreamTransponderFacadeShared((RTPOutgoingSourceGroupShared const &)*arg1,(RTPSenderShared const &)*arg2,arg3);
+  
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_RTPStreamTransponderFacadeShared, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_RTPStreamTransponderFacadeShared_get(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  RTPStreamTransponderFacadeShared *arg1 = (RTPStreamTransponderFacadeShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  RTPStreamTransponderFacade *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_RTPStreamTransponderFacadeShared_get.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_RTPStreamTransponderFacadeShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RTPStreamTransponderFacadeShared_get" "', argument " "1"" of type '" "RTPStreamTransponderFacadeShared *""'"); 
+  }
+  arg1 = reinterpret_cast< RTPStreamTransponderFacadeShared * >(argp1);
+  result = (RTPStreamTransponderFacade *)(arg1)->get();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RTPStreamTransponderFacade, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static void _wrap_delete_RTPStreamTransponderFacadeShared(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+  SWIGV8_Proxy *proxy = data.GetParameter();
+  
+  if(proxy->swigCMemOwn && proxy->swigCObject) {
+    RTPStreamTransponderFacadeShared * arg1 = (RTPStreamTransponderFacadeShared *)proxy->swigCObject;
+    delete arg1;
+  }
+  delete proxy;
+}
+
+
 static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacade_Create(const SwigV8Arguments &args) {
   SWIGV8_HANDLESCOPE();
   
@@ -8163,6 +8286,81 @@ static SwigV8ReturnValue _wrap_new_veto_ActiveSpeakerMultiplexerFacade(const Swi
   SWIG_exception(SWIG_ERROR, "Class ActiveSpeakerMultiplexerFacade can not be instantiated");
 fail:
   SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_new_ActiveSpeakerMultiplexerFacadeShared(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_OBJECT self = args.Holder();
+  TimeService *arg1 = 0 ;
+  v8::Local< v8::Object > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ActiveSpeakerMultiplexerFacadeShared *result;
+  if(self->InternalFieldCount() < 1) SWIG_exception_fail(SWIG_ERROR, "Illegal call of constructor _wrap_new_ActiveSpeakerMultiplexerFacadeShared.");
+  if(args.Length() != 2) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_new_ActiveSpeakerMultiplexerFacadeShared.");
+  res1 = SWIG_ConvertPtr(args[0], &argp1, SWIGTYPE_p_TimeService,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ActiveSpeakerMultiplexerFacadeShared" "', argument " "1"" of type '" "TimeService &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ActiveSpeakerMultiplexerFacadeShared" "', argument " "1"" of type '" "TimeService &""'"); 
+  }
+  arg1 = reinterpret_cast< TimeService * >(argp1);
+  {
+    arg2 = v8::Local<v8::Object>::Cast(args[1]);
+  }
+  result = (ActiveSpeakerMultiplexerFacadeShared *)new_ActiveSpeakerMultiplexerFacadeShared(*arg1,arg2);
+  
+  
+  
+  
+  SWIGV8_SetPrivateData(self, result, SWIGTYPE_p_ActiveSpeakerMultiplexerFacadeShared, SWIG_POINTER_OWN);
+  SWIGV8_RETURN(self);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static SwigV8ReturnValue _wrap_ActiveSpeakerMultiplexerFacadeShared_get(const SwigV8Arguments &args) {
+  SWIGV8_HANDLESCOPE();
+  
+  SWIGV8_VALUE jsresult;
+  ActiveSpeakerMultiplexerFacadeShared *arg1 = (ActiveSpeakerMultiplexerFacadeShared *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ActiveSpeakerMultiplexerFacade *result = 0 ;
+  
+  if(args.Length() != 0) SWIG_exception_fail(SWIG_ERROR, "Illegal number of arguments for _wrap_ActiveSpeakerMultiplexerFacadeShared_get.");
+  
+  res1 = SWIG_ConvertPtr(args.Holder(), &argp1,SWIGTYPE_p_ActiveSpeakerMultiplexerFacadeShared, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ActiveSpeakerMultiplexerFacadeShared_get" "', argument " "1"" of type '" "ActiveSpeakerMultiplexerFacadeShared *""'"); 
+  }
+  arg1 = reinterpret_cast< ActiveSpeakerMultiplexerFacadeShared * >(argp1);
+  result = (ActiveSpeakerMultiplexerFacade *)(arg1)->get();
+  jsresult = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ActiveSpeakerMultiplexerFacade, 0 |  0 );
+  
+  
+  SWIGV8_RETURN(jsresult);
+  
+  goto fail;
+fail:
+  SWIGV8_RETURN(SWIGV8_UNDEFINED());
+}
+
+
+static void _wrap_delete_ActiveSpeakerMultiplexerFacadeShared(const v8::WeakCallbackInfo<SWIGV8_Proxy> &data) {
+  SWIGV8_Proxy *proxy = data.GetParameter();
+  
+  if(proxy->swigCMemOwn && proxy->swigCObject) {
+    ActiveSpeakerMultiplexerFacadeShared * arg1 = (ActiveSpeakerMultiplexerFacadeShared *)proxy->swigCObject;
+    delete arg1;
+  }
+  delete proxy;
 }
 
 
@@ -18962,6 +19160,7 @@ static void *_p_MediaFrameListenerBridgeTo_p_MediaFrameListener(void *x, int *SW
 }
 static swig_type_info _swigt__p_ActiveSpeakerDetectorFacade = {"_p_ActiveSpeakerDetectorFacade", "p_ActiveSpeakerDetectorFacade|ActiveSpeakerDetectorFacade *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ActiveSpeakerMultiplexerFacade = {"_p_ActiveSpeakerMultiplexerFacade", "p_ActiveSpeakerMultiplexerFacade|ActiveSpeakerMultiplexerFacade *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ActiveSpeakerMultiplexerFacadeShared = {"_p_ActiveSpeakerMultiplexerFacadeShared", "p_ActiveSpeakerMultiplexerFacadeShared|ActiveSpeakerMultiplexerFacadeShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransport = {"_p_DTLSICETransport", "p_DTLSICETransport|DTLSICETransport *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransportListener = {"_p_DTLSICETransportListener", "p_DTLSICETransportListener", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_DTLSICETransportListenerShared = {"_p_DTLSICETransportListenerShared", "p_DTLSICETransportListenerShared|DTLSICETransportListenerShared *", 0, 0, (void*)0, 0};
@@ -19011,6 +19210,7 @@ static swig_type_info _swigt__p_RTPSessionFacadeShared = {"_p_RTPSessionFacadeSh
 static swig_type_info _swigt__p_RTPSource = {"_p_RTPSource", "p_RTPSource|RTPSource *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPStreamTransponder = {"_p_RTPStreamTransponder", "RTPStreamTransponder *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RTPStreamTransponderFacade = {"_p_RTPStreamTransponderFacade", "p_RTPStreamTransponderFacade|RTPStreamTransponderFacade *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RTPStreamTransponderFacadeShared = {"_p_RTPStreamTransponderFacadeShared", "p_RTPStreamTransponderFacadeShared|RTPStreamTransponderFacadeShared *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RemoteRateEstimatorListener = {"_p_RemoteRateEstimatorListener", "p_RemoteRateEstimatorListener|RemoteRateEstimatorListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SenderSideEstimatorListener = {"_p_SenderSideEstimatorListener", "p_SenderSideEstimatorListener", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SimulcastMediaFrameListener = {"_p_SimulcastMediaFrameListener", "p_SimulcastMediaFrameListener|SimulcastMediaFrameListener *", 0, 0, (void*)0, 0};
@@ -19034,6 +19234,7 @@ static swig_type_info _swigt__p_v8__LocalT_v8__Object_t = {"_p_v8__LocalT_v8__Ob
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ActiveSpeakerDetectorFacade,
   &_swigt__p_ActiveSpeakerMultiplexerFacade,
+  &_swigt__p_ActiveSpeakerMultiplexerFacadeShared,
   &_swigt__p_DTLSICETransport,
   &_swigt__p_DTLSICETransportListener,
   &_swigt__p_DTLSICETransportListenerShared,
@@ -19083,6 +19284,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RTPSource,
   &_swigt__p_RTPStreamTransponder,
   &_swigt__p_RTPStreamTransponderFacade,
+  &_swigt__p_RTPStreamTransponderFacadeShared,
   &_swigt__p_RemoteRateEstimatorListener,
   &_swigt__p_SenderSideEstimatorListener,
   &_swigt__p_SimulcastMediaFrameListener,
@@ -19106,6 +19308,7 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_ActiveSpeakerDetectorFacade[] = {  {&_swigt__p_ActiveSpeakerDetectorFacade, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ActiveSpeakerMultiplexerFacade[] = {  {&_swigt__p_ActiveSpeakerMultiplexerFacade, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ActiveSpeakerMultiplexerFacadeShared[] = {  {&_swigt__p_ActiveSpeakerMultiplexerFacadeShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransport[] = {  {&_swigt__p_DTLSICETransport, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransportListener[] = {  {&_swigt__p_DTLSICETransportListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_DTLSICETransportListenerShared[] = {  {&_swigt__p_DTLSICETransportListenerShared, 0, 0, 0},{0, 0, 0, 0}};
@@ -19155,6 +19358,7 @@ static swig_cast_info _swigc__p_RTPSessionFacadeShared[] = {  {&_swigt__p_RTPSes
 static swig_cast_info _swigc__p_RTPSource[] = {  {&_swigt__p_RTPSource, 0, 0, 0},  {&_swigt__p_RTPOutgoingSource, _p_RTPOutgoingSourceTo_p_RTPSource, 0, 0},  {&_swigt__p_RTPIncomingSource, _p_RTPIncomingSourceTo_p_RTPSource, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPStreamTransponder[] = {  {&_swigt__p_RTPStreamTransponder, 0, 0, 0},  {&_swigt__p_RTPStreamTransponderFacade, _p_RTPStreamTransponderFacadeTo_p_RTPStreamTransponder, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RTPStreamTransponderFacade[] = {  {&_swigt__p_RTPStreamTransponderFacade, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RTPStreamTransponderFacadeShared[] = {  {&_swigt__p_RTPStreamTransponderFacadeShared, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RemoteRateEstimatorListener[] = {  {&_swigt__p_RemoteRateEstimatorListener, 0, 0, 0},  {&_swigt__p_SenderSideEstimatorListener, _p_SenderSideEstimatorListenerTo_p_RemoteRateEstimatorListener, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SenderSideEstimatorListener[] = {  {&_swigt__p_SenderSideEstimatorListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SimulcastMediaFrameListener[] = {  {&_swigt__p_SimulcastMediaFrameListener, 0, 0, 0},{0, 0, 0, 0}};
@@ -19178,6 +19382,7 @@ static swig_cast_info _swigc__p_v8__LocalT_v8__Object_t[] = {  {&_swigt__p_v8__L
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ActiveSpeakerDetectorFacade,
   _swigc__p_ActiveSpeakerMultiplexerFacade,
+  _swigc__p_ActiveSpeakerMultiplexerFacadeShared,
   _swigc__p_DTLSICETransport,
   _swigc__p_DTLSICETransportListener,
   _swigc__p_DTLSICETransportListenerShared,
@@ -19227,6 +19432,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RTPSource,
   _swigc__p_RTPStreamTransponder,
   _swigc__p_RTPStreamTransponderFacade,
+  _swigc__p_RTPStreamTransponderFacadeShared,
   _swigc__p_RemoteRateEstimatorListener,
   _swigc__p_SenderSideEstimatorListener,
   _swigc__p_SimulcastMediaFrameListener,
@@ -19724,12 +19930,26 @@ _exports_RTPStreamTransponderFacade_clientData.dtor = _wrap_delete_RTPStreamTran
 if (SWIGTYPE_p_RTPStreamTransponderFacade->clientdata == 0) {
   SWIGTYPE_p_RTPStreamTransponderFacade->clientdata = &_exports_RTPStreamTransponderFacade_clientData;
 }
+/* Name: _exports_RTPStreamTransponderFacadeShared, Type: p_RTPStreamTransponderFacadeShared, Dtor: _wrap_delete_RTPStreamTransponderFacadeShared */
+SWIGV8_FUNCTION_TEMPLATE _exports_RTPStreamTransponderFacadeShared_class = SWIGV8_CreateClassTemplate("_exports_RTPStreamTransponderFacadeShared");
+SWIGV8_SET_CLASS_TEMPL(_exports_RTPStreamTransponderFacadeShared_clientData.class_templ, _exports_RTPStreamTransponderFacadeShared_class);
+_exports_RTPStreamTransponderFacadeShared_clientData.dtor = _wrap_delete_RTPStreamTransponderFacadeShared;
+if (SWIGTYPE_p_RTPStreamTransponderFacadeShared->clientdata == 0) {
+  SWIGTYPE_p_RTPStreamTransponderFacadeShared->clientdata = &_exports_RTPStreamTransponderFacadeShared_clientData;
+}
 /* Name: _exports_ActiveSpeakerMultiplexerFacade, Type: p_ActiveSpeakerMultiplexerFacade, Dtor: _wrap_delete_ActiveSpeakerMultiplexerFacade */
 SWIGV8_FUNCTION_TEMPLATE _exports_ActiveSpeakerMultiplexerFacade_class = SWIGV8_CreateClassTemplate("_exports_ActiveSpeakerMultiplexerFacade");
 SWIGV8_SET_CLASS_TEMPL(_exports_ActiveSpeakerMultiplexerFacade_clientData.class_templ, _exports_ActiveSpeakerMultiplexerFacade_class);
 _exports_ActiveSpeakerMultiplexerFacade_clientData.dtor = _wrap_delete_ActiveSpeakerMultiplexerFacade;
 if (SWIGTYPE_p_ActiveSpeakerMultiplexerFacade->clientdata == 0) {
   SWIGTYPE_p_ActiveSpeakerMultiplexerFacade->clientdata = &_exports_ActiveSpeakerMultiplexerFacade_clientData;
+}
+/* Name: _exports_ActiveSpeakerMultiplexerFacadeShared, Type: p_ActiveSpeakerMultiplexerFacadeShared, Dtor: _wrap_delete_ActiveSpeakerMultiplexerFacadeShared */
+SWIGV8_FUNCTION_TEMPLATE _exports_ActiveSpeakerMultiplexerFacadeShared_class = SWIGV8_CreateClassTemplate("_exports_ActiveSpeakerMultiplexerFacadeShared");
+SWIGV8_SET_CLASS_TEMPL(_exports_ActiveSpeakerMultiplexerFacadeShared_clientData.class_templ, _exports_ActiveSpeakerMultiplexerFacadeShared_class);
+_exports_ActiveSpeakerMultiplexerFacadeShared_clientData.dtor = _wrap_delete_ActiveSpeakerMultiplexerFacadeShared;
+if (SWIGTYPE_p_ActiveSpeakerMultiplexerFacadeShared->clientdata == 0) {
+  SWIGTYPE_p_ActiveSpeakerMultiplexerFacadeShared->clientdata = &_exports_ActiveSpeakerMultiplexerFacadeShared_clientData;
 }
 /* Name: _exports_RTPIncomingSource, Type: p_RTPIncomingSource, Dtor: _wrap_delete_RTPIncomingSource */
 SWIGV8_FUNCTION_TEMPLATE _exports_RTPIncomingSource_class = SWIGV8_CreateClassTemplate("_exports_RTPIncomingSource");
@@ -20036,6 +20256,7 @@ SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SelectLayer
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Mute", _wrap_RTPStreamTransponderFacade_Mute);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "SetIntraOnlyForwarding", _wrap_RTPStreamTransponderFacade_SetIntraOnlyForwarding);
 SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacade_class, "Close", _wrap_RTPStreamTransponderFacade_Close);
+SWIGV8_AddMemberFunction(_exports_RTPStreamTransponderFacadeShared_class, "get", _wrap_RTPStreamTransponderFacadeShared_get);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "SetMaxAccumulatedScore", _wrap_ActiveSpeakerMultiplexerFacade_SetMaxAccumulatedScore);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "SetNoiseGatingThreshold", _wrap_ActiveSpeakerMultiplexerFacade_SetNoiseGatingThreshold);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "SetMinActivationScore", _wrap_ActiveSpeakerMultiplexerFacade_SetMinActivationScore);
@@ -20044,6 +20265,7 @@ SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "RemoveI
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "AddRTPStreamTransponder", _wrap_ActiveSpeakerMultiplexerFacade_AddRTPStreamTransponder);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "RemoveRTPStreamTransponder", _wrap_ActiveSpeakerMultiplexerFacade_RemoveRTPStreamTransponder);
 SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacade_class, "Stop", _wrap_ActiveSpeakerMultiplexerFacade_Stop);
+SWIGV8_AddMemberFunction(_exports_ActiveSpeakerMultiplexerFacadeShared_class, "get", _wrap_ActiveSpeakerMultiplexerFacadeShared_get);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "numFrames", _wrap_RTPIncomingSource_numFrames_get, _wrap_RTPIncomingSource_numFrames_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "numFramesDelta", _wrap_RTPIncomingSource_numFramesDelta_get, _wrap_RTPIncomingSource_numFramesDelta_set);
 SWIGV8_AddMemberVariable(_exports_RTPIncomingSource_class, "lostPackets", _wrap_RTPIncomingSource_lostPackets_get, _wrap_RTPIncomingSource_lostPackets_set);
@@ -20669,6 +20891,16 @@ v8::Local<v8::Object> _exports_RTPStreamTransponderFacade_obj = _exports_RTPStre
 #else
 v8::Local<v8::Object> _exports_RTPStreamTransponderFacade_obj = _exports_RTPStreamTransponderFacade_class_0->GetFunction(context).ToLocalChecked();
 #endif
+/* Class: RTPStreamTransponderFacadeShared (_exports_RTPStreamTransponderFacadeShared) */
+SWIGV8_FUNCTION_TEMPLATE _exports_RTPStreamTransponderFacadeShared_class_0 = SWIGV8_CreateClassTemplate("RTPStreamTransponderFacadeShared");
+_exports_RTPStreamTransponderFacadeShared_class_0->SetCallHandler(_wrap_new_RTPStreamTransponderFacadeShared);
+_exports_RTPStreamTransponderFacadeShared_class_0->Inherit(_exports_RTPStreamTransponderFacadeShared_class);
+#if (SWIG_V8_VERSION < 0x0704)
+_exports_RTPStreamTransponderFacadeShared_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_RTPStreamTransponderFacadeShared_obj = _exports_RTPStreamTransponderFacadeShared_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_RTPStreamTransponderFacadeShared_obj = _exports_RTPStreamTransponderFacadeShared_class_0->GetFunction(context).ToLocalChecked();
+#endif
 /* Class: ActiveSpeakerMultiplexerFacade (_exports_ActiveSpeakerMultiplexerFacade) */
 SWIGV8_FUNCTION_TEMPLATE _exports_ActiveSpeakerMultiplexerFacade_class_0 = SWIGV8_CreateClassTemplate("ActiveSpeakerMultiplexerFacade");
 _exports_ActiveSpeakerMultiplexerFacade_class_0->SetCallHandler(_wrap_new_veto_ActiveSpeakerMultiplexerFacade);
@@ -20678,6 +20910,16 @@ _exports_ActiveSpeakerMultiplexerFacade_class_0->SetHiddenPrototype(true);
 v8::Local<v8::Object> _exports_ActiveSpeakerMultiplexerFacade_obj = _exports_ActiveSpeakerMultiplexerFacade_class_0->GetFunction();
 #else
 v8::Local<v8::Object> _exports_ActiveSpeakerMultiplexerFacade_obj = _exports_ActiveSpeakerMultiplexerFacade_class_0->GetFunction(context).ToLocalChecked();
+#endif
+/* Class: ActiveSpeakerMultiplexerFacadeShared (_exports_ActiveSpeakerMultiplexerFacadeShared) */
+SWIGV8_FUNCTION_TEMPLATE _exports_ActiveSpeakerMultiplexerFacadeShared_class_0 = SWIGV8_CreateClassTemplate("ActiveSpeakerMultiplexerFacadeShared");
+_exports_ActiveSpeakerMultiplexerFacadeShared_class_0->SetCallHandler(_wrap_new_ActiveSpeakerMultiplexerFacadeShared);
+_exports_ActiveSpeakerMultiplexerFacadeShared_class_0->Inherit(_exports_ActiveSpeakerMultiplexerFacadeShared_class);
+#if (SWIG_V8_VERSION < 0x0704)
+_exports_ActiveSpeakerMultiplexerFacadeShared_class_0->SetHiddenPrototype(true);
+v8::Local<v8::Object> _exports_ActiveSpeakerMultiplexerFacadeShared_obj = _exports_ActiveSpeakerMultiplexerFacadeShared_class_0->GetFunction();
+#else
+v8::Local<v8::Object> _exports_ActiveSpeakerMultiplexerFacadeShared_obj = _exports_ActiveSpeakerMultiplexerFacadeShared_class_0->GetFunction(context).ToLocalChecked();
 #endif
 /* Class: RTPIncomingSource (_exports_RTPIncomingSource) */
 SWIGV8_FUNCTION_TEMPLATE _exports_RTPIncomingSource_class_0 = SWIGV8_CreateClassTemplate("RTPIncomingSource");
@@ -21042,7 +21284,9 @@ SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPReceiverShare
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPSender"), _exports_RTPSender_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPSenderShared"), _exports_RTPSenderShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPStreamTransponderFacade"), _exports_RTPStreamTransponderFacade_obj));
+SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPStreamTransponderFacadeShared"), _exports_RTPStreamTransponderFacadeShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("ActiveSpeakerMultiplexerFacade"), _exports_ActiveSpeakerMultiplexerFacade_obj));
+SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("ActiveSpeakerMultiplexerFacadeShared"), _exports_ActiveSpeakerMultiplexerFacadeShared_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPIncomingSource"), _exports_RTPIncomingSource_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPIncomingSourceGroup"), _exports_RTPIncomingSourceGroup_obj));
 SWIGV8_MAYBE_CHECK(exports_obj->Set(context, SWIGV8_SYMBOL_NEW("RTPIncomingSourceGroupShared"), _exports_RTPIncomingSourceGroupShared_obj));

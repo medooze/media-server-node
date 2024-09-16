@@ -20,7 +20,9 @@ private:
 public:
 	static std::shared_ptr<ActiveSpeakerMultiplexerFacade> Create(TimeService& timeService,v8::Local<v8::Object> object)
 	{
-		return std::shared_ptr<ActiveSpeakerMultiplexerFacade>(new ActiveSpeakerMultiplexerFacade(timeService, object));
+		auto obj = std::shared_ptr<ActiveSpeakerMultiplexerFacade>(new ActiveSpeakerMultiplexerFacade(timeService, object));
+		obj->OnCreated();
+		return obj;
 	}
 		
 	virtual void onActiveSpeakerChanged(uint32_t speakerId,uint32_t multiplexerId) override
@@ -78,3 +80,13 @@ public:
 	void RemoveRTPStreamTransponder(RTPStreamTransponder* transpoder);
 	void Stop();
 };
+
+SHARED_PTR_BEGIN(ActiveSpeakerMultiplexerFacade)
+{
+	ActiveSpeakerMultiplexerFacadeShared(TimeService& timeService, v8::Local<v8::Object> object)
+	{
+		return new std::shared_ptr<ActiveSpeakerMultiplexerFacade>(ActiveSpeakerMultiplexerFacade::Create(timeService, object));
+	}
+}
+SHARED_PTR_END(ActiveSpeakerMultiplexerFacade)
+
