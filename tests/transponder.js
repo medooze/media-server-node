@@ -568,7 +568,7 @@ tap.test("Transponder::targetbitrate svc",async function(suite){
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target);
 			//Check it is correctly selected
-			test.ok(bitrate == target);
+			test.same(parseInt(bitrate) ,  target);
 		} catch (error) {
 			//Test error
 			test.notOk(error,error.message);
@@ -606,7 +606,7 @@ tap.test("Transponder::targetbitrate svc",async function(suite){
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target,{strict:true});
 			//Check it is correctly selected
-			test.ok(bitrate==0);
+			test.same(parseInt(bitrate), 0);
 		} catch (error) {
 			//Test error
 			test.notOk(error,error.message);
@@ -856,7 +856,7 @@ tap.test("Transponder::targetbitrate simulcast",async function(suite){
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target);
 			//Check it is correctly selected
-			test.ok(bitrate == target);
+			test.same(parseInt(bitrate) ,  target);
 			test.same(transponder.getSelectedEncoding() ,"2");
 		} catch (error) {
 			//Test error
@@ -894,7 +894,7 @@ tap.test("Transponder::targetbitrate simulcast",async function(suite){
 			//Set bitrate
 			const bitrate = transponder.setTargetBitrate(target,{strict:true});
 			//Check it is correctly selected
-			test.ok(bitrate==0);
+			test.same(parseInt(bitrate), 0);
 		} catch (error) {
 			//Test error
 			test.notOk(error,error.message);
@@ -947,6 +947,164 @@ tap.test("Transponder::targetbitrate simulcast",async function(suite){
 			test.notOk(error,error.message);
 		}
 	});
+	
+	suite.end();
+}),
+
+tap.test("Transponder::targetbitrate codecs",async function(suite){
+	
+	//Create UDP server endpoint
+	let endpointA = MediaServer.createEndpoint("127.0.0.1");
+	let endpointB = MediaServer.createEndpoint("127.0.0.1");
+
+	const A = {
+		ice	   :  ICEInfo.generate(),
+		dtls	   :  new DTLSInfo(Setup.ACTIVE, "sha-256",endpointA.getDTLSFingerprint())
+	};
+
+	const B = {
+		ice	   :  ICEInfo.generate(),
+		dtls	   :  new DTLSInfo(Setup.PASSIVE, "sha-256",endpointB.getDTLSFingerprint()),
+	};
+
+	//Create an DTLS ICE transport in that enpoint
+	let transportA = endpointA.createTransport(B, A, {disableSTUNKeepAlive: true});
+	let transportB = endpointB.createTransport(A, B, {disableSTUNKeepAlive: true});
+
+	//Set local&remote properties
+	transportA.setLocalProperties(rtp);
+	transportA.setRemoteProperties(rtp);
+	transportB.setLocalProperties(rtp);
+	transportB.setRemoteProperties(rtp);
+
+	//Add remote candidates
+	transportA.addRemoteCandidates(transportB.getLocalCandidates());
+	transportB.addRemoteCandidates(transportA.getLocalCandidates());
+	
+	//Create new local stream
+	const outgoingStream  = transportA.createOutgoingStream({
+		video: true
+	});
+	//Get ougoing stream info
+	const outgoingStreamInfo = outgoingStream.getStreamInfo();
+	//Add simulcast info
+	const outgoingVideoTrackInfo = outgoingStreamInfo.getFirstTrack("video");
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("0"));
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("1"));
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("2"));
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("3"));
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("4"));
+	outgoingVideoTrackInfo.addEncoding( new TrackEncodingInfo("5"));
+
+	//Set the info into B so it can receive it
+	const incomingStream = transportB.createIncomingStream(outgoingStreamInfo);
+	//Get video track
+	const outgoingVideoTrack = outgoingStream.getVideoTracks()[0];
+	const incomingVideoTrack = incomingStream.getVideoTracks()[0];
+	//Get transponders
+	const transponder = outgoingVideoTrack.attachTo(incomingVideoTrack);
+	
+	//Modify incoming track stats for SVC like stuff
+	
+	incomingVideoTrack.getStats = () => ({
+			"0" : {
+				bitrate : 179000,
+				media	: {
+					width: 240,
+					height: 240,
+					layers: []
+				},
+				targetWidth: 240,
+				targetHeight: 240,
+				codec: "h264"
+			},
+			"1"  : {
+				bitrate : 536000,
+				media	: {
+					width: 360,
+					height: 360,
+					layers: []
+				},
+				targetWidth: 360,
+				targetHeight: 360,
+				codec: "h264"
+			},
+			"2"  : {
+				bitrate : 1250000,
+				media	: {
+					width: 480,
+					height: 360,
+					layers: []
+				},
+				targetWidth: 480,
+				targetHeight: 480,
+				codec: "h264"
+			},
+			"3" : {
+				bitrate : 179000/2,
+				media	: {
+					width: 240,
+					height: 240,
+					layers: []
+				},
+				targetWidth: 240,
+				targetHeight: 240,
+				codec: "av1"
+			},
+			"4"  : {
+				bitrate : 536000/2,
+				media	: {
+					width: 360,
+					height: 360,
+					layers: []
+				},
+				targetWidth: 360,
+				targetHeight: 360,
+				codec: "av1"
+			},
+			"5"  : {
+				bitrate : 1250000/2,
+				media	: {
+					width: 480,
+					height: 360,
+					layers: []
+				},
+				targetWidth: 480,
+				targetHeight: 480,
+				codec: "av1"
+			},
+	});
+
+	
+	await suite.test("top",async function(test){
+		try {
+			let bitrate;
+			//Target bitrate
+			const target = 1250000;
+			//Set bitrate
+			bitrate = transponder.setTargetBitrate(target/2, {codecs:["av1","h264"]});
+			//Check it is correctly selected
+			test.same(parseInt(bitrate) ,  target/2);
+			test.same(transponder.getSelectedEncoding() ,"5");
+
+			//Set bitrate
+			bitrate = transponder.setTargetBitrate(target, {codecs:["h264"]});
+			//Check it is correctly selected
+			test.same(parseInt(bitrate) ,  target);
+			test.same(transponder.getSelectedEncoding() ,"2");
+
+			//Set bitrate
+			bitrate = transponder.setTargetBitrate(target/2, {codecs:["av1"]});
+			//Check it is correctly selected
+			test.same(parseInt(bitrate) ,  target/2);
+			test.same(transponder.getSelectedEncoding() ,"5");
+
+		} catch (error) {
+			//Test error
+			test.notOk(error,error.message);
+		}
+	});
+	
 	
 	suite.end();
 })
