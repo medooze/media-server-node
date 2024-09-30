@@ -3,15 +3,10 @@
 %include "MediaFrame.i"
 %include "RTPOutgoingSource.i"
 
+%nodefaultctor RTPOutgoingSourceGroup;
 struct RTPOutgoingSourceGroup
 {
-	// Prevents SWIG using it
-private:
-	RTPOutgoingSourceGroup();
 public:
-	// @todo Constructors are private can create using factory if it is needed somewhere but didnt find it
-	//RTPOutgoingSourceGroup(MediaFrameType type, TimeService& TimeService);
-	//RTPOutgoingSourceGroup(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
 	static RTPOutgoingSourceGroupShared Create(MediaFrameType type, TimeService& TimeService);
 	static RTPOutgoingSourceGroupShared Create(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
 	

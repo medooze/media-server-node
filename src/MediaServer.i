@@ -65,7 +65,6 @@ public:
 	 * Async
 	 *  Enqueus a function to the async queue and signals main thread to execute it
 	 */
-	// @todo Verify if we can fix this like we did for the timer service to guarantee object lifetime
 	static void Async(std::function<void()> func) 
 	{
 		//Check if not terminatd

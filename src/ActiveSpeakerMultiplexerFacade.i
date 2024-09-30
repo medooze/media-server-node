@@ -3,14 +3,14 @@
 %include "RTPIncomingMediaStream.i"
 %include "RTPStreamTransponderFacade.i"
 
+%nodefaultctor ActiveSpeakerMultiplexerFacade;
+
 %{
 class ActiveSpeakerMultiplexerFacade :
 	public ActiveSpeakerMultiplexer,
 	public ActiveSpeakerMultiplexer::Listener
 {
 private:
-	ActiveSpeakerMultiplexerFacade();
-
 	ActiveSpeakerMultiplexerFacade(TimeService& timeService,v8::Local<v8::Object> object) :
 		ActiveSpeakerMultiplexer(timeService,this)
 	{

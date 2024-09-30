@@ -16,7 +16,6 @@ struct MediaFrameListenerBridge :
 	public MediaFrameListener,
 	public MediaFrameProducer
 {
-	//MediaFrameListenerBridge(TimeService& timeService, int ssrc);
 	
 	QWORD numFrames;
 	QWORD numPackets;

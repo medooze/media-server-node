@@ -4,13 +4,10 @@
 %include "RTPIncomingMediaStream.i"
 %include "RTPIncomingSource.i"
 
-
+%nodefaultctor RTPIncomingSourceGroup;
 struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 {
-private:
-	RTPIncomingSourceGroup();
 public:
-	//RTPIncomingSourceGroup(MediaFrameType type, TimeService& TimeService);
 
 	std::string rid;
 	std::string mid;

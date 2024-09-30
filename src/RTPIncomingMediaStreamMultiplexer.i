@@ -4,12 +4,10 @@
 %include "RTPIncomingMediaStream.i"
 %include "RTPIncomingSource.i"
 
+%nodefaultctor RTPIncomingMediaStreamMultiplexer;
 struct RTPIncomingMediaStreamMultiplexer : public RTPIncomingMediaStream, public RTPIncomingMediaStreamListener
 {
-private:
-	RTPIncomingMediaStreamMultiplexer();
 public:
-	//RTPIncomingMediaStreamMultiplexer(const RTPIncomingMediaStreamShared& incomingMediaStream, TimeService& TimeService);
 	void Stop();
 };
 

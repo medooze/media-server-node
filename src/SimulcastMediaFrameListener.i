@@ -1,12 +1,11 @@
 %include "MediaFrame.i"
 %include "EventLoop.i"
 
+%nodefaultctor SimulcastMediaFrameListener;
 class SimulcastMediaFrameListener :
 	public MediaFrameProducer,
 	public MediaFrameListener
 {
-private:
-	SimulcastMediaFrameListener();
 public:
 	//SimulcastMediaFrameListener(TimeService &timeService, DWORD ssrc, DWORD numLayers);
 	void SetNumLayers(DWORD numLayers);

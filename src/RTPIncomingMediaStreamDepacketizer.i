@@ -5,12 +5,10 @@
 %include "RTPIncomingMediaStream.i"
 %include "MediaFrame.i"
 
+%nodefaultctor RTPIncomingMediaStreamDepacketizer;
 class RTPIncomingMediaStreamDepacketizer :
 	public MediaFrameProducer
 {
-private:
-	RTPIncomingMediaStreamDepacketizer();
-
 public:
 	//RTPIncomingMediaStreamDepacketizer(const RTPIncomingMediaStreamShared& incomingSource);
 	void Stop();

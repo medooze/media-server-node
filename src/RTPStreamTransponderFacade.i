@@ -60,15 +60,11 @@ private:
 
 %}
 
+%nodefaultctor RTPStreamTransponderFacade;
 class RTPStreamTransponderFacade : 
 	public RTPStreamTransponder
 {
-private:
-	RTPStreamTransponderFacade();
-
 public:
-	// @todo
-	//RTPStreamTransponderFacade(const RTPOutgoingSourceGroupShared& outgoing, const RTPSenderShared& sender,v8::Local<v8::Object> object);
 	static std::shared_ptr<RTPStreamTransponderFacade> Create(const RTPOutgoingSourceGroupShared& outgoing, const RTPSenderShared& sender,v8::Local<v8::Object> object);
 
 	void SetIncoming(const RTPIncomingMediaStreamShared& incoming, const RTPReceiverShared& receiver, bool smooth);
