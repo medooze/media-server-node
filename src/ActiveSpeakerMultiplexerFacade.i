@@ -3,8 +3,6 @@
 %include "RTPIncomingMediaStream.i"
 %include "RTPStreamTransponderFacade.i"
 
-%nodefaultctor ActiveSpeakerMultiplexerFacade;
-
 %{
 class ActiveSpeakerMultiplexerFacade :
 	public ActiveSpeakerMultiplexer,
@@ -63,12 +61,10 @@ private:
 %}
 
 
+%nodefaultctor ActiveSpeakerMultiplexerFacade;
 class ActiveSpeakerMultiplexerFacade 
 {
-private:
-	ActiveSpeakerMultiplexerFacade();
 public:	
-	//ActiveSpeakerMultiplexerFacade(TimeService& timeService,v8::Local<v8::Object> object);
 	static std::shared_ptr<ActiveSpeakerMultiplexerFacade> Create(TimeService& timeService,v8::Local<v8::Object> object);
 	
 	void SetMaxAccumulatedScore(uint64_t maxAcummulatedScore);
