@@ -7,8 +7,6 @@
 %nodefaultctor RTPIncomingSourceGroup;
 struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 {
-public:
-
 	std::string rid;
 	std::string mid;
 	DWORD rtt;

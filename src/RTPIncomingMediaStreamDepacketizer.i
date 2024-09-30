@@ -10,7 +10,6 @@ class RTPIncomingMediaStreamDepacketizer :
 	public MediaFrameProducer
 {
 public:
-	//RTPIncomingMediaStreamDepacketizer(const RTPIncomingMediaStreamShared& incomingSource);
 	void Stop();
 };
 

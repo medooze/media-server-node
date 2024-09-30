@@ -6,7 +6,6 @@
 %nodefaultctor RTPOutgoingSourceGroup;
 struct RTPOutgoingSourceGroup
 {
-public:
 	static RTPOutgoingSourceGroupShared Create(MediaFrameType type, TimeService& TimeService);
 	static RTPOutgoingSourceGroupShared Create(const std::string &streamId,MediaFrameType type, TimeService& TimeService);
 	

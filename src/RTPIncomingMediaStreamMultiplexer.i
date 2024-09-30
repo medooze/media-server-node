@@ -7,7 +7,6 @@
 %nodefaultctor RTPIncomingMediaStreamMultiplexer;
 struct RTPIncomingMediaStreamMultiplexer : public RTPIncomingMediaStream, public RTPIncomingMediaStreamListener
 {
-public:
 	void Stop();
 };
 

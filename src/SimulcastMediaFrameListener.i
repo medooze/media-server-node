@@ -7,7 +7,6 @@ class SimulcastMediaFrameListener :
 	public MediaFrameListener
 {
 public:
-	//SimulcastMediaFrameListener(TimeService &timeService, DWORD ssrc, DWORD numLayers);
 	void SetNumLayers(DWORD numLayers);
 	void AttachTo(const MediaFrameProducerShared& producer);
 	void Detach(const MediaFrameProducerShared& producer);
