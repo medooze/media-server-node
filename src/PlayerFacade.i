@@ -8,8 +8,8 @@ class PlayerFacade :
 public:
 	PlayerFacade(v8::Local<v8::Object> object) :
 		MP4Streamer(this),
-        audio(new RTPIncomingSourceGroup(MediaFrame::Audio, loop)),
-        video(new RTPIncomingSourceGroup(MediaFrame::Video, loop))
+        audio(RTPIncomingSourceGroup::Create(MediaFrame::Audio, loop)),
+        video(RTPIncomingSourceGroup::Create(MediaFrame::Video, loop))
 	{
 		persistent = std::make_shared<Persistent<v8::Object>>(object);
 		Reset();

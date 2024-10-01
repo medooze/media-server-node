@@ -4,10 +4,9 @@
 %include "RTPIncomingMediaStream.i"
 %include "RTPIncomingSource.i"
 
-
+%nodefaultctor RTPIncomingSourceGroup;
 struct RTPIncomingSourceGroup : public RTPIncomingMediaStream
 {
-	RTPIncomingSourceGroup(MediaFrameType type, TimeService& TimeService);
 	std::string rid;
 	std::string mid;
 	DWORD rtt;
@@ -55,7 +54,7 @@ SHARED_PTR_BEGIN(RTPIncomingSourceGroup)
 {
 	RTPIncomingSourceGroupShared(MediaFrameType type, TimeService& TimeService)
 	{
-		return new std::shared_ptr<RTPIncomingSourceGroup>(new RTPIncomingSourceGroup(type,TimeService));
+		return new std::shared_ptr<RTPIncomingSourceGroup>(RTPIncomingSourceGroup::Create(type,TimeService));
 	}
 	SHARED_PTR_TO(RTPIncomingMediaStream)
 }
