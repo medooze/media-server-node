@@ -5,11 +5,11 @@
 %include "RTPIncomingMediaStream.i"
 %include "MediaFrame.i"
 
+%nodefaultctor RTPIncomingMediaStreamDepacketizer;
 class RTPIncomingMediaStreamDepacketizer :
 	public MediaFrameProducer
 {
 public:
-	RTPIncomingMediaStreamDepacketizer(const RTPIncomingMediaStreamShared& incomingSource);
 	void Stop();
 };
 
@@ -18,7 +18,7 @@ SHARED_PTR_BEGIN(RTPIncomingMediaStreamDepacketizer)
 {
 	RTPIncomingMediaStreamDepacketizerShared(const RTPIncomingMediaStreamShared& incomingSource)
 	{
-		return new std::shared_ptr<RTPIncomingMediaStreamDepacketizer>(new RTPIncomingMediaStreamDepacketizer(incomingSource));
+		return new std::shared_ptr<RTPIncomingMediaStreamDepacketizer>(RTPIncomingMediaStreamDepacketizer::Create(incomingSource));
 	}
 	SHARED_PTR_TO(MediaFrameProducer)
 }

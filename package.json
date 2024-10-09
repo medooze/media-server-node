@@ -1,6 +1,6 @@
 {
   "name": "medooze-media-server",
-  "version": "1.151.1",
+  "version": "1.155.0",
   "description": "WebRTC Media Server by Medooze",
   "main": "index.js",
   "scripts": {
@@ -35,11 +35,11 @@
     "lfsr": "0.0.3",
     "medooze-event-emitter": "^1.2.0",
     "nan": "^2.18.0",
-    "semantic-sdp": "^3.29.0",
+    "semantic-sdp": "^3.31.1",
     "uuid": "^3.3.2"
   },
   "peerDependencies": {
-    "medooze-media-server-src": "^2.0.3"
+    "medooze-media-server-src": "^3.0.0"
   },
   "optionalDependencies": {
     "netlink": "^0"
