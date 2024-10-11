@@ -2,7 +2,7 @@ const tap		= require("tap");
 const FileSystem	= require("fs");
 const Path		= require("path");
 const OS		= require("os");
-const MediaServer	= require("../index");
+const MediaServer	= require("../../index");
 const SemanticSDP	= require("semantic-sdp");
 
 MediaServer.enableLog(false);
