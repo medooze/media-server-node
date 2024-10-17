@@ -1,6 +1,6 @@
 const tap		= require("tap");
-const MediaServer	= require("../index");
-const LayerInfo		= require("../lib/LayerInfo");
+const MediaServer	= require("../../index");
+const LayerInfo		= require("../../lib/LayerInfo");
 const SemanticSDP	= require("semantic-sdp");
 
 const {

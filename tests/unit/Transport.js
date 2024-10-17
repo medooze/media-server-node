@@ -1,5 +1,5 @@
 const tap		= require("tap");
-const MediaServer	= require("../index");
+const MediaServer	= require("../../index");
 const SemanticSDP	= require("semantic-sdp");
 const FileSystem	= require("fs");
 const Path		= require("path");
